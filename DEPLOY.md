@@ -26,7 +26,7 @@ Project `ycadmmngkdhvpcsrcuaq`. **Applied** (additive, RLS-on, dormant behind fl
 | `…000100_library_catalog_cache` | `library_catalog_cache` + tsvector/GIN, array-facet GIN, keyset index; RLS read policy |
 | `…000200_library_commerce` | `library_cart_items`, `library_entitlements`, `processed_checkouts`; RLS owner policies; `current_subscriber_id()` |
 | `…000300_library_rpcs` | `library_search`, `library_facets`, `library_checkout`; checkout locked to service-role |
-| `…000400_…meter_seed.HELD` | **NOT applied** — seeding the meter is always-human (FAR-56 / FAR-46) |
+| `…000400_…meter_seed` | **Applied 2026-06-20** — Myke sign-off (FAR-46): `briefing_library` = **10**, status `final` |
 
 Post-apply hardening also applied: `search_path` pinned on all functions; `library_checkout`
 execute revoked from `public/anon/authenticated`, granted to `service_role`.
@@ -46,7 +46,7 @@ execute revoked from `public/anon/authenticated`, granted to `service_role`.
 |---|---|---|
 | `NEXT_PUBLIC_LIBRARY_PREVIEW_ROUTE` | `true` (preview-only) | stays on preview route until launch |
 | `NEXT_PUBLIC_LIBRARY_SUBSCRIBER_LIVE` | **`false`** | **FAR-132** lands (theme normalization) |
-| `NEXT_PUBLIC_LIBRARY_COMMERCE_ON` | **`false`** | **FAR-16** (wallet) + **FAR-46** (meter) land |
+| `NEXT_PUBLIC_LIBRARY_COMMERCE_ON` | **`false`** | **FAR-16** (wallet) lands — FAR-46 (meter) ✅ done |
 | `NEXT_PUBLIC_LIBRARY_ANON_TEASER` | `true` | per §18 flag #6 (Myke) |
 
 ## 4. Deploy-gate checklist
@@ -55,7 +55,7 @@ execute revoked from `public/anon/authenticated`, granted to `service_role`.
 |---|---|---|
 | FAR-132 — Gamma theme normalization | ⏳ To Do | subscriber-live |
 | FAR-16 — wallet generalization | ⏳ To Do | commerce-on (Phase 3) |
-| FAR-46 — meter value sign-off | ⏳ To Do | seed `product_meters['briefing_library']`; checkout leaves `meter_unset` |
+| FAR-46 — meter value sign-off | ✅ Done 2026-06-20 | seeded `briefing_library` = **10** (`final`); checkout now prices acquisitions |
 | FAR-56 — editorial gate | ⏳ | storefront copy DRAFT → approved |
 
 ## 5. Test results
@@ -88,13 +88,21 @@ boundary; use Vercel preview + axe browser extension or `@axe-core/cli` against 
 1. **Build target / repo** — confirmed `Faraday-Briefing-Library`. It is **not yet in this session's
    GitHub scope**, so the branch/PR couldn't be pushed from here — add the repo to the session (or
    take the push set) to land it.
-2. **Meter value** — seed `product_meters['briefing_library']`? Brief says **10**; existing
-   `briefing` meter = **5**. Distinct products or reconcile? (Held pending FAR-46.)
-3. **Posture shift** to a destination; **Intelligence Blueprint** net-new naming — sign-off before exposure.
-4. **Taxonomy counts** (18/30/7 vs 23/116 vs 59) — reconcile before Blueprint advertises coverage.
-5. **Access tiering**, **anonymous teaser depth**, **preview-slide rule**, **bundles**, **SEO gateway** — see §18.
-6. **Identity model** — commerce keys on `subscribers(id)` (wallet identity) not `auth.users`; confirm
-   the Clerk→subscribers email mapping is the intended bridge.
+2. ~~**Meter value**~~ — ✅ **Resolved 2026-06-20: 10 tokens** (distinct product from `briefing`=5).
+   Seeded `final`; FAR-46 closed.
+3. ~~**Identity model**~~ — ✅ **Confirmed 2026-06-20: reuse the Jurisdiction Watch wallet.** Commerce
+   keys on `subscribers(id)` (wallet identity), Clerk→subscribers via email bridge. No fork.
+4. **Posture shift** to a destination; **Intelligence Blueprint** net-new naming → **design session
+   scheduled** (see §8). Taxonomy counts (18/30/7 vs 23/116 vs 59), access tiering, anonymous teaser
+   depth, preview-slide rule, bundles, SEO gateway — all on that session's agenda (§18).
+
+## 8. Intelligence Blueprint design session
+
+Scheduled (interactive) to resolve the §18 canon cluster that the build surfaced but couldn't decide
+in code: posture (destination vs outbound), Blueprint naming/scope, taxonomy reconciliation, access
+tiering, teaser depth, preview-slide rule, bundles/SEO. **Proposed: Mon 2026-06-22, 10:00–11:00**
+(Myke's calendar was open all week). Calendar invite + Meet link pending Myke's approval of the
+calendar write; agenda mirrors §7.4 above. Decisions land back in the Brand Bible (append-only) + Jira.
 
 ### Pre-existing security note (not introduced by this build)
 Supabase advisor flags **6 Jurisdiction Watch tables with RLS disabled** (`jurisdictions`,

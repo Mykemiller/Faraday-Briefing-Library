@@ -47,6 +47,8 @@ Build Plan v2.0*. Next.js (App Router) · Clerk · Supabase · Stripe · Gamma.
 - `BRIEFING_ACTIVE_CAP = 100` — v1.0 cap; V2 raises to 1000 (config, so V2 is tuning not refactor).
 - `BRIEFING_METER_KEY = 'briefing_library'` — the meter the cost binds to. **Value lives in Supabase**
   `product_meters`, Myke-governed (FAR-46). The code reads it at runtime (`src/lib/meter.ts`).
+  **Signed off 2026-06-20: 10 tokens** (status `final`) — a distinct product from `briefing` (=5),
+  per Myke's "use 10, not 5." Commerce stays gated on `commerceOn` (← FAR-16) regardless.
 - `PREVIEW_SLIDE_MAX = 3` — hypothesis + 1 body; never Take/Sources.
 - `SHELF_GHOST_COLLAPSE_RATIO = 0` — empty-shelf collapse threshold (V2 auto-inverts).
 - `SHELF_PAGE_SIZE = 48`, `ANON_TEASER_SLIDES = 1`.
@@ -61,8 +63,8 @@ Applied: `library_catalog_cache`, `library_cart_items`, `library_entitlements`,
 SECURITY INVOKER, anon-executable for reads), `library_checkout` (SECURITY DEFINER, **service-role
 only**), `current_subscriber_id`. Migrations in `supabase/migrations/`.
 
-**Held — do NOT apply without Myke:** `…_briefing_library_meter_seed.HELD.sql` (seeding a
-product-meter is always-human per FAR-56; owned by FAR-46).
+`…_briefing_library_meter_seed.sql` — **applied 2026-06-20** with Myke's sign-off (10 tokens,
+`final`). Was held pending FAR-46; now released. `library_checkout` no longer returns `meter_unset`.
 
 ## Deploy-gate checklist
 
@@ -70,7 +72,7 @@ product-meter is always-human per FAR-56; owned by FAR-46).
 |---|---|---|
 | **FAR-132** Gamma theme normalization | `subscriberLive` flag | ⏳ To Do |
 | **FAR-16** wallet generalization | `commerceOn` flag (Phase 3) | ⏳ To Do |
-| **FAR-46** meter value sign-off | seed `product_meters['briefing_library']`; flips checkout from `meter_unset` | ⏳ To Do |
+| **FAR-46** meter value sign-off | seed `product_meters['briefing_library']`; flips checkout from `meter_unset` | ✅ Done 2026-06-20 (10 tokens, `final`) |
 | **FAR-56** editorial gate | storefront copy DRAFT → approved | ⏳ |
 
 Nothing flips to subscriber-live or commerce-on without Myke. Deploy to a flag-gated preview route only.
