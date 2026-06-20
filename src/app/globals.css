@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --forest: #1c3424;
+  --gold: #c4922a;
+  --warm-white: #f8f5f0;
+  --sage: #8ca68a;
+  --cream: #fbf8f2;
+}
+
+/* The reading room canvas — warm-white paper, never pure #FFFFFF (§6.4). */
+html,
+body {
+  background-color: var(--warm-white);
+  color: var(--forest);
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+}
+
+/* Forest-over-gold double-rule section break (§6.6). */
+.double-rule {
+  border: 0;
+  height: 4px;
+  background: linear-gradient(
+    to bottom,
+    var(--forest) 0,
+    var(--forest) 2px,
+    transparent 2px,
+    transparent 3px,
+    var(--gold) 3px,
+    var(--gold) 4px
+  );
+}
+
+/* Spine-lift is pointer-only — no hover-only affordances on touch (L3, §6.5). */
+@media (hover: hover) {
+  .spine-liftable {
+    transition: transform 160ms ease-out, box-shadow 160ms ease-out;
+  }
+  .spine-liftable:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(28, 52, 36, 0.18);
+  }
+}
+
+/* Honour reduced-motion: degrade lifts/animations to opacity-only (§6.5, §13). */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Gold focus ring for the full keyboard path (§13). */
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* iPad-first: every interactive target ≥ 44×44px (§13). */
+button,
+a[role="button"],
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+}
