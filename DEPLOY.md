@@ -100,9 +100,9 @@ boundary; use Vercel preview + axe browser extension or `@axe-core/cli` against 
 
 Scheduled (interactive) to resolve the §18 canon cluster that the build surfaced but couldn't decide
 in code: posture (destination vs outbound), Blueprint naming/scope, taxonomy reconciliation, access
-tiering, teaser depth, preview-slide rule, bundles/SEO. **Proposed: Mon 2026-06-22, 10:00–11:00**
-(Myke's calendar was open all week). Calendar invite + Meet link pending Myke's approval of the
-calendar write; agenda mirrors §7.4 above. Decisions land back in the Brand Bible (append-only) + Jira.
+tiering, teaser depth, preview-slide rule, bundles/SEO. **Scheduled: today 2026-06-20, 09:00–10:00 CT**
+(per Myke). Calendar invite + Meet link pending Myke's approval of the calendar-write permission
+prompt; agenda mirrors §7.4 above. Decisions land back in the Brand Bible (append-only) + Jira.
 
 ### Pre-existing security note (not introduced by this build)
 Supabase advisor flags **6 Jurisdiction Watch tables with RLS disabled** (`jurisdictions`,
