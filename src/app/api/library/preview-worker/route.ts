@@ -3,16 +3,28 @@ import { supabaseAdmin } from "@/lib/supabase/admin";
 import { refreshBriefingPreviews } from "@/lib/gamma";
 
 export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 export const maxDuration = 300;
 
 /**
  * Preview worker (L10, §7.4). Vercel cron (or Supabase trigger) drains Available briefings whose
  * previews are stale/absent, calls the Gamma native export API, and writes content-addressed PNGs
  * to Supabase Storage. Skips re-export when the hash is unchanged. No headless browser, no new vendor.
+ *
+ * Accepts the Vercel cron's GET + `Authorization: Bearer <CRON_SECRET>` as well as a manual
+ * `x-cron-secret` header (POST). Previously POST-only + x-cron-secret, so the cron never ran.
  */
-export async function POST(req: Request) {
-  const secret = req.headers.get("x-cron-secret");
-  if (!process.env.CRON_SECRET || secret !== process.env.CRON_SECRET) {
+function authorized(req: Request): boolean {
+  const secret = process.env.CRON_SECRET;
+  if (!secret) return false;
+  const auth = req.headers.get("authorization");
+  if (auth === `Bearer ${secret}`) return true;
+  if (req.headers.get("x-cron-secret") === secret) return true;
+  return false;
+}
+
+async function handle(req: Request) {
+  if (!authorized(req)) {
     return NextResponse.json({ error: "forbidden" }, { status: 403 });
   }
   const sb = supabaseAdmin();
@@ -36,3 +48,6 @@ export async function POST(req: Request) {
   }
   return NextResponse.json({ ok: true, processed: results.length, results });
 }
+
+export const GET = handle;
+export const POST = handle;
