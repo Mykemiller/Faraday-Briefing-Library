@@ -15,10 +15,12 @@ export function FacetRail({
   active: Record<string, string | undefined>;
   onSelect: (axis: string, value: string | undefined) => void;
 }) {
+  // Display labels relabeled per FAR-177 (Theater/Sector/Thread). Backend facet keys
+  // (theme/domain/subdomain) are unchanged — they bind to the read-model columns.
   const axes: { key: keyof Facets; label: string }[] = [
-    { key: "theme", label: "Theme" },
-    { key: "domain", label: "Domain" },
-    { key: "subdomain", label: "Sub-Domain" },
+    { key: "theme", label: "Theater" },
+    { key: "domain", label: "Sector" },
+    { key: "subdomain", label: "Thread" },
     { key: "company", label: "Company" },
   ];
   return (
