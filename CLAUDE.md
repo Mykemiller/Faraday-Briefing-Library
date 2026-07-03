@@ -41,6 +41,26 @@ Build Plan v2.0*. Next.js (App Router) · Clerk · Supabase · Stripe · Gamma.
   rather than forked. Clerk is the auth front; server routes use the service role with explicit
   ownership checks (RLS is the deny-by-default backstop).
 
+## FBL 1.0 (2026-07-03, branch `fbl-1.0`, PR #2)
+
+- **Design source of truth:** `design_handoff_briefing_library` (FBL 1.0 README) — warm-white
+  Shelf at `/library`, lamplit Reading Room at `/library/b/[slug]`. Brand hexes live ONLY in
+  `tailwind.config.ts` tokens.
+- **Public vocabulary:** theme→Theater, domain→Sector, subdomain→Thread, company→Key Player.
+  D-codes never render. **Count-free rule:** no Theater/Sector/Thread or facet counts in UI
+  (facet counts still drive sidebar ordering — never printed).
+- **Reading Room fields** on `library_catalog_cache`: `briefing_type` (theater|sector|thread|
+  keyplayer|jurisdiction), `byline` (Gilbert=empirical, Mach=forward thesis), `hypothesis`,
+  `contents jsonb`. `library_search` gained `p_type`. Sync derives type/byline from IDF
+  placement until Airtable grows real fields (TODOs in `src/config/constants.ts`); title-less
+  records are not shelf-eligible.
+- **Seed rows** (`scripts/seed-fbl10.ts`, id prefix `seed-`) carry the designed catalog until
+  FAR-213; the sync prune spares them, and a DB trigger `library_catalog_cache_seed_guard`
+  blocks deletes (interim vs the older deployed sync — DROP it when seeds retire).
+- **Select = reserve:** a reservation IS a `library_cart_items` line (existing store/rollback
+  buffer + guest courier + merge-on-sign-in). No pricing UI anywhere in 1.0; `commerceOn` off.
+- Engine tile hand-off: `ENGINE-TILE-PATCH.md` (do not apply from this repo).
+
 ## Config constants (bound, never literal)
 
 `src/config/constants.ts`:
