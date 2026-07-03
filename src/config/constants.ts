@@ -49,8 +49,23 @@ export const AIRTABLE = {
     trackingCompanies: "fldcjHEEy3SUclWqY",
     downloadCounter: "fld2FLPk7QnqHaSAJ",
     goLiveDate: "flddONEuVoj4stpz6",
+    // TODO(FBL 1.0 → editorial): Airtable has no fields for these yet. Until they exist the
+    // sync derives briefing_type/byline from IDF placement and leaves hypothesis/contents
+    // empty (src/lib/sync.ts). Replace the derivations with real field ids when added.
+    briefingType: null as unknown as string, // TODO: add "Briefing Type" single-select in Airtable
+    byline: null as unknown as string, // TODO: add "Byline" single-select (Gilbert | Mach)
+    hypothesis: null as unknown as string, // TODO: add "Hypothesis" long text
+    contents: null as unknown as string, // TODO: add "Contents" (one item per line)
   },
 } as const;
+
+/** Public-vocabulary briefing types (Theater/Sector/Thread/Key Player [+ Jurisdiction]). */
+export const BRIEFING_TYPES = ["theater", "sector", "thread", "keyplayer", "jurisdiction"] as const;
+export type BriefingType = (typeof BRIEFING_TYPES)[number];
+
+/** Byline brand rule: Mach = forward thesis (Theater); Gilbert = empirical (everything else). */
+export const BYLINES = ["Gilbert", "Mach"] as const;
+export type Byline = (typeof BYLINES)[number];
 
 /** Status values the shelf is eligible to mirror (§11.3). Nothing in Draft leaks. */
 export const SHELF_ELIGIBLE_STATUS = ["Available", "Coming Soon"] as const;

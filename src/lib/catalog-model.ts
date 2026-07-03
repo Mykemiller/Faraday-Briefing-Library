@@ -13,6 +13,8 @@ export interface ModelQuery {
   domain?: string;
   company?: string;
   status?: "Available" | "Coming Soon";
+  /** Mirrors library_search p_type (FBL 1.0). */
+  type?: string;
   sort?: "newest" | "az" | "downloads";
   cursor?: string | null;
   limit: number;
@@ -52,6 +54,7 @@ export function search(rows: CatalogBriefing[], query: ModelQuery): { items: Cat
   let filtered = rows.filter(
     (b) =>
       (!query.status || b.status === query.status) &&
+      (!query.type || b.briefingType === query.type) &&
       matchesText(b, query.q) &&
       (!query.theme || b.themes.includes(query.theme)) &&
       (!query.domain || b.domains.includes(query.domain)) &&

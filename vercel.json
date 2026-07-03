@@ -1,6 +1,6 @@
 {
   "crons": [
-    { "path": "/api/library/sync", "schedule": "* * * * *" },
+    { "path": "/api/library/sync", "schedule": "*/15 * * * *" },
     { "path": "/api/library/preview-worker", "schedule": "30 */6 * * *" }
   ]
 }

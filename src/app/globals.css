@@ -10,15 +10,16 @@
   --cream: #fbf8f2;
 }
 
-/* The reading room canvas — warm-white paper, never pure #FFFFFF (§6.4). */
+/* The shelf canvas — warm-white paper, never pure #FFFFFF. Radii are 0 everywhere
+   except chips (999px) and the F-mark tile (in-SVG). */
 html,
 body {
   background-color: var(--warm-white);
-  color: var(--forest);
-  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  color: #141210;
+  font-family: var(--font-sans), system-ui, sans-serif;
 }
 
-/* Forest-over-gold double-rule section break (§6.6). */
+/* Forest-over-gold double-rule section break (legacy pages: owned/cart/blueprint). */
 .double-rule {
   border: 0;
   height: 4px;
@@ -33,7 +34,7 @@ body {
   );
 }
 
-/* Spine-lift is pointer-only — no hover-only affordances on touch (L3, §6.5). */
+/* Card lift is pointer-only — no hover-only affordances on touch. */
 @media (hover: hover) {
   .spine-liftable {
     transition: transform 160ms ease-out, box-shadow 160ms ease-out;
@@ -44,7 +45,7 @@ body {
   }
 }
 
-/* Honour reduced-motion: degrade lifts/animations to opacity-only (§6.5, §13). */
+/* Honour reduced-motion: degrade lifts/animations to opacity-only. */
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.001ms !important;
@@ -52,15 +53,14 @@ body {
   }
 }
 
-/* Gold focus ring for the full keyboard path (§13). */
+/* Gold focus ring for the full keyboard path. */
 :focus-visible {
   outline: 2px solid var(--gold);
   outline-offset: 2px;
 }
 
-/* iPad-first: every interactive target ≥ 44×44px (§13). */
-button,
-a[role="button"],
+/* Interactive targets ≥ 44×44px where the design allows (opt-in — the FBL 1.0 spec
+   fixes exact paddings on chips/nav items, so the blanket button rule is retired). */
 .touch-target {
   min-height: 44px;
   min-width: 44px;

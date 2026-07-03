@@ -30,6 +30,10 @@ function mapRow(r: any): CatalogBriefing {
     companies: r.companies ?? [],
     downloadCount: r.download_count ?? 0,
     goLiveDate: r.go_live_date,
+    briefingType: r.briefing_type ?? "sector",
+    byline: r.byline ?? "Gilbert",
+    hypothesis: r.hypothesis ?? "",
+    contents: Array.isArray(r.contents) ? r.contents : [],
     previewSlides: r.preview_slides ?? null,
   };
 }
@@ -64,6 +68,7 @@ export async function getShelfPage(query: ShelfQuery): Promise<ShelfPage> {
     p_subdomain: query.subdomain ?? null,
     p_company: query.company ?? null,
     p_status: query.status && query.status !== "Owned" ? query.status : null,
+    p_type: query.type ?? null,
     p_sort: query.sort ?? "newest",
     p_cursor: query.cursor ?? null,
     p_limit: limit + 1, // fetch one extra to compute nextCursor

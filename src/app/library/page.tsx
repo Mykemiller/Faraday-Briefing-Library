@@ -1,37 +1,29 @@
 import { getShelfPage } from "@/lib/catalog";
-import { getBriefingMeter } from "@/lib/meter";
-import { supabaseServer } from "@/lib/supabase/server";
 import { LibraryShell } from "@/components/LibraryShell";
-import { flags } from "@/config/flags";
-import type { CatalogBriefing } from "@/lib/types";
+import { Masthead } from "@/components/Masthead";
+import { LibraryFooter } from "@/components/LibraryFooter";
+import { shelfEdition } from "@/lib/brand";
 
 export const dynamic = "force-dynamic";
 
 /**
- * /library — the shelf. Search-first, faceted, virtualized (Phase 1). Served on the flag-gated
- * preview route; subscriber-live exposure waits on FAR-132. Curated row is bound to live data.
+ * /library — The Shelf (FBL 1.0). Masthead, sidebar (Theater › Sector › Thread public
+ * vocabulary), search + type chips, grouped briefing-card grid. Served on the flag-gated
+ * preview route; subscriber-live exposure waits on FAR-132. Pricing is out of scope (1.1):
+ * no token amounts, no wallet chip, no checkout in nav.
  */
 export default async function LibraryPage() {
-  const [page, meter] = await Promise.all([getShelfPage({ sort: "newest" }), getBriefingMeter()]);
+  const page = await getShelfPage({ sort: "newest" });
 
-  // Curated: most-downloaded available briefings (live data only — §7.7, Precision value).
-  const sb = supabaseServer();
-  const { data } = await sb
-    .from("library_catalog_cache")
-    .select("*")
-    .eq("status", "Available")
-    .order("download_count", { ascending: false })
-    .limit(8);
-  const curated = ((data as any[]) ?? []).map((r) => ({
-    id: r.id, slug: r.slug, title: r.briefing_title, description: r.briefing_description,
-    status: r.status, canonicalFlag: r.canonical_flag, gammaUrl: r.gamma_url, gammaId: r.gamma_id,
-    themes: r.themes ?? [], domains: r.domains ?? [], subdomains: r.subdomains ?? [],
-    companies: r.companies ?? [], downloadCount: r.download_count ?? 0, goLiveDate: r.go_live_date,
-    previewSlides: r.preview_slides ?? null,
-  })) as CatalogBriefing[];
+  // Sidebar theaters: one item per live theme, from library_facets('theme').
+  // The counts still drive ORDERING — they are never printed (count-free brand rule).
+  const theaters = page.facets.theme.map((f) => f.value);
 
-  // Wallet balance is wired once commerce-on; until then the chip shows balance unavailable.
-  const balance: number | null = flags.commerceOn ? null : null;
-
-  return <LibraryShell initial={page} curated={curated} meter={meter?.tokensCost ?? null} balance={balance} />;
+  return (
+    <>
+      <Masthead context="The Briefing Library" edition={shelfEdition()} />
+      <LibraryShell initial={page} theaters={theaters} />
+      <LibraryFooter />
+    </>
+  );
 }

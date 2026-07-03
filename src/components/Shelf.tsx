@@ -1,104 +1,50 @@
-"use client";
-
-import { useMemo, useRef } from "react";
-import { useVirtualizer } from "@tanstack/react-virtual";
 import type { CatalogBriefing } from "@/lib/types";
+import { SHELF_GROUPS } from "@/lib/brand";
 import { Spine } from "./Spine";
 
 /**
- * The Shelf (§7.1) — section-aware VIRTUALIZED grid (L5). Only on-screen rows mount, so the
- * iPad stays smooth and first paint is fast at the 100-cap. Domain sections with zero Available
- * briefings GHOST-COLLAPSE to one line (§7.8) rather than expanding empty rows.
+ * The Shelf's result groups, in the fixed public-vocabulary order (Theater → Sector →
+ * Thread → Key Player), each with its serif header + mono note over a hairline rule.
+ * Groups with nothing on them are omitted entirely (the per-group ghost-collapse);
+ * an all-empty result renders the dashed empty state. Count-free by brand rule.
  */
-
-const COLS = 4;
-
-type Row =
-  | { kind: "header"; domain: string; available: number; comingSoon: number }
-  | { kind: "collapsed"; domain: string; comingSoon: number }
-  | { kind: "spines"; items: CatalogBriefing[] };
-
-function buildRows(items: CatalogBriefing[]): Row[] {
-  // Group by primary Domain (the shelf within a Theme section).
-  const byDomain = new Map<string, CatalogBriefing[]>();
-  for (const b of items) {
-    const d = b.domains[0] ?? "Unshelved";
-    if (!byDomain.has(d)) byDomain.set(d, []);
-    byDomain.get(d)!.push(b);
-  }
-  const rows: Row[] = [];
-  for (const [domain, list] of byDomain) {
-    const available = list.filter((b) => b.status === "Available");
-    const comingSoon = list.length - available.length;
-    if (available.length === 0) {
-      // Ghost-collapse: a single elegant line, no empty rows (§7.8).
-      rows.push({ kind: "collapsed", domain, comingSoon });
-      continue;
-    }
-    rows.push({ kind: "header", domain, available: available.length, comingSoon });
-    for (let i = 0; i < available.length; i += COLS) {
-      rows.push({ kind: "spines", items: available.slice(i, i + COLS) });
-    }
-  }
-  return rows;
-}
-
 export function Shelf({
   items,
-  meter,
-  onAdd,
+  reservedIds,
 }: {
   items: CatalogBriefing[];
-  meter: number | null;
-  onAdd?: (b: CatalogBriefing) => void;
+  reservedIds: ReadonlySet<string>;
 }) {
-  const rows = useMemo(() => buildRows(items), [items]);
-  const parentRef = useRef<HTMLDivElement>(null);
+  const groups = SHELF_GROUPS.map((g) => ({
+    ...g,
+    items: items.filter((b) => b.briefingType === g.type),
+  })).filter((g) => g.items.length > 0);
 
-  const virtualizer = useVirtualizer({
-    count: rows.length,
-    getScrollElement: () => parentRef.current,
-    estimateSize: (i) => (rows[i].kind === "spines" ? 192 : rows[i].kind === "header" ? 56 : 44),
-    overscan: 6,
-  });
+  if (groups.length === 0) {
+    return (
+      <div className="mt-[60px] p-12 border border-dashed border-warm-gray-2 text-center">
+        <div className="font-serif italic text-[19px] text-ink-soft">Nothing on this shelf yet.</div>
+        <p className="text-sm text-warm-gray mt-[10px]">Try a different Theater, or clear the search.</p>
+      </div>
+    );
+  }
 
   return (
-    <div ref={parentRef} className="h-[70vh] overflow-auto" role="list" aria-label="Briefing shelf">
-      <div style={{ height: virtualizer.getTotalSize(), position: "relative" }}>
-        {virtualizer.getVirtualItems().map((v) => {
-          const row = rows[v.index];
-          return (
-            <div
-              key={v.key}
-              style={{ position: "absolute", top: 0, left: 0, width: "100%", transform: `translateY(${v.start}px)` }}
-            >
-              {row.kind === "header" ? (
-                <div className="sticky top-0 bg-warm-white py-2">
-                  <h2 className="font-serif font-bold text-forest text-lg flex items-baseline gap-2">
-                    {row.domain}
-                    <span className="font-mono text-sm text-forest/60">({row.available})</span>
-                  </h2>
-                  <div className="double-rule mt-1" />
-                </div>
-              ) : row.kind === "collapsed" ? (
-                <div className="py-2 text-forest/70 font-serif italic">
-                  Forthcoming research: {row.comingSoon} {row.comingSoon === 1 ? "monograph" : "monographs"}
-                  <span className="not-italic"> — </span>
-                  <a className="text-gold underline" href="/library/blueprint">
-                    see the Intelligence Blueprint
-                  </a>
-                </div>
-              ) : (
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 py-1">
-                  {row.items.map((b) => (
-                    <Spine key={b.id} b={b} meter={meter} onAdd={onAdd} />
-                  ))}
-                </div>
-              )}
-            </div>
-          );
-        })}
-      </div>
-    </div>
+    <>
+      {groups.map((g) => (
+        <section key={g.type} className="mt-11" aria-label={g.label}>
+          <div className="flex items-baseline gap-3.5">
+            <h2 className="font-serif font-semibold text-[22px] text-ink m-0">{g.label}</h2>
+            <div className="font-mono text-[11px] tracking-[0.5px] text-warm-gray">{g.note}</div>
+          </div>
+          <div className="h-px bg-hairline mt-2.5" />
+          <div className="grid grid-cols-[repeat(auto-fill,minmax(238px,1fr))] gap-[26px] mt-[22px]">
+            {g.items.map((b) => (
+              <Spine key={b.id} b={b} reserved={reservedIds.has(b.id)} />
+            ))}
+          </div>
+        </section>
+      ))}
+    </>
   );
 }

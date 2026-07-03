@@ -5,11 +5,42 @@ import { briefingSlug } from "@/lib/slug";
 
 const F = AIRTABLE.fields;
 
+/**
+ * FBL 1.0 derivations — TODO(editorial): replace with real Airtable fields once they exist
+ * (see the field-map TODOs in src/config/constants.ts).
+ *
+ * briefing_type from IDF placement: subdomain ⇒ thread; domain ⇒ sector; tracking company as
+ * the primary subject (no IDF placement below theme) ⇒ keyplayer; theme only ⇒ theater.
+ * byline brand rule: theater ⇒ Mach (forward thesis), else Gilbert (empirical).
+ */
+export function deriveBriefingType(row: {
+  themes: string[];
+  domains: string[];
+  subdomains: string[];
+  companies: string[];
+}): "theater" | "sector" | "thread" | "keyplayer" {
+  if (row.subdomains.length) return "thread";
+  if (row.domains.length) return "sector";
+  if (row.companies.length) return "keyplayer";
+  return "theater";
+}
+
+export function deriveByline(briefingType: string): "Gilbert" | "Mach" {
+  return briefingType === "theater" ? "Mach" : "Gilbert";
+}
+
 /** Map one Airtable record → a denormalized catalog cache row. */
 export function toCacheRow(rec: AirtableRecord) {
   const f = rec.fields as Record<string, unknown>;
   const title = String(f[F.title] ?? "Untitled briefing");
   const status = singleName(f[F.status]) ?? "Coming Soon";
+  const facets = {
+    themes: names(f[F.idfTheme]),
+    domains: names(f[F.idfDomain]),
+    subdomains: names(f[F.idfSubdomain]),
+    companies: names(f[F.trackingCompanies]),
+  };
+  const briefingType = deriveBriefingType(facets);
   return {
     id: rec.id,
     slug: briefingSlug(title, rec.id),
@@ -19,10 +50,11 @@ export function toCacheRow(rec: AirtableRecord) {
     canonical_flag: (f[F.canonicalFlag] as string) ?? null,
     gamma_url: (f[F.gammaUrl] as string) ?? null,
     gamma_id: (f[F.gammaId] as string) ?? null,
-    themes: names(f[F.idfTheme]),
-    domains: names(f[F.idfDomain]),
-    subdomains: names(f[F.idfSubdomain]),
-    companies: names(f[F.trackingCompanies]),
+    ...facets,
+    briefing_type: briefingType,
+    byline: deriveByline(briefingType),
+    hypothesis: "", // TODO(editorial): map from Airtable "Hypothesis" once the field exists
+    contents: [] as string[], // TODO(editorial): map from Airtable "Contents" once the field exists
     download_count: Number(f[F.downloadCounter] ?? 0),
     go_live_date: (f[F.goLiveDate] as string) ?? null,
     synced_at: new Date().toISOString(),
@@ -43,7 +75,11 @@ export interface SyncResult {
  */
 export async function runCatalogSync(): Promise<SyncResult> {
   const records = await fetchShelfRecords();
-  const rows = records.map(toCacheRow);
+  // Eligibility (FBL 1.0): a record with no title is editorial scaffolding, not a briefing —
+  // it never reaches the shelf. (The Airtable base holds ~357 untitled placeholder rows.)
+  const rows = records
+    .filter((rec) => String((rec.fields as Record<string, unknown>)[F.title] ?? "").trim() !== "")
+    .map(toCacheRow);
   const sb = supabaseAdmin();
 
   // Upsert in chunks to stay well under payload limits.
@@ -56,9 +92,15 @@ export async function runCatalogSync(): Promise<SyncResult> {
   }
 
   // Prune rows that are no longer shelf-eligible (e.g. moved back to Draft).
+  // FBL 1.0 seed rows (id prefix 'seed-') are spared: they stand in for the designed shelf
+  // until the Airtable catalog supersedes them (FAR-213), then get removed deliberately.
   const keepIds = rows.map((r) => r.id);
   if (keepIds.length) {
-    await sb.from("library_catalog_cache").delete().not("id", "in", `(${keepIds.map((id) => `"${id}"`).join(",")})`);
+    await sb
+      .from("library_catalog_cache")
+      .delete()
+      .not("id", "in", `(${keepIds.map((id) => `"${id}"`).join(",")})`)
+      .not("id", "like", "seed-%");
   }
 
   const available = rows.filter((r) => r.status === "Available").length;
