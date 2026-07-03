@@ -1,4 +1,4 @@
-import type { ShelfStatus } from "@/config/constants";
+import type { BriefingType, Byline, ShelfStatus } from "@/config/constants";
 
 /** A denormalized catalog row as the storefront reads it from library_catalog_cache. */
 export interface CatalogBriefing {
@@ -16,6 +16,14 @@ export interface CatalogBriefing {
   companies: string[];
   downloadCount: number;
   goLiveDate: string | null; // ISO date
+  /** Public vocabulary type: theater | sector | thread | keyplayer | jurisdiction. */
+  briefingType: BriefingType;
+  /** Gilbert — empirical; Mach — forward thesis. */
+  byline: Byline;
+  /** The hypothesis opener (preview slide 01 body). Empty until editorial fills it. */
+  hypothesis: string;
+  /** "In this Briefing" contents. Empty ⇒ the block is hidden. */
+  contents: string[];
   /** Up to PREVIEW_SLIDE_MAX content-addressed PNG URLs in Supabase Storage. Null ⇒ fallback. */
   previewSlides: string[] | null;
   /** True when joined against the viewer's entitlements at render time (§11.3). */
@@ -43,6 +51,8 @@ export interface ShelfQuery {
   subdomain?: string;
   company?: string;
   status?: ShelfStatus | "Owned";
+  /** Public-vocabulary type filter (the shelf's type chips → library_search p_type). */
+  type?: BriefingType;
   sort?: SortKey;
   /** Keyset cursor: encodes (go_live_date, id) of the last row seen. */
   cursor?: string | null;

@@ -1,55 +1,54 @@
 "use client";
 
-import type { Facets } from "@/lib/types";
-
 /**
- * Faceted left rail (§5.2, §7.1) with LIVE counts — e.g. "Power Architecture (14)". Counts come
- * from the read-model, so every number is bound to live data (Precision value). Top-sheet on mobile.
+ * The Shelf's left sidebar (Academy-style), 248px fixed: "The Full Shelf", THEATERS
+ * (one item per live theme, names only — the COUNT-FREE brand rule supersedes the old
+ * facet count badges), KEY PLAYERS, YOUR SHELF ("Reserved Briefings" filters to selected).
+ * Active item: forest text, weight 600, 3px gold left rule.
  */
-export function FacetRail({
-  facets,
-  active,
-  onSelect,
-}: {
-  facets: Facets;
-  active: Record<string, string | undefined>;
-  onSelect: (axis: string, value: string | undefined) => void;
-}) {
-  // Display labels relabeled per FAR-177 (Theater/Sector/Thread). Backend facet keys
-  // (theme/domain/subdomain) are unchanged — they bind to the read-model columns.
-  const axes: { key: keyof Facets; label: string }[] = [
-    { key: "theme", label: "Theater" },
-    { key: "domain", label: "Sector" },
-    { key: "subdomain", label: "Thread" },
-    { key: "company", label: "Company" },
-  ];
+export type NavKey = "all" | "kp" | "reserved" | `t:${string}`;
+
+function Item({ active, label, onClick }: { active: boolean; label: string; onClick: () => void }) {
   return (
-    <nav aria-label="Filter the shelf" className="space-y-5">
-      {axes.map(({ key, label }) => (
-        <div key={key}>
-          <h4 className="font-serif font-bold text-forest mb-1">{label}</h4>
-          <ul className="space-y-0.5">
-            {facets[key].slice(0, 12).map((f) => {
-              const selected = active[key] === f.value;
-              return (
-                <li key={f.value}>
-                  <button
-                    type="button"
-                    onClick={() => onSelect(key, selected ? undefined : f.value)}
-                    aria-pressed={selected}
-                    className={`touch-target text-left w-full text-sm flex justify-between gap-2 px-1 rounded-sm ${
-                      selected ? "bg-gold/20 text-forest font-semibold" : "text-forest/80"
-                    }`}
-                  >
-                    <span>{f.value}</span>
-                    <span className="font-mono text-forest/60">({f.count})</span>
-                  </button>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
+    <button
+      type="button"
+      onClick={onClick}
+      aria-pressed={active}
+      className={`block w-full text-left text-sm leading-[1.4] py-[5px] pl-[10px] border-l-[3px] hover:text-forest ${
+        active ? "text-forest font-semibold border-gold" : "text-ink-soft border-transparent"
+      }`}
+    >
+      {label}
+    </button>
+  );
+}
+
+function Header({ label }: { label: string }) {
+  return (
+    <div className="font-mono text-[10.5px] tracking-[1.8px] uppercase text-warm-gray pt-3.5 pb-1">{label}</div>
+  );
+}
+
+export function FacetRail({
+  theaters,
+  navKey,
+  onNav,
+}: {
+  theaters: string[];
+  navKey: NavKey;
+  onNav: (key: NavKey) => void;
+}) {
+  return (
+    <nav aria-label="Shelves" className="px-5">
+      <Item active={navKey === "all"} label="The Full Shelf" onClick={() => onNav("all")} />
+      <Header label="Theaters" />
+      {theaters.map((t) => (
+        <Item key={t} active={navKey === `t:${t}`} label={t} onClick={() => onNav(`t:${t}`)} />
       ))}
+      <Header label="Key Players" />
+      <Item active={navKey === "kp"} label="Key Player Briefings" onClick={() => onNav("kp")} />
+      <Header label="Your Shelf" />
+      <Item active={navKey === "reserved"} label="Reserved Briefings" onClick={() => onNav("reserved")} />
     </nav>
   );
 }

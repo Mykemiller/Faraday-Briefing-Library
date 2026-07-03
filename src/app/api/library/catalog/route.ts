@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { getShelfPage } from "@/lib/catalog";
 import type { ShelfQuery, SortKey } from "@/lib/types";
-import type { ShelfStatus } from "@/config/constants";
+import { BRIEFING_TYPES, type BriefingType, type ShelfStatus } from "@/config/constants";
 
 export const runtime = "nodejs";
 
@@ -15,6 +15,9 @@ export async function GET(req: Request) {
     subdomain: url.searchParams.get("subdomain") || undefined,
     company: url.searchParams.get("company") || undefined,
     status: (url.searchParams.get("status") as ShelfStatus | "Owned") || undefined,
+    type: BRIEFING_TYPES.includes(url.searchParams.get("type") as BriefingType)
+      ? (url.searchParams.get("type") as BriefingType)
+      : undefined,
     sort: (url.searchParams.get("sort") as SortKey) || "newest",
     cursor: url.searchParams.get("cursor") || null,
   };
