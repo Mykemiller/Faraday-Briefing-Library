@@ -32,7 +32,7 @@ src/
   app/library/ shelf · blueprint · b/[slug] · cart · owned
   app/api/library/ catalog · cart · cart/merge · checkout · sync · preview-worker
   tests/       the three required risk-area suites
-supabase/migrations/  read-model, commerce tables, RPCs (+ HELD meter seed)
+supabase/migrations/  read-model, commerce tables, RPCs, meter seed, FBL 1.0 shelf
 ```
 
 See **CLAUDE.md** for architecture decisions, config constants, and the deploy-gate checklist;

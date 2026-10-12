@@ -13,7 +13,7 @@ Generated 2026-06-20. Implements *Briefing Library Storefront — Design Spec & 
 package.json  package-lock.json  tsconfig.json  next.config.mjs  vercel.json
 postcss.config.mjs  tailwind.config.ts  .gitignore  .env.example
 README.md  CLAUDE.md  DEPLOY.md  PR_DESCRIPTION.md
-supabase/migrations/  (4 files: catalog cache, commerce, rpcs, HELD meter seed)
+supabase/migrations/  (11 files, versions match the applied history — see §2)
 src/config/  src/lib/  src/store/  src/components/  src/app/  src/tests/  src/middleware.ts
 ```
 
@@ -23,13 +23,21 @@ Project `ycadmmngkdhvpcsrcuaq`. **Applied** (additive, RLS-on, dormant behind fl
 
 | Migration | Objects |
 |---|---|
-| `…000100_library_catalog_cache` | `library_catalog_cache` + tsvector/GIN, array-facet GIN, keyset index; RLS read policy |
-| `…000200_library_commerce` | `library_cart_items`, `library_entitlements`, `processed_checkouts`; RLS owner policies; `current_subscriber_id()` |
-| `…000300_library_rpcs` | `library_search`, `library_facets`, `library_checkout`; checkout locked to service-role |
-| `…000400_…meter_seed` | **Applied 2026-06-20** — Myke sign-off (FAR-46): `briefing_library` = **10**, status `final` |
+| `20260620064524_library_catalog_cache` | `library_catalog_cache` + tsvector/GIN, array-facet GIN, keyset index; RLS read policy |
+| `20260620064547_library_commerce` | `library_cart_items`, `library_entitlements`, `processed_checkouts`; RLS owner policies; `current_subscriber_id()` |
+| `20260620064621_library_rpcs` | `library_search`, `library_facets`, `library_checkout`; checkout locked to service-role |
+| `20260620064801_library_rpc_hardening` | `search_path` pinned on the invoker RPCs; checkout execute revoked from `anon/authenticated` |
+| `20260620064821_library_checkout_lockdown` | checkout execute revoked from `public`, granted to `service_role` |
+| `20260620123125_briefing_library_meter_seed` | **Applied 2026-06-20** — Myke sign-off (FAR-46): `briefing_library` = **10**, status `final` |
+| `20260701214255_library_catalog_add_fbl1_columns` | FBL1 typed-shelf columns (nullable) + `"public read library_catalog_cache"` policy |
+| `20260701214615_library_catalog_seed_fbl1_v2` | FBL1 prototype `b-*` seed rows (historical; superseded by `seed-*`, gone from prod) |
+| `20260703175816_fbl10_reading_room_fields` | Reading Room fields, anon read policy, `library_search(p_type)` |
+| `20260703180145_fbl10_type_backfill` | backfill + tighten `briefing_type` / `byline` |
+| `20260703181005_fbl10_seed_guard` | `seed-%` delete guard trigger; `library_search` hides untitled rows |
 
-Post-apply hardening also applied: `search_path` pinned on all functions; `library_checkout`
-execute revoked from `public/anon/authenticated`, granted to `service_role`.
+File versions equal the versions recorded in `supabase_migrations.schema_migrations` (FDY-165), so
+`supabase migration list` shows local and remote in sync. Apply new migrations through the same path
+and commit the file under the version the database records.
 
 **Verified live:** 3 commerce tables present, 4 functions present, `library_checkout` →
 `meter_unset` (gate works), `library_search`/`library_facets` run clean on the empty cache.
