@@ -4,7 +4,7 @@ import { Spine } from "./Spine";
 
 /**
  * The Shelf's result groups, in the fixed public-vocabulary order (Theater → Sector →
- * Thread → Key Player), each with its serif header + mono note over a hairline rule.
+ * Thread), each with its serif header + mono note over a hairline rule.
  * Groups with nothing on them are omitted entirely (the per-group ghost-collapse);
  * an all-empty result renders the dashed empty state. Count-free by brand rule.
  */

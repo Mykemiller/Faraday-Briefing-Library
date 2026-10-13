@@ -29,7 +29,7 @@ const rows: CatalogBriefing[] = [
   b({ id: "rec2", title: "Equinix Capital Markets", description: "REIT financing", themes: ["Capital Markets"], domains: ["Finance"], companies: ["Equinix"], goLiveDate: "2026-06-10", downloadCount: 30 }),
   b({ id: "rec3", title: "EQT Liquid Cooling", description: "Direct-to-chip cooling thesis", themes: ["Power Architecture"], domains: ["Energy"], companies: ["EQT"], goLiveDate: "2026-06-05", downloadCount: 5 }),
   b({ id: "rec4", title: "Forthcoming Monograph", description: "placeholder", status: "Coming Soon", domains: ["Energy"], companies: ["Engineered Fluids"] }),
-  b({ id: "rec5", title: "CoreWeave", description: "key player dossier", briefingType: "keyplayer", companies: ["CoreWeave"], goLiveDate: "2026-06-12" }),
+  b({ id: "rec5", title: "Neoclouds", description: "thread dossier", briefingType: "thread", subdomains: ["Neoclouds"], companies: ["CoreWeave"], goLiveDate: "2026-06-12" }),
   b({ id: "rec6", title: "The Power Reckoning", description: "theater thesis", briefingType: "theater", themes: ["The Power Reckoning"], goLiveDate: "2026-06-20" }),
 ];
 
@@ -68,11 +68,11 @@ describe("FTS + facets + keyset (L1, L7, §11.2)", () => {
   });
 
   it("filters by briefing_type (library_search p_type, FBL 1.0)", () => {
-    expect(search(rows, { type: "keyplayer", limit: 10 }).items.map((x) => x.id)).toEqual(["rec5"]);
+    expect(search(rows, { type: "thread", limit: 10 }).items.map((x) => x.id)).toEqual(["rec5"]);
     expect(search(rows, { type: "theater", limit: 10 }).items.map((x) => x.id)).toEqual(["rec6"]);
     // p_type intersects with the other filters (chip × search × facet semantics).
     expect(search(rows, { type: "sector", q: "cooling", limit: 10 }).items.map((x) => x.id)).toEqual(["rec3"]);
-    expect(search(rows, { type: "keyplayer", q: "cooling", limit: 10 }).items).toHaveLength(0);
+    expect(search(rows, { type: "thread", q: "cooling", limit: 10 }).items).toHaveLength(0);
     // null/undefined type = all types (back-compat with pre-1.0 callers).
     expect(search(rows, { limit: 10 }).items.length).toBe(rows.length);
   });

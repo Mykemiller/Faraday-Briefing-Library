@@ -59,8 +59,8 @@ export const AIRTABLE = {
   },
 } as const;
 
-/** Public-vocabulary briefing types (Theater/Sector/Thread/Key Player [+ Jurisdiction]). */
-export const BRIEFING_TYPES = ["theater", "sector", "thread", "keyplayer", "jurisdiction"] as const;
+/** Public-vocabulary briefing types (Theater/Sector/Thread [+ Jurisdiction]). */
+export const BRIEFING_TYPES = ["theater", "sector", "thread", "jurisdiction"] as const;
 export type BriefingType = (typeof BRIEFING_TYPES)[number];
 
 /** Byline brand rule: Mach = forward thesis (Theater); Gilbert = empirical (everything else). */
