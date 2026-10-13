@@ -1,5 +1,5 @@
 -- FBL 1.0 follow-up: briefing_type/byline pre-existed in the live cache as nullable
--- columns (no default), so the add-column defaults in 20260703000100 never applied.
+-- columns (no default), so the add-column defaults in 20260703175816 never applied.
 -- Backfill with the sync's IDF derivation, then tighten to the intended contract.
 
 update public.library_catalog_cache set briefing_type =
