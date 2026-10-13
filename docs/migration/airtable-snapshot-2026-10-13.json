@@ -1,0 +1,6220 @@
+{
+ "source": "Airtable appxfti7VuoHYUeu6/tbl4kbby85nx6Z891 (Briefing Library), read-only via Airtable MCP list_records_for_table, 2026-10-13",
+ "totalRecordCount": 436,
+ "records": [
+  {
+   "id": "rec01AghqTbLhPJuE",
+   "createdTime": "2026-06-20T03:35:17.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec9XhS3XiTBpQfUR"
+    ],
+    "Briefing Title": "Coming Soon — Engineered Fluids",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 206,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rec08qedGvDEsbsTL",
+   "createdTime": "2026-06-20T03:33:45.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recsq6yNDVuQjv3PS"
+    ],
+    "Briefing Title": "Coming Soon — China Mobile International",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 147,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rec0M8NsMjYs7cTRk",
+   "createdTime": "2026-06-20T03:36:49.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recU3hbeyHkbZG0Jg"
+    ],
+    "Briefing Title": "Coming Soon — HUMAIN (Saudi Arabia)",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 247,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rec11jOHLqwF4fovU",
+   "createdTime": "2026-06-20T03:35:17.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recYSPh2hIND5Hvzw"
+    ],
+    "Briefing Title": "Coming Soon — Digital Parks Africa",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 186,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rec19RAWEHdmyhDHk",
+   "createdTime": "2026-06-20T03:32:09.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recILlziYWU25upAC"
+    ],
+    "Briefing Title": "Coming Soon — Africa Data Centres",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 94,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rec1F7IeBUYuhVWGx",
+   "createdTime": "2026-06-20T03:40:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec59vEJHTa1IUqbB"
+    ],
+    "Briefing Title": "Coming Soon — NTT/RagingWire Data Centers",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 317,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rec1GfBAAln6ZSW0q",
+   "createdTime": "2026-06-20T03:22:09.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — Rack Density & Power Density Progression",
+    "IDF Subdomain": [
+     "recfVsFxpQBDnu36t"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 57,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "rec1IIKSa2cl80Ryj",
+   "createdTime": "2026-06-20T03:21:11.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — Interconnection Queue & Grid Access",
+    "IDF Subdomain": [
+     "recCPCuA07exGLEud"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 29,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "rec1Ie4BoSPwXHHyQ",
+   "createdTime": "2026-06-20T03:42:15.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "reccbBKVuLQR4utSd"
+    ],
+    "Briefing Title": "Coming Soon — SoftBank Group",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 373,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rec1OCtvwkTyZNTTO",
+   "createdTime": "2026-06-20T03:33:45.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recslhgwcLjn0QO9F"
+    ],
+    "Briefing Title": "Coming Soon — Datacenter United",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 177,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rec1RDUvV3UUnXOOJ",
+   "createdTime": "2026-06-20T03:43:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recaVVwfUayWcnfhK"
+    ],
+    "Briefing Title": "Coming Soon — Turner Construction",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 413,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rec1Vt6WexaZB9tVN",
+   "createdTime": "2026-06-20T03:40:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec8Zc7pul39XbfjU"
+    ],
+    "Briefing Title": "Coming Soon — Oppidan Investment Company",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 328,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rec1oq2pcnhyoUHSZ",
+   "createdTime": "2026-06-20T03:36:49.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recOEuAAy9g9NSWI3"
+    ],
+    "Briefing Title": "Coming Soon — Hammond Power Solutions",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 239,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rec1vcDvHBD5rW13Q",
+   "createdTime": "2026-06-20T03:36:49.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recx4rmfnTGOZtJGq"
+    ],
+    "Briefing Title": "Coming Soon — Inspur",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 256,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rec2MrUZOyETjqIs1",
+   "createdTime": "2026-06-20T03:35:17.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recuQkafW47Usfo2r"
+    ],
+    "Briefing Title": "Coming Soon — Entergy",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 209,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rec2NAUuK4qBerBXR",
+   "createdTime": "2026-06-20T02:59:59.000Z",
+   "fields": {
+    "Gamma URL": "https://gamma.app/docs/8-STRUCTURAL-SHIFTS-RESHAPING-DATA-CENTER-INFRASTRUCTURE-q2ncxsmkwcxge0h",
+    "Gamma ID": "g_mm9tf7nylyz06a2",
+    "Briefing Title": "8 Structural Shifts Reshaping Data Center Infrastructure",
+    "Canonical flag": "Yes",
+    "Briefing Id": 11,
+    "Status": "Draft",
+    "Briefing description": "Structural overview of eight forces reshaping AI data center infrastructure."
+   }
+  },
+  {
+   "id": "rec2OxaHkfemi2q0y",
+   "createdTime": "2026-06-20T03:32:09.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec7h9xsUh5QFdgmH"
+    ],
+    "Briefing Title": "Coming Soon — Actis",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 88,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rec2YpYnB88E4vpaG",
+   "createdTime": "2026-06-20T03:42:15.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recglNCyPqvjJGVny"
+    ],
+    "Briefing Title": "Coming Soon — PIF (Saudi Public Investment Fund)",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 336,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rec2v3eiNFwdBlDdv",
+   "createdTime": "2026-06-20T03:32:09.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recZOBzjMs4Y1iYkx"
+    ],
+    "Briefing Title": "Coming Soon — Atos",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 119,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rec2wJ3kD8I3Qd43o",
+   "createdTime": "2026-06-20T03:42:15.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recKjyuBmOgHkAoLS"
+    ],
+    "Briefing Title": "Coming Soon — Resonac Holdings",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 356,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rec35QhhR8JPnlBKS",
+   "createdTime": "2026-06-20T03:33:45.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recwtBeGAvZpfXh3E"
+    ],
+    "Briefing Title": "Coming Soon — Cibicom",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 151,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rec35aWz1cLC2jzfD",
+   "createdTime": "2026-06-20T03:36:49.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recg70FeKzaF4m0uY"
+    ],
+    "Briefing Title": "Coming Soon — Hitachi Energy",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 243,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rec37a3yX0FHOP9DF",
+   "createdTime": "2026-06-20T03:21:11.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — Business Continuity & Disaster Recovery Practice",
+    "IDF Subdomain": [
+     "recRlua8iub66Xa7T"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 44,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "rec380lJtG6VVWTOd",
+   "createdTime": "2026-06-20T03:35:17.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recdYrWuyJE5IBcWf"
+    ],
+    "Briefing Title": "Coming Soon — DE-CIX",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 181,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rec3HzsNbCgueyTGm",
+   "createdTime": "2026-06-20T03:42:15.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recqPF2v0Jm3XM9yr"
+    ],
+    "Briefing Title": "Coming Soon — Redapt",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 354,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rec3Kpgg05IGncBf8",
+   "createdTime": "2026-06-20T03:22:09.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — State Moratorium & Legislative Landscape",
+    "IDF Subdomain": [
+     "reci8DIAaWRUVKZcx"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 60,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "rec3WnghlLa4fie1q",
+   "createdTime": "2026-06-20T03:42:15.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "reckJFzHgTDypAkid"
+    ],
+    "Briefing Title": "Coming Soon — Prime Data Centers",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 341,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rec3a231kZvZLE48b",
+   "createdTime": "2026-06-20T03:36:49.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec8ItWCD3pJzw8VK"
+    ],
+    "Briefing Title": "Coming Soon — Infineon Technologies",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 255,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rec44NTJJuhw2ytPL",
+   "createdTime": "2026-06-20T03:36:49.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recmKFNJa30paOXut"
+    ],
+    "Briefing Title": "Coming Soon — HUMAIN / stc center3 JV",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 248,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rec4QvOcsXrFJwFce",
+   "createdTime": "2026-06-20T03:42:15.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rechrOSPVoIt0ny7p"
+    ],
+    "Briefing Title": "Coming Soon — Powell Industries",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 339,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rec4U9X7AJTuLsrfA",
+   "createdTime": "2026-06-20T03:40:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec4JYYIo0cpTDPFr"
+    ],
+    "Briefing Title": "Coming Soon — MTN Business",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 299,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rec4dc3Dc829NHzl4",
+   "createdTime": "2026-06-20T03:42:15.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recQZ1T0bG3I3Nhf7"
+    ],
+    "Briefing Title": "Coming Soon — Rain AI",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 352,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rec4mbhzvPzypxQ3T",
+   "createdTime": "2026-06-20T03:33:45.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recTqSdCl6B8tdqX4"
+    ],
+    "Briefing Title": "Coming Soon — Crusoe",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 168,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rec50hzpJKLL0CctI",
+   "createdTime": "2026-06-20T03:32:09.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec0D3DB1M7rYWtyh"
+    ],
+    "Briefing Title": "Coming Soon — Amazon (AWS)",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 102,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rec5CeMRklDRheFgi",
+   "createdTime": "2026-06-20T03:36:49.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recBjiComEcRr5tIx"
+    ],
+    "Briefing Title": "Coming Soon — LightEdge Solutions",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 274,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rec5Ku7HpWf87M3SX",
+   "createdTime": "2026-06-20T03:40:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recw1ccI0DjAuK1Ts"
+    ],
+    "Briefing Title": "Coming Soon — Nlyte Software",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 309,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rec5Oz8dESMPXTdh1",
+   "createdTime": "2026-06-20T03:42:15.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recbVG7IyktATc2Of"
+    ],
+    "Briefing Title": "Coming Soon — Stackinfrastructure",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 377,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rec5iEBuKlxD6sAZu",
+   "createdTime": "2026-06-20T03:33:45.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec34aRBRnbQR4Xtx"
+    ],
+    "Briefing Title": "Coming Soon — COPT",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 163,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rec5ijrmTRaKMlhAM",
+   "createdTime": "2026-06-20T03:36:49.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recqHssjoIi0jBHAV"
+    ],
+    "Briefing Title": "Coming Soon — LiquidCool Solutions",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 275,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rec65uYQurgsClQJf",
+   "createdTime": "2026-06-20T03:42:15.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recoA5RVzYQK6SpqF"
+    ],
+    "Briefing Title": "Coming Soon — SK Telecom (SKT)",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 371,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rec6hePO2ahoVZGzy",
+   "createdTime": "2026-06-20T03:43:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec59REQkG3QeQJcR"
+    ],
+    "Briefing Title": "Coming Soon — TURKCELL",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 412,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rec6o1cW0Gd2IyuH7",
+   "createdTime": "2026-06-20T03:32:09.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recDvY78AikH8nH9O"
+    ],
+    "Briefing Title": "Coming Soon — Anthropic",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 106,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rec76pKMoP33UZYYC",
+   "createdTime": "2026-06-20T03:36:49.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recVdZVkVwPDtSNOi"
+    ],
+    "Briefing Title": "Coming Soon — Global Technical Realty",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 230,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rec7Fdlkmh58QzUZj",
+   "createdTime": "2026-06-20T03:32:09.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec05wRsfBKkDnXEM"
+    ],
+    "Briefing Title": "Coming Soon — Ada Infrastructure",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 89,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rec7UlwI3RgXT9dzA",
+   "createdTime": "2026-06-20T03:40:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recJQhPTEZ3H3nK5D"
+    ],
+    "Briefing Title": "Coming Soon — Menlo Equities",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 287,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rec7ZhcY2zRbpfzPx",
+   "createdTime": "2026-06-20T03:22:09.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — Jurisdiction Posture Intelligence (JPS)",
+    "IDF Subdomain": [
+     "recrm6B6Sw4NWES7E"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 71,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "rec7q6zhtwnlpm1iA",
+   "createdTime": "2026-06-20T03:32:09.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "reczb3XshXWL3MFGV"
+    ],
+    "Briefing Title": "Coming Soon — AMD",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 103,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rec8jyxr3PTudxYRl",
+   "createdTime": "2026-06-20T03:35:17.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rectQLh7BAbCAU100"
+    ],
+    "Briefing Title": "Coming Soon — evroc",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 215,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rec8vPBEouiW1nr8h",
+   "createdTime": "2026-06-20T02:59:59.000Z",
+   "fields": {
+    "Gamma URL": "https://gamma.app/docs/Schneider-Electric-EcoStruxure-as-the-Operating-System-for-AI-I-rbx034cft5c1h7n",
+    "IDF Domain": [
+     "recILEbaC4tdj3R0y",
+     "recsMNpEaFo6oQE6H"
+    ],
+    "Tracking Companies": [
+     "recItKWuGHBfEdYLs"
+    ],
+    "Gamma ID": "g_gdh4dyy452co8t7",
+    "Briefing Title": "Schneider Electric — EcoStruxure as the Operating System for AI Infrastructure",
+    "Canonical flag": "Yes",
+    "Briefing Id": 8,
+    "Status": "Draft",
+    "Briefing description": "Company thesis positioning Schneider's EcoStruxure as the grid-to-chip software layer."
+   }
+  },
+  {
+   "id": "rec90p0amW9XaMdFa",
+   "createdTime": "2026-06-20T03:32:09.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recobo78hkgGKbfJK"
+    ],
+    "Briefing Title": "Coming Soon — Baidu AI Cloud",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 122,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rec99QGHxgT75UjzY",
+   "createdTime": "2026-06-20T03:21:11.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — Site Selection Criteria & Market Scoring",
+    "IDF Subdomain": [
+     "recOjIYIPIR0Rc6hN"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 41,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "rec9D8LpJbd26ldHX",
+   "createdTime": "2026-06-20T03:21:11.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — Tax-Driven Deal Structuring",
+    "IDF Subdomain": [
+     "recIa1wBLVMRzxKsG"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 34,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "rec9HvUVQttsveBaH",
+   "createdTime": "2026-06-20T03:32:09.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recqxkGO64pME7Qfl"
+    ],
+    "Briefing Title": "Coming Soon — Arieca",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 112,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rec9K7VvKP3IQn5p8",
+   "createdTime": "2026-06-20T03:35:17.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recnVwsaJJWZBD5Rv"
+    ],
+    "Briefing Title": "Coming Soon — Gaw Capital Partners",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 225,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rec9MpPnjS2YO9SaD",
+   "createdTime": "2026-06-20T03:21:11.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — OT / ICS / SCADA Cybersecurity",
+    "IDF Subdomain": [
+     "recT1aPlMPxmsveHC"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 45,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "rec9Sa5kYxQ5kYCQ8",
+   "createdTime": "2026-06-20T03:42:15.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "receWuCunBNNb1jXm"
+    ],
+    "Briefing Title": "Coming Soon — Reliance Communications",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 355,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rec9cPYpx7u31fkyL",
+   "createdTime": "2026-06-20T03:21:11.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — Utility Rate Cases & PUC Proceedings",
+    "IDF Subdomain": [
+     "recBaXcaWWckssbW2"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 28,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "rec9d3jWCfWKR5ADT",
+   "createdTime": "2026-06-20T03:35:17.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recLTnmNseJo2CwL2"
+    ],
+    "Briefing Title": "Coming Soon — Galaxy Data Centers",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 223,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rec9dEAVLCZZVR8M0",
+   "createdTime": "2026-06-20T03:36:49.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec6yQIHmsSNeP8R0"
+    ],
+    "Briefing Title": "Coming Soon — Lotte Data Communications",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 278,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rec9lisAn5HajXKRx",
+   "createdTime": "2026-06-20T03:32:09.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recHKJ4WL199oEAhU"
+    ],
+    "Briefing Title": "Coming Soon — Beale Infrastructure",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 124,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recA39gzyOTrWnNoh",
+   "createdTime": "2026-06-20T03:40:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recFtUDhhk15EjqdX"
+    ],
+    "Briefing Title": "Coming Soon — Nebius",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 304,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recA4Uqr0uhE4QnX0",
+   "createdTime": "2026-06-20T03:40:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recdgqbVwlZTXY6eq"
+    ],
+    "Briefing Title": "Coming Soon — Noris Network",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 311,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recAHa9zFryevYAdO",
+   "createdTime": "2026-06-20T03:33:45.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rectDuqsyOcdScfU3"
+    ],
+    "Briefing Title": "Coming Soon — DataBank",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 176,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recASvdvblR87Ueco",
+   "createdTime": "2026-06-20T03:32:09.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recQViYq3fCKzNftD"
+    ],
+    "Briefing Title": "Coming Soon — Airtel Nxtra",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 97,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recAT2KNw0cmo1SYh",
+   "createdTime": "2026-06-20T03:36:49.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recTXjDzgtTXvRU7p"
+    ],
+    "Briefing Title": "Coming Soon — JetCool",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 264,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recAVawkqWxyS2ggI",
+   "createdTime": "2026-06-20T03:36:49.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recplKpV3plnkiKm1"
+    ],
+    "Briefing Title": "Coming Soon — Iron Mountain Data Centers",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 261,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recAYwkgYdIdUExrB",
+   "createdTime": "2026-06-20T03:36:49.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec25eCiRVm6DJXOI"
+    ],
+    "Briefing Title": "Coming Soon — Goldman Sachs Alternatives",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 231,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recAZcjp6V1SUPxfC",
+   "createdTime": "2026-06-20T03:21:11.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — DC REIT Performance & Valuation",
+    "IDF Subdomain": [
+     "recFfOsqwm5v3g3K2"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 33,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "recAgsWEv6wkpLUlF",
+   "createdTime": "2026-06-20T03:21:11.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — GPU Utilization & Compute Scheduling Economics",
+    "IDF Subdomain": [
+     "rec2tzQuqzIloLUxf"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 24,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "recAlCn9Mm6iN5rjh",
+   "createdTime": "2026-06-20T03:35:17.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recdqpJkX87K1jsTd"
+    ],
+    "Briefing Title": "Coming Soon — First Colo",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 217,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recAmnqVqOhtvD0Y9",
+   "createdTime": "2026-06-20T03:35:17.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "reck1u7IQVTiFWpRF"
+    ],
+    "Briefing Title": "Coming Soon — EdgeCore Internet Real Estate",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 200,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recAtxcrbR9xzzNRL",
+   "createdTime": "2026-06-20T03:33:45.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recz0XZQkNFa5Osrj"
+    ],
+    "Briefing Title": "Coming Soon — Brookfield Asset Management",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 134,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recB3wgiENoojfAKP",
+   "createdTime": "2026-06-20T03:21:11.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — Conference Intelligence & Speaking Circuit",
+    "IDF Subdomain": [
+     "recIt8ynZWu3jNrTx"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 35,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "recBB9KtFI1wkNbWV",
+   "createdTime": "2026-06-20T03:44:11.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recG75pWjk9QdmrNI"
+    ],
+    "Briefing Title": "Coming Soon — YTL Data Centre Holdings",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 434,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recBIGX58791UpRwv",
+   "createdTime": "2026-06-20T03:36:49.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recmr1QTTf98VniV7"
+    ],
+    "Briefing Title": "Coming Soon — Hyperscale Data Inc",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 249,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recBOkwSzokPjIggc",
+   "createdTime": "2026-06-20T03:40:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recK7TfemMFuXwcWE"
+    ],
+    "Briefing Title": "Coming Soon — NYISO",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 320,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recCD2Gl1Em52IL8y",
+   "createdTime": "2026-06-20T03:40:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recIsExLlLuNZUsyi"
+    ],
+    "Briefing Title": "Coming Soon — Morohub",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 295,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recCKNcsErMyUc4Dt",
+   "createdTime": "2026-06-20T03:42:15.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recvM2durxA0Lit8p"
+    ],
+    "Briefing Title": "Coming Soon — Quantum Switch",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 347,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recCNEalxSZXkQkdW",
+   "createdTime": "2026-06-20T03:43:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec846lFBuO1rjoaA"
+    ],
+    "Briefing Title": "Coming Soon — Telecom Egypt",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 394,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recCaiGjnQfJo41NW",
+   "createdTime": "2026-06-20T03:43:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "reciXR3gcUzRBH2Vt"
+    ],
+    "Briefing Title": "Coming Soon — Telehouse Canada",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 395,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recCb5vUc7OYxR9U5",
+   "createdTime": "2026-06-20T03:36:49.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recFJegXIDtnj8wb9"
+    ],
+    "Briefing Title": "Coming Soon — Hyperview",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 250,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recCbRZuvOnYK2AOt",
+   "createdTime": "2026-06-20T03:32:09.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recIkXpWgnwaspqKj"
+    ],
+    "Briefing Title": "Coming Soon — Aruba.it",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 114,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recCe4V9lZ80mWIu4",
+   "createdTime": "2026-06-20T03:22:09.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — AI Factory Orchestration & DCIM",
+    "IDF Subdomain": [
+     "recwltnZDpRp9q8Da"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 78,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "recCmDggalHsDq0J7",
+   "createdTime": "2026-06-20T03:33:45.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recoFIxR3NfoQ6CYd"
+    ],
+    "Briefing Title": "Coming Soon — CAISO",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 138,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recCotMEDiTfOCAOS",
+   "createdTime": "2026-06-20T03:43:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recjAsjTp63TkzbD3"
+    ],
+    "Briefing Title": "Coming Soon — TierPoint",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 404,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recCw0Kj9HAXjpi7T",
+   "createdTime": "2026-06-20T03:32:09.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recyTN60EPWGJvWJN"
+    ],
+    "Briefing Title": "Coming Soon — 365 Data Centers",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 84,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recCxUAHYRZkir2zI",
+   "createdTime": "2026-06-20T03:36:49.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recNAnliA1CSOwATE"
+    ],
+    "Briefing Title": "Coming Soon — iM Critical",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 253,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recD1QuT4VRyFrmDy",
+   "createdTime": "2026-06-20T03:21:11.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — Clean Energy Procurement (PPA/REC/CFE)",
+    "IDF Subdomain": [
+     "recMNSqDL9Gmim564"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 39,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "recDRZF9lX2S3njIP",
+   "createdTime": "2026-06-20T03:35:17.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recQ0IdcLqAs5qpod"
+    ],
+    "Briefing Title": "Coming Soon — EcoDataCenter",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 198,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recDYbFgrxRYjB01h",
+   "createdTime": "2026-06-20T03:36:49.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recCMA2sHsWypv6Eg"
+    ],
+    "Briefing Title": "Coming Soon — JLL",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 265,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recDmWISAsLGDq1Dg",
+   "createdTime": "2026-06-20T03:42:15.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recDlQEwhcqAJ3wPX"
+    ],
+    "Briefing Title": "Coming Soon — Oracle",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 331,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recDwTjoggXZR74dM",
+   "createdTime": "2026-06-20T03:42:15.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recCesRYwoIuXg3kQ"
+    ],
+    "Briefing Title": "Coming Soon — Rittal",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 357,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recEAElBA12kn0HKq",
+   "createdTime": "2026-06-20T03:36:49.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recMBbrKXlWOuO1Ik"
+    ],
+    "Briefing Title": "Coming Soon — Hitachi Vantara",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 244,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recEAF21exRfX5Qyt",
+   "createdTime": "2026-06-20T03:36:49.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recQZdg1zVmWG8jFN"
+    ],
+    "Briefing Title": "Coming Soon — Heliox",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 240,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recES6yUWR1IMGbu2",
+   "createdTime": "2026-06-20T03:43:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recCxIdv9w86SAWxq"
+    ],
+    "Briefing Title": "Coming Soon — Williams Companies",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 426,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recEgNGEUCFVSqR1K",
+   "createdTime": "2026-06-20T03:42:15.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recmu3N2eoVIKopB1"
+    ],
+    "Briefing Title": "Coming Soon — Racks Central",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 349,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recEowstrxIqAAPBd",
+   "createdTime": "2026-06-20T03:22:09.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — Enterprise IT Cybersecurity & Cloud Security",
+    "IDF Subdomain": [
+     "reckVN8uXEXSbrBFg"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 64,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "recF9TEHWsEOM1NEz",
+   "createdTime": "2026-06-20T02:59:59.000Z",
+   "fields": {
+    "Gamma URL": "https://gamma.app/docs/Iron-Mountain-The-Hybrid-Infrastructure-Thesis-3hwt8kq8n15lr1d",
+    "IDF Domain": [
+     "recLvIybOYg1opRiM",
+     "rec1pzHDIM8yjnv7j"
+    ],
+    "Tracking Companies": [
+     "recUUUJHRNUqE6DyM"
+    ],
+    "Gamma ID": "g_cuno1wywa393jgv",
+    "Briefing Title": "Iron Mountain — The Hybrid Infrastructure Thesis",
+    "Canonical flag": "Yes",
+    "Briefing Id": 2,
+    "Status": "Draft",
+    "Briefing description": "Thesis on Iron Mountain's pivot from records storage into hybrid data center infrastructure."
+   }
+  },
+  {
+   "id": "recFKJvANGRKn4FGl",
+   "createdTime": "2026-06-20T03:33:45.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recMlZwynhV0TgHre"
+    ],
+    "Briefing Title": "Coming Soon — Converge ICT Solutions",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 162,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recFL4XZqyNxj8Q0X",
+   "createdTime": "2026-06-20T03:22:09.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — 800V DC Power Distribution",
+    "IDF Subdomain": [
+     "reclfpKWUPNEBBjJy"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 68,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "recFRPJKxSw6RGsJD",
+   "createdTime": "2026-06-20T03:32:09.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec6MT3MpLXfxQ581"
+    ],
+    "Briefing Title": "Coming Soon — Auras Technology",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 120,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recFSkadIniiu1Sof",
+   "createdTime": "2026-06-20T03:22:09.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — GC/EPC Capacity & Construction Execution",
+    "IDF Subdomain": [
+     "recpNJG7MzMAhNG8e"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 70,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "recFaVZLzz4duJ7Fm",
+   "createdTime": "2026-06-20T03:33:45.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec9mwCLr3TRFfMgd"
+    ],
+    "Briefing Title": "Coming Soon — CBRE",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 144,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recFbxgjOSnQUUQvr",
+   "createdTime": "2026-06-20T03:36:49.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recUUUJHRNUqE6DyM"
+    ],
+    "Briefing Title": "Coming Soon — Iron Mountain",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 260,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recFg2WJfsCYHzvDi",
+   "createdTime": "2026-06-20T03:33:45.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recyqggTsBPOojCZJ"
+    ],
+    "Briefing Title": "Coming Soon — Dawiyat",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 178,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recFnuCyPT7U2YVD0",
+   "createdTime": "2026-06-20T02:59:59.000Z",
+   "fields": {
+    "Gamma URL": "https://gamma.app/docs/Accentures-Data-Center-Operating-System-A-String-of-Pearls-p05hnc8e7ug64g3",
+    "IDF Domain": [
+     "rec1pzHDIM8yjnv7j",
+     "recILEbaC4tdj3R0y"
+    ],
+    "IDF Theme": [
+     "recf0C145QVp5blMN"
+    ],
+    "Tracking Companies": [
+     "reccpBCR94rwCmJQJ"
+    ],
+    "Gamma ID": "g_uhxh4f5x9axm1bo",
+    "Briefing Title": "Accenture — Data Center Operating System: A String of Pearls",
+    "Canonical flag": "Yes",
+    "Briefing Id": 10,
+    "Status": "Draft",
+    "Briefing description": "Thesis on Accenture's acquisitive build of a data center operating system."
+   }
+  },
+  {
+   "id": "recGb3F6T9G4z6GXb",
+   "createdTime": "2026-06-20T03:42:15.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec7xEF7lGICswMBb"
+    ],
+    "Briefing Title": "Coming Soon — ServerFarm",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 367,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recGs6q2WZJm0QcOl",
+   "createdTime": "2026-06-20T03:42:15.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recotgU8gvEylDpD4"
+    ],
+    "Briefing Title": "Coming Soon — PhoenixNAP",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 335,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recH7HmholwCxn4Gn",
+   "createdTime": "2026-06-20T03:32:09.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recbkwyX8Au6YlW0Q"
+    ],
+    "Briefing Title": "Coming Soon — Bechtel Nuclear",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 125,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recHAAJ0BHYL0y8UJ",
+   "createdTime": "2026-06-20T03:22:09.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — PE & Infrastructure Fund Activity",
+    "IDF Subdomain": [
+     "recsxIbnP3cXUdIpP"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 73,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "recHF4ZZO9KGT3GTS",
+   "createdTime": "2026-06-20T03:22:09.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — Water Use & Waterless Cooling Strategies",
+    "IDF Subdomain": [
+     "recjF4GOmk1Jnszwo"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 61,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "recHGXZOQcvBRNecD",
+   "createdTime": "2026-06-20T03:36:49.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recZheiWmbahCDHus"
+    ],
+    "Briefing Title": "Coming Soon — Google DeepMind",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 233,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recHKh3LDlcDUbNgH",
+   "createdTime": "2026-06-20T03:21:11.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — Major Outage Postmortems",
+    "IDF Subdomain": [
+     "rec1uNtL2gwUZ3djl"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 23,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "recHXPGgxmoPi8J1I",
+   "createdTime": "2026-06-20T03:43:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recqgRWrW6qUfoHVM"
+    ],
+    "Briefing Title": "Coming Soon — TeraWulf Inc",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 401,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recHaousUI66aTghB",
+   "createdTime": "2026-06-20T03:40:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec9HVoinzbkFYZ6U"
+    ],
+    "Briefing Title": "Coming Soon — Nscale",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 314,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recHcW6jDlHJyUplR",
+   "createdTime": "2026-06-20T03:43:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recHbToafic4LclS4"
+    ],
+    "Briefing Title": "Coming Soon — Thesee DataCenter",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 403,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recHcjbjnM2m7dIXh",
+   "createdTime": "2026-06-20T03:43:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recVulR3pJdLYw19d"
+    ],
+    "Briefing Title": "Coming Soon — VoltaGrid",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 424,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recHh6RxY3EgxzhWa",
+   "createdTime": "2026-06-20T03:42:15.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rectqQekvyaxyhYrK"
+    ],
+    "Briefing Title": "Coming Soon — SmartD Technologies",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 372,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recHjpTpnmTqwrLyy",
+   "createdTime": "2026-06-20T03:35:17.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recXliwSAtRZBtGC8"
+    ],
+    "Briefing Title": "Coming Soon — EDC/Edged",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 199,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recHtTwiH7ZanspVs",
+   "createdTime": "2026-06-20T03:40:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "reclhBuoblI6KFC7V"
+    ],
+    "Briefing Title": "Coming Soon — Noovle",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 310,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recHz6cVl6K9xeANB",
+   "createdTime": "2026-06-20T03:40:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recdsKo8buI454HDP"
+    ],
+    "Briefing Title": "Coming Soon — Marsh",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 285,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recI874Cwzau1W9Hy",
+   "createdTime": "2026-06-20T03:35:17.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recKmWmJvNs0vSwPN"
+    ],
+    "Briefing Title": "Coming Soon — Digital Realty Bersama",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 188,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recI9MTytjbBRKMPC",
+   "createdTime": "2026-06-20T03:43:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rechSKDEEZdNMtBWx"
+    ],
+    "Briefing Title": "Coming Soon — Tencent Cloud",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 400,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recIXg6yYr6MNIJGm",
+   "createdTime": "2026-06-20T02:59:59.000Z",
+   "fields": {
+    "Gamma URL": "https://gamma.app/docs/Coreweave-The-AI-Hyperscaler-From-Ethereum-Miners-to-the-Fastes-tp692b8hv17u5x2",
+    "IDF Domain": [
+     "recLvIybOYg1opRiM",
+     "rec8dmkDCw1oVouBd"
+    ],
+    "IDF Theme": [
+     "recT3hXBm8QVs2HRP"
+    ],
+    "Tracking Companies": [
+     "rec0EOXflB3bwqKeE"
+    ],
+    "Gamma ID": "g_xqjigdjgs5u6lao",
+    "Briefing Title": "CoreWeave — From Ethereum Miners to the Fastest Cloud in History",
+    "Canonical flag": "Yes",
+    "Briefing Id": 4,
+    "Status": "Draft",
+    "Briefing description": "Company thesis tracing CoreWeave's rise from crypto mining to leading AI hyperscaler."
+   }
+  },
+  {
+   "id": "recIbJ05wTuILBVo0",
+   "createdTime": "2026-06-20T03:33:45.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "reciGWQr07140zWTt"
+    ],
+    "Briefing Title": "Coming Soon — Calyos",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 139,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recIcyLaho6CwBgFs",
+   "createdTime": "2026-06-20T03:36:49.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recBaluT8PKCeUHqm"
+    ],
+    "Briefing Title": "Coming Soon — iomart",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 259,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recIjVpogM2dv1XdH",
+   "createdTime": "2026-06-20T03:35:17.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "reccfniQTtpsFKdTM"
+    ],
+    "Briefing Title": "Coming Soon — DELSKA",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 184,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recJ0HRy8iC1dOuq1",
+   "createdTime": "2026-06-20T03:32:09.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recJuCcoAKgmh7J4K"
+    ],
+    "Briefing Title": "Coming Soon — Asterion Industrial Partners",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 117,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recJ27VFllYRsYDQc",
+   "createdTime": "2026-06-20T03:32:09.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec87gsOLkVewZXhp"
+    ],
+    "Briefing Title": "Coming Soon — Alibaba Cloud",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 99,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recJI6q1MYGfW3W7Z",
+   "createdTime": "2026-06-20T03:32:09.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "reclNmWpvy8w4Qiv6"
+    ],
+    "Briefing Title": "Coming Soon — Beyond.pl",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 126,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recJKL5c1WEk0wqsQ",
+   "createdTime": "2026-06-20T03:32:09.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec4PKrVSYVr1cIke"
+    ],
+    "Briefing Title": "Coming Soon — Aligned Data Centers",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 100,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recJNWtaIYcC7vtiU",
+   "createdTime": "2026-06-20T03:35:17.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "reckT9V2GYXDvCui3"
+    ],
+    "Briefing Title": "Coming Soon — GE Vernova",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 226,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recJai78MSAiAqCju",
+   "createdTime": "2026-06-20T03:44:11.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recoNWSyBxxY606Cy"
+    ],
+    "Briefing Title": "Coming Soon — Zayo Group",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 435,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recJgW0g3JMR8mIQb",
+   "createdTime": "2026-06-20T03:35:17.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec4byfULkNBIl45I"
+    ],
+    "Briefing Title": "Coming Soon — Dell Technologies",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 183,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recJkyGAnJ5k5NNwI",
+   "createdTime": "2026-06-20T03:42:15.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec9KyxlIGqy2B0yI"
+    ],
+    "Briefing Title": "Coming Soon — Samsung Foundry",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 361,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recJs80v41tGtI8Zu",
+   "createdTime": "2026-06-20T03:42:15.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recO9072i5K5iTHz0"
+    ],
+    "Briefing Title": "Coming Soon — Radiant (Brookfield)",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 351,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recJvqcRt3i3uj6Bu",
+   "createdTime": "2026-06-20T03:40:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recFHg2lq7PC816Z4"
+    ],
+    "Briefing Title": "Coming Soon — MYS AssetCo",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 300,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recKAdwq0UOS3pCHd",
+   "createdTime": "2026-06-20T03:36:49.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recxb4XkQsP46vWsr"
+    ],
+    "Briefing Title": "Coming Soon — LiSAT",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 277,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recKCHfKNGbI6a93z",
+   "createdTime": "2026-06-20T03:32:09.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recsNLdY6m2yMDmfC"
+    ],
+    "Briefing Title": "Coming Soon — AIMS",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 96,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recKMbCAU4vdLpbfi",
+   "createdTime": "2026-06-20T03:43:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recZqkXjXMBrVhP5c"
+    ],
+    "Briefing Title": "Coming Soon — Telus",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 398,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recKTW7Plf431iRZQ",
+   "createdTime": "2026-06-20T03:36:49.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recQ6Z5iy5j48BPIT"
+    ],
+    "Briefing Title": "Coming Soon — Intel",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 257,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recKjvf96fa4Wr0Ol",
+   "createdTime": "2026-06-20T03:22:09.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — Grid Events & Physical Disasters",
+    "IDF Subdomain": [
+     "rectQhkwXQWJVEqeb"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 74,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "recKq11RTVqlIbglN",
+   "createdTime": "2026-06-20T03:00:23.000Z",
+   "fields": {
+    "Gamma URL": "https://gamma.app/docs/Capital-Flow-Through-the-AI-Infrastructure-Ecosystem-3edmhnr8n3vi1xf",
+    "IDF Domain": [
+     "rec1pzHDIM8yjnv7j"
+    ],
+    "IDF Theme": [
+     "recf0C145QVp5blMN"
+    ],
+    "Gamma ID": "g_erg95bqwa7n6a67",
+    "Briefing Title": "Capital Flow Through the AI Infrastructure Ecosystem",
+    "Canonical flag": "Yes",
+    "Briefing Id": 14,
+    "Status": "Draft",
+    "Briefing description": "Map of how capital moves through the AI infrastructure ecosystem."
+   }
+  },
+  {
+   "id": "recLAPucqIoWtXvl5",
+   "createdTime": "2026-06-20T02:59:59.000Z",
+   "fields": {
+    "Gamma URL": "https://gamma.app/docs/Carrier-The-HVAC-Giants-Pivot-The-Thermal-Management-Land-Grab-d8tw3gsirvxd9b2",
+    "IDF Domain": [
+     "recIQqBteFhtQJ8we"
+    ],
+    "IDF Theme": [
+     "recK1OWVagRBj45IR"
+    ],
+    "Tracking Companies": [
+     "rechWgqYNq9HxIRdF"
+    ],
+    "Gamma ID": "g_6yep7ptz61rfpmy",
+    "Briefing Title": "Carrier — The HVAC Giant's Pivot to the Thermal Management Land Grab",
+    "Canonical flag": "Yes",
+    "Briefing Id": 9,
+    "Status": "Draft",
+    "Briefing description": "Company thesis on Carrier's pivot from residential HVAC to AI factory thermal management."
+   }
+  },
+  {
+   "id": "recLJDBKoEvRnuy5e",
+   "createdTime": "2026-06-20T03:36:49.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recpzE4JP06aFepa4"
+    ],
+    "Briefing Title": "Coming Soon — GleSYS",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 229,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recLP3shgpvZc3vt9",
+   "createdTime": "2026-06-20T03:40:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec13W2I1DZkVFkWU"
+    ],
+    "Briefing Title": "Coming Soon — Nutanix",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 318,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recLRkt2BjSnFubrZ",
+   "createdTime": "2026-06-20T03:21:11.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — Sovereign Wealth & Institutional Capital",
+    "IDF Subdomain": [
+     "recDxb4E9JOaMY0Ex"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 31,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "recLdKgDrqDPmK52H",
+   "createdTime": "2026-06-20T03:32:09.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "reccpBCR94rwCmJQJ"
+    ],
+    "Briefing Title": "Coming Soon — Accenture",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 87,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recLhsX2XQGpPUp5T",
+   "createdTime": "2026-06-20T03:35:17.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recTMs0CnvsZCXjbF"
+    ],
+    "Briefing Title": "Coming Soon — Eaton",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 197,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recLl1dYzEwHlOSaG",
+   "createdTime": "2026-06-20T03:43:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recA2JhS8OT9ZpS2s"
+    ],
+    "Briefing Title": "Coming Soon — SUNeVision",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 385,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recLpgTf4hBJ4nyBS",
+   "createdTime": "2026-06-20T03:33:45.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recxEWIQZVHaqJh8e"
+    ],
+    "Briefing Title": "Coming Soon — Colliers",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 158,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recLv8DO9Y1NZqUg8",
+   "createdTime": "2026-06-20T03:22:09.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — State & Local Tax Incentives",
+    "IDF Subdomain": [
+     "recjHuB7gHtUz2wuD"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 62,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "recLwwlLEhyrsjfdZ",
+   "createdTime": "2026-06-20T03:32:09.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recwfrResH0QUGqCA"
+    ],
+    "Briefing Title": "Coming Soon — Ampere Computing",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 104,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recM6ZAC6YCeaNZnc",
+   "createdTime": "2026-06-20T03:33:45.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recBF0q7J8dvTmjQj"
+    ],
+    "Briefing Title": "Coming Soon — CyrusOne",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 172,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recM9jJNc4y6eyzxy",
+   "createdTime": "2026-06-20T03:43:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec2JdWL0B2aHFcEy"
+    ],
+    "Briefing Title": "Coming Soon — Transphorm",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 408,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recMA5VVxtYZR2OQK",
+   "createdTime": "2026-06-20T03:35:17.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recY47xW3zbG0NuoS"
+    ],
+    "Briefing Title": "Coming Soon — Digital Realty Trust",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 189,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recMPs1LIfV8SPJZ1",
+   "createdTime": "2026-06-20T03:22:09.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — International Tax & Transfer Pricing",
+    "IDF Subdomain": [
+     "rechsTzEUgcKpGA7m"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 59,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "recMSTOx6saI0qUjj",
+   "createdTime": "2026-06-20T03:33:45.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec6K9Ocv7eOGcq2t"
+    ],
+    "Briefing Title": "Coming Soon — CleanArc Data Centers",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 155,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recMTUgiApn0lV1dm",
+   "createdTime": "2026-06-20T03:35:17.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recxwLkiZNQwTYaqB"
+    ],
+    "Briefing Title": "Coming Soon — DPR Construction",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 192,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recMVOmIoB4BnwvIo",
+   "createdTime": "2026-06-20T03:32:09.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rectjrGQ6NyBY0p8U"
+    ],
+    "Briefing Title": "Coming Soon — AI Infrastructure Partnership (AIP)",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 95,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recMlmb655VUUXSFl",
+   "createdTime": "2026-06-20T03:00:23.000Z",
+   "fields": {
+    "Gamma URL": "https://gamma.app/docs/The-Power-Reckoning-ezwqd9wc97y89kh",
+    "IDF Domain": [
+     "recsMNpEaFo6oQE6H",
+     "recPL4NoPiUCYE8Ff"
+    ],
+    "IDF Theme": [
+     "recX5ELgfBhmOcqfv"
+    ],
+    "Gamma ID": "g_fltw4gcfbs22cj3",
+    "Briefing Title": "The Power Reckoning",
+    "Canonical flag": "Yes",
+    "Briefing Id": 15,
+    "Status": "Draft",
+    "Briefing description": "Thematic brief on power as the binding constraint on AI data center growth."
+   }
+  },
+  {
+   "id": "recMmIGzm9J6sQBWQ",
+   "createdTime": "2026-06-20T03:40:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recboveSIeuRi6RYf"
+    ],
+    "Briefing Title": "Coming Soon — MDXi (MainOne)",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 286,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recMx0R8cbIgHkdHb",
+   "createdTime": "2026-06-20T03:32:09.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recJeIUTrmXstV8C8"
+    ],
+    "Briefing Title": "Coming Soon — Apple",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 107,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recN3RYGwocLo9NrX",
+   "createdTime": "2026-06-20T03:35:17.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recOkN3GgRSmxavOQ"
+    ],
+    "Briefing Title": "Coming Soon — Etisalat by e&",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 213,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recN9Hfb0HagpOW15",
+   "createdTime": "2026-06-20T03:21:11.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — EU Media Coverage",
+    "IDF Subdomain": [
+     "rec4jG1OaKEQ7xawK"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 25,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "recNQFcfnA9qbeaHA",
+   "createdTime": "2026-06-20T03:35:17.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recDE8tBFgXz6TYCK"
+    ],
+    "Briefing Title": "Coming Soon — GIC (Singapore)",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 227,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recO3tNKbe6GNDtQA",
+   "createdTime": "2026-06-20T03:32:09.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "reci9CPcc9voc5c1y"
+    ],
+    "Briefing Title": "Coming Soon — Asperitas",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 116,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recO5R9fa4ddn5ZyY",
+   "createdTime": "2026-06-20T03:21:11.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — Hyperscaler Custom Silicon",
+    "IDF Subdomain": [
+     "rec6BlBTxx0ZpqK7e"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 26,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "recO7MbWoRxuIMhRG",
+   "createdTime": "2026-06-20T03:42:15.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recYpElNCu3ZJf8xZ"
+    ],
+    "Briefing Title": "Coming Soon — QTS Realty Trust",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 346,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recO9u3zA4oRdHeIb",
+   "createdTime": "2026-06-20T03:42:15.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recZCvw69zlMYsnop"
+    ],
+    "Briefing Title": "Coming Soon — SK Holdings C&C",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 370,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recOC3OmIaejKDEkM",
+   "createdTime": "2026-06-20T03:36:49.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recz84sDdBKbKIDN2"
+    ],
+    "Briefing Title": "Coming Soon — Grid Strategies LLC",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 236,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recOK6FMsYotexn8x",
+   "createdTime": "2026-06-20T03:33:45.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recBHO737yPUKYFcx"
+    ],
+    "Briefing Title": "Coming Soon — Canon IT Solutions",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 140,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recOSVStJnwH914Wt",
+   "createdTime": "2026-06-20T03:36:49.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recLTqVMovBlzsC5B"
+    ],
+    "Briefing Title": "Coming Soon — Green Revolution Cooling (GRC)",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 235,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recOmXoPPAaPYczuc",
+   "createdTime": "2026-06-20T03:36:49.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "reca3LCIgbN7eq2P1"
+    ],
+    "Briefing Title": "Coming Soon — H5 Data Centers",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 238,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recPE0Tz3TEKwWlGW",
+   "createdTime": "2026-06-20T03:33:45.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec7RNde2zzWzDDtD"
+    ],
+    "Briefing Title": "Coming Soon — Castrol (BP)",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 143,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recPFR2l0d6KoMGQw",
+   "createdTime": "2026-06-20T03:21:11.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — GPU Architecture & Roadmap",
+    "IDF Subdomain": [
+     "recUh4KkgM3VSe2hw"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 46,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "recPImsF5Fwu019zT",
+   "createdTime": "2026-06-20T03:43:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recvEztlxrFNQS6ob"
+    ],
+    "Briefing Title": "Coming Soon — Vigilent",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 420,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recPQimBzzh12web5",
+   "createdTime": "2026-06-20T03:42:15.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recEmYdchmZyc2aBB"
+    ],
+    "Briefing Title": "Coming Soon — Pure Storage",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 343,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recPVXVTDfJl0GVMb",
+   "createdTime": "2026-06-20T03:35:17.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recWdcFtPPNBNNoc0"
+    ],
+    "Briefing Title": "Coming Soon — DDN (DataDirect Networks)",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 180,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recPXxTRVUmztOege",
+   "createdTime": "2026-06-20T03:21:11.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — Physical Security & Access Control",
+    "IDF Subdomain": [
+     "recJc94ptI044VGbc"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 36,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "recPagxO2AIoeVCpi",
+   "createdTime": "2026-06-20T03:36:49.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recHjDe4lFhwuQNxr"
+    ],
+    "Briefing Title": "Coming Soon — Holtec International",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 246,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recPb6GO6FIE0o71T",
+   "createdTime": "2026-06-20T03:33:45.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec24Edd3K3S6XMjT"
+    ],
+    "Briefing Title": "Coming Soon — Cisco Systems",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 153,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recPkTIR3Hi32owWQ",
+   "createdTime": "2026-06-20T03:44:11.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recEJHGJjb9y07lG7"
+    ],
+    "Briefing Title": "Coming Soon — ZutaCore",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 436,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recPvFAwC6mnx5rEN",
+   "createdTime": "2026-06-20T03:21:11.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — Tax Incentive Backlash & Clawback",
+    "IDF Subdomain": [
+     "recQmeUy9qT2dVCfU"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 43,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "recQEPLUAMjP7pLyJ",
+   "createdTime": "2026-06-20T03:42:15.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recE2d3cGyCt4Md1j"
+    ],
+    "Briefing Title": "Coming Soon — OVHcloud",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 332,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recQSkOyRHkoYnYUh",
+   "createdTime": "2026-06-20T03:36:49.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "reco84cc7dOQnxhtM"
+    ],
+    "Briefing Title": "Coming Soon — KKR",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 269,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recQUIazoZVLifdSa",
+   "createdTime": "2026-06-20T02:39:46.000Z",
+   "fields": {
+    "Briefing Title": "The Power Reckoning ",
+    "Briefing Id": 1,
+    "Status": "Draft",
+    "Briefing description": "Description "
+   }
+  },
+  {
+   "id": "recQZdXA0v9LuAyEg",
+   "createdTime": "2026-06-20T03:32:09.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec4erdy8YMbjyTMO"
+    ],
+    "Briefing Title": "Coming Soon — AirTrunk",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 98,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recQcvl1WnnsSRFNR",
+   "createdTime": "2026-06-20T03:21:11.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — U.S. Media Coverage",
+    "IDF Subdomain": [
+     "recVUq9ADEYbRAXU9"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 48,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "recQdr2zVzPSr1CXZ",
+   "createdTime": "2026-06-20T03:33:45.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "reciSL3A1YLcgubcX"
+    ],
+    "Briefing Title": "Coming Soon — Claro",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 154,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recQgiqxPtV7vpAdm",
+   "createdTime": "2026-06-20T03:35:17.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recgrFTqaNSIrYlbm"
+    ],
+    "Briefing Title": "Coming Soon — ERCOT",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 211,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recQmnOZuEMbO7W70",
+   "createdTime": "2026-06-20T03:42:15.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recU1vMJ8fluOtZyc"
+    ],
+    "Briefing Title": "Coming Soon — Rowan Digital Infrastructure",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 358,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recQpKZmPByqXYVy7",
+   "createdTime": "2026-06-20T03:00:23.000Z",
+   "fields": {
+    "Gamma URL": "https://gamma.app/docs/What-McKinsey-Got-Wrong-3zlp4cv4807afyq",
+    "IDF Domain": [
+     "rec9IujWizpKPMpuI",
+     "rec1pzHDIM8yjnv7j"
+    ],
+    "Gamma ID": "g_7c85yyph73zl0h2",
+    "Briefing Title": "What McKinsey Got Wrong",
+    "Canonical flag": "Yes",
+    "Briefing Id": 18,
+    "Status": "Draft",
+    "Briefing description": "Counter-analysis challenging McKinsey's AI infrastructure capital forecast."
+   }
+  },
+  {
+   "id": "recREtEoTrVBJntz0",
+   "createdTime": "2026-06-20T03:36:49.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recyBF8bu4PoufnEp"
+    ],
+    "Briefing Title": "Coming Soon — Leuk Teleport & Data Centre",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 273,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recRSGYInh43Y0oVK",
+   "createdTime": "2026-06-20T03:40:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recjiJhLoxGoCk4nM"
+    ],
+    "Briefing Title": "Coming Soon — NextEra Energy",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 308,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recRSITg5BGEPWy73",
+   "createdTime": "2026-06-20T03:33:45.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec1tU1Ib1qMImwO4"
+    ],
+    "Briefing Title": "Coming Soon — Colovore",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 160,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recRiFbNezElxPjfu",
+   "createdTime": "2026-06-20T03:43:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "reczj88ZNJSgN8cqZ"
+    ],
+    "Briefing Title": "Coming Soon — Temasek",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 399,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recRpBWExQ3zciMFV",
+   "createdTime": "2026-06-20T03:43:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec1pgoED4cmw0v1f"
+    ],
+    "Briefing Title": "Coming Soon — Telstra InfraCo",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 397,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recRtoFsptMWEGDcb",
+   "createdTime": "2026-06-20T03:21:11.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — Chip Export Controls & BIS Regime",
+    "IDF Subdomain": [
+     "recPlf9ixl2HP9Rzf"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 42,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "recRvVoZh0JqhtWZ2",
+   "createdTime": "2026-06-20T03:43:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec5RPQP2eU4j99oC"
+    ],
+    "Briefing Title": "Coming Soon — Switch",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 387,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recSVXEksIC4Dgx53",
+   "createdTime": "2026-06-20T03:33:45.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recDr3MZTYx88QgWY"
+    ],
+    "Briefing Title": "Coming Soon — Chirisa Technology Parks",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 148,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recSjgzoculooD6ej",
+   "createdTime": "2026-06-20T03:42:15.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recSeAeoeS5SrekHO"
+    ],
+    "Briefing Title": "Coming Soon — PJM Interconnection",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 337,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recSzESTr9NnW8rW8",
+   "createdTime": "2026-06-20T03:35:17.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recM6wXF7XZeQmJtp"
+    ],
+    "Briefing Title": "Coming Soon — Equinix",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 210,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recT14J8c08eBXoK8",
+   "createdTime": "2026-06-20T03:22:09.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — Project Opposition Register",
+    "IDF Subdomain": [
+     "reclLpF0jB6S9Xhfc"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 67,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "recTA7Tqf9jeuuuhv",
+   "createdTime": "2026-06-20T03:32:09.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recKx8SuJ1OzG2j1G"
+    ],
+    "Briefing Title": "Coming Soon — Blackstone",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 128,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recTKDISG0jx5Uk89",
+   "createdTime": "2026-06-20T03:43:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recWuaDXTTPaljScA"
+    ],
+    "Briefing Title": "Coming Soon — Talen Energy",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 390,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recTQ5R8oSA21v3kE",
+   "createdTime": "2026-06-20T03:22:09.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — Industry Analysts",
+    "IDF Subdomain": [
+     "rectcK7b3JU2593x1"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 75,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "recTd51axPOGP9Ea0",
+   "createdTime": "2026-06-20T03:00:23.000Z",
+   "fields": {
+    "Gamma URL": "https://gamma.app/docs/Sixteen-Soft-System-Constraints-in-AI-Data-Center-Buildout-xqzm4lffwdo58j0",
+    "IDF Domain": [
+     "recPL4NoPiUCYE8Ff"
+    ],
+    "IDF Theme": [
+     "recJs285QEh60FV8D"
+    ],
+    "Gamma ID": "g_76g7kyd1flacct2",
+    "Briefing Title": "Sixteen Soft-System Constraints in AI Data Center Buildout",
+    "Canonical flag": "Yes",
+    "Briefing Id": 13,
+    "Status": "Draft",
+    "Briefing description": "Survey of sixteen non-hardware constraints (regulatory, social, labor) bottlenecking buildout."
+   }
+  },
+  {
+   "id": "recTlBQpcSwgQchpe",
+   "createdTime": "2026-06-20T03:36:49.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recohYxxYqJAUro4I"
+    ],
+    "Briefing Title": "Coming Soon — IDC Frontier",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 252,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recTlrAZdL2c3ao7e",
+   "createdTime": "2026-06-20T03:40:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recubOS91Qw39qQwr"
+    ],
+    "Briefing Title": "Coming Soon — Open Access Data Centres",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 326,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recTqwEopaMwbCzsv",
+   "createdTime": "2026-06-20T03:43:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recHw6i12yTlQqY4O"
+    ],
+    "Briefing Title": "Coming Soon — Tract",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 406,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recUFxGS8LohTjlTX",
+   "createdTime": "2026-06-20T03:21:11.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — Lender Insurance Requirements & Risk Transfer",
+    "IDF Subdomain": [
+     "rec1lUo31LCy2Bune"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 22,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "recUR4fDvTHxVhkSF",
+   "createdTime": "2026-06-20T03:33:45.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recYs4iFiEzevjvqh"
+    ],
+    "Briefing Title": "Coming Soon — Coherent Corp",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 156,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recUVS0s8F5q1D0ld",
+   "createdTime": "2026-06-20T03:22:09.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — Immersion Cooling",
+    "IDF Subdomain": [
+     "recmAANSSclDJSbyZ"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 69,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "recUWYYCobl2you1y",
+   "createdTime": "2026-06-20T03:36:49.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec3vHxS5XCJX1qSj"
+    ],
+    "Briefing Title": "Coming Soon — Kairos Power",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 267,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recUYZOrd2vSLF92m",
+   "createdTime": "2026-06-20T03:36:49.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recwM0JDN17sXNMtm"
+    ],
+    "Briefing Title": "Coming Soon — JD Cloud & AI",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 263,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recUbHqwlXm44DJaa",
+   "createdTime": "2026-06-20T03:35:17.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recNkcRd2WLSG8PLr"
+    ],
+    "Briefing Title": "Coming Soon — First Solar",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 218,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recUfW8e7I4cTiOvk",
+   "createdTime": "2026-06-20T03:33:45.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "reccQyB3iCfDhu9GN"
+    ],
+    "Briefing Title": "Coming Soon — BroadBand Tower",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 132,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recUiXi0H2Tjpr6un",
+   "createdTime": "2026-06-20T03:33:45.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "reckQpDjS2rT2OMeL"
+    ],
+    "Briefing Title": "Coming Soon — Data Foundry",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 175,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recUo5DiDjF1PhXXi",
+   "createdTime": "2026-06-20T03:40:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recCeFfAPCTDUxlXM"
+    ],
+    "Briefing Title": "Coming Soon — Mortenson",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 296,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recVKLDzLnfsFc16q",
+   "createdTime": "2026-06-20T03:42:15.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recVXQ1VVNBOgTXei"
+    ],
+    "Briefing Title": "Coming Soon — Spark",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 376,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recVZTEXb48dDuWMI",
+   "createdTime": "2026-06-20T03:43:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "reckLFMvn6UbjQiqc"
+    ],
+    "Briefing Title": "Coming Soon — Wingu.Africa",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 427,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recVsgu88vHx2vPcY",
+   "createdTime": "2026-06-20T03:32:09.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec3khvfeePVRbsOH"
+    ],
+    "Briefing Title": "Coming Soon — Applied Digital",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 108,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recVyhzSgxprtUaQP",
+   "createdTime": "2026-06-20T03:43:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recn04gC9YIyAvHTl"
+    ],
+    "Briefing Title": "Coming Soon — Taybo (Shanghai) Environmental Technology",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 393,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recW3zh9wo8YdZZp4",
+   "createdTime": "2026-06-20T03:35:17.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rechqOwaLq3y1CFzn"
+    ],
+    "Briefing Title": "Coming Soon — Enovum Data Centers",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 207,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recW4bksJWdV70xat",
+   "createdTime": "2026-06-20T03:33:45.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recjlpFsPXKsTJx25"
+    ],
+    "Briefing Title": "Coming Soon — Chunghwa Telecom",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 150,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recW7IrG6XHEDsB2o",
+   "createdTime": "2026-06-20T03:43:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recKAQNyUlFWGNTBd"
+    ],
+    "Briefing Title": "Coming Soon — WEKA",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 425,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recWQzN36JLD61eMK",
+   "createdTime": "2026-06-20T03:43:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recWh05S0ZHhFxPi5"
+    ],
+    "Briefing Title": "Coming Soon — T5 Data Centers",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 389,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recWReTO8Xoi8goqF",
+   "createdTime": "2026-06-20T03:42:15.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recEU3npOLM4M0Upk"
+    ],
+    "Briefing Title": "Coming Soon — Rackspace",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 350,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recWbMesu1DhjGCgN",
+   "createdTime": "2026-06-20T02:59:59.000Z",
+   "fields": {
+    "Gamma URL": "https://gamma.app/docs/Nebius-The-Most-Dramatic-Corporate-Reinvention-in-Tech-tcbsksgur0fqk23",
+    "IDF Domain": [
+     "rec8dmkDCw1oVouBd",
+     "recLvIybOYg1opRiM"
+    ],
+    "IDF Theme": [
+     "recT3hXBm8QVs2HRP"
+    ],
+    "Tracking Companies": [
+     "recFtUDhhk15EjqdX"
+    ],
+    "Gamma ID": "g_2taybkoojb6me18",
+    "Briefing Title": "Nebius — The Most Dramatic Corporate Reinvention in Tech",
+    "Canonical flag": "Yes",
+    "Briefing Id": 5,
+    "Status": "Draft",
+    "Briefing description": "Company thesis on Nebius's transformation from Yandex spinout to AI infrastructure pure-play."
+   }
+  },
+  {
+   "id": "recXEDi3dJgE4L6XL",
+   "createdTime": "2026-06-20T03:43:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recH3Nv7YnaogIttE"
+    ],
+    "Briefing Title": "Coming Soon — True IDC",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 410,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recXFK51DmRotB3Ph",
+   "createdTime": "2026-06-20T03:35:17.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec22lTM5lpQa6Kpy"
+    ],
+    "Briefing Title": "Coming Soon — Enbridge",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 205,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recXFXEPwrh0klax1",
+   "createdTime": "2026-06-20T03:42:15.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "reccwUwKnWuaUJnAr"
+    ],
+    "Briefing Title": "Coming Soon — Sentinum",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 366,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recXhSbd9x8YSwJUI",
+   "createdTime": "2026-06-20T03:43:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recfowzHOVsYQCV1G"
+    ],
+    "Briefing Title": "Coming Soon — TSMC",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 411,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recXmEuejPodelDpW",
+   "createdTime": "2026-06-20T03:42:15.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recdVtBIxm5uvJIFE"
+    ],
+    "Briefing Title": "Coming Soon — Pulsant",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 342,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recY5Qkqx7EtlIx0r",
+   "createdTime": "2026-06-20T03:21:11.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — Integrated Infrastructure Vendor M&A",
+    "IDF Subdomain": [
+     "recNXxeEAP7jDjqGn"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 40,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "recYJk9Xt6vkzOiuh",
+   "createdTime": "2026-06-20T03:22:09.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — Neocloud Infrastructure",
+    "IDF Subdomain": [
+     "recgTjPFPuL7Eo6rh"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 58,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "recYZIq3A3Pa5VKFb",
+   "createdTime": "2026-06-20T03:33:45.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recsjBLUFQ1VILety"
+    ],
+    "Briefing Title": "Coming Soon — Cadence Design Systems",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 137,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recYv07xADQn6tnED",
+   "createdTime": "2026-06-20T03:42:15.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recZz4wV1VEvPFBQH"
+    ],
+    "Briefing Title": "Coming Soon — Parker Lord",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 334,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recYzXkvwxV6Z5rKu",
+   "createdTime": "2026-06-20T03:36:49.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recGKdDydbyP6SJto"
+    ],
+    "Briefing Title": "Coming Soon — GPX Global",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 234,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recZ3QwYxIcPry0Pt",
+   "createdTime": "2026-06-20T03:32:09.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "reclN8UsPnta2kMjE"
+    ],
+    "Briefing Title": "Coming Soon — Aramco Digital",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 109,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recZQuKMn6UNCAOXO",
+   "createdTime": "2026-06-20T03:43:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recmgSGN74yvUtQnf"
+    ],
+    "Briefing Title": "Coming Soon — TerraPower",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 402,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recZyrSUUesFRR7qG",
+   "createdTime": "2026-06-20T03:33:45.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recJA24U3KYbVAfD7"
+    ],
+    "Briefing Title": "Coming Soon — ByteDance / TikTok",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 136,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "reca4fyR2EAypR20h",
+   "createdTime": "2026-06-20T03:32:09.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec4rYYieXrDZOAVi"
+    ],
+    "Briefing Title": "Coming Soon — Ardent Data Centers",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 110,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recaCkoMkL0V4WkPj",
+   "createdTime": "2026-06-20T03:32:09.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recH8t217bz59Qsvz"
+    ],
+    "Briefing Title": "Coming Soon — ADIA (Abu Dhabi Investment Authority)",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 91,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recaG5VZmk5VZt6DR",
+   "createdTime": "2026-06-20T03:35:17.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec0cwKqrWW8cf7rr"
+    ],
+    "Briefing Title": "Coming Soon — Ensono",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 208,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recaOmCCVfFDPQzKu",
+   "createdTime": "2026-06-20T03:40:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recXYPWAmqW7D7fJY"
+    ],
+    "Briefing Title": "Coming Soon — Northern Data",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 312,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recaSn1AEEHf85c2q",
+   "createdTime": "2026-06-20T03:40:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec4ZhBTO46HHKMlE"
+    ],
+    "Briefing Title": "Coming Soon — NVIDIA",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 319,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recaZntCY2MxTlaIY",
+   "createdTime": "2026-06-20T03:35:17.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec4vP6hXvoLunPg8"
+    ],
+    "Briefing Title": "Coming Soon — Flexential",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 219,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recadZCtRAFEnXFsq",
+   "createdTime": "2026-06-20T03:21:11.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — DC Power Delivery at the Rack",
+    "IDF Subdomain": [
+     "rec1RGRp5pm9qTK4q"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 21,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "recahHwTuSEtF9hx8",
+   "createdTime": "2026-06-20T03:36:49.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recIZJaK85xmHYAFp"
+    ],
+    "Briefing Title": "Coming Soon — iMasons",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 254,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recb0x0HVTFzDKEam",
+   "createdTime": "2026-06-20T03:32:09.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec76De1LrgLBpCPr"
+    ],
+    "Briefing Title": "Coming Soon — AMPT",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 105,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recb7Hwfy5liK6KuD",
+   "createdTime": "2026-06-20T03:42:15.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recBvBIvzbroAnhcS"
+    ],
+    "Briefing Title": "Coming Soon — Shell Energy",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 368,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recbUxucXlfAyAsa5",
+   "createdTime": "2026-06-20T03:22:09.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — Modular & Prefabricated Data Center Delivery",
+    "IDF Subdomain": [
+     "recjQa5oD8Sr1AAMl"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 63,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "recc8hUIzF49p1p9I",
+   "createdTime": "2026-06-20T02:59:59.000Z",
+   "fields": {
+    "Gamma URL": "https://gamma.app/docs/EQT-The-Capital-Allocation-Engine-Behind-the-AI-Infrastructure--wjdz7dcy9cu7jph",
+    "IDF Domain": [
+     "rec1pzHDIM8yjnv7j"
+    ],
+    "IDF Theme": [
+     "recf0C145QVp5blMN"
+    ],
+    "Gamma ID": "g_bn0u7sqn9gyw6av",
+    "Briefing Title": "EQT — The Capital Allocation Engine Behind the AI Infrastructure Buildout",
+    "Canonical flag": "Yes",
+    "Briefing Id": 6,
+    "Status": "Draft",
+    "Briefing description": "Investor thesis on EQT as a capital allocator anchoring AI infrastructure deployment."
+   }
+  },
+  {
+   "id": "reccF9kR8SUs33Dp8",
+   "createdTime": "2026-06-20T03:43:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recHJML1ZIIU159IZ"
+    ],
+    "Briefing Title": "Coming Soon — STMicroelectronics",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 382,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "reccJCbxHP7XyEc4D",
+   "createdTime": "2026-06-20T03:00:23.000Z",
+   "fields": {
+    "Gamma URL": "https://gamma.app/docs/Five-Lurking-Consolidation-Waves-4sw5j9y0rs3b3ig",
+    "IDF Domain": [
+     "rec1pzHDIM8yjnv7j"
+    ],
+    "IDF Theme": [
+     "recf0C145QVp5blMN"
+    ],
+    "Gamma ID": "g_ut39vwpjj9py4mz",
+    "Briefing Title": "Five Lurking Consolidation Waves",
+    "Canonical flag": "Yes",
+    "Briefing Id": 12,
+    "Status": "Draft",
+    "Briefing description": "Analysis of five consolidation waves building across the AI infrastructure value chain."
+   }
+  },
+  {
+   "id": "reccOfCEn0aFFgKqK",
+   "createdTime": "2026-06-20T03:43:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recd6vfOqjx4qZ6xn"
+    ],
+    "Briefing Title": "Coming Soon — Start Campus",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 379,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "reccXBHpZ3QcSrm0j",
+   "createdTime": "2026-06-20T03:42:15.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rect0EKtJXiLwHcZD"
+    ],
+    "Briefing Title": "Coming Soon — Siemens",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 369,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "reccYmwTXS1KPJVFu",
+   "createdTime": "2026-06-20T03:36:49.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recTiI42vP8epsJ9O"
+    ],
+    "Briefing Title": "Coming Soon — Hewlett Packard Enterprise (HPE)",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 242,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "reccr6TZtcuXnfnXo",
+   "createdTime": "2026-06-20T03:00:23.000Z",
+   "fields": {
+    "Gamma URL": "https://gamma.app/docs/The-Thermal-Power-Convergence-Play-From-Picks-and-Shovels-to-Infr-st7ely76u4c52ht",
+    "IDF Domain": [
+     "recIQqBteFhtQJ8we",
+     "recsMNpEaFo6oQE6H"
+    ],
+    "IDF Theme": [
+     "recK1OWVagRBj45IR"
+    ],
+    "Gamma ID": "g_del8759z04t6nl7",
+    "Briefing Title": "The Thermal-Power Convergence Play",
+    "Canonical flag": "Yes",
+    "Briefing Id": 17,
+    "Status": "Draft",
+    "Briefing description": "Thesis on the convergence of thermal and power systems into an infrastructure moat."
+   }
+  },
+  {
+   "id": "reccrBH9J8oqEPZVC",
+   "createdTime": "2026-06-20T03:40:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recwVl7EbskPNeVm3"
+    ],
+    "Briefing Title": "Coming Soon — onsemi",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 324,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recdD4tJ1L1o5HPit",
+   "createdTime": "2026-06-20T03:21:11.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — Sovereign AI Programs & National Compute",
+    "IDF Subdomain": [
+     "recawCc8vaH0ZuQSF"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 50,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "recdM2HJ8STEL5GKF",
+   "createdTime": "2026-06-20T03:21:11.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — Behind-the-Meter Generation (BYOP/BYOG)",
+    "IDF Subdomain": [
+     "recKGafN1FHSNlzan"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 37,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "recdN6gCIzVhnQbic",
+   "createdTime": "2026-06-20T03:44:11.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recGBt7Wh25UAto00"
+    ],
+    "Briefing Title": "Coming Soon — World Wide Technology (WWT)",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 430,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recdc4K8bZJLQ5tgh",
+   "createdTime": "2026-06-20T03:40:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recj8lql4VSJdZGsX"
+    ],
+    "Briefing Title": "Coming Soon — Mistral AI",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 292,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recdcD1ueGPzC1nCU",
+   "createdTime": "2026-06-20T03:42:15.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recJvROimbzH26J0R"
+    ],
+    "Briefing Title": "Coming Soon — QTS Realty",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 345,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recdk1w4kMoICnLe3",
+   "createdTime": "2026-06-20T03:44:11.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recIaSZD10bJKmPhB"
+    ],
+    "Briefing Title": "Coming Soon — xAI (Elon Musk)",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 432,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recdoF8UaLaJ2yqLs",
+   "createdTime": "2026-06-20T03:42:15.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recKuD6WlFZgwELMU"
+    ],
+    "Briefing Title": "Coming Soon — Raxio Group",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 353,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recdqghAGsHPeEvf1",
+   "createdTime": "2026-06-20T03:32:09.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recpI3IjJvXiFO7gq"
+    ],
+    "Briefing Title": "Coming Soon — Bloom Energy",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 129,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recdwvuH7JGzN0MAX",
+   "createdTime": "2026-06-20T03:42:15.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recokbFoId0yG52wF"
+    ],
+    "Briefing Title": "Coming Soon — Rack Centre",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 348,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rece4UsrvoSsSZ4Je",
+   "createdTime": "2026-06-20T03:21:11.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — Executive Movement & C-Suite Intelligence",
+    "IDF Subdomain": [
+     "recUloAhqTV0XXZ4P"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 47,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "receGJGq4x4JbeHu6",
+   "createdTime": "2026-06-20T03:32:09.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recfRacvV1NmrECaU"
+    ],
+    "Briefing Title": "Coming Soon — Ascendas REIT",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 115,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "receNtlA3i5ctihEj",
+   "createdTime": "2026-06-20T03:43:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recFFo5J1ljY3r7GV"
+    ],
+    "Briefing Title": "Coming Soon — Supermicro",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 386,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "receTsxYq6mZXr3GV",
+   "createdTime": "2026-06-20T03:43:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recNZFvVijMFUyatZ"
+    ],
+    "Briefing Title": "Coming Soon — Triara",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 409,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "receYTwVARrAPdqim",
+   "createdTime": "2026-06-20T03:00:23.000Z",
+   "fields": {
+    "Gamma URL": "https://gamma.app/docs/From-Air-to-Liquid-From-AC-to-DC-Most-Vendors-Wont-Survive-the-Cr-8d6lnoi6l9q1h7u",
+    "IDF Domain": [
+     "recsMNpEaFo6oQE6H",
+     "recIQqBteFhtQJ8we"
+    ],
+    "IDF Theme": [
+     "recK1OWVagRBj45IR"
+    ],
+    "Gamma ID": "g_ca1ppsrrkljyewd",
+    "Briefing Title": "From Air to Liquid, From AC to DC — Most Vendors Won't Survive the Crossing",
+    "Canonical flag": "Yes",
+    "Briefing Id": 16,
+    "Status": "Draft",
+    "Briefing description": "Thesis on the cooling and power-architecture transition reshaping the vendor landscape."
+   }
+  },
+  {
+   "id": "receqDnCi3qQ75NYh",
+   "createdTime": "2026-06-20T03:43:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recuDMJATIJVJB1Xr"
+    ],
+    "Briefing Title": "Coming Soon — Uptime Institute",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 415,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "receqyyQ4AeI0vaNI",
+   "createdTime": "2026-06-20T03:36:49.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recrVM7dlz5OslsOk"
+    ],
+    "Briefing Title": "Coming Soon — HKCOLO",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 245,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recetZd0qGr5Bsofb",
+   "createdTime": "2026-06-20T03:35:17.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec1sNUjN9EvVCTzR"
+    ],
+    "Briefing Title": "Coming Soon — Drees & Sommer",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 193,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recewHMlBgcrQ8ZqA",
+   "createdTime": "2026-06-20T03:43:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec7NvQiygG3nndEC"
+    ],
+    "Briefing Title": "Coming Soon — Vertiv",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 419,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recfBdDe1CTboeVal",
+   "createdTime": "2026-06-20T03:40:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recHhtlP3mGtJHQkH"
+    ],
+    "Briefing Title": "Coming Soon — NTT Global Data Centers",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 316,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recfHVxbaCyLN5uF8",
+   "createdTime": "2026-06-20T03:40:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recqOfLI9FEtNooXX"
+    ],
+    "Briefing Title": "Coming Soon — Luxconnect",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 279,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recfHcBCt8S1jofXY",
+   "createdTime": "2026-06-20T03:35:17.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recZ8X7PPOW3LMeIe"
+    ],
+    "Briefing Title": "Coming Soon — Digital Realty / PlatformDIGITAL",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 187,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recfLlpa7cUhUdjHq",
+   "createdTime": "2026-06-20T03:42:15.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recHGuzmBG3rJoXyH"
+    ],
+    "Briefing Title": "Coming Soon — QScale",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 344,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recfMTt1jrrWZYBRC",
+   "createdTime": "2026-06-20T03:36:49.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec7avh6UxasxFoxl"
+    ],
+    "Briefing Title": "Coming Soon — Khazna Data Centers",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 268,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recfPj2DA41NrepHO",
+   "createdTime": "2026-06-20T03:42:15.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recjwYHfJ7Uz7kXHl"
+    ],
+    "Briefing Title": "Coming Soon — Sabey Data Centers",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 360,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recfkz12g167buBKG",
+   "createdTime": "2026-06-20T03:43:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec4mN4smpyDIy1LW"
+    ],
+    "Briefing Title": "Coming Soon — Wiwynn",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 428,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recfqcOSh3iRhYrR5",
+   "createdTime": "2026-06-20T03:35:17.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recn8uQ5oBdDWKXOU"
+    ],
+    "Briefing Title": "Coming Soon — Elisa",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 204,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recgIDLhzjeVWeDSO",
+   "createdTime": "2026-06-20T03:44:11.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recM9Cwyrx2zfGplZ"
+    ],
+    "Briefing Title": "Coming Soon — Wolfspeed",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 429,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recgaKpqnU74c5kc7",
+   "createdTime": "2026-06-20T03:40:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recjLp4Lllafo1rKJ"
+    ],
+    "Briefing Title": "Coming Soon — MGX (Abu Dhabi)",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 289,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recgbGfn9BvIP49PP",
+   "createdTime": "2026-06-20T03:42:15.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recogBvrU88XixiHR"
+    ],
+    "Briefing Title": "Coming Soon — Optage",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 329,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recgzCwzn37s2sg64",
+   "createdTime": "2026-06-20T03:40:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec9S9J0FTCmeQnLG"
+    ],
+    "Briefing Title": "Coming Soon — Navitas Semiconductor",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 303,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rech0PZzpCmQnQ6sm",
+   "createdTime": "2026-06-20T03:21:11.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — Security Operations & Incident Response",
+    "IDF Subdomain": [
+     "recATlFPn4nEhoLYC"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 27,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "rech9NTDWrMzHYJvz",
+   "createdTime": "2026-06-20T02:59:59.000Z",
+   "fields": {
+    "Gamma URL": "https://gamma.app/docs/EdgeConnex-Gigawatt-Campuses-the-Ingenuity-Platform-and-the-Glo-hn80c6zr2tlevkl",
+    "IDF Domain": [
+     "recyPN9VV6cnx6kzv",
+     "recLvIybOYg1opRiM"
+    ],
+    "Tracking Companies": [
+     "recswVnYatcsl7N2K"
+    ],
+    "Gamma ID": "g_3s3tfdavx4ztoo3",
+    "Briefing Title": "EdgeConneX — Gigawatt Campuses and the AI Factory Land Grab",
+    "Canonical flag": "Yes",
+    "Briefing Id": 7,
+    "Status": "Draft",
+    "Briefing description": "Company thesis on EdgeConneX's gigawatt-scale campus strategy and the Ingenuity platform."
+   }
+  },
+  {
+   "id": "rechTXvCHDoOBVbBQ",
+   "createdTime": "2026-06-20T03:43:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "reciOSP3fj5wAaddj"
+    ],
+    "Briefing Title": "Coming Soon — Starwood Capital",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 380,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rechrMNUaspqR0S5T",
+   "createdTime": "2026-06-20T03:36:49.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recvQBNUKhXKi5pAK"
+    ],
+    "Briefing Title": "Coming Soon — Groq",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 237,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rechrx8ZaLWkO3L3O",
+   "createdTime": "2026-06-20T03:35:17.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recCHkDHetNbcOCD2"
+    ],
+    "Briefing Title": "Coming Soon — DigitalBridge",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 190,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rechzkIuM3mXejALo",
+   "createdTime": "2026-06-20T03:21:11.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — Federal Tax Policy",
+    "IDF Subdomain": [
+     "recEf7clkXe6OriQq"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 32,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "reciCePk6PdnKTiA9",
+   "createdTime": "2026-06-20T03:35:17.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec9hpGSVbI5EnOS1"
+    ],
+    "Briefing Title": "Coming Soon — Galaxy Digital Inc.",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 224,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "reciIC3PuV0MkUXtY",
+   "createdTime": "2026-06-20T03:43:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recOFD9zZBQxekWaV"
+    ],
+    "Briefing Title": "Coming Soon — Telstra",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 396,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recicfriROtbpE9D2",
+   "createdTime": "2026-06-20T03:32:09.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recUU03TC6NipdQ0H"
+    ],
+    "Briefing Title": "Coming Soon — 3M",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 80,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recijJh6Kagc3XHOF",
+   "createdTime": "2026-06-20T03:40:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recJmUoS3CuH6KvR0"
+    ],
+    "Briefing Title": "Coming Soon — Nano-Join",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 302,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recipoqtnyodVABkX",
+   "createdTime": "2026-06-20T03:36:49.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "reccmCKuseXKSWibb"
+    ],
+    "Briefing Title": "Coming Soon — LiquidStack",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 276,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "reciusFIiBs7F819a",
+   "createdTime": "2026-06-20T03:42:15.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recvznI9FgHymFH7A"
+    ],
+    "Briefing Title": "Coming Soon — Soluna",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 374,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recizqeHZDJy80N52",
+   "createdTime": "2026-06-20T03:43:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recFjqsQ5K9mp01Mc"
+    ],
+    "Briefing Title": "Coming Soon — Trane Technologies",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 407,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recj0DoNqU875iwt7",
+   "createdTime": "2026-06-20T03:33:45.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recc0SwcEp0Pd4hhe"
+    ],
+    "Briefing Title": "Coming Soon — Crusoe Energy",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 169,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recjEQ116to7EbTI1",
+   "createdTime": "2026-06-20T03:36:49.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recqD4FA2kU2XYysZ"
+    ],
+    "Briefing Title": "Coming Soon — IXAfrica",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 262,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recjSWlkBzrd44hOn",
+   "createdTime": "2026-06-20T03:00:23.000Z",
+   "fields": {
+    "Gamma URL": "https://gamma.app/docs/The-Data-Center-Market-Capital-Infrastructure-and-the-AI-Supercyc-btlngbc2j1mozgq",
+    "IDF Domain": [
+     "rec1pzHDIM8yjnv7j"
+    ],
+    "IDF Theme": [
+     "recf0C145QVp5blMN"
+    ],
+    "Gamma ID": "g_25l9pron28biptq",
+    "Briefing Title": "The Data Center Market: Capital, Infrastructure, and the AI Supercycle",
+    "Canonical flag": "Yes",
+    "Briefing Id": 20,
+    "Status": "Draft",
+    "Briefing description": "Market overview of capital, infrastructure, and the AI supercycle driving data center demand."
+   }
+  },
+  {
+   "id": "recjUBYMA1zZPZTch",
+   "createdTime": "2026-06-20T03:22:09.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — State-Sponsored & Advanced Persistent Threats",
+    "IDF Subdomain": [
+     "recv5FqNuGTW2yQ12"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 77,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "recjVf5P96mjPeaog",
+   "createdTime": "2026-06-20T03:43:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recYq5MUyiRgBWriu"
+    ],
+    "Briefing Title": "Coming Soon — Tavily (Nebius)",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 392,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recjWhlCQtwTwnsL9",
+   "createdTime": "2026-06-20T03:43:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recKScAzzfuYKnHUT"
+    ],
+    "Briefing Title": "Coming Soon — Talen Energy / Susquehanna Nuclear",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 391,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recjheWExVm583TI8",
+   "createdTime": "2026-06-20T03:33:45.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recUccdKxyeCWowDp"
+    ],
+    "Briefing Title": "Coming Soon — CENTRA (Data Centers)",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 145,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recjvAIcvjWv2JvD0",
+   "createdTime": "2026-06-20T03:36:49.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recOuhAHCjdKXtY1q"
+    ],
+    "Briefing Title": "Coming Soon — Intersect Power",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 258,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "reck5GB1qeplKR890",
+   "createdTime": "2026-06-20T03:32:09.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recgt4Bj75a13NUBk"
+    ],
+    "Briefing Title": "Coming Soon — Aligned Energy",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 101,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "reckBeTDj1dMEOY7k",
+   "createdTime": "2026-06-20T03:32:09.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recUNSzOTOFEWL0Al"
+    ],
+    "Briefing Title": "Coming Soon — AECOM",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 92,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "reckC1w9c4c0WICVW",
+   "createdTime": "2026-06-20T03:32:09.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec1hQTi4X5idTsWR"
+    ],
+    "Briefing Title": "Coming Soon — Bain Capital",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 123,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "reckR7U63t3pxe8i8",
+   "createdTime": "2026-06-20T03:40:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recbUOq6BqLTHuoaa"
+    ],
+    "Briefing Title": "Coming Soon — Meta",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 288,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "reckUnqoHhldTHLhm",
+   "createdTime": "2026-06-20T03:43:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "reciisF7qsmh3wH5z"
+    ],
+    "Briefing Title": "Coming Soon — VAST Data",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 418,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "reckXHT8d3vgz0Ocu",
+   "createdTime": "2026-06-20T03:35:17.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recvHppRtbbApgki2"
+    ],
+    "Briefing Title": "Coming Soon — Gabia",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 222,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "reckXoArN7IqphSAg",
+   "createdTime": "2026-06-20T03:36:49.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recliAaQnWEDv6kzQ"
+    ],
+    "Briefing Title": "Coming Soon — Henkel",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 241,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "reckqdl1brW6hZwOE",
+   "createdTime": "2026-06-20T03:40:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recdEeYexBzimGu3o"
+    ],
+    "Briefing Title": "Coming Soon — NTT / RagingWire Data Centers",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 315,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recl5iSKA5dkfYOKZ",
+   "createdTime": "2026-06-20T03:43:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "reccTbR8tu4YfuEiF"
+    ],
+    "Briefing Title": "Coming Soon — Virtual Power Systems",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 421,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recl6ZfMEqhCf77b9",
+   "createdTime": "2026-06-20T03:40:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec7E8Bez3tp6f7VX"
+    ],
+    "Briefing Title": "Coming Soon — maincubes B.V.",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 282,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recld6HsQkfYrOSoW",
+   "createdTime": "2026-06-20T03:36:49.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recgU6U0CUxHSNyeA"
+    ],
+    "Briefing Title": "Coming Soon — Iceotope",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 251,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recljJcINLpi7v6Uw",
+   "createdTime": "2026-06-20T03:43:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recEmEwD21cz4TGPo"
+    ],
+    "Briefing Title": "Coming Soon — T-Systems",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 388,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "reclmrxqOMM3S7vNE",
+   "createdTime": "2026-06-20T03:40:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recSIagy7EXbL3NZ3"
+    ],
+    "Briefing Title": "Coming Soon — Motivair (by Schneider Electric)",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 297,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "reclvQEMZ7kKDML15",
+   "createdTime": "2026-06-20T03:36:49.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recfsA5SBHUC9McKR"
+    ],
+    "Briefing Title": "Coming Soon — Juniper Networks (HPE)",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 266,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "reclwIFXW43GGXhar",
+   "createdTime": "2026-06-20T03:33:45.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recYFHVUSHIymlgrO"
+    ],
+    "Briefing Title": "Coming Soon — Crypt-ON (Singapore / SEA)",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 170,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recm43jPjss7DVvVp",
+   "createdTime": "2026-06-20T03:33:45.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "reczcQEPmwpfgTa8z"
+    ],
+    "Briefing Title": "Coming Soon — Daou Technology",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 174,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recm4hfeRImhfx3MZ",
+   "createdTime": "2026-06-20T03:36:49.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recNMzGPeQrO4vaQc"
+    ],
+    "Briefing Title": "Coming Soon — Google / Alphabet",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 232,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recmQEXqSnsiiZYyP",
+   "createdTime": "2026-06-20T03:22:09.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — Climate & Parametric Risk Products",
+    "IDF Subdomain": [
+     "recb7nHxwqLD2k2WH"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 51,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "recmZQmhkGN31zPOO",
+   "createdTime": "2026-06-20T03:44:11.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recSDZlx3q6fxRgPj"
+    ],
+    "Briefing Title": "Coming Soon — Yahoo! Japan",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 433,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recmfTReF5RaWJYdW",
+   "createdTime": "2026-06-20T03:35:17.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rechQWDXzqefvqllf"
+    ],
+    "Briefing Title": "Coming Soon — Duke Energy",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 195,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recmhaFTnMkjEa45K",
+   "createdTime": "2026-06-20T03:35:17.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recdXj8G9JIRIB9UP"
+    ],
+    "Briefing Title": "Coming Soon — ERMCO",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 212,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recmhvRCALT0Tk9KP",
+   "createdTime": "2026-06-20T03:32:09.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recPT6kK36RpUDA4s"
+    ],
+    "Briefing Title": "Coming Soon — AEP Ohio",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 93,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recmpgo5EeFREVHxR",
+   "createdTime": "2026-06-20T03:43:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recz7YGsOmPd4RoWv"
+    ],
+    "Briefing Title": "Coming Soon — Submer",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 383,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recmtcGXZdnAe7mu7",
+   "createdTime": "2026-06-20T03:40:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recAMNlmP41uDedPj"
+    ],
+    "Briefing Title": "Coming Soon — Modine Manufacturing (Airedale)",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 294,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recmvsjRjctaODxDg",
+   "createdTime": "2026-06-20T03:35:17.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recTBzeJtmUc42TGW"
+    ],
+    "Briefing Title": "Coming Soon — EkkoSense",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 202,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recmy4Ps4nZ9rvbBJ",
+   "createdTime": "2026-06-20T03:35:17.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recFy7RovgZzSscrL"
+    ],
+    "Briefing Title": "Coming Soon — DXC Technology",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 196,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recnC0hkd8mF8qU4A",
+   "createdTime": "2026-06-20T03:42:15.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recIg5TFC4I4JJe3V"
+    ],
+    "Briefing Title": "Coming Soon — SenseTime",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 365,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recnLzppCwtmdoU3g",
+   "createdTime": "2026-06-20T03:42:15.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recS5adNulGai2wQa"
+    ],
+    "Briefing Title": "Coming Soon — run:ai (NVIDIA)",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 359,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recnRYFCZbDTEVj7X",
+   "createdTime": "2026-06-20T03:40:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec3VZj9mOAYb5zQO"
+    ],
+    "Briefing Title": "Coming Soon — Mainova WebHouse",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 283,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recnUZTsBLVPCwWdO",
+   "createdTime": "2026-06-20T03:40:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec8ExPGbWkaKFVkr"
+    ],
+    "Briefing Title": "Coming Soon — Mitsubishi Electric",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 293,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recnUu73JHZxi2FCd",
+   "createdTime": "2026-06-20T03:40:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recHTWmnIigqfS3gm"
+    ],
+    "Briefing Title": "Coming Soon — Microsoft Azure",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 290,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recnV5TZHhXZBlgw8",
+   "createdTime": "2026-06-20T03:43:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recSzJRTWGnb30QY2"
+    ],
+    "Briefing Title": "Coming Soon — TPG",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 405,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recng4jSpwcNisYgP",
+   "createdTime": "2026-06-20T03:32:09.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec4IWhNnK62Fti1K"
+    ],
+    "Briefing Title": "Coming Soon — Baidu",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 121,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recnjDf7jRNPCL1WL",
+   "createdTime": "2026-06-20T03:33:45.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recupo0HATGhFmwHC"
+    ],
+    "Briefing Title": "Coming Soon — Cologix",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 159,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recnkRlll9vRvkJ8s",
+   "createdTime": "2026-06-20T03:22:09.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — Cyber Insurance & Tech E&O",
+    "IDF Subdomain": [
+     "recyFp156U2ftCq3F"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 79,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "recoIiIYmd45jIN71",
+   "createdTime": "2026-06-20T03:40:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recppdFbdFvQ6NQOD"
+    ],
+    "Briefing Title": "Coming Soon — Macquarie Data Centres",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 281,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recoL6Wy6E21F8ssJ",
+   "createdTime": "2026-06-20T03:33:45.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recRBSOOy6GvWkdsL"
+    ],
+    "Briefing Title": "Coming Soon — Constellation Energy",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 161,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recog7VPaV3trIwvl",
+   "createdTime": "2026-06-20T03:42:15.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "reca4SYanvfUFWn8W"
+    ],
+    "Briefing Title": "Coming Soon — Schneider Electric IT (UK/EMEA)",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 364,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recopoCiTn39LsloY",
+   "createdTime": "2026-06-20T03:36:49.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recRYdzWDrWh3zdxW"
+    ],
+    "Briefing Title": "Coming Soon — Lefdal Mine Datacenter",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 271,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recowzfyejfKb9NzY",
+   "createdTime": "2026-06-20T03:22:09.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — Building Management Systems & HVAC Control",
+    "IDF Subdomain": [
+     "recsuZ0o8UcugfFFo"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 72,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "recp49u8lTpRt7ywK",
+   "createdTime": "2026-06-20T03:33:45.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rechWgqYNq9HxIRdF"
+    ],
+    "Briefing Title": "Coming Soon — Carrier Global",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 141,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recpT3oJDMxz7ebZa",
+   "createdTime": "2026-06-20T03:33:45.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recBo41MaMdkUaPZE"
+    ],
+    "Briefing Title": "Coming Soon — Castrol",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 142,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recpWMQ8jtFXTvzRv",
+   "createdTime": "2026-06-20T03:33:45.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recBNgk01ZPMFqX5p"
+    ],
+    "Briefing Title": "Coming Soon — CoreSite Realty Corporation",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 164,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recpZeCjz7Eq0uqSf",
+   "createdTime": "2026-06-20T03:32:09.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recDiOggdU2iUw796"
+    ],
+    "Briefing Title": "Coming Soon — 11:11 Systems",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 82,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recpe7OiuE2iQAB0D",
+   "createdTime": "2026-06-20T03:33:45.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec6t3L7uxFOzqlxU"
+    ],
+    "Briefing Title": "Coming Soon — Bridge Data Centres (BDC)",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 131,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recpm9XzmWC5mwefS",
+   "createdTime": "2026-06-20T03:22:09.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — Long-Lead Equipment & Supply Chain",
+    "IDF Subdomain": [
+     "recbbQSHdkqg2dwsR"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 52,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "recpqJUKK3wJEMs9r",
+   "createdTime": "2026-06-20T03:32:09.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recCtA7njwxeY1eHN"
+    ],
+    "Briefing Title": "Coming Soon — 5C Group",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 81,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recpzlEmaGsC96siM",
+   "createdTime": "2026-06-20T03:43:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recy3Irfz1RHeqjS2"
+    ],
+    "Briefing Title": "Coming Soon — Tyson (cooling)",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 414,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recqBYi9EVGk5tNYm",
+   "createdTime": "2026-06-20T03:32:09.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recHwmdiOZCqgDL00"
+    ],
+    "Briefing Title": "Coming Soon — Atman",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 118,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recqZZDb8rCwlir1t",
+   "createdTime": "2026-06-20T03:40:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recVBCEsBGSDK52tc"
+    ],
+    "Briefing Title": "Coming Soon — OpenAI",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 327,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recqa7wH2pfMjKEAO",
+   "createdTime": "2026-06-20T03:36:49.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recneDRHqzSLqDqpL"
+    ],
+    "Briefing Title": "Coming Soon — Lenovo",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 272,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recqaqp9icZPlYY4r",
+   "createdTime": "2026-06-20T03:32:09.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recLAM3I6O3mIm3A6"
+    ],
+    "Briefing Title": "Coming Soon — BlackChamber Group",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 127,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recqbb8AG8qu7fykv",
+   "createdTime": "2026-06-20T03:42:15.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec2h3drjCYUyHWuK"
+    ],
+    "Briefing Title": "Coming Soon — PowerHouse Data Centers",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 340,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recqm16zC3SHKpU4P",
+   "createdTime": "2026-06-20T03:35:17.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recc6PNY48DFrvNEz"
+    ],
+    "Briefing Title": "Coming Soon — Dominion Energy",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 191,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recqzQFpkIJ81a7I0",
+   "createdTime": "2026-06-20T03:42:15.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recSEtoabXG239HBf"
+    ],
+    "Briefing Title": "Coming Soon — Saudi Data & AI Authority (SDAIA)",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 362,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recrCIQNAvdoDR9T4",
+   "createdTime": "2026-06-20T03:33:45.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recaRKQ0OuiAYLZHp"
+    ],
+    "Briefing Title": "Coming Soon — DC Blox",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 179,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recrMxsTBqM8JN47s",
+   "createdTime": "2026-06-20T03:22:09.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — Competing Silicon & Alternative Accelerators",
+    "IDF Subdomain": [
+     "recfM2SKYin3k2KG3"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 55,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "recrRZTysqqXATMsE",
+   "createdTime": "2026-06-20T03:33:45.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recKhKHpzFz5PyVBm"
+    ],
+    "Briefing Title": "Coming Soon — Chunghwa Post",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 149,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recrgnPkToTIXcHzT",
+   "createdTime": "2026-06-20T03:22:09.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — APAC / LATAM / MENA Media Coverage",
+    "IDF Subdomain": [
+     "recePGUqFMiYvmypw"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 53,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "recrnHFZfzyFQbNjn",
+   "createdTime": "2026-06-20T03:35:17.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recRuFSCrcIX1bAG9"
+    ],
+    "Briefing Title": "Coming Soon — G42 Cloud",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 221,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recrzcuwud9bREfbp",
+   "createdTime": "2026-06-20T03:40:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recq8pWwUGwo7hQmm"
+    ],
+    "Briefing Title": "Coming Soon — Macquarie Asset Management",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 280,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recs4zEahgG2SeNOn",
+   "createdTime": "2026-06-20T03:42:15.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "reckXJ8j3COvB9SLH"
+    ],
+    "Briefing Title": "Coming Soon — Portus Data Centers",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 338,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recs6kDXP8EmCApsn",
+   "createdTime": "2026-06-20T03:33:45.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recQqT0KDCFQOcgSW"
+    ],
+    "Briefing Title": "Coming Soon — Blue Owl / Beale Infrastructure",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 130,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recsA0fcaBUOjwfO1",
+   "createdTime": "2026-06-20T03:43:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recZKXoKMbdnONMPy"
+    ],
+    "Briefing Title": "Coming Soon — Varentec",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 417,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recsNlI3q73NwKX7B",
+   "createdTime": "2026-06-20T03:33:45.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recyvQbB90Qxjq53A"
+    ],
+    "Briefing Title": "Coming Soon — Customized Energy Solutions",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 171,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recsSmMe3WvfS6pgK",
+   "createdTime": "2026-06-20T03:22:09.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — Data Center Property & Casualty Insurance",
+    "IDF Subdomain": [
+     "recexci3JhqPm8NEn"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 54,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "recsZWGLpRwSs7y0D",
+   "createdTime": "2026-06-20T03:32:09.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recbwo5h1uFAOhRfj"
+    ],
+    "Briefing Title": "Coming Soon — Arista Networks",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 113,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recsflDk76XHqJUbu",
+   "createdTime": "2026-06-20T03:36:49.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recQ5ZDHFCGGToA2L"
+    ],
+    "Briefing Title": "Coming Soon — Lambda Labs",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 270,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recsuZzLihRq77tMd",
+   "createdTime": "2026-06-20T03:40:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recnnWT7liS9uPyiD"
+    ],
+    "Briefing Title": "Coming Soon — OneAs1a",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 323,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rectEw6Oz5qAMBRW0",
+   "createdTime": "2026-06-20T03:22:09.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — Facility DCIM & Digital Twin",
+    "IDF Subdomain": [
+     "reclHpYuvqMCbeMvp"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 66,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "rectFi8dC0OHEgwj6",
+   "createdTime": "2026-06-20T03:40:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recQFEpZiI4R1wsLN"
+    ],
+    "Briefing Title": "Coming Soon — Neurok Thermocon Inc",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 307,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rectHT3YMuVXiw0XG",
+   "createdTime": "2026-06-20T03:40:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recko2VibYuo2IA8W"
+    ],
+    "Briefing Title": "Coming Soon — Oklo Inc",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 321,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rectJX26FFBZez4zc",
+   "createdTime": "2026-06-20T03:43:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recroHkVRkWK3jrzt"
+    ],
+    "Briefing Title": "Coming Soon — Vodafone",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 423,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rectJdJzWUC11Xu0D",
+   "createdTime": "2026-06-20T03:35:17.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recYI2jZxJikccL2Z"
+    ],
+    "Briefing Title": "Coming Soon — FPT Telecom",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 220,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rectX03Z0JjHdfXu2",
+   "createdTime": "2026-06-20T03:44:11.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recqbyZ4dGhjmLGy4"
+    ],
+    "Briefing Title": "Coming Soon — X-energy",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 431,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "rectgjgxQgYRsaaQU",
+   "createdTime": "2026-06-20T03:40:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec6yjHpDrXcNuI0w"
+    ],
+    "Briefing Title": "Coming Soon — Mapletree Industrial",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 284,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recttR3Rfy1TyzsUt",
+   "createdTime": "2026-06-20T03:42:15.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recL18U0hqyGZH9I1"
+    ],
+    "Briefing Title": "Coming Soon — PAIX Data Centres",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 333,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recuEfTcP391ZqEeJ",
+   "createdTime": "2026-06-20T03:33:45.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recQ9XfqEfJ40Z29V"
+    ],
+    "Briefing Title": "Coming Soon — BW Digital",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 135,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recuEolsCXa3BOu86",
+   "createdTime": "2026-06-20T03:40:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recQrVRAsWF3vHxlZ"
+    ],
+    "Briefing Title": "Coming Soon — Novva",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 313,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recuLmq0x1bl2BQ2w",
+   "createdTime": "2026-06-20T03:32:09.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recvKSHKjXb97jm9y"
+    ],
+    "Briefing Title": "Coming Soon — ABB",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 85,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recuQdJD8KJaPIVoS",
+   "createdTime": "2026-06-20T03:40:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recnBIp2xsl9bit8p"
+    ],
+    "Briefing Title": "Coming Soon — Motivair Corporation",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 298,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recuSErkL1eC4o89Z",
+   "createdTime": "2026-06-20T03:40:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec8xNIyt5STVh6NW"
+    ],
+    "Briefing Title": "Coming Soon — Nabiax",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 301,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recuTA3xrAdba62p4",
+   "createdTime": "2026-06-20T03:33:45.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recv36AWPuQU8SCiN"
+    ],
+    "Briefing Title": "Coming Soon — CISA",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 152,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recuwU15KF6HCRCAV",
+   "createdTime": "2026-06-20T03:35:17.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recfIlvfrxBXjA8bn"
+    ],
+    "Briefing Title": "Coming Soon — Evoque Data Center Solutions",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 214,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recuyFtQu8Dud7Jes",
+   "createdTime": "2026-06-20T02:59:59.000Z",
+   "fields": {
+    "Gamma URL": "https://gamma.app/docs/Williams-vs-Enbridge-Two-Postures-into-the-PJM-Bottleneck-kdroggxuq74ar9h",
+    "IDF Domain": [
+     "recPL4NoPiUCYE8Ff",
+     "recsMNpEaFo6oQE6H"
+    ],
+    "IDF Theme": [
+     "recX5ELgfBhmOcqfv"
+    ],
+    "Tracking Companies": [
+     "recCxIdv9w86SAWxq",
+     "rec22lTM5lpQa6Kpy"
+    ],
+    "Gamma ID": "g_nhi0od7p2482uwa",
+    "Briefing Title": "Williams vs. Enbridge — Two Postures into the PJM Bottleneck",
+    "Canonical flag": "Yes",
+    "Briefing Id": 3,
+    "Status": "Draft",
+    "Briefing description": "Comparative thesis on two midstream gas players' strategies into the PJM large-load power bottleneck."
+   }
+  },
+  {
+   "id": "recvKcM7UwfbPXBf1",
+   "createdTime": "2026-06-20T03:35:17.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recrZL5HruewSv03F"
+    ],
+    "Briefing Title": "Coming Soon — Expedient",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 216,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recvSd7aJMVUaQSCY",
+   "createdTime": "2026-06-20T03:35:17.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recs45SwaKGvhbZuO"
+    ],
+    "Briefing Title": "Coming Soon — DG Matrix",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 185,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recvZxe4Jtl0dSCnq",
+   "createdTime": "2026-06-20T03:33:45.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recKEwoluNwXeCJyF"
+    ],
+    "Briefing Title": "Coming Soon — Chemours",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 146,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recvh15UdDjyF86fT",
+   "createdTime": "2026-06-20T03:40:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recjB8SLXc89Jo9wu"
+    ],
+    "Briefing Title": "Coming Soon — MISO",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 291,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recvhHizrXlqCI9hs",
+   "createdTime": "2026-06-20T03:21:11.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — Direct-to-Chip Liquid Cooling (DLC)",
+    "IDF Subdomain": [
+     "recYJTK2va2fY1hRG"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 49,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "recvlJ2vEgx04Ho4c",
+   "createdTime": "2026-06-20T03:43:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec3fkzTY1J5UcaAs"
+    ],
+    "Briefing Title": "Coming Soon — Vantage Data Centers",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 416,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recvmvroRi5Meylsd",
+   "createdTime": "2026-06-20T03:21:11.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — Carbon Accounting & Scope 1-3 Reporting",
+    "IDF Subdomain": [
+     "recLOGsvfpQV6jFF5"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 38,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "recvnBsojIiFJUeaT",
+   "createdTime": "2026-06-20T03:42:15.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec2YVVgqDyzmb2J5"
+    ],
+    "Briefing Title": "Coming Soon — Opus Interactive",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 330,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recvpVowN7fSViPQQ",
+   "createdTime": "2026-06-20T03:35:17.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recknBsFVKFj5R9EO"
+    ],
+    "Briefing Title": "Coming Soon — du",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 194,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recvpmFlKGsf032cb",
+   "createdTime": "2026-06-20T03:00:23.000Z",
+   "fields": {
+    "Gamma URL": "https://gamma.app/docs/McKinseys-52-Trillion-Forecast-Where-AI-Infrastructure-Capital-Wi-dm1muwrj7dkk05b",
+    "IDF Domain": [
+     "rec1pzHDIM8yjnv7j",
+     "rec9IujWizpKPMpuI"
+    ],
+    "IDF Theme": [
+     "recf0C145QVp5blMN"
+    ],
+    "Gamma ID": "g_2sg7hbswljkdern",
+    "Briefing Title": "McKinsey's $5.2 Trillion Forecast — Where AI Infrastructure Capital Will Flow by 2030",
+    "Canonical flag": "Yes",
+    "Briefing Id": 19,
+    "Status": "Draft",
+    "Briefing description": "Breakdown of McKinsey's $5.2T forecast for AI infrastructure capital flows to 2030."
+   }
+  },
+  {
+   "id": "recvqOZCrtJWuz6RC",
+   "createdTime": "2026-06-20T03:22:09.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — UPS, Storage & Power Conditioning",
+    "IDF Subdomain": [
+     "recuZgX0nwxGt6p0f"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 76,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "recvzYcaYPpCKbO2h",
+   "createdTime": "2026-06-20T03:40:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recNncJYZVJapR4wR"
+    ],
+    "Briefing Title": "Coming Soon — OpCore",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 325,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recw5Vw1VZoooCuio",
+   "createdTime": "2026-06-20T03:43:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec7NlG3aX9mdE4Ww"
+    ],
+    "Briefing Title": "Coming Soon — Virtus Data Centers",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 422,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recwDAxUZWYqex0qF",
+   "createdTime": "2026-06-20T03:33:45.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec9vOFPESPplsFTV"
+    ],
+    "Briefing Title": "Coming Soon — Cohesity",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 157,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recwU34mNcQql9jhr",
+   "createdTime": "2026-06-20T03:40:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "reciIlZaqgXsCWgjs"
+    ],
+    "Briefing Title": "Coming Soon — NeoFan",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 305,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recwWQmX3uveq1rMR",
+   "createdTime": "2026-06-20T03:43:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "receM1tHyecErMib9"
+    ],
+    "Briefing Title": "Coming Soon — Stellium Datacenters",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 381,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recwX7Hv6CbQv9flk",
+   "createdTime": "2026-06-20T03:32:09.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recS6kAPc46SStl1a"
+    ],
+    "Briefing Title": "Coming Soon — Ares Management / Ada Infrastructure",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 111,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recwXvrGS8Bzo4mGH",
+   "createdTime": "2026-06-20T03:42:15.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recT4XflnwV9um2mX"
+    ],
+    "Briefing Title": "Coming Soon — Stargate (OpenAI/SoftBank/Oracle)",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 378,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recwh62mK2zYM8Lpm",
+   "createdTime": "2026-06-20T03:40:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recnpbRHEEL9qJhUq"
+    ],
+    "Briefing Title": "Coming Soon — NetApp",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 306,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recwxWNoy1w8qObK2",
+   "createdTime": "2026-06-20T03:35:17.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec7cGTP43LBCeWDG"
+    ],
+    "Briefing Title": "Coming Soon — Element Critical",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 203,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recx0UTXK6gFSYlXZ",
+   "createdTime": "2026-06-20T03:43:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec2B13ey4R43lH9e"
+    ],
+    "Briefing Title": "Coming Soon — Sumitomo Chemical",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 384,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recx6FeJlWWj1Ezww",
+   "createdTime": "2026-06-20T03:33:45.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec3vF86qiNiObYHw"
+    ],
+    "Briefing Title": "Coming Soon — CPPIB (Canada)",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 166,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recxFiwaYLFgDgpRt",
+   "createdTime": "2026-06-20T03:32:09.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec0mRsWwR8T6cApN"
+    ],
+    "Briefing Title": "Coming Soon — Adgar",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 90,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recxfWsS3egVPdVLv",
+   "createdTime": "2026-06-20T03:40:44.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "receKx4kBjp48EtCL"
+    ],
+    "Briefing Title": "Coming Soon — Olkaria EcoCloud Data Center",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 322,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recxuBPwDPhGdyMrj",
+   "createdTime": "2026-06-20T03:32:09.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recy1uaHmZRpGKeqw"
+    ],
+    "Briefing Title": "Coming Soon — Accelsius",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 86,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recydYAAFADXter7s",
+   "createdTime": "2026-06-20T03:33:45.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec0EOXflB3bwqKeE"
+    ],
+    "Briefing Title": "Coming Soon — CoreWeave",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 165,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recye5UMlj0J4vfBc",
+   "createdTime": "2026-06-20T03:32:09.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recerwhA3Xg4wj3B6"
+    ],
+    "Briefing Title": "Coming Soon — 21st Century Technologies",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 83,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recynBNuprPsFMs00",
+   "createdTime": "2026-06-20T03:35:17.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recnodZLOJEABYz0F"
+    ],
+    "Briefing Title": "Coming Soon — DEEP (Data Center)",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 182,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recyprtbzRu5DIf81",
+   "createdTime": "2026-06-20T03:35:17.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rechq9N4aVM75kLlA"
+    ],
+    "Briefing Title": "Coming Soon — Efficient Power Conversion (EPC)",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 201,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recyzszYVZugqGlm9",
+   "createdTime": "2026-06-20T03:33:45.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec5XlZcot1i7vAkF"
+    ],
+    "Briefing Title": "Coming Soon — Daikin",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 173,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "recz60eCCmKoR6jVf",
+   "createdTime": "2026-06-20T03:42:15.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recItKWuGHBfEdYLs"
+    ],
+    "Briefing Title": "Coming Soon — Schneider Electric",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 363,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "reczAWmbSrY2HQn5X",
+   "createdTime": "2026-06-20T03:33:45.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "reclUBkjVh4m9V4Lv"
+    ],
+    "Briefing Title": "Coming Soon — Crane Data Centers",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 167,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "reczEyep4JnRaBueV",
+   "createdTime": "2026-06-20T03:42:15.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "rec0uWOVvnVh6hNIl"
+    ],
+    "Briefing Title": "Coming Soon — Solvay",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 375,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "reczN3Nl7DuQk7xBD",
+   "createdTime": "2026-06-20T03:22:09.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — Big 5 Capex & Campus Announcements",
+    "IDF Subdomain": [
+     "recfRdthRAYjHN10f"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 56,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "reczQmjcQMbIU9fJR",
+   "createdTime": "2026-06-20T03:35:17.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recKtUJYU9wufOmBq"
+    ],
+    "Briefing Title": "Coming Soon — GIGABYTE Technology",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 228,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "reczgHQY48YnjQNP5",
+   "createdTime": "2026-06-20T03:22:09.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — Cyber Incidents Targeting DC Infrastructure",
+    "IDF Subdomain": [
+     "recl6DEghJyRDyAtA"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 65,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  },
+  {
+   "id": "reczibYlkM4F3exAF",
+   "createdTime": "2026-06-20T03:33:45.000Z",
+   "fields": {
+    "Tracking Companies": [
+     "recEEcx32bGXCO2K8"
+    ],
+    "Briefing Title": "Coming Soon — Broadcom",
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 133,
+    "Status": "Coming Soon",
+    "Briefing description": "Placeholder — briefing forthcoming for this company."
+   }
+  },
+  {
+   "id": "reczo0CQYkTD9gZCc",
+   "createdTime": "2026-06-20T03:21:11.000Z",
+   "fields": {
+    "Briefing Title": "Coming Soon — Software Supply Chain & Vendor Risk",
+    "IDF Subdomain": [
+     "recDAB4nI1VHwYmK0"
+    ],
+    "Canonical flag": "Placeholder",
+    "Briefing Id": 30,
+    "Status": "Draft",
+    "Briefing description": "Placeholder — briefing forthcoming for this sub-domain."
+   }
+  }
+ ]
+}
