@@ -1,0 +1,153 @@
+{
+  "tier": "standard",
+  "slug": "standard-thermal-power-convergence",
+  "kicker": "Sector Briefing",
+  "title": "The Thermal-Power Convergence Play",
+  "byline": "Gilbert (empirical byline, Brand Bible §06)",
+  "prepared": "2026-10-13",
+  "window": ["2026-09-08", "2026-10-12"],
+  "record": {
+    "airtable_record_id": "reccr6TZtcuXnfnXo",
+    "airtable_autonumber": 17,
+    "status": "draft",
+    "tier": "standard",
+    "page_target": "8–10",
+    "sector_id": "D7",
+    "thread_id": null,
+    "theme_tags": ["The Rack Revolution"],
+    "company_id": null,
+    "institution_id": null
+  },
+  "theater": "The Rack Revolution",
+  "sectors": ["Cooling & Water Technology (D7)", "Power Architecture (D2)"],
+  "thesis_lead": "In September and October 2026 the cooling plant and the power train stopped being bought as separate systems. Chillers began running on 800 V DC, power and cooling vendors published joint reference designs, and NVIDIA's DSX Ready qualification became the gate that coolant, CDU and battery suppliers each rushed to pass.",
+  "summary_heading": "Heat and power are now one procurement",
+  "thesis": [
+    "This Briefing rests on thirty sourced items, Faraday Signals and crawled articles, dated between 8 September and 12 October 2026. They describe three changes that point the same way.",
+    "The first is a shared voltage. One guide reports the industry converging on 800 V DC as the reference for power distribution, with NVIDIA, Google and Microsoft advancing it through the Open Compute Project [14]. Trane, working with Eaton and Danfoss, then ran a chiller of more than 3.5 MW directly from an 800 V DC feed, with up to 2% higher efficiency [15]. Trane and Eaton had already published an integrated reference design combining thermal management and power systems [17].",
+    "The second is a shared gate. NVIDIA's DSX Ready qualification now covers liquid cooling systems from Vertiv [1], Vertiv's 2.3 MW CoolChip CDU [2], Shell's direct liquid cooling fluid [5] and LG Energy Solution's battery system [25]. Nvidia separately named Tesla, LG and Hitachi in its first battery storage qualification [26].",
+    "The third is consolidation of capacity and services around both. Vertiv agreed to buy King Environmental Services for liquid-cooling fluid management and commissioning [3] and is adding about 22,000 m² to its Slovakian plant [4]. Eaton agreed to buy COL Group for €810 million to expand medium-voltage capacity in Europe [20], and Flex raised $2 billion for its Axiom spin-off at a $37.5 billion enterprise value [22]."
+  ],
+  "glance": [
+    { "figure": "800 V DC", "text": "Reference voltage the industry is converging on, per one guide; advanced through OCP [14]", "d": "2026-10-06" },
+    { "figure": "> 3.5 MW", "text": "Cooling capacity of Trane's 800 V DC chiller demonstration, up to 2% more efficient [15]", "d": "2026-10-01" },
+    { "figure": "2.3 MW", "text": "Vertiv CoolChip CDU qualified DSX Ready [2]", "d": "2026-09-21" },
+    { "figure": "3,750 L/min", "text": "Maximum flow of Trane's LiquidStack CDU 2.X [7]", "d": "2026-09-28" },
+    { "figure": "€810 M", "text": "Eaton's agreed price for COL Group, a medium-voltage manufacturer [20]", "d": "2026-09-25" },
+    { "figure": "$37.5 B", "text": "Enterprise value of Flex's Axiom spin-off after a $2 billion investment [22]", "d": "2026-10-06" },
+    { "figure": "10.9 B gal", "text": "Google water use after a 34% rise, as reported with IEA electricity data [27]", "d": "2026-09-30" }
+  ],
+  "sections": [
+    {
+      "code": "D7.1 · D7.4",
+      "name": "Direct-to-Chip Cooling & the Coolant Supply Chain",
+      "break": true,
+      "intro": "Liquid cooling vendors spent the period qualifying products against NVIDIA's reference architecture and adding the fluids, services and factories behind them.",
+      "items": [
+        { "d": "2026-10-05", "pub": "DataCenterNews Asia", "head": "Vertiv qualifies its liquid cooling systems", "text": "Vertiv achieved NVIDIA DSX Ready qualification for liquid cooling systems [1]." },
+        { "d": "2026-09-21", "pub": "Vertiv", "head": "A 2.3 MW CDU passes the gate", "text": "Vertiv's 2.3 MW CoolChip coolant distribution unit achieved DSX Ready qualification for AI factory infrastructure [2]." },
+        { "d": "2026-09-24", "pub": "HPCwire", "head": "Vertiv buys fluid-management services", "text": "Vertiv announced the acquisition of King Environmental Services, a European provider of fluid management and commissioning services for liquid-cooled data centers [3]." },
+        { "d": "2026-09-29", "pub": "Cooling Post", "head": "More factory floor in Slovakia", "text": "Vertiv is adding a further 22,000 m² of manufacturing capacity to its existing 56,000 m² power and cooling factory in Slovakia [4]." },
+        { "d": "2026-10-08", "pub": "Data Center Dynamics (sponsored)", "head": "Shell's coolant qualifies", "text": "Shell's direct liquid cooling fluid achieved NVIDIA DSX Ready Coolant qualification [5]." },
+        { "d": "2026-10-01", "pub": "Intelligent Data Centres", "head": "Castrol bundles its thermal business", "text": "Castrol launched Castrol CORE, an end-to-end offer for its data centre thermal management business [6]." },
+        { "d": "2026-09-28", "pub": "Converge Digest", "head": "LiquidStack CDU 2.X", "text": "Trane's LiquidStack released an architecture-agnostic coolant distribution unit supporting up to 3,750 litres per minute, designed for platforms including NVIDIA Vera Rubin [7]." },
+        { "d": "2026-09-28", "pub": "Capacity", "head": "Submer launches Corenix", "text": "Submer Group launched Corenix, a modular data centre infrastructure company citing 500 MW of liquid-cooling deployment experience, with Martin Renkis, formerly of Johnson Controls, as CEO [8]." },
+        { "d": "2026-10-05", "pub": "DataCenter-Insider", "head": "Schneider pairs air and liquid", "text": "Schneider Electric's new coolant distribution unit combines fan-wall air cooling with liquid cooling, at up to 3.5 MW of cooling per unit [9]." },
+        { "d": "2026-10-07", "pub": "Valeo", "head": "An automotive supplier enters the hall", "text": "Valeo said it would present, with OVHcloud, an aluminium heat exchanger delivering a 38% increase in cooling capacity at the OCP Global Summit [10]." }
+      ]
+    },
+    {
+      "code": "D2.1 · D2.4",
+      "name": "800 V DC Distribution Reaches the Cooling Plant",
+      "intro": "The move to high-voltage DC began at the rack. In this window it reached the mechanical plant.",
+      "items": [
+        { "d": "2026-10-06", "pub": "Inside Deep Tech", "head": "Leaving 48 volts behind", "text": "As of mid-2026, the guide reports, the industry is converging on 800 V DC as the reference voltage for power distribution, with NVIDIA, Google and Microsoft jointly advancing the architecture through the Open Compute Project [14]." },
+        { "d": "2026-10-01", "pub": "Converge Digest · HPCwire", "head": "A chiller on 800 V DC", "text": "Trane Technologies, with Eaton and Danfoss, demonstrated a chiller operating directly from an 800 V DC feed, delivering more than 3.5 MW of cooling and up to 2% higher efficiency [15]." },
+        { "d": "2026-09-18", "pub": "Data Center Dynamics", "head": "What 800 V DC means for cooling", "text": "Schneider Electric's Mike Donahue discussed 800 V DC and its implications for data center cooling as AI workloads raise rack power density [16]." },
+        { "d": "2026-09-15", "pub": "ITwiz", "head": "One reference design for heat and power", "text": "Trane Technologies and Eaton developed an integrated reference design for high-density data centers that combines thermal management and power systems [17]." },
+        { "d": "2026-10-07", "pub": "Schneider Electric", "head": "Densities of 200 to 300 kW", "text": "Schneider Electric writes that as rack densities rise to 200–300 kW and beyond, cooling capacity has become a critical requirement [11]." }
+      ]
+    },
+    {
+      "code": "D2.10 · D2.3",
+      "name": "Power Conversion, Switchgear & Storage",
+      "break": true,
+      "intro": "Behind the new voltage sits a supply chain of semiconductors, transformers and switchgear. The period brought reference designs, acquisitions and factory expansions across it.",
+      "items": [
+        { "d": "2026-10-05", "pub": "Converge Digest", "head": "Direct 800 V to 6 V conversion", "text": "Navitas Semiconductor and Microchip unveiled a 20 kW reference design for direct 800 V to 6 V DC conversion using GaN devices, targeting 96% peak efficiency and 2,100 W/in³ [18]." },
+        { "d": "2026-10-05", "pub": "Converge Digest", "head": "Infineon completes C2i", "text": "Infineon completed its acquisition of C2i Semiconductors, a Bengaluru company specialising in digital power management and multiphase controllers for AI data centers [19]." },
+        { "d": "2026-09-25", "pub": "Converge Digest", "head": "Eaton buys medium-voltage capacity", "text": "Eaton agreed to acquire Italy-based COL Group for €810 million to strengthen its medium-voltage capabilities in Europe [20]." },
+        { "d": "2026-09-28", "pub": "Converge Digest", "head": "Software-defined switchgear", "text": "Schneider Electric is extending software-defined architecture into the medium-voltage layer of AI data centers with a standardized switchgear platform [21]." },
+        { "d": "2026-10-06", "pub": "Converge Digest", "head": "Flex values Axiom at $37.5 billion", "text": "Flex secured a $2.0 billion convertible preferred investment in Axiom Solutions International from General Catalyst, Koch Equity Development and co-investors, valuing the AI infrastructure spin-off at $37.5 billion enterprise value [22]." },
+        { "d": "2026-09-08", "pub": "TechEdge AI", "head": "Hyosung expands in Memphis", "text": "Hyosung is investing $300 million in Memphis transformer manufacturing, with capacity expansion of more than 50% by 2028 [23]." },
+        { "d": "2026-10-10", "pub": "Data Center Dynamics (sponsored)", "head": "Generator to chip", "text": "Wärtsilä, Schneider Electric and Stanley Consultants launched a coordinated approach integrating onsite generation, electrical infrastructure and engineering [24]." },
+        { "d": "2026-09-22", "pub": "Saur Energy", "head": "LG's battery system qualifies", "text": "LG Energy Solution's 2.5 MW / 5.1 MWh battery energy storage system achieved NVIDIA DSX Ready qualification [25]." },
+        { "d": "2026-09-22", "pub": "ESS News", "head": "Three battery makers named", "text": "Nvidia launched a battery storage qualification program for AI data centers, initially naming Tesla, LG and Hitachi [26]." }
+      ]
+    },
+    {
+      "code": "D7.3 · D20.2",
+      "name": "Water, Siting & the Control Layer",
+      "intro": "The thermal choice now reaches beyond the hall, into water budgets, local approvals and the software that runs both systems together.",
+      "items": [
+        { "d": "2026-09-30", "pub": "Market Intelligence Tools", "head": "Electricity and water, by the numbers", "text": "Citing the IEA, the report puts global data center electricity use at 485 TWh in 2025, up 17%, and Google's water use up 34% to 10.9 billion gallons [27]." },
+        { "d": "2026-10-08", "pub": "Schneider Electric", "head": "Cooling design and community opposition", "text": "A Motivair executive writes that community opposition and local approvals are becoming bigger constraints on capacity, and that cooling design affects water, noise and permitting [12]." },
+        { "d": "2026-09-29", "pub": "Schneider Electric", "head": "Recycled water in India", "text": "The post notes India has around 18% of the world's population but only 4% of its freshwater resources [28]." },
+        { "d": "2026-10-07", "pub": "Electronics Cooling", "head": "Thermal orchestration", "text": "The article argues that workload, flow, pressure, coolant chemistry and facility heat rejection now move together in high-density racks and need an orchestration layer [13]." },
+        { "d": "2026-10-03", "pub": "openPR", "head": "Digital twins for power and cooling", "text": "The report records Vertiv's SmartRun digital twin progress within NVIDIA Omniverse DSX for coordinated power-cooling simulation, and an NTT DATA–Daikin validation of AI that predicts server thermal conditions [29]." },
+        { "d": "2026-10-02", "pub": "PR Newswire", "head": "DCIM market forecast", "text": "MarketsandMarkets projects the DCIM market will reach $8.42 billion by 2031 [30]." }
+      ]
+    }
+  ],
+  "register_intro": "Every party below appears in at least one cited Signal. The role column restates what the source reports; it adds no assessment.",
+  "register": [
+    { "party": "Vertiv", "role": "DSX Ready liquid cooling and 2.3 MW CDU; King Environmental acquisition; Slovakia expansion; SmartRun digital twin", "cites": [1, 2, 3, 4, 29] },
+    { "party": "Trane Technologies (LiquidStack)", "role": "800 V DC chiller with Eaton and Danfoss; reference design with Eaton; CDU 2.X", "cites": [7, 15, 17] },
+    { "party": "Eaton", "role": "Partner on the 800 V DC chiller and the Trane reference design; COL Group acquisition", "cites": [15, 17, 20] },
+    { "party": "Schneider Electric (Motivair)", "role": "Hybrid air-liquid CDU; software-defined MV switchgear; generator-to-chip partnership; 800 V DC commentary", "cites": [9, 11, 16, 21, 24] },
+    { "party": "NVIDIA", "role": "DSX Ready qualification for cooling, coolant and batteries; battery qualification program", "cites": [1, 2, 5, 25, 26] },
+    { "party": "Shell · Castrol", "role": "Coolant qualification; integrated thermal management offer", "cites": [5, 6] },
+    { "party": "Navitas · Microchip · Infineon", "role": "800 V to 6 V GaN reference design; C2i acquisition", "cites": [18, 19] },
+    { "party": "Flex (Axiom)", "role": "$2 billion investment at $37.5 billion enterprise value", "cites": [22] },
+    { "party": "Hyosung", "role": "$300 million transformer manufacturing investment in Memphis", "cites": [23] },
+    { "party": "Submer (Corenix) · Valeo", "role": "Modular platform launch; aluminium heat exchanger", "cites": [8, 10] }
+  ],
+  "take": "The cited record shows vendors from opposite sides of the hall entering each other's line of business: a chiller maker running on the power vendor's DC bus [15], a power vendor shipping coolant distribution units [9], and an integrated reference design from both [17]. NVIDIA's qualification sits above all of them [1, 2, 5, 25]. Read together, the evidence suggests buyers will specify one heat-and-power system against NVIDIA's reference architecture, and that a vendor offering only one half will compete for the subcontract rather than the contract.",
+  "method": [
+    "Source rule: every factual sentence carries a numbered citation to a Faraday Signal (Supabase public.signals) or crawled artifact (public.artifacts); each records the publisher URL below. Sentences restate the recorded framing or summary, using only complete clauses where the record was truncated. Nothing comes from the retired Gamma deck or from model memory.",
+    "Selection: Signals and artifacts tagged D7.1–D7.4, D2.1, D2.3, D2.4 and D2.10, dated 8 Sep–12 Oct 2026, filtered for cooling and power-conversion terms, de-duplicated, Google News redirects excluded, then curated by hand. Items mis-tagged to these Threads (chip smuggling, optics, storage) were dropped. Vendor blogs are cited as the vendor's own statement.",
+    "Limits: primary articles were not re-fetched for this sample. Faraday's Take is analysis of the cited items and adds no facts. Status: draft, not signed off (Brand Bible §07)."
+  ],
+  "sources": [
+    { "n": 1, "pub": "DataCenterNews Asia", "d": "2026-10-05", "title": "Vertiv wins NVIDIA DSX Ready cooling qualification", "url": "https://datacenternews.asia/story/vertiv-wins-nvidia-dsx-ready-cooling-qualification", "ref": "signal cee2fd57" },
+    { "n": 2, "pub": "Vertiv", "d": "2026-09-21", "title": "Vertiv Coolant Distribution Unit qualified as NVIDIA DSX ready for AI factory infrastructure", "url": "https://www.vertiv.com/en-us/about/news-and-events/corporate-news/2026/vertiv-coolant-distribution-unit-qualified-as-nvidia-dsx-ready-for-ai-factory-infrastructure/", "ref": "signal 13948e20" },
+    { "n": 3, "pub": "HPCwire", "d": "2026-09-24", "title": "Vertiv to Buy King Environmental Services to Bolster Data Center Cooling", "url": "https://www.hpcwire.com/off-the-wire/vertiv-to-buy-king-environmental-services-to-bolster-data-center-cooling/", "ref": "signal 98dcb5b6" },
+    { "n": 4, "pub": "Cooling Post", "d": "2026-09-29", "title": "Vertiv to expand Slovakian data centre cooling plant", "url": "https://www.coolingpost.com/world-news/vertiv-to-expand-slovakian-data-centre-cooling-plant/", "ref": "artifact f6fb916e" },
+    { "n": 5, "pub": "Data Center Dynamics (sponsored)", "d": "2026-10-08", "title": "Shell achieves NVIDIA DSX Ready Coolant qualification for direct liquid cooling", "url": "https://www.datacenterdynamics.com/en/product-news/shell-achieves-nvidia-dsx-ready-coolant-qualification-for-direct-liquid-cooling-advancing-high-performance-ai-computing/", "ref": "artifact 54427a89" },
+    { "n": 6, "pub": "Intelligent Data Centres", "d": "2026-10-01", "title": "Castrol launches 'Castrol CORE', an integrated thermal management offer for data centres", "url": "https://www.intelligentdatacentres.com/2026/10/01/castrol-launches-castrol-core-an-integrated-thermal-management-offer-for-data-centres/", "ref": "artifact f1960f46" },
+    { "n": 7, "pub": "Converge Digest", "d": "2026-09-28", "title": "LiquidStack Launches CDU 2.X for NVIDIA Vera Rubin Era Cooling", "url": "https://convergedigest.com/liquidstack-cdu-2x-nvidia-vera-rubin-liquid-cooling/", "ref": "signal 8ed5545f" },
+    { "n": 8, "pub": "Capacity", "d": "2026-09-28", "title": "Submer Group launches Corenix with 500MW liquid-cooling track record", "url": "https://capacityglobal.com/news/submer-group-launches-corenix/", "ref": "signal 5fc8b43b" },
+    { "n": 9, "pub": "DataCenter-Insider", "d": "2026-10-05", "title": "Schneider Electric kombiniert Luft- und Flüssigkeitskühlung", "url": "https://www.datacenter-insider.de/schneider-electric-kombiniert-luft-und-fluessigkeitskuehlung-a-9d0465b4b72fd315cf80ed2ef75cad44/", "ref": "artifact 20897171" },
+    { "n": 10, "pub": "Valeo", "d": "2026-10-07", "title": "Valeo Presents Breakthrough Aluminum Cooling Technology for Data Centers at OCP Global Summit 2026", "url": "https://www.valeo.com/en/valeo-presents-breakthrough-aluminum-cooling-technology-for-data-centers-at-ocp-global-summit-2026-and-reaches-significant-durability-milestones/", "ref": "artifact 19afe409" },
+    { "n": 11, "pub": "Schneider Electric", "d": "2026-10-07", "title": "From Cooling capacity to System Intelligence: The critical role of Services in reliable AI Data Centers", "url": "https://blog.se.com/services/2026/10/07/services-and-system-intelligence-for-ai-data-center-reliability-sgm/", "ref": "artifact 8936c524" },
+    { "n": 12, "pub": "Schneider Electric", "d": "2026-10-08", "title": "Data center community opposition: How cooling design affects water, noise, and permitting", "url": "https://blog.se.com/datacenter/2026/10/08/data-center-community-opposition-how-cooling-design-affects-water-noise-and-permitting/", "ref": "artifact cfa94de8" },
+    { "n": 13, "pub": "Electronics Cooling", "d": "2026-10-07", "title": "Thermal Orchestration: The Missing Control Layer for AI Factories", "url": "https://www.electronics-cooling.com/2026/10/thermal-orchestration-the-missing-control-layer-for-ai-factories/", "ref": "artifact 707f3189" },
+    { "n": 14, "pub": "Inside Deep Tech", "d": "2026-10-06", "title": "800 VDC Power Distribution: A Full Guide to How AI Data Centers Leave 48-Volt Behind", "url": "https://www.insidedeeptech.com/800-vdc-power-distribution-ai-data-centers-full-guide/", "ref": "artifact e2975cb1" },
+    { "n": 15, "pub": "Converge Digest · HPCwire", "d": "2026-10-01", "title": "Trane Demonstrates 3.5 MW 800 VDC Chiller", "url": "https://convergedigest.com/trane-800-vdc-chiller-ai-data-centers/ · https://www.hpcwire.com/off-the-wire/trane-technologies-demonstrates-800-volt-direct-current-chiller-for-next-gen-ai-data-centers/", "ref": "artifacts 6e445d08, 1dd9984a" },
+    { "n": 16, "pub": "Data Center Dynamics", "d": "2026-09-18", "title": "DCD Talks: What 800 VDC means for data center cooling with Mike Donahue, Schneider Electric", "url": "https://www.datacenterdynamics.com/en/videos/dcd-talks-what-800-vdc-means-for-data-center-cooling-with-mike-donahue-schneider-electric-global/", "ref": "signal aed67cb0" },
+    { "n": 17, "pub": "ITwiz", "d": "2026-09-15", "title": "Trane Technologies i Eaton integrują zasilanie i chłodzenie dla fabryk AI", "url": "https://itwiz.pl/trane-technologies-i-eaton-integruja-zasilanie-i-chlodzenie-dla-fabryk-ai/", "ref": "signal ee8fb258" },
+    { "n": 18, "pub": "Converge Digest", "d": "2026-10-05", "title": "Navitas and Microchip Unveil 20 kW 800V-to-6V GaN for AI Racks", "url": "https://convergedigest.com/navitas-microchip-800v-6v-gan-ai-power/", "ref": "signal 73a920b8" },
+    { "n": 19, "pub": "Converge Digest", "d": "2026-10-05", "title": "Infineon Completes C2i Acquisition, Adding Digital Power Control", "url": "https://convergedigest.com/infineon-c2i-ai-data-center-power/", "ref": "signal 8fe2557d" },
+    { "n": 20, "pub": "Converge Digest", "d": "2026-09-25", "title": "Eaton to Acquire COL Group for €810M, Expanding European Power Capacity", "url": "https://convergedigest.com/eaton-col-group-810m-data-center-power/", "ref": "signal 5078c659" },
+    { "n": 21, "pub": "Converge Digest", "d": "2026-09-28", "title": "Schneider Brings Software-Defined Control to Voltage Power", "url": "https://convergedigest.com/schneider-software-defined-medium-voltage-equinix-ai-data-centers/", "ref": "artifact ffdea5b6" },
+    { "n": 22, "pub": "Converge Digest", "d": "2026-10-06", "title": "Flex Secures $2B Investment for Axiom at $37.5B Enterprise Value", "url": "https://convergedigest.com/flex-axiom-2b-investment-37-5b-valuation/", "ref": "signal c2689278" },
+    { "n": 23, "pub": "TechEdge AI", "d": "2026-09-08", "title": "Hyosung Targets AI Data Center Power Market with Solid-State Transformers", "url": "https://techedgeai.com/hyosung-targets-ai-data-center-power-market-with-solid-state-transformers/", "ref": "signal a9baf7de" },
+    { "n": 24, "pub": "Data Center Dynamics (sponsored)", "d": "2026-10-10", "title": "Wärtsilä, Schneider Electric, and Stanley Consultants launch coordinated approach for faster US data center power delivery", "url": "https://www.datacenterdynamics.com/en/product-news/w%C3%A4rtsil%C3%A4-schneider-electric-and-stanley-consultants-launch-coordinated-approach-for-faster-us-data-center-power-delivery/", "ref": "artifact 0a982f28" },
+    { "n": 25, "pub": "Saur Energy", "d": "2026-09-22", "title": "LG Energy Solution's New BESS Qualification Opens Door to AI Data Centre Market", "url": "https://www.saurenergy.com/solar-energy-news/why-nvidias-dsx-ready-qualification-matters-for-lg-energy-solutions-bess-12562620", "ref": "signal 729fabb4" },
+    { "n": 26, "pub": "ESS News", "d": "2026-09-22", "title": "Nvidia launches BESS qualification program for AI data centers, names just Tesla, LG, Hitachi", "url": "https://www.ess-news.com/2026/09/22/nvidia-launches-bess-qualification-program-for-ai-data-centers-names-just-tesla-lg-hitachi/", "ref": "signal d9927f8a" },
+    { "n": 27, "pub": "Market Intelligence Tools", "d": "2026-09-30", "title": "AI Environmental Impact Statistics 2026: 485 TWh, and Google's Water Use Up 34%", "url": "https://marketintelligencetools.com/reports/ai-environmental-impact-statistics/", "ref": "signal 52f9530c" },
+    { "n": 28, "pub": "Schneider Electric", "d": "2026-09-29", "title": "Using treated and recycled water in Indian data centre cooling", "url": "https://blog.se.com/datacenter/2026/09/29/using-treated-and-recycled-water-in-indian-data-centre-cooling/", "ref": "artifact 7ae4d9a0" },
+    { "n": 29, "pub": "openPR", "d": "2026-10-03", "title": "DCIM Market: Vertiv SmartRun Digital Twin, NTT DATA–Daikin AI Cooling Trial", "url": "https://openpr.com/news/4650569/data-center-infrastructure-management-market-puts-power", "ref": "artifacts 5ffafbe4, 145a3c7d" },
+    { "n": 30, "pub": "PR Newswire", "d": "2026-10-02", "title": "Data Center Infrastructure Management Market Worth $8.42 Billion by 2031 – MarketsandMarkets", "url": "https://prnewswire.com/news-releases/data-center-infrastructure-management-market-worth-8-42-billion-by-2031--report-by-marketsandmarkets-302895676.html", "ref": "signal 42043205" }
+  ]
+}

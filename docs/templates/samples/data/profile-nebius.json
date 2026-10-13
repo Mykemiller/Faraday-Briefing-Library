@@ -1,0 +1,45 @@
+{
+  "tier": "profile",
+  "slug": "profile-nebius",
+  "kicker": "Company Briefing",
+  "title": "Nebius",
+  "prepared": "2026-10-13",
+  "record": { "airtable_record_id": "recWbMesu1DhjGCgN", "airtable_autonumber": 5, "status": "draft", "tier": "profile", "page_target": "2", "sector_id": "D6", "thread_id": "D6.1", "theme_tags": ["The Inference Economy"], "company_id": "cmp_fe1704f586646f14", "institution_id": null },
+  "identity": [
+    { "label": "Company type", "value": "Neocloud / GPU cloud [1]" },
+    { "label": "Ownership · Ticker", "value": "Public · NBIS [1]" },
+    { "label": "Headquarters", "value": "Amsterdam, Netherlands [1]" },
+    { "label": "Website", "value": "nebius.com [1]" },
+    { "label": "Theater", "value": "The Inference Economy [2]" },
+    { "label": "Sectors", "value": "New Entrants · Hyperscaler Activity [2]" },
+    { "label": "Faraday record", "value": "cmp_fe1704f586646f14 [1]" }
+  ],
+  "tags": [],
+  "lead": "Between July and October 2026 Nebius signed, announced or was reported to be planning capacity in the Netherlands, Wales, Estonia, Finland and the United States [3, 4, 6, 8, 9], and raised a first senior secured facility followed by an upsized $5 billion debt raise against more than $40 billion of customer commitments [11, 7].",
+  "items": [
+    { "d": "2026-10-12", "pub": "W.Media", "head": "First off-taker for VOLT in Rotterdam", "text": "Nebius signed a letter of intent to become the first off-taker at VOLT's Dutch AI Gigafactory in Rotterdam [3]." },
+    { "d": "2026-10-02", "pub": "W.Media", "head": "50 MW with AIB Data Centers", "text": "AIB Data Centers entered a binding 12-year agreement with Nebius for 50 MW of critical IT capacity at its southeastern US facility [4]." },
+    { "d": "2026-10-02", "pub": "IndexBox", "head": "Fuel cells for Vineland, New Jersey", "text": "Nebius endorsed Bloom Energy's solid oxide fuel cells for its planned 300 MW AI data center in Vineland, New Jersey, citing faster deployment and less community opposition than gas turbines [5]." },
+    { "d": "2026-09-29", "pub": "Data Center Dynamics", "head": "Estonia and a second Finnish site", "text": "Nebius signed with Greenergy Data Centers for 22 MW in Hüüru, Estonia, as part of a €50 million expansion, and announced a second facility in Mäntsälä, Finland [6]." },
+    { "d": "2026-08-24", "pub": "W.Media · Data Centre Review", "head": "From $775 million to $5 billion of debt", "text": "Nebius raised $775 million through its first senior secured debt facility in July [11], then upsized a debt raise to $5 billion; it could spend up to $25 billion this year to meet more than $40 billion of customer commitments [7]." },
+    { "d": "2026-08-19", "pub": "Nebius (post-mortem)", "head": "Storm takes out cooling in us-central1", "text": "A storm-related event disabled the chilled-water cooling at Nebius's us-central1 facility, triggering thermal shutdowns across servers, switches and rack power systems [10]." },
+    { "d": "2026-08-14", "pub": "Capacity", "head": "First South Wales AI Growth Zone deployment", "text": "Nebius agreed to lease high-density, Nvidia-powered capacity at Vantage Data Centers' CWL1 campus in Newport [8]." },
+    { "d": "2026-07-28", "pub": "W.Media", "head": "A 1.2 GW campus in Pennsylvania, reported", "text": "Nebius is reportedly planning a 1.2 GW campus at Highridge Business Park in Butler Township, Schuylkill County, Pennsylvania [9]." }
+  ],
+  "method": [
+    "Sourced facts only. Identity fields come from the Faraday companies row [1]; Theater and Sectors from the Airtable Briefing Library record [2]; every other sentence restates a crawled artifact's recorded summary [3–11]. No Faraday's Take, no forecast and no call-to-action appear in a Profile. Primary articles were not re-fetched. Status: draft, not signed off (Brand Bible §07)."
+  ],
+  "sources": [
+    { "n": 1, "pub": "Faraday · Supabase public.companies", "d": "2026-10-13", "title": "Row cmp_fe1704f586646f14 (Nebius)", "url": "supabase://ycadmmngkdhvpcsrcuaq/public.companies?company_uid=cmp_fe1704f586646f14", "ref": "read 2026-10-13" },
+    { "n": 2, "pub": "Faraday · Airtable Briefing Library", "d": "2026-06-20", "title": "Draft record #5 'Nebius — The Most Dramatic Corporate Reinvention in Tech'", "url": "airtable://appxfti7VuoHYUeu6/tbl4kbby85nx6Z891/recWbMesu1DhjGCgN", "ref": "read 2026-10-13" },
+    { "n": 3, "pub": "W.Media", "d": "2026-10-12", "title": "Nebius lined up as first customer for VOLT's Rotterdam AI gigafactory", "url": "https://w.media/nebius-lined-up-as-first-customer-for-volts-rotterdam-ai-gigafactory/", "ref": "artifact 4b98553b" },
+    { "n": 4, "pub": "W.Media", "d": "2026-10-02", "title": "Nebius takes 50 MW at AIB Data Centers' southeastern US facility", "url": "https://w.media/nebius-takes-50-mw-at-aib-data-centers-southeastern-us-facility/", "ref": "artifact d01bc085" },
+    { "n": 5, "pub": "IndexBox", "d": "2026-10-02", "title": "Nebius Backs Bloom Energy Fuel Cells for 300MW New Jersey AI Data Center", "url": "https://www.indexbox.io/blog/nebius-endorses-bloom-energy-fuel-cells-for-planned-new-jersey-data-center/", "ref": "artifact 998bf4da" },
+    { "n": 6, "pub": "Data Center Dynamics", "d": "2026-09-29", "title": "Nebius Expands European Presence, Announces Deployment in Estonia and Second Data Center in Mäntsälä, Finland", "url": "https://www.datacenterdynamics.com/en/news/nebius-expands-european-presence-announces-deployment-in-estonia-and-second-data-center-in-m%C3%A4nts%C3%A4l%C3%A4-finland/", "ref": "artifact c3347cfc" },
+    { "n": 7, "pub": "Data Centre Review", "d": "2026-08-24", "title": "Nebius upsizes debt raise to $5bn as its AI infrastructure spending accelerates", "url": "https://datacentrereview.com/2026/08/nebius-upsizes-debt-raise-to-5bn-as-its-ai-infrastructure-spending-accelerates/", "ref": "artifact 961b2742" },
+    { "n": 8, "pub": "Capacity", "d": "2026-08-14", "title": "Nebius to deploy AI capacity at Vantage's Newport campus in first South Wales AI Growth Zone commitment", "url": "https://capacityglobal.com/news/nebius-to-deploy-ai-capacity-at-vantage-newport-campus/", "ref": "artifact 14f1a6d8" },
+    { "n": 9, "pub": "W.Media", "d": "2026-07-28", "title": "Nebius contemplating 1.2 GW data center campus in Pennsylvania", "url": "https://w.media/nebius-contemplating-1-2-gw-data-center-campus-in-pennsylvania/", "ref": "artifact e15e1816" },
+    { "n": 10, "pub": "Nebius", "d": "2026-08-19", "title": "Incident Post-Mortem: us-central1 Service Disruption on August 19, 2026", "url": "https://nebius.com/blog/posts/incident-post-mortem-analysis-us-central1-service-disruption-on-august-19", "ref": "artifact d2fed6b8" },
+    { "n": 11, "pub": "W.Media", "d": "2026-07-21", "title": "Nebius Group raises US$ 775 million in secured financing to fund AI cloud expansion", "url": "https://w.media/nebius-group-raises-us-775-million-in-secured-financing-to-fund-ai-cloud-expansion/", "ref": "artifact a9d2af64" }
+  ]
+}

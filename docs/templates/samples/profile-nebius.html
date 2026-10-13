@@ -1,0 +1,145 @@
+<title>Nebius</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a printed briefing. One column of Letter pages; the cover and the Sources page each start a page. */
+/* Single light "paper" look by design (it is a print document), so colours are set explicitly and no dark block is defined. */
+:root {
+  color-scheme: light;
+  --paper: #fbfbf8;      /* page ground */
+  --ink: #1b211d;        /* body text */
+  --muted: #5a645c;      /* captions, metadata */
+  --forest: #1f4a36;     /* Faraday forest: headings, upper rule */
+  --gold: #a8812f;       /* Faraday gold: lower rule, eyebrows */
+  --cream: #f6efdc;      /* Faraday's Take callout only (Brand Bible §06) */
+  --hair: #d5dbd3;       /* table and list hairlines */
+  --serif: "Source Serif 4", Georgia, "DejaVu Serif", serif;
+  --sans: "IBM Plex Sans", "Helvetica Neue", Arial, "DejaVu Sans", sans-serif;
+  --mono: "IBM Plex Mono", "DejaVu Sans Mono", monospace;
+}
+@page { size: Letter; margin: 0.7in 0.75in 0.75in; }
+html { background: var(--paper); }
+body { background: var(--paper); color: var(--ink); font-family: var(--serif); font-size: 10.5pt; line-height: 1.5; margin: 0; padding-inline: 16px; padding-block: 24px; }
+.doc { max-width: 7in; margin: 0 auto; }
+@media print { body { padding: 0; } .doc { max-width: none; } }
+h1, h2, h3 { font-family: var(--serif); color: var(--forest); text-wrap: balance; margin: 0; }
+h1 { font-size: 26pt; line-height: 1.12; font-weight: 700; }
+h2 { font-size: 15pt; line-height: 1.25; font-weight: 600; margin-top: 4pt; }
+h3 { font-size: 11pt; font-weight: 600; color: var(--ink); }
+p { margin: 0 0 7pt; max-width: 68ch; }
+a { color: var(--forest); }
+.eyebrow { font-family: var(--sans); font-size: 7.5pt; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+.meta { font-family: var(--sans); font-size: 8.5pt; color: var(--muted); }
+.mono { font-family: var(--mono); font-size: 8pt; }
+sup.cite { font-family: var(--sans); font-size: 6.5pt; line-height: 0; margin-left: 1px; }
+sup.cite a { text-decoration: none; color: var(--gold); }
+/* Faraday editorial signature: double rule, forest over gold (Brand Bible §06). */
+.dbl { border: 0; height: 5px; margin: 14pt 0 12pt; background:
+  linear-gradient(var(--forest), var(--forest)) top / 100% 2px no-repeat,
+  linear-gradient(var(--gold), var(--gold)) bottom / 100% 1px no-repeat; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.page { break-before: page; }
+section { margin-top: 4pt; }
+/* Cover */
+.cover { min-height: 8.6in; display: flex; flex-direction: column; gap: 14pt; }
+.cover .tierline { display: flex; flex-wrap: wrap; gap: 6pt 18pt; font-family: var(--sans); font-size: 8.5pt; color: var(--muted); }
+.cover .thesis { font-size: 13pt; line-height: 1.45; max-width: 60ch; }
+.cover .foot { margin-top: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10pt; border-top: 1px solid var(--hair); padding-top: 10pt; }
+.kv dt { font-family: var(--sans); font-size: 7pt; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.kv dd { margin: 1pt 0 0; font-family: var(--sans); font-size: 9pt; }
+/* Tables */
+.tbl { width: 100%; border-collapse: collapse; font-family: var(--sans); font-size: 8.5pt; font-variant-numeric: tabular-nums; margin: 6pt 0 8pt; }
+.tbl th { text-align: left; font-weight: 600; color: var(--muted); font-size: 7pt; letter-spacing: .08em; text-transform: uppercase; border-bottom: 1.5px solid var(--forest); padding: 4pt 6pt 4pt 0; }
+.tbl td { border-bottom: 1px solid var(--hair); padding: 4pt 6pt 4pt 0; vertical-align: top; }
+.tbl tr { break-inside: avoid; }
+.tbl td.num { white-space: nowrap; font-weight: 600; color: var(--forest); }
+/* Signal entries */
+.sig { display: grid; grid-template-columns: 0.95in 1fr; gap: 0 12pt; padding: 6pt 0; border-bottom: 1px solid var(--hair); break-inside: avoid; }
+.sig .when { font-family: var(--sans); font-size: 8pt; color: var(--muted); }
+.sig .when b { display: block; color: var(--ink); font-weight: 500; }
+.sig h3 { margin-bottom: 2pt; }
+.sig p { margin: 0; }
+.thread-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4pt 10pt; }
+.code { font-family: var(--mono); font-size: 8pt; color: var(--gold); }
+.intro { color: var(--ink); break-after: avoid; }
+h2, .thread-head { break-after: avoid; }
+/* Faraday's Take: cream ground, forest/gold double left rule, italic serif (Brand Bible §06). */
+.take { background: var(--cream); border-left: 3px solid var(--forest); box-shadow: inset 4px 0 0 var(--cream), inset 5px 0 0 var(--gold); padding: 10pt 14pt 10pt 18pt; margin: 12pt 0; break-inside: avoid; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.take .eyebrow { color: var(--forest); }
+.take p { font-style: italic; font-size: 11pt; margin: 4pt 0 0; }
+/* Sources */
+ol.sources { list-style: none; padding: 0; margin: 6pt 0 0; font-family: var(--sans); font-size: 7.2pt; line-height: 1.3; columns: 2; column-gap: 16pt; }
+@media (max-width: 560px) { ol.sources { columns: 1; } }
+ol.sources li { display: grid; grid-template-columns: 22pt 1fr; padding: 2.5pt 0; border-bottom: 1px solid var(--hair); break-inside: avoid; }
+ol.sources .n { color: var(--gold); font-weight: 600; }
+ol.sources .u { font-family: var(--mono); font-size: 6.6pt; color: var(--muted); overflow-wrap: anywhere; word-break: break-all; }
+.method p, .method li { font-family: var(--sans); font-size: 8.3pt; line-height: 1.45; max-width: none; }
+.method ul { margin: 2pt 0 6pt; padding-left: 14pt; }
+/* Profile */
+.profile-grid { display: grid; grid-template-columns: 2.1in 1fr; gap: 0 20pt; }
+.profile-grid > * { min-width: 0; }
+.idcard { border-top: 2px solid var(--forest); padding-top: 6pt; }
+.idcard dl { margin: 0; display: grid; gap: 6pt; }
+.src-tag { font-family: var(--mono); font-size: 6.6pt; color: var(--muted); display: block; margin-top: 1pt; overflow-wrap: anywhere; }
+.compact .sig { grid-template-columns: 0.8in 1fr; padding: 3pt 0; }
+.profile h1 { font-size: 22pt; }
+.profile .dbl { margin: 8pt 0 8pt; }
+.compact .sig h3 { font-size: 9.5pt; }
+.compact .sig p { font-size: 8.8pt; line-height: 1.35; }
+@media (max-width: 560px) {
+  .profile-grid { grid-template-columns: 1fr; }
+  .sig, .compact .sig { grid-template-columns: 1fr; }
+  h1 { font-size: 21pt; }
+}
+</style>
+<div class="doc">
+<section class="profile">
+<div class="eyebrow">Faraday Briefing Library · Company Briefing</div>
+<h1 style="margin-top:4pt">Nebius</h1>
+<p class="meta" style="margin-top:4pt">Tier: Profile (2 pp) · Sourced facts only · Status: draft (not signed off) · Prepared Oct 13, 2026 · Record recWbMesu1DhjGCgN</p>
+<hr class="dbl">
+<div class="profile-grid">
+<aside class="idcard"><dl class="kv">
+<div><dt>Company type</dt><dd>Neocloud / GPU cloud <sup class="cite"><a href="#src-1">1</a></sup></dd></div>
+<div><dt>Ownership · Ticker</dt><dd>Public · NBIS <sup class="cite"><a href="#src-1">1</a></sup></dd></div>
+<div><dt>Headquarters</dt><dd>Amsterdam, Netherlands <sup class="cite"><a href="#src-1">1</a></sup></dd></div>
+<div><dt>Website</dt><dd>nebius.com <sup class="cite"><a href="#src-1">1</a></sup></dd></div>
+<div><dt>Theater</dt><dd>The Inference Economy <sup class="cite"><a href="#src-2">2</a></sup></dd></div>
+<div><dt>Sectors</dt><dd>New Entrants · Hyperscaler Activity <sup class="cite"><a href="#src-2">2</a></sup></dd></div>
+<div><dt>Faraday record</dt><dd>cmp_fe1704f586646f14 <sup class="cite"><a href="#src-1">1</a></sup></dd></div>
+
+</dl></aside>
+<div class="compact">
+<div class="eyebrow">What the record shows</div>
+<p style="margin-top:3pt">Between July and October 2026 Nebius signed, announced or was reported to be planning capacity in the Netherlands, Wales, Estonia, Finland and the United States <sup class="cite"><a href="#src-3">3</a>,<a href="#src-4">4</a>,<a href="#src-6">6</a>,<a href="#src-8">8</a>,<a href="#src-9">9</a></sup>, and raised a first senior secured facility followed by an upsized $5 billion debt raise against more than $40 billion of customer commitments <sup class="cite"><a href="#src-11">11</a>,<a href="#src-7">7</a></sup>.</p>
+<h2 style="margin-top:8pt">Dated Signals</h2>
+<div class="sig"><div class="when"><b>Oct 12, 2026</b>W.Media</div><div><h3>First off-taker for VOLT in Rotterdam</h3><p>Nebius signed a letter of intent to become the first off-taker at VOLT's Dutch AI Gigafactory in Rotterdam <sup class="cite"><a href="#src-3">3</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Oct 2, 2026</b>W.Media</div><div><h3>50 MW with AIB Data Centers</h3><p>AIB Data Centers entered a binding 12-year agreement with Nebius for 50 MW of critical IT capacity at its southeastern US facility <sup class="cite"><a href="#src-4">4</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Oct 2, 2026</b>IndexBox</div><div><h3>Fuel cells for Vineland, New Jersey</h3><p>Nebius endorsed Bloom Energy's solid oxide fuel cells for its planned 300 MW AI data center in Vineland, New Jersey, citing faster deployment and less community opposition than gas turbines <sup class="cite"><a href="#src-5">5</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Sep 29, 2026</b>Data Center Dynamics</div><div><h3>Estonia and a second Finnish site</h3><p>Nebius signed with Greenergy Data Centers for 22 MW in Hüüru, Estonia, as part of a €50 million expansion, and announced a second facility in Mäntsälä, Finland <sup class="cite"><a href="#src-6">6</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Aug 24, 2026</b>W.Media · Data Centre Review</div><div><h3>From $775 million to $5 billion of debt</h3><p>Nebius raised $775 million through its first senior secured debt facility in July <sup class="cite"><a href="#src-11">11</a></sup>, then upsized a debt raise to $5 billion; it could spend up to $25 billion this year to meet more than $40 billion of customer commitments <sup class="cite"><a href="#src-7">7</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Aug 19, 2026</b>Nebius (post-mortem)</div><div><h3>Storm takes out cooling in us-central1</h3><p>A storm-related event disabled the chilled-water cooling at Nebius's us-central1 facility, triggering thermal shutdowns across servers, switches and rack power systems <sup class="cite"><a href="#src-10">10</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Aug 14, 2026</b>Capacity</div><div><h3>First South Wales AI Growth Zone deployment</h3><p>Nebius agreed to lease high-density, Nvidia-powered capacity at Vantage Data Centers' CWL1 campus in Newport <sup class="cite"><a href="#src-8">8</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Jul 28, 2026</b>W.Media</div><div><h3>A 1.2 GW campus in Pennsylvania, reported</h3><p>Nebius is reportedly planning a 1.2 GW campus at Highridge Business Park in Butler Township, Schuylkill County, Pennsylvania <sup class="cite"><a href="#src-9">9</a></sup>.</p></div></div>
+</div>
+</div>
+</section>
+<section class="page method" id="sources">
+<div class="eyebrow">Company Briefing · Final page</div>
+<h2>Sources &amp; method</h2>
+<hr class="dbl">
+<p>Sourced facts only. Identity fields come from the Faraday companies row <sup class="cite"><a href="#src-1">1</a></sup>; Theater and Sectors from the Airtable Briefing Library record <sup class="cite"><a href="#src-2">2</a></sup>; every other sentence restates a crawled artifact's recorded summary [3–11]. No Faraday's Take, no forecast and no call-to-action appear in a Profile. Primary articles were not re-fetched. Status: draft, not signed off (Brand Bible §07).</p>
+<ol class="sources"><li id="src-1"><span class="n">1</span><span><b>Faraday · Supabase public.companies</b> · Oct 13, 2026 · Row cmp_fe1704f586646f14 (Nebius)<br><span class="u">supabase://ycadmmngkdhvpcsrcuaq/public.companies?company_uid=cmp_fe1704f586646f14</span> <span class="u">· read 2026-10-13</span></span></li>
+<li id="src-2"><span class="n">2</span><span><b>Faraday · Airtable Briefing Library</b> · Jun 20, 2026 · Draft record #5 'Nebius — The Most Dramatic Corporate Reinvention in Tech'<br><span class="u">airtable://appxfti7VuoHYUeu6/tbl4kbby85nx6Z891/recWbMesu1DhjGCgN</span> <span class="u">· read 2026-10-13</span></span></li>
+<li id="src-3"><span class="n">3</span><span><b>W.Media</b> · Oct 12, 2026 · Nebius lined up as first customer for VOLT's Rotterdam AI gigafactory<br><span class="u">https://w.media/nebius-lined-up-as-first-customer-for-volts-rotterdam-ai-gigafactory/</span> <span class="u">· artifact 4b98553b</span></span></li>
+<li id="src-4"><span class="n">4</span><span><b>W.Media</b> · Oct 2, 2026 · Nebius takes 50 MW at AIB Data Centers' southeastern US facility<br><span class="u">https://w.media/nebius-takes-50-mw-at-aib-data-centers-southeastern-us-facility/</span> <span class="u">· artifact d01bc085</span></span></li>
+<li id="src-5"><span class="n">5</span><span><b>IndexBox</b> · Oct 2, 2026 · Nebius Backs Bloom Energy Fuel Cells for 300MW New Jersey AI Data Center<br><span class="u">https://www.indexbox.io/blog/nebius-endorses-bloom-energy-fuel-cells-for-planned-new-jersey-data-center/</span> <span class="u">· artifact 998bf4da</span></span></li>
+<li id="src-6"><span class="n">6</span><span><b>Data Center Dynamics</b> · Sep 29, 2026 · Nebius Expands European Presence, Announces Deployment in Estonia and Second Data Center in Mäntsälä, Finland<br><span class="u">https://www.datacenterdynamics.com/en/news/nebius-expands-european-presence-announces-deployment-in-estonia-and-second-data-center-in-m%C3%A4nts%C3%A4l%C3%A4-finland/</span> <span class="u">· artifact c3347cfc</span></span></li>
+<li id="src-7"><span class="n">7</span><span><b>Data Centre Review</b> · Aug 24, 2026 · Nebius upsizes debt raise to $5bn as its AI infrastructure spending accelerates<br><span class="u">https://datacentrereview.com/2026/08/nebius-upsizes-debt-raise-to-5bn-as-its-ai-infrastructure-spending-accelerates/</span> <span class="u">· artifact 961b2742</span></span></li>
+<li id="src-8"><span class="n">8</span><span><b>Capacity</b> · Aug 14, 2026 · Nebius to deploy AI capacity at Vantage's Newport campus in first South Wales AI Growth Zone commitment<br><span class="u">https://capacityglobal.com/news/nebius-to-deploy-ai-capacity-at-vantage-newport-campus/</span> <span class="u">· artifact 14f1a6d8</span></span></li>
+<li id="src-9"><span class="n">9</span><span><b>W.Media</b> · Jul 28, 2026 · Nebius contemplating 1.2 GW data center campus in Pennsylvania<br><span class="u">https://w.media/nebius-contemplating-1-2-gw-data-center-campus-in-pennsylvania/</span> <span class="u">· artifact e15e1816</span></span></li>
+<li id="src-10"><span class="n">10</span><span><b>Nebius</b> · Aug 19, 2026 · Incident Post-Mortem: us-central1 Service Disruption on August 19, 2026<br><span class="u">https://nebius.com/blog/posts/incident-post-mortem-analysis-us-central1-service-disruption-on-august-19</span> <span class="u">· artifact d2fed6b8</span></span></li>
+<li id="src-11"><span class="n">11</span><span><b>W.Media</b> · Jul 21, 2026 · Nebius Group raises US$ 775 million in secured financing to fund AI cloud expansion<br><span class="u">https://w.media/nebius-group-raises-us-775-million-in-secured-financing-to-fund-ai-cloud-expansion/</span> <span class="u">· artifact a9d2af64</span></span></li></ol>
+</section>
+</div>

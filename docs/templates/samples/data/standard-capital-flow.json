@@ -1,0 +1,147 @@
+{
+  "tier": "standard",
+  "slug": "standard-capital-flow",
+  "kicker": "Sector Briefing",
+  "title": "Capital Flow Through the AI Infrastructure Ecosystem",
+  "byline": "Gilbert (empirical byline, Brand Bible §06)",
+  "prepared": "2026-10-13",
+  "window": ["2026-07-01", "2026-10-12"],
+  "record": {
+    "airtable_record_id": "recKq11RTVqlIbglN",
+    "airtable_autonumber": 14,
+    "status": "draft",
+    "tier": "standard",
+    "page_target": "8–10",
+    "sector_id": "D4",
+    "thread_id": null,
+    "theme_tags": ["The Capital Concentration"],
+    "company_id": null,
+    "institution_id": null
+  },
+  "theater": "The Capital Concentration",
+  "sectors": ["M&A & Capital Markets (D4)"],
+  "thesis_lead": "Capital for AI infrastructure is moving through three channels at once: sovereign and private-equity equity at campus scale, secured debt underwritten by named customers, and vendor M&A that buys the parts of the power and cooling chain that are short. The record from July to October 2026 shows each channel getting larger and more structured.",
+  "summary_heading": "The money is getting more structured, not smaller",
+  "thesis": [
+    "This Briefing draws on twenty-seven sourced items, Faraday Signals and crawled articles, dated between 1 July and 12 October 2026.",
+    "At the top of the stack, sovereign and private-equity money is committing at country scale. Blackstone announced a $30 billion investment in Japanese AI data centers over three to five years [6]. SoftBank is reported to be seeking up to $100 billion from Gulf investors [2]. Abu Dhabi-backed MGX is in exclusive talks for Stack Infrastructure's Asia-Pacific portfolio, valued at up to $25 billion [8].",
+    "Below it, debt is being underwritten against named demand. Banks launched a $60 billion package for Anthropic's infrastructure, about $42 billion of it senior secured and guaranteed by Broadcom [7]. Lambda closed a $1.008 billion senior secured term loan backed by two investment-grade hyperscale customers [16]. Nebius raised its first senior secured facility at $775 million [18] and later upsized a debt raise to $5 billion against more than $40 billion of customer commitments [19].",
+    "Alongside both, strategic buyers are paying for scarce capability. Schneider Electric agreed to buy PTC [22], Eaton agreed to buy COL Group for €810 million [23], and Samsung and five affiliates committed $1 billion to KKR's Helix platform spanning data centers, power and fiber [12]."
+  ],
+  "glance": [
+    { "figure": "$60 B", "text": "Anthropic financing package; about $42 B senior secured, guaranteed by Broadcom [7]", "d": "2026-10-06" },
+    { "figure": "$30 B", "text": "Blackstone investment in Japanese AI data centers over three to five years [6]", "d": "2026-10-06" },
+    { "figure": "Up to $25 B", "text": "Value of Stack Infrastructure's APAC portfolio in MGX talks [8]", "d": "2026-09-28" },
+    { "figure": "$14.5 B", "text": "Lambda pre-money valuation in a $4 B raise led by Coatue and Blackstone [5]", "d": "2026-10-06" },
+    { "figure": "$5 B", "text": "Nebius debt raise after upsizing; customer commitments above $40 B [19]", "d": "2026-08-24" },
+    { "figure": "$6.5 B", "text": "Assets Blue Owl plans to seed into a data center REIT [14]", "d": "2026-10-01" },
+    { "figure": "64 → 90 GW", "text": "Goldman Sachs forecast of US data center capacity, end-2026 to 2027 [15]", "d": "2026-10-05" }
+  ],
+  "sections": [
+    {
+      "code": "D4.1 · D4.3",
+      "name": "Private Equity, Sovereign & Institutional Capital",
+      "break": true,
+      "intro": "The largest commitments in the record come from funds and sovereign-backed vehicles, and they are increasingly named by country or region.",
+      "items": [
+        { "d": "2026-10-06", "pub": "W.Media", "head": "Blackstone commits $30 billion to Japan", "text": "Blackstone announced a record $30 billion investment in Japan's AI data centers over three to five years [6]." },
+        { "d": "2026-10-09", "pub": "Mobile World Live", "head": "SoftBank looks to the Gulf", "text": "SoftBank founder Masayoshi Son is seeking up to $100 billion from Gulf investors to expand the group's AI infrastructure [2]." },
+        { "d": "2026-10-12", "pub": "Data Center Dynamics", "head": "SoftBank eyes Borneo", "text": "SoftBank is exploring an AI data center project in Borneo with Grab and a government-owned oil and gas company [1]." },
+        { "d": "2026-09-28", "pub": "Semafor", "head": "MGX bids for Stack's Asia-Pacific assets", "text": "Abu Dhabi-backed MGX is in exclusive talks for Stack Infrastructure's APAC portfolio, valued at up to $25 billion across Australia, Japan and Malaysia [8]." },
+        { "d": "2026-10-08", "pub": "CSG Talent", "head": "Joint ventures at gigawatt scale", "text": "ACS Group and Global Infrastructure Partners formed a joint venture targeting an 11 GW pipeline, and Beacon AI secured approvals for 2.4 GW of off-grid capacity in Alberta powered by on-site gas [3]." },
+        { "d": "2026-10-07", "pub": "Converge Digest", "head": "Fiber joins the infrastructure book", "text": "AT&T, Global Infrastructure Partners and CPP Investments formed a joint venture combining Forged Fiber 37 with Gigapower into a wholesale open-access fiber platform targeting 5 million locations [4]." },
+        { "d": "2026-09-30", "pub": "Converge Digest", "head": "Samsung backs KKR's Helix", "text": "Samsung Electronics and five affiliates are committing $1 billion to KKR's Helix Digital Infrastructure, a platform covering data centers, power generation and fiber [12]." },
+        { "d": "2026-09-16", "pub": "Converge Digest", "head": "Anthropic signs in Queensland", "text": "Anthropic signed its first Australian data center agreement with Zerra DC at Western Downs Digital Park, a planned 2.16 GW campus supporting inference from 2027 [9]." },
+        { "d": "2026-09-07", "pub": "The Columbian", "head": "$264 million for land in Washington", "text": "Trammell Crow's data center arm acquired nearly 1,000 acres at Lewis & Clark Ranch in West Richland, Washington, for $264 million in July 2026 [13]." }
+      ]
+    },
+    {
+      "code": "D4.5 · D4.2",
+      "name": "Private Credit, Project Debt & REITs",
+      "intro": "Debt in the record is secured and tied to named counterparties, and listed vehicles are being built to hold the assets.",
+      "items": [
+        { "d": "2026-10-06", "pub": "Tech Startups", "head": "A record $60 billion package", "text": "Wall Street banks launched a $60 billion financing package for Anthropic's infrastructure expansion, with about $42 billion in senior secured debt guaranteed by Broadcom and about $18 billion in junior financing [7]." },
+        { "d": "2026-10-01", "pub": "DataCenterView", "head": "Blue Owl plans a REIT", "text": "Blue Owl Capital plans to launch a data center REIT seeded with $6.5 billion of its own assets, while Senator Josh Hawley introduced legislation to eliminate Opportunity Zone tax breaks [14]." },
+        { "d": "2026-10-05", "pub": "U.S. News", "head": "Goldman keeps its capacity view", "text": "Goldman Sachs expects US data center capacity to reach 64 GW by the end of 2026, revised up 5 GW, and 90 GW by 2027, revised down 5 GW [15]." },
+        { "d": "2026-10-05", "pub": "Cloud News", "head": "Supply commitments strain memory", "text": "Nvidia's $279 billion in supply commitments is straining HBM capacity; Morgan Stanley projects Alphabet, AMD and Nvidia could consume 85% of global HBM supply by 2027 [17]." },
+        { "d": "2026-10-06", "pub": "Golem", "head": "Energy as a credit risk", "text": "Morgan Stanley reports that US data centers face significant energy shortages despite some operators building their own power plants [27]." }
+      ]
+    },
+    {
+      "code": "D4.6",
+      "name": "GPU-Backed & Neocloud Financing",
+      "break": true,
+      "intro": "The neoclouds are now financing like infrastructure companies: secured term loans, upsized debt programs and pre-IPO rounds led by the same firms that buy data centers.",
+      "items": [
+        { "d": "2026-10-06", "pub": "TechCrunch", "head": "Lambda raises $4 billion before an IPO", "text": "Nvidia-backed Lambda is raising $4 billion at a $14.5 billion pre-money valuation, led by Coatue and Blackstone, ahead of a planned 2027 IPO [5]." },
+        { "d": "2026-10-02", "pub": "Converge Digest", "head": "Lambda's first secured term loan", "text": "Lambda closed a $1.008 billion senior secured delayed-draw term loan for GPU deployments with two investment-grade hyperscale customers [16]." },
+        { "d": "2026-10-04", "pub": "Digital Infrastructure (Substack)", "head": "Lambda in Oklahoma; Vultr orders from HPE", "text": "Lambda announced an AI data center in Oklahoma, and HPE secured a $1.2 billion order from Vultr for AMD Helios systems [24]." },
+        { "d": "2026-07-21", "pub": "W.Media", "head": "Nebius's first secured facility", "text": "Nebius Group raised $775 million through its first senior secured debt facility to expand its AI cloud platform [18]." },
+        { "d": "2026-08-24", "pub": "Data Centre Review", "head": "Nebius upsizes to $5 billion", "text": "Nebius upsized its debt raise to $5 billion and could spend up to $25 billion this year to meet more than $40 billion of customer commitments [19]." },
+        { "d": "2026-07-01", "pub": "New Market Pitch", "head": "Valuations across the GPU clouds", "text": "TensorWave raised $350 million in June 2026 at a $1.55 billion valuation, and Nscale's March 2026 Series C valued it at $14.6 billion [20]." },
+        { "d": "2026-09-18", "pub": "Data Center Dynamics", "head": "CoreWeave signs another former miner", "text": "Blockfusion signed CoreWeave as a customer at its Niagara Falls, New York campus [21]." },
+        { "d": "2026-10-09", "pub": "Techstrong.ai", "head": "Sovereign money in networking", "text": "Upscale, backed by Nvidia, Salesforce Ventures and Temasek, announced a multi-vendor AI networking platform following a $190 million funding extension [10]." },
+        { "d": "2026-10-05", "pub": "Converge Digest", "head": "Venture money for GPU uptime", "text": "Clockwork.io raised $31 million in Series B funding for software-based GPU fault tolerance [11]." }
+      ]
+    },
+    {
+      "code": "D4.4",
+      "name": "Integrated Infrastructure Vendor M&A",
+      "intro": "Vendors are buying software, medium-voltage capacity and liquid-cooling services, the parts of the stack the record elsewhere shows to be short.",
+      "items": [
+        { "d": "2026-10-05", "pub": "SiliconANGLE · Silicon Republic", "head": "Schneider Electric to buy PTC", "text": "Schneider Electric announced plans to acquire PTC in an all-cash deal at $205 per share, reported at $23.7 billion by SiliconANGLE and $22.6 billion by Silicon Republic [22]." },
+        { "d": "2026-09-25", "pub": "Converge Digest", "head": "Eaton buys COL Group", "text": "Eaton agreed to acquire Italy-based COL Group for €810 million to strengthen its European medium-voltage capabilities [23]." },
+        { "d": "2026-09-24", "pub": "HPCwire", "head": "Vertiv buys liquid-cooling services", "text": "Vertiv announced the acquisition of King Environmental Services, a European provider of fluid management and commissioning for liquid-cooled data centers [25]." },
+        { "d": "2026-10-06", "pub": "Converge Digest", "head": "Flex values Axiom at $37.5 billion", "text": "Flex secured a $2.0 billion convertible preferred investment in its Axiom spin-off from General Catalyst, Koch Equity Development and co-investors at a $37.5 billion enterprise value [26]." }
+      ]
+    }
+  ],
+  "register_intro": "Every party below appears in at least one cited Signal. The role column restates what the source reports; it adds no assessment.",
+  "register": [
+    { "party": "Blackstone", "role": "$30 B Japan commitment; co-lead of Lambda's $4 B round", "cites": [5, 6] },
+    { "party": "SoftBank", "role": "Seeking up to $100 B from Gulf investors; exploring a Borneo project", "cites": [1, 2] },
+    { "party": "MGX", "role": "Exclusive talks for Stack Infrastructure's APAC portfolio", "cites": [8] },
+    { "party": "Global Infrastructure Partners", "role": "JV with ACS Group (11 GW pipeline); fiber JV with AT&T and CPP Investments", "cites": [3, 4] },
+    { "party": "KKR · Samsung", "role": "$1 B Samsung commitment to KKR's Helix platform", "cites": [12] },
+    { "party": "Anthropic · Broadcom", "role": "$60 B financing package, senior tranche guaranteed by Broadcom; Queensland campus deal", "cites": [7, 9] },
+    { "party": "Lambda", "role": "$4 B raise; $1.008 B secured term loan; Oklahoma data center", "cites": [5, 16, 24] },
+    { "party": "Nebius", "role": "$775 M secured facility; debt raise upsized to $5 B", "cites": [18, 19] },
+    { "party": "Blue Owl", "role": "Planned data center REIT seeded with $6.5 B", "cites": [14] },
+    { "party": "Schneider Electric · Eaton · Vertiv · Flex", "role": "PTC, COL Group and King Environmental acquisitions; Axiom investment", "cites": [22, 23, 25, 26] }
+  ],
+  "take": "The cited record does not describe a market short of money. It describes money that increasingly demands a named counterparty: Broadcom's guarantee behind Anthropic's senior debt [7], two investment-grade customers behind Lambda's loan [16], more than $40 billion of commitments behind Nebius's raise [19]. On this evidence the next constraint is on the counterparty side. Lenders will price the buyer's contract, not the operator's buildings, and the operators that hold those contracts will keep raising while the others will not.",
+  "method": [
+    "Source rule: every factual sentence carries a numbered citation to a Faraday Signal (Supabase public.signals) or crawled artifact (public.artifacts); each records the publisher URL below. Sentences restate the recorded framing or summary, using only complete clauses where the record was truncated. Where two sources disagree on a figure (Schneider–PTC), both are given. Nothing comes from the retired Gamma deck or from model memory.",
+    "Selection: Signals tagged D4.1–D4.6, fired 1 Jul–13 Oct 2026, plus company-named artifacts for Lambda, Nebius and CoreWeave; de-duplicated, Google News redirects excluded, then curated by hand. Mis-tagged items (MLCC supply, co-packaged optics) were dropped.",
+    "Limits: primary articles were not re-fetched for this sample. Faraday's Take is analysis of the cited items and adds no facts. Status: draft, not signed off (Brand Bible §07)."
+  ],
+  "sources": [
+    { "n": 1, "pub": "Data Center Dynamics", "d": "2026-10-12", "title": "SoftBank eyes possible AI data center project in Borneo", "url": "https://www.datacenterdynamics.com/en/news/softbank-eyes-possible-ai-data-center-project-in-borneo/", "ref": "signal 99997dad" },
+    { "n": 2, "pub": "Mobile World Live", "d": "2026-10-09", "title": "SoftBank eyes $100B Gulf investment for AI push", "url": "https://www.mobileworldlive.com/ai-cloud/softbank-eyes-100b-gulf-investment-for-ai-push/", "ref": "signal 8fe589e2" },
+    { "n": 3, "pub": "CSG Talent", "d": "2026-10-08", "title": "Data Centre Projects 2026: Global Growth, Major Developments, and Market Leaders", "url": "https://www.csgtalent.com/insights/blog/data-centre-projects-2026/", "ref": "signal 9d5cf0ba" },
+    { "n": 4, "pub": "Converge Digest", "d": "2026-10-07", "title": "AT&T Combines Former Lumen Fiber Assets with Gigapower in JV", "url": "https://convergedigest.com/att-gip-cpp-investments-open-access-fiber-jv/", "ref": "signal 07b388dc" },
+    { "n": 5, "pub": "TechCrunch", "d": "2026-10-06", "title": "AI computing startup Lambda to raise $4B ahead of planned IPO", "url": "https://techcrunch.com/2026/10/06/ai-computing-startup-lambda-to-raise-4b-ahead-of-planned-ipo/", "ref": "signal 8d977398" },
+    { "n": 6, "pub": "W.Media", "d": "2026-10-06", "title": "Japan Rising!", "url": "https://w.media/japan-rising/", "ref": "signal 86600982" },
+    { "n": 7, "pub": "Tech Startups", "d": "2026-10-06", "title": "Wall Street Launches Record $60 Billion Broadcom-Anthropic AI Chip Financing Package", "url": "https://techstartups.com/2026/10/06/top-tech-news-today-october-6-2026-amazon-amd-apple-deepseek-google-uber-more/", "ref": "signal ce75faf2" },
+    { "n": 8, "pub": "Semafor", "d": "2026-09-28", "title": "MGX looks for data center assets in the Asia Pacific", "url": "https://semafor.com/article/09/28/2026/mgx-looks-for-data-center-assets-in-the-asia-pacific", "ref": "signal 5cb7f25f" },
+    { "n": 9, "pub": "Converge Digest", "d": "2026-09-16", "title": "Anthropic Signs First Australian Data Center Deal in Queensland", "url": "https://convergedigest.com/anthropic-zerra-dc-australia-2-16gw-data-center/", "ref": "signal 32740204" },
+    { "n": 10, "pub": "Techstrong.ai", "d": "2026-10-09", "title": "AI Startup Upscale Unveils Multi-Vendor Data Center Networking Platform", "url": "https://techstrong.ai/ai-infrastructure/ai-startup-upscale-unveils-multi-vendor-data-center-networking-platform", "ref": "signal e3379782" },
+    { "n": 11, "pub": "Converge Digest", "d": "2026-10-05", "title": "Clockwork.io Raises $31M as LinkedIn Deploys GPU Fault-Tolerance Software", "url": "https://convergedigest.com/clockwork-31m-linkedin-gpu-fault-tolerance/", "ref": "signal 84a2d875" },
+    { "n": 12, "pub": "Converge Digest", "d": "2026-09-30", "title": "Samsung Commits $1B to KKR's Helix AI Infrastructure", "url": "https://convergedigest.com/samsung-1-billion-helix-ai-infrastructure/", "ref": "signal 084405a6" },
+    { "n": 13, "pub": "The Columbian", "d": "2026-09-07", "title": "$264M Land Deal Could Set Stage for Tri-Cities' First Data Center Complex", "url": "https://www.columbian.com/news/2026/sep/07/264m-land-deal-could-set-stage-for-tri-cities-1st-data-center-complex/", "ref": "signal 4d87fbcf" },
+    { "n": 14, "pub": "DataCenterView", "d": "2026-10-01", "title": "Blue Owl Plans Data Center REIT Seeded with $6.5B of Its Own Assets; Hawley Moves to Strip", "url": "https://news.datacenterview.com/p/october-1-2026-blue-owl-plans-data-center-reit-with-6-5b-of-its-own-assets", "ref": "signal 5171ba50" },
+    { "n": 15, "pub": "U.S. News & World Report", "d": "2026-10-05", "title": "Goldman Sees US Data Center Growth Intact Despite Opposition", "url": "https://money.usnews.com/investing/news/articles/2026-10-05/goldman-sees-us-data-center-growth-intact-despite-opposition", "ref": "signal 0e3706f5" },
+    { "n": 16, "pub": "Converge Digest", "d": "2026-10-02", "title": "Lambda Closes $1 Billion Loan for Contracted GPU Deployments", "url": "https://convergedigest.com/lambda-1-008b-fixed-rate-loan-gpu-deployments/", "ref": "signal 02211c54" },
+    { "n": 17, "pub": "Cloud News", "d": "2026-10-05", "title": "Nvidia's $279 Billion in Supply Commitments Is Straining Memory for AI", "url": "https://cloudnews.tech/nvidias-279-billion-in-supply-commitments-is-straining-memory-for-ai/", "ref": "signal ac56e3d6" },
+    { "n": 18, "pub": "W.Media", "d": "2026-07-21", "title": "Nebius Group raises US$ 775 million in secured financing to fund AI cloud expansion", "url": "https://w.media/nebius-group-raises-us-775-million-in-secured-financing-to-fund-ai-cloud-expansion/", "ref": "artifact a9d2af64" },
+    { "n": 19, "pub": "Data Centre Review", "d": "2026-08-24", "title": "Nebius upsizes debt raise to $5bn as its AI infrastructure spending accelerates", "url": "https://datacentrereview.com/2026/08/nebius-upsizes-debt-raise-to-5bn-as-its-ai-infrastructure-spending-accelerates/", "ref": "artifact 961b2742" },
+    { "n": 20, "pub": "New Market Pitch", "d": "2026-07-01", "title": "AI Infrastructure Top Startups 2026: TensorWave, CoreWeave, Lambda, and Nscale Lead the Pack", "url": "https://newmarketpitch.com/blogs/news/ai-infrastructure-top-startups", "ref": "artifact 5d2c9606" },
+    { "n": 21, "pub": "Data Center Dynamics", "d": "2026-09-18", "title": "Blockfusion signs CoreWeave as a customer in Niagara Falls, New York", "url": "https://www.datacenterdynamics.com/en/news/blockfusion-signs-coreweave-as-a-customer-in-niagara-falls-new-york/", "ref": "artifact 143a7530" },
+    { "n": 22, "pub": "SiliconANGLE · Silicon Republic", "d": "2026-10-05", "title": "Schneider Electric to buy engineering software giant PTC for $23.7B · Schneider Electric to acquire PTC for $22.6bn", "url": "https://siliconangle.com/2026/10/05/schneider-electric-to-buy-engineering-software-giant-ptc-for-23-7b/ · https://www.siliconrepublic.com/business/schneider-electric-to-acquire-ptc-for-22-6bn-ai", "ref": "artifacts 1ee5322a, d9301234" },
+    { "n": 23, "pub": "Converge Digest", "d": "2026-09-25", "title": "Eaton to Acquire COL Group for €810M, Expanding European Power Capacity", "url": "https://convergedigest.com/eaton-col-group-810m-data-center-power/", "ref": "signal 5078c659" },
+    { "n": 24, "pub": "Digital Infrastructure (Substack)", "d": "2026-10-04", "title": "Lambda Plans Oklahoma AI Data Center; Palantir + Armada Deploy Sovereign AI; HPE Secures $1.2B", "url": "https://digitalinfrastructure.substack.com/p/10042026-what-i-read-last-week", "ref": "signal 71267e6e" },
+    { "n": 25, "pub": "HPCwire", "d": "2026-09-24", "title": "Vertiv to Buy King Environmental Services to Bolster Data Center Cooling", "url": "https://www.hpcwire.com/off-the-wire/vertiv-to-buy-king-environmental-services-to-bolster-data-center-cooling/", "ref": "signal 98dcb5b6" },
+    { "n": 26, "pub": "Converge Digest", "d": "2026-10-06", "title": "Flex Secures $2B Investment for Axiom at $37.5B Enterprise Value", "url": "https://convergedigest.com/flex-axiom-2b-investment-37-5b-valuation/", "ref": "signal c2689278" },
+    { "n": 27, "pub": "Golem", "d": "2026-10-06", "title": "Laut Morgan Stanley: US-Rechenzentren vor massiver Energieknappheit", "url": "https://www.golem.de/news/laut-morgan-stanley-us-rechenzentren-vor-massiver-energieknappheit-2610-213777.html", "ref": "signal 6ef7dd65" }
+  ]
+}

@@ -1,0 +1,144 @@
+<title>CoreWeave</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a printed briefing. One column of Letter pages; the cover and the Sources page each start a page. */
+/* Single light "paper" look by design (it is a print document), so colours are set explicitly and no dark block is defined. */
+:root {
+  color-scheme: light;
+  --paper: #fbfbf8;      /* page ground */
+  --ink: #1b211d;        /* body text */
+  --muted: #5a645c;      /* captions, metadata */
+  --forest: #1f4a36;     /* Faraday forest: headings, upper rule */
+  --gold: #a8812f;       /* Faraday gold: lower rule, eyebrows */
+  --cream: #f6efdc;      /* Faraday's Take callout only (Brand Bible §06) */
+  --hair: #d5dbd3;       /* table and list hairlines */
+  --serif: "Source Serif 4", Georgia, "DejaVu Serif", serif;
+  --sans: "IBM Plex Sans", "Helvetica Neue", Arial, "DejaVu Sans", sans-serif;
+  --mono: "IBM Plex Mono", "DejaVu Sans Mono", monospace;
+}
+@page { size: Letter; margin: 0.7in 0.75in 0.75in; }
+html { background: var(--paper); }
+body { background: var(--paper); color: var(--ink); font-family: var(--serif); font-size: 10.5pt; line-height: 1.5; margin: 0; padding-inline: 16px; padding-block: 24px; }
+.doc { max-width: 7in; margin: 0 auto; }
+@media print { body { padding: 0; } .doc { max-width: none; } }
+h1, h2, h3 { font-family: var(--serif); color: var(--forest); text-wrap: balance; margin: 0; }
+h1 { font-size: 26pt; line-height: 1.12; font-weight: 700; }
+h2 { font-size: 15pt; line-height: 1.25; font-weight: 600; margin-top: 4pt; }
+h3 { font-size: 11pt; font-weight: 600; color: var(--ink); }
+p { margin: 0 0 7pt; max-width: 68ch; }
+a { color: var(--forest); }
+.eyebrow { font-family: var(--sans); font-size: 7.5pt; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+.meta { font-family: var(--sans); font-size: 8.5pt; color: var(--muted); }
+.mono { font-family: var(--mono); font-size: 8pt; }
+sup.cite { font-family: var(--sans); font-size: 6.5pt; line-height: 0; margin-left: 1px; }
+sup.cite a { text-decoration: none; color: var(--gold); }
+/* Faraday editorial signature: double rule, forest over gold (Brand Bible §06). */
+.dbl { border: 0; height: 5px; margin: 14pt 0 12pt; background:
+  linear-gradient(var(--forest), var(--forest)) top / 100% 2px no-repeat,
+  linear-gradient(var(--gold), var(--gold)) bottom / 100% 1px no-repeat; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.page { break-before: page; }
+section { margin-top: 4pt; }
+/* Cover */
+.cover { min-height: 8.6in; display: flex; flex-direction: column; gap: 14pt; }
+.cover .tierline { display: flex; flex-wrap: wrap; gap: 6pt 18pt; font-family: var(--sans); font-size: 8.5pt; color: var(--muted); }
+.cover .thesis { font-size: 13pt; line-height: 1.45; max-width: 60ch; }
+.cover .foot { margin-top: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10pt; border-top: 1px solid var(--hair); padding-top: 10pt; }
+.kv dt { font-family: var(--sans); font-size: 7pt; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.kv dd { margin: 1pt 0 0; font-family: var(--sans); font-size: 9pt; }
+/* Tables */
+.tbl { width: 100%; border-collapse: collapse; font-family: var(--sans); font-size: 8.5pt; font-variant-numeric: tabular-nums; margin: 6pt 0 8pt; }
+.tbl th { text-align: left; font-weight: 600; color: var(--muted); font-size: 7pt; letter-spacing: .08em; text-transform: uppercase; border-bottom: 1.5px solid var(--forest); padding: 4pt 6pt 4pt 0; }
+.tbl td { border-bottom: 1px solid var(--hair); padding: 4pt 6pt 4pt 0; vertical-align: top; }
+.tbl tr { break-inside: avoid; }
+.tbl td.num { white-space: nowrap; font-weight: 600; color: var(--forest); }
+/* Signal entries */
+.sig { display: grid; grid-template-columns: 0.95in 1fr; gap: 0 12pt; padding: 6pt 0; border-bottom: 1px solid var(--hair); break-inside: avoid; }
+.sig .when { font-family: var(--sans); font-size: 8pt; color: var(--muted); }
+.sig .when b { display: block; color: var(--ink); font-weight: 500; }
+.sig h3 { margin-bottom: 2pt; }
+.sig p { margin: 0; }
+.thread-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4pt 10pt; }
+.code { font-family: var(--mono); font-size: 8pt; color: var(--gold); }
+.intro { color: var(--ink); break-after: avoid; }
+h2, .thread-head { break-after: avoid; }
+/* Faraday's Take: cream ground, forest/gold double left rule, italic serif (Brand Bible §06). */
+.take { background: var(--cream); border-left: 3px solid var(--forest); box-shadow: inset 4px 0 0 var(--cream), inset 5px 0 0 var(--gold); padding: 10pt 14pt 10pt 18pt; margin: 12pt 0; break-inside: avoid; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.take .eyebrow { color: var(--forest); }
+.take p { font-style: italic; font-size: 11pt; margin: 4pt 0 0; }
+/* Sources */
+ol.sources { list-style: none; padding: 0; margin: 6pt 0 0; font-family: var(--sans); font-size: 7.2pt; line-height: 1.3; columns: 2; column-gap: 16pt; }
+@media (max-width: 560px) { ol.sources { columns: 1; } }
+ol.sources li { display: grid; grid-template-columns: 22pt 1fr; padding: 2.5pt 0; border-bottom: 1px solid var(--hair); break-inside: avoid; }
+ol.sources .n { color: var(--gold); font-weight: 600; }
+ol.sources .u { font-family: var(--mono); font-size: 6.6pt; color: var(--muted); overflow-wrap: anywhere; word-break: break-all; }
+.method p, .method li { font-family: var(--sans); font-size: 8.3pt; line-height: 1.45; max-width: none; }
+.method ul { margin: 2pt 0 6pt; padding-left: 14pt; }
+/* Profile */
+.profile-grid { display: grid; grid-template-columns: 2.1in 1fr; gap: 0 20pt; }
+.profile-grid > * { min-width: 0; }
+.idcard { border-top: 2px solid var(--forest); padding-top: 6pt; }
+.idcard dl { margin: 0; display: grid; gap: 6pt; }
+.src-tag { font-family: var(--mono); font-size: 6.6pt; color: var(--muted); display: block; margin-top: 1pt; overflow-wrap: anywhere; }
+.compact .sig { grid-template-columns: 0.8in 1fr; padding: 3pt 0; }
+.profile h1 { font-size: 22pt; }
+.profile .dbl { margin: 8pt 0 8pt; }
+.compact .sig h3 { font-size: 9.5pt; }
+.compact .sig p { font-size: 8.8pt; line-height: 1.35; }
+@media (max-width: 560px) {
+  .profile-grid { grid-template-columns: 1fr; }
+  .sig, .compact .sig { grid-template-columns: 1fr; }
+  h1 { font-size: 21pt; }
+}
+</style>
+<div class="doc">
+<section class="profile">
+<div class="eyebrow">Faraday Briefing Library · Company Briefing</div>
+<h1 style="margin-top:4pt">CoreWeave</h1>
+<p class="meta" style="margin-top:4pt">Tier: Profile (2 pp) · Sourced facts only · Status: draft (not signed off) · Prepared Oct 13, 2026 · Record recIXg6yYr6MNIJGm</p>
+<hr class="dbl">
+<div class="profile-grid">
+<aside class="idcard"><dl class="kv">
+<div><dt>Company type</dt><dd>Neocloud / GPU cloud <sup class="cite"><a href="#src-1">1</a></sup></dd></div>
+<div><dt>Ownership · Ticker</dt><dd>Public · CRWV <sup class="cite"><a href="#src-1">1</a></sup></dd></div>
+<div><dt>Headquarters</dt><dd>Roseland, NJ, USA <sup class="cite"><a href="#src-1">1</a></sup></dd></div>
+<div><dt>Website</dt><dd>coreweave.com <sup class="cite"><a href="#src-1">1</a></sup></dd></div>
+<div><dt>Theater</dt><dd>The Inference Economy <sup class="cite"><a href="#src-2">2</a></sup></dd></div>
+<div><dt>Sectors</dt><dd>Hyperscaler Activity · New Entrants <sup class="cite"><a href="#src-2">2</a></sup></dd></div>
+<div><dt>Faraday record</dt><dd>cmp_115f2b3f0dc7f35f <sup class="cite"><a href="#src-1">1</a></sup></dd></div>
+
+</dl></aside>
+<div class="compact">
+<div class="eyebrow">What the record shows</div>
+<p style="margin-top:3pt">CoreWeave reported a $60.7 billion revenue backlog in an April 2026 SEC filing <sup class="cite"><a href="#src-3">3</a></sup> and expects to end 2026 with 1.85 GW of data center capacity <sup class="cite"><a href="#src-4">4</a></sup>. Between April and October it raised debt through notes, convertible notes and a term loan <sup class="cite"><a href="#src-3">3</a>,<a href="#src-5">5</a></sup> and announced its first sites in Asia-Pacific and India <sup class="cite"><a href="#src-6">6</a>,<a href="#src-9">9</a></sup>.</p>
+<h2 style="margin-top:8pt">Dated Signals</h2>
+<div class="sig"><div class="when"><b>Oct 7, 2026</b>Converge Digest</div><div><h3>Enters India with AdaniConneX</h3><p>CoreWeave plans a 240 MW AI cloud deployment at the AdaniConneX Taloja campus in Navi Mumbai, its first footprint in India <sup class="cite"><a href="#src-9">9</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Oct 8, 2026</b>SiliconANGLE</div><div><h3>Willow picks CoreWeave for training</h3><p>Willow Care, maker of the Willow Voice dictation app, chose CoreWeave for model training <sup class="cite"><a href="#src-10">10</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Oct 2, 2026</b>Converge Digest</div><div><h3>CoreWeave Forge</h3><p>CoreWeave launched Forge, a development environment connecting model training, inference, observability, evaluation and post-training <sup class="cite"><a href="#src-8">8</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Sep 18, 2026</b>Data Center Dynamics</div><div><h3>Customer at Blockfusion, Niagara Falls</h3><p>Blockfusion signed CoreWeave as a customer at its Niagara Falls, New York campus <sup class="cite"><a href="#src-7">7</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Aug 11, 2026</b>The Stack</div><div><h3>Q2: revenue and net loss both double</h3><p>CoreWeave doubled both revenue and net loss in Q2 as debt reached $35 billion, and raised its year-end capacity expectation from 1.7 GW to 1.85 GW <sup class="cite"><a href="#src-4">4</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Aug 10, 2026</b>Converge Digest</div><div><h3>$2.6 billion delayed-draw loan</h3><p>CoreWeave closed a $2.6 billion delayed draw term loan facility <sup class="cite"><a href="#src-5">5</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Aug 4, 2026</b>Converge Digest · DCD</div><div><h3>First Asia-Pacific sites, in Indonesia</h3><p>CoreWeave announced three Indonesian facilities scheduled for 2028, its first data center presence in Asia-Pacific; DCD reports 360 MW of capacity <sup class="cite"><a href="#src-6">6</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Apr 9, 2026</b>SEC (Form 8-K exhibit)</div><div><h3>$4.25 billion debt offering</h3><p>CoreWeave raised $4.25 billion through $1.25 billion of senior unsecured notes and $3 billion of convertible notes, and reported a $60.7 billion revenue backlog <sup class="cite"><a href="#src-3">3</a></sup>.</p></div></div>
+</div>
+</div>
+</section>
+<section class="page method" id="sources">
+<div class="eyebrow">Company Briefing · Final page</div>
+<h2>Sources &amp; method</h2>
+<hr class="dbl">
+<p>Sourced facts only. Identity fields come from the Faraday companies row <sup class="cite"><a href="#src-1">1</a></sup>; Theater and Sectors from the Airtable Briefing Library record <sup class="cite"><a href="#src-2">2</a></sup>; every other sentence restates a crawled artifact's recorded summary [3–10]. No Faraday's Take, no forecast and no call-to-action appear in a Profile. Primary articles were not re-fetched. Status: draft, not signed off (Brand Bible §07).</p>
+<ol class="sources"><li id="src-1"><span class="n">1</span><span><b>Faraday · Supabase public.companies</b> · Oct 13, 2026 · Row cmp_115f2b3f0dc7f35f (CoreWeave)<br><span class="u">supabase://ycadmmngkdhvpcsrcuaq/public.companies?company_uid=cmp_115f2b3f0dc7f35f</span> <span class="u">· read 2026-10-13</span></span></li>
+<li id="src-2"><span class="n">2</span><span><b>Faraday · Airtable Briefing Library</b> · Jun 20, 2026 · Draft record #4 'CoreWeave — From Ethereum Miners to the Fastest Cloud in History'<br><span class="u">airtable://appxfti7VuoHYUeu6/tbl4kbby85nx6Z891/recIXg6yYr6MNIJGm</span> <span class="u">· read 2026-10-13</span></span></li>
+<li id="src-3"><span class="n">3</span><span><b>SEC EDGAR</b> · Apr 9, 2026 · CoreWeave 8-K: $4.25B Debt Offering — $60.7B Revenue Backlog, NVIDIA Exemplar Cloud<br><span class="u">https://www.sec.gov/Archives/edgar/data/1769628/000119312526148912/d136714dex993.htm</span> <span class="u">· artifact a336d965</span></span></li>
+<li id="src-4"><span class="n">4</span><span><b>The Stack</b> · Aug 11, 2026 · Life of a neocloud: CoreWeave doubles both revenue and net loss in Q2, as debt hits $35B<br><span class="u">https://www.thestack.technology/life-of-a-neocloud-coreweave-doubles-both-revenue-and-net-loss-in-q2-as-debt-hits-35b/</span> <span class="u">· artifact 0caf04e4</span></span></li>
+<li id="src-5"><span class="n">5</span><span><b>Converge Digest</b> · Aug 10, 2026 · CoreWeave Secures $2.6B Loan as Lenders Take on GPU Renewal Risk<br><span class="u">https://convergedigest.com/coreweave-2-6b-loan-gpu-ai-infrastructure-financing/</span> <span class="u">· artifact cd2a6d5f</span></span></li>
+<li id="src-6"><span class="n">6</span><span><b>Converge Digest · Data Center Dynamics</b> · Aug 4, 2026 · CoreWeave Expands with 360 MW Buildout in Indonesia · CoreWeave plans to launch 360MW of data center capacity in Indonesia<br><span class="u">https://convergedigest.com/coreweave-expands-with-360-mw-buildout-in-indonesia/ · https://www.datacenterdynamics.com/en/news/coreweave-plans-to-launch-360mw-of-data-center-capacity-in-indonesia/</span> <span class="u">· artifacts ad31cbbd, ef043367</span></span></li>
+<li id="src-7"><span class="n">7</span><span><b>Data Center Dynamics</b> · Sep 18, 2026 · Blockfusion signs CoreWeave as a customer in Niagara Falls, New York<br><span class="u">https://www.datacenterdynamics.com/en/news/blockfusion-signs-coreweave-as-a-customer-in-niagara-falls-new-york/</span> <span class="u">· artifact 143a7530</span></span></li>
+<li id="src-8"><span class="n">8</span><span><b>Converge Digest</b> · Oct 2, 2026 · CoreWeave Moves Up the AI Stack<br><span class="u">https://convergedigest.com/coreweave-moves-up-ai-stack/</span> <span class="u">· artifact 33818706</span></span></li>
+<li id="src-9"><span class="n">9</span><span><b>Converge Digest</b> · Oct 7, 2026 · CoreWeave Enters India with 240 MW AdaniConneX<br><span class="u">https://convergedigest.com/coreweave-india-adaniconnex-240mw-ai-cloud/</span> <span class="u">· artifact ce1625df</span></span></li>
+<li id="src-10"><span class="n">10</span><span><b>SiliconANGLE</b> · Oct 8, 2026 · Willow taps CoreWeave to simplify AI model training<br><span class="u">https://siliconangle.com/2026/10/08/willow-taps-coreweave-simplify-ai-model-training-fullyconnected/</span> <span class="u">· artifact c3f06cc7</span></span></li></ol>
+</section>
+</div>

@@ -1,0 +1,188 @@
+{
+  "tier": "profile",
+  "slug": "profile-coreweave",
+  "kicker": "Company Briefing",
+  "title": "CoreWeave",
+  "prepared": "2026-10-13",
+  "record": {
+    "airtable_record_id": "recIXg6yYr6MNIJGm",
+    "airtable_autonumber": 4,
+    "status": "draft",
+    "tier": "profile",
+    "page_target": "2",
+    "sector_id": "D6",
+    "thread_id": "D6.1",
+    "theme_tags": [
+      "The Inference Economy"
+    ],
+    "company_id": "cmp_115f2b3f0dc7f35f",
+    "institution_id": null
+  },
+  "identity": [
+    {
+      "label": "Company type",
+      "value": "Neocloud / GPU cloud [1]"
+    },
+    {
+      "label": "Ownership · Ticker",
+      "value": "Public · CRWV [1]"
+    },
+    {
+      "label": "Headquarters",
+      "value": "Roseland, NJ, USA [1]"
+    },
+    {
+      "label": "Website",
+      "value": "coreweave.com [1]"
+    },
+    {
+      "label": "Theater",
+      "value": "The Inference Economy [2]"
+    },
+    {
+      "label": "Sectors",
+      "value": "Hyperscaler Activity · New Entrants [2]"
+    },
+    {
+      "label": "Faraday record",
+      "value": "cmp_115f2b3f0dc7f35f [1]"
+    }
+  ],
+  "tags": [],
+  "lead": "CoreWeave reported a $60.7 billion revenue backlog in an April 2026 SEC filing [3] and expects to end 2026 with 1.85 GW of data center capacity [4]. Between April and October it raised debt through notes, convertible notes and a term loan [3, 5] and announced its first sites in Asia-Pacific and India [6, 9].",
+  "items": [
+    {
+      "d": "2026-10-07",
+      "pub": "Converge Digest",
+      "head": "Enters India with AdaniConneX",
+      "text": "CoreWeave plans a 240 MW AI cloud deployment at the AdaniConneX Taloja campus in Navi Mumbai, its first footprint in India [9]."
+    },
+    {
+      "d": "2026-10-08",
+      "pub": "SiliconANGLE",
+      "head": "Willow picks CoreWeave for training",
+      "text": "Willow Care, maker of the Willow Voice dictation app, chose CoreWeave for model training [10]."
+    },
+    {
+      "d": "2026-10-02",
+      "pub": "Converge Digest",
+      "head": "CoreWeave Forge",
+      "text": "CoreWeave launched Forge, a development environment connecting model training, inference, observability, evaluation and post-training [8]."
+    },
+    {
+      "d": "2026-09-18",
+      "pub": "Data Center Dynamics",
+      "head": "Customer at Blockfusion, Niagara Falls",
+      "text": "Blockfusion signed CoreWeave as a customer at its Niagara Falls, New York campus [7]."
+    },
+    {
+      "d": "2026-08-11",
+      "pub": "The Stack",
+      "head": "Q2: revenue and net loss both double",
+      "text": "CoreWeave doubled both revenue and net loss in Q2 as debt reached $35 billion, and raised its year-end capacity expectation from 1.7 GW to 1.85 GW [4]."
+    },
+    {
+      "d": "2026-08-10",
+      "pub": "Converge Digest",
+      "head": "$2.6 billion delayed-draw loan",
+      "text": "CoreWeave closed a $2.6 billion delayed draw term loan facility [5]."
+    },
+    {
+      "d": "2026-08-04",
+      "pub": "Converge Digest · DCD",
+      "head": "First Asia-Pacific sites, in Indonesia",
+      "text": "CoreWeave announced three Indonesian facilities scheduled for 2028, its first data center presence in Asia-Pacific; DCD reports 360 MW of capacity [6]."
+    },
+    {
+      "d": "2026-04-09",
+      "pub": "SEC (Form 8-K exhibit)",
+      "head": "$4.25 billion debt offering",
+      "text": "CoreWeave raised $4.25 billion through $1.25 billion of senior unsecured notes and $3 billion of convertible notes, and reported a $60.7 billion revenue backlog [3]."
+    }
+  ],
+  "method": [
+    "Sourced facts only. Identity fields come from the Faraday companies row [1]; Theater and Sectors from the Airtable Briefing Library record [2]; every other sentence restates a crawled artifact's recorded summary [3–10]. No Faraday's Take, no forecast and no call-to-action appear in a Profile. Primary articles were not re-fetched. Status: draft, not signed off (Brand Bible §07)."
+  ],
+  "sources": [
+    {
+      "n": 1,
+      "pub": "Faraday · Supabase public.companies",
+      "d": "2026-10-13",
+      "title": "Row cmp_115f2b3f0dc7f35f (CoreWeave)",
+      "url": "supabase://ycadmmngkdhvpcsrcuaq/public.companies?company_uid=cmp_115f2b3f0dc7f35f",
+      "ref": "read 2026-10-13"
+    },
+    {
+      "n": 2,
+      "pub": "Faraday · Airtable Briefing Library",
+      "d": "2026-06-20",
+      "title": "Draft record #4 'CoreWeave — From Ethereum Miners to the Fastest Cloud in History'",
+      "url": "airtable://appxfti7VuoHYUeu6/tbl4kbby85nx6Z891/recIXg6yYr6MNIJGm",
+      "ref": "read 2026-10-13"
+    },
+    {
+      "n": 3,
+      "pub": "SEC EDGAR",
+      "d": "2026-04-09",
+      "title": "CoreWeave 8-K: $4.25B Debt Offering — $60.7B Revenue Backlog, NVIDIA Exemplar Cloud",
+      "url": "https://www.sec.gov/Archives/edgar/data/1769628/000119312526148912/d136714dex993.htm",
+      "ref": "artifact a336d965"
+    },
+    {
+      "n": 4,
+      "pub": "The Stack",
+      "d": "2026-08-11",
+      "title": "Life of a neocloud: CoreWeave doubles both revenue and net loss in Q2, as debt hits $35B",
+      "url": "https://www.thestack.technology/life-of-a-neocloud-coreweave-doubles-both-revenue-and-net-loss-in-q2-as-debt-hits-35b/",
+      "ref": "artifact 0caf04e4"
+    },
+    {
+      "n": 5,
+      "pub": "Converge Digest",
+      "d": "2026-08-10",
+      "title": "CoreWeave Secures $2.6B Loan as Lenders Take on GPU Renewal Risk",
+      "url": "https://convergedigest.com/coreweave-2-6b-loan-gpu-ai-infrastructure-financing/",
+      "ref": "artifact cd2a6d5f"
+    },
+    {
+      "n": 6,
+      "pub": "Converge Digest · Data Center Dynamics",
+      "d": "2026-08-04",
+      "title": "CoreWeave Expands with 360 MW Buildout in Indonesia · CoreWeave plans to launch 360MW of data center capacity in Indonesia",
+      "url": "https://convergedigest.com/coreweave-expands-with-360-mw-buildout-in-indonesia/ · https://www.datacenterdynamics.com/en/news/coreweave-plans-to-launch-360mw-of-data-center-capacity-in-indonesia/",
+      "ref": "artifacts ad31cbbd, ef043367"
+    },
+    {
+      "n": 7,
+      "pub": "Data Center Dynamics",
+      "d": "2026-09-18",
+      "title": "Blockfusion signs CoreWeave as a customer in Niagara Falls, New York",
+      "url": "https://www.datacenterdynamics.com/en/news/blockfusion-signs-coreweave-as-a-customer-in-niagara-falls-new-york/",
+      "ref": "artifact 143a7530"
+    },
+    {
+      "n": 8,
+      "pub": "Converge Digest",
+      "d": "2026-10-02",
+      "title": "CoreWeave Moves Up the AI Stack",
+      "url": "https://convergedigest.com/coreweave-moves-up-ai-stack/",
+      "ref": "artifact 33818706"
+    },
+    {
+      "n": 9,
+      "pub": "Converge Digest",
+      "d": "2026-10-07",
+      "title": "CoreWeave Enters India with 240 MW AdaniConneX",
+      "url": "https://convergedigest.com/coreweave-india-adaniconnex-240mw-ai-cloud/",
+      "ref": "artifact ce1625df"
+    },
+    {
+      "n": 10,
+      "pub": "SiliconANGLE",
+      "d": "2026-10-08",
+      "title": "Willow taps CoreWeave to simplify AI model training",
+      "url": "https://siliconangle.com/2026/10/08/willow-taps-coreweave-simplify-ai-model-training-fullyconnected/",
+      "ref": "artifact c3f06cc7"
+    }
+  ]
+}

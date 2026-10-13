@@ -1,0 +1,239 @@
+<title>Capital Flow Through the AI Infrastructure Ecosystem</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a printed briefing. One column of Letter pages; the cover and the Sources page each start a page. */
+/* Single light "paper" look by design (it is a print document), so colours are set explicitly and no dark block is defined. */
+:root {
+  color-scheme: light;
+  --paper: #fbfbf8;      /* page ground */
+  --ink: #1b211d;        /* body text */
+  --muted: #5a645c;      /* captions, metadata */
+  --forest: #1f4a36;     /* Faraday forest: headings, upper rule */
+  --gold: #a8812f;       /* Faraday gold: lower rule, eyebrows */
+  --cream: #f6efdc;      /* Faraday's Take callout only (Brand Bible §06) */
+  --hair: #d5dbd3;       /* table and list hairlines */
+  --serif: "Source Serif 4", Georgia, "DejaVu Serif", serif;
+  --sans: "IBM Plex Sans", "Helvetica Neue", Arial, "DejaVu Sans", sans-serif;
+  --mono: "IBM Plex Mono", "DejaVu Sans Mono", monospace;
+}
+@page { size: Letter; margin: 0.7in 0.75in 0.75in; }
+html { background: var(--paper); }
+body { background: var(--paper); color: var(--ink); font-family: var(--serif); font-size: 10.5pt; line-height: 1.5; margin: 0; padding-inline: 16px; padding-block: 24px; }
+.doc { max-width: 7in; margin: 0 auto; }
+@media print { body { padding: 0; } .doc { max-width: none; } }
+h1, h2, h3 { font-family: var(--serif); color: var(--forest); text-wrap: balance; margin: 0; }
+h1 { font-size: 26pt; line-height: 1.12; font-weight: 700; }
+h2 { font-size: 15pt; line-height: 1.25; font-weight: 600; margin-top: 4pt; }
+h3 { font-size: 11pt; font-weight: 600; color: var(--ink); }
+p { margin: 0 0 7pt; max-width: 68ch; }
+a { color: var(--forest); }
+.eyebrow { font-family: var(--sans); font-size: 7.5pt; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+.meta { font-family: var(--sans); font-size: 8.5pt; color: var(--muted); }
+.mono { font-family: var(--mono); font-size: 8pt; }
+sup.cite { font-family: var(--sans); font-size: 6.5pt; line-height: 0; margin-left: 1px; }
+sup.cite a { text-decoration: none; color: var(--gold); }
+/* Faraday editorial signature: double rule, forest over gold (Brand Bible §06). */
+.dbl { border: 0; height: 5px; margin: 14pt 0 12pt; background:
+  linear-gradient(var(--forest), var(--forest)) top / 100% 2px no-repeat,
+  linear-gradient(var(--gold), var(--gold)) bottom / 100% 1px no-repeat; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.page { break-before: page; }
+section { margin-top: 4pt; }
+/* Cover */
+.cover { min-height: 8.6in; display: flex; flex-direction: column; gap: 14pt; }
+.cover .tierline { display: flex; flex-wrap: wrap; gap: 6pt 18pt; font-family: var(--sans); font-size: 8.5pt; color: var(--muted); }
+.cover .thesis { font-size: 13pt; line-height: 1.45; max-width: 60ch; }
+.cover .foot { margin-top: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10pt; border-top: 1px solid var(--hair); padding-top: 10pt; }
+.kv dt { font-family: var(--sans); font-size: 7pt; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.kv dd { margin: 1pt 0 0; font-family: var(--sans); font-size: 9pt; }
+/* Tables */
+.tbl { width: 100%; border-collapse: collapse; font-family: var(--sans); font-size: 8.5pt; font-variant-numeric: tabular-nums; margin: 6pt 0 8pt; }
+.tbl th { text-align: left; font-weight: 600; color: var(--muted); font-size: 7pt; letter-spacing: .08em; text-transform: uppercase; border-bottom: 1.5px solid var(--forest); padding: 4pt 6pt 4pt 0; }
+.tbl td { border-bottom: 1px solid var(--hair); padding: 4pt 6pt 4pt 0; vertical-align: top; }
+.tbl tr { break-inside: avoid; }
+.tbl td.num { white-space: nowrap; font-weight: 600; color: var(--forest); }
+/* Signal entries */
+.sig { display: grid; grid-template-columns: 0.95in 1fr; gap: 0 12pt; padding: 6pt 0; border-bottom: 1px solid var(--hair); break-inside: avoid; }
+.sig .when { font-family: var(--sans); font-size: 8pt; color: var(--muted); }
+.sig .when b { display: block; color: var(--ink); font-weight: 500; }
+.sig h3 { margin-bottom: 2pt; }
+.sig p { margin: 0; }
+.thread-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4pt 10pt; }
+.code { font-family: var(--mono); font-size: 8pt; color: var(--gold); }
+.intro { color: var(--ink); break-after: avoid; }
+h2, .thread-head { break-after: avoid; }
+/* Faraday's Take: cream ground, forest/gold double left rule, italic serif (Brand Bible §06). */
+.take { background: var(--cream); border-left: 3px solid var(--forest); box-shadow: inset 4px 0 0 var(--cream), inset 5px 0 0 var(--gold); padding: 10pt 14pt 10pt 18pt; margin: 12pt 0; break-inside: avoid; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.take .eyebrow { color: var(--forest); }
+.take p { font-style: italic; font-size: 11pt; margin: 4pt 0 0; }
+/* Sources */
+ol.sources { list-style: none; padding: 0; margin: 6pt 0 0; font-family: var(--sans); font-size: 7.2pt; line-height: 1.3; columns: 2; column-gap: 16pt; }
+@media (max-width: 560px) { ol.sources { columns: 1; } }
+ol.sources li { display: grid; grid-template-columns: 22pt 1fr; padding: 2.5pt 0; border-bottom: 1px solid var(--hair); break-inside: avoid; }
+ol.sources .n { color: var(--gold); font-weight: 600; }
+ol.sources .u { font-family: var(--mono); font-size: 6.6pt; color: var(--muted); overflow-wrap: anywhere; word-break: break-all; }
+.method p, .method li { font-family: var(--sans); font-size: 8.3pt; line-height: 1.45; max-width: none; }
+.method ul { margin: 2pt 0 6pt; padding-left: 14pt; }
+/* Profile */
+.profile-grid { display: grid; grid-template-columns: 2.1in 1fr; gap: 0 20pt; }
+.profile-grid > * { min-width: 0; }
+.idcard { border-top: 2px solid var(--forest); padding-top: 6pt; }
+.idcard dl { margin: 0; display: grid; gap: 6pt; }
+.src-tag { font-family: var(--mono); font-size: 6.6pt; color: var(--muted); display: block; margin-top: 1pt; overflow-wrap: anywhere; }
+.compact .sig { grid-template-columns: 0.8in 1fr; padding: 3pt 0; }
+.profile h1 { font-size: 22pt; }
+.profile .dbl { margin: 8pt 0 8pt; }
+.compact .sig h3 { font-size: 9.5pt; }
+.compact .sig p { font-size: 8.8pt; line-height: 1.35; }
+@media (max-width: 560px) {
+  .profile-grid { grid-template-columns: 1fr; }
+  .sig, .compact .sig { grid-template-columns: 1fr; }
+  h1 { font-size: 21pt; }
+}
+</style>
+<div class="doc">
+<section class="cover">
+<div class="eyebrow">Faraday Briefing Library · Sector Briefing</div>
+<div class="tierline"><span>Tier: Standard (8–10 pp target)</span><span>Theater: The Capital Concentration</span><span>Sector: M&amp;A &amp; Capital Markets (D4)</span></div>
+<h1>Capital Flow Through the AI Infrastructure Ecosystem</h1>
+<hr class="dbl">
+<p class="thesis">Capital for AI infrastructure is moving through three channels at once: sovereign and private-equity equity at campus scale, secured debt underwritten by named customers, and vendor M&amp;A that buys the parts of the power and cooling chain that are short. The record from July to October 2026 shows each channel getting larger and more structured.</p>
+<p class="meta">By Gilbert (empirical byline, Brand Bible §06) · Evidence window Jul 1, 2026 to Oct 12, 2026 · Status: draft (not signed off)</p>
+<dl class="foot kv">
+  <div><dt>Threads covered</dt><dd>D4.1 · D4.3, D4.5 · D4.2, D4.6, D4.4</dd></div>
+  <div><dt>Signals cited</dt><dd>27</dd></div>
+  <div><dt>Library record</dt><dd class="mono">recKq11RTVqlIbglN · #14</dd></div>
+  <div><dt>Prepared</dt><dd>Oct 13, 2026</dd></div>
+</dl>
+</section>
+<section class="page" id="summary">
+<div class="eyebrow">The argument</div>
+<h2>The money is getting more structured, not smaller</h2>
+<hr class="dbl">
+<p>This Briefing draws on twenty-seven sourced items, Faraday Signals and crawled articles, dated between 1 July and 12 October 2026.</p>
+<p>At the top of the stack, sovereign and private-equity money is committing at country scale. Blackstone announced a $30 billion investment in Japanese AI data centers over three to five years <sup class="cite"><a href="#src-6">6</a></sup>. SoftBank is reported to be seeking up to $100 billion from Gulf investors <sup class="cite"><a href="#src-2">2</a></sup>. Abu Dhabi-backed MGX is in exclusive talks for Stack Infrastructure's Asia-Pacific portfolio, valued at up to $25 billion <sup class="cite"><a href="#src-8">8</a></sup>.</p>
+<p>Below it, debt is being underwritten against named demand. Banks launched a $60 billion package for Anthropic's infrastructure, about $42 billion of it senior secured and guaranteed by Broadcom <sup class="cite"><a href="#src-7">7</a></sup>. Lambda closed a $1.008 billion senior secured term loan backed by two investment-grade hyperscale customers <sup class="cite"><a href="#src-16">16</a></sup>. Nebius raised its first senior secured facility at $775 million <sup class="cite"><a href="#src-18">18</a></sup> and later upsized a debt raise to $5 billion against more than $40 billion of customer commitments <sup class="cite"><a href="#src-19">19</a></sup>.</p>
+<p>Alongside both, strategic buyers are paying for scarce capability. Schneider Electric agreed to buy PTC <sup class="cite"><a href="#src-22">22</a></sup>, Eaton agreed to buy COL Group for €810 million <sup class="cite"><a href="#src-23">23</a></sup>, and Samsung and five affiliates committed $1 billion to KKR's Helix platform spanning data centers, power and fiber <sup class="cite"><a href="#src-12">12</a></sup>.</p>
+<h3 style="margin-top:10pt">At a glance</h3>
+<table class="tbl"><thead><tr><th style="width:22%">Figure</th><th>What the record shows</th><th style="width:16%">Date</th></tr></thead><tbody>
+<tr><td class="num">$60 B</td><td>Anthropic financing package; about $42 B senior secured, guaranteed by Broadcom <sup class="cite"><a href="#src-7">7</a></sup></td><td>Oct 6, 2026</td></tr>
+<tr><td class="num">$30 B</td><td>Blackstone investment in Japanese AI data centers over three to five years <sup class="cite"><a href="#src-6">6</a></sup></td><td>Oct 6, 2026</td></tr>
+<tr><td class="num">Up to $25 B</td><td>Value of Stack Infrastructure's APAC portfolio in MGX talks <sup class="cite"><a href="#src-8">8</a></sup></td><td>Sep 28, 2026</td></tr>
+<tr><td class="num">$14.5 B</td><td>Lambda pre-money valuation in a $4 B raise led by Coatue and Blackstone <sup class="cite"><a href="#src-5">5</a></sup></td><td>Oct 6, 2026</td></tr>
+<tr><td class="num">$5 B</td><td>Nebius debt raise after upsizing; customer commitments above $40 B <sup class="cite"><a href="#src-19">19</a></sup></td><td>Aug 24, 2026</td></tr>
+<tr><td class="num">$6.5 B</td><td>Assets Blue Owl plans to seed into a data center REIT <sup class="cite"><a href="#src-14">14</a></sup></td><td>Oct 1, 2026</td></tr>
+<tr><td class="num">64 → 90 GW</td><td>Goldman Sachs forecast of US data center capacity, end-2026 to 2027 <sup class="cite"><a href="#src-15">15</a></sup></td><td>Oct 5, 2026</td></tr>
+</tbody></table>
+</section>
+<section class="page" id="t-0">
+
+<div class="thread-head"><span class="eyebrow">Thread</span><span class="code">D4.1 · D4.3</span></div>
+<h2>Private Equity, Sovereign &amp; Institutional Capital</h2>
+<hr class="dbl">
+<p class="intro">The largest commitments in the record come from funds and sovereign-backed vehicles, and they are increasingly named by country or region.</p>
+<div class="sig"><div class="when"><b>Oct 6, 2026</b>W.Media</div><div><h3>Blackstone commits $30 billion to Japan</h3><p>Blackstone announced a record $30 billion investment in Japan's AI data centers over three to five years <sup class="cite"><a href="#src-6">6</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Oct 9, 2026</b>Mobile World Live</div><div><h3>SoftBank looks to the Gulf</h3><p>SoftBank founder Masayoshi Son is seeking up to $100 billion from Gulf investors to expand the group's AI infrastructure <sup class="cite"><a href="#src-2">2</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Oct 12, 2026</b>Data Center Dynamics</div><div><h3>SoftBank eyes Borneo</h3><p>SoftBank is exploring an AI data center project in Borneo with Grab and a government-owned oil and gas company <sup class="cite"><a href="#src-1">1</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Sep 28, 2026</b>Semafor</div><div><h3>MGX bids for Stack's Asia-Pacific assets</h3><p>Abu Dhabi-backed MGX is in exclusive talks for Stack Infrastructure's APAC portfolio, valued at up to $25 billion across Australia, Japan and Malaysia <sup class="cite"><a href="#src-8">8</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Oct 8, 2026</b>CSG Talent</div><div><h3>Joint ventures at gigawatt scale</h3><p>ACS Group and Global Infrastructure Partners formed a joint venture targeting an 11 GW pipeline, and Beacon AI secured approvals for 2.4 GW of off-grid capacity in Alberta powered by on-site gas <sup class="cite"><a href="#src-3">3</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Oct 7, 2026</b>Converge Digest</div><div><h3>Fiber joins the infrastructure book</h3><p>AT&amp;T, Global Infrastructure Partners and CPP Investments formed a joint venture combining Forged Fiber 37 with Gigapower into a wholesale open-access fiber platform targeting 5 million locations <sup class="cite"><a href="#src-4">4</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Sep 30, 2026</b>Converge Digest</div><div><h3>Samsung backs KKR's Helix</h3><p>Samsung Electronics and five affiliates are committing $1 billion to KKR's Helix Digital Infrastructure, a platform covering data centers, power generation and fiber <sup class="cite"><a href="#src-12">12</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Sep 16, 2026</b>Converge Digest</div><div><h3>Anthropic signs in Queensland</h3><p>Anthropic signed its first Australian data center agreement with Zerra DC at Western Downs Digital Park, a planned 2.16 GW campus supporting inference from 2027 <sup class="cite"><a href="#src-9">9</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Sep 7, 2026</b>The Columbian</div><div><h3>$264 million for land in Washington</h3><p>Trammell Crow's data center arm acquired nearly 1,000 acres at Lewis &amp; Clark Ranch in West Richland, Washington, for $264 million in July 2026 <sup class="cite"><a href="#src-13">13</a></sup>.</p></div></div>
+</section>
+<section class="" id="t-1">
+<hr class="dbl">
+<div class="thread-head"><span class="eyebrow">Thread</span><span class="code">D4.5 · D4.2</span></div>
+<h2>Private Credit, Project Debt &amp; REITs</h2>
+
+<p class="intro">Debt in the record is secured and tied to named counterparties, and listed vehicles are being built to hold the assets.</p>
+<div class="sig"><div class="when"><b>Oct 6, 2026</b>Tech Startups</div><div><h3>A record $60 billion package</h3><p>Wall Street banks launched a $60 billion financing package for Anthropic's infrastructure expansion, with about $42 billion in senior secured debt guaranteed by Broadcom and about $18 billion in junior financing <sup class="cite"><a href="#src-7">7</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Oct 1, 2026</b>DataCenterView</div><div><h3>Blue Owl plans a REIT</h3><p>Blue Owl Capital plans to launch a data center REIT seeded with $6.5 billion of its own assets, while Senator Josh Hawley introduced legislation to eliminate Opportunity Zone tax breaks <sup class="cite"><a href="#src-14">14</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Oct 5, 2026</b>U.S. News</div><div><h3>Goldman keeps its capacity view</h3><p>Goldman Sachs expects US data center capacity to reach 64 GW by the end of 2026, revised up 5 GW, and 90 GW by 2027, revised down 5 GW <sup class="cite"><a href="#src-15">15</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Oct 5, 2026</b>Cloud News</div><div><h3>Supply commitments strain memory</h3><p>Nvidia's $279 billion in supply commitments is straining HBM capacity; Morgan Stanley projects Alphabet, AMD and Nvidia could consume 85% of global HBM supply by 2027 <sup class="cite"><a href="#src-17">17</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Oct 6, 2026</b>Golem</div><div><h3>Energy as a credit risk</h3><p>Morgan Stanley reports that US data centers face significant energy shortages despite some operators building their own power plants <sup class="cite"><a href="#src-27">27</a></sup>.</p></div></div>
+</section>
+<section class="page" id="t-2">
+
+<div class="thread-head"><span class="eyebrow">Thread</span><span class="code">D4.6</span></div>
+<h2>GPU-Backed &amp; Neocloud Financing</h2>
+<hr class="dbl">
+<p class="intro">The neoclouds are now financing like infrastructure companies: secured term loans, upsized debt programs and pre-IPO rounds led by the same firms that buy data centers.</p>
+<div class="sig"><div class="when"><b>Oct 6, 2026</b>TechCrunch</div><div><h3>Lambda raises $4 billion before an IPO</h3><p>Nvidia-backed Lambda is raising $4 billion at a $14.5 billion pre-money valuation, led by Coatue and Blackstone, ahead of a planned 2027 IPO <sup class="cite"><a href="#src-5">5</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Oct 2, 2026</b>Converge Digest</div><div><h3>Lambda's first secured term loan</h3><p>Lambda closed a $1.008 billion senior secured delayed-draw term loan for GPU deployments with two investment-grade hyperscale customers <sup class="cite"><a href="#src-16">16</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Oct 4, 2026</b>Digital Infrastructure (Substack)</div><div><h3>Lambda in Oklahoma; Vultr orders from HPE</h3><p>Lambda announced an AI data center in Oklahoma, and HPE secured a $1.2 billion order from Vultr for AMD Helios systems <sup class="cite"><a href="#src-24">24</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Jul 21, 2026</b>W.Media</div><div><h3>Nebius's first secured facility</h3><p>Nebius Group raised $775 million through its first senior secured debt facility to expand its AI cloud platform <sup class="cite"><a href="#src-18">18</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Aug 24, 2026</b>Data Centre Review</div><div><h3>Nebius upsizes to $5 billion</h3><p>Nebius upsized its debt raise to $5 billion and could spend up to $25 billion this year to meet more than $40 billion of customer commitments <sup class="cite"><a href="#src-19">19</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Jul 1, 2026</b>New Market Pitch</div><div><h3>Valuations across the GPU clouds</h3><p>TensorWave raised $350 million in June 2026 at a $1.55 billion valuation, and Nscale's March 2026 Series C valued it at $14.6 billion <sup class="cite"><a href="#src-20">20</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Sep 18, 2026</b>Data Center Dynamics</div><div><h3>CoreWeave signs another former miner</h3><p>Blockfusion signed CoreWeave as a customer at its Niagara Falls, New York campus <sup class="cite"><a href="#src-21">21</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Oct 9, 2026</b>Techstrong.ai</div><div><h3>Sovereign money in networking</h3><p>Upscale, backed by Nvidia, Salesforce Ventures and Temasek, announced a multi-vendor AI networking platform following a $190 million funding extension <sup class="cite"><a href="#src-10">10</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Oct 5, 2026</b>Converge Digest</div><div><h3>Venture money for GPU uptime</h3><p>Clockwork.io raised $31 million in Series B funding for software-based GPU fault tolerance <sup class="cite"><a href="#src-11">11</a></sup>.</p></div></div>
+</section>
+<section class="" id="t-3">
+<hr class="dbl">
+<div class="thread-head"><span class="eyebrow">Thread</span><span class="code">D4.4</span></div>
+<h2>Integrated Infrastructure Vendor M&amp;A</h2>
+
+<p class="intro">Vendors are buying software, medium-voltage capacity and liquid-cooling services, the parts of the stack the record elsewhere shows to be short.</p>
+<div class="sig"><div class="when"><b>Oct 5, 2026</b>SiliconANGLE · Silicon Republic</div><div><h3>Schneider Electric to buy PTC</h3><p>Schneider Electric announced plans to acquire PTC in an all-cash deal at $205 per share, reported at $23.7 billion by SiliconANGLE and $22.6 billion by Silicon Republic <sup class="cite"><a href="#src-22">22</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Sep 25, 2026</b>Converge Digest</div><div><h3>Eaton buys COL Group</h3><p>Eaton agreed to acquire Italy-based COL Group for €810 million to strengthen its European medium-voltage capabilities <sup class="cite"><a href="#src-23">23</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Sep 24, 2026</b>HPCwire</div><div><h3>Vertiv buys liquid-cooling services</h3><p>Vertiv announced the acquisition of King Environmental Services, a European provider of fluid management and commissioning for liquid-cooled data centers <sup class="cite"><a href="#src-25">25</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Oct 6, 2026</b>Converge Digest</div><div><h3>Flex values Axiom at $37.5 billion</h3><p>Flex secured a $2.0 billion convertible preferred investment in its Axiom spin-off from General Catalyst, Koch Equity Development and co-investors at a $37.5 billion enterprise value <sup class="cite"><a href="#src-26">26</a></sup>.</p></div></div>
+</section>
+<section class="page" id="register">
+<div class="eyebrow">Signal register</div>
+<h2>Named parties in the record</h2>
+<hr class="dbl">
+<p>Every party below appears in at least one cited Signal. The role column restates what the source reports; it adds no assessment.</p>
+<table class="tbl"><thead><tr><th style="width:26%">Party</th><th>Role in the cited Signals</th><th style="width:12%">Sources</th></tr></thead><tbody>
+<tr><td><b>Blackstone</b></td><td>$30 B Japan commitment; co-lead of Lambda's $4 B round</td><td><sup class="cite"><a href="#src-5">5</a>,<a href="#src-6">6</a></sup></td></tr>
+<tr><td><b>SoftBank</b></td><td>Seeking up to $100 B from Gulf investors; exploring a Borneo project</td><td><sup class="cite"><a href="#src-1">1</a>,<a href="#src-2">2</a></sup></td></tr>
+<tr><td><b>MGX</b></td><td>Exclusive talks for Stack Infrastructure's APAC portfolio</td><td><sup class="cite"><a href="#src-8">8</a></sup></td></tr>
+<tr><td><b>Global Infrastructure Partners</b></td><td>JV with ACS Group (11 GW pipeline); fiber JV with AT&amp;T and CPP Investments</td><td><sup class="cite"><a href="#src-3">3</a>,<a href="#src-4">4</a></sup></td></tr>
+<tr><td><b>KKR · Samsung</b></td><td>$1 B Samsung commitment to KKR's Helix platform</td><td><sup class="cite"><a href="#src-12">12</a></sup></td></tr>
+<tr><td><b>Anthropic · Broadcom</b></td><td>$60 B financing package, senior tranche guaranteed by Broadcom; Queensland campus deal</td><td><sup class="cite"><a href="#src-7">7</a>,<a href="#src-9">9</a></sup></td></tr>
+<tr><td><b>Lambda</b></td><td>$4 B raise; $1.008 B secured term loan; Oklahoma data center</td><td><sup class="cite"><a href="#src-5">5</a>,<a href="#src-16">16</a>,<a href="#src-24">24</a></sup></td></tr>
+<tr><td><b>Nebius</b></td><td>$775 M secured facility; debt raise upsized to $5 B</td><td><sup class="cite"><a href="#src-18">18</a>,<a href="#src-19">19</a></sup></td></tr>
+<tr><td><b>Blue Owl</b></td><td>Planned data center REIT seeded with $6.5 B</td><td><sup class="cite"><a href="#src-14">14</a></sup></td></tr>
+<tr><td><b>Schneider Electric · Eaton · Vertiv · Flex</b></td><td>PTC, COL Group and King Environmental acquisitions; Axiom investment</td><td><sup class="cite"><a href="#src-22">22</a>,<a href="#src-23">23</a>,<a href="#src-25">25</a>,<a href="#src-26">26</a></sup></td></tr>
+</tbody></table>
+<div class="take"><div class="eyebrow">Faraday's Take</div><p>The cited record does not describe a market short of money. It describes money that increasingly demands a named counterparty: Broadcom's guarantee behind Anthropic's senior debt <sup class="cite"><a href="#src-7">7</a></sup>, two investment-grade customers behind Lambda's loan <sup class="cite"><a href="#src-16">16</a></sup>, more than $40 billion of commitments behind Nebius's raise <sup class="cite"><a href="#src-19">19</a></sup>. On this evidence the next constraint is on the counterparty side. Lenders will price the buyer's contract, not the operator's buildings, and the operators that hold those contracts will keep raising while the others will not.</p></div>
+</section>
+<section class="page method" id="sources">
+<div class="eyebrow">Sector Briefing · Final page</div>
+<h2>Sources &amp; methodology</h2>
+<hr class="dbl">
+<p>Source rule: every factual sentence carries a numbered citation to a Faraday Signal (Supabase public.signals) or crawled artifact (public.artifacts); each records the publisher URL below. Sentences restate the recorded framing or summary, using only complete clauses where the record was truncated. Where two sources disagree on a figure (Schneider–PTC), both are given. Nothing comes from the retired Gamma deck or from model memory.</p>
+<p>Selection: Signals tagged D4.1–D4.6, fired 1 Jul–13 Oct 2026, plus company-named artifacts for Lambda, Nebius and CoreWeave; de-duplicated, Google News redirects excluded, then curated by hand. Mis-tagged items (MLCC supply, co-packaged optics) were dropped.</p>
+<p>Limits: primary articles were not re-fetched for this sample. Faraday's Take is analysis of the cited items and adds no facts. Status: draft, not signed off (Brand Bible §07).</p>
+<ol class="sources"><li id="src-1"><span class="n">1</span><span><b>Data Center Dynamics</b> · Oct 12, 2026 · SoftBank eyes possible AI data center project in Borneo<br><span class="u">https://www.datacenterdynamics.com/en/news/softbank-eyes-possible-ai-data-center-project-in-borneo/</span> <span class="u">· signal 99997dad</span></span></li>
+<li id="src-2"><span class="n">2</span><span><b>Mobile World Live</b> · Oct 9, 2026 · SoftBank eyes $100B Gulf investment for AI push<br><span class="u">https://www.mobileworldlive.com/ai-cloud/softbank-eyes-100b-gulf-investment-for-ai-push/</span> <span class="u">· signal 8fe589e2</span></span></li>
+<li id="src-3"><span class="n">3</span><span><b>CSG Talent</b> · Oct 8, 2026 · Data Centre Projects 2026: Global Growth, Major Developments, and Market Leaders<br><span class="u">https://www.csgtalent.com/insights/blog/data-centre-projects-2026/</span> <span class="u">· signal 9d5cf0ba</span></span></li>
+<li id="src-4"><span class="n">4</span><span><b>Converge Digest</b> · Oct 7, 2026 · AT&amp;T Combines Former Lumen Fiber Assets with Gigapower in JV<br><span class="u">https://convergedigest.com/att-gip-cpp-investments-open-access-fiber-jv/</span> <span class="u">· signal 07b388dc</span></span></li>
+<li id="src-5"><span class="n">5</span><span><b>TechCrunch</b> · Oct 6, 2026 · AI computing startup Lambda to raise $4B ahead of planned IPO<br><span class="u">https://techcrunch.com/2026/10/06/ai-computing-startup-lambda-to-raise-4b-ahead-of-planned-ipo/</span> <span class="u">· signal 8d977398</span></span></li>
+<li id="src-6"><span class="n">6</span><span><b>W.Media</b> · Oct 6, 2026 · Japan Rising!<br><span class="u">https://w.media/japan-rising/</span> <span class="u">· signal 86600982</span></span></li>
+<li id="src-7"><span class="n">7</span><span><b>Tech Startups</b> · Oct 6, 2026 · Wall Street Launches Record $60 Billion Broadcom-Anthropic AI Chip Financing Package<br><span class="u">https://techstartups.com/2026/10/06/top-tech-news-today-october-6-2026-amazon-amd-apple-deepseek-google-uber-more/</span> <span class="u">· signal ce75faf2</span></span></li>
+<li id="src-8"><span class="n">8</span><span><b>Semafor</b> · Sep 28, 2026 · MGX looks for data center assets in the Asia Pacific<br><span class="u">https://semafor.com/article/09/28/2026/mgx-looks-for-data-center-assets-in-the-asia-pacific</span> <span class="u">· signal 5cb7f25f</span></span></li>
+<li id="src-9"><span class="n">9</span><span><b>Converge Digest</b> · Sep 16, 2026 · Anthropic Signs First Australian Data Center Deal in Queensland<br><span class="u">https://convergedigest.com/anthropic-zerra-dc-australia-2-16gw-data-center/</span> <span class="u">· signal 32740204</span></span></li>
+<li id="src-10"><span class="n">10</span><span><b>Techstrong.ai</b> · Oct 9, 2026 · AI Startup Upscale Unveils Multi-Vendor Data Center Networking Platform<br><span class="u">https://techstrong.ai/ai-infrastructure/ai-startup-upscale-unveils-multi-vendor-data-center-networking-platform</span> <span class="u">· signal e3379782</span></span></li>
+<li id="src-11"><span class="n">11</span><span><b>Converge Digest</b> · Oct 5, 2026 · Clockwork.io Raises $31M as LinkedIn Deploys GPU Fault-Tolerance Software<br><span class="u">https://convergedigest.com/clockwork-31m-linkedin-gpu-fault-tolerance/</span> <span class="u">· signal 84a2d875</span></span></li>
+<li id="src-12"><span class="n">12</span><span><b>Converge Digest</b> · Sep 30, 2026 · Samsung Commits $1B to KKR's Helix AI Infrastructure<br><span class="u">https://convergedigest.com/samsung-1-billion-helix-ai-infrastructure/</span> <span class="u">· signal 084405a6</span></span></li>
+<li id="src-13"><span class="n">13</span><span><b>The Columbian</b> · Sep 7, 2026 · $264M Land Deal Could Set Stage for Tri-Cities' First Data Center Complex<br><span class="u">https://www.columbian.com/news/2026/sep/07/264m-land-deal-could-set-stage-for-tri-cities-1st-data-center-complex/</span> <span class="u">· signal 4d87fbcf</span></span></li>
+<li id="src-14"><span class="n">14</span><span><b>DataCenterView</b> · Oct 1, 2026 · Blue Owl Plans Data Center REIT Seeded with $6.5B of Its Own Assets; Hawley Moves to Strip<br><span class="u">https://news.datacenterview.com/p/october-1-2026-blue-owl-plans-data-center-reit-with-6-5b-of-its-own-assets</span> <span class="u">· signal 5171ba50</span></span></li>
+<li id="src-15"><span class="n">15</span><span><b>U.S. News &amp; World Report</b> · Oct 5, 2026 · Goldman Sees US Data Center Growth Intact Despite Opposition<br><span class="u">https://money.usnews.com/investing/news/articles/2026-10-05/goldman-sees-us-data-center-growth-intact-despite-opposition</span> <span class="u">· signal 0e3706f5</span></span></li>
+<li id="src-16"><span class="n">16</span><span><b>Converge Digest</b> · Oct 2, 2026 · Lambda Closes $1 Billion Loan for Contracted GPU Deployments<br><span class="u">https://convergedigest.com/lambda-1-008b-fixed-rate-loan-gpu-deployments/</span> <span class="u">· signal 02211c54</span></span></li>
+<li id="src-17"><span class="n">17</span><span><b>Cloud News</b> · Oct 5, 2026 · Nvidia's $279 Billion in Supply Commitments Is Straining Memory for AI<br><span class="u">https://cloudnews.tech/nvidias-279-billion-in-supply-commitments-is-straining-memory-for-ai/</span> <span class="u">· signal ac56e3d6</span></span></li>
+<li id="src-18"><span class="n">18</span><span><b>W.Media</b> · Jul 21, 2026 · Nebius Group raises US$ 775 million in secured financing to fund AI cloud expansion<br><span class="u">https://w.media/nebius-group-raises-us-775-million-in-secured-financing-to-fund-ai-cloud-expansion/</span> <span class="u">· artifact a9d2af64</span></span></li>
+<li id="src-19"><span class="n">19</span><span><b>Data Centre Review</b> · Aug 24, 2026 · Nebius upsizes debt raise to $5bn as its AI infrastructure spending accelerates<br><span class="u">https://datacentrereview.com/2026/08/nebius-upsizes-debt-raise-to-5bn-as-its-ai-infrastructure-spending-accelerates/</span> <span class="u">· artifact 961b2742</span></span></li>
+<li id="src-20"><span class="n">20</span><span><b>New Market Pitch</b> · Jul 1, 2026 · AI Infrastructure Top Startups 2026: TensorWave, CoreWeave, Lambda, and Nscale Lead the Pack<br><span class="u">https://newmarketpitch.com/blogs/news/ai-infrastructure-top-startups</span> <span class="u">· artifact 5d2c9606</span></span></li>
+<li id="src-21"><span class="n">21</span><span><b>Data Center Dynamics</b> · Sep 18, 2026 · Blockfusion signs CoreWeave as a customer in Niagara Falls, New York<br><span class="u">https://www.datacenterdynamics.com/en/news/blockfusion-signs-coreweave-as-a-customer-in-niagara-falls-new-york/</span> <span class="u">· artifact 143a7530</span></span></li>
+<li id="src-22"><span class="n">22</span><span><b>SiliconANGLE · Silicon Republic</b> · Oct 5, 2026 · Schneider Electric to buy engineering software giant PTC for $23.7B · Schneider Electric to acquire PTC for $22.6bn<br><span class="u">https://siliconangle.com/2026/10/05/schneider-electric-to-buy-engineering-software-giant-ptc-for-23-7b/ · https://www.siliconrepublic.com/business/schneider-electric-to-acquire-ptc-for-22-6bn-ai</span> <span class="u">· artifacts 1ee5322a, d9301234</span></span></li>
+<li id="src-23"><span class="n">23</span><span><b>Converge Digest</b> · Sep 25, 2026 · Eaton to Acquire COL Group for €810M, Expanding European Power Capacity<br><span class="u">https://convergedigest.com/eaton-col-group-810m-data-center-power/</span> <span class="u">· signal 5078c659</span></span></li>
+<li id="src-24"><span class="n">24</span><span><b>Digital Infrastructure (Substack)</b> · Oct 4, 2026 · Lambda Plans Oklahoma AI Data Center; Palantir + Armada Deploy Sovereign AI; HPE Secures $1.2B<br><span class="u">https://digitalinfrastructure.substack.com/p/10042026-what-i-read-last-week</span> <span class="u">· signal 71267e6e</span></span></li>
+<li id="src-25"><span class="n">25</span><span><b>HPCwire</b> · Sep 24, 2026 · Vertiv to Buy King Environmental Services to Bolster Data Center Cooling<br><span class="u">https://www.hpcwire.com/off-the-wire/vertiv-to-buy-king-environmental-services-to-bolster-data-center-cooling/</span> <span class="u">· signal 98dcb5b6</span></span></li>
+<li id="src-26"><span class="n">26</span><span><b>Converge Digest</b> · Oct 6, 2026 · Flex Secures $2B Investment for Axiom at $37.5B Enterprise Value<br><span class="u">https://convergedigest.com/flex-axiom-2b-investment-37-5b-valuation/</span> <span class="u">· signal c2689278</span></span></li>
+<li id="src-27"><span class="n">27</span><span><b>Golem</b> · Oct 6, 2026 · Laut Morgan Stanley: US-Rechenzentren vor massiver Energieknappheit<br><span class="u">https://www.golem.de/news/laut-morgan-stanley-us-rechenzentren-vor-massiver-energieknappheit-2610-213777.html</span> <span class="u">· signal 6ef7dd65</span></span></li></ol>
+</section>
+</div>

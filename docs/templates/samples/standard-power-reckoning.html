@@ -1,0 +1,265 @@
+<title>The Power Reckoning</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a printed briefing. One column of Letter pages; the cover and the Sources page each start a page. */
+/* Single light "paper" look by design (it is a print document), so colours are set explicitly and no dark block is defined. */
+:root {
+  color-scheme: light;
+  --paper: #fbfbf8;      /* page ground */
+  --ink: #1b211d;        /* body text */
+  --muted: #5a645c;      /* captions, metadata */
+  --forest: #1f4a36;     /* Faraday forest: headings, upper rule */
+  --gold: #a8812f;       /* Faraday gold: lower rule, eyebrows */
+  --cream: #f6efdc;      /* Faraday's Take callout only (Brand Bible §06) */
+  --hair: #d5dbd3;       /* table and list hairlines */
+  --serif: "Source Serif 4", Georgia, "DejaVu Serif", serif;
+  --sans: "IBM Plex Sans", "Helvetica Neue", Arial, "DejaVu Sans", sans-serif;
+  --mono: "IBM Plex Mono", "DejaVu Sans Mono", monospace;
+}
+@page { size: Letter; margin: 0.7in 0.75in 0.75in; }
+html { background: var(--paper); }
+body { background: var(--paper); color: var(--ink); font-family: var(--serif); font-size: 10.5pt; line-height: 1.5; margin: 0; padding-inline: 16px; padding-block: 24px; }
+.doc { max-width: 7in; margin: 0 auto; }
+@media print { body { padding: 0; } .doc { max-width: none; } }
+h1, h2, h3 { font-family: var(--serif); color: var(--forest); text-wrap: balance; margin: 0; }
+h1 { font-size: 26pt; line-height: 1.12; font-weight: 700; }
+h2 { font-size: 15pt; line-height: 1.25; font-weight: 600; margin-top: 4pt; }
+h3 { font-size: 11pt; font-weight: 600; color: var(--ink); }
+p { margin: 0 0 7pt; max-width: 68ch; }
+a { color: var(--forest); }
+.eyebrow { font-family: var(--sans); font-size: 7.5pt; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+.meta { font-family: var(--sans); font-size: 8.5pt; color: var(--muted); }
+.mono { font-family: var(--mono); font-size: 8pt; }
+sup.cite { font-family: var(--sans); font-size: 6.5pt; line-height: 0; margin-left: 1px; }
+sup.cite a { text-decoration: none; color: var(--gold); }
+/* Faraday editorial signature: double rule, forest over gold (Brand Bible §06). */
+.dbl { border: 0; height: 5px; margin: 14pt 0 12pt; background:
+  linear-gradient(var(--forest), var(--forest)) top / 100% 2px no-repeat,
+  linear-gradient(var(--gold), var(--gold)) bottom / 100% 1px no-repeat; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.page { break-before: page; }
+section { margin-top: 4pt; }
+/* Cover */
+.cover { min-height: 8.6in; display: flex; flex-direction: column; gap: 14pt; }
+.cover .tierline { display: flex; flex-wrap: wrap; gap: 6pt 18pt; font-family: var(--sans); font-size: 8.5pt; color: var(--muted); }
+.cover .thesis { font-size: 13pt; line-height: 1.45; max-width: 60ch; }
+.cover .foot { margin-top: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10pt; border-top: 1px solid var(--hair); padding-top: 10pt; }
+.kv dt { font-family: var(--sans); font-size: 7pt; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.kv dd { margin: 1pt 0 0; font-family: var(--sans); font-size: 9pt; }
+/* Tables */
+.tbl { width: 100%; border-collapse: collapse; font-family: var(--sans); font-size: 8.5pt; font-variant-numeric: tabular-nums; margin: 6pt 0 8pt; }
+.tbl th { text-align: left; font-weight: 600; color: var(--muted); font-size: 7pt; letter-spacing: .08em; text-transform: uppercase; border-bottom: 1.5px solid var(--forest); padding: 4pt 6pt 4pt 0; }
+.tbl td { border-bottom: 1px solid var(--hair); padding: 4pt 6pt 4pt 0; vertical-align: top; }
+.tbl tr { break-inside: avoid; }
+.tbl td.num { white-space: nowrap; font-weight: 600; color: var(--forest); }
+/* Signal entries */
+.sig { display: grid; grid-template-columns: 0.95in 1fr; gap: 0 12pt; padding: 6pt 0; border-bottom: 1px solid var(--hair); break-inside: avoid; }
+.sig .when { font-family: var(--sans); font-size: 8pt; color: var(--muted); }
+.sig .when b { display: block; color: var(--ink); font-weight: 500; }
+.sig h3 { margin-bottom: 2pt; }
+.sig p { margin: 0; }
+.thread-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4pt 10pt; }
+.code { font-family: var(--mono); font-size: 8pt; color: var(--gold); }
+.intro { color: var(--ink); break-after: avoid; }
+h2, .thread-head { break-after: avoid; }
+/* Faraday's Take: cream ground, forest/gold double left rule, italic serif (Brand Bible §06). */
+.take { background: var(--cream); border-left: 3px solid var(--forest); box-shadow: inset 4px 0 0 var(--cream), inset 5px 0 0 var(--gold); padding: 10pt 14pt 10pt 18pt; margin: 12pt 0; break-inside: avoid; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.take .eyebrow { color: var(--forest); }
+.take p { font-style: italic; font-size: 11pt; margin: 4pt 0 0; }
+/* Sources */
+ol.sources { list-style: none; padding: 0; margin: 6pt 0 0; font-family: var(--sans); font-size: 7.2pt; line-height: 1.3; columns: 2; column-gap: 16pt; }
+@media (max-width: 560px) { ol.sources { columns: 1; } }
+ol.sources li { display: grid; grid-template-columns: 22pt 1fr; padding: 2.5pt 0; border-bottom: 1px solid var(--hair); break-inside: avoid; }
+ol.sources .n { color: var(--gold); font-weight: 600; }
+ol.sources .u { font-family: var(--mono); font-size: 6.6pt; color: var(--muted); overflow-wrap: anywhere; word-break: break-all; }
+.method p, .method li { font-family: var(--sans); font-size: 8.3pt; line-height: 1.45; max-width: none; }
+.method ul { margin: 2pt 0 6pt; padding-left: 14pt; }
+/* Profile */
+.profile-grid { display: grid; grid-template-columns: 2.1in 1fr; gap: 0 20pt; }
+.profile-grid > * { min-width: 0; }
+.idcard { border-top: 2px solid var(--forest); padding-top: 6pt; }
+.idcard dl { margin: 0; display: grid; gap: 6pt; }
+.src-tag { font-family: var(--mono); font-size: 6.6pt; color: var(--muted); display: block; margin-top: 1pt; overflow-wrap: anywhere; }
+.compact .sig { grid-template-columns: 0.8in 1fr; padding: 3pt 0; }
+.profile h1 { font-size: 22pt; }
+.profile .dbl { margin: 8pt 0 8pt; }
+.compact .sig h3 { font-size: 9.5pt; }
+.compact .sig p { font-size: 8.8pt; line-height: 1.35; }
+@media (max-width: 560px) {
+  .profile-grid { grid-template-columns: 1fr; }
+  .sig, .compact .sig { grid-template-columns: 1fr; }
+  h1 { font-size: 21pt; }
+}
+</style>
+<div class="doc">
+<section class="cover">
+<div class="eyebrow">Faraday Briefing Library · Sector Briefing</div>
+<div class="tierline"><span>Tier: Standard (8–10 pp target)</span><span>Theater: The Power Reckoning</span><span>Sector: Power Architecture (D2) · Grid &amp; Regulatory (D3)</span></div>
+<h1>The Power Reckoning</h1>
+<hr class="dbl">
+<p class="thesis">Between August and October 2026 the scarce input for AI data centers stopped being megawatts alone and became permission: permission to connect, to co-locate and to build. Buyers reached for existing nuclear plants, while FERC, PJM and state officials in Texas, North Carolina and Virginia began rewriting who pays and who waits.</p>
+<p class="meta">By Gilbert (empirical byline, Brand Bible §06) · Evidence window Aug 13, 2026 to Oct 12, 2026 · Status: draft (not signed off)</p>
+<dl class="foot kv">
+  <div><dt>Threads covered</dt><dd>D2.5, D2.6, D3.5, D3.4 · D2.8, D3.2 · D3.3</dd></div>
+  <div><dt>Signals cited</dt><dd>37</dd></div>
+  <div><dt>Library record</dt><dd class="mono">recMlmb655VUUXSFl · #15</dd></div>
+  <div><dt>Prepared</dt><dd>Oct 13, 2026</dd></div>
+</dl>
+</section>
+<section class="page" id="summary">
+<div class="eyebrow">The argument</div>
+<h2>Permission has joined power as the constraint</h2>
+<hr class="dbl">
+<p>The record in this Briefing is thirty-seven sourced items, Faraday Signals and crawled articles, dated between 13 August and 12 October 2026. Read together, they show two movements happening at once.</p>
+<p>The first is a rush to existing nuclear capacity. Google signed a 20-year agreement with Constellation for 890 MW from upgrades at 11 existing units in Illinois, Pennsylvania and New Jersey <sup class="cite"><a href="#src-1">1</a></sup>, with Constellation investing over $4.3 billion <sup class="cite"><a href="#src-2">2</a></sup>. Amazon signed a 20-year agreement around Calvert Cliffs in Maryland <sup class="cite"><a href="#src-5">5</a></sup>. Meta secured up to 6.6 GW from TerraPower, Oklo and Vistra <sup class="cite"><a href="#src-7">7</a></sup>. The Department of Energy is lending into the same plants: a conditional $4.2 billion package for Vistra uprates adding 433 MW <sup class="cite"><a href="#src-6">6</a></sup> and a closed $1.9 billion loan to restart Duane Arnold in Iowa <sup class="cite"><a href="#src-9">9</a></sup>.</p>
+<p>The second is a tightening of the rules for connecting large loads. FERC issued show-cause orders in June 2026 to six grid operators over interconnection rules for loads above 50 MW <sup class="cite"><a href="#src-18">18</a></sup>. PJM filed a mechanism that would require new large data center loads to bring qualifying capacity or face backstop procurement <sup class="cite"><a href="#src-19">19</a></sup>. Texas paused new data center permits pending an ERCOT audit <sup class="cite"><a href="#src-28">28</a>,<a href="#src-29">29</a></sup>. North Carolina regulators refused a Duke Energy gas turbine request on cost and uncertain need <sup class="cite"><a href="#src-30">30</a></sup>.</p>
+<p>Where those two movements meet, projects slip. Oracle invoked force majeure with STACK Infrastructure over delays at Project Jupiter, citing power supply, air permits and land access <sup class="cite"><a href="#src-13">13</a></sup>, and the 2.45 GW Bloom Energy fuel cell deployment tied to that site faces fuel supply delays <sup class="cite"><a href="#src-14">14</a></sup>. The same report that tallied 9.8 GW of hyperscaler nuclear deals projected only 1 GW online before 2030 <sup class="cite"><a href="#src-12">12</a></sup>.</p>
+<h3 style="margin-top:10pt">At a glance</h3>
+<table class="tbl"><thead><tr><th style="width:22%">Figure</th><th>What the record shows</th><th style="width:16%">Date</th></tr></thead><tbody>
+<tr><td class="num">890 MW</td><td>Google–Constellation 20-year PPA, from upgrades at 11 existing nuclear units <sup class="cite"><a href="#src-1">1</a></sup></td><td>Oct 12, 2026</td></tr>
+<tr><td class="num">Up to 6.6 GW</td><td>Nuclear power secured by Meta from TerraPower, Oklo and Vistra <sup class="cite"><a href="#src-7">7</a></sup></td><td>Sep 30, 2026</td></tr>
+<tr><td class="num">$4.2 B</td><td>Conditional DOE loan commitment to Vistra for uprates adding 433 MW <sup class="cite"><a href="#src-6">6</a></sup></td><td>Oct 5, 2026</td></tr>
+<tr><td class="num">$1.9 B</td><td>DOE loan closed to NextEra to restart Duane Arnold, Iowa <sup class="cite"><a href="#src-9">9</a></sup></td><td>Sep 8, 2026</td></tr>
+<tr><td class="num">50 MW</td><td>Load threshold in FERC's June 2026 show-cause orders to six grid operators <sup class="cite"><a href="#src-18">18</a></sup></td><td>Oct 1, 2026</td></tr>
+<tr><td class="num">2.45 GW</td><td>Bloom fuel cell deployment for Oracle's Project Jupiter, now facing fuel supply delays <sup class="cite"><a href="#src-14">14</a></sup></td><td>Sep 24, 2026</td></tr>
+<tr><td class="num">$67 B</td><td>Dominion–NextEra merger whose review clock Virginia's Attorney General asked the SCC to reset <sup class="cite"><a href="#src-33">33</a></sup></td><td>Sep 21, 2026</td></tr>
+</tbody></table>
+</section>
+<section class="page" id="t-0">
+
+<div class="thread-head"><span class="eyebrow">Thread</span><span class="code">D2.5</span></div>
+<h2>Nuclear &amp; SMR Offtake</h2>
+<hr class="dbl">
+<p class="intro">Hyperscalers bought existing nuclear output and uprates in September and October, and federal lending followed the same plants. Every figure below is as reported by the cited source.</p>
+<div class="sig"><div class="when"><b>Oct 12, 2026</b>W.Media</div><div><h3>Google and Constellation add 890 MW to PJM</h3><p>Google and Constellation Energy signed a 20-year power purchase agreement to add 890 MW of nuclear capacity to the PJM grid through upgrades at 11 existing nuclear units across Illinois, Pennsylvania and New Jersey <sup class="cite"><a href="#src-1">1</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Oct 6, 2026</b>SiliconANGLE</div><div><h3>Constellation's side of the Google deal</h3><p>Google committed to a 20-year agreement to secure 890 MW of nuclear power for its AI data centers, with Constellation investing over $4.3 billion in the partnership <sup class="cite"><a href="#src-2">2</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Oct 7, 2026</b>Power Engineering</div><div><h3>Uprates as the fastest path to new megawatts</h3><p>Google, Meta and the Department of Energy are backing over 1.3 GW of reactor uprate deals through Constellation and Vistra, primarily targeting PJM capacity <sup class="cite"><a href="#src-3">3</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Oct 8, 2026</b>Canary Media</div><div><h3>Uprates and the federal 5 GW goal</h3><p>Constellation framed its uprate plans as supporting the administration's goal of adding 5 GW of carbon-free nuclear capacity by 2029 <sup class="cite"><a href="#src-4">4</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Oct 5, 2026</b>Utility Dive</div><div><h3>Amazon backs Calvert Cliffs</h3><p>Amazon and Constellation signed a 20-year agreement supporting expansion and renovation at Maryland's 1,790 MW Calvert Cliffs plant <sup class="cite"><a href="#src-5">5</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Oct 5, 2026</b>POWER Magazine</div><div><h3>DOE lines up $4.2 billion for Vistra</h3><p>DOE's Energy Dominance Financing office announced a conditional $4.2 billion loan commitment for uprates and modernization at Beaver Valley (PA), Davis-Besse and Perry (OH), adding 433 MW <sup class="cite"><a href="#src-6">6</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Sep 30, 2026</b>Data Center Dynamics</div><div><h3>Meta secures up to 6.6 GW</h3><p>Meta secured up to 6.6 GW of nuclear power through agreements with TerraPower, Oklo and Vistra <sup class="cite"><a href="#src-7">7</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Oct 1, 2026</b>Nuclear News Network</div><div><h3>A running tally of data center nuclear deals</h3><p>The tracker reports nuclear capacity agreements for data centers have grown to 45 GW <sup class="cite"><a href="#src-8">8</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Sep 8, 2026</b>Neutron Bytes</div><div><h3>Duane Arnold restart financed</h3><p>DOE closed a $1.9 billion loan to NextEra Energy to restart the Duane Arnold plant in Iowa <sup class="cite"><a href="#src-9">9</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Sep 12, 2026</b>American Nuclear Society</div><div><h3>NRC timeline for Duane Arnold</h3><p>The NRC is conducting 2026 site inspections ahead of a potential restart, with a licensing package expected by January 2028 <sup class="cite"><a href="#src-10">10</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Sep 23, 2026</b>Canary Media</div><div><h3>X-energy's federal windfall</h3><p>X-energy received $1 billion in DOE funding for advanced small modular reactor development <sup class="cite"><a href="#src-11">11</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Oct 5, 2026</b>RTO Insider</div><div><h3>Georgia Power subscription for uprates</h3><p>Google partnered with Georgia Power to finance capacity uprates at nuclear facilities through a subscription program <sup class="cite"><a href="#src-36">36</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Aug 19, 2026</b>Enki AI</div><div><h3>The gap between deals and delivery</h3><p>Hyperscalers have announced 9.8 GW of nuclear deals, but only 1 GW is projected online before 2030, a 6 GW shortfall in PJM <sup class="cite"><a href="#src-12">12</a></sup>.</p></div></div>
+</section>
+<section class="" id="t-1">
+<hr class="dbl">
+<div class="thread-head"><span class="eyebrow">Thread</span><span class="code">D2.6</span></div>
+<h2>Behind-the-Fence Gas &amp; Fuel Cells</h2>
+
+<p class="intro">On-site generation is the main alternative to waiting for the grid. The record shows it carries its own permitting and fuel risks.</p>
+<div class="sig"><div class="when"><b>Oct 5, 2026</b>Stocktwits</div><div><h3>Oracle invokes force majeure at Project Jupiter</h3><p>Oracle invoked force majeure with Blue Owl's STACK Infrastructure over Project Jupiter delays, citing power supply, air permits and land access <sup class="cite"><a href="#src-13">13</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Sep 24, 2026</b>24/7 Wall St.</div><div><h3>Bloom's largest deployment at risk</h3><p>Bloom Energy's 2.45 GW solid oxide fuel cell deployment at Project Jupiter in New Mexico faces fuel supply delays, putting its largest contracted project at risk <sup class="cite"><a href="#src-14">14</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Oct 2, 2026</b>IndexBox</div><div><h3>Nebius picks fuel cells for New Jersey</h3><p>Nebius endorsed Bloom Energy fuel cells for a planned 300 MW AI data center in Vineland, New Jersey, citing faster deployment and less community opposition than gas turbines <sup class="cite"><a href="#src-15">15</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Oct 10, 2026</b>Data Center Dynamics (sponsored)</div><div><h3>A generator-to-chip delivery model</h3><p>Wärtsilä, Schneider Electric and Stanley Consultants launched a coordinated approach integrating onsite generation, electrical infrastructure and engineering <sup class="cite"><a href="#src-16">16</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Sep 22, 2026</b>Data Center Dynamics</div><div><h3>A 20-year gas PPA in the Permian</h3><p>New Era signed a 20-year agreement with a Vistra subsidiary for 250 MW of gas-fired power for a data center in Ector County, Texas <sup class="cite"><a href="#src-17">17</a></sup>.</p></div></div>
+</section>
+<section class="" id="t-2">
+<hr class="dbl">
+<div class="thread-head"><span class="eyebrow">Thread</span><span class="code">D3.5</span></div>
+<h2>Large-Load Tariff Design &amp; Co-Location Rules</h2>
+
+<p class="intro">The rules for plugging a data center into a wholesale market are being rewritten through FERC dockets and RTO filings. The Susquehanna case is the reference point.</p>
+<div class="sig"><div class="when"><b>Oct 1, 2026</b>Data Center Frontier</div><div><h3>FERC orders six operators to revise rules</h3><p>FERC issued June 2026 show-cause orders to six grid operators requiring revised interconnection rules for loads above 50 MW, covering behind-the-meter generation, co-location and cost allocation <sup class="cite"><a href="#src-18">18</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Aug 15, 2026</b>Data Center Knowledge</div><div><h3>PJM: bring power or face cuts</h3><p>PJM filed a tariff revision proposing a 'Bring Your Own New Capacity' mechanism requiring new large data center loads to supply qualifying capacity or face reliability backstop procurement <sup class="cite"><a href="#src-19">19</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Aug 13, 2026</b>MTS Drops (FERC ER24-2172 annotated)</div><div><h3>The Talen–Amazon order</h3><p>FERC rejected Talen–Amazon's behind-the-meter arrangement at Susquehanna in November 2024, forcing a front-of-the-meter model by spring 2026 in which Talen supplies AWS via the PJM grid. The order directs PJM to create explicit transmission services for co-located loads <sup class="cite"><a href="#src-20">20</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Aug 26, 2026</b>Measured AI</div><div><h3>Susquehanna goes front-of-meter</h3><p>Amazon's Susquehanna campus transitioned to a front-of-the-meter configuration in spring 2026 after the regulatory proceedings concluded <sup class="cite"><a href="#src-21">21</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Oct 4, 2026</b>RTO Insider</div><div><h3>California argues over 'large load'</h3><p>CAISO and PG&amp;E are in dispute over the definition of 'large loads' as AI data centers seek grid access in California <sup class="cite"><a href="#src-22">22</a></sup>.</p></div></div>
+</section>
+<section class="" id="t-3">
+<hr class="dbl">
+<div class="thread-head"><span class="eyebrow">Thread</span><span class="code">D3.4 · D2.8</span></div>
+<h2>Transmission, Reliability &amp; Flexible Load</h2>
+
+<p class="intro">Federal reliability bodies moved data center flexibility from a voluntary practice toward a standard, and industry formed groups to supply it.</p>
+<div class="sig"><div class="when"><b>Sep 18, 2026</b>Carbon Direct</div><div><h3>NERC alert, then a FERC mandate</h3><p>NERC issued a Level 3 Alert on computational loads in May 2026, and FERC then directed NERC to develop computational-load reliability standards by year-end <sup class="cite"><a href="#src-23">23</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Sep 17, 2026</b>SiliconANGLE</div><div><h3>An alliance for flexible data centers</h3><p>Nvidia, Google and Emerald AI launched the AI Energy Management Alliance to promote data centers that can cut power draw during grid strain <sup class="cite"><a href="#src-24">24</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Sep 22, 2026</b>ESS News</div><div><h3>Nvidia qualifies three battery suppliers</h3><p>Nvidia launched a battery energy storage qualification program for AI data centers, initially naming Tesla, LG and Hitachi <sup class="cite"><a href="#src-25">25</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Sep 25, 2026</b>SC Daily Gazette</div><div><h3>More capacity from existing lines</h3><p>The Department of Energy launched a project to increase capacity on existing power lines to support data center demand <sup class="cite"><a href="#src-26">26</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Sep 22, 2026</b>pv magazine USA</div><div><h3>Solar growth follows load in ERCOT and MISO</h3><p>U.S. solar generation is projected to accelerate through 2027, driven primarily by data center demand in ERCOT and MISO <sup class="cite"><a href="#src-27">27</a></sup>.</p></div></div>
+</section>
+<section class="" id="t-4">
+<hr class="dbl">
+<div class="thread-head"><span class="eyebrow">Thread</span><span class="code">D3.2 · D3.3</span></div>
+<h2>States, Moratoria &amp; Utility Commissions</h2>
+
+<p class="intro">State actors moved faster than federal ones. Texas paused permits, North Carolina refused new gas, and Virginia's largest utility merger became a test of who speaks for ratepayers.</p>
+<div class="sig"><div class="when"><b>Sep 23, 2026</b>Data Center Dynamics</div><div><h3>Texas halts new permits</h3><p>Governor Greg Abbott halted new data center permits pending completion of an ERCOT audit of grid capacity and reliability <sup class="cite"><a href="#src-28">28</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Oct 6, 2026</b>Global Environmental Law Review</div><div><h3>Two agencies, one pause</h3><p>The pause combines the governor's 3 August ERCOT audit directive with a 21 September TCEQ freeze on new data center permitting until the audit is complete <sup class="cite"><a href="#src-29">29</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Sep 22, 2026</b>Utility Dive</div><div><h3>North Carolina rejects Duke turbines</h3><p>Regulators rejected Duke Energy's request for a gas turbine facility, citing staggering cost and uncertain need <sup class="cite"><a href="#src-30">30</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Sep 23, 2026</b>pv magazine USA</div><div><h3>Arkansas ratepayers question Google–Entergy terms</h3><p>Google's 'Fair Share Plus' arrangement with Entergy for a $4 billion West Memphis facility drew ratepayer concerns over redacted filings and trade-secret claims <sup class="cite"><a href="#src-31">31</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Oct 5, 2026</b>Converge Digest</div><div><h3>Kentucky doubles TeraWulf's power</h3><p>TeraWulf doubled contracted power at its Muskie campus from 500 MW to 1 GW under an amended agreement with Kentucky Power, pulling the second phase from 2030 to 2029 <sup class="cite"><a href="#src-32">32</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Sep 21, 2026</b>Virginia Mercury</div><div><h3>Reset the clock on Dominion–NextEra</h3><p>Attorney General Jay Jones asked the State Corporation Commission to reset the 180-day review of the $67 billion merger after the companies filed supplemental documents <sup class="cite"><a href="#src-33">33</a></sup>. Legislators later said the window had closed to call a special session to extend the review <sup class="cite"><a href="#src-34">34</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Oct 6, 2026</b>Pennsylvania Capital-Star</div><div><h3>Pennsylvania groups seek a moratorium</h3><p>Environmental and community groups called on Governor Shapiro and lawmakers to pass a data center moratorium <sup class="cite"><a href="#src-35">35</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Oct 5, 2026</b>The Spokesman-Review</div><div><h3>Amazon pledges $1 billion to host communities</h3><p>Amazon pledged $1 billion to host communities as Washington Governor Bob Ferguson rolled back state tax breaks; Microsoft has sworn off seeking local subsidies <sup class="cite"><a href="#src-37">37</a></sup>.</p></div></div>
+</section>
+<section class="page" id="register">
+<div class="eyebrow">Signal register</div>
+<h2>Named parties in the record</h2>
+<hr class="dbl">
+<p>Every party below appears in at least one cited Signal. The role column restates what the source reports; it adds no assessment.</p>
+<table class="tbl"><thead><tr><th style="width:26%">Party</th><th>Role in the cited Signals</th><th style="width:12%">Sources</th></tr></thead><tbody>
+<tr><td><b>Constellation Energy</b></td><td>Counterparty to Google (890 MW, uprates) and Amazon (Calvert Cliffs) 20-year agreements</td><td><sup class="cite"><a href="#src-1">1</a>,<a href="#src-2">2</a>,<a href="#src-4">4</a>,<a href="#src-5">5</a></sup></td></tr>
+<tr><td><b>Vistra</b></td><td>Uprate borrower ($4.2 B DOE commitment); Meta supplier; 250 MW gas PPA via a subsidiary</td><td><sup class="cite"><a href="#src-6">6</a>,<a href="#src-7">7</a>,<a href="#src-17">17</a></sup></td></tr>
+<tr><td><b>NextEra Energy</b></td><td>Duane Arnold restart borrower; party to the Dominion merger under SCC review</td><td><sup class="cite"><a href="#src-9">9</a>,<a href="#src-10">10</a>,<a href="#src-33">33</a></sup></td></tr>
+<tr><td><b>Oracle / STACK Infrastructure</b></td><td>Project Jupiter force majeure; site of the 2.45 GW Bloom deployment</td><td><sup class="cite"><a href="#src-13">13</a>,<a href="#src-14">14</a></sup></td></tr>
+<tr><td><b>FERC</b></td><td>June 2026 show-cause orders; ER24-2172 Talen–Amazon order; directive to NERC</td><td><sup class="cite"><a href="#src-18">18</a>,<a href="#src-20">20</a>,<a href="#src-23">23</a></sup></td></tr>
+<tr><td><b>PJM Interconnection</b></td><td>Filed Bring Your Own New Capacity; directed to create co-location services</td><td><sup class="cite"><a href="#src-19">19</a>,<a href="#src-20">20</a></sup></td></tr>
+<tr><td><b>ERCOT / TCEQ / Gov. Abbott</b></td><td>Audit directive and permit freeze in Texas</td><td><sup class="cite"><a href="#src-28">28</a>,<a href="#src-29">29</a></sup></td></tr>
+<tr><td><b>North Carolina regulators / Duke Energy</b></td><td>Gas turbine request denied</td><td><sup class="cite"><a href="#src-30">30</a></sup></td></tr>
+<tr><td><b>Entergy</b></td><td>Google 'Fair Share Plus' arrangement in Arkansas</td><td><sup class="cite"><a href="#src-31">31</a></sup></td></tr>
+<tr><td><b>Kentucky Power / TeraWulf</b></td><td>Amended agreement doubling Muskie to 1 GW</td><td><sup class="cite"><a href="#src-32">32</a></sup></td></tr>
+</tbody></table>
+<div class="take"><div class="eyebrow">Faraday's Take</div><p>The cited record does not show a shortage of buyers or of capital: in eight weeks it logs agreements covering several gigawatts of existing and uprated nuclear output <sup class="cite"><a href="#src-1">1</a>,<a href="#src-5">5</a>,<a href="#src-7">7</a></sup> and billions in federal loans <sup class="cite"><a href="#src-6">6</a>,<a href="#src-9">9</a></sup>. What it shows instead is a queue of permissions, at FERC <sup class="cite"><a href="#src-18">18</a></sup>, in PJM <sup class="cite"><a href="#src-19">19</a></sup>, in Texas <sup class="cite"><a href="#src-28">28</a></sup> and in state commissions <sup class="cite"><a href="#src-30">30</a>,<a href="#src-33">33</a></sup>, each deciding who pays to connect large loads. On this evidence, the projects that slip will be the ones that waited for those decisions, as Project Jupiter shows <sup class="cite"><a href="#src-13">13</a></sup>. The ones that hold their schedules will be the ones that bought capacity already on the grid.</p></div>
+</section>
+<section class="page method" id="sources">
+<div class="eyebrow">Sector Briefing · Final page</div>
+<h2>Sources &amp; methodology</h2>
+<hr class="dbl">
+<p>Source rule: every factual sentence carries a numbered citation to a Faraday Signal (Supabase public.signals) or crawled artifact (public.artifacts); each records the publisher URL below. Sentences restate the recorded framing, using only its complete clauses where the record was truncated. Nothing comes from the retired Gamma deck or from model memory.</p>
+<p>Selection: Signals tagged D2.5, D2.6, D2.8, D3.1–D3.5, fired 31 Jul–13 Oct 2026, de-duplicated by headline, Google News redirects excluded, then curated by hand. Mis-tagged Signals were dropped, and one report that described the Google–Constellation deal differently was excluded rather than reconciled.</p>
+<p>Limits: primary articles were not re-fetched for this sample. Faraday's Take is analysis of the cited items and adds no facts. Status: draft, not signed off (Brand Bible §07).</p>
+<ol class="sources"><li id="src-1"><span class="n">1</span><span><b>W.Media</b> · Oct 12, 2026 · Google and Constellation sign nuclear power deal to add 890 MW to PJM grid<br><span class="u">https://w.media/google-and-constellation-sign-nuclear-power-deal-to-add-890-mw-to-pjm-grid/</span> <span class="u">· signal a3a542f9</span></span></li>
+<li id="src-2"><span class="n">2</span><span><b>SiliconANGLE</b> · Oct 6, 2026 · Google goes nuclear to power its AI data centers, committing to buy 890 megawatts of energy from Constellation<br><span class="u">https://siliconangle.com/2026/10/06/google-goes-nuclear-to-power-its-ai-data-centers-committing-to-purchase-890-megawatts-of-energy-from-constellation/</span> <span class="u">· signal e8e09533</span></span></li>
+<li id="src-3"><span class="n">3</span><span><b>Power Engineering</b> · Oct 7, 2026 · Constellation, Vistra uprate deals signal fastest path to new nuclear megawatts<br><span class="u">https://www.power-eng.com/nuclear/google-constellation-doe-nuclear-plant-investment/</span> <span class="u">· signal 50c017c2</span></span></li>
+<li id="src-4"><span class="n">4</span><span><b>Canary Media</b> · Oct 8, 2026 · Constellation and Google go in on nuclear uprates to unlock clean power<br><span class="u">https://www.canarymedia.com/articles/nuclear/constellation-google-nuclear-uprates</span> <span class="u">· signal ad5667f5</span></span></li>
+<li id="src-5"><span class="n">5</span><span><b>Utility Dive</b> · Oct 5, 2026 · Amazon, Constellation sign 20-year PPA to expand Maryland nuclear plant<br><span class="u">https://www.utilitydive.com/news/amazon-constellation-sign-20-year-ppa-to-expand-maryland-nuclear-plant/832145/</span> <span class="u">· signal c7b2532d</span></span></li>
+<li id="src-6"><span class="n">6</span><span><b>POWER Magazine</b> · Oct 5, 2026 · Vistra in Line for $4.2B DOE Loan Package to Uprate Nuclear Plants in Ohio and Pennsylvania<br><span class="u">https://www.powermag.com/vistra-in-line-for-doe-loan-package-to-uprate-nuclear-plants-in-ohio-and-pennsylvania/</span> <span class="u">· signal 0121e30c</span></span></li>
+<li id="src-7"><span class="n">7</span><span><b>Data Center Dynamics</b> · Sep 30, 2026 · Meta secures up to 6.6GW of nuclear power from TerraPower, Oklo, and Vistra<br><span class="u">https://www.datacenterdynamics.com/en/news/meta-secures-up-to-66gw-of-nuclear-power-from-terrapower-oklo-and-vistra/</span> <span class="u">· signal 1d703972</span></span></li>
+<li id="src-8"><span class="n">8</span><span><b>Nuclear News Network</b> · Oct 1, 2026 · Nuclear Power for Data Centers, Explained: Every Deal Tracked<br><span class="u">https://www.nuclearnewsnetwork.com/news/nuclear-power-data-centers-explained</span> <span class="u">· signal 64018690</span></span></li>
+<li id="src-9"><span class="n">9</span><span><b>Neutron Bytes</b> · Sep 8, 2026 · DOE Closes $1.9 Billion Loan to Restart Duane Arnold Nuclear Plant in Iowa<br><span class="u">https://neutronbytes.com/2026/09/08/doe-closes-1-9-billion-loan-to-restart-duane-arnold-nuclear-plant-in-iowa/</span> <span class="u">· signal f6c0bb67</span></span></li>
+<li id="src-10"><span class="n">10</span><span><b>American Nuclear Society</b> · Sep 12, 2026 · NRC Shares Duane Arnold Restart Progress at Public Hearing<br><span class="u">https://www.ans.org/news/article-7942/nrc-shares-duane-arnold-restart-progress-at-public-hearing/</span> <span class="u">· signal ce135998</span></span></li>
+<li id="src-11"><span class="n">11</span><span><b>Canary Media</b> · Sep 23, 2026 · With federal funding windfall, X-energy advances small nuclear reactor<br><span class="u">https://www.canarymedia.com/articles/nuclear/federal-funding-x-energy-small-nuclear-reactor</span> <span class="u">· signal 68d5c07b</span></span></li>
+<li id="src-12"><span class="n">12</span><span><b>Enki AI</b> · Aug 19, 2026 · Microsoft Nuclear 2026: 6 GW PJM Shortfall, Constellation<br><span class="u">https://enkiai.com/data-center/microsoft-nuclear-x-energy/</span> <span class="u">· signal 565081e1</span></span></li>
+<li id="src-13"><span class="n">13</span><span><b>Stocktwits</b> · Oct 5, 2026 · AI Data Center Delays Raise New Questions For ORCL, BE And APLD<br><span class="u">https://stocktwits.com/news-articles/markets/equity/ai-data-center-delays-new-questions-orcl-be-apld/cZDFMNFRB1s</span> <span class="u">· signal 5a0c4e8c</span></span></li>
+<li id="src-14"><span class="n">14</span><span><b>24/7 Wall St.</b> · Sep 24, 2026 · Bloom Energy's Single Largest Fuel Cell Deployment Is In Trouble<br><span class="u">https://247wallst.com/investing/2026/09/24/bloom-energys-single-largest-fuel-cell-deployment-is-in-trouble/</span> <span class="u">· signals f818d9fc, 4afd7b56</span></span></li>
+<li id="src-15"><span class="n">15</span><span><b>IndexBox</b> · Oct 2, 2026 · Nebius Backs Bloom Energy Fuel Cells for 300MW New Jersey AI Data Center<br><span class="u">https://www.indexbox.io/blog/nebius-endorses-bloom-energy-fuel-cells-for-planned-new-jersey-data-center/</span> <span class="u">· artifact 998bf4da</span></span></li>
+<li id="src-16"><span class="n">16</span><span><b>Data Center Dynamics (sponsored)</b> · Oct 10, 2026 · Wärtsilä, Schneider Electric, and Stanley Consultants launch coordinated approach for faster US data center power delivery<br><span class="u">https://www.datacenterdynamics.com/en/product-news/w%C3%A4rtsil%C3%A4-schneider-electric-and-stanley-consultants-launch-coordinated-approach-for-faster-us-data-center-power-delivery/</span> <span class="u">· artifact 0a982f28</span></span></li>
+<li id="src-17"><span class="n">17</span><span><b>Data Center Dynamics</b> · Sep 22, 2026 · New Era signs 20-year gas PPA with Vistra subsidiary to power 250MW data center in Ector County, Texas<br><span class="u">https://www.datacenterdynamics.com/en/news/new-era-signs-20-year-gas-ppa-with-vistra-subsidiary-to-power-250mw-data-center-in-ector-county-texas/</span> <span class="u">· signal 3ca2ed14</span></span></li>
+<li id="src-18"><span class="n">18</span><span><b>Data Center Frontier</b> · Oct 1, 2026 · Data Center Private Power: Who Regulates Behind-the-Meter Generation?<br><span class="u">https://datacenterfrontier.com/energy/article/55409000/data-center-private-power-who-regulates-behind-the-meter-generation</span> <span class="u">· signal d6d83e9e</span></span></li>
+<li id="src-19"><span class="n">19</span><span><b>Data Center Knowledge</b> · Aug 15, 2026 · PJM's New Deal for Data Centers: Bring Power or Face Cuts<br><span class="u">https://www.datacenterknowledge.com/energy-power-supply/pjm-s-new-deal-for-data-centers-bring-power-or-face-cuts</span> <span class="u">· signal 3bd253d1</span></span></li>
+<li id="src-20"><span class="n">20</span><span><b>MTS Drops</b> · Aug 13, 2026 · FERC ER24-2172: The Talen-Amazon Order, Annotated<br><span class="u">https://drops.mts.now/ai-capex/wiki/documents/ferc-er24-2172-talen-amazon/</span> <span class="u">· signals a45a15e9, ac53c949</span></span></li>
+<li id="src-21"><span class="n">21</span><span><b>Measured AI</b> · Aug 26, 2026 · Amazon's Susquehanna Data Center Campus: Talen-FERC Saga Drives Broader Co-Location Framework<br><span class="u">https://measuredai.substack.com/p/amazon-susquehanna-data-center-campus</span> <span class="u">· signal 481dcbb8</span></span></li>
+<li id="src-22"><span class="n">22</span><span><b>RTO Insider</b> · Oct 4, 2026 · CAISO, PG&amp;E Spar Over 'Large Loads' Definition<br><span class="u">https://www.rtoinsider.com/147193-caiso-pge-spar-over-large-loads-definition/</span> <span class="u">· signal 4bbc404a</span></span></li>
+<li id="src-23"><span class="n">23</span><span><b>Carbon Direct</b> · Sep 18, 2026 · The $5.5 Billion-Dollar Case for Enabling Data Center Load Flexibility<br><span class="u">https://www.carbon-direct.com/insights/the-billion-dollar-case-for-enabling-data-center-load-flexibility</span> <span class="u">· signal 6df7d474</span></span></li>
+<li id="src-24"><span class="n">24</span><span><b>SiliconANGLE</b> · Sep 17, 2026 · Nvidia, Google and Emerald AI launch flexible data center consortium<br><span class="u">https://siliconangle.com/2026/09/17/nvidia-google-and-emerald-ai-launch-flexible-data-center-consortium/</span> <span class="u">· signal 8e8ce239</span></span></li>
+<li id="src-25"><span class="n">25</span><span><b>ESS News</b> · Sep 22, 2026 · Nvidia launches BESS qualification program for AI data centers, names just Tesla, LG, Hitachi<br><span class="u">https://www.ess-news.com/2026/09/22/nvidia-launches-bess-qualification-program-for-ai-data-centers-names-just-tesla-lg-hitachi/</span> <span class="u">· signal d9927f8a</span></span></li>
+<li id="src-26"><span class="n">26</span><span><b>SC Daily Gazette</b> · Sep 25, 2026 · Energy Department unveils project to squeeze more juice through existing power lines<br><span class="u">https://scdailygazette.com/2026/09/25/repub/energy-department-unveils-project-to-squeeze-more-juice-through-existing-power-lines/</span> <span class="u">· signal 85ec1f8a</span></span></li>
+<li id="src-27"><span class="n">27</span><span><b>pv magazine USA</b> · Sep 22, 2026 · Solar growth accelerates in ERCOT and MISO as data centers drive demand<br><span class="u">https://pv-magazine-usa.com/2026/09/22/solar-growth-accelerates-in-ercot-and-miso-as-data-centers-drive-demand/</span> <span class="u">· signal 662ae6c0</span></span></li>
+<li id="src-28"><span class="n">28</span><span><b>Data Center Dynamics</b> · Sep 23, 2026 · Abbott halts new Texas data center permits pending ERCOT audit<br><span class="u">https://www.datacenterdynamics.com/en/news/abbott-halts-new-texas-data-center-permits-pending-ercot-audit/</span> <span class="u">· signal 1a265310</span></span></li>
+<li id="src-29"><span class="n">29</span><span><b>Global Environmental Law Review</b> · Oct 6, 2026 · Texas Pauses Certain Data Center Approvals Amid Grid, Water, and Community Concerns<br><span class="u">https://www.globalelr.com/2026/10/texas-pauses-certain-data-center-approvals-amid-grid-water-and-community-concerns/</span> <span class="u">· signal 9a5498b4</span></span></li>
+<li id="src-30"><span class="n">30</span><span><b>Utility Dive</b> · Sep 22, 2026 · North Carolina regulators deny Duke Energy gas turbine request over 'staggering' cost, uncertain need<br><span class="u">https://www.utilitydive.com/news/north-carolina-regulators-deny-dukes-gas-turbine-request-over-staggering/831015/</span> <span class="u">· signal 95568775</span></span></li>
+<li id="src-31"><span class="n">31</span><span><b>pv magazine USA</b> · Sep 23, 2026 · Google's &quot;Fair Share Plus&quot; data center deal with Entergy sparks Arkansas ratepayer concerns<br><span class="u">https://pv-magazine-usa.com/2026/09/23/googles-fair-share-plus-data-center-deal-with-entergy-sparks-arkansas-ratepayer-concerns/</span> <span class="u">· signal 0ae92515</span></span></li>
+<li id="src-32"><span class="n">32</span><span><b>Converge Digest</b> · Oct 5, 2026 · TeraWulf Doubles Contracted Power at Muskie Data Campus to 1 GW<br><span class="u">https://convergedigest.com/terawulf-muskie-data-campus-1gw-power/</span> <span class="u">· signal bad4e465</span></span></li>
+<li id="src-33"><span class="n">33</span><span><b>Virginia Mercury</b> · Sep 21, 2026 · 'A different deal on the table': AG Jay Jones asks SCC to reset the clock on Dominion-NextEra merger<br><span class="u">https://virginiamercury.com/2026/09/21/a-different-deal-on-the-table-ag-jay-jones-asks-scc-to-reset-the-clock-on-dominion-nextera-merger/</span> <span class="u">· signal 06482ffc</span></span></li>
+<li id="src-34"><span class="n">34</span><span><b>Cardinal News</b> · Oct 1, 2026 · Legislators say window has closed to call for a special session to extend review of Dominion-NextEra merger<br><span class="u">https://cardinalnews.org/2026/10/01/legislators-say-window-has-closed-to-call-for-a-special-session-to-extend-review-of-dominion-nextera-merger/</span> <span class="u">· signal 84aef452</span></span></li>
+<li id="src-35"><span class="n">35</span><span><b>Pennsylvania Capital-Star</b> · Oct 6, 2026 · A call for Gov. Shapiro and state lawmakers to pass a data center moratorium in Pa.<br><span class="u">https://penncapital-star.com/energy-environment/pennsylvanians-call-on-shapiro-lawmakers-to-pass-data-center-moratorium/</span> <span class="u">· signal b104a32a</span></span></li>
+<li id="src-36"><span class="n">36</span><span><b>RTO Insider</b> · Oct 5, 2026 · Powering the Grid from Both Ends: Why Big Tech's Nuclear Gamble Needs Energy Efficiency<br><span class="u">https://www.rtoinsider.com/147430-powering-grid-both-ends-why-big-techs-nuclear-gamble-needs-energy-efficiency/</span> <span class="u">· signal 20f11b5e</span></span></li>
+<li id="src-37"><span class="n">37</span><span><b>The Spokesman-Review</b> · Oct 5, 2026 · Amazon's $1B Data Center Pledge Underscores Rising Tension Over AI Build-Out<br><span class="u">https://spokesman.com/stories/2026/oct/05/amazons-1b-data-center-pledge-underscores-rising-t</span> <span class="u">· signal 0ecba21f</span></span></li></ol>
+</section>
+</div>
