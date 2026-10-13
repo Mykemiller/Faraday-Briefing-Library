@@ -1,0 +1,1610 @@
+{
+ "readAt": "2026-10-13",
+ "note": "Read-only reads. Airtable registry names/IDs from base appxfti7VuoHYUeu6; Supabase keys from production ycadmmngkdhvpcsrcuaq (SELECT only).",
+ "airtable": {
+  "domainRegistry": {
+   "rec1pzHDIM8yjnv7j": {
+    "name": "M&A & Capital Markets",
+    "domainId": "D4"
+   },
+   "rec8dmkDCw1oVouBd": {
+    "name": "New Entrants",
+    "domainId": "D6"
+   },
+   "rec9IujWizpKPMpuI": {
+    "name": "Industry Media & Analyst Coverage",
+    "domainId": "D22"
+   },
+   "recILEbaC4tdj3R0y": {
+    "name": "Orchestration Intelligence & Control Plane",
+    "domainId": "D9"
+   },
+   "recIQqBteFhtQJ8we": {
+    "name": "Cooling & Water Technology",
+    "domainId": "D7"
+   },
+   "recLvIybOYg1opRiM": {
+    "name": "Hyperscaler Activity",
+    "domainId": "D5"
+   },
+   "recPL4NoPiUCYE8Ff": {
+    "name": "Grid & Regulatory",
+    "domainId": "D3"
+   },
+   "recsMNpEaFo6oQE6H": {
+    "name": "Power Architecture",
+    "domainId": "D2"
+   },
+   "recyPN9VV6cnx6kzv": {
+    "name": "Real Estate & Site Selection",
+    "domainId": "D14"
+   }
+  },
+  "subdomainRegistry": {
+   "rec1RGRp5pm9qTK4q": "DC Power Delivery at the Rack",
+   "rec1lUo31LCy2Bune": "Lender Insurance Requirements & Risk Transfer",
+   "rec1uNtL2gwUZ3djl": "Major Outage Postmortems",
+   "rec2tzQuqzIloLUxf": "GPU Utilization & Compute Scheduling Economics",
+   "rec4jG1OaKEQ7xawK": "EU Media Coverage",
+   "rec6BlBTxx0ZpqK7e": "Hyperscaler Custom Silicon",
+   "recATlFPn4nEhoLYC": "Security Operations & Incident Response",
+   "recBaXcaWWckssbW2": "Utility Rate Cases & PUC Proceedings",
+   "recCPCuA07exGLEud": "Interconnection Queue & Grid Access",
+   "recDAB4nI1VHwYmK0": "Software Supply Chain & Vendor Risk",
+   "recDxb4E9JOaMY0Ex": "Sovereign Wealth & Institutional Capital",
+   "recEf7clkXe6OriQq": "Federal Tax Policy",
+   "recFfOsqwm5v3g3K2": "DC REIT Performance & Valuation",
+   "recIa1wBLVMRzxKsG": "Tax-Driven Deal Structuring",
+   "recIt8ynZWu3jNrTx": "Conference Intelligence & Speaking Circuit",
+   "recJc94ptI044VGbc": "Physical Security & Access Control",
+   "recKGafN1FHSNlzan": "Behind-the-Meter Generation (BYOP/BYOG)",
+   "recLOGsvfpQV6jFF5": "Carbon Accounting & Scope 1-3 Reporting",
+   "recMNSqDL9Gmim564": "Clean Energy Procurement (PPA/REC/CFE)",
+   "recNXxeEAP7jDjqGn": "Integrated Infrastructure Vendor M&A",
+   "recOjIYIPIR0Rc6hN": "Site Selection Criteria & Market Scoring",
+   "recPlf9ixl2HP9Rzf": "Chip Export Controls & BIS Regime",
+   "recQmeUy9qT2dVCfU": "Tax Incentive Backlash & Clawback",
+   "recRlua8iub66Xa7T": "Business Continuity & Disaster Recovery Practice",
+   "recT1aPlMPxmsveHC": "OT / ICS / SCADA Cybersecurity",
+   "recUh4KkgM3VSe2hw": "GPU Architecture & Roadmap",
+   "recUloAhqTV0XXZ4P": "Executive Movement & C-Suite Intelligence",
+   "recVUq9ADEYbRAXU9": "U.S. Media Coverage",
+   "recYJTK2va2fY1hRG": "Direct-to-Chip Liquid Cooling (DLC)",
+   "recawCc8vaH0ZuQSF": "Sovereign AI Programs & National Compute",
+   "recb7nHxwqLD2k2WH": "Climate & Parametric Risk Products",
+   "recbbQSHdkqg2dwsR": "Long-Lead Equipment & Supply Chain",
+   "recePGUqFMiYvmypw": "APAC / LATAM / MENA Media Coverage",
+   "recexci3JhqPm8NEn": "Data Center Property & Casualty Insurance",
+   "recfM2SKYin3k2KG3": "Competing Silicon & Alternative Accelerators",
+   "recfRdthRAYjHN10f": "Big 5 Capex & Campus Announcements",
+   "recfVsFxpQBDnu36t": "Rack Density & Power Density Progression",
+   "recgTjPFPuL7Eo6rh": "Neocloud Infrastructure",
+   "rechsTzEUgcKpGA7m": "International Tax & Transfer Pricing",
+   "reci8DIAaWRUVKZcx": "State Moratorium & Legislative Landscape",
+   "recjF4GOmk1Jnszwo": "Water Use & Waterless Cooling Strategies",
+   "recjHuB7gHtUz2wuD": "State & Local Tax Incentives",
+   "recjQa5oD8Sr1AAMl": "Modular & Prefabricated Data Center Delivery",
+   "reckVN8uXEXSbrBFg": "Enterprise IT Cybersecurity & Cloud Security",
+   "recl6DEghJyRDyAtA": "Cyber Incidents Targeting DC Infrastructure",
+   "reclHpYuvqMCbeMvp": "Facility DCIM & Digital Twin",
+   "reclLpF0jB6S9Xhfc": "Project Opposition Register",
+   "reclfpKWUPNEBBjJy": "800V DC Power Distribution",
+   "recmAANSSclDJSbyZ": "Immersion Cooling",
+   "recpNJG7MzMAhNG8e": "GC/EPC Capacity & Construction Execution",
+   "recrm6B6Sw4NWES7E": "Jurisdiction Posture Intelligence (JPS)",
+   "recsuZ0o8UcugfFFo": "Building Management Systems & HVAC Control",
+   "recsxIbnP3cXUdIpP": "PE & Infrastructure Fund Activity",
+   "rectQhkwXQWJVEqeb": "Grid Events & Physical Disasters",
+   "rectcK7b3JU2593x1": "Industry Analysts",
+   "recuZgX0nwxGt6p0f": "UPS, Storage & Power Conditioning",
+   "recv5FqNuGTW2yQ12": "State-Sponsored & Advanced Persistent Threats",
+   "recwltnZDpRp9q8Da": "AI Factory Orchestration & DCIM",
+   "recyFp156U2ftCq3F": "Cyber Insurance & Tech E&O"
+  },
+  "themeRegistry": {
+   "recJs285QEh60FV8D": "The Consent Crisis",
+   "recK1OWVagRBj45IR": "The Rack Revolution",
+   "recT3hXBm8QVs2HRP": "The Inference Economy",
+   "recX5ELgfBhmOcqfv": "The Power Reckoning",
+   "recf0C145QVp5blMN": "The Capital Concentration"
+  },
+  "trackingCompanies": {
+   "rec05wRsfBKkDnXEM": "Ada Infrastructure",
+   "rec0D3DB1M7rYWtyh": "Amazon (AWS)",
+   "rec0EOXflB3bwqKeE": "CoreWeave",
+   "rec0cwKqrWW8cf7rr": "Ensono",
+   "rec0mRsWwR8T6cApN": "Adgar",
+   "rec0uWOVvnVh6hNIl": "Solvay",
+   "rec13W2I1DZkVFkWU": "Nutanix",
+   "rec1hQTi4X5idTsWR": "Bain Capital",
+   "rec1pgoED4cmw0v1f": "Telstra InfraCo",
+   "rec1sNUjN9EvVCTzR": "Drees & Sommer",
+   "rec1tU1Ib1qMImwO4": "Colovore",
+   "rec22lTM5lpQa6Kpy": "Enbridge",
+   "rec24Edd3K3S6XMjT": "Cisco Systems",
+   "rec25eCiRVm6DJXOI": "Goldman Sachs Alternatives",
+   "rec2B13ey4R43lH9e": "Sumitomo Chemical",
+   "rec2JdWL0B2aHFcEy": "Transphorm",
+   "rec2YVVgqDyzmb2J5": "Opus Interactive",
+   "rec2h3drjCYUyHWuK": "PowerHouse Data Centers",
+   "rec34aRBRnbQR4Xtx": "COPT",
+   "rec3VZj9mOAYb5zQO": "Mainova WebHouse",
+   "rec3fkzTY1J5UcaAs": "Vantage Data Centers",
+   "rec3khvfeePVRbsOH": "Applied Digital",
+   "rec3vF86qiNiObYHw": "CPPIB (Canada)",
+   "rec3vHxS5XCJX1qSj": "Kairos Power",
+   "rec4IWhNnK62Fti1K": "Baidu",
+   "rec4JYYIo0cpTDPFr": "MTN Business",
+   "rec4PKrVSYVr1cIke": "Aligned Data Centers",
+   "rec4ZhBTO46HHKMlE": "NVIDIA",
+   "rec4byfULkNBIl45I": "Dell Technologies",
+   "rec4erdy8YMbjyTMO": "AirTrunk",
+   "rec4mN4smpyDIy1LW": "Wiwynn",
+   "rec4rYYieXrDZOAVi": "Ardent Data Centers",
+   "rec4vP6hXvoLunPg8": "Flexential",
+   "rec59REQkG3QeQJcR": "TURKCELL",
+   "rec59vEJHTa1IUqbB": "NTT/RagingWire Data Centers",
+   "rec5RPQP2eU4j99oC": "Switch",
+   "rec5XlZcot1i7vAkF": "Daikin",
+   "rec6K9Ocv7eOGcq2t": "CleanArc Data Centers",
+   "rec6MT3MpLXfxQ581": "Auras Technology",
+   "rec6t3L7uxFOzqlxU": "Bridge Data Centres (BDC)",
+   "rec6yQIHmsSNeP8R0": "Lotte Data Communications",
+   "rec6yjHpDrXcNuI0w": "Mapletree Industrial",
+   "rec76De1LrgLBpCPr": "AMPT",
+   "rec7E8Bez3tp6f7VX": "maincubes B.V.",
+   "rec7NlG3aX9mdE4Ww": "Virtus Data Centers",
+   "rec7NvQiygG3nndEC": "Vertiv",
+   "rec7RNde2zzWzDDtD": "Castrol (BP)",
+   "rec7avh6UxasxFoxl": "Khazna Data Centers",
+   "rec7cGTP43LBCeWDG": "Element Critical",
+   "rec7h9xsUh5QFdgmH": "Actis",
+   "rec7xEF7lGICswMBb": "ServerFarm",
+   "rec846lFBuO1rjoaA": "Telecom Egypt",
+   "rec87gsOLkVewZXhp": "Alibaba Cloud",
+   "rec8ExPGbWkaKFVkr": "Mitsubishi Electric",
+   "rec8ItWCD3pJzw8VK": "Infineon Technologies",
+   "rec8Zc7pul39XbfjU": "Oppidan Investment Company",
+   "rec8xNIyt5STVh6NW": "Nabiax",
+   "rec9HVoinzbkFYZ6U": "Nscale",
+   "rec9KyxlIGqy2B0yI": "Samsung Foundry",
+   "rec9S9J0FTCmeQnLG": "Navitas Semiconductor",
+   "rec9XhS3XiTBpQfUR": "Engineered Fluids",
+   "rec9hpGSVbI5EnOS1": "Galaxy Digital Inc.",
+   "rec9mwCLr3TRFfMgd": "CBRE",
+   "rec9vOFPESPplsFTV": "Cohesity",
+   "recA2JhS8OT9ZpS2s": "SUNeVision",
+   "recAMNlmP41uDedPj": "Modine Manufacturing (Airedale)",
+   "recBF0q7J8dvTmjQj": "CyrusOne",
+   "recBHO737yPUKYFcx": "Canon IT Solutions",
+   "recBNgk01ZPMFqX5p": "CoreSite Realty Corporation",
+   "recBaluT8PKCeUHqm": "iomart",
+   "recBjiComEcRr5tIx": "LightEdge Solutions",
+   "recBo41MaMdkUaPZE": "Castrol",
+   "recBvBIvzbroAnhcS": "Shell Energy",
+   "recCHkDHetNbcOCD2": "DigitalBridge",
+   "recCMA2sHsWypv6Eg": "JLL",
+   "recCeFfAPCTDUxlXM": "Mortenson",
+   "recCesRYwoIuXg3kQ": "Rittal",
+   "recCtA7njwxeY1eHN": "5C Group",
+   "recCxIdv9w86SAWxq": "Williams Companies",
+   "recDE8tBFgXz6TYCK": "GIC (Singapore)",
+   "recDiOggdU2iUw796": "11:11 Systems",
+   "recDlQEwhcqAJ3wPX": "Oracle",
+   "recDr3MZTYx88QgWY": "Chirisa Technology Parks",
+   "recDvY78AikH8nH9O": "Anthropic",
+   "recE2d3cGyCt4Md1j": "OVHcloud",
+   "recEEcx32bGXCO2K8": "Broadcom",
+   "recEJHGJjb9y07lG7": "ZutaCore",
+   "recEU3npOLM4M0Upk": "Rackspace",
+   "recEmEwD21cz4TGPo": "T-Systems",
+   "recEmYdchmZyc2aBB": "Pure Storage",
+   "recFFo5J1ljY3r7GV": "Supermicro",
+   "recFHg2lq7PC816Z4": "MYS AssetCo",
+   "recFJegXIDtnj8wb9": "Hyperview",
+   "recFjqsQ5K9mp01Mc": "Trane Technologies",
+   "recFtUDhhk15EjqdX": "Nebius",
+   "recFy7RovgZzSscrL": "DXC Technology",
+   "recG75pWjk9QdmrNI": "YTL Data Centre Holdings",
+   "recGBt7Wh25UAto00": "World Wide Technology (WWT)",
+   "recGKdDydbyP6SJto": "GPX Global",
+   "recH3Nv7YnaogIttE": "True IDC",
+   "recH8t217bz59Qsvz": "ADIA (Abu Dhabi Investment Authority)",
+   "recHGuzmBG3rJoXyH": "QScale",
+   "recHJML1ZIIU159IZ": "STMicroelectronics",
+   "recHKJ4WL199oEAhU": "Beale Infrastructure",
+   "recHTWmnIigqfS3gm": "Microsoft Azure",
+   "recHbToafic4LclS4": "Thesee DataCenter",
+   "recHhtlP3mGtJHQkH": "NTT Global Data Centers",
+   "recHjDe4lFhwuQNxr": "Holtec International",
+   "recHw6i12yTlQqY4O": "Tract",
+   "recHwmdiOZCqgDL00": "Atman",
+   "recILlziYWU25upAC": "Africa Data Centres",
+   "recIZJaK85xmHYAFp": "iMasons",
+   "recIaSZD10bJKmPhB": "xAI (Elon Musk)",
+   "recIg5TFC4I4JJe3V": "SenseTime",
+   "recIkXpWgnwaspqKj": "Aruba.it",
+   "recIsExLlLuNZUsyi": "Morohub",
+   "recItKWuGHBfEdYLs": "Schneider Electric",
+   "recJA24U3KYbVAfD7": "ByteDance / TikTok",
+   "recJQhPTEZ3H3nK5D": "Menlo Equities",
+   "recJeIUTrmXstV8C8": "Apple",
+   "recJmUoS3CuH6KvR0": "Nano-Join",
+   "recJuCcoAKgmh7J4K": "Asterion Industrial Partners",
+   "recJvROimbzH26J0R": "QTS Realty",
+   "recK7TfemMFuXwcWE": "NYISO",
+   "recKAQNyUlFWGNTBd": "WEKA",
+   "recKEwoluNwXeCJyF": "Chemours",
+   "recKScAzzfuYKnHUT": "Talen Energy / Susquehanna Nuclear",
+   "recKhKHpzFz5PyVBm": "Chunghwa Post",
+   "recKjyuBmOgHkAoLS": "Resonac Holdings",
+   "recKmWmJvNs0vSwPN": "Digital Realty Bersama",
+   "recKtUJYU9wufOmBq": "GIGABYTE Technology",
+   "recKuD6WlFZgwELMU": "Raxio Group",
+   "recKx8SuJ1OzG2j1G": "Blackstone",
+   "recL18U0hqyGZH9I1": "PAIX Data Centres",
+   "recLAM3I6O3mIm3A6": "BlackChamber Group",
+   "recLTnmNseJo2CwL2": "Galaxy Data Centers",
+   "recLTqVMovBlzsC5B": "Green Revolution Cooling (GRC)",
+   "recM6wXF7XZeQmJtp": "Equinix",
+   "recM9Cwyrx2zfGplZ": "Wolfspeed",
+   "recMBbrKXlWOuO1Ik": "Hitachi Vantara",
+   "recMlZwynhV0TgHre": "Converge ICT Solutions",
+   "recNAnliA1CSOwATE": "iM Critical",
+   "recNMzGPeQrO4vaQc": "Google / Alphabet",
+   "recNZFvVijMFUyatZ": "Triara",
+   "recNkcRd2WLSG8PLr": "First Solar",
+   "recNncJYZVJapR4wR": "OpCore",
+   "recO9072i5K5iTHz0": "Radiant (Brookfield)",
+   "recOEuAAy9g9NSWI3": "Hammond Power Solutions",
+   "recOFD9zZBQxekWaV": "Telstra",
+   "recOkN3GgRSmxavOQ": "Etisalat by e&",
+   "recOuhAHCjdKXtY1q": "Intersect Power",
+   "recPT6kK36RpUDA4s": "AEP Ohio",
+   "recQ0IdcLqAs5qpod": "EcoDataCenter",
+   "recQ5ZDHFCGGToA2L": "Lambda Labs",
+   "recQ6Z5iy5j48BPIT": "Intel",
+   "recQ9XfqEfJ40Z29V": "BW Digital",
+   "recQFEpZiI4R1wsLN": "Neurok Thermocon Inc",
+   "recQViYq3fCKzNftD": "Airtel Nxtra",
+   "recQZ1T0bG3I3Nhf7": "Rain AI",
+   "recQZdg1zVmWG8jFN": "Heliox",
+   "recQqT0KDCFQOcgSW": "Blue Owl / Beale Infrastructure",
+   "recQrVRAsWF3vHxlZ": "Novva",
+   "recRBSOOy6GvWkdsL": "Constellation Energy",
+   "recRYdzWDrWh3zdxW": "Lefdal Mine Datacenter",
+   "recRuFSCrcIX1bAG9": "G42 Cloud",
+   "recS5adNulGai2wQa": "run:ai (NVIDIA)",
+   "recS6kAPc46SStl1a": "Ares Management / Ada Infrastructure",
+   "recSDZlx3q6fxRgPj": "Yahoo! Japan",
+   "recSEtoabXG239HBf": "Saudi Data & AI Authority (SDAIA)",
+   "recSIagy7EXbL3NZ3": "Motivair (by Schneider Electric)",
+   "recSeAeoeS5SrekHO": "PJM Interconnection",
+   "recSzJRTWGnb30QY2": "TPG",
+   "recT4XflnwV9um2mX": "Stargate (OpenAI/SoftBank/Oracle)",
+   "recTBzeJtmUc42TGW": "EkkoSense",
+   "recTMs0CnvsZCXjbF": "Eaton",
+   "recTXjDzgtTXvRU7p": "JetCool",
+   "recTiI42vP8epsJ9O": "Hewlett Packard Enterprise (HPE)",
+   "recTqSdCl6B8tdqX4": "Crusoe",
+   "recU1vMJ8fluOtZyc": "Rowan Digital Infrastructure",
+   "recU3hbeyHkbZG0Jg": "HUMAIN (Saudi Arabia)",
+   "recUNSzOTOFEWL0Al": "AECOM",
+   "recUU03TC6NipdQ0H": "3M",
+   "recUUUJHRNUqE6DyM": "Iron Mountain",
+   "recUccdKxyeCWowDp": "CENTRA (Data Centers)",
+   "recVBCEsBGSDK52tc": "OpenAI",
+   "recVXQ1VVNBOgTXei": "Spark",
+   "recVdZVkVwPDtSNOi": "Global Technical Realty",
+   "recVulR3pJdLYw19d": "VoltaGrid",
+   "recWdcFtPPNBNNoc0": "DDN (DataDirect Networks)",
+   "recWh05S0ZHhFxPi5": "T5 Data Centers",
+   "recWuaDXTTPaljScA": "Talen Energy",
+   "recXYPWAmqW7D7fJY": "Northern Data",
+   "recXliwSAtRZBtGC8": "EDC/Edged",
+   "recY47xW3zbG0NuoS": "Digital Realty Trust",
+   "recYFHVUSHIymlgrO": "Crypt-ON (Singapore / SEA)",
+   "recYI2jZxJikccL2Z": "FPT Telecom",
+   "recYSPh2hIND5Hvzw": "Digital Parks Africa",
+   "recYpElNCu3ZJf8xZ": "QTS Realty Trust",
+   "recYq5MUyiRgBWriu": "Tavily (Nebius)",
+   "recYs4iFiEzevjvqh": "Coherent Corp",
+   "recZ8X7PPOW3LMeIe": "Digital Realty / PlatformDIGITAL",
+   "recZCvw69zlMYsnop": "SK Holdings C&C",
+   "recZKXoKMbdnONMPy": "Varentec",
+   "recZOBzjMs4Y1iYkx": "Atos",
+   "recZheiWmbahCDHus": "Google DeepMind",
+   "recZqkXjXMBrVhP5c": "Telus",
+   "recZz4wV1VEvPFBQH": "Parker Lord",
+   "reca3LCIgbN7eq2P1": "H5 Data Centers",
+   "reca4SYanvfUFWn8W": "Schneider Electric IT (UK/EMEA)",
+   "recaRKQ0OuiAYLZHp": "DC Blox",
+   "recaVVwfUayWcnfhK": "Turner Construction",
+   "recbUOq6BqLTHuoaa": "Meta",
+   "recbVG7IyktATc2Of": "Stackinfrastructure",
+   "recbkwyX8Au6YlW0Q": "Bechtel Nuclear",
+   "recboveSIeuRi6RYf": "MDXi (MainOne)",
+   "recbwo5h1uFAOhRfj": "Arista Networks",
+   "recc0SwcEp0Pd4hhe": "Crusoe Energy",
+   "recc6PNY48DFrvNEz": "Dominion Energy",
+   "reccQyB3iCfDhu9GN": "BroadBand Tower",
+   "reccTbR8tu4YfuEiF": "Virtual Power Systems",
+   "reccbBKVuLQR4utSd": "SoftBank Group",
+   "reccfniQTtpsFKdTM": "DELSKA",
+   "reccmCKuseXKSWibb": "LiquidStack",
+   "reccpBCR94rwCmJQJ": "Accenture",
+   "reccwUwKnWuaUJnAr": "Sentinum",
+   "recd6vfOqjx4qZ6xn": "Start Campus",
+   "recdEeYexBzimGu3o": "NTT / RagingWire Data Centers",
+   "recdVtBIxm5uvJIFE": "Pulsant",
+   "recdXj8G9JIRIB9UP": "ERMCO",
+   "recdYrWuyJE5IBcWf": "DE-CIX",
+   "recdgqbVwlZTXY6eq": "Noris Network",
+   "recdqpJkX87K1jsTd": "First Colo",
+   "recdsKo8buI454HDP": "Marsh",
+   "receKx4kBjp48EtCL": "Olkaria EcoCloud Data Center",
+   "receM1tHyecErMib9": "Stellium Datacenters",
+   "receWuCunBNNb1jXm": "Reliance Communications",
+   "recerwhA3Xg4wj3B6": "21st Century Technologies",
+   "recfIlvfrxBXjA8bn": "Evoque Data Center Solutions",
+   "recfRacvV1NmrECaU": "Ascendas REIT",
+   "recfowzHOVsYQCV1G": "TSMC",
+   "recfsA5SBHUC9McKR": "Juniper Networks (HPE)",
+   "recg70FeKzaF4m0uY": "Hitachi Energy",
+   "recgU6U0CUxHSNyeA": "Iceotope",
+   "recglNCyPqvjJGVny": "PIF (Saudi Public Investment Fund)",
+   "recgrFTqaNSIrYlbm": "ERCOT",
+   "recgt4Bj75a13NUBk": "Aligned Energy",
+   "rechQWDXzqefvqllf": "Duke Energy",
+   "rechSKDEEZdNMtBWx": "Tencent Cloud",
+   "rechWgqYNq9HxIRdF": "Carrier Global",
+   "rechq9N4aVM75kLlA": "Efficient Power Conversion (EPC)",
+   "rechqOwaLq3y1CFzn": "Enovum Data Centers",
+   "rechrOSPVoIt0ny7p": "Powell Industries",
+   "reci9CPcc9voc5c1y": "Asperitas",
+   "reciGWQr07140zWTt": "Calyos",
+   "reciIlZaqgXsCWgjs": "NeoFan",
+   "reciOSP3fj5wAaddj": "Starwood Capital",
+   "reciSL3A1YLcgubcX": "Claro",
+   "reciXR3gcUzRBH2Vt": "Telehouse Canada",
+   "reciisF7qsmh3wH5z": "VAST Data",
+   "recj8lql4VSJdZGsX": "Mistral AI",
+   "recjAsjTp63TkzbD3": "TierPoint",
+   "recjB8SLXc89Jo9wu": "MISO",
+   "recjLp4Lllafo1rKJ": "MGX (Abu Dhabi)",
+   "recjiJhLoxGoCk4nM": "NextEra Energy",
+   "recjlpFsPXKsTJx25": "Chunghwa Telecom",
+   "recjwYHfJ7Uz7kXHl": "Sabey Data Centers",
+   "reck1u7IQVTiFWpRF": "EdgeCore Internet Real Estate",
+   "reckJFzHgTDypAkid": "Prime Data Centers",
+   "reckLFMvn6UbjQiqc": "Wingu.Africa",
+   "reckQpDjS2rT2OMeL": "Data Foundry",
+   "reckT9V2GYXDvCui3": "GE Vernova",
+   "reckXJ8j3COvB9SLH": "Portus Data Centers",
+   "recknBsFVKFj5R9EO": "du",
+   "recko2VibYuo2IA8W": "Oklo Inc",
+   "reclN8UsPnta2kMjE": "Aramco Digital",
+   "reclNmWpvy8w4Qiv6": "Beyond.pl",
+   "reclUBkjVh4m9V4Lv": "Crane Data Centers",
+   "reclhBuoblI6KFC7V": "Noovle",
+   "recliAaQnWEDv6kzQ": "Henkel",
+   "recmKFNJa30paOXut": "HUMAIN / stc center3 JV",
+   "recmgSGN74yvUtQnf": "TerraPower",
+   "recmr1QTTf98VniV7": "Hyperscale Data Inc",
+   "recmu3N2eoVIKopB1": "Racks Central",
+   "recn04gC9YIyAvHTl": "Taybo (Shanghai) Environmental Technology",
+   "recn8uQ5oBdDWKXOU": "Elisa",
+   "recnBIp2xsl9bit8p": "Motivair Corporation",
+   "recnVwsaJJWZBD5Rv": "Gaw Capital Partners",
+   "recneDRHqzSLqDqpL": "Lenovo",
+   "recnnWT7liS9uPyiD": "OneAs1a",
+   "recnodZLOJEABYz0F": "DEEP (Data Center)",
+   "recnpbRHEEL9qJhUq": "NetApp",
+   "reco84cc7dOQnxhtM": "KKR",
+   "recoA5RVzYQK6SpqF": "SK Telecom (SKT)",
+   "recoFIxR3NfoQ6CYd": "CAISO",
+   "recoNWSyBxxY606Cy": "Zayo Group",
+   "recobo78hkgGKbfJK": "Baidu AI Cloud",
+   "recogBvrU88XixiHR": "Optage",
+   "recohYxxYqJAUro4I": "IDC Frontier",
+   "recokbFoId0yG52wF": "Rack Centre",
+   "recotgU8gvEylDpD4": "PhoenixNAP",
+   "recpI3IjJvXiFO7gq": "Bloom Energy",
+   "recplKpV3plnkiKm1": "Iron Mountain Data Centers",
+   "recppdFbdFvQ6NQOD": "Macquarie Data Centres",
+   "recpzE4JP06aFepa4": "GleSYS",
+   "recq8pWwUGwo7hQmm": "Macquarie Asset Management",
+   "recqD4FA2kU2XYysZ": "IXAfrica",
+   "recqHssjoIi0jBHAV": "LiquidCool Solutions",
+   "recqOfLI9FEtNooXX": "Luxconnect",
+   "recqPF2v0Jm3XM9yr": "Redapt",
+   "recqbyZ4dGhjmLGy4": "X-energy",
+   "recqgRWrW6qUfoHVM": "TeraWulf Inc",
+   "recqxkGO64pME7Qfl": "Arieca",
+   "recrVM7dlz5OslsOk": "HKCOLO",
+   "recrZL5HruewSv03F": "Expedient",
+   "recroHkVRkWK3jrzt": "Vodafone",
+   "recs45SwaKGvhbZuO": "DG Matrix",
+   "recsNLdY6m2yMDmfC": "AIMS",
+   "recsjBLUFQ1VILety": "Cadence Design Systems",
+   "recslhgwcLjn0QO9F": "Datacenter United",
+   "recsq6yNDVuQjv3PS": "China Mobile International",
+   "recswVnYatcsl7N2K": "EdgeConneX",
+   "rect0EKtJXiLwHcZD": "Siemens",
+   "rectDuqsyOcdScfU3": "DataBank",
+   "rectQLh7BAbCAU100": "evroc",
+   "rectjrGQ6NyBY0p8U": "AI Infrastructure Partnership (AIP)",
+   "rectqQekvyaxyhYrK": "SmartD Technologies",
+   "recuDMJATIJVJB1Xr": "Uptime Institute",
+   "recuQkafW47Usfo2r": "Entergy",
+   "recubOS91Qw39qQwr": "Open Access Data Centres",
+   "recupo0HATGhFmwHC": "Cologix",
+   "recv36AWPuQU8SCiN": "CISA",
+   "recvEztlxrFNQS6ob": "Vigilent",
+   "recvHppRtbbApgki2": "Gabia",
+   "recvKSHKjXb97jm9y": "ABB",
+   "recvM2durxA0Lit8p": "Quantum Switch",
+   "recvQBNUKhXKi5pAK": "Groq",
+   "recvznI9FgHymFH7A": "Soluna",
+   "recw1ccI0DjAuK1Ts": "Nlyte Software",
+   "recwM0JDN17sXNMtm": "JD Cloud & AI",
+   "recwVl7EbskPNeVm3": "onsemi",
+   "recwfrResH0QUGqCA": "Ampere Computing",
+   "recwtBeGAvZpfXh3E": "Cibicom",
+   "recx4rmfnTGOZtJGq": "Inspur",
+   "recxEWIQZVHaqJh8e": "Colliers",
+   "recxb4XkQsP46vWsr": "LiSAT",
+   "recxwLkiZNQwTYaqB": "DPR Construction",
+   "recy1uaHmZRpGKeqw": "Accelsius",
+   "recy3Irfz1RHeqjS2": "Tyson (cooling)",
+   "recyBF8bu4PoufnEp": "Leuk Teleport & Data Centre",
+   "recyTN60EPWGJvWJN": "365 Data Centers",
+   "recyqggTsBPOojCZJ": "Dawiyat",
+   "recyvQbB90Qxjq53A": "Customized Energy Solutions",
+   "recz0XZQkNFa5Osrj": "Brookfield Asset Management",
+   "recz7YGsOmPd4RoWv": "Submer",
+   "recz84sDdBKbKIDN2": "Grid Strategies LLC",
+   "reczb3XshXWL3MFGV": "AMD",
+   "reczcQEPmwpfgTa8z": "Daou Technology",
+   "reczj88ZNJSgN8cqZ": "Temasek"
+  }
+ },
+ "supabase": {
+  "companiesByAirtableRecordId": {
+   "rec05wRsfBKkDnXEM": "cmp_5d9991894d1f3881",
+   "rec0D3DB1M7rYWtyh": "cmp_471d41bfea8b0180",
+   "rec0EOXflB3bwqKeE": "cmp_115f2b3f0dc7f35f",
+   "rec0cwKqrWW8cf7rr": "cmp_f640fd086d1c4165",
+   "rec0mRsWwR8T6cApN": "cmp_37db08aac5080737",
+   "rec13W2I1DZkVFkWU": "cmp_db293e8a5770c3c7",
+   "rec1hQTi4X5idTsWR": "cmp_c210379c39f44668",
+   "rec1pgoED4cmw0v1f": "cmp_2c9978824f5c81ee",
+   "rec1sNUjN9EvVCTzR": "cmp_cf2611b21552a259",
+   "rec1tU1Ib1qMImwO4": "cmp_8d7572b4cef87c4e",
+   "rec22lTM5lpQa6Kpy": "cmp_d3bf862d84f8b030",
+   "rec24Edd3K3S6XMjT": "cmp_346f4a03f5283045",
+   "rec25eCiRVm6DJXOI": "cmp_7a62b4f1a0a4e415",
+   "rec2B13ey4R43lH9e": "cmp_d29dc99b2ed969ec",
+   "rec2JdWL0B2aHFcEy": "cmp_be0b9729d6c257c5",
+   "rec2YVVgqDyzmb2J5": "cmp_f8b6d64b3935a27a",
+   "rec2h3drjCYUyHWuK": "cmp_2a372c16513fa503",
+   "rec34aRBRnbQR4Xtx": "cmp_44694fac402c8ed5",
+   "rec3VZj9mOAYb5zQO": "cmp_1ee63a424bea453a",
+   "rec3fkzTY1J5UcaAs": "cmp_e53035beac854f3b",
+   "rec3khvfeePVRbsOH": "cmp_dd683466625f4131",
+   "rec3vF86qiNiObYHw": "cmp_24a08549bedca736",
+   "rec3vHxS5XCJX1qSj": "cmp_a61199f28478031d",
+   "rec4IWhNnK62Fti1K": "cmp_bfe279945c6109d0",
+   "rec4JYYIo0cpTDPFr": "cmp_e19e4f39fee410e4",
+   "rec4PKrVSYVr1cIke": "cmp_c934dcac36290be5",
+   "rec4ZhBTO46HHKMlE": "cmp_540df7f83845146f",
+   "rec4byfULkNBIl45I": "cmp_ca2c62701e349d76",
+   "rec4erdy8YMbjyTMO": "cmp_a584a52d0c6c994e",
+   "rec4mN4smpyDIy1LW": "cmp_af1b1d84642ddea6",
+   "rec4rYYieXrDZOAVi": "cmp_d4fb8b357e72cd8e",
+   "rec4vP6hXvoLunPg8": "cmp_1ab3e5d5aedffd69",
+   "rec59REQkG3QeQJcR": "cmp_9f096be57573150f",
+   "rec5RPQP2eU4j99oC": "cmp_b36eb6a54154f730",
+   "rec5XlZcot1i7vAkF": "cmp_206c6f49ff00ae4f",
+   "rec6K9Ocv7eOGcq2t": "cmp_b9a9031f0fae28ce",
+   "rec6MT3MpLXfxQ581": "cmp_736e3567ef297bb0",
+   "rec6t3L7uxFOzqlxU": "cmp_f1ff8f11150d5c91",
+   "rec6yQIHmsSNeP8R0": "cmp_0edc148f64e4c393",
+   "rec6yjHpDrXcNuI0w": "cmp_dc888cddf661c808",
+   "rec76De1LrgLBpCPr": "cmp_bb9cc5c9389ce3b3",
+   "rec7E8Bez3tp6f7VX": "cmp_675561ff0fcdc77d",
+   "rec7NlG3aX9mdE4Ww": "cmp_50b74852986cb818",
+   "rec7NvQiygG3nndEC": "cmp_c05939f26a0a038d",
+   "rec7RNde2zzWzDDtD": "cmp_4bd46396dbf57ef6",
+   "rec7avh6UxasxFoxl": "cmp_ce676c55387c57b3",
+   "rec7cGTP43LBCeWDG": "cmp_8dc1b63013f4c21a",
+   "rec7h9xsUh5QFdgmH": "cmp_3e55f0fab71d7ee0",
+   "rec7xEF7lGICswMBb": "cmp_36e726a90464358e",
+   "rec846lFBuO1rjoaA": "cmp_8e31e4bc1ba6a265",
+   "rec87gsOLkVewZXhp": "cmp_1f237abbd163733c",
+   "rec8ExPGbWkaKFVkr": "cmp_deb2c4f6e8fa7754",
+   "rec8ItWCD3pJzw8VK": "cmp_5f92838395c73cd9",
+   "rec8Zc7pul39XbfjU": "cmp_5c6f688344ef4da4",
+   "rec8xNIyt5STVh6NW": "cmp_2d51f69de199be81",
+   "rec9HVoinzbkFYZ6U": "cmp_1cc31ddab4cfb12a",
+   "rec9KyxlIGqy2B0yI": "cmp_44492758f967573e",
+   "rec9S9J0FTCmeQnLG": "cmp_f7faea02f0c7ed31",
+   "rec9hpGSVbI5EnOS1": "cmp_0c39988b77e192e9",
+   "rec9mwCLr3TRFfMgd": "cmp_dfa5d29213d57663",
+   "rec9vOFPESPplsFTV": "cmp_6c8670b4731ae09b",
+   "recA2JhS8OT9ZpS2s": "cmp_de62b0f1146e234e",
+   "recAMNlmP41uDedPj": "cmp_fc43f3890919268f",
+   "recBF0q7J8dvTmjQj": "cmp_96ebef381ab0d6a0",
+   "recBHO737yPUKYFcx": "cmp_3b6534bf1bae2c50",
+   "recBNgk01ZPMFqX5p": "cmp_e3fb1934c0ad227e",
+   "recBaluT8PKCeUHqm": "cmp_23afe6bec081fcfd",
+   "recBjiComEcRr5tIx": "cmp_ef5725b8f76ced53",
+   "recBo41MaMdkUaPZE": "cmp_f3c37f795b84049f",
+   "recBvBIvzbroAnhcS": "cmp_84fec18477970633",
+   "recCHkDHetNbcOCD2": "cmp_db8f76e285a94d9d",
+   "recCMA2sHsWypv6Eg": "cmp_e9dbd0ab151d5957",
+   "recCeFfAPCTDUxlXM": "cmp_8afbfc3d40cbb1da",
+   "recCesRYwoIuXg3kQ": "cmp_78d0cc8177ecece5",
+   "recCtA7njwxeY1eHN": "cmp_7ad1cbe4ced7dd19",
+   "recCxIdv9w86SAWxq": "cmp_44e7cdc8f1386a18",
+   "recDE8tBFgXz6TYCK": "cmp_ef60052405c7797a",
+   "recDiOggdU2iUw796": "cmp_76d639503d0311fe",
+   "recDlQEwhcqAJ3wPX": "cmp_a189c633d9995e11",
+   "recDr3MZTYx88QgWY": "cmp_23f83c7e87def828",
+   "recDvY78AikH8nH9O": "cmp_556dcd26a54fb752",
+   "recE2d3cGyCt4Md1j": "cmp_7172a49053b1de3e",
+   "recEEcx32bGXCO2K8": "cmp_e7fe7b2de018e182",
+   "recEJHGJjb9y07lG7": "cmp_aec6d71a3646fc63",
+   "recEU3npOLM4M0Upk": "cmp_b9ece37636371497",
+   "recEmEwD21cz4TGPo": "cmp_4fadf89c5597983f",
+   "recEmYdchmZyc2aBB": "cmp_3b6ec9ac8b9af333",
+   "recFFo5J1ljY3r7GV": "cmp_c4952f62b1cf4f7c",
+   "recFHg2lq7PC816Z4": "cmp_61eea1a1ac6ec1e5",
+   "recFJegXIDtnj8wb9": "cmp_2eb93b14676a3e9d",
+   "recFjqsQ5K9mp01Mc": "cmp_7c916830cda42654",
+   "recFtUDhhk15EjqdX": "cmp_fe1704f586646f14",
+   "recFy7RovgZzSscrL": "cmp_e77627b7dfb9713d",
+   "recG75pWjk9QdmrNI": "cmp_8673e126e5ae446c",
+   "recGBt7Wh25UAto00": "cmp_1c66187751452768",
+   "recGKdDydbyP6SJto": "cmp_836fe498e4443dab",
+   "recH3Nv7YnaogIttE": "cmp_a641589a22ccf284",
+   "recH8t217bz59Qsvz": "cmp_d02f03840414b216",
+   "recHGuzmBG3rJoXyH": "cmp_16362de56caedd07",
+   "recHJML1ZIIU159IZ": "cmp_404f509dfc27bc08",
+   "recHKJ4WL199oEAhU": "cmp_55619902fb1ff534",
+   "recHTWmnIigqfS3gm": "cmp_7a10cc483fba2060",
+   "recHbToafic4LclS4": "cmp_9934961840513a66",
+   "recHhtlP3mGtJHQkH": "cmp_d714637579471605",
+   "recHjDe4lFhwuQNxr": "cmp_ce779f70867a89b8",
+   "recHw6i12yTlQqY4O": "cmp_08f15e64b38fecdf",
+   "recHwmdiOZCqgDL00": "cmp_e48007d512256d1e",
+   "recI2FGNGsDkXWRqj": "cmp_a38638bedfa49998",
+   "recILlziYWU25upAC": "cmp_99537703e85e4efe",
+   "recIZJaK85xmHYAFp": "cmp_2a3074b199bef915",
+   "recIaSZD10bJKmPhB": "cmp_484c4b48c561b042",
+   "recIg5TFC4I4JJe3V": "cmp_915600e77b2a6cf7",
+   "recIkXpWgnwaspqKj": "cmp_b786946163a70b5c",
+   "recIsExLlLuNZUsyi": "cmp_b304e48ed6dac408",
+   "recItKWuGHBfEdYLs": "cmp_7db0849ddbf577d5",
+   "recJA24U3KYbVAfD7": "cmp_c93a0707651fcb6f",
+   "recJQhPTEZ3H3nK5D": "cmp_e92181aa043d1ab5",
+   "recJeIUTrmXstV8C8": "cmp_1f3870be274f6c49",
+   "recJmUoS3CuH6KvR0": "cmp_6ae7078a040ed4e3",
+   "recJuCcoAKgmh7J4K": "cmp_6d8af67f0bbcfd5d",
+   "recJvROimbzH26J0R": "cmp_f9613ad86c3c44d9",
+   "recK7TfemMFuXwcWE": "cmp_3b8f5529f9b5f49a",
+   "recKAQNyUlFWGNTBd": "cmp_14354d69d78781de",
+   "recKEwoluNwXeCJyF": "cmp_b679c8054559c7a0",
+   "recKScAzzfuYKnHUT": "cmp_49002dee5524bf85",
+   "recKhKHpzFz5PyVBm": "cmp_6db98c7360eb7363",
+   "recKjyuBmOgHkAoLS": "cmp_1c17d6b1d9772a7e",
+   "recKmWmJvNs0vSwPN": "cmp_77e46a1c94867e2a",
+   "recKtUJYU9wufOmBq": "cmp_5dfc3f7dd1dce5fc",
+   "recKuD6WlFZgwELMU": "cmp_dfeb16e0e08911b9",
+   "recKx8SuJ1OzG2j1G": "cmp_aad787abb88334f6",
+   "recL18U0hqyGZH9I1": "cmp_eef3285b56a0e536",
+   "recLAM3I6O3mIm3A6": "cmp_94838fcd1bb03dca",
+   "recLTnmNseJo2CwL2": "cmp_e1ddc0e4fca6ccae",
+   "recM1pyM96p85uZZ2": "cmp_7d1cfc519c495082",
+   "recM6wXF7XZeQmJtp": "cmp_54190397c4d8086b",
+   "recM9Cwyrx2zfGplZ": "cmp_06525ea6f6547050",
+   "recMBbrKXlWOuO1Ik": "cmp_a4b1775c5e522a20",
+   "recMlZwynhV0TgHre": "cmp_9024902c268ef5d4",
+   "recNAnliA1CSOwATE": "cmp_474c7c8d85fbbcd9",
+   "recNMzGPeQrO4vaQc": "cmp_2931ec6494bb700e",
+   "recNZFvVijMFUyatZ": "cmp_11833edd7eed374a",
+   "recNkcRd2WLSG8PLr": "cmp_86c94b52d37c00e1",
+   "recNncJYZVJapR4wR": "cmp_0b6322959c826cc6",
+   "recO9072i5K5iTHz0": "cmp_819e4991764d867b",
+   "recOEuAAy9g9NSWI3": "cmp_7dcda902a2a66245",
+   "recOFD9zZBQxekWaV": "cmp_eaebe551d1dbac15",
+   "recOkN3GgRSmxavOQ": "cmp_1bbfb7235988d44f",
+   "recOuhAHCjdKXtY1q": "cmp_0b6f9ed406d41732",
+   "recPT6kK36RpUDA4s": "cmp_09657cb7acb074c5",
+   "recPcGheg5Hx9O24j": "cmp_fcda22aa5bcf1d79",
+   "recQ0IdcLqAs5qpod": "cmp_f85e60ef844edbc0",
+   "recQ5ZDHFCGGToA2L": "cmp_afecc3e0a1f9c871",
+   "recQ6Z5iy5j48BPIT": "cmp_4e5bbaeafc82ab7a",
+   "recQ9XfqEfJ40Z29V": "cmp_82fdb0aa32e320bf",
+   "recQCHcGhPwgFzQtZ": "cmp_d35dc61e819465af",
+   "recQFEpZiI4R1wsLN": "cmp_f5952d792ad445ec",
+   "recQViYq3fCKzNftD": "cmp_52d098e81ff56a83",
+   "recQZ1T0bG3I3Nhf7": "cmp_037864590f22df8d",
+   "recQZdg1zVmWG8jFN": "cmp_e5f0e5c0f353cd49",
+   "recQqT0KDCFQOcgSW": "cmp_d99635d5bbb8700a",
+   "recQrVRAsWF3vHxlZ": "cmp_28a6e67fc25f2945",
+   "recRBSOOy6GvWkdsL": "cmp_56f7a04482002e1a",
+   "recRYdzWDrWh3zdxW": "cmp_40da0fb90618ab05",
+   "recRuFSCrcIX1bAG9": "cmp_d6a28366e3eb9c36",
+   "recS5adNulGai2wQa": "cmp_5d20c688c8f086e0",
+   "recS6kAPc46SStl1a": "cmp_8c0fc35e5db809e4",
+   "recSDZlx3q6fxRgPj": "cmp_0186a57adf3bc0b0",
+   "recSEtoabXG239HBf": "cmp_0ed68b2971c7709b",
+   "recSIagy7EXbL3NZ3": "cmp_d493ebe4185a802a",
+   "recSeAeoeS5SrekHO": "cmp_bced3b5b3eff790f",
+   "recSzJRTWGnb30QY2": "cmp_b780d54ae3b7982b",
+   "recT4XflnwV9um2mX": "cmp_96dbbc9a98914efb",
+   "recTBzeJtmUc42TGW": "cmp_fbc7fe5f5d14fdc0",
+   "recTMs0CnvsZCXjbF": "cmp_8e6e0bfaf3487255",
+   "recTXjDzgtTXvRU7p": "cmp_b18da17452f48c8e",
+   "recTiI42vP8epsJ9O": "cmp_b13d312d2fdea835",
+   "recTqSdCl6B8tdqX4": "cmp_0ace2bc21dc4f03e",
+   "recU1vMJ8fluOtZyc": "cmp_26760bdee8a98797",
+   "recU3hbeyHkbZG0Jg": "cmp_fbc90e6e36ea1f9c",
+   "recUNSzOTOFEWL0Al": "cmp_b215d5757841acb5",
+   "recUU03TC6NipdQ0H": "cmp_ac8242942174ddad",
+   "recUUUJHRNUqE6DyM": "cmp_c50d6c42e8494bb7",
+   "recUccdKxyeCWowDp": "cmp_3e64d2a760e5b187",
+   "recVBCEsBGSDK52tc": "cmp_2c6ee24b09816a6f",
+   "recVXQ1VVNBOgTXei": "cmp_98f11b7a7880169c",
+   "recVdZVkVwPDtSNOi": "cmp_d018ab08d9a5a650",
+   "recVulR3pJdLYw19d": "cmp_d939c4658bf5b67f",
+   "recWdcFtPPNBNNoc0": "cmp_734b1b96332dc54f",
+   "recWh05S0ZHhFxPi5": "cmp_a5dde346157e6382",
+   "recWuaDXTTPaljScA": "cmp_83ac0d3c4626a714",
+   "recXYPWAmqW7D7fJY": "cmp_5f9baddc6c944117",
+   "recXliwSAtRZBtGC8": "cmp_1eee642978491cce",
+   "recY47xW3zbG0NuoS": "cmp_138efd9c64da57cc",
+   "recYFHVUSHIymlgrO": "cmp_10249b2764270bcd",
+   "recYI2jZxJikccL2Z": "cmp_dee55f4c21bda290",
+   "recYSPh2hIND5Hvzw": "cmp_97d0d02161b4cd5a",
+   "recYpElNCu3ZJf8xZ": "cmp_fa7f62de2e37d0a4",
+   "recYq5MUyiRgBWriu": "cmp_5c97b2b3bed0b5ec",
+   "recYs4iFiEzevjvqh": "cmp_b45881722a5a2090",
+   "recZ8X7PPOW3LMeIe": "cmp_f4ef3d359e8eb5f3",
+   "recZCvw69zlMYsnop": "cmp_3163328eef5bce46",
+   "recZKXoKMbdnONMPy": "cmp_73129260207ca317",
+   "recZOBzjMs4Y1iYkx": "cmp_582797536d186170",
+   "recZheiWmbahCDHus": "cmp_2a566e4ec25cf707",
+   "recZqkXjXMBrVhP5c": "cmp_890fa7c00724e22f",
+   "recZz4wV1VEvPFBQH": "cmp_4e272d882965b971",
+   "reca3LCIgbN7eq2P1": "cmp_f7a0c4a0ea908693",
+   "reca4SYanvfUFWn8W": "cmp_43544fb48f2375f0",
+   "recaRKQ0OuiAYLZHp": "cmp_e94d919fa629cf6c",
+   "recaVVwfUayWcnfhK": "cmp_bcacd6a46954194d",
+   "recbUOq6BqLTHuoaa": "cmp_e9a23cbc45515895",
+   "recbVG7IyktATc2Of": "cmp_4c964507cbb3647e",
+   "recbkwyX8Au6YlW0Q": "cmp_4cbe0d6ff05b4953",
+   "recboveSIeuRi6RYf": "cmp_e8f4e05282541a7d",
+   "recbwo5h1uFAOhRfj": "cmp_f079794faabdcde0",
+   "recc0SwcEp0Pd4hhe": "cmp_9d509ccea75dcd4c",
+   "recc6PNY48DFrvNEz": "cmp_b5a9d868ced8db17",
+   "reccQyB3iCfDhu9GN": "cmp_b3746c54de38753b",
+   "reccTbR8tu4YfuEiF": "cmp_05b454b4e415755b",
+   "reccbBKVuLQR4utSd": "cmp_5e6b3e7c4ac796fe",
+   "reccfniQTtpsFKdTM": "cmp_a5d8d23073e20f60",
+   "reccmCKuseXKSWibb": "cmp_9375904c893f1ebe",
+   "reccpBCR94rwCmJQJ": "cmp_e96a479c49f59f0f",
+   "reccwUwKnWuaUJnAr": "cmp_d92f492d180abca0",
+   "recd6vfOqjx4qZ6xn": "cmp_bb6f88ba0ceac4c6",
+   "recdEeYexBzimGu3o": "cmp_37c9ec85c7852869",
+   "recdVtBIxm5uvJIFE": "cmp_8175a2e9422cdce6",
+   "recdXj8G9JIRIB9UP": "cmp_869fd4742f73ac49",
+   "recdYrWuyJE5IBcWf": "cmp_e5a780266fe4580c",
+   "recdgqbVwlZTXY6eq": "cmp_ba9defeaeb2a7a7b",
+   "recdqpJkX87K1jsTd": "cmp_cbda82ccdd8cbd47",
+   "recdsKo8buI454HDP": "cmp_d3ee527baae384aa",
+   "receKx4kBjp48EtCL": "cmp_e389f903be549c3b",
+   "receM1tHyecErMib9": "cmp_1eb52c1f29a8f8e2",
+   "receWuCunBNNb1jXm": "cmp_64c5fcc9fd7a80e4",
+   "recerwhA3Xg4wj3B6": "cmp_990d47ab479665ce",
+   "recfIlvfrxBXjA8bn": "cmp_1046de56c8bd6642",
+   "recfRacvV1NmrECaU": "cmp_20c5846ad6cfc004",
+   "recfowzHOVsYQCV1G": "cmp_dbcb5386990857bf",
+   "recfsA5SBHUC9McKR": "cmp_debd1a4d7535ad52",
+   "recg70FeKzaF4m0uY": "cmp_d8b15dfe47ca79d7",
+   "recgU6U0CUxHSNyeA": "cmp_baf0af99d4b52608",
+   "recglNCyPqvjJGVny": "cmp_73b208a59a6f7c61",
+   "recgrFTqaNSIrYlbm": "cmp_679f547e89735198",
+   "recgt4Bj75a13NUBk": "cmp_a7c245701cf56e5f",
+   "rechQWDXzqefvqllf": "cmp_4654dd43a4f6a8b8",
+   "rechSKDEEZdNMtBWx": "cmp_30a5fe2053bebe05",
+   "rechWgqYNq9HxIRdF": "cmp_b93b083f83a6dfcc",
+   "rechq9N4aVM75kLlA": "cmp_3b866661f7d8e937",
+   "rechqOwaLq3y1CFzn": "cmp_f6df6f4930c99a87",
+   "rechrOSPVoIt0ny7p": "cmp_c7b7eeaf37f1f6c7",
+   "reci9CPcc9voc5c1y": "cmp_cc43dae6a9e2c82c",
+   "reciGWQr07140zWTt": "cmp_dd565f8eb3479f49",
+   "reciIlZaqgXsCWgjs": "cmp_8e6b21f329abbf70",
+   "reciOSP3fj5wAaddj": "cmp_24b70a3d4ff754af",
+   "reciSL3A1YLcgubcX": "cmp_6c572727b088b74f",
+   "reciXR3gcUzRBH2Vt": "cmp_c544121450043ee1",
+   "reciisF7qsmh3wH5z": "cmp_7892824832523f8e",
+   "recj8lql4VSJdZGsX": "cmp_0d32fa27ce6f7eff",
+   "recjAsjTp63TkzbD3": "cmp_f2f525c82b5b9667",
+   "recjB8SLXc89Jo9wu": "cmp_e2061ec2dfba2193",
+   "recjLp4Lllafo1rKJ": "cmp_b48f384afbaa4a20",
+   "recjiJhLoxGoCk4nM": "cmp_d052d157aef2a7e2",
+   "recjlpFsPXKsTJx25": "cmp_3c4d3a4a98c12d1b",
+   "recjwYHfJ7Uz7kXHl": "cmp_ea0a814d7a56b1b8",
+   "reck1u7IQVTiFWpRF": "cmp_bd1b1276a1f8edc9",
+   "reckJFzHgTDypAkid": "cmp_f79741f157a8b5bc",
+   "reckLFMvn6UbjQiqc": "cmp_e32ec73cc38a2827",
+   "reckQpDjS2rT2OMeL": "cmp_a4c482c5a1a5649f",
+   "reckT9V2GYXDvCui3": "cmp_2139839d8a759c4d",
+   "reckXJ8j3COvB9SLH": "cmp_9e4fb0e63dcac292",
+   "recknBsFVKFj5R9EO": "cmp_13a014cb9de9f7ca",
+   "recko2VibYuo2IA8W": "cmp_2a0a4349f400f779",
+   "reclN8UsPnta2kMjE": "cmp_4cafff32ff2074cc",
+   "reclNmWpvy8w4Qiv6": "cmp_e79d1ca1992f3256",
+   "reclUBkjVh4m9V4Lv": "cmp_b1b626c8a4c7e577",
+   "reclhBuoblI6KFC7V": "cmp_977cefcdcd368d3c",
+   "recliAaQnWEDv6kzQ": "cmp_26f74940d542e061",
+   "recmKFNJa30paOXut": "cmp_106a5e19971ef364",
+   "recmgSGN74yvUtQnf": "cmp_300d683b40050b7a",
+   "recmr1QTTf98VniV7": "cmp_1f36073bec5e4f99",
+   "recmu3N2eoVIKopB1": "cmp_d385d85818a3c6c4",
+   "recn04gC9YIyAvHTl": "cmp_35f1f5641a33a557",
+   "recn8uQ5oBdDWKXOU": "cmp_8070b0b01d9042fd",
+   "recnBIp2xsl9bit8p": "cmp_5d5c982a6681b8ac",
+   "recnVwsaJJWZBD5Rv": "cmp_2f14d5449a15aefe",
+   "recneDRHqzSLqDqpL": "cmp_e389a212c2b3beb2",
+   "recnnWT7liS9uPyiD": "cmp_b868b73db760e46c",
+   "recnodZLOJEABYz0F": "cmp_d65d4f46fd0fe22c",
+   "recnpbRHEEL9qJhUq": "cmp_16dfba14481ba8b6",
+   "reco84cc7dOQnxhtM": "cmp_18b38bcbe603c320",
+   "recoA5RVzYQK6SpqF": "cmp_32ac217ce5a1a4aa",
+   "recoFIxR3NfoQ6CYd": "cmp_7fd51cd3d8667953",
+   "recoNWSyBxxY606Cy": "cmp_f0c9ae3c106ce0dd",
+   "recobo78hkgGKbfJK": "cmp_472b72f9db4458e2",
+   "recogBvrU88XixiHR": "cmp_35f7ac95268710f8",
+   "recohYxxYqJAUro4I": "cmp_fa43379c99412454",
+   "recokbFoId0yG52wF": "cmp_ac3436b63762e483",
+   "recotgU8gvEylDpD4": "cmp_7fa1798c363d9deb",
+   "recpI3IjJvXiFO7gq": "cmp_80917ea994b96de6",
+   "recplKpV3plnkiKm1": "cmp_87cd181bc25f7b37",
+   "recppdFbdFvQ6NQOD": "cmp_3414b5970d196eed",
+   "recpzE4JP06aFepa4": "cmp_ff7c899a2108b262",
+   "recq8pWwUGwo7hQmm": "cmp_c3c1f273d356780d",
+   "recqD4FA2kU2XYysZ": "cmp_5be32967ce195b18",
+   "recqHssjoIi0jBHAV": "cmp_fefd7db1d5ba9abd",
+   "recqOfLI9FEtNooXX": "cmp_398acd14b9891e02",
+   "recqPF2v0Jm3XM9yr": "cmp_845470eb2ffa2148",
+   "recqbyZ4dGhjmLGy4": "cmp_2d71988eb2e435dd",
+   "recqgRWrW6qUfoHVM": "cmp_ea8f45b7a3c31604",
+   "recqxkGO64pME7Qfl": "cmp_c5d6cbbf93b330c1",
+   "recrVM7dlz5OslsOk": "cmp_20b72fba7c920298",
+   "recrZL5HruewSv03F": "cmp_936381acafb0bf36",
+   "recroHkVRkWK3jrzt": "cmp_84bc7eaa45ea2645",
+   "recs20ASEAxYaHYS8": "cmp_7995660796c354a2",
+   "recsNLdY6m2yMDmfC": "cmp_12bbefc05d5142e7",
+   "recsjBLUFQ1VILety": "cmp_32376d0c55d1c2d1",
+   "recslhgwcLjn0QO9F": "cmp_70a5f53c27b4b42e",
+   "recsq6yNDVuQjv3PS": "cmp_1ee73eab02f9a612",
+   "recswVnYatcsl7N2K": "cmp_ee12d90b70948e03",
+   "rect0EKtJXiLwHcZD": "cmp_1c8491a30d62d3d3",
+   "rectDuqsyOcdScfU3": "cmp_f2bc965ff4f30b53",
+   "rectQLh7BAbCAU100": "cmp_83b11dcea0c5dfd6",
+   "rectjrGQ6NyBY0p8U": "cmp_6ea66d83cf04809b",
+   "rectqQekvyaxyhYrK": "cmp_09dd227fec4bc92c",
+   "recuDMJATIJVJB1Xr": "cmp_7543d49fdba510d3",
+   "recuQkafW47Usfo2r": "cmp_08d68759bdddfe8a",
+   "recubOS91Qw39qQwr": "cmp_1f3a73c414a50f62",
+   "recupo0HATGhFmwHC": "cmp_13827cd12e6f6fb4",
+   "recv36AWPuQU8SCiN": "cmp_08dd72636be7c901",
+   "recvEztlxrFNQS6ob": "cmp_dd1ceba0422afcba",
+   "recvHppRtbbApgki2": "cmp_646beb1c53e1b6fb",
+   "recvKSHKjXb97jm9y": "cmp_ea01e5fd8e4d8832",
+   "recvM2durxA0Lit8p": "cmp_fecfc3a90644a5f4",
+   "recvQBNUKhXKi5pAK": "cmp_eecfcf933b63825e",
+   "recvznI9FgHymFH7A": "cmp_10a718ddb0576c70",
+   "recw1ccI0DjAuK1Ts": "cmp_25878a87406d1904",
+   "recwM0JDN17sXNMtm": "cmp_c5ee97e2487d6b06",
+   "recwVl7EbskPNeVm3": "cmp_04d6d002c53dc55a",
+   "recwfrResH0QUGqCA": "cmp_779251e2f237c659",
+   "recwtBeGAvZpfXh3E": "cmp_ddc8f7c9441b52bc",
+   "recx4rmfnTGOZtJGq": "cmp_ec910456d9eca532",
+   "recxEWIQZVHaqJh8e": "cmp_4208252653b05cac",
+   "recxOtV33tLJCigr9": "cmp_9770989c68df3f94",
+   "recxb4XkQsP46vWsr": "cmp_da53578fcd1e62f5",
+   "recxwLkiZNQwTYaqB": "cmp_72ec30ce8bf1bf69",
+   "recy1uaHmZRpGKeqw": "cmp_e9c5a30f31c62e37",
+   "recy3Irfz1RHeqjS2": "cmp_cd72f5617c42b8b3",
+   "recyBF8bu4PoufnEp": "cmp_017c126609a19299",
+   "recyTN60EPWGJvWJN": "cmp_b95dc6166e9b8a75",
+   "recyqggTsBPOojCZJ": "cmp_4ea119576d08193d",
+   "recyvQbB90Qxjq53A": "cmp_af7d2925d9fcab5c",
+   "recz0XZQkNFa5Osrj": "cmp_a02d59ec7c739b76",
+   "recz84sDdBKbKIDN2": "cmp_1dfe613a66ee1d66",
+   "reczb3XshXWL3MFGV": "cmp_5dc984e2aef527ea",
+   "reczcQEPmwpfgTa8z": "cmp_a3e5a1a8bb6fe02a",
+   "reczj88ZNJSgN8cqZ": "cmp_15f72027b39f4761"
+  },
+  "faradayDomains": {
+   "D1": {
+    "name": "Chips & Density",
+    "active": true
+   },
+   "D10": {
+    "name": "Construction",
+    "active": true
+   },
+   "D11": {
+    "name": "Sustainability",
+    "active": true
+   },
+   "D12": {
+    "name": "Networking & Interconnect",
+    "active": true
+   },
+   "D13": {
+    "name": "Community Relations",
+    "active": true
+   },
+   "D14": {
+    "name": "Real Estate & Site Selection",
+    "active": true
+   },
+   "D15": {
+    "name": "Sovereign AI & Geopolitics",
+    "active": true
+   },
+   "D16": {
+    "name": "Cyber & Physical Security and Resilience",
+    "active": true
+   },
+   "D17": {
+    "name": "Workforce & Labor Markets",
+    "active": true
+   },
+   "D18": {
+    "name": "Community Opposition & Regulatory Risk",
+    "active": true
+   },
+   "D19": {
+    "name": "Tax, Incentives & Fiscal Policy",
+    "active": true
+   },
+   "D2": {
+    "name": "Power Architecture",
+    "active": true
+   },
+   "D20": {
+    "name": "Facility IT & Operational Technology",
+    "active": true
+   },
+   "D21": {
+    "name": "Insurance & Risk Markets",
+    "active": true
+   },
+   "D22": {
+    "name": "Industry Media & Analyst Coverage",
+    "active": true
+   },
+   "D23": {
+    "name": "Outage Intelligence & Emergency Response",
+    "active": true
+   },
+   "D3": {
+    "name": "Grid & Regulatory",
+    "active": true
+   },
+   "D4": {
+    "name": "M&A & Capital Markets",
+    "active": true
+   },
+   "D5": {
+    "name": "Hyperscaler Activity",
+    "active": true
+   },
+   "D6": {
+    "name": "New Entrants",
+    "active": true
+   },
+   "D7": {
+    "name": "Cooling & Water Technology",
+    "active": true
+   },
+   "D8": {
+    "name": "People & Signals",
+    "active": true
+   },
+   "D9": {
+    "name": "Orchestration Intelligence & Control Plane",
+    "active": true
+   }
+  },
+  "faradaySubdomains": {
+   "D1.1": {
+    "name": "GPU Architecture & Roadmap",
+    "active": true,
+    "domain": "D1"
+   },
+   "D1.2": {
+    "name": "Rack & Power Density Progression",
+    "active": true,
+    "domain": "D1"
+   },
+   "D1.3": {
+    "name": "Competing Silicon & Merchant Accelerators",
+    "active": true,
+    "domain": "D1"
+   },
+   "D1.4": {
+    "name": "Memory (HBM & Next-Gen)",
+    "active": true,
+    "domain": "D1"
+   },
+   "D1.5": {
+    "name": "Inference-Class Silicon & Economics",
+    "active": true,
+    "domain": "D1"
+   },
+   "D1.6": {
+    "name": "Chip Allocation & Supply Politics",
+    "active": true,
+    "domain": "D1"
+   },
+   "D1.7": {
+    "name": "Hyperscaler-Class Silicon & Custom Accelerators",
+    "active": true,
+    "domain": "D1"
+   },
+   "D1.8": {
+    "name": "Advanced Packaging & Substrate Capacity",
+    "active": true,
+    "domain": "D1"
+   },
+   "D10.1": {
+    "name": "Long-Lead Equipment & Supply Chain",
+    "active": true,
+    "domain": "D10"
+   },
+   "D10.2": {
+    "name": "GC/EPC Capacity & Stick-Built Execution",
+    "active": true,
+    "domain": "D10"
+   },
+   "D10.3": {
+    "name": "Modular & Prefabricated Delivery",
+    "active": true,
+    "domain": "D10"
+   },
+   "D10.4": {
+    "name": "Project Delivery & Schedule Intelligence",
+    "active": true,
+    "domain": "D10"
+   },
+   "D10.5": {
+    "name": "Construction Cost Curves & Inflation",
+    "active": true,
+    "domain": "D10"
+   },
+   "D11.1": {
+    "name": "Clean Energy Procurement (PPA/REC/CFE)",
+    "active": true,
+    "domain": "D11"
+   },
+   "D11.2": {
+    "name": "Carbon Accounting & Scope 1-3",
+    "active": true,
+    "domain": "D11"
+   },
+   "D11.3": {
+    "name": "Water Stewardship & Rights",
+    "active": true,
+    "domain": "D11"
+   },
+   "D11.4": {
+    "name": "Heat Recovery & Circular DC",
+    "active": true,
+    "domain": "D11"
+   },
+   "D11.5": {
+    "name": "Sustainability Regulation & Disclosure",
+    "active": true,
+    "domain": "D11"
+   },
+   "D11.6": {
+    "name": "Embodied Carbon & Materials",
+    "active": true,
+    "domain": "D11"
+   },
+   "D12.1": {
+    "name": "Long-Haul & Dark Fiber Leasing",
+    "active": true,
+    "domain": "D12"
+   },
+   "D12.2": {
+    "name": "Subsea Cable Systems",
+    "active": true,
+    "domain": "D12"
+   },
+   "D12.3": {
+    "name": "AI Back-End Fabric & Interconnect",
+    "active": true,
+    "domain": "D12"
+   },
+   "D12.4": {
+    "name": "Cross-Connect & Cloud On-Ramp",
+    "active": true,
+    "domain": "D12"
+   },
+   "D12.5": {
+    "name": "Optical Transceivers & Co-Packaged Optics",
+    "active": true,
+    "domain": "D12"
+   },
+   "D12.6": {
+    "name": "Small Cell, Private 5G & Terrestrial Wireless",
+    "active": true,
+    "domain": "D12"
+   },
+   "D12.7": {
+    "name": "LEO / Satellite Broadband",
+    "active": true,
+    "domain": "D12"
+   },
+   "D13.1": {
+    "name": "Community Benefits & Host Agreements",
+    "active": true,
+    "domain": "D13"
+   },
+   "D13.2": {
+    "name": "Opposition Movements & Organized Groups",
+    "active": true,
+    "domain": "D13"
+   },
+   "D13.3": {
+    "name": "Local Permitting & Entitlement Strategy",
+    "active": true,
+    "domain": "D13"
+   },
+   "D13.4": {
+    "name": "Public Engagement Practice",
+    "active": true,
+    "domain": "D13"
+   },
+   "D13.5": {
+    "name": "Economic Impact Narratives & Legitimacy",
+    "active": true,
+    "domain": "D13"
+   },
+   "D14.1": {
+    "name": "Site Selection Methodology & Site Readiness",
+    "active": true,
+    "domain": "D14"
+   },
+   "D14.2": {
+    "name": "Primary Market Intelligence (NA Tier 1)",
+    "active": true,
+    "domain": "D14"
+   },
+   "D14.3": {
+    "name": "Emerging & Second-Tier Markets",
+    "active": true,
+    "domain": "D14"
+   },
+   "D14.4": {
+    "name": "International Markets",
+    "active": true,
+    "domain": "D14"
+   },
+   "D14.5": {
+    "name": "Land Pricing & Acquisition",
+    "active": true,
+    "domain": "D14"
+   },
+   "D14.6": {
+    "name": "Site Certification & Readiness",
+    "active": false,
+    "domain": "D14"
+   },
+   "D14.7": {
+    "name": "Campus Portfolio Strategy & Build Models",
+    "active": true,
+    "domain": "D14"
+   },
+   "D14.8": {
+    "name": "Facility Inventory & Classification",
+    "active": true,
+    "domain": "D14"
+   },
+   "D15.1": {
+    "name": "Chip Export Controls & Outbound Dual-Use",
+    "active": true,
+    "domain": "D15"
+   },
+   "D15.2": {
+    "name": "National Compute Strategies & Sovereign Programs",
+    "active": true,
+    "domain": "D15"
+   },
+   "D15.3": {
+    "name": "Bilateral & Multilateral AI Diplomacy",
+    "active": true,
+    "domain": "D15"
+   },
+   "D15.4": {
+    "name": "Strategic Minerals & Upstream Supply",
+    "active": true,
+    "domain": "D15"
+   },
+   "D15.5": {
+    "name": "Data Sovereignty & Cross-Border Flows",
+    "active": true,
+    "domain": "D15"
+   },
+   "D15.6": {
+    "name": "Inbound Investment Screening",
+    "active": true,
+    "domain": "D15"
+   },
+   "D16.1": {
+    "name": "Enterprise IT & Cloud Security",
+    "active": true,
+    "domain": "D16"
+   },
+   "D16.2": {
+    "name": "OT / ICS / SCADA Cybersecurity",
+    "active": true,
+    "domain": "D16"
+   },
+   "D16.3": {
+    "name": "Physical Security & Access Control",
+    "active": true,
+    "domain": "D16"
+   },
+   "D16.4": {
+    "name": "State-Sponsored & Advanced Persistent Threats",
+    "active": true,
+    "domain": "D16"
+   },
+   "D16.5": {
+    "name": "Software Supply Chain & Vendor Risk",
+    "active": true,
+    "domain": "D16"
+   },
+   "D16.6": {
+    "name": "Security Operations & Incident Response",
+    "active": true,
+    "domain": "D16"
+   },
+   "D17.1": {
+    "name": "Construction & Skilled Trades Labor",
+    "active": true,
+    "domain": "D17"
+   },
+   "D17.2": {
+    "name": "Operations & Technical Workforce",
+    "active": true,
+    "domain": "D17"
+   },
+   "D17.3": {
+    "name": "Immigration, Policy & Regional Labor Competition",
+    "active": true,
+    "domain": "D17"
+   },
+   "D18.1": {
+    "name": "Project Opposition Register",
+    "active": true,
+    "domain": "D18"
+   },
+   "D18.2": {
+    "name": "Regulatory & Permitting Denial Tracking",
+    "active": true,
+    "domain": "D18"
+   },
+   "D18.3": {
+    "name": "Reputational & Political Risk Register",
+    "active": true,
+    "domain": "D18"
+   },
+   "D19.1": {
+    "name": "State & Local Tax Incentives",
+    "active": true,
+    "domain": "D19"
+   },
+   "D19.2": {
+    "name": "Federal Tax Policy",
+    "active": true,
+    "domain": "D19"
+   },
+   "D19.3": {
+    "name": "International Tax & Transfer Pricing",
+    "active": true,
+    "domain": "D19"
+   },
+   "D19.4": {
+    "name": "Tax Incentive Backlash & Clawback",
+    "active": true,
+    "domain": "D19"
+   },
+   "D19.5": {
+    "name": "Tax-Driven Deal Structuring",
+    "active": true,
+    "domain": "D19"
+   },
+   "D2.1": {
+    "name": "800V DC Power Distribution",
+    "active": true,
+    "domain": "D2"
+   },
+   "D2.10": {
+    "name": "Solid-State Transformers & Advanced Power Conversion",
+    "active": true,
+    "domain": "D2"
+   },
+   "D2.11": {
+    "name": "Power Price Formation & Cost Structure",
+    "active": true,
+    "domain": "D2"
+   },
+   "D2.2": {
+    "name": "BTM Strategy & Cross-Cutting Economics",
+    "active": true,
+    "domain": "D2"
+   },
+   "D2.3": {
+    "name": "UPS, Storage & Power Conditioning",
+    "active": true,
+    "domain": "D2"
+   },
+   "D2.4": {
+    "name": "DC Power Delivery at the Rack",
+    "active": true,
+    "domain": "D2"
+   },
+   "D2.5": {
+    "name": "Nuclear & SMR Offtake",
+    "active": true,
+    "domain": "D2"
+   },
+   "D2.6": {
+    "name": "Behind-the-Fence Gas & Fuel Cells",
+    "active": true,
+    "domain": "D2"
+   },
+   "D2.7": {
+    "name": "Renewables, Storage & PPAs for DC Power",
+    "active": true,
+    "domain": "D2"
+   },
+   "D2.8": {
+    "name": "Grid-Interactive Load & Demand Response",
+    "active": true,
+    "domain": "D2"
+   },
+   "D2.9": {
+    "name": "Microgrid Integration & Islanding",
+    "active": true,
+    "domain": "D2"
+   },
+   "D20.1": {
+    "name": "Building Management Systems & HVAC Control",
+    "active": true,
+    "domain": "D20"
+   },
+   "D20.2": {
+    "name": "Facility DCIM & Digital Twin",
+    "active": true,
+    "domain": "D20"
+   },
+   "D21.1": {
+    "name": "DC Property & Casualty Insurance",
+    "active": true,
+    "domain": "D21"
+   },
+   "D21.2": {
+    "name": "Cyber Insurance & Tech E&O",
+    "active": true,
+    "domain": "D21"
+   },
+   "D21.3": {
+    "name": "Climate & Parametric Risk Products",
+    "active": true,
+    "domain": "D21"
+   },
+   "D21.4": {
+    "name": "Lender Insurance & Risk Transfer",
+    "active": true,
+    "domain": "D21"
+   },
+   "D22.1": {
+    "name": "U.S. Media Coverage",
+    "active": true,
+    "domain": "D22"
+   },
+   "D22.2": {
+    "name": "EU Media Coverage",
+    "active": true,
+    "domain": "D22"
+   },
+   "D22.3": {
+    "name": "APAC / LATAM / MENA Media Coverage",
+    "active": true,
+    "domain": "D22"
+   },
+   "D22.4": {
+    "name": "Industry Analysts",
+    "active": true,
+    "domain": "D22"
+   },
+   "D23.1": {
+    "name": "Major Outage Postmortems",
+    "active": true,
+    "domain": "D23"
+   },
+   "D23.2": {
+    "name": "Grid Events & Physical Disasters",
+    "active": true,
+    "domain": "D23"
+   },
+   "D23.3": {
+    "name": "Cyber Incidents Targeting DC Infrastructure",
+    "active": true,
+    "domain": "D23"
+   },
+   "D23.4": {
+    "name": "Business Continuity & Disaster Recovery",
+    "active": true,
+    "domain": "D23"
+   },
+   "D3.1": {
+    "name": "Interconnection Queue & Grid Access",
+    "active": true,
+    "domain": "D3"
+   },
+   "D3.2": {
+    "name": "State Moratorium & Legislative Landscape",
+    "active": true,
+    "domain": "D3"
+   },
+   "D3.3": {
+    "name": "Utility Rate Cases & PUC Proceedings",
+    "active": true,
+    "domain": "D3"
+   },
+   "D3.4": {
+    "name": "Transmission Buildout & FERC Policy",
+    "active": true,
+    "domain": "D3"
+   },
+   "D3.5": {
+    "name": "Large-Load Tariff Design & Co-Location Rules",
+    "active": true,
+    "domain": "D3"
+   },
+   "D4.1": {
+    "name": "PE & Infrastructure Fund Activity",
+    "active": true,
+    "domain": "D4"
+   },
+   "D4.2": {
+    "name": "DC REIT Performance & Valuation",
+    "active": true,
+    "domain": "D4"
+   },
+   "D4.3": {
+    "name": "Sovereign Wealth & Institutional Capital",
+    "active": true,
+    "domain": "D4"
+   },
+   "D4.4": {
+    "name": "Integrated Infrastructure Vendor M&A",
+    "active": true,
+    "domain": "D4"
+   },
+   "D4.5": {
+    "name": "Private Credit & DC Debt Financing",
+    "active": true,
+    "domain": "D4"
+   },
+   "D4.6": {
+    "name": "GPU-Backed & Neocloud Financing",
+    "active": true,
+    "domain": "D4"
+   },
+   "D5.1": {
+    "name": "Big 5 Capex & Campus Announcements",
+    "active": true,
+    "domain": "D5"
+   },
+   "D5.2": {
+    "name": "Hyperscaler Custom Silicon Strategy",
+    "active": true,
+    "domain": "D5"
+   },
+   "D5.3": {
+    "name": "Build-vs-Lease & Colocation Strategy",
+    "active": true,
+    "domain": "D5"
+   },
+   "D5.4": {
+    "name": "Capacity Geography & Region Expansion",
+    "active": true,
+    "domain": "D5"
+   },
+   "D6.1": {
+    "name": "Neocloud Infrastructure",
+    "active": true,
+    "domain": "D6"
+   },
+   "D6.2": {
+    "name": "Sovereign AI Programs & National Compute",
+    "active": true,
+    "domain": "D6"
+   },
+   "D6.3": {
+    "name": "AI Labs & Model Developers as Infrastructure Buyers",
+    "active": true,
+    "domain": "D6"
+   },
+   "D7.1": {
+    "name": "Direct-to-Chip Liquid Cooling (DLC)",
+    "active": true,
+    "domain": "D7"
+   },
+   "D7.2": {
+    "name": "Immersion Cooling",
+    "active": true,
+    "domain": "D7"
+   },
+   "D7.3": {
+    "name": "Water Use & Waterless Cooling Strategies",
+    "active": true,
+    "domain": "D7"
+   },
+   "D7.4": {
+    "name": "Thermal Components & Coolant Supply Chain",
+    "active": true,
+    "domain": "D7"
+   },
+   "D8.1": {
+    "name": "Executive Movement & C-Suite Intelligence",
+    "active": true,
+    "domain": "D8"
+   },
+   "D8.2": {
+    "name": "Conference Intelligence & Speaking Circuit",
+    "active": true,
+    "domain": "D8"
+   },
+   "D8.3": {
+    "name": "Talent Flows & Specialized Hiring Signals",
+    "active": true,
+    "domain": "D8"
+   },
+   "D8.4": {
+    "name": "Founder & Operator Network Mapping",
+    "active": true,
+    "domain": "D8"
+   },
+   "D8.5": {
+    "name": "Earnings-Call & Investor-Day Signal Extraction",
+    "active": true,
+    "domain": "D8"
+   },
+   "D9.1": {
+    "name": "AI Factory Orchestration & DCIM",
+    "active": true,
+    "domain": "D9"
+   },
+   "D9.2": {
+    "name": "GPU Utilization & Compute Scheduling Economics",
+    "active": true,
+    "domain": "D9"
+   },
+   "D9.3": {
+    "name": "Inference Serving & Model-Routing Infrastructure",
+    "active": true,
+    "domain": "D9"
+   },
+   "D9.4": {
+    "name": "Power-Aware & Grid-Responsive Workload Orchestration",
+    "active": true,
+    "domain": "D9"
+   }
+  },
+  "faradayThemes": {
+   "T-001": {
+    "name": "The Power Reckoning",
+    "active": true
+   },
+   "T-002": {
+    "name": "The Thermal Reckoning",
+    "active": true
+   },
+   "T-003": {
+    "name": "The Consent Crisis",
+    "active": true
+   },
+   "T-004": {
+    "name": "The Capital Concentration",
+    "active": true
+   },
+   "T-005": {
+    "name": "The Inference Economy",
+    "active": true
+   },
+   "T-006": {
+    "name": "The Sovereign AI Race",
+    "active": true
+   },
+   "T-007": {
+    "name": "The New Energy Stack",
+    "active": true
+   }
+  }
+ },
+ "bl07ReviewedSubdomainMatches": {
+  "rec1GfBAAln6ZSW0q": "D1.2",
+  "rec1IIKSa2cl80Ryj": "D3.1",
+  "rec37a3yX0FHOP9DF": "D23.4",
+  "rec3Kpgg05IGncBf8": "D3.2",
+  "rec99QGHxgT75UjzY": "D14.1",
+  "rec9D8LpJbd26ldHX": "D19.5",
+  "rec9MpPnjS2YO9SaD": "D16.2",
+  "rec9cPYpx7u31fkyL": "D3.3",
+  "recAZcjp6V1SUPxfC": "D4.2",
+  "recAgsWEv6wkpLUlF": "D9.2",
+  "recB3wgiENoojfAKP": "D8.2",
+  "recCe4V9lZ80mWIu4": "D9.1",
+  "recD1QuT4VRyFrmDy": "D11.1",
+  "recEowstrxIqAAPBd": "D16.1",
+  "recFL4XZqyNxj8Q0X": "D2.1",
+  "recFSkadIniiu1Sof": "D10.2",
+  "recHAAJ0BHYL0y8UJ": "D4.1",
+  "recHF4ZZO9KGT3GTS": "D7.3",
+  "recHKh3LDlcDUbNgH": "D23.1",
+  "recKjvf96fa4Wr0Ol": "D23.2",
+  "recLRkt2BjSnFubrZ": "D4.3",
+  "recLv8DO9Y1NZqUg8": "D19.1",
+  "recMPs1LIfV8SPJZ1": "D19.3",
+  "recN9Hfb0HagpOW15": "D22.2",
+  "recO5R9fa4ddn5ZyY": "D5.2",
+  "recPFR2l0d6KoMGQw": "D1.1",
+  "recPXxTRVUmztOege": "D16.3",
+  "recPvFAwC6mnx5rEN": "D19.4",
+  "recQcvl1WnnsSRFNR": "D22.1",
+  "recRtoFsptMWEGDcb": "D15.1",
+  "recT14J8c08eBXoK8": "D18.1",
+  "recTQ5R8oSA21v3kE": "D22.4",
+  "recUFxGS8LohTjlTX": "D21.4",
+  "recUVS0s8F5q1D0ld": "D7.2",
+  "recY5Qkqx7EtlIx0r": "D4.4",
+  "recYJk9Xt6vkzOiuh": "D6.1",
+  "recadZCtRAFEnXFsq": "D2.4",
+  "recbUxucXlfAyAsa5": "D10.3",
+  "recdD4tJ1L1o5HPit": "D6.2",
+  "recdM2HJ8STEL5GKF": "D2.2",
+  "rece4UsrvoSsSZ4Je": "D8.1",
+  "rech0PZzpCmQnQ6sm": "D16.6",
+  "rechzkIuM3mXejALo": "D19.2",
+  "recjUBYMA1zZPZTch": "D16.4",
+  "recmQEXqSnsiiZYyP": "D21.3",
+  "recnkRlll9vRvkJ8s": "D21.2",
+  "recowzfyejfKb9NzY": "D20.1",
+  "recpm9XzmWC5mwefS": "D10.1",
+  "recrMxsTBqM8JN47s": "D1.3",
+  "recrgnPkToTIXcHzT": "D22.3",
+  "recsSmMe3WvfS6pgK": "D21.1",
+  "rectEw6Oz5qAMBRW0": "D20.2",
+  "recvhHizrXlqCI9hs": "D7.1",
+  "recvmvroRi5Meylsd": "D11.2",
+  "recvqOZCrtJWuz6RC": "D2.3",
+  "reczN3Nl7DuQk7xBD": "D5.1",
+  "reczgHQY48YnjQNP5": "D23.3",
+  "reczo0CQYkTD9gZCc": "D16.5"
+ }
+}
