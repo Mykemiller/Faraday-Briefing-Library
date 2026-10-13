@@ -1,0 +1,352 @@
+<title>The Power Reckoning</title>
+<meta name="description" content="Faraday Briefing Library, Deep-tier template sample (BL-08). Draft, not for distribution.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Spectral:ital,wght@0,500;0,700;1,500&family=IBM+Plex+Sans+Condensed:wght@400;600&display=swap">
+<style>
+/* Layout: one reading column, each brief part a printed page; forest-over-gold double rules (Brand Bible §06). */
+:root{
+  --paper:#FBFAF6; --ink:#1E2622; --muted:#5B6660; --line:#D9DCD3;
+  --forest:#1F4A36; --gold:#B08A2E; --cream:#F6EEDC; --cream-ink:#2A2A22;
+  --f-display:"Spectral",Georgia,"Times New Roman",serif;
+  --f-body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --f-util:"IBM Plex Sans Condensed","Arial Narrow",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#141A17; --ink:#E6E8E2; --muted:#A3ADA6; --line:#33403A;
+  --forest:#7DB89A; --gold:#D6B25E; --cream:#262418; --cream-ink:#EFE7D2; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#141A17; --ink:#E6E8E2; --muted:#A3ADA6; --line:#33403A;
+  --forest:#7DB89A; --gold:#D6B25E; --cream:#262418; --cream-ink:#EFE7D2; color-scheme:dark}
+body{background:var(--paper);color:var(--ink);font:400 1.0625rem/1.6 var(--f-body);}
+main{max-width:46rem;margin:0 auto;padding-inline:clamp(16px,4vw,40px);padding-block:2.5rem 4rem}
+a{color:var(--forest);text-underline-offset:2px}
+a:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;color:var(--ink)}
+.eyebrow,.num,th,.tbl td:last-child,.meta li strong,.refs-json summary,.status{font-family:var(--f-util)}
+.eyebrow{text-transform:uppercase;letter-spacing:.12em;font-size:.75rem;color:var(--forest);margin:0}
+.cover{display:flex;flex-direction:column;gap:1.25rem;padding-block:2rem 3rem;border-bottom:3px double var(--gold)}
+.cover h1{font-size:clamp(2.6rem,7vw,4.2rem);line-height:1.02;margin:0;font-weight:700;letter-spacing:-.01em}
+.standfirst{font-family:var(--f-display);font-style:italic;font-size:1.3rem;line-height:1.45;margin:0;max-width:36rem;color:var(--muted)}
+ul.meta{list-style:none;padding:0;margin:0;display:grid;gap:.4rem;border-top:1px solid var(--line);padding-top:1rem;font-size:.95rem}
+ul.meta li strong{font-weight:600;text-transform:uppercase;letter-spacing:.08em;font-size:.72rem;color:var(--forest);margin-right:.35rem}
+.part{padding-top:2.5rem}
+.rule{height:6px;border-top:2px solid var(--forest);border-bottom:2px solid var(--gold);margin-bottom:1.5rem}
+h2{font-size:1.75rem;line-height:1.15;margin:0 0 .6rem;font-weight:700;display:flex;gap:.7rem;align-items:baseline}
+.num{font-size:.9rem;font-weight:600;color:var(--gold);letter-spacing:.06em}
+.deck{font-family:var(--f-display);font-style:italic;font-size:1.12rem;color:var(--muted);margin:0 0 1.2rem;border-left:2px solid var(--gold);padding-left:.8rem}
+p{margin:0 0 1rem;max-width:65ch}
+ul,ol{padding-left:1.3rem;margin:0 0 1rem;display:grid;gap:.45rem;max-width:65ch}
+li{break-inside:avoid}
+a.ref{font-family:var(--f-util);font-size:.68em;font-weight:600;vertical-align:super;line-height:0;text-decoration:none;color:var(--gold);padding:0 .08em}
+.tbl{overflow-x:auto;margin:0 0 1.2rem;break-inside:avoid}
+table{border-collapse:collapse;width:100%;font-size:.88rem;font-variant-numeric:tabular-nums}
+th{text-align:left;font-weight:600;font-size:.72rem;text-transform:uppercase;letter-spacing:.07em;color:var(--forest);border-bottom:2px solid var(--forest);padding:.4rem .5rem}
+td{border-bottom:1px solid var(--line);padding:.42rem .5rem;vertical-align:top}
+#sources-methodology table{font-size:.78rem} #sources-methodology td{word-break:break-word}
+#sources-methodology p{font-size:.9rem}
+.take-page{padding-top:2.5rem}
+.take{background:var(--cream);color:var(--cream-ink);border-left:10px double var(--forest);box-shadow:inset 3px 0 0 var(--gold);padding:1.8rem 2rem;break-inside:avoid}
+.take h2{color:var(--cream-ink)}
+.take p{font-family:var(--f-display);font-style:italic;font-size:1.12rem;line-height:1.6}
+.take .sig{font-style:normal;font-family:var(--f-util);font-size:.85rem;letter-spacing:.04em;color:var(--forest);margin-top:1rem}
+code{font-size:.85em}
+.refs-json{margin-top:1rem;font-size:.82rem}
+.refs-json summary{cursor:pointer;color:var(--forest)}
+.refs-json pre{overflow-x:auto;background:var(--cream);color:var(--cream-ink);padding:1rem;font-size:.75rem}
+@media (max-width:480px){h2{font-size:1.4rem}.take{padding:1.2rem}}
+@page{size:Letter;margin:0.75in}
+@media print{
+  :root{--paper:#fff;--ink:#1E2622;--muted:#4E5852;--line:#D3D6CD;--forest:#1F4A36;--gold:#A9822A;--cream:#F6EEDC;--cream-ink:#2A2A22}
+  html{font-size:9.2pt}
+  body{font-size:10.25pt;line-height:1.45}
+  p,ul,ol{max-width:none}
+  main{max-width:none;padding:0}
+  .cover{min-height:8.4in;justify-content:center;border-bottom:0}
+  .part{break-before:page;padding-top:0}
+  .refs-json{display:none}
+  a{color:inherit;text-decoration:none}
+  a.ref{color:var(--gold)}
+}
+</style>
+<main>
+<header class="cover">
+<!--cover-->
+<p class="eyebrow">Faraday Intelligence · Briefing Library · Deep brief</p><h1>The Power Reckoning</h1>
+<p class="standfirst">The grid has stopped rationing electrons and started rationing permission. In 2026 every layer of American power governance moved to the same rule: a data center that wants to connect must pay its own way, wait its turn, or agree to be switched off.</p>
+<ul class="meta"><li><strong>Tier:</strong> Deep brief</li><li><strong>Coverage:</strong> Theater: The Power Reckoning › Sector: Grid &amp; Regulatory (secondary: Power Architecture) › Thread: Large-Load Tariff Design &amp; Co-Location Rules</li><li><strong>Byline:</strong> Gilbert Faraday, with the forward call by Mach Eigen</li><li><strong>Evidence window:</strong> 7 May – 7 Oct 2026, eleven sources, de-duplicated by URL</li><li><strong>Status:</strong> DRAFT. Template sample, not for distribution. Requires Myke sign-off (Deep tier).</li></ul>
+</header>
+<section class="part" id="summary">
+<div class="rule" aria-hidden="true"></div>
+<h2>Summary</h2>
+<p><strong>Faraday's thesis.</strong> Power is no longer the binding constraint on American data center growth in the way the industry describes it. The binding constraint is the terms of connection. Between May and October 2026, federal regulators, every state that legislated, and the largest grid operator in Texas converged on one bargain: large loads connect faster if they pay the full incremental cost of serving them, bring or contract their own generation, and accept curtailment. Developers who structure projects around that bargain will connect. Developers who wait for the old terms will wait in a queue that is already longer than a construction cycle.</p>
+<p><strong>Findings</strong></p>
+<ol><li><strong>The queue is longer than the build.</strong> Lawrence Berkeley National Laboratory counts over 2,060 GW of generation and storage seeking interconnection at the end of 2025, with a median of more than five years from request to commercial operation for projects built in 2025 <a class="ref" href="#src-S2">S2</a>. Large loads face a similar clock: connecting a load of 200 MW or more typically takes at least five years <a class="ref" href="#src-S4">S4</a>.</li><li><strong>Demand requests dwarf the system.</strong> ERCOT is tracking more than 438,000 MW of large-load requests, nearly 89% of them from data centers <a class="ref" href="#src-S1">S1</a>. PJM's July 2026 capacity auction identified a reliability shortfall of 6,831 MW for the 2028–29 delivery year <a class="ref" href="#src-S5">S5</a>.</li><li><strong>Washington chose speed by order, not by rule.</strong> On 18 June 2026 FERC issued six tailored show-cause orders instead of a national rulemaking, giving grid operators 60 days to justify or reform their large-load tariffs and 30 days to report on generation adequacy <a class="ref" href="#src-S3">S3</a><a class="ref" href="#src-S4">S4</a>.</li><li><strong>The states are writing the bill.</strong> Only 13 states lack any utility tariff setting requirements for data centers and other large loads <a class="ref" href="#src-S6">S6</a>. Eight states had enacted cost-protection laws by July 2026 <a class="ref" href="#src-S7">S7</a>. The House passed the Ratepayer Protection Act 417–3 on 16 September <a class="ref" href="#src-S6">S6</a>.</li><li><strong>"Bring your own power" is now a product.</strong> Black Hills' agreements to serve Google in Cheyenne pair up to 590 MW of grid service with about 2.1 GW of third-party resources run through a private microgrid <a class="ref" href="#src-S10">S10</a>. Vertiv agreed to pay about $1.45 billion for a microgrid and behind-the-meter specialist <a class="ref" href="#src-S11">S11</a>.</li><li><strong>Permission is a second grid.</strong> New York, Montgomery County (Maryland) and Prince William County (Virginia) have each paused data center approvals or seen them invalidated <a class="ref" href="#src-S9">S9</a>; one legal survey counts more than 140 local groups blocking or delaying about $60 billion or more of investment <a class="ref" href="#src-S8">S8</a>.</li></ol>
+<p><strong>What to watch:</strong> Pennsylvania's curtailment order (vote targeted 28 January) <a class="ref" href="#src-S5">S5</a>; ERCOT's Batch Zero transmission plan (fall 2027) <a class="ref" href="#src-S1">S1</a>; Senate action on the Ratepayer Protection Act <a class="ref" href="#src-S6">S6</a>; Vertiv–UIG close (Q4 2026) <a class="ref" href="#src-S11">S11</a>.</p>
+</section>
+<section class="part" id="the-queue-is-longer-than-the-build">
+<div class="rule" aria-hidden="true"></div>
+<h2><span class="num">1</span>The queue is longer than the build</h2>
+<p class="deck">the time it takes to connect, not the volume of power available, now sets the pace of the buildout.</p>
+<p>The clearest measure of the constraint is the interconnection queue. Lawrence Berkeley National Laboratory's <em>Queued Up: 2026 Edition</em>, built with GridTracker from all seven ISOs/RTOs and 50 non-ISO utilities covering about 98% of installed US generating capacity, reports that over 2,060 GW of generation and storage capacity was actively seeking grid connection at the end of 2025 <a class="ref" href="#src-S2">S2</a>. That total is about 8,200 projects: 1,312 GW of generation and roughly 749 GW of storage <a class="ref" href="#src-S2">S2</a>.</p>
+<p>The volume is not the problem. The conversion rate is. Only 13% of the capacity that requested interconnection from 2000 to 2020 had reached commercial operation by the end of 2025; 75% had been withdrawn and 10% was still active <a class="ref" href="#src-S2">S2</a>. And the projects that do get built take longer: for regions with available data, the median time from interconnection request to commercial operation exceeded five years for projects built in 2025 <a class="ref" href="#src-S2">S2</a>.</p>
+<p>The mix inside the queue is shifting toward firm power. Active natural gas capacity rose 86% in 2025 to 253 GW, while solar fell 19% to 773 GW, storage fell 16% to 749 GW and wind fell 19% to 220 GW <a class="ref" href="#src-S2">S2</a>. Total active queue volume fell 10% year over year on high withdrawals and fewer new requests <a class="ref" href="#src-S2">S2</a>. A further 549 GW already holds a draft or executed interconnection agreement but has not reached operation, including 45 GW of gas <a class="ref" href="#src-S2">S2</a>.</p>
+<p>Load faces its own version of the clock. The American Action Forum's analysis of FERC's June action states that a large energy user of 200 MW or more typically waits at least five years from initial interconnection request to commercial operation <a class="ref" href="#src-S4">S4</a>. For a data center, that is longer than the construction schedule of the building it is meant to power.</p>
+<div class="tbl"><table><thead><tr><th>Indicator</th><th>Value</th><th>Source</th></tr></thead><tbody><tr><td>Generation + storage seeking interconnection, end-2025</td><td>&gt; 2,060 GW</td><td><a class="ref" href="#src-S2">S2</a></td></tr><tr><td>Median request-to-operation, projects built 2025</td><td>&gt; 5 years</td><td><a class="ref" href="#src-S2">S2</a></td></tr><tr><td>Share of 2000–2020 requested capacity operating by end-2025</td><td>13%</td><td><a class="ref" href="#src-S2">S2</a></td></tr><tr><td>Active gas capacity in queues, change in 2025</td><td>253 GW, +86%</td><td><a class="ref" href="#src-S2">S2</a></td></tr><tr><td>Typical time to connect a ≥ 200 MW load</td><td>≥ 5 years</td><td><a class="ref" href="#src-S4">S4</a></td></tr></tbody></table></div>
+<p>LBNL itself cautions that FERC Order 2023 and other reforms are being implemented but that it is too early to measure their full effect <a class="ref" href="#src-S2">S2</a>. Faraday's reading: any siting model that assumes a grid connection inside a normal construction cycle is assuming a reform outcome that the data do not yet show.</p>
+</section>
+<section class="part" id="demand-requests-dwarf-the-system">
+<div class="rule" aria-hidden="true"></div>
+<h2><span class="num">2</span>Demand requests dwarf the system</h2>
+<p class="deck">the requests now filed by large loads are so large that grid operators have stopped treating them as individual customers and started treating them as a system-planning event.</p>
+<p>ERCOT reports that it is tracking more than 438,000 MW of large-load requests, nearly 89% of them from data centers alone <a class="ref" href="#src-S1">S1</a>. ERCOT's own description of its system gives the scale: it serves more than 27 million Texas customers, about 90% of the state's electric load, over 55,000 miles of transmission and more than 1,460 generation units <a class="ref" href="#src-S1">S1</a>. Not every request becomes a project, and ERCOT says so; it also says its data show the majority of requests expect to be operational by 2030 <a class="ref" href="#src-S1">S1</a>.</p>
+<p>In New York, Executive Order 62 points to nearly 12 GW of data center load requests in the NYISO queue as of May 2026, according to Data Center Frontier's account of the order <a class="ref" href="#src-S9">S9</a>.</p>
+<p>In PJM the pressure shows up in the capacity market. Pennsylvania's Public Utility Commission, announcing its September action, stated that PJM's July 2026 capacity auction identified a system-wide reliability shortfall of 6,831 MW for the 2028–29 delivery year <a class="ref" href="#src-S5">S5</a>. The commission's August report projected industrial load growth of 18.56% in Pennsylvania over the next five years, driven primarily by PPL Electric Utilities' large-load forecast, even though electricity usage declined from 2024 to 2025 <a class="ref" href="#src-S5">S5</a>. The report attributed the strain to "an insufficient level of construction of electric generation and continued retirement of base load electric generation" <a class="ref" href="#src-S5">S5</a>.</p>
+<p>Households feel the result. Clean Energy Group cites a Duke Energy proposal in North Carolina for an 18% rate increase to prepare for data center demand, adding $280–$355 a year to the average household bill, and an expectation that data centers will raise household bills in the PJM region by $70 a month by 2028 <a class="ref" href="#src-S7">S7</a>. Nixon Peabody reports that PJM data center demand drove a 20% increase in New Jersey household bills in 2025 <a class="ref" href="#src-S8">S8</a>.</p>
+<p>Those bill figures are the political fuel for everything in the next three sections.</p>
+</section>
+<section class="part" id="washington-chose-speed-by-order-not-by-rule">
+<div class="rule" aria-hidden="true"></div>
+<h2><span class="num">3</span>Washington chose speed by order, not by rule</h2>
+<p class="deck">the federal government accelerated large-load interconnection in 2026 while leaving the cost question to the states, and that division of labor is now the operating framework.</p>
+<p>The federal sequence ran over eight months. On 23 October 2025, Energy Secretary Chris Wright asked FERC, using the rarely invoked Section 403 of the Department of Energy Organization Act, to consider rules for connecting loads above 20 MW to the interstate transmission system <a class="ref" href="#src-S4">S4</a>. In December 2025 FERC directed PJM to adopt transparent tariff rules for loads co-located with generation <a class="ref" href="#src-S3">S3</a>, and on 14 January 2026 it accepted Southwest Power Pool's High Impact Large Loads framework <a class="ref" href="#src-S8">S8</a>. On 16 April 2026 FERC issued an Order Regarding Intent to Act in Docket RM26-4-000 <a class="ref" href="#src-S8">S8</a>.</p>
+<p>On 18 June 2026 FERC acted, but not with the national rulemaking many expected. It issued tailored show-cause orders under Section 206 of the Federal Power Act to each of the six RTOs/ISOs under its jurisdiction: PJM, MISO, SPP, CAISO, ISO New England and NYISO <a class="ref" href="#src-S3">S3</a>. Each operator and its transmission owners had 60 days to justify their tariffs as just and reasonable without large-load provisions, or to file changes, and 30 days to report how they would ensure adequate generation for existing and new large loads <a class="ref" href="#src-S3">S3</a>. The orders set out five reform categories <a class="ref" href="#src-S3">S3</a>:</p>
+<ul><li>efficient transmission service application and study processes;</li><li>preventing cost shifting, with transparency into transmission costs;</li><li>accommodating co-location agreements and behind-the-meter generation;</li><li>new transmission services for flexible large loads;</li><li>a process to study generation serving electrically proximate and co-located loads.</li></ul>
+<p>The American Action Forum's analysis argues that a rulemaking would likely have taken two to five years, and that the region-specific orders, confined to FERC's jurisdiction, are built to withstand challenges from state stakeholders <a class="ref" href="#src-S4">S4</a>. FERC's orders state that nothing in them intrudes on state authority to site generation or set retail rates, and that they leave to the states the job of preventing cost shifting among retail customers <a class="ref" href="#src-S4">S4</a>. State regulators had asked for exactly that line: the National Association of Regulatory Utility Commissioners told FERC on 13 April 2026 that federal regulation of large-load interconnection would impede states' ability to protect affordability <a class="ref" href="#src-S4">S4</a>.</p>
+<p>Reliability regulation moved in parallel. On 4 May 2026 NERC issued a Level 3 Essential Action Alert on computational load risks and created a Computational Load Entity registration class for sites of 20 MW or more aggregate connected capacity at a single point of interconnection of 60 kV or more <a class="ref" href="#src-S8">S8</a>. Nixon Peabody expects enforceable obligations for in-scope data centers and utilities starting in 2027 <a class="ref" href="#src-S8">S8</a>.</p>
+<p>The political layer came last. On 4 March 2026 Amazon, Google, Meta, Microsoft, OpenAI, Oracle and xAI signed the White House Ratepayer Protection Pledge, committing to build, bring or buy all new generation and to pay for delivery upgrades <a class="ref" href="#src-S8">S8</a>. The pledge is voluntary and, per Clean Energy Group, has no enforcement mechanism <a class="ref" href="#src-S7">S7</a>. On 16 September the House passed the Ratepayer Protection Act 417–3; it requires states to consider standards for loads above 100 MW covering the full incremental cost of generation, transmission and distribution upgrades <a class="ref" href="#src-S6">S6</a>. ClearView Energy Partners, quoted by Utility Dive, judged the bill unlikely to pass the Senate before the November midterms <a class="ref" href="#src-S6">S6</a>.</p>
+</section>
+<section class="part" id="the-states-are-writing-the-bill">
+<div class="rule" aria-hidden="true"></div>
+<h2><span class="num">4</span>The states are writing the bill</h2>
+<p class="deck">cost allocation for data center load is now settled policy in most of the country; what remains open is how much each state charges and how it collects.</p>
+<p>The count is already lopsided. Citing the Smart Electric Power Alliance's large-load tariff database, Utility Dive reports that only 13 states lack any utility tariff setting requirements for data centers and other large loads, and at least three of those were considering requirements as of July <a class="ref" href="#src-S6">S6</a>. Nixon Peabody counts more than 300 data center bills filed in more than 30 states in 2026 <a class="ref" href="#src-S8">S8</a>.</p>
+<p>Clean Energy Group lists eight states that had enacted ratepayer-protection legislation by July 2026 <a class="ref" href="#src-S7">S7</a>:</p>
+<div class="tbl"><table><thead><tr><th>State</th><th>Law</th><th>Signed</th><th>Core provision (per <a class="ref" href="#src-S7">S7</a>)</th></tr></thead><tbody><tr><td>Florida</td><td>SB 484</td><td>May 2026</td><td>Prevents cost pass-through; preserves local siting authority</td></tr><tr><td>Tennessee</td><td>HB 1847</td><td>May 2026</td><td>Data Center Cost Responsibility Act</td></tr><tr><td>Oklahoma</td><td>HB 2992</td><td>May 2026</td><td>Separate tariffs for large-load customers</td></tr><tr><td>South Dakota</td><td>SB 135</td><td>March 2026</td><td>Protects residents from cost increases and shortages</td></tr><tr><td>Oregon</td><td>HB 3546 (POWER Act)</td><td>August 2025</td><td>Separate rate category for large loads</td></tr><tr><td>Texas</td><td>SB 6</td><td>June 2025</td><td>Expanded oversight of new large loads</td></tr><tr><td>Minnesota</td><td>HF 16</td><td>June 2025</td><td>Separate customer class; ends electricity sales-tax exemption</td></tr><tr><td>New Jersey</td><td>A796</td><td>July 2026</td><td>Large-load rate class; efficiency-for-capacity incentive</td></tr></tbody></table></div>
+<p>The mechanisms are converging. State regulators increasingly require large loads to pay upfront for system impact studies, ramp to full load within a set number of months, and pay exit fees if they stop development or cut service <a class="ref" href="#src-S6">S6</a>. Virginia's State Corporation Commission approved a large-customer rate starting January 2027 under which affected customers pay for at least 85% of contracted distribution and transmission demand and 60% of generation demand <a class="ref" href="#src-S4">S4</a>. Virginia's HB 1393 requires loads of 25 MW or more to pay for new generation capacity <a class="ref" href="#src-S8">S8</a>. Alabama's SB 270 requires contracts of 150 MW or more to pass a ratepayer benefit test <a class="ref" href="#src-S8">S8</a>. Texas SB 6 regulates loads of 75 MW or more, with disconnection protocols <a class="ref" href="#src-S8">S8</a>.</p>
+<p>Georgia went furthest. Its Public Service Commission approved the Customer-Identified Resource program on 15 April 2026, under which large customers bring their own clean power through sleeved power purchase agreements; Nixon Peabody calls participation a de facto interconnection prerequisite <a class="ref" href="#src-S8">S8</a>. Georgia's SB 476 also eliminated data center tax credits, which Nixon Peabody puts at $2.5 billion a year in forgone revenue <a class="ref" href="#src-S8">S8</a>.</p>
+<p>Pennsylvania shows the next step: regulators examining curtailment and cost of capital together. On 11 September its PUC voted unanimously to have staff propose updated emergency curtailment rules, to hold a technical conference on large-load cost allocation, and to form a ratemaking working group examining return on equity <a class="ref" href="#src-S5">S5</a>. A tentative curtailment order was due at the 1 October meeting, with a final vote targeted for 28 January <a class="ref" href="#src-S5">S5</a>.</p>
+</section>
+<section class="part" id="the-queue-redesigned">
+<div class="rule" aria-hidden="true"></div>
+<h2><span class="num">5</span>The queue, redesigned</h2>
+<p class="deck">grid operators are trading faster connection for control; flexibility and self-supply have become the price of admission.</p>
+<p>ERCOT's Batch Zero is the template. Approved by the Public Utility Commission of Texas on 18 June 2026, it groups qualified large projects of 75 MW or more into a single study so ERCOT can see future demand at once, allocate available capacity and identify transmission upgrades, replacing project-by-project review <a class="ref" href="#src-S1">S1</a>. ERCOT describes itself as the first ISO in the nation to use a batch process for large users <a class="ref" href="#src-S1">S1</a>.</p>
+<p>Two features matter more than the batch itself. First, the framework gives a pathway to large customers that build onsite generation to self-supply some or all of their electricity; facilities truly islanded with no grid connection generally fall outside ERCOT's interconnection process, though they may still have to register with the PUCT <a class="ref" href="#src-S1">S1</a>. Second, it creates a connection pathway for large customers who agree to let ERCOT curtail their power use in response to local transmission constraints <a class="ref" href="#src-S1">S1</a>.</p>
+<p>The timetable is long. ERCOT expected to notify Batch Zero applicants of their classification in August 2026, expects to publish a final transmission plan for the whole batch in fall 2027, and expects applications for Batch 1 to open in summer 2027 <a class="ref" href="#src-S1">S1</a>.</p>
+<p>FERC's orders point the same way. Two of the five reform categories are accommodating co-location and behind-the-meter generation, and new transmission services for flexible large loads <a class="ref" href="#src-S3">S3</a>. FERC singled out SPP's High Impact Large Load and related generation assessment processes as standing out, which the American Action Forum reads as a potential model for other operators <a class="ref" href="#src-S4">S4</a>.</p>
+<p>The economics of hiding load are closing. Nixon Peabody expected FERC's large-load rules to require behind-the-meter generation to be reported and modeled in load forecasts, co-located loads above 50 MW to pay full transmission charges without netting, and generators serving co-located load to reduce their capacity interconnection rights dollar for dollar. Its conclusion: the prior cost advantage of masking load behind the meter is being eliminated <a class="ref" href="#src-S8">S8</a>. That expectation predates the June orders, and the orders as issued set categories, not those specific terms <a class="ref" href="#src-S3">S3</a>. It is a forecast to test against the compliance filings, not a settled outcome.</p>
+</section>
+<section class="part" id="bring-your-own-power-becomes-a-product">
+<div class="rule" aria-hidden="true"></div>
+<h2><span class="num">6</span>Bring your own power becomes a product</h2>
+<p class="deck">self-supply has moved from a workaround to a contract structure and an acquisition category.</p>
+<p>The Black Hills–Google agreements in Cheyenne, Wyoming, effective 30 September 2026 and running through 2048, are the clearest public example <a class="ref" href="#src-S10">S10</a>. They combine up to 590 MW of grid-connected service with about 2.1 GW of Wyoming third-party contracted resources managed through a privately run microgrid under Black Hills' Large Power Contract Service tariff, for a total resource portfolio of about 2.7 GW including reserve margins <a class="ref" href="#src-S10">S10</a>.</p>
+<div class="tbl"><table><thead><tr><th>Term</th><th>Value (per <a class="ref" href="#src-S10">S10</a>)</th></tr></thead><tbody><tr><td>Black Hills investment, 2027–2029</td><td>$1.8 billion</td></tr><tr><td>New company-owned gas generation</td><td>564 MW, at Cheyenne Prairie Generating Station, via a non-regulated affiliate</td></tr><tr><td>Grid-connected service</td><td>Up to 590 MW</td></tr><tr><td>Third-party resources via private microgrid</td><td>≈ 2.1 GW</td></tr><tr><td>First power / peak ramp</td><td>Late 2027 / 2030</td></tr><tr><td>Google refundable advances for long-lead equipment</td><td>$399 million</td></tr><tr><td>Expected Black Hills net income contribution, 2030</td><td>≈ $150 million</td></tr></tbody></table></div>
+<p>The structure answers the cost question directly. Black Hills says Google bears all costs of serving the data center over the life of the project, with cost pass-through, full recovery of the generation investment over the contract term, stranded-asset protection, early-termination provisions and collateral requirements <a class="ref" href="#src-S10">S10</a>. Converge Digest's analysis draws the conclusion: the utility connection and the total energy architecture are no longer the same thing <a class="ref" href="#src-S10">S10</a>.</p>
+<p>The equipment market is pricing the same shift. On 2 September 2026 Vertiv agreed to acquire UtilityInnovation Group for about $1.45 billion in cash, with up to $1.15 billion more tied to 12- and 24-month EBITDA targets, for potential total consideration of about $2.6 billion <a class="ref" href="#src-S11">S11</a>. UIG designs grid-connected, bridge-to-grid and islanded power architectures with its own controls platform and microgrid switchgear <a class="ref" href="#src-S11">S11</a>. The initial price is about 13 times UIG's expected 2027 EBITDA, and the deal is expected to close in Q4 2026 <a class="ref" href="#src-S11">S11</a>. Vertiv's chief executive framed the rationale as speed: competitive advantage "increasingly depends on how quickly they can move from site selection to first token" <a class="ref" href="#src-S11">S11</a>.</p>
+<p>Self-supply is not free of time cost. ClearView Energy Partners warned that requiring data centers to bring their own new capacity could extend construction by years, because a power plant typically takes far longer to build than a data center <a class="ref" href="#src-S6">S6</a>. Black Hills' first service date is late 2027 for an agreement signed in 2026 <a class="ref" href="#src-S10">S10</a>.</p>
+</section>
+<section class="part" id="permission-is-a-second-grid">
+<div class="rule" aria-hidden="true"></div>
+<h2><span class="num">7</span>Permission is a second grid</h2>
+<p class="deck">local and state consent now constrains siting as tightly as megawatts do, and it is failing in the same places power is scarcest.</p>
+<p>Data Center Frontier's editor-in-chief described the summer of 2026 as the moment "the public has entered the room" <a class="ref" href="#src-S9">S9</a>. His account, citing Reuters, records 142 demonstrations across 42 states on 18 July in what Reuters described as the first coordinated national protest against the buildout, and a June Reuters/Ipsos poll in which 57% of respondents would oppose a data center in their community and 14% said they would be comfortable with one nearby <a class="ref" href="#src-S9">S9</a>. Clean Energy Group cites a separate Gallup poll in which 70% of Americans oppose data center construction in their area <a class="ref" href="#src-S7">S7</a>. The two polls ask different questions; both point the same way.</p>
+<p>The actions are concrete:</p>
+<ul><li><strong>New York</strong> imposed a one-year pause on certain environmental approvals for new hyperscale data centers while it develops standards and a host-community benefits framework <a class="ref" href="#src-S9">S9</a>. Clean Energy Group describes New York as the first state to initiate a moratorium on data centers over 40 MW <a class="ref" href="#src-S7">S7</a>.</li><li><strong>Montgomery County, Maryland</strong> voted unanimously on 28 July to pause new data center permits for 18 months <a class="ref" href="#src-S9">S9</a>.</li><li><strong>Prince William County, Virginia:</strong> the Digital Gateway collapsed after years of opposition and litigation; approvals were invalidated over public-notice defects and QTS withdrew the last appeal <a class="ref" href="#src-S9">S9</a>.</li><li><strong>Nationally</strong>, Nixon Peabody counts more than 140 local groups blocking or delaying about $60 billion or more in investment, and 12 or more moratorium bills <a class="ref" href="#src-S8">S8</a>.</li></ul>
+<p>Nixon Peabody names the shift: from "energy-first" siting to "power-plus-permission", in which a project needs a social license (legislative durability, ratepayer-protection commitments, transparent operations and community acceptance) alongside power access <a class="ref" href="#src-S8">S8</a>. Water is becoming part of that license. Florida's SB 484, effective 1 July 2026, creates a consumptive-use permitting framework for data centers of 50 MW or more <a class="ref" href="#src-S8">S8</a>.</p>
+<p>Faraday's reading: the opposition maps onto the cost fight in sections 2 and 4. The bill impact is the argument residents use, and the cost-allocation laws are the concession states make. A developer that arrives with a cost-bearing tariff and its own supply has answered the most common objection before the hearing.</p>
+</section>
+<section class="part" id="signals-to-watch">
+<div class="rule" aria-hidden="true"></div>
+<h2>Signals to watch</h2>
+<p>Each row is an event a source names with a date or window.</p>
+<div class="tbl"><table><thead><tr><th>When</th><th>Signal</th><th>Source</th></tr></thead><tbody><tr><td>Q4 2026</td><td>Vertiv–UtilityInnovation Group acquisition expected to close</td><td><a class="ref" href="#src-S11">S11</a></td></tr><tr><td>Fall 2026</td><td>Pennsylvania PUC technical conference on large-load cost allocation</td><td><a class="ref" href="#src-S5">S5</a></td></tr><tr><td>31 Dec 2026</td><td>NERC revised registry criteria filing due (Computational Load Entity class)</td><td><a class="ref" href="#src-S8">S8</a></td></tr><tr><td>Jan 2027</td><td>Virginia SCC large-customer rate takes effect (85% T&amp;D / 60% generation minimums)</td><td><a class="ref" href="#src-S4">S4</a></td></tr><tr><td>28 Jan 2027</td><td>Pennsylvania PUC target vote on curtailment order</td><td><a class="ref" href="#src-S5">S5</a></td></tr><tr><td>Before Nov 2026 midterms</td><td>Senate action on the Ratepayer Protection Act, judged unlikely by ClearView</td><td><a class="ref" href="#src-S6">S6</a></td></tr><tr><td>Late 2027</td><td>Google Cheyenne begins taking power from Black Hills</td><td><a class="ref" href="#src-S10">S10</a></td></tr><tr><td>Summer 2027</td><td>ERCOT opens Batch 1 applications</td><td><a class="ref" href="#src-S1">S1</a></td></tr><tr><td>Fall 2027</td><td>ERCOT publishes the Batch Zero transmission plan</td><td><a class="ref" href="#src-S1">S1</a></td></tr></tbody></table></div>
+</section>
+<section class="part take-page" id="take"><aside class="take">
+<!--take-->
+<h2>Faraday's Take</h2>
+<p>The industry still talks about power as a commodity it cannot buy enough of. The record of 2026 says something narrower and more useful: power is available on new terms, and the terms are now written down. FERC told every grid operator to justify or rewrite its large-load rules. Most states have a large-load tariff. Texas built a queue that rewards self-supply and curtailment. The largest buyers signed a pledge to build, bring or buy their own generation.</p>
+<p>Read together, these are not obstacles. They are a price list. Pay the full incremental cost. Bring capacity, or contract for it. Accept that the grid can switch you off when it is short. A developer that accepts all three gets a path to connection that the queue alone cannot offer. A developer that waits for the old bargain, cheap shared upgrades and firm service on demand, is waiting for terms that no regulator in this record is offering.</p>
+<p>Our view is that the winners of the next cycle are the ones who treat the connection agreement as the product, and the data hall as the part that follows. Black Hills and Google show the shape: a modest grid connection wrapped in a much larger private supply portfolio, with the customer carrying the cost. Vertiv's purchase shows the supply chain has already priced it.</p>
+<p>The risk we would watch is time. Self-supply moves the bottleneck from the queue to the power plant, and power plants are slower to build than data centers. The firms that solve that, with bridge power, staged ramps and curtailable designs, will set the pace for everyone else.</p>
+<p class="sig">— Mach Eigen, with Gilbert Faraday</p>
+</aside></section>
+<section class="part" id="sources-methodology">
+<div class="rule" aria-hidden="true"></div>
+<h2>Sources &amp; methodology</h2>
+<div class="tbl"><table><thead><tr><th>Ref</th><th>Source</th><th>Publisher</th><th>Date</th><th>Supabase artifact</th></tr></thead><tbody><tr id="src-S1"><td>S1</td><td><a href="https://www.ercot.com/news/release/06182026-puct-approves-ercots">PUCT Approves ERCOT's Batch Zero Process for Connecting Large Electricity Users</a></td><td>ERCOT</td><td>2026-06-18</td><td>911412db-8990-4cc6-a691-1d94bf1d8440</td></tr><tr id="src-S2"><td>S2</td><td><a href="https://emp.lbl.gov/queues">Queued Up: 2026 Edition, Characteristics of Power Plants Seeking Transmission Interconnection</a></td><td>Lawrence Berkeley National Laboratory</td><td>2026-07-16</td><td>3ea143bd-49fe-46f5-bd4a-afdfd780500f</td></tr><tr id="src-S3"><td>S3</td><td><a href="https://www.ferc.gov/news-events/news/ferc-launches-aggressive-targeted-action-speed-large-load-integration">FERC Launches Aggressive Targeted Action to Speed Large Load Integration</a></td><td>FERC</td><td>2026-06-18</td><td>807d50ba-3b0b-44ba-8a86-74bbdf8d9dda</td></tr><tr id="src-S4"><td>S4</td><td><a href="https://www.americanactionforum.org/insight/ferc-data-center-orders-accelerate-grid-connection/">FERC Data Center Orders Accelerate Grid Connection</a></td><td>American Action Forum</td><td>2026-06-18</td><td>1583a02d-d937-4ca7-91fa-9f6d6dfb88ac</td></tr><tr id="src-S5"><td>S5</td><td><a href="https://www.utilitydive.com/news/pennsylvania-puc-to-consider-rates-and-curtailment-as-data-centers-grow/830174/">Pennsylvania PUC to consider ratemaking, ROE and curtailment as data center load grows</a></td><td>Utility Dive</td><td>2026-09-11</td><td>54205445-b2a4-4774-b023-00316abb0ea9</td></tr><tr id="src-S6"><td>S6</td><td><a href="https://www.utilitydive.com/news/house-passes-ratepayer-protection-bill-data-centers/830658/">House passes ratepayer protection bill to limit data center cost shifts</a></td><td>Utility Dive</td><td>2026-09-17</td><td>8f567e0f-c354-46df-a9a4-9763ec606cdd</td></tr><tr id="src-S7"><td>S7</td><td><a href="https://www.cleanegroup.org/states-are-stepping-up-to-protect-households-from-rising-energy-bills-due-to-data-centers/">States are stepping up to protect households from rising energy bills due to data centers</a></td><td>Clean Energy Group</td><td>2026-07-16</td><td>9dcfbf68-74c0-46c1-a78f-91fae6bb3eee</td></tr><tr id="src-S8"><td>S8</td><td><a href="https://www.nixonpeabody.com/insights/alerts/2026/05/07/data-center-site-selection-strategy-update">Data center site selection strategy update</a></td><td>Nixon Peabody</td><td>2026-05-07</td><td>e471f64d-384d-457b-a4d8-e35fdf1199bd</td></tr><tr id="src-S9"><td>S9</td><td><a href="https://www.datacenterfrontier.com/site-selection/blog/55394817/the-data-center-industrys-permission-to-build">The Data Center Industry's Permission to Build</a></td><td>Data Center Frontier</td><td>2026-07-31</td><td>c5dc5867-e321-4702-b30e-03b8c872ad7c</td></tr><tr id="src-S10"><td>S10</td><td><a href="https://convergedigest.com/black-hills-google-cheyenne-data-center-power/">Black Hills to Invest $1.8B to Power Google Data Center in Wyoming</a></td><td>Converge Digest</td><td>2026-10-07</td><td>e63e54d5-1b17-442a-bacb-f179249724a7</td></tr><tr id="src-S11"><td>S11</td><td><a href="https://convergedigest.com/vertiv-acquire-uig-ai-data-center-microgrids/">Vertiv to Acquire UtilityInnovation Group for $1.45B</a></td><td>Converge Digest</td><td>2026-09-03</td><td>ee94462b-f6c8-44c5-8b0e-c8676a19762d</td></tr></tbody></table></div>
+<p><strong>Method.</strong> This sample was built for the BL-08 Deep template from the Briefing Library Draft <em>The Power Reckoning</em> (Airtable <code>appxfti7VuoHYUeu6</code> / <code>tbl4kbby85nx6Z891</code>, record <code>recMlmb655VUUXSFl</code>, read-only). That record holds a title, a one-line description ("Thematic brief on power as the binding constraint on AI data center growth"), links to the Sectors Power Architecture and Grid &amp; Regulatory, and a link to a retired Gamma deck. It holds no source list. The Gamma deck was not opened (Gamma is retired from the V2 pipeline), so none of its claims are carried here. Every claim in this brief was read from the body text of a Supabase <code>artifacts</code> row (project <code>ycadmmngkdhvpcsrcuaq</code>, read-only), cited by the row's <code>source_url</code>.</p>
+<p><strong>Coverage mapping (proposed, for the <code>briefings</code> row):</strong> <code>tier = deep</code>, <code>sector_id = D3</code> (Grid &amp; Regulatory; secondary D2 Power Architecture), <code>thread_id = D3.5</code> (Large-Load Tariff Design &amp; Co-Location Rules), <code>status = draft</code>.</p>
+<p><strong>Excluded for lack of a source in the corpus read:</strong> transformer and gas-turbine lead times, equipment backlogs, and any data center electricity consumption forecast. None of the artifacts read supported a figure, so the brief makes no claim about them. Where a source attributes a figure to a third party (Reuters, Reuters/Ipsos, Gallup, SEPA, ClearView), the brief names the third party and cites the source it read.</p>
+<details class="refs-json"><summary>source_refs (BL-03 jsonb, 11 entries)</summary><pre>[
+  {
+    "ref": "S1",
+    "url": "https://www.ercot.com/news/release/06182026-puct-approves-ercots",
+    "title": "PUCT Approves ERCOT's Batch Zero Process for Connecting Large Electricity Users While Protecting System Reliability for Texans",
+    "publisher": "ERCOT",
+    "published_at": "2026-06-18",
+    "artifact_id": "911412db-8990-4cc6-a691-1d94bf1d8440",
+    "used_in": [
+      "summary",
+      "s2",
+      "s5",
+      "signals"
+    ]
+  },
+  {
+    "ref": "S2",
+    "url": "https://emp.lbl.gov/queues",
+    "title": "Queued Up: 2026 Edition, Characteristics of Power Plants Seeking Transmission Interconnection",
+    "publisher": "Lawrence Berkeley National Laboratory",
+    "published_at": "2026-07-16",
+    "artifact_id": "3ea143bd-49fe-46f5-bd4a-afdfd780500f",
+    "used_in": [
+      "summary",
+      "s1"
+    ]
+  },
+  {
+    "ref": "S3",
+    "url": "https://www.ferc.gov/news-events/news/ferc-launches-aggressive-targeted-action-speed-large-load-integration",
+    "title": "FERC Launches Aggressive Targeted Action to Speed Large Load Integration",
+    "publisher": "Federal Energy Regulatory Commission",
+    "published_at": "2026-06-18",
+    "artifact_id": "807d50ba-3b0b-44ba-8a86-74bbdf8d9dda",
+    "used_in": [
+      "summary",
+      "s3",
+      "s5"
+    ]
+  },
+  {
+    "ref": "S4",
+    "url": "https://www.americanactionforum.org/insight/ferc-data-center-orders-accelerate-grid-connection/",
+    "title": "FERC Data Center Orders Accelerate Grid Connection",
+    "publisher": "American Action Forum",
+    "published_at": "2026-06-18",
+    "artifact_id": "1583a02d-d937-4ca7-91fa-9f6d6dfb88ac",
+    "used_in": [
+      "summary",
+      "s1",
+      "s3",
+      "s4",
+      "s5",
+      "signals"
+    ]
+  },
+  {
+    "ref": "S5",
+    "url": "https://www.utilitydive.com/news/pennsylvania-puc-to-consider-rates-and-curtailment-as-data-centers-grow/830174/",
+    "title": "Pennsylvania PUC to consider ratemaking, ROE and curtailment as data center load grows",
+    "publisher": "Utility Dive",
+    "published_at": "2026-09-11",
+    "artifact_id": "54205445-b2a4-4774-b023-00316abb0ea9",
+    "used_in": [
+      "summary",
+      "s2",
+      "s4",
+      "signals"
+    ]
+  },
+  {
+    "ref": "S6",
+    "url": "https://www.utilitydive.com/news/house-passes-ratepayer-protection-bill-data-centers/830658/",
+    "title": "House passes ratepayer protection bill to limit data center cost shifts",
+    "publisher": "Utility Dive",
+    "published_at": "2026-09-17",
+    "artifact_id": "8f567e0f-c354-46df-a9a4-9763ec606cdd",
+    "used_in": [
+      "summary",
+      "s3",
+      "s4",
+      "s6",
+      "signals"
+    ]
+  },
+  {
+    "ref": "S7",
+    "url": "https://www.cleanegroup.org/states-are-stepping-up-to-protect-households-from-rising-energy-bills-due-to-data-centers/",
+    "title": "States are stepping up to protect households from rising energy bills due to data centers",
+    "publisher": "Clean Energy Group",
+    "published_at": "2026-07-16",
+    "artifact_id": "9dcfbf68-74c0-46c1-a78f-91fae6bb3eee",
+    "used_in": [
+      "summary",
+      "s2",
+      "s3",
+      "s4",
+      "s7"
+    ]
+  },
+  {
+    "ref": "S8",
+    "url": "https://www.nixonpeabody.com/insights/alerts/2026/05/07/data-center-site-selection-strategy-update",
+    "title": "Data center site selection strategy update",
+    "publisher": "Nixon Peabody",
+    "published_at": "2026-05-07",
+    "artifact_id": "e471f64d-384d-457b-a4d8-e35fdf1199bd",
+    "used_in": [
+      "summary",
+      "s2",
+      "s3",
+      "s4",
+      "s5",
+      "s7",
+      "signals"
+    ]
+  },
+  {
+    "ref": "S9",
+    "url": "https://www.datacenterfrontier.com/site-selection/blog/55394817/the-data-center-industrys-permission-to-build",
+    "title": "The Data Center Industry's Permission to Build",
+    "publisher": "Data Center Frontier",
+    "published_at": "2026-07-31",
+    "artifact_id": "c5dc5867-e321-4702-b30e-03b8c872ad7c",
+    "used_in": [
+      "summary",
+      "s2",
+      "s7"
+    ]
+  },
+  {
+    "ref": "S10",
+    "url": "https://convergedigest.com/black-hills-google-cheyenne-data-center-power/",
+    "title": "Black Hills to Invest $1.8B to Power Google Data Center in Wyoming",
+    "publisher": "Converge Digest",
+    "published_at": "2026-10-07",
+    "artifact_id": "e63e54d5-1b17-442a-bacb-f179249724a7",
+    "used_in": [
+      "summary",
+      "s6",
+      "signals"
+    ]
+  },
+  {
+    "ref": "S11",
+    "url": "https://convergedigest.com/vertiv-acquire-uig-ai-data-center-microgrids/",
+    "title": "Vertiv to Acquire UtilityInnovation Group for $1.45B",
+    "publisher": "Converge Digest",
+    "published_at": "2026-09-03",
+    "artifact_id": "ee94462b-f6c8-44c5-8b0e-c8676a19762d",
+    "used_in": [
+      "summary",
+      "s6",
+      "signals"
+    ]
+  }
+]</pre></details>
+</section>
+</main>
+<script type="application/json" id="source-refs">[
+  {"ref":"S1","url":"https://www.ercot.com/news/release/06182026-puct-approves-ercots","title":"PUCT Approves ERCOT's Batch Zero Process for Connecting Large Electricity Users While Protecting System Reliability for Texans","publisher":"ERCOT","published_at":"2026-06-18","artifact_id":"911412db-8990-4cc6-a691-1d94bf1d8440","used_in":["summary","s2","s5","signals"]},
+  {"ref":"S2","url":"https://emp.lbl.gov/queues","title":"Queued Up: 2026 Edition, Characteristics of Power Plants Seeking Transmission Interconnection","publisher":"Lawrence Berkeley National Laboratory","published_at":"2026-07-16","artifact_id":"3ea143bd-49fe-46f5-bd4a-afdfd780500f","used_in":["summary","s1"]},
+  {"ref":"S3","url":"https://www.ferc.gov/news-events/news/ferc-launches-aggressive-targeted-action-speed-large-load-integration","title":"FERC Launches Aggressive Targeted Action to Speed Large Load Integration","publisher":"Federal Energy Regulatory Commission","published_at":"2026-06-18","artifact_id":"807d50ba-3b0b-44ba-8a86-74bbdf8d9dda","used_in":["summary","s3","s5"]},
+  {"ref":"S4","url":"https://www.americanactionforum.org/insight/ferc-data-center-orders-accelerate-grid-connection/","title":"FERC Data Center Orders Accelerate Grid Connection","publisher":"American Action Forum","published_at":"2026-06-18","artifact_id":"1583a02d-d937-4ca7-91fa-9f6d6dfb88ac","used_in":["summary","s1","s3","s4","s5","signals"]},
+  {"ref":"S5","url":"https://www.utilitydive.com/news/pennsylvania-puc-to-consider-rates-and-curtailment-as-data-centers-grow/830174/","title":"Pennsylvania PUC to consider ratemaking, ROE and curtailment as data center load grows","publisher":"Utility Dive","published_at":"2026-09-11","artifact_id":"54205445-b2a4-4774-b023-00316abb0ea9","used_in":["summary","s2","s4","signals"]},
+  {"ref":"S6","url":"https://www.utilitydive.com/news/house-passes-ratepayer-protection-bill-data-centers/830658/","title":"House passes ratepayer protection bill to limit data center cost shifts","publisher":"Utility Dive","published_at":"2026-09-17","artifact_id":"8f567e0f-c354-46df-a9a4-9763ec606cdd","used_in":["summary","s3","s4","s6","signals"]},
+  {"ref":"S7","url":"https://www.cleanegroup.org/states-are-stepping-up-to-protect-households-from-rising-energy-bills-due-to-data-centers/","title":"States are stepping up to protect households from rising energy bills due to data centers","publisher":"Clean Energy Group","published_at":"2026-07-16","artifact_id":"9dcfbf68-74c0-46c1-a78f-91fae6bb3eee","used_in":["summary","s2","s3","s4","s7"]},
+  {"ref":"S8","url":"https://www.nixonpeabody.com/insights/alerts/2026/05/07/data-center-site-selection-strategy-update","title":"Data center site selection strategy update","publisher":"Nixon Peabody","published_at":"2026-05-07","artifact_id":"e471f64d-384d-457b-a4d8-e35fdf1199bd","used_in":["summary","s2","s3","s4","s5","s7","signals"]},
+  {"ref":"S9","url":"https://www.datacenterfrontier.com/site-selection/blog/55394817/the-data-center-industrys-permission-to-build","title":"The Data Center Industry's Permission to Build","publisher":"Data Center Frontier","published_at":"2026-07-31","artifact_id":"c5dc5867-e321-4702-b30e-03b8c872ad7c","used_in":["summary","s2","s7"]},
+  {"ref":"S10","url":"https://convergedigest.com/black-hills-google-cheyenne-data-center-power/","title":"Black Hills to Invest $1.8B to Power Google Data Center in Wyoming","publisher":"Converge Digest","published_at":"2026-10-07","artifact_id":"e63e54d5-1b17-442a-bacb-f179249724a7","used_in":["summary","s6","signals"]},
+  {"ref":"S11","url":"https://convergedigest.com/vertiv-acquire-uig-ai-data-center-microgrids/","title":"Vertiv to Acquire UtilityInnovation Group for $1.45B","publisher":"Converge Digest","published_at":"2026-09-03","artifact_id":"ee94462b-f6c8-44c5-8b0e-c8676a19762d","used_in":["summary","s6","signals"]}
+]</script>
