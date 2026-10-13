@@ -1,0 +1,144 @@
+<title>Schneider Electric</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a printed briefing. One column of Letter pages; the cover and the Sources page each start a page. */
+/* Single light "paper" look by design (it is a print document), so colours are set explicitly and no dark block is defined. */
+:root {
+  color-scheme: light;
+  --paper: #fbfbf8;      /* page ground */
+  --ink: #1b211d;        /* body text */
+  --muted: #5a645c;      /* captions, metadata */
+  --forest: #1f4a36;     /* Faraday forest: headings, upper rule */
+  --gold: #a8812f;       /* Faraday gold: lower rule, eyebrows */
+  --cream: #f6efdc;      /* Faraday's Take callout only (Brand Bible §06) */
+  --hair: #d5dbd3;       /* table and list hairlines */
+  --serif: "Source Serif 4", Georgia, "DejaVu Serif", serif;
+  --sans: "IBM Plex Sans", "Helvetica Neue", Arial, "DejaVu Sans", sans-serif;
+  --mono: "IBM Plex Mono", "DejaVu Sans Mono", monospace;
+}
+@page { size: Letter; margin: 0.7in 0.75in 0.75in; }
+html { background: var(--paper); }
+body { background: var(--paper); color: var(--ink); font-family: var(--serif); font-size: 10.5pt; line-height: 1.5; margin: 0; padding-inline: 16px; padding-block: 24px; }
+.doc { max-width: 7in; margin: 0 auto; }
+@media print { body { padding: 0; } .doc { max-width: none; } }
+h1, h2, h3 { font-family: var(--serif); color: var(--forest); text-wrap: balance; margin: 0; }
+h1 { font-size: 26pt; line-height: 1.12; font-weight: 700; }
+h2 { font-size: 15pt; line-height: 1.25; font-weight: 600; margin-top: 4pt; }
+h3 { font-size: 11pt; font-weight: 600; color: var(--ink); }
+p { margin: 0 0 7pt; max-width: 68ch; }
+a { color: var(--forest); }
+.eyebrow { font-family: var(--sans); font-size: 7.5pt; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+.meta { font-family: var(--sans); font-size: 8.5pt; color: var(--muted); }
+.mono { font-family: var(--mono); font-size: 8pt; }
+sup.cite { font-family: var(--sans); font-size: 6.5pt; line-height: 0; margin-left: 1px; }
+sup.cite a { text-decoration: none; color: var(--gold); }
+/* Faraday editorial signature: double rule, forest over gold (Brand Bible §06). */
+.dbl { border: 0; height: 5px; margin: 14pt 0 12pt; background:
+  linear-gradient(var(--forest), var(--forest)) top / 100% 2px no-repeat,
+  linear-gradient(var(--gold), var(--gold)) bottom / 100% 1px no-repeat; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.page { break-before: page; }
+section { margin-top: 4pt; }
+/* Cover */
+.cover { min-height: 8.6in; display: flex; flex-direction: column; gap: 14pt; }
+.cover .tierline { display: flex; flex-wrap: wrap; gap: 6pt 18pt; font-family: var(--sans); font-size: 8.5pt; color: var(--muted); }
+.cover .thesis { font-size: 13pt; line-height: 1.45; max-width: 60ch; }
+.cover .foot { margin-top: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10pt; border-top: 1px solid var(--hair); padding-top: 10pt; }
+.kv dt { font-family: var(--sans); font-size: 7pt; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.kv dd { margin: 1pt 0 0; font-family: var(--sans); font-size: 9pt; }
+/* Tables */
+.tbl { width: 100%; border-collapse: collapse; font-family: var(--sans); font-size: 8.5pt; font-variant-numeric: tabular-nums; margin: 6pt 0 8pt; }
+.tbl th { text-align: left; font-weight: 600; color: var(--muted); font-size: 7pt; letter-spacing: .08em; text-transform: uppercase; border-bottom: 1.5px solid var(--forest); padding: 4pt 6pt 4pt 0; }
+.tbl td { border-bottom: 1px solid var(--hair); padding: 4pt 6pt 4pt 0; vertical-align: top; }
+.tbl tr { break-inside: avoid; }
+.tbl td.num { white-space: nowrap; font-weight: 600; color: var(--forest); }
+/* Signal entries */
+.sig { display: grid; grid-template-columns: 0.95in 1fr; gap: 0 12pt; padding: 6pt 0; border-bottom: 1px solid var(--hair); break-inside: avoid; }
+.sig .when { font-family: var(--sans); font-size: 8pt; color: var(--muted); }
+.sig .when b { display: block; color: var(--ink); font-weight: 500; }
+.sig h3 { margin-bottom: 2pt; }
+.sig p { margin: 0; }
+.thread-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4pt 10pt; }
+.code { font-family: var(--mono); font-size: 8pt; color: var(--gold); }
+.intro { color: var(--ink); break-after: avoid; }
+h2, .thread-head { break-after: avoid; }
+/* Faraday's Take: cream ground, forest/gold double left rule, italic serif (Brand Bible §06). */
+.take { background: var(--cream); border-left: 3px solid var(--forest); box-shadow: inset 4px 0 0 var(--cream), inset 5px 0 0 var(--gold); padding: 10pt 14pt 10pt 18pt; margin: 12pt 0; break-inside: avoid; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.take .eyebrow { color: var(--forest); }
+.take p { font-style: italic; font-size: 11pt; margin: 4pt 0 0; }
+/* Sources */
+ol.sources { list-style: none; padding: 0; margin: 6pt 0 0; font-family: var(--sans); font-size: 7.2pt; line-height: 1.3; columns: 2; column-gap: 16pt; }
+@media (max-width: 560px) { ol.sources { columns: 1; } }
+ol.sources li { display: grid; grid-template-columns: 22pt 1fr; padding: 2.5pt 0; border-bottom: 1px solid var(--hair); break-inside: avoid; }
+ol.sources .n { color: var(--gold); font-weight: 600; }
+ol.sources .u { font-family: var(--mono); font-size: 6.6pt; color: var(--muted); overflow-wrap: anywhere; word-break: break-all; }
+.method p, .method li { font-family: var(--sans); font-size: 8.3pt; line-height: 1.45; max-width: none; }
+.method ul { margin: 2pt 0 6pt; padding-left: 14pt; }
+/* Profile */
+.profile-grid { display: grid; grid-template-columns: 2.1in 1fr; gap: 0 20pt; }
+.profile-grid > * { min-width: 0; }
+.idcard { border-top: 2px solid var(--forest); padding-top: 6pt; }
+.idcard dl { margin: 0; display: grid; gap: 6pt; }
+.src-tag { font-family: var(--mono); font-size: 6.6pt; color: var(--muted); display: block; margin-top: 1pt; overflow-wrap: anywhere; }
+.compact .sig { grid-template-columns: 0.8in 1fr; padding: 3pt 0; }
+.profile h1 { font-size: 22pt; }
+.profile .dbl { margin: 8pt 0 8pt; }
+.compact .sig h3 { font-size: 9.5pt; }
+.compact .sig p { font-size: 8.8pt; line-height: 1.35; }
+@media (max-width: 560px) {
+  .profile-grid { grid-template-columns: 1fr; }
+  .sig, .compact .sig { grid-template-columns: 1fr; }
+  h1 { font-size: 21pt; }
+}
+</style>
+<div class="doc">
+<section class="profile">
+<div class="eyebrow">Faraday Briefing Library · Company Briefing</div>
+<h1 style="margin-top:4pt">Schneider Electric</h1>
+<p class="meta" style="margin-top:4pt">Tier: Profile (2 pp) · Sourced facts only · Status: draft (not signed off) · Prepared Oct 13, 2026 · Record rec8vPBEouiW1nr8h</p>
+<hr class="dbl">
+<div class="profile-grid">
+<aside class="idcard"><dl class="kv">
+<div><dt>Company type</dt><dd>Power / automation / DCIM <sup class="cite"><a href="#src-1">1</a></sup></dd></div>
+<div><dt>Ownership · Ticker</dt><dd>Public · SU (Euronext) <sup class="cite"><a href="#src-1">1</a></sup></dd></div>
+<div><dt>Headquarters</dt><dd>Paris, France <sup class="cite"><a href="#src-1">1</a></sup></dd></div>
+<div><dt>Website</dt><dd>se.com <sup class="cite"><a href="#src-1">1</a></sup></dd></div>
+<div><dt>NVIDIA DSX partner</dt><dd>Yes, per Faraday record <sup class="cite"><a href="#src-1">1</a></sup></dd></div>
+<div><dt>Sectors</dt><dd>Orchestration Intelligence &amp; Control Plane · Power Architecture <sup class="cite"><a href="#src-2">2</a></sup></dd></div>
+<div><dt>Faraday record</dt><dd>cmp_7db0849ddbf577d5 <sup class="cite"><a href="#src-1">1</a></sup></dd></div>
+
+</dl></aside>
+<div class="compact">
+<div class="eyebrow">What the record shows</div>
+<p style="margin-top:3pt">In October 2026 Schneider Electric agreed to buy the engineering software maker PTC in an all-cash deal at $205 per share <sup class="cite"><a href="#src-3">3</a></sup>. &quot;The acquisition of PTC represents an important step forward in our ambition to lead the new era of energy and industrial intelligence,&quot; CEO Olivier Blum said <sup class="cite"><a href="#src-4">4</a></sup>.</p>
+<h2 style="margin-top:8pt">Dated Signals</h2>
+<div class="sig"><div class="when"><b>Oct 5, 2026</b>SiliconANGLE · Silicon Republic</div><div><h3>Agrees to acquire PTC</h3><p>Schneider announced an all-cash deal valuing PTC at $205 per share; SiliconANGLE reports $23.7 billion and Silicon Republic $22.6 billion <sup class="cite"><a href="#src-3">3</a>,<a href="#src-4">4</a></sup>. The deal is expected to yield €250 million in annual cost synergies and €800 million in revenue synergies <sup class="cite"><a href="#src-5">5</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Oct 10, 2026</b>Data Center Dynamics (sponsored)</div><div><h3>Generator-to-chip partnership</h3><p>Wärtsilä, Schneider Electric and Stanley Consultants launched a coordinated approach integrating onsite generation, electrical infrastructure and engineering for US data centers <sup class="cite"><a href="#src-6">6</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Oct 5, 2026</b>DataCenter-Insider</div><div><h3>Hybrid air and liquid CDU</h3><p>Schneider's new coolant distribution unit combines fan-wall air cooling with liquid cooling, at up to 3.5 MW of cooling per unit <sup class="cite"><a href="#src-7">7</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Oct 6, 2026</b>DCNN</div><div><h3>New head of Secure Power in Europe</h3><p>Schneider appointed Damien Dhellemmes as Senior Vice President of its Secure Power and Data Center business in Europe <sup class="cite"><a href="#src-8">8</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Sep 28, 2026</b>Converge Digest</div><div><h3>Software-defined medium voltage</h3><p>Schneider is extending software-defined architecture into the medium-voltage layer of AI data centers with a standardized switchgear platform <sup class="cite"><a href="#src-9">9</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Sep 18, 2026</b>Data Center Dynamics</div><div><h3>800 V DC and cooling</h3><p>Schneider's Mike Donahue discussed 800 V DC and its implications for data center cooling as rack power density rises <sup class="cite"><a href="#src-10">10</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Oct 8, 2026</b>Schneider Electric</div><div><h3>Cooling design and local approvals</h3><p>Andrew Whitmore, VP of Sales at Motivair by Schneider Electric, writes that community opposition and local approvals are becoming bigger constraints on capacity development <sup class="cite"><a href="#src-11">11</a></sup>.</p></div></div>
+</div>
+</div>
+</section>
+<section class="page method" id="sources">
+<div class="eyebrow">Company Briefing · Final page</div>
+<h2>Sources &amp; method</h2>
+<hr class="dbl">
+<p>Sourced facts only. Identity fields come from the Faraday companies row <sup class="cite"><a href="#src-1">1</a></sup>; Sectors from the Airtable Briefing Library record <sup class="cite"><a href="#src-2">2</a></sup>, which links no Theater; every other sentence restates a crawled artifact's recorded summary [3–11]. Where two sources give different deal values, both are shown. No Faraday's Take, no forecast and no call-to-action appear in a Profile. Primary articles were not re-fetched. Status: draft, not signed off (Brand Bible §07).</p>
+<ol class="sources"><li id="src-1"><span class="n">1</span><span><b>Faraday · Supabase public.companies</b> · Oct 13, 2026 · Row cmp_7db0849ddbf577d5 (Schneider Electric)<br><span class="u">supabase://ycadmmngkdhvpcsrcuaq/public.companies?company_uid=cmp_7db0849ddbf577d5</span> <span class="u">· read 2026-10-13</span></span></li>
+<li id="src-2"><span class="n">2</span><span><b>Faraday · Airtable Briefing Library</b> · Jun 20, 2026 · Draft record #8 'Schneider Electric — EcoStruxure as the Operating System for AI Infrastructure'<br><span class="u">airtable://appxfti7VuoHYUeu6/tbl4kbby85nx6Z891/rec8vPBEouiW1nr8h</span> <span class="u">· read 2026-10-13</span></span></li>
+<li id="src-3"><span class="n">3</span><span><b>SiliconANGLE</b> · Oct 5, 2026 · Schneider Electric to buy engineering software giant PTC for $23.7B<br><span class="u">https://siliconangle.com/2026/10/05/schneider-electric-to-buy-engineering-software-giant-ptc-for-23-7b/</span> <span class="u">· artifact 1ee5322a</span></span></li>
+<li id="src-4"><span class="n">4</span><span><b>Silicon Republic</b> · Oct 5, 2026 · Schneider Electric to acquire PTC for $22.6bn<br><span class="u">https://www.siliconrepublic.com/business/schneider-electric-to-acquire-ptc-for-22-6bn-ai</span> <span class="u">· artifact d9301234</span></span></li>
+<li id="src-5"><span class="n">5</span><span><b>The Tech Capital</b> · Oct 6, 2026 · Schneider Electric to buy PTC for $22.6 billion in major industrial AI expansion<br><span class="u">https://thetechcapital.com/schneider-electric-buy-ptc-22-6-billion-industrial-ai/</span> <span class="u">· artifact d4b926c9</span></span></li>
+<li id="src-6"><span class="n">6</span><span><b>Data Center Dynamics (sponsored)</b> · Oct 10, 2026 · Wärtsilä, Schneider Electric, and Stanley Consultants launch coordinated approach for faster US data center power delivery<br><span class="u">https://www.datacenterdynamics.com/en/product-news/w%C3%A4rtsil%C3%A4-schneider-electric-and-stanley-consultants-launch-coordinated-approach-for-faster-us-data-center-power-delivery/</span> <span class="u">· artifact 0a982f28</span></span></li>
+<li id="src-7"><span class="n">7</span><span><b>DataCenter-Insider</b> · Oct 5, 2026 · Schneider Electric kombiniert Luft- und Flüssigkeitskühlung<br><span class="u">https://www.datacenter-insider.de/schneider-electric-kombiniert-luft-und-fluessigkeitskuehlung-a-9d0465b4b72fd315cf80ed2ef75cad44/</span> <span class="u">· artifact 20897171</span></span></li>
+<li id="src-8"><span class="n">8</span><span><b>DCNN</b> · Oct 6, 2026 · Schneider Electric appoints new SVP in Europe<br><span class="u">https://dcnnmagazine.com/business/investment/schneider-electric-appoints-new-svp-in-europe/</span> <span class="u">· artifact 0a9b83f7</span></span></li>
+<li id="src-9"><span class="n">9</span><span><b>Converge Digest</b> · Sep 28, 2026 · Schneider Brings Software-Defined Control to Voltage Power<br><span class="u">https://convergedigest.com/schneider-software-defined-medium-voltage-equinix-ai-data-centers/</span> <span class="u">· artifact ffdea5b6</span></span></li>
+<li id="src-10"><span class="n">10</span><span><b>Data Center Dynamics</b> · Sep 18, 2026 · DCD Talks: What 800 VDC means for data center cooling with Mike Donahue, Schneider Electric<br><span class="u">https://www.datacenterdynamics.com/en/videos/dcd-talks-what-800-vdc-means-for-data-center-cooling-with-mike-donahue-schneider-electric-global/</span> <span class="u">· signal aed67cb0</span></span></li>
+<li id="src-11"><span class="n">11</span><span><b>Schneider Electric</b> · Oct 8, 2026 · Data center community opposition: How cooling design affects water, noise, and permitting<br><span class="u">https://blog.se.com/datacenter/2026/10/08/data-center-community-opposition-how-cooling-design-affects-water-noise-and-permitting/</span> <span class="u">· artifact cfa94de8</span></span></li></ol>
+</section>
+</div>

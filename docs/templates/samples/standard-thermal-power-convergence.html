@@ -1,0 +1,245 @@
+<title>The Thermal-Power Convergence Play</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a printed briefing. One column of Letter pages; the cover and the Sources page each start a page. */
+/* Single light "paper" look by design (it is a print document), so colours are set explicitly and no dark block is defined. */
+:root {
+  color-scheme: light;
+  --paper: #fbfbf8;      /* page ground */
+  --ink: #1b211d;        /* body text */
+  --muted: #5a645c;      /* captions, metadata */
+  --forest: #1f4a36;     /* Faraday forest: headings, upper rule */
+  --gold: #a8812f;       /* Faraday gold: lower rule, eyebrows */
+  --cream: #f6efdc;      /* Faraday's Take callout only (Brand Bible §06) */
+  --hair: #d5dbd3;       /* table and list hairlines */
+  --serif: "Source Serif 4", Georgia, "DejaVu Serif", serif;
+  --sans: "IBM Plex Sans", "Helvetica Neue", Arial, "DejaVu Sans", sans-serif;
+  --mono: "IBM Plex Mono", "DejaVu Sans Mono", monospace;
+}
+@page { size: Letter; margin: 0.7in 0.75in 0.75in; }
+html { background: var(--paper); }
+body { background: var(--paper); color: var(--ink); font-family: var(--serif); font-size: 10.5pt; line-height: 1.5; margin: 0; padding-inline: 16px; padding-block: 24px; }
+.doc { max-width: 7in; margin: 0 auto; }
+@media print { body { padding: 0; } .doc { max-width: none; } }
+h1, h2, h3 { font-family: var(--serif); color: var(--forest); text-wrap: balance; margin: 0; }
+h1 { font-size: 26pt; line-height: 1.12; font-weight: 700; }
+h2 { font-size: 15pt; line-height: 1.25; font-weight: 600; margin-top: 4pt; }
+h3 { font-size: 11pt; font-weight: 600; color: var(--ink); }
+p { margin: 0 0 7pt; max-width: 68ch; }
+a { color: var(--forest); }
+.eyebrow { font-family: var(--sans); font-size: 7.5pt; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+.meta { font-family: var(--sans); font-size: 8.5pt; color: var(--muted); }
+.mono { font-family: var(--mono); font-size: 8pt; }
+sup.cite { font-family: var(--sans); font-size: 6.5pt; line-height: 0; margin-left: 1px; }
+sup.cite a { text-decoration: none; color: var(--gold); }
+/* Faraday editorial signature: double rule, forest over gold (Brand Bible §06). */
+.dbl { border: 0; height: 5px; margin: 14pt 0 12pt; background:
+  linear-gradient(var(--forest), var(--forest)) top / 100% 2px no-repeat,
+  linear-gradient(var(--gold), var(--gold)) bottom / 100% 1px no-repeat; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.page { break-before: page; }
+section { margin-top: 4pt; }
+/* Cover */
+.cover { min-height: 8.6in; display: flex; flex-direction: column; gap: 14pt; }
+.cover .tierline { display: flex; flex-wrap: wrap; gap: 6pt 18pt; font-family: var(--sans); font-size: 8.5pt; color: var(--muted); }
+.cover .thesis { font-size: 13pt; line-height: 1.45; max-width: 60ch; }
+.cover .foot { margin-top: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10pt; border-top: 1px solid var(--hair); padding-top: 10pt; }
+.kv dt { font-family: var(--sans); font-size: 7pt; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.kv dd { margin: 1pt 0 0; font-family: var(--sans); font-size: 9pt; }
+/* Tables */
+.tbl { width: 100%; border-collapse: collapse; font-family: var(--sans); font-size: 8.5pt; font-variant-numeric: tabular-nums; margin: 6pt 0 8pt; }
+.tbl th { text-align: left; font-weight: 600; color: var(--muted); font-size: 7pt; letter-spacing: .08em; text-transform: uppercase; border-bottom: 1.5px solid var(--forest); padding: 4pt 6pt 4pt 0; }
+.tbl td { border-bottom: 1px solid var(--hair); padding: 4pt 6pt 4pt 0; vertical-align: top; }
+.tbl tr { break-inside: avoid; }
+.tbl td.num { white-space: nowrap; font-weight: 600; color: var(--forest); }
+/* Signal entries */
+.sig { display: grid; grid-template-columns: 0.95in 1fr; gap: 0 12pt; padding: 6pt 0; border-bottom: 1px solid var(--hair); break-inside: avoid; }
+.sig .when { font-family: var(--sans); font-size: 8pt; color: var(--muted); }
+.sig .when b { display: block; color: var(--ink); font-weight: 500; }
+.sig h3 { margin-bottom: 2pt; }
+.sig p { margin: 0; }
+.thread-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4pt 10pt; }
+.code { font-family: var(--mono); font-size: 8pt; color: var(--gold); }
+.intro { color: var(--ink); break-after: avoid; }
+h2, .thread-head { break-after: avoid; }
+/* Faraday's Take: cream ground, forest/gold double left rule, italic serif (Brand Bible §06). */
+.take { background: var(--cream); border-left: 3px solid var(--forest); box-shadow: inset 4px 0 0 var(--cream), inset 5px 0 0 var(--gold); padding: 10pt 14pt 10pt 18pt; margin: 12pt 0; break-inside: avoid; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.take .eyebrow { color: var(--forest); }
+.take p { font-style: italic; font-size: 11pt; margin: 4pt 0 0; }
+/* Sources */
+ol.sources { list-style: none; padding: 0; margin: 6pt 0 0; font-family: var(--sans); font-size: 7.2pt; line-height: 1.3; columns: 2; column-gap: 16pt; }
+@media (max-width: 560px) { ol.sources { columns: 1; } }
+ol.sources li { display: grid; grid-template-columns: 22pt 1fr; padding: 2.5pt 0; border-bottom: 1px solid var(--hair); break-inside: avoid; }
+ol.sources .n { color: var(--gold); font-weight: 600; }
+ol.sources .u { font-family: var(--mono); font-size: 6.6pt; color: var(--muted); overflow-wrap: anywhere; word-break: break-all; }
+.method p, .method li { font-family: var(--sans); font-size: 8.3pt; line-height: 1.45; max-width: none; }
+.method ul { margin: 2pt 0 6pt; padding-left: 14pt; }
+/* Profile */
+.profile-grid { display: grid; grid-template-columns: 2.1in 1fr; gap: 0 20pt; }
+.profile-grid > * { min-width: 0; }
+.idcard { border-top: 2px solid var(--forest); padding-top: 6pt; }
+.idcard dl { margin: 0; display: grid; gap: 6pt; }
+.src-tag { font-family: var(--mono); font-size: 6.6pt; color: var(--muted); display: block; margin-top: 1pt; overflow-wrap: anywhere; }
+.compact .sig { grid-template-columns: 0.8in 1fr; padding: 3pt 0; }
+.profile h1 { font-size: 22pt; }
+.profile .dbl { margin: 8pt 0 8pt; }
+.compact .sig h3 { font-size: 9.5pt; }
+.compact .sig p { font-size: 8.8pt; line-height: 1.35; }
+@media (max-width: 560px) {
+  .profile-grid { grid-template-columns: 1fr; }
+  .sig, .compact .sig { grid-template-columns: 1fr; }
+  h1 { font-size: 21pt; }
+}
+</style>
+<div class="doc">
+<section class="cover">
+<div class="eyebrow">Faraday Briefing Library · Sector Briefing</div>
+<div class="tierline"><span>Tier: Standard (8–10 pp target)</span><span>Theater: The Rack Revolution</span><span>Sector: Cooling &amp; Water Technology (D7) · Power Architecture (D2)</span></div>
+<h1>The Thermal-Power Convergence Play</h1>
+<hr class="dbl">
+<p class="thesis">In September and October 2026 the cooling plant and the power train stopped being bought as separate systems. Chillers began running on 800 V DC, power and cooling vendors published joint reference designs, and NVIDIA's DSX Ready qualification became the gate that coolant, CDU and battery suppliers each rushed to pass.</p>
+<p class="meta">By Gilbert (empirical byline, Brand Bible §06) · Evidence window Sep 8, 2026 to Oct 12, 2026 · Status: draft (not signed off)</p>
+<dl class="foot kv">
+  <div><dt>Threads covered</dt><dd>D7.1 · D7.4, D2.1 · D2.4, D2.10 · D2.3, D7.3 · D20.2</dd></div>
+  <div><dt>Signals cited</dt><dd>30</dd></div>
+  <div><dt>Library record</dt><dd class="mono">reccr6TZtcuXnfnXo · #17</dd></div>
+  <div><dt>Prepared</dt><dd>Oct 13, 2026</dd></div>
+</dl>
+</section>
+<section class="page" id="summary">
+<div class="eyebrow">The argument</div>
+<h2>Heat and power are now one procurement</h2>
+<hr class="dbl">
+<p>This Briefing rests on thirty sourced items, Faraday Signals and crawled articles, dated between 8 September and 12 October 2026. They describe three changes that point the same way.</p>
+<p>The first is a shared voltage. One guide reports the industry converging on 800 V DC as the reference for power distribution, with NVIDIA, Google and Microsoft advancing it through the Open Compute Project <sup class="cite"><a href="#src-14">14</a></sup>. Trane, working with Eaton and Danfoss, then ran a chiller of more than 3.5 MW directly from an 800 V DC feed, with up to 2% higher efficiency <sup class="cite"><a href="#src-15">15</a></sup>. Trane and Eaton had already published an integrated reference design combining thermal management and power systems <sup class="cite"><a href="#src-17">17</a></sup>.</p>
+<p>The second is a shared gate. NVIDIA's DSX Ready qualification now covers liquid cooling systems from Vertiv <sup class="cite"><a href="#src-1">1</a></sup>, Vertiv's 2.3 MW CoolChip CDU <sup class="cite"><a href="#src-2">2</a></sup>, Shell's direct liquid cooling fluid <sup class="cite"><a href="#src-5">5</a></sup> and LG Energy Solution's battery system <sup class="cite"><a href="#src-25">25</a></sup>. Nvidia separately named Tesla, LG and Hitachi in its first battery storage qualification <sup class="cite"><a href="#src-26">26</a></sup>.</p>
+<p>The third is consolidation of capacity and services around both. Vertiv agreed to buy King Environmental Services for liquid-cooling fluid management and commissioning <sup class="cite"><a href="#src-3">3</a></sup> and is adding about 22,000 m² to its Slovakian plant <sup class="cite"><a href="#src-4">4</a></sup>. Eaton agreed to buy COL Group for €810 million to expand medium-voltage capacity in Europe <sup class="cite"><a href="#src-20">20</a></sup>, and Flex raised $2 billion for its Axiom spin-off at a $37.5 billion enterprise value <sup class="cite"><a href="#src-22">22</a></sup>.</p>
+<h3 style="margin-top:10pt">At a glance</h3>
+<table class="tbl"><thead><tr><th style="width:22%">Figure</th><th>What the record shows</th><th style="width:16%">Date</th></tr></thead><tbody>
+<tr><td class="num">800 V DC</td><td>Reference voltage the industry is converging on, per one guide; advanced through OCP <sup class="cite"><a href="#src-14">14</a></sup></td><td>Oct 6, 2026</td></tr>
+<tr><td class="num">&gt; 3.5 MW</td><td>Cooling capacity of Trane's 800 V DC chiller demonstration, up to 2% more efficient <sup class="cite"><a href="#src-15">15</a></sup></td><td>Oct 1, 2026</td></tr>
+<tr><td class="num">2.3 MW</td><td>Vertiv CoolChip CDU qualified DSX Ready <sup class="cite"><a href="#src-2">2</a></sup></td><td>Sep 21, 2026</td></tr>
+<tr><td class="num">3,750 L/min</td><td>Maximum flow of Trane's LiquidStack CDU 2.X <sup class="cite"><a href="#src-7">7</a></sup></td><td>Sep 28, 2026</td></tr>
+<tr><td class="num">€810 M</td><td>Eaton's agreed price for COL Group, a medium-voltage manufacturer <sup class="cite"><a href="#src-20">20</a></sup></td><td>Sep 25, 2026</td></tr>
+<tr><td class="num">$37.5 B</td><td>Enterprise value of Flex's Axiom spin-off after a $2 billion investment <sup class="cite"><a href="#src-22">22</a></sup></td><td>Oct 6, 2026</td></tr>
+<tr><td class="num">10.9 B gal</td><td>Google water use after a 34% rise, as reported with IEA electricity data <sup class="cite"><a href="#src-27">27</a></sup></td><td>Sep 30, 2026</td></tr>
+</tbody></table>
+</section>
+<section class="page" id="t-0">
+
+<div class="thread-head"><span class="eyebrow">Thread</span><span class="code">D7.1 · D7.4</span></div>
+<h2>Direct-to-Chip Cooling &amp; the Coolant Supply Chain</h2>
+<hr class="dbl">
+<p class="intro">Liquid cooling vendors spent the period qualifying products against NVIDIA's reference architecture and adding the fluids, services and factories behind them.</p>
+<div class="sig"><div class="when"><b>Oct 5, 2026</b>DataCenterNews Asia</div><div><h3>Vertiv qualifies its liquid cooling systems</h3><p>Vertiv achieved NVIDIA DSX Ready qualification for liquid cooling systems <sup class="cite"><a href="#src-1">1</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Sep 21, 2026</b>Vertiv</div><div><h3>A 2.3 MW CDU passes the gate</h3><p>Vertiv's 2.3 MW CoolChip coolant distribution unit achieved DSX Ready qualification for AI factory infrastructure <sup class="cite"><a href="#src-2">2</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Sep 24, 2026</b>HPCwire</div><div><h3>Vertiv buys fluid-management services</h3><p>Vertiv announced the acquisition of King Environmental Services, a European provider of fluid management and commissioning services for liquid-cooled data centers <sup class="cite"><a href="#src-3">3</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Sep 29, 2026</b>Cooling Post</div><div><h3>More factory floor in Slovakia</h3><p>Vertiv is adding a further 22,000 m² of manufacturing capacity to its existing 56,000 m² power and cooling factory in Slovakia <sup class="cite"><a href="#src-4">4</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Oct 8, 2026</b>Data Center Dynamics (sponsored)</div><div><h3>Shell's coolant qualifies</h3><p>Shell's direct liquid cooling fluid achieved NVIDIA DSX Ready Coolant qualification <sup class="cite"><a href="#src-5">5</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Oct 1, 2026</b>Intelligent Data Centres</div><div><h3>Castrol bundles its thermal business</h3><p>Castrol launched Castrol CORE, an end-to-end offer for its data centre thermal management business <sup class="cite"><a href="#src-6">6</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Sep 28, 2026</b>Converge Digest</div><div><h3>LiquidStack CDU 2.X</h3><p>Trane's LiquidStack released an architecture-agnostic coolant distribution unit supporting up to 3,750 litres per minute, designed for platforms including NVIDIA Vera Rubin <sup class="cite"><a href="#src-7">7</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Sep 28, 2026</b>Capacity</div><div><h3>Submer launches Corenix</h3><p>Submer Group launched Corenix, a modular data centre infrastructure company citing 500 MW of liquid-cooling deployment experience, with Martin Renkis, formerly of Johnson Controls, as CEO <sup class="cite"><a href="#src-8">8</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Oct 5, 2026</b>DataCenter-Insider</div><div><h3>Schneider pairs air and liquid</h3><p>Schneider Electric's new coolant distribution unit combines fan-wall air cooling with liquid cooling, at up to 3.5 MW of cooling per unit <sup class="cite"><a href="#src-9">9</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Oct 7, 2026</b>Valeo</div><div><h3>An automotive supplier enters the hall</h3><p>Valeo said it would present, with OVHcloud, an aluminium heat exchanger delivering a 38% increase in cooling capacity at the OCP Global Summit <sup class="cite"><a href="#src-10">10</a></sup>.</p></div></div>
+</section>
+<section class="" id="t-1">
+<hr class="dbl">
+<div class="thread-head"><span class="eyebrow">Thread</span><span class="code">D2.1 · D2.4</span></div>
+<h2>800 V DC Distribution Reaches the Cooling Plant</h2>
+
+<p class="intro">The move to high-voltage DC began at the rack. In this window it reached the mechanical plant.</p>
+<div class="sig"><div class="when"><b>Oct 6, 2026</b>Inside Deep Tech</div><div><h3>Leaving 48 volts behind</h3><p>As of mid-2026, the guide reports, the industry is converging on 800 V DC as the reference voltage for power distribution, with NVIDIA, Google and Microsoft jointly advancing the architecture through the Open Compute Project <sup class="cite"><a href="#src-14">14</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Oct 1, 2026</b>Converge Digest · HPCwire</div><div><h3>A chiller on 800 V DC</h3><p>Trane Technologies, with Eaton and Danfoss, demonstrated a chiller operating directly from an 800 V DC feed, delivering more than 3.5 MW of cooling and up to 2% higher efficiency <sup class="cite"><a href="#src-15">15</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Sep 18, 2026</b>Data Center Dynamics</div><div><h3>What 800 V DC means for cooling</h3><p>Schneider Electric's Mike Donahue discussed 800 V DC and its implications for data center cooling as AI workloads raise rack power density <sup class="cite"><a href="#src-16">16</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Sep 15, 2026</b>ITwiz</div><div><h3>One reference design for heat and power</h3><p>Trane Technologies and Eaton developed an integrated reference design for high-density data centers that combines thermal management and power systems <sup class="cite"><a href="#src-17">17</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Oct 7, 2026</b>Schneider Electric</div><div><h3>Densities of 200 to 300 kW</h3><p>Schneider Electric writes that as rack densities rise to 200–300 kW and beyond, cooling capacity has become a critical requirement <sup class="cite"><a href="#src-11">11</a></sup>.</p></div></div>
+</section>
+<section class="page" id="t-2">
+
+<div class="thread-head"><span class="eyebrow">Thread</span><span class="code">D2.10 · D2.3</span></div>
+<h2>Power Conversion, Switchgear &amp; Storage</h2>
+<hr class="dbl">
+<p class="intro">Behind the new voltage sits a supply chain of semiconductors, transformers and switchgear. The period brought reference designs, acquisitions and factory expansions across it.</p>
+<div class="sig"><div class="when"><b>Oct 5, 2026</b>Converge Digest</div><div><h3>Direct 800 V to 6 V conversion</h3><p>Navitas Semiconductor and Microchip unveiled a 20 kW reference design for direct 800 V to 6 V DC conversion using GaN devices, targeting 96% peak efficiency and 2,100 W/in³ <sup class="cite"><a href="#src-18">18</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Oct 5, 2026</b>Converge Digest</div><div><h3>Infineon completes C2i</h3><p>Infineon completed its acquisition of C2i Semiconductors, a Bengaluru company specialising in digital power management and multiphase controllers for AI data centers <sup class="cite"><a href="#src-19">19</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Sep 25, 2026</b>Converge Digest</div><div><h3>Eaton buys medium-voltage capacity</h3><p>Eaton agreed to acquire Italy-based COL Group for €810 million to strengthen its medium-voltage capabilities in Europe <sup class="cite"><a href="#src-20">20</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Sep 28, 2026</b>Converge Digest</div><div><h3>Software-defined switchgear</h3><p>Schneider Electric is extending software-defined architecture into the medium-voltage layer of AI data centers with a standardized switchgear platform <sup class="cite"><a href="#src-21">21</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Oct 6, 2026</b>Converge Digest</div><div><h3>Flex values Axiom at $37.5 billion</h3><p>Flex secured a $2.0 billion convertible preferred investment in Axiom Solutions International from General Catalyst, Koch Equity Development and co-investors, valuing the AI infrastructure spin-off at $37.5 billion enterprise value <sup class="cite"><a href="#src-22">22</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Sep 8, 2026</b>TechEdge AI</div><div><h3>Hyosung expands in Memphis</h3><p>Hyosung is investing $300 million in Memphis transformer manufacturing, with capacity expansion of more than 50% by 2028 <sup class="cite"><a href="#src-23">23</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Oct 10, 2026</b>Data Center Dynamics (sponsored)</div><div><h3>Generator to chip</h3><p>Wärtsilä, Schneider Electric and Stanley Consultants launched a coordinated approach integrating onsite generation, electrical infrastructure and engineering <sup class="cite"><a href="#src-24">24</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Sep 22, 2026</b>Saur Energy</div><div><h3>LG's battery system qualifies</h3><p>LG Energy Solution's 2.5 MW / 5.1 MWh battery energy storage system achieved NVIDIA DSX Ready qualification <sup class="cite"><a href="#src-25">25</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Sep 22, 2026</b>ESS News</div><div><h3>Three battery makers named</h3><p>Nvidia launched a battery storage qualification program for AI data centers, initially naming Tesla, LG and Hitachi <sup class="cite"><a href="#src-26">26</a></sup>.</p></div></div>
+</section>
+<section class="" id="t-3">
+<hr class="dbl">
+<div class="thread-head"><span class="eyebrow">Thread</span><span class="code">D7.3 · D20.2</span></div>
+<h2>Water, Siting &amp; the Control Layer</h2>
+
+<p class="intro">The thermal choice now reaches beyond the hall, into water budgets, local approvals and the software that runs both systems together.</p>
+<div class="sig"><div class="when"><b>Sep 30, 2026</b>Market Intelligence Tools</div><div><h3>Electricity and water, by the numbers</h3><p>Citing the IEA, the report puts global data center electricity use at 485 TWh in 2025, up 17%, and Google's water use up 34% to 10.9 billion gallons <sup class="cite"><a href="#src-27">27</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Oct 8, 2026</b>Schneider Electric</div><div><h3>Cooling design and community opposition</h3><p>A Motivair executive writes that community opposition and local approvals are becoming bigger constraints on capacity, and that cooling design affects water, noise and permitting <sup class="cite"><a href="#src-12">12</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Sep 29, 2026</b>Schneider Electric</div><div><h3>Recycled water in India</h3><p>The post notes India has around 18% of the world's population but only 4% of its freshwater resources <sup class="cite"><a href="#src-28">28</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Oct 7, 2026</b>Electronics Cooling</div><div><h3>Thermal orchestration</h3><p>The article argues that workload, flow, pressure, coolant chemistry and facility heat rejection now move together in high-density racks and need an orchestration layer <sup class="cite"><a href="#src-13">13</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Oct 3, 2026</b>openPR</div><div><h3>Digital twins for power and cooling</h3><p>The report records Vertiv's SmartRun digital twin progress within NVIDIA Omniverse DSX for coordinated power-cooling simulation, and an NTT DATA–Daikin validation of AI that predicts server thermal conditions <sup class="cite"><a href="#src-29">29</a></sup>.</p></div></div>
+<div class="sig"><div class="when"><b>Oct 2, 2026</b>PR Newswire</div><div><h3>DCIM market forecast</h3><p>MarketsandMarkets projects the DCIM market will reach $8.42 billion by 2031 <sup class="cite"><a href="#src-30">30</a></sup>.</p></div></div>
+</section>
+<section class="page" id="register">
+<div class="eyebrow">Signal register</div>
+<h2>Named parties in the record</h2>
+<hr class="dbl">
+<p>Every party below appears in at least one cited Signal. The role column restates what the source reports; it adds no assessment.</p>
+<table class="tbl"><thead><tr><th style="width:26%">Party</th><th>Role in the cited Signals</th><th style="width:12%">Sources</th></tr></thead><tbody>
+<tr><td><b>Vertiv</b></td><td>DSX Ready liquid cooling and 2.3 MW CDU; King Environmental acquisition; Slovakia expansion; SmartRun digital twin</td><td><sup class="cite"><a href="#src-1">1</a>,<a href="#src-2">2</a>,<a href="#src-3">3</a>,<a href="#src-4">4</a>,<a href="#src-29">29</a></sup></td></tr>
+<tr><td><b>Trane Technologies (LiquidStack)</b></td><td>800 V DC chiller with Eaton and Danfoss; reference design with Eaton; CDU 2.X</td><td><sup class="cite"><a href="#src-7">7</a>,<a href="#src-15">15</a>,<a href="#src-17">17</a></sup></td></tr>
+<tr><td><b>Eaton</b></td><td>Partner on the 800 V DC chiller and the Trane reference design; COL Group acquisition</td><td><sup class="cite"><a href="#src-15">15</a>,<a href="#src-17">17</a>,<a href="#src-20">20</a></sup></td></tr>
+<tr><td><b>Schneider Electric (Motivair)</b></td><td>Hybrid air-liquid CDU; software-defined MV switchgear; generator-to-chip partnership; 800 V DC commentary</td><td><sup class="cite"><a href="#src-9">9</a>,<a href="#src-11">11</a>,<a href="#src-16">16</a>,<a href="#src-21">21</a>,<a href="#src-24">24</a></sup></td></tr>
+<tr><td><b>NVIDIA</b></td><td>DSX Ready qualification for cooling, coolant and batteries; battery qualification program</td><td><sup class="cite"><a href="#src-1">1</a>,<a href="#src-2">2</a>,<a href="#src-5">5</a>,<a href="#src-25">25</a>,<a href="#src-26">26</a></sup></td></tr>
+<tr><td><b>Shell · Castrol</b></td><td>Coolant qualification; integrated thermal management offer</td><td><sup class="cite"><a href="#src-5">5</a>,<a href="#src-6">6</a></sup></td></tr>
+<tr><td><b>Navitas · Microchip · Infineon</b></td><td>800 V to 6 V GaN reference design; C2i acquisition</td><td><sup class="cite"><a href="#src-18">18</a>,<a href="#src-19">19</a></sup></td></tr>
+<tr><td><b>Flex (Axiom)</b></td><td>$2 billion investment at $37.5 billion enterprise value</td><td><sup class="cite"><a href="#src-22">22</a></sup></td></tr>
+<tr><td><b>Hyosung</b></td><td>$300 million transformer manufacturing investment in Memphis</td><td><sup class="cite"><a href="#src-23">23</a></sup></td></tr>
+<tr><td><b>Submer (Corenix) · Valeo</b></td><td>Modular platform launch; aluminium heat exchanger</td><td><sup class="cite"><a href="#src-8">8</a>,<a href="#src-10">10</a></sup></td></tr>
+</tbody></table>
+<div class="take"><div class="eyebrow">Faraday's Take</div><p>The cited record shows vendors from opposite sides of the hall entering each other's line of business: a chiller maker running on the power vendor's DC bus <sup class="cite"><a href="#src-15">15</a></sup>, a power vendor shipping coolant distribution units <sup class="cite"><a href="#src-9">9</a></sup>, and an integrated reference design from both <sup class="cite"><a href="#src-17">17</a></sup>. NVIDIA's qualification sits above all of them <sup class="cite"><a href="#src-1">1</a>,<a href="#src-2">2</a>,<a href="#src-5">5</a>,<a href="#src-25">25</a></sup>. Read together, the evidence suggests buyers will specify one heat-and-power system against NVIDIA's reference architecture, and that a vendor offering only one half will compete for the subcontract rather than the contract.</p></div>
+</section>
+<section class="page method" id="sources">
+<div class="eyebrow">Sector Briefing · Final page</div>
+<h2>Sources &amp; methodology</h2>
+<hr class="dbl">
+<p>Source rule: every factual sentence carries a numbered citation to a Faraday Signal (Supabase public.signals) or crawled artifact (public.artifacts); each records the publisher URL below. Sentences restate the recorded framing or summary, using only complete clauses where the record was truncated. Nothing comes from the retired Gamma deck or from model memory.</p>
+<p>Selection: Signals and artifacts tagged D7.1–D7.4, D2.1, D2.3, D2.4 and D2.10, dated 8 Sep–12 Oct 2026, filtered for cooling and power-conversion terms, de-duplicated, Google News redirects excluded, then curated by hand. Items mis-tagged to these Threads (chip smuggling, optics, storage) were dropped. Vendor blogs are cited as the vendor's own statement.</p>
+<p>Limits: primary articles were not re-fetched for this sample. Faraday's Take is analysis of the cited items and adds no facts. Status: draft, not signed off (Brand Bible §07).</p>
+<ol class="sources"><li id="src-1"><span class="n">1</span><span><b>DataCenterNews Asia</b> · Oct 5, 2026 · Vertiv wins NVIDIA DSX Ready cooling qualification<br><span class="u">https://datacenternews.asia/story/vertiv-wins-nvidia-dsx-ready-cooling-qualification</span> <span class="u">· signal cee2fd57</span></span></li>
+<li id="src-2"><span class="n">2</span><span><b>Vertiv</b> · Sep 21, 2026 · Vertiv Coolant Distribution Unit qualified as NVIDIA DSX ready for AI factory infrastructure<br><span class="u">https://www.vertiv.com/en-us/about/news-and-events/corporate-news/2026/vertiv-coolant-distribution-unit-qualified-as-nvidia-dsx-ready-for-ai-factory-infrastructure/</span> <span class="u">· signal 13948e20</span></span></li>
+<li id="src-3"><span class="n">3</span><span><b>HPCwire</b> · Sep 24, 2026 · Vertiv to Buy King Environmental Services to Bolster Data Center Cooling<br><span class="u">https://www.hpcwire.com/off-the-wire/vertiv-to-buy-king-environmental-services-to-bolster-data-center-cooling/</span> <span class="u">· signal 98dcb5b6</span></span></li>
+<li id="src-4"><span class="n">4</span><span><b>Cooling Post</b> · Sep 29, 2026 · Vertiv to expand Slovakian data centre cooling plant<br><span class="u">https://www.coolingpost.com/world-news/vertiv-to-expand-slovakian-data-centre-cooling-plant/</span> <span class="u">· artifact f6fb916e</span></span></li>
+<li id="src-5"><span class="n">5</span><span><b>Data Center Dynamics (sponsored)</b> · Oct 8, 2026 · Shell achieves NVIDIA DSX Ready Coolant qualification for direct liquid cooling<br><span class="u">https://www.datacenterdynamics.com/en/product-news/shell-achieves-nvidia-dsx-ready-coolant-qualification-for-direct-liquid-cooling-advancing-high-performance-ai-computing/</span> <span class="u">· artifact 54427a89</span></span></li>
+<li id="src-6"><span class="n">6</span><span><b>Intelligent Data Centres</b> · Oct 1, 2026 · Castrol launches 'Castrol CORE', an integrated thermal management offer for data centres<br><span class="u">https://www.intelligentdatacentres.com/2026/10/01/castrol-launches-castrol-core-an-integrated-thermal-management-offer-for-data-centres/</span> <span class="u">· artifact f1960f46</span></span></li>
+<li id="src-7"><span class="n">7</span><span><b>Converge Digest</b> · Sep 28, 2026 · LiquidStack Launches CDU 2.X for NVIDIA Vera Rubin Era Cooling<br><span class="u">https://convergedigest.com/liquidstack-cdu-2x-nvidia-vera-rubin-liquid-cooling/</span> <span class="u">· signal 8ed5545f</span></span></li>
+<li id="src-8"><span class="n">8</span><span><b>Capacity</b> · Sep 28, 2026 · Submer Group launches Corenix with 500MW liquid-cooling track record<br><span class="u">https://capacityglobal.com/news/submer-group-launches-corenix/</span> <span class="u">· signal 5fc8b43b</span></span></li>
+<li id="src-9"><span class="n">9</span><span><b>DataCenter-Insider</b> · Oct 5, 2026 · Schneider Electric kombiniert Luft- und Flüssigkeitskühlung<br><span class="u">https://www.datacenter-insider.de/schneider-electric-kombiniert-luft-und-fluessigkeitskuehlung-a-9d0465b4b72fd315cf80ed2ef75cad44/</span> <span class="u">· artifact 20897171</span></span></li>
+<li id="src-10"><span class="n">10</span><span><b>Valeo</b> · Oct 7, 2026 · Valeo Presents Breakthrough Aluminum Cooling Technology for Data Centers at OCP Global Summit 2026<br><span class="u">https://www.valeo.com/en/valeo-presents-breakthrough-aluminum-cooling-technology-for-data-centers-at-ocp-global-summit-2026-and-reaches-significant-durability-milestones/</span> <span class="u">· artifact 19afe409</span></span></li>
+<li id="src-11"><span class="n">11</span><span><b>Schneider Electric</b> · Oct 7, 2026 · From Cooling capacity to System Intelligence: The critical role of Services in reliable AI Data Centers<br><span class="u">https://blog.se.com/services/2026/10/07/services-and-system-intelligence-for-ai-data-center-reliability-sgm/</span> <span class="u">· artifact 8936c524</span></span></li>
+<li id="src-12"><span class="n">12</span><span><b>Schneider Electric</b> · Oct 8, 2026 · Data center community opposition: How cooling design affects water, noise, and permitting<br><span class="u">https://blog.se.com/datacenter/2026/10/08/data-center-community-opposition-how-cooling-design-affects-water-noise-and-permitting/</span> <span class="u">· artifact cfa94de8</span></span></li>
+<li id="src-13"><span class="n">13</span><span><b>Electronics Cooling</b> · Oct 7, 2026 · Thermal Orchestration: The Missing Control Layer for AI Factories<br><span class="u">https://www.electronics-cooling.com/2026/10/thermal-orchestration-the-missing-control-layer-for-ai-factories/</span> <span class="u">· artifact 707f3189</span></span></li>
+<li id="src-14"><span class="n">14</span><span><b>Inside Deep Tech</b> · Oct 6, 2026 · 800 VDC Power Distribution: A Full Guide to How AI Data Centers Leave 48-Volt Behind<br><span class="u">https://www.insidedeeptech.com/800-vdc-power-distribution-ai-data-centers-full-guide/</span> <span class="u">· artifact e2975cb1</span></span></li>
+<li id="src-15"><span class="n">15</span><span><b>Converge Digest · HPCwire</b> · Oct 1, 2026 · Trane Demonstrates 3.5 MW 800 VDC Chiller<br><span class="u">https://convergedigest.com/trane-800-vdc-chiller-ai-data-centers/ · https://www.hpcwire.com/off-the-wire/trane-technologies-demonstrates-800-volt-direct-current-chiller-for-next-gen-ai-data-centers/</span> <span class="u">· artifacts 6e445d08, 1dd9984a</span></span></li>
+<li id="src-16"><span class="n">16</span><span><b>Data Center Dynamics</b> · Sep 18, 2026 · DCD Talks: What 800 VDC means for data center cooling with Mike Donahue, Schneider Electric<br><span class="u">https://www.datacenterdynamics.com/en/videos/dcd-talks-what-800-vdc-means-for-data-center-cooling-with-mike-donahue-schneider-electric-global/</span> <span class="u">· signal aed67cb0</span></span></li>
+<li id="src-17"><span class="n">17</span><span><b>ITwiz</b> · Sep 15, 2026 · Trane Technologies i Eaton integrują zasilanie i chłodzenie dla fabryk AI<br><span class="u">https://itwiz.pl/trane-technologies-i-eaton-integruja-zasilanie-i-chlodzenie-dla-fabryk-ai/</span> <span class="u">· signal ee8fb258</span></span></li>
+<li id="src-18"><span class="n">18</span><span><b>Converge Digest</b> · Oct 5, 2026 · Navitas and Microchip Unveil 20 kW 800V-to-6V GaN for AI Racks<br><span class="u">https://convergedigest.com/navitas-microchip-800v-6v-gan-ai-power/</span> <span class="u">· signal 73a920b8</span></span></li>
+<li id="src-19"><span class="n">19</span><span><b>Converge Digest</b> · Oct 5, 2026 · Infineon Completes C2i Acquisition, Adding Digital Power Control<br><span class="u">https://convergedigest.com/infineon-c2i-ai-data-center-power/</span> <span class="u">· signal 8fe2557d</span></span></li>
+<li id="src-20"><span class="n">20</span><span><b>Converge Digest</b> · Sep 25, 2026 · Eaton to Acquire COL Group for €810M, Expanding European Power Capacity<br><span class="u">https://convergedigest.com/eaton-col-group-810m-data-center-power/</span> <span class="u">· signal 5078c659</span></span></li>
+<li id="src-21"><span class="n">21</span><span><b>Converge Digest</b> · Sep 28, 2026 · Schneider Brings Software-Defined Control to Voltage Power<br><span class="u">https://convergedigest.com/schneider-software-defined-medium-voltage-equinix-ai-data-centers/</span> <span class="u">· artifact ffdea5b6</span></span></li>
+<li id="src-22"><span class="n">22</span><span><b>Converge Digest</b> · Oct 6, 2026 · Flex Secures $2B Investment for Axiom at $37.5B Enterprise Value<br><span class="u">https://convergedigest.com/flex-axiom-2b-investment-37-5b-valuation/</span> <span class="u">· signal c2689278</span></span></li>
+<li id="src-23"><span class="n">23</span><span><b>TechEdge AI</b> · Sep 8, 2026 · Hyosung Targets AI Data Center Power Market with Solid-State Transformers<br><span class="u">https://techedgeai.com/hyosung-targets-ai-data-center-power-market-with-solid-state-transformers/</span> <span class="u">· signal a9baf7de</span></span></li>
+<li id="src-24"><span class="n">24</span><span><b>Data Center Dynamics (sponsored)</b> · Oct 10, 2026 · Wärtsilä, Schneider Electric, and Stanley Consultants launch coordinated approach for faster US data center power delivery<br><span class="u">https://www.datacenterdynamics.com/en/product-news/w%C3%A4rtsil%C3%A4-schneider-electric-and-stanley-consultants-launch-coordinated-approach-for-faster-us-data-center-power-delivery/</span> <span class="u">· artifact 0a982f28</span></span></li>
+<li id="src-25"><span class="n">25</span><span><b>Saur Energy</b> · Sep 22, 2026 · LG Energy Solution's New BESS Qualification Opens Door to AI Data Centre Market<br><span class="u">https://www.saurenergy.com/solar-energy-news/why-nvidias-dsx-ready-qualification-matters-for-lg-energy-solutions-bess-12562620</span> <span class="u">· signal 729fabb4</span></span></li>
+<li id="src-26"><span class="n">26</span><span><b>ESS News</b> · Sep 22, 2026 · Nvidia launches BESS qualification program for AI data centers, names just Tesla, LG, Hitachi<br><span class="u">https://www.ess-news.com/2026/09/22/nvidia-launches-bess-qualification-program-for-ai-data-centers-names-just-tesla-lg-hitachi/</span> <span class="u">· signal d9927f8a</span></span></li>
+<li id="src-27"><span class="n">27</span><span><b>Market Intelligence Tools</b> · Sep 30, 2026 · AI Environmental Impact Statistics 2026: 485 TWh, and Google's Water Use Up 34%<br><span class="u">https://marketintelligencetools.com/reports/ai-environmental-impact-statistics/</span> <span class="u">· signal 52f9530c</span></span></li>
+<li id="src-28"><span class="n">28</span><span><b>Schneider Electric</b> · Sep 29, 2026 · Using treated and recycled water in Indian data centre cooling<br><span class="u">https://blog.se.com/datacenter/2026/09/29/using-treated-and-recycled-water-in-indian-data-centre-cooling/</span> <span class="u">· artifact 7ae4d9a0</span></span></li>
+<li id="src-29"><span class="n">29</span><span><b>openPR</b> · Oct 3, 2026 · DCIM Market: Vertiv SmartRun Digital Twin, NTT DATA–Daikin AI Cooling Trial<br><span class="u">https://openpr.com/news/4650569/data-center-infrastructure-management-market-puts-power</span> <span class="u">· artifacts 5ffafbe4, 145a3c7d</span></span></li>
+<li id="src-30"><span class="n">30</span><span><b>PR Newswire</b> · Oct 2, 2026 · Data Center Infrastructure Management Market Worth $8.42 Billion by 2031 – MarketsandMarkets<br><span class="u">https://prnewswire.com/news-releases/data-center-infrastructure-management-market-worth-8-42-billion-by-2031--report-by-marketsandmarkets-302895676.html</span> <span class="u">· signal 42043205</span></span></li></ol>
+</section>
+</div>

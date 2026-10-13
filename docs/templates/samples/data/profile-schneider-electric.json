@@ -1,0 +1,188 @@
+{
+  "tier": "profile",
+  "slug": "profile-schneider-electric",
+  "kicker": "Company Briefing",
+  "title": "Schneider Electric",
+  "prepared": "2026-10-13",
+  "record": {
+    "airtable_record_id": "rec8vPBEouiW1nr8h",
+    "airtable_autonumber": 8,
+    "status": "draft",
+    "tier": "profile",
+    "page_target": "2",
+    "sector_id": "D9",
+    "thread_id": null,
+    "theme_tags": [],
+    "company_id": "cmp_7db0849ddbf577d5",
+    "institution_id": null
+  },
+  "identity": [
+    {
+      "label": "Company type",
+      "value": "Power / automation / DCIM [1]"
+    },
+    {
+      "label": "Ownership · Ticker",
+      "value": "Public · SU (Euronext) [1]"
+    },
+    {
+      "label": "Headquarters",
+      "value": "Paris, France [1]"
+    },
+    {
+      "label": "Website",
+      "value": "se.com [1]"
+    },
+    {
+      "label": "NVIDIA DSX partner",
+      "value": "Yes, per Faraday record [1]"
+    },
+    {
+      "label": "Sectors",
+      "value": "Orchestration Intelligence & Control Plane · Power Architecture [2]"
+    },
+    {
+      "label": "Faraday record",
+      "value": "cmp_7db0849ddbf577d5 [1]"
+    }
+  ],
+  "tags": [],
+  "lead": "In October 2026 Schneider Electric agreed to buy the engineering software maker PTC in an all-cash deal at $205 per share [3]. \"The acquisition of PTC represents an important step forward in our ambition to lead the new era of energy and industrial intelligence,\" CEO Olivier Blum said [4].",
+  "items": [
+    {
+      "d": "2026-10-05",
+      "pub": "SiliconANGLE · Silicon Republic",
+      "head": "Agrees to acquire PTC",
+      "text": "Schneider announced an all-cash deal valuing PTC at $205 per share; SiliconANGLE reports $23.7 billion and Silicon Republic $22.6 billion [3, 4]. The deal is expected to yield €250 million in annual cost synergies and €800 million in revenue synergies [5]."
+    },
+    {
+      "d": "2026-10-10",
+      "pub": "Data Center Dynamics (sponsored)",
+      "head": "Generator-to-chip partnership",
+      "text": "Wärtsilä, Schneider Electric and Stanley Consultants launched a coordinated approach integrating onsite generation, electrical infrastructure and engineering for US data centers [6]."
+    },
+    {
+      "d": "2026-10-05",
+      "pub": "DataCenter-Insider",
+      "head": "Hybrid air and liquid CDU",
+      "text": "Schneider's new coolant distribution unit combines fan-wall air cooling with liquid cooling, at up to 3.5 MW of cooling per unit [7]."
+    },
+    {
+      "d": "2026-10-06",
+      "pub": "DCNN",
+      "head": "New head of Secure Power in Europe",
+      "text": "Schneider appointed Damien Dhellemmes as Senior Vice President of its Secure Power and Data Center business in Europe [8]."
+    },
+    {
+      "d": "2026-09-28",
+      "pub": "Converge Digest",
+      "head": "Software-defined medium voltage",
+      "text": "Schneider is extending software-defined architecture into the medium-voltage layer of AI data centers with a standardized switchgear platform [9]."
+    },
+    {
+      "d": "2026-09-18",
+      "pub": "Data Center Dynamics",
+      "head": "800 V DC and cooling",
+      "text": "Schneider's Mike Donahue discussed 800 V DC and its implications for data center cooling as rack power density rises [10]."
+    },
+    {
+      "d": "2026-10-08",
+      "pub": "Schneider Electric",
+      "head": "Cooling design and local approvals",
+      "text": "Andrew Whitmore, VP of Sales at Motivair by Schneider Electric, writes that community opposition and local approvals are becoming bigger constraints on capacity development [11]."
+    }
+  ],
+  "method": [
+    "Sourced facts only. Identity fields come from the Faraday companies row [1]; Sectors from the Airtable Briefing Library record [2], which links no Theater; every other sentence restates a crawled artifact's recorded summary [3–11]. Where two sources give different deal values, both are shown. No Faraday's Take, no forecast and no call-to-action appear in a Profile. Primary articles were not re-fetched. Status: draft, not signed off (Brand Bible §07)."
+  ],
+  "sources": [
+    {
+      "n": 1,
+      "pub": "Faraday · Supabase public.companies",
+      "d": "2026-10-13",
+      "title": "Row cmp_7db0849ddbf577d5 (Schneider Electric)",
+      "url": "supabase://ycadmmngkdhvpcsrcuaq/public.companies?company_uid=cmp_7db0849ddbf577d5",
+      "ref": "read 2026-10-13"
+    },
+    {
+      "n": 2,
+      "pub": "Faraday · Airtable Briefing Library",
+      "d": "2026-06-20",
+      "title": "Draft record #8 'Schneider Electric — EcoStruxure as the Operating System for AI Infrastructure'",
+      "url": "airtable://appxfti7VuoHYUeu6/tbl4kbby85nx6Z891/rec8vPBEouiW1nr8h",
+      "ref": "read 2026-10-13"
+    },
+    {
+      "n": 3,
+      "pub": "SiliconANGLE",
+      "d": "2026-10-05",
+      "title": "Schneider Electric to buy engineering software giant PTC for $23.7B",
+      "url": "https://siliconangle.com/2026/10/05/schneider-electric-to-buy-engineering-software-giant-ptc-for-23-7b/",
+      "ref": "artifact 1ee5322a"
+    },
+    {
+      "n": 4,
+      "pub": "Silicon Republic",
+      "d": "2026-10-05",
+      "title": "Schneider Electric to acquire PTC for $22.6bn",
+      "url": "https://www.siliconrepublic.com/business/schneider-electric-to-acquire-ptc-for-22-6bn-ai",
+      "ref": "artifact d9301234"
+    },
+    {
+      "n": 5,
+      "pub": "The Tech Capital",
+      "d": "2026-10-06",
+      "title": "Schneider Electric to buy PTC for $22.6 billion in major industrial AI expansion",
+      "url": "https://thetechcapital.com/schneider-electric-buy-ptc-22-6-billion-industrial-ai/",
+      "ref": "artifact d4b926c9"
+    },
+    {
+      "n": 6,
+      "pub": "Data Center Dynamics (sponsored)",
+      "d": "2026-10-10",
+      "title": "Wärtsilä, Schneider Electric, and Stanley Consultants launch coordinated approach for faster US data center power delivery",
+      "url": "https://www.datacenterdynamics.com/en/product-news/w%C3%A4rtsil%C3%A4-schneider-electric-and-stanley-consultants-launch-coordinated-approach-for-faster-us-data-center-power-delivery/",
+      "ref": "artifact 0a982f28"
+    },
+    {
+      "n": 7,
+      "pub": "DataCenter-Insider",
+      "d": "2026-10-05",
+      "title": "Schneider Electric kombiniert Luft- und Flüssigkeitskühlung",
+      "url": "https://www.datacenter-insider.de/schneider-electric-kombiniert-luft-und-fluessigkeitskuehlung-a-9d0465b4b72fd315cf80ed2ef75cad44/",
+      "ref": "artifact 20897171"
+    },
+    {
+      "n": 8,
+      "pub": "DCNN",
+      "d": "2026-10-06",
+      "title": "Schneider Electric appoints new SVP in Europe",
+      "url": "https://dcnnmagazine.com/business/investment/schneider-electric-appoints-new-svp-in-europe/",
+      "ref": "artifact 0a9b83f7"
+    },
+    {
+      "n": 9,
+      "pub": "Converge Digest",
+      "d": "2026-09-28",
+      "title": "Schneider Brings Software-Defined Control to Voltage Power",
+      "url": "https://convergedigest.com/schneider-software-defined-medium-voltage-equinix-ai-data-centers/",
+      "ref": "artifact ffdea5b6"
+    },
+    {
+      "n": 10,
+      "pub": "Data Center Dynamics",
+      "d": "2026-09-18",
+      "title": "DCD Talks: What 800 VDC means for data center cooling with Mike Donahue, Schneider Electric",
+      "url": "https://www.datacenterdynamics.com/en/videos/dcd-talks-what-800-vdc-means-for-data-center-cooling-with-mike-donahue-schneider-electric-global/",
+      "ref": "signal aed67cb0"
+    },
+    {
+      "n": 11,
+      "pub": "Schneider Electric",
+      "d": "2026-10-08",
+      "title": "Data center community opposition: How cooling design affects water, noise, and permitting",
+      "url": "https://blog.se.com/datacenter/2026/10/08/data-center-community-opposition-how-cooling-design-affects-water-noise-and-permitting/",
+      "ref": "artifact cfa94de8"
+    }
+  ]
+}
