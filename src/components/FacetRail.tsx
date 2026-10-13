@@ -3,10 +3,10 @@
 /**
  * The Shelf's left sidebar (Academy-style), 248px fixed: "The Full Shelf", THEATERS
  * (one item per live theme, names only — the COUNT-FREE brand rule supersedes the old
- * facet count badges), KEY PLAYERS, YOUR SHELF ("Reserved Briefings" filters to selected).
+ * facet count badges), YOUR SHELF ("Reserved Briefings" filters to selected).
  * Active item: forest text, weight 600, 3px gold left rule.
  */
-export type NavKey = "all" | "kp" | "reserved" | `t:${string}`;
+export type NavKey = "all" | "reserved" | `t:${string}`;
 
 function Item({ active, label, onClick }: { active: boolean; label: string; onClick: () => void }) {
   return (
@@ -45,8 +45,6 @@ export function FacetRail({
       {theaters.map((t) => (
         <Item key={t} active={navKey === `t:${t}`} label={t} onClick={() => onNav(`t:${t}`)} />
       ))}
-      <Header label="Key Players" />
-      <Item active={navKey === "kp"} label="Key Player Briefings" onClick={() => onNav("kp")} />
       <Header label="Your Shelf" />
       <Item active={navKey === "reserved"} label="Reserved Briefings" onClick={() => onNav("reserved")} />
     </nav>

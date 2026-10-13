@@ -9,27 +9,30 @@ const F = AIRTABLE.fields;
  * FBL 1.0 derivations — TODO(editorial): replace with real Airtable fields once they exist
  * (see the field-map TODOs in src/config/constants.ts).
  *
- * briefing_type from IDF placement: subdomain ⇒ thread; domain ⇒ sector; tracking company as
- * the primary subject (no IDF placement below theme) ⇒ keyplayer; theme only ⇒ theater.
+ * briefing_type from IDF placement: subdomain ⇒ thread; domain ⇒ sector; theme ⇒ theater;
+ * no IDF placement at all ⇒ null (unplaced — not shelf-eligible). The Tracking Companies
+ * link feeds the companies facet only; it never decides the type.
  * byline brand rule: theater ⇒ Mach (forward thesis), else Gilbert (empirical).
  */
 export function deriveBriefingType(row: {
   themes: string[];
   domains: string[];
   subdomains: string[];
-  companies: string[];
-}): "theater" | "sector" | "thread" | "keyplayer" {
+}): "theater" | "sector" | "thread" | null {
   if (row.subdomains.length) return "thread";
   if (row.domains.length) return "sector";
-  if (row.companies.length) return "keyplayer";
-  return "theater";
+  if (row.themes.length) return "theater";
+  return null;
 }
 
 export function deriveByline(briefingType: string): "Gilbert" | "Mach" {
   return briefingType === "theater" ? "Mach" : "Gilbert";
 }
 
-/** Map one Airtable record → a denormalized catalog cache row. */
+/**
+ * Map one Airtable record → a denormalized catalog cache row, or null when the record has no
+ * IDF placement (unplaced — it cannot be typed, so it never reaches the shelf).
+ */
 export function toCacheRow(rec: AirtableRecord) {
   const f = rec.fields as Record<string, unknown>;
   const title = String(f[F.title] ?? "Untitled briefing");
@@ -41,6 +44,7 @@ export function toCacheRow(rec: AirtableRecord) {
     companies: names(f[F.trackingCompanies]),
   };
   const briefingType = deriveBriefingType(facets);
+  if (briefingType === null) return null;
   return {
     id: rec.id,
     slug: briefingSlug(title, rec.id),
@@ -66,6 +70,7 @@ export interface SyncResult {
   total: number;
   available: number;
   comingSoon: number;
+  unplaced: number; // titled records with no IDF placement — excluded from the shelf
   capExceeded: boolean; // internal flag only — never a subscriber-facing error (§11.3)
 }
 
@@ -77,9 +82,13 @@ export async function runCatalogSync(): Promise<SyncResult> {
   const records = await fetchShelfRecords();
   // Eligibility (FBL 1.0): a record with no title is editorial scaffolding, not a briefing —
   // it never reaches the shelf. (The Airtable base holds ~357 untitled placeholder rows.)
-  const rows = records
+  // A titled record with no IDF placement derives no briefing type: it is unplaced, counted,
+  // and kept off the shelf.
+  const mapped = records
     .filter((rec) => String((rec.fields as Record<string, unknown>)[F.title] ?? "").trim() !== "")
     .map(toCacheRow);
+  const rows = mapped.filter((r): r is NonNullable<typeof r> => r !== null);
+  const unplaced = mapped.length - rows.length;
   const sb = supabaseAdmin();
 
   // Upsert in chunks to stay well under payload limits.
@@ -109,6 +118,7 @@ export async function runCatalogSync(): Promise<SyncResult> {
     total: rows.length,
     available,
     comingSoon,
+    unplaced,
     capExceeded: available > BRIEFING_ACTIVE_CAP,
   };
 }

@@ -9,7 +9,7 @@ import { Shelf } from "./Shelf";
 import { useReserved } from "@/store/reserved-client";
 
 /**
- * The Shelf (FBL 1.0): left sidebar (Theaters / Key Players / Your Shelf), search + type
+ * The Shelf (FBL 1.0): left sidebar (Theaters / Your Shelf), search + type
  * chips, grouped card grid. Sidebar theater × chip type × search combine and round-trip
  * through library_search (/api/library/catalog); "Reserved Briefings" filters the current
  * shelf to cart lines client-side. Count-free, price-free, D-code-free by brand rule.
@@ -27,8 +27,7 @@ export function LibraryShell({ initial, theaters }: { initial: ShelfPage; theate
     const params = new URLSearchParams();
     if (q.trim()) params.set("q", q.trim());
     if (navKey.startsWith("t:")) params.set("theme", navKey.slice(2));
-    const type = chip !== "all" ? chip : navKey === "kp" ? "keyplayer" : null;
-    if (type) params.set("type", type);
+    if (chip !== "all") params.set("type", chip);
     if (cursor) params.set("cursor", cursor);
     return params;
   };
@@ -63,7 +62,6 @@ export function LibraryShell({ initial, theaters }: { initial: ShelfPage; theate
 
   // Client-side overlay filters on top of the server round-trip.
   let items: CatalogBriefing[] = page.items;
-  if (navKey === "kp") items = items.filter((b) => b.briefingType === "keyplayer");
   if (navKey === "reserved") items = items.filter((b) => reservedIds.has(b.id));
 
   return (

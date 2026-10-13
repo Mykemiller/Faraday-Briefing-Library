@@ -16,7 +16,7 @@ export interface CatalogBriefing {
   companies: string[];
   downloadCount: number;
   goLiveDate: string | null; // ISO date
-  /** Public vocabulary type: theater | sector | thread | keyplayer | jurisdiction. */
+  /** Public vocabulary type: theater | sector | thread | jurisdiction. */
   briefingType: BriefingType;
   /** Gilbert — empirical; Mach — forward thesis. */
   byline: Byline;

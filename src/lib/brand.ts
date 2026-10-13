@@ -3,8 +3,7 @@ import type { CatalogBriefing } from "@/lib/types";
 
 /**
  * Public vocabulary + brand rules (Faraday Brand Bible 4.0 / Briefing Library Brand Bible).
- * The schema speaks Theme/Domain/Subdomain/Company; the UI speaks Theater/Sector/Thread/
- * Key Player. Internal D-codes never render; counts of Theaters/Sectors/Threads never render.
+ * The schema speaks Theme/Domain/Subdomain; the UI speaks Theater/Sector/Thread. Internal D-codes never render; counts of Theaters/Sectors/Threads never render.
  */
 
 /** Card/room eyebrow per type. */
@@ -12,7 +11,6 @@ export const TYPE_EYEBROW: Record<BriefingType, string> = {
   theater: "Theater Briefing",
   sector: "Sector Briefing",
   thread: "Thread Briefing",
-  keyplayer: "Key Player Briefing",
   jurisdiction: "Jurisdiction Briefing",
 };
 
@@ -21,17 +19,15 @@ export const SHELF_GROUPS: { type: BriefingType; label: string; note: string }[]
   { type: "theater", label: "Theater Briefings", note: "The strategic arenas of the buildout" },
   { type: "sector", label: "Sector Briefings", note: "Analyst coverage areas inside each Theater" },
   { type: "thread", label: "Thread Briefings", note: "Persistent storylines, followed Signal by Signal" },
-  { type: "keyplayer", label: "Key Player Briefings", note: "The companies that move the market" },
   { type: "jurisdiction", label: "Jurisdiction Briefings", note: "The rules of the ground, read closely" },
 ];
 
-/** Type chips: All / Theater / Sector / Thread / Key Player → library_search p_type. */
+/** Type chips: All / Theater / Sector / Thread → library_search p_type. */
 export const TYPE_CHIPS: { key: BriefingType | "all"; label: string }[] = [
   { key: "all", label: "All" },
   { key: "theater", label: "Theater" },
   { key: "sector", label: "Sector" },
   { key: "thread", label: "Thread" },
-  { key: "keyplayer", label: "Key Player" },
 ];
 
 /** Byline brand rule: Gilbert — empirical; Mach — forward thesis. */
@@ -47,8 +43,6 @@ export function coverBgClass(b: Pick<CatalogBriefing, "briefingType" | "status">
       return "bg-cover-theater";
     case "thread":
       return "bg-cover-thread";
-    case "keyplayer":
-      return "bg-cover-keyplayer";
     default:
       return "bg-cover-sector"; // sector + jurisdiction share the sector treatment
   }

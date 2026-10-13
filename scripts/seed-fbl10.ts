@@ -10,7 +10,7 @@
  */
 import { createClient } from "@supabase/supabase-js";
 
-type SeedType = "theater" | "sector" | "thread" | "keyplayer";
+type SeedType = "theater" | "sector" | "thread";
 
 interface Seed {
   id: string;
@@ -108,49 +108,11 @@ export const SEEDS: Seed[] = [
     hypothesis: "Co-packaged optics arrives a full cycle earlier than consensus expects — the thermal math forces it.",
     contents: ["The Thread so far", "Recent Signals", "Supply chain map", "Faraday’s Read"] },
 
-  // ——— Key Player Briefings ———
-  { id: "b-kp-vertiv", type: "keyplayer", title: "Vertiv", byline: "Gilbert", updated: "June 2026", status: "live",
-    abstract: "The thermal-and-power pure play at the center of the liquid transition. Position, backlog, and the acquisition Faraday expects next.",
-    hypothesis: "Vertiv’s services attach rate — not its equipment backlog — is the number that decides its next re-rating.",
-    contents: ["Company profile", "Strategic positioning", "Capital & operational posture", "Velocity Play hypothesis", "Faraday’s Read"] },
-  { id: "b-kp-schneider", type: "keyplayer", title: "Schneider Electric", byline: "Gilbert", updated: "June 2026", status: "live",
-    abstract: "From switchgear to software: the quiet consolidator of the electrical room, and the moves that telegraph its next play.",
-    hypothesis: "Schneider acquires a liquid cooling company within 24 months. The Motivair pattern was the rehearsal.",
-    contents: ["Company profile", "Strategic positioning", "Capital & operational posture", "Velocity Play hypothesis", "Faraday’s Read"] },
-  { id: "b-kp-eaton", type: "keyplayer", title: "Eaton", byline: "Gilbert", updated: "June 2026", status: "live",
-    abstract: "Power management at buildout scale. The Boyd acquisition, the data center mix shift, and what the order book says.",
-    hypothesis: "Eaton’s data center revenue mix crosses a threshold in 2027 that forces a segment restatement — and a re-rating.",
-    contents: ["Company profile", "Strategic positioning", "Capital & operational posture", "Velocity Play hypothesis", "Faraday’s Read"] },
-  { id: "b-kp-coreweave", type: "keyplayer", title: "CoreWeave", byline: "Gilbert", updated: "June 2026", status: "live",
-    abstract: "The neocloud that graduated. Contract structure, debt stack, and whether the model survives contact with inference economics.",
-    hypothesis: "CoreWeave’s moat is its contracted power pipeline, not its GPU fleet. The market still prices the wrong asset.",
-    contents: ["Company profile", "Strategic positioning", "Capital & operational posture", "Velocity Play hypothesis", "Faraday’s Read"] },
-  { id: "b-kp-equinix", type: "keyplayer", title: "Equinix", byline: "Gilbert", updated: "May 2026", status: "live",
-    abstract: "The interconnection incumbent navigating an AI cycle built for someone else’s product. The xScale bet, examined.",
-    hypothesis: "Equinix’s retail interconnection franchise is insulated from the AI cycle — but xScale’s returns depend on a leasing market that is thinning.",
-    contents: ["Company profile", "Strategic positioning", "Capital & operational posture", "Velocity Play hypothesis", "Faraday’s Read"] },
-  { id: "b-kp-digital", type: "keyplayer", title: "Digital Realty", byline: "Gilbert", updated: "May 2026", status: "live",
-    abstract: "Scale, land banks, and the funding machine. How the largest landlord in the sector is positioned for the density era.",
-    hypothesis: "Digital Realty’s land-and-power bank is worth more than its developed portfolio implies — the JV structures are how it gets monetized.",
-    contents: ["Company profile", "Strategic positioning", "Capital & operational posture", "Velocity Play hypothesis", "Faraday’s Read"] },
-  { id: "b-kp-nvidia", type: "keyplayer", title: "NVIDIA", byline: "Gilbert", updated: "June 2026", status: "live",
-    abstract: "The company that sets everyone else’s roadmap. Allocation politics, the systems pivot, and the customer-turned-competitor question.",
-    hypothesis: "NVIDIA’s move down the stack into systems and power reference designs is a margin defense, not an expansion — and it reshapes the vendor map either way.",
-    contents: ["Company profile", "Strategic positioning", "Capital & operational posture", "Velocity Play hypothesis", "Faraday’s Read"] },
-  { id: "b-kp-microsoft", type: "keyplayer", title: "Microsoft", byline: "Gilbert", updated: "June 2026", status: "live",
-    abstract: "The most legible hyperscaler. Lease pullbacks, self-build acceleration, and what Redmond’s siting choices reveal about the demand curve.",
-    hypothesis: "Microsoft’s 2026 lease rationalization is a mix shift, not a demand signal — but the colocation market is trading it as demand.",
-    contents: ["Company profile", "Strategic positioning", "Capital & operational posture", "Velocity Play hypothesis", "Faraday’s Read"] },
-
   // ——— Coming Soon (representative placeholders) ———
   { id: "b-cs-1", type: "thread", theater: T.power, sector: "Power Architecture", thread: "On-Site Generation", title: "On-Site Generation", byline: "Gilbert", updated: "", status: "soon",
     abstract: "Gas turbines, fuel cells, and small modular hopes: the behind-the-fence generation Thread.", hypothesis: "", contents: [] },
   { id: "b-cs-2", type: "thread", theater: T.inference, sector: "Chips & Density", thread: "Advanced Packaging", title: "Advanced Packaging", byline: "Gilbert", updated: "", status: "soon",
     abstract: "CoWoS capacity, substrate politics, and the packaging step that gates every roadmap.", hypothesis: "", contents: [] },
-  { id: "b-cs-3", type: "keyplayer", title: "Vantage Data Centers", byline: "Gilbert", updated: "", status: "soon",
-    abstract: "The private hyperscale developer and its capital machine.", hypothesis: "", contents: [] },
-  { id: "b-cs-4", type: "keyplayer", title: "GE Vernova", byline: "Gilbert", updated: "", status: "soon",
-    abstract: "Turbines, grid gear, and the order book of the power reckoning.", hypothesis: "", contents: [] },
   { id: "b-cs-5", type: "thread", theater: T.capital, sector: "M&A & Capital Markets", thread: "Infrastructure Funds", title: "Infrastructure Funds", byline: "Gilbert", updated: "", status: "soon",
     abstract: "The permanent-capital vehicles reshaping who owns the buildout.", hypothesis: "", contents: [] },
   { id: "b-cs-6", type: "sector", theater: T.power, sector: "Grid & Regulatory", title: "Jurisdiction Watch: ERCOT", byline: "Gilbert", updated: "", status: "soon",
@@ -185,7 +147,7 @@ export function toSeedRow(s: Seed) {
     themes: s.theater ? [s.theater] : [],
     domains: s.sector ? [s.sector] : [],
     subdomains: s.thread ? [s.thread] : [],
-    companies: s.type === "keyplayer" ? [s.title] : [],
+    companies: [],
     briefing_type: s.type,
     byline: s.byline,
     hypothesis: s.hypothesis,
