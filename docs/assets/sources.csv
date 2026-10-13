@@ -1,0 +1,201 @@
+source_id,name,entity_type,tier
+cmp_471d41bfea8b0180,Amazon,company,Deep
+cmp_e9a23cbc45515895,Meta,company,Deep
+cmp_54190397c4d8086b,Equinix,company,Deep
+cmp_540df7f83845146f,NVIDIA,company,Deep
+cmp_a189c633d9995e11,Oracle,company,Deep
+cmp_7db0849ddbf577d5,Schneider Electric,company,Deep
+cmp_2c6ee24b09816a6f,OpenAI,company,Deep
+cmp_115f2b3f0dc7f35f,CoreWeave,company,Deep
+cmp_e53035beac854f3b,Vantage Data Centers,company,Deep
+cmp_5dc984e2aef527ea,AMD,company,Deep
+cmp_556dcd26a54fb752,Anthropic,company,Deep
+cmp_c05939f26a0a038d,Vertiv,company,Deep
+cmp_1f3870be274f6c49,Apple,company,Deep
+cmp_7a10cc483fba2060,Microsoft Azure,company,Deep
+cmp_4e5bbaeafc82ab7a,Intel,company,Deep
+cmp_dfa5d29213d57663,CBRE,company,Deep
+cmp_96ebef381ab0d6a0,CyrusOne,company,Deep
+cmp_8e6e0bfaf3487255,Eaton,company,Deep
+cmp_c50d6c42e8494bb7,Iron Mountain,company,Deep
+cmp_e7fe7b2de018e182,Broadcom,company,Deep
+cmp_80917ea994b96de6,Bloom Energy,company,Deep
+cmp_dbcb5386990857bf,TSMC,company,Deep
+cmp_f2bc965ff4f30b53,DataBank,company,Deep
+cmp_fe1704f586646f14,Nebius,company,Deep
+cmp_1c8491a30d62d3d3,Siemens,company,Deep
+cmp_0ace2bc21dc4f03e,Crusoe,company,Deep
+cmp_138efd9c64da57cc,Digital Realty Trust,company,Deep
+cmp_c934dcac36290be5,Aligned Data Centers,company,Deep
+cmp_ee12d90b70948e03,EdgeConneX,company,Deep
+cmp_18b38bcbe603c320,KKR,company,Deep
+cmp_5e6b3e7c4ac796fe,SoftBank Group,company,Deep
+cmp_e9dbd0ab151d5957,JLL,company,Deep
+cmp_aad787abb88334f6,Blackstone,company,Deep
+cmp_dd683466625f4131,Applied Digital,company,Deep
+cmp_a02d59ec7c739b76,Brookfield Asset Management,company,Deep
+cmp_2139839d8a759c4d,GE Vernova,company,Deep
+cmp_2a566e4ec25cf707,Google DeepMind,company,Deep
+cmp_b5a9d868ced8db17,Dominion Energy,company,Deep
+cmp_d052d157aef2a7e2,NextEra Energy,company,Deep
+cmp_679f547e89735198,ERCOT,company,Deep
+cmp_f0c9ae3c106ce0dd,Zayo Group,company,Deep
+cmp_b36eb6a54154f730,Switch,company,Deep
+cmp_ca2c62701e349d76,Dell Technologies,company,Deep
+cmp_1cc31ddab4cfb12a,Nscale,company,Deep
+cmp_db8f76e285a94d9d,DigitalBridge,company,Deep
+cmp_300d683b40050b7a,TerraPower,company,Standard
+cmp_c3c1f273d356780d,Macquarie Asset Management,company,Standard
+cmp_346f4a03f5283045,Cisco Systems,company,Standard
+cmp_eecfcf933b63825e,Groq,company,Standard
+cmp_f079794faabdcde0,Arista Networks,company,Standard
+cmp_4654dd43a4f6a8b8,Duke Energy,company,Standard
+cmp_1f237abbd163733c,Alibaba Cloud,company,Standard
+cmp_09657cb7acb074c5,AEP Ohio,company,Standard
+cmp_08f15e64b38fecdf,Tract,company,Standard
+cmp_ea01e5fd8e4d8832,ABB,company,Standard
+cmp_2a0a4349f400f779,Oklo Inc,company,Standard
+cmp_d8b15dfe47ca79d7,Hitachi Energy,company,Standard
+cmp_b45881722a5a2090,Coherent Corp,company,Standard
+cmp_bced3b5b3eff790f,PJM Interconnection,company,Standard
+cmp_0d32fa27ce6f7eff,Mistral AI,company,Standard
+cmp_b9ece37636371497,Rackspace,company,Profile
+cmp_d3ee527baae384aa,Marsh,company,Profile
+cmp_56f7a04482002e1a,Constellation Energy,company,Profile
+cmp_08d68759bdddfe8a,Entergy,company,Profile
+cmp_13827cd12e6f6fb4,Cologix,company,Profile
+cmp_7543d49fdba510d3,Uptime Institute,company,Profile
+cmp_ea8f45b7a3c31604,TeraWulf Inc,company,Profile
+cmp_b780d54ae3b7982b,TPG,company,Profile
+cmp_2a3074b199bef915,iMasons,company,Profile
+cmp_e96a479c49f59f0f,Accenture,company,Profile
+cmp_4208252653b05cac,Colliers,company,Profile
+cmp_2d71988eb2e435dd,X-energy,company,Profile
+cmp_b93b083f83a6dfcc,Carrier Global,company,Profile
+cmp_d35dc61e819465af,Submer,company,Profile
+cmp_bcacd6a46954194d,Turner Construction,company,Profile
+cmp_30a5fe2053bebe05,Tencent Cloud,company,Profile
+cmp_7995660796c354a2,Solvay,company,Profile
+cmp_83ac0d3c4626a714,Talen Energy,company,Profile
+cmp_16dfba14481ba8b6,NetApp,company,Profile
+cmp_c4952f62b1cf4f7c,Supermicro,company,Profile
+cmp_5f92838395c73cd9,Infineon Technologies,company,Profile
+cmp_e389a212c2b3beb2,Lenovo,company,Profile
+cmp_f9613ad86c3c44d9,QTS Realty,company,Profile
+cmp_7172a49053b1de3e,OVHcloud,company,Profile
+cmp_86c94b52d37c00e1,First Solar,company,Profile
+cmp_472b72f9db4458e2,Baidu AI Cloud,company,Profile
+cmp_e5a780266fe4580c,DE-CIX,company,Profile
+cmp_15f72027b39f4761,Temasek,company,Profile
+cmp_e2061ec2dfba2193,MISO,company,Profile
+cmp_d3bf862d84f8b030,Enbridge,company,Profile
+cmp_7c916830cda42654,Trane Technologies,company,Profile
+cmp_8afbfc3d40cbb1da,Mortenson,company,Profile
+cmp_a61199f28478031d,Kairos Power,company,Profile
+cmp_f7faea02f0c7ed31,Navitas Semiconductor,company,Profile
+cmp_7fd51cd3d8667953,CAISO,company,Profile
+cmp_c210379c39f44668,Bain Capital,company,Profile
+cmp_b215d5757841acb5,AECOM,company,Profile
+cmp_06525ea6f6547050,Wolfspeed,company,Profile
+cmp_404f509dfc27bc08,STMicroelectronics,company,Profile
+cmp_1c17d6b1d9772a7e,Resonac Holdings,company,Profile
+cmp_0b6f9ed406d41732,Intersect Power,company,Profile
+cmp_b679c8054559c7a0,Chemours,company,Profile
+cmp_7dcda902a2a66245,Hammond Power Solutions,company,Profile
+cmp_ac8242942174ddad,3M,company,Profile
+cmp_5d801282d504a17b,EQT,company,Profile
+cmp_3c4d3a4a98c12d1b,Chunghwa Telecom,company,Profile
+cmp_fcda22aa5bcf1d79,DG Matrix,company,Profile
+cmp_d714637579471605,NTT Global Data Centers,company,Profile
+cmp_72ec30ce8bf1bf69,DPR Construction,company,Profile
+cmp_7a62b4f1a0a4e415,Goldman Sachs Alternatives,company,Profile
+cmp_04d6d002c53dc55a,onsemi,company,Profile
+cmp_206c6f49ff00ae4f,Daikin,company,Profile
+cmp_6c8670b4731ae09b,Cohesity,company,Profile
+cmp_26760bdee8a98797,Rowan Digital Infrastructure,company,Profile
+cmp_b18da17452f48c8e,JetCool,company,Profile
+cmp_d29dc99b2ed969ec,Sumitomo Chemical,company,Profile
+cmp_55619902fb1ff534,Beale Infrastructure,company,Profile
+cmp_de62b0f1146e234e,SUNeVision,company,Profile
+cmp_8e31e4bc1ba6a265,Telecom Egypt,company,Profile
+cmp_23afe6bec081fcfd,iomart,company,Profile
+cmp_af1b1d84642ddea6,Wiwynn,company,Profile
+cmp_2a372c16513fa503,PowerHouse Data Centers,company,Profile
+cmp_baf0af99d4b52608,Iceotope,company,Profile
+cmp_44e7cdc8f1386a18,Williams Companies,company,Profile
+cmp_ce779f70867a89b8,Holtec International,company,Profile
+cmp_aec6d71a3646fc63,ZutaCore,company,Profile
+cmp_c7b7eeaf37f1f6c7,Powell Industries,company,Profile
+cmp_3b8f5529f9b5f49a,NYISO,company,Profile
+cmp_a7c245701cf56e5f,Aligned Energy,company,Profile
+cmp_f3c37f795b84049f,Castrol,company,Profile
+cmp_5d5c982a6681b8ac,Motivair Corporation,company,Profile
+cmp_e9c5a30f31c62e37,Accelsius,company,Profile
+cmp_fbc7fe5f5d14fdc0,EkkoSense,company,Profile
+cmp_eef3285b56a0e536,PAIX Data Centres,company,Profile
+cmp_2eb93b14676a3e9d,Hyperview,company,Profile
+cmp_25878a87406d1904,Nlyte Software,company,Profile
+cmp_deb2c4f6e8fa7754,Mitsubishi Electric,company,Profile
+cmp_78d0cc8177ecece5,Rittal,company,Profile
+cmp_8070b0b01d9042fd,Elisa,company,Profile
+cmp_32376d0c55d1c2d1,Cadence Design Systems,company,Profile
+cmp_52d098e81ff56a83,Airtel Nxtra,company,Profile
+cmp_9375904c893f1ebe,LiquidStack,company,Profile
+cmp_d939c4658bf5b67f,VoltaGrid,company,Profile
+cmp_5be32967ce195b18,IXAfrica,company,Profile
+cmp_44492758f967573e,Samsung Foundry,company,Profile
+cmp_779251e2f237c659,Ampere Computing,company,Profile
+cmp_836fe498e4443dab,GPX Global,company,Profile
+cmp_ec910456d9eca532,Inspur,company,Profile
+cmp_ddc8f7c9441b52bc,Cibicom,company,Profile
+cmp_26f74940d542e061,Henkel,company,Profile
+rb_b4e99a73c47139c5,Open Compute Project Foundation,institution,Profile
+rb_6e3498fcd55db57b,Uptime Institute,institution,Profile
+rb_739e9020d6f88409,U.S. Bureau of Labor Statistics,institution,Profile
+rb_75ff43757192fcf4,SemiAnalysis,institution,Profile
+rb_34acb497cda68001,ASHRAE,institution,Profile
+rb_5ca928fa7d26d4b6,Synergy Research Group,institution,Profile
+rb_dda47a668088d1e4,IEEE,institution,Profile
+rb_b92cf967af2a72c2,Omdia,institution,Profile
+rb_3d6740faa28a886c,Data Center Dynamics,institution,Profile
+rb_3005c2f53252342f,Dell'Oro Group,institution,Profile
+rb_ea8f8fb712cb247c,EPRI,institution,Profile
+rb_1215176a0952ba23,Lawrence Berkeley National Laboratory,institution,Profile
+rb_6398f2ea80ac2393,Center for Security and Emerging Technology,institution,Profile
+rb_6991cea6ec18f560,Center for Strategic and International Studies,institution,Profile
+rb_c65eabf2aac9976d,S&P Global Market Intelligence,institution,Profile
+rb_6388bd7f101cb5d7,Organisation for Economic Co-operation and Development,institution,Profile
+rb_6b1ab56cc5c77d7f,U.S. Energy Information Administration,institution,Profile
+rb_bee10fcea1e42a2e,CBRE,institution,Profile
+rb_53acc0a2940144c4,Data Center Watch,institution,Profile
+rb_0616a267820d2c78,Gartner,institution,Profile
+rb_e0e4548df88a35d5,ISO,institution,Profile
+rb_9a103d794814ecc7,JLL,institution,Profile
+rb_489802348cf3d182,MLCommons,institution,Profile
+rb_2de59c1013b681ad,NFPA,institution,Profile
+rb_71438ca10017bba5,National Institute of Standards and Technology,institution,Profile
+rb_1dd1f9d9fb2fdbda,Federal Energy Regulatory Commission,institution,Profile
+rb_4f431bee5786e3f8,Moody's Ratings,institution,Profile
+rb_05acba9779cd2aaa,Brookings Institution,institution,Profile
+rb_e4050d35cb58c567,Epoch AI,institution,Profile
+rb_684cf35d601a5077,Good Jobs First,institution,Profile
+rb_9e5d96e4c9f0d8d9,MITRE,institution,Profile
+rb_1c1c65e8f2de96f1,RAND Corporation,institution,Profile
+rb_b5d55b691189f415,Rocky Mountain Institute,institution,Profile
+rb_70f3d8c08272d2fe,S&P Global Commodity Insights,institution,Profile
+rb_aec8ae1d57bae3b4,Stanford HAI,institution,Profile
+rb_38b3d28ed5aaf67e,NEMA,institution,Profile
+rb_3fe47d6e2194368e,TechInsights,institution,Profile
+rb_01ced24541dc51a0,iMasons,institution,Profile
+rb_2139779786747434,Bisnow,institution,Profile
+rb_d7a52419ac0370b8,CIGRE,institution,Profile
+rb_b0af9fb07f12a69a,Cloud Security Alliance,institution,Profile
+rb_51253f8fcb11072e,Cushman & Wakefield,institution,Profile
+rb_796e923025d6fbb2,IDC,institution,Profile
+rb_3f9cc541638b20bc,International Electrotechnical Commission,institution,Profile
+rb_567877b2e3d7aac3,Lightcast,institution,Profile
+rb_76d1d4074d8a8d3e,Marsh McLennan,institution,Profile
+rb_867c417409822d9d,PitchBook,institution,Profile
+rb_8fbbd06a906c38c0,SEMI,institution,Profile
+rb_8911836fd66f3aa3,Structure Research,institution,Profile
+rb_cf183be5b0756b44,TeleGeography,institution,Profile
