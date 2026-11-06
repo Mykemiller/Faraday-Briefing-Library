@@ -11,18 +11,33 @@ Build Plan v2.0*. Next.js (App Router) · Clerk · Supabase · Stripe · Gamma.
 
 ## Architecture decisions (locked)
 
-- **Read-model + FTS (L1, L7).** Airtable (`appxfti7VuoHYUeu6` / `tbl4kbby85nx6Z891`) is the
-  editorial SOR but is **never in the hot path**. A sync mirrors the catalog into the denormalized
-  Supabase table `library_catalog_cache`: a generated `tsvector` (title + description) with a GIN
-  index for search, GIN-indexed **array columns** for theme/domain/subdomain/company facets, and
-  **keyset** pagination on `(go_live_date desc, id desc)` — never offset.
+- **Canonical home = Supabase `public.briefings` (BL-05 cutover, FDY-171, DEC-IDF-65).** The
+  Airtable table (`appxfti7VuoHYUeu6` / `tbl4kbby85nx6Z891`) is **retired**: description marked
+  retired, every row retained, never read or written by this app. The one-time migration that moved
+  the 436 records is `scripts/migrate-briefings.ts`; its production run is recorded in
+  `docs/migration/reconciliation.md` (2026-11-06 section). Editors write `briefings` directly; a
+  briefing reaches the shelf only through `status` (`published` ⇒ Available, `planned` ⇒ Coming
+  Soon; draft/qa/retired never leak) and the anon SELECT policy on `status='published'`.
+- **Read-model + FTS (L1, L7).** `briefings` is **never in the hot path**. The sync route
+  (`/api/library/sync` → `src/lib/sync.ts` ← `src/lib/briefings-source.ts`) refreshes the
+  denormalized table `library_catalog_cache`: a generated `tsvector` (title + description) with a
+  GIN index for search, GIN-indexed **array columns** for theme/domain/subdomain/company facets
+  (display NAMES, resolved from `faraday_themes` / `faraday_domains` / `faraday_subdomains` /
+  `companies`), and **keyset** pagination on `(go_live_date desc, id desc)` — never offset. The
+  cache id is `briefings.airtable_record_id` for migrated rows (slugs, cart lines and
+  entitlements stay stable) and `briefings.id` for native rows. The sync writes ONLY the columns
+  it owns — `briefing_description`, `canonical_flag`, `gamma_*`, `download_count`,
+  `preview_*` are never overwritten (field-map gaps G1/G2/G6 have no `briefings` column yet).
+  `briefing_type`/`byline` come from the FDY-181 columns when set, else are derived from IDF
+  placement; a company-only placeholder with neither keeps its existing cache type (the public
+  vocabulary has no "company" type yet — G3, Myke's call).
 - **Virtualized, section-aware shelf (L5).** `Shelf.tsx` windows rows (TanStack Virtual). Domain
   sections with zero Available briefings **ghost-collapse** to one line.
 - **Gamma export + content-addressing (L10).** A worker calls the Gamma **native export API** (PNG)
-  and writes to Supabase Storage **content-addressed** by `hash(airtable_record_id +
+  and writes to Supabase Storage **content-addressed** by `hash(catalog id +
   gamma_updated_timestamp)`. Re-export is skipped when the hash is unchanged. **No headless browser,
-  no new vendor.** Supabase Storage is the SOR for previews; Airtable Attachments is an editorial
-  mirror only. Preview shows the hypothesis opener + 1 body slide — **never** the "Faraday's Take"
+  no new vendor.** Supabase Storage is the SOR for previews (Airtable Attachments were empty at
+  migration time and are no longer read). Preview shows the hypothesis opener + 1 body slide — **never** the "Faraday's Take"
   or "Sources & methodology" slide. Null previews → full-width description + Reading-Chair graphic.
 - **Zustand cart + rollback buffer (Eng 3).** Optimistic mutation → server write → on bounded-retry
   failure, per-item rollback + quiet toast. Persistent + identity-bound in Supabase; survives

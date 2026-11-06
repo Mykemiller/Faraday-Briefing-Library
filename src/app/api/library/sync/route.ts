@@ -6,8 +6,8 @@ export const dynamic = "force-dynamic";
 export const maxDuration = 60;
 
 /**
- * Airtable → Supabase read-model sync (§11.3). Runs on existing infra: a Vercel cron hits this
- * route on a cadence (or an Airtable on-publish webhook). Guarded by CRON_SECRET. No new vendor.
+ * briefings → library_catalog_cache read-model refresh (§11.3; BL-05 cutover, DEC-IDF-65). Runs on
+ * existing infra: a Vercel cron hits this route on a cadence. Guarded by CRON_SECRET. No new vendor.
  *
  * Vercel Cron invokes the path with a GET and an `Authorization: Bearer <CRON_SECRET>` header, so
  * we accept GET *and* POST, and authorize on either that bearer token or an `x-cron-secret` header

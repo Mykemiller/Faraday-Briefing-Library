@@ -1,13 +1,9 @@
 import { describe, it, expect, vi } from "vitest";
 
-// sync.ts imports the service-role Supabase client and the Airtable fetcher; neither is
+// sync.ts imports the service-role Supabase client and the briefings reader; neither is
 // exercised by the pure derivation, so stub both to keep this test hermetic.
 vi.mock("@/lib/supabase/admin", () => ({ supabaseAdmin: () => ({}) }));
-vi.mock("@/lib/airtable", () => ({
-  fetchShelfRecords: async () => [],
-  names: () => [],
-  singleName: () => null,
-}));
+vi.mock("@/lib/briefings-source", () => ({ fetchShelfBriefings: async () => ({ briefings: [], lookups: {}, existingTypes: new Map() }) }));
 
 import { deriveBriefingType } from "@/lib/sync";
 

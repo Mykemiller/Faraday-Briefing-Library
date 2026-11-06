@@ -7,7 +7,7 @@ import { PREVIEW_SLIDE_MAX } from "@/config/constants";
  *
  * A worker calls Gamma's NATIVE EXPORT API (PNG) — no headless browser, no new vendor
  * (Boundaries). Images are written to Supabase Storage, content-addressed by
- * hash(airtable_record_id + gamma_updated_timestamp). Re-export is SKIPPED when the hash
+ * hash(catalog id + gamma_updated_timestamp) (the catalog id is the Airtable record id for migrated rows). Re-export is SKIPPED when the hash
  * is unchanged; a revised deck cache-busts globally for free.
  *
  * Preview shows the hypothesis-led opener + 1 substantive body slide, and NEVER the

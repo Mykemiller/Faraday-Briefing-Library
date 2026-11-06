@@ -45,7 +45,7 @@ and commit the file under the version the database records.
 ### Env vars the deploy needs
 `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`,
 `SUPABASE_STORAGE_BUCKET` (create bucket `library-previews`), `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`,
-`CLERK_SECRET_KEY`, `AIRTABLE_API_KEY`, `AIRTABLE_BASE_ID`, `AIRTABLE_BRIEFINGS_TABLE_ID`,
+`CLERK_SECRET_KEY`, (the `AIRTABLE_*` variables are no longer read — BL-05 cutover),
 `GAMMA_API_KEY`, `CRON_SECRET`, and the four `NEXT_PUBLIC_LIBRARY_*` flags.
 
 ## 3. Feature-flag map
