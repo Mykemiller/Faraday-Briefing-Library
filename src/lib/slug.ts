@@ -5,7 +5,8 @@ export function briefingSlug(title: string, recordId: string): string {
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "")
     .slice(0, 60);
-  // Suffix a short, collision-free token from the Airtable id (stable across syncs).
+  // Suffix a short, collision-free token from the catalog id (Airtable record id for migrated
+  // rows, the briefing uuid otherwise) — stable across syncs.
   const suffix = recordId.replace(/^rec/, "").slice(0, 6).toLowerCase();
   return `${base || "briefing"}-${suffix}`;
 }

@@ -30,33 +30,16 @@ export const ANON_TEASER_SLIDES = 1;
 /** Supabase project ref (system of record). */
 export const SUPABASE_PROJECT_REF = "ycadmmngkdhvpcsrcuaq";
 
-/** Airtable editorial SOR (§3 context). */
-export const AIRTABLE = {
-  baseId: "appxfti7VuoHYUeu6",
-  briefingsTableId: "tbl4kbby85nx6Z891",
-  /** Field-ID map — the contract the sync reads (spec §11.1). */
-  fields: {
-    title: "fldim88BwzzAKTnyn",
-    description: "fldzCX0KJ0sfrGmcd",
-    status: "fldyhqKdqOibnhGgp",
-    canonicalFlag: "fldwZcgAavE0InHni",
-    gammaUrl: "fld1CaAL2JCVA0piy",
-    gammaId: "fldg4RhWybQGXFwjA",
-    attachments: "fldjZLGWyJDTHN64R", // editorial mirror ONLY — never the storefront source
-    idfTheme: "fldC9T9Dm59g2qRHn",
-    idfDomain: "fld3SAvJO9NCxm7gQ",
-    idfSubdomain: "fldjtSjtK8l1N6Dqs",
-    trackingCompanies: "fldcjHEEy3SUclWqY",
-    downloadCounter: "fld2FLPk7QnqHaSAJ",
-    goLiveDate: "flddONEuVoj4stpz6",
-    // TODO(FBL 1.0 → editorial): Airtable has no fields for these yet. Until they exist the
-    // sync derives briefing_type/byline from IDF placement and leaves hypothesis/contents
-    // empty (src/lib/sync.ts). Replace the derivations with real field ids when added.
-    briefingType: null as unknown as string, // TODO: add "Briefing Type" single-select in Airtable
-    byline: null as unknown as string, // TODO: add "Byline" single-select (Gilbert | Mach)
-    hypothesis: null as unknown as string, // TODO: add "Hypothesis" long text
-    contents: null as unknown as string, // TODO: add "Contents" (one item per line)
-  },
+/**
+ * Canonical home of the Briefing Library: Supabase `public.briefings` (DEC-IDF-65, BL-05 cutover).
+ * The former Airtable table (base appxfti7VuoHYUeu6, table tbl4kbby85nx6Z891) is RETIRED —
+ * description marked retired, every row retained, never read or written by this app. The one-time
+ * migration that moved it is scripts/migrate-briefings.ts (docs/migration/reconciliation.md).
+ */
+export const BRIEFINGS_SOURCE = {
+  table: "briefings",
+  /** briefings.status → shelf status. Anything not listed (draft, qa, retired) never reaches the shelf. */
+  shelfStatuses: { published: "Available", planned: "Coming Soon" },
 } as const;
 
 /** Public-vocabulary briefing types (Theater/Sector/Thread [+ Jurisdiction]). */

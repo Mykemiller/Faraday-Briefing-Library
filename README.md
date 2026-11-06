@@ -9,7 +9,7 @@ Built to the **Briefing Library Storefront — Design Spec & Build Plan v2.0**, 
 ## Stack
 
 Next.js (App Router) · Clerk · Supabase (read-model, wallet, cart, entitlements, preview storage) ·
-Airtable (editorial SOR, synced) · Gamma (native export API) · Stripe (existing top-up flow).
+Supabase `briefings` (editorial SOR since the BL-05 cutover; Airtable retired) · Gamma (native export API) · Stripe (existing top-up flow).
 
 ## Getting started
 
@@ -25,7 +25,7 @@ npm test                     # idempotency + cart-rollback + FTS/facet/keyset
 ```
 src/
   config/      constants (cap, meter key, flags) — bound, never literal
-  lib/         supabase clients, airtable, sync, gamma worker, catalog queries, wallet, meter
+  lib/         supabase clients, briefings-source, sync, gamma worker, catalog queries, wallet, meter
                checkout-model.ts / catalog-model.ts — pure references the SQL mirrors (tested)
   store/       cart.ts — Zustand + rollback snapshot buffer
   components/  Shelf (virtualized), Spine, FacetRail, WalletChip, PreviewReader, ReadingChair…
