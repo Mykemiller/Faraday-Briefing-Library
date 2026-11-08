@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  background-color: #f8f5f0; /* warm-white paper, never #FFFFFF */
+  color: #141210;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-feature-settings: "kern", "liga";
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+::selection {
+  background: rgba(196, 146, 42, 0.28);
+}
+:focus-visible {
+  outline: 2px solid #c4922a;
+  outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.001ms !important;
+    animation-duration: 0.001ms !important;
+  }
+}

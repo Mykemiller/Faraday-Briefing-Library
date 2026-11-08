@@ -1,0 +1,9 @@
+node_modules/
+.next/
+.env
+.env.local
+*.tsbuildinfo
+next-env.d.ts
+# Generated at build time from ../docs/assets (BL-11 register). Never edit by hand.
+src/generated/
+public/logos/
