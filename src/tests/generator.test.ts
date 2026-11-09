@@ -64,7 +64,7 @@ describe("evidence — packs from captured Faraday records", () => {
       for (const it of pk.items) {
         expect(it.url).toMatch(/^https?:\/\//);
         expect(it.text.length).toBeGreaterThan(0);
-        expect(it.date >= pk.window.from && it.date <= pk.window.to).toBe(true);
+        expect(it.date >= pk.window.from! && it.date <= pk.window.to!).toBe(true);
         for (const s of it.text) expect(s).toMatch(/[.!?…]["')\]]?$/);
       }
       for (let i = 1; i < pk.items.length; i += 1) expect(pk.items[i - 1].date >= pk.items[i].date).toBe(true);
