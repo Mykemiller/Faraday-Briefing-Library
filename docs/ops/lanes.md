@@ -214,6 +214,10 @@ tests. `npm run typecheck` is clean.
 - **Production has nothing to select yet.** All 436 live `briefings` rows carry `tier = NULL` and
   `briefing_type = NULL`, so every lane selects nothing on the live DB until the BL2-08 pilot sets
   tier/type on its 35 rows. `briefing_lanes.daily_quota` is 0 on all seven lanes (BL2-01 seed).
+  Update 2026-11-09: BL2-03 (FDY-279, `20261109160000_bl2_03_tier_and_type.sql`, written, not yet
+  applied) types/tiers every live row and seeds the quotas — theaters 2 · domains 6 · subdomains 15 ·
+  companies 25 · institutions 10 · states 6 · countries 4 — so §3.1's selection returns the 467-row
+  shelf once it is applied. See `docs/briefs/bl2-03-shelf-method.md`.
 - **Live Supabase evidence queries are untested against production** — the dev container's egress
   blocks `*.supabase.co`, so `createSupabaseEvidence()` was written against the live schema (read
   via the Supabase MCP) and exercised only through the captured packs, which share the same
