@@ -237,7 +237,7 @@ describe("generator — fit loop and contract", () => {
   });
   it("generate() rejects unknown tiers and a missing evidence source", async () => {
     await expect(generate({ tier: "brief" }, { evidence })).rejects.toThrow(/unknown tier/);
-    await expect(generate(brief("fx000600"), {})).rejects.toThrow(/evidence source/);
+    await expect(generate(brief("fx000600"), {} as any)).rejects.toThrow(/evidence source/);
   });
 });
 
