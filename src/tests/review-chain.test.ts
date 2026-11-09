@@ -68,8 +68,8 @@ describe("G1 — parsing and normalisation", () => {
     const p = parseManuscript(manuscript);
     expect(p.cover).toContain("Thesis sentence");
     expect(p.sections.map((s: any) => s.heading)).toEqual(["The argument", "Signals to watch", "Faraday's Take", "Sources & methodology"]);
-    expect(p.sections.at(-1).isSources).toBe(true);
-    expect(p.sections[2].isTake).toBe(true);
+    expect((p.sections.at(-1) as any).isSources).toBe(true);
+    expect((p.sections[2] as any).isTake).toBe(true);
   });
   it("normalises thousands separators, decimal commas, scale words and SI units", () => {
     expect(normaliseNumbersText("438,000 MW and $1.45 billion, 22,000m2, 3,5 Megawatt, 200+ MW, 89 percent, $3.0B")).toBe(
@@ -191,7 +191,7 @@ describe("G2 / G3 — verdict rules and presets", () => {
   });
   it("builds the panel prompts from the manuscript and the sources list only, and gives Reviewer A raw source texts", () => {
     const draft = { briefing_id: "41d4c4e2-0000", version: 2, tier: "profile", sector_id: "D6", briefing_type: "company", contents: [manuscript], source_refs: refs };
-    const built = buildPrompts(draft, { resolve, castDir: "/nonexistent" });
+    const built = buildPrompts(draft, { resolve, castDir: "/nonexistent" } as any);
     const panelist = built.prompts.find((p: any) => p.role === "panelist") as any;
     expect(panelist.user).toContain("## Sources list");
     expect(panelist.user).not.toContain("Raw source texts");
