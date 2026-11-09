@@ -247,7 +247,7 @@ describe("manuscript renderer", () => {
       const { b, now, pack: pk } = await pack(p);
       const d = compose(b, pk, { now });
       const doc = parseManuscript(d.manuscript_md);
-      expect(doc.cover?.title).toBe(d.title);
+      expect((doc as any).cover?.title).toBe(d.title);
       expect((doc.parts as any[]).every((x) => x.heading)).toBe(true);
       expect(doc.json).toBeTruthy();
       expect(JSON.parse(doc.json!).length).toBe(d.source_refs.length);
