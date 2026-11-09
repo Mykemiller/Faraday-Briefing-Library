@@ -98,3 +98,15 @@ Nothing flips to subscriber-live or commerce-on without Myke. Deploy to a flag-g
 
 `npm run dev` · `npm run build` · `npm run typecheck` · `npm test` (Vitest: idempotency,
 cart-rollback, FTS/facet/keyset). Install uses `--legacy-peer-deps`.
+
+## V2.0 regeneration lanes (BL2-04 / BL2-05)
+
+`scripts/lanes/` drafts briefings from Faraday records and stages them in `briefings_versions`
+(kind=draft) — the live `briefings` row is never touched; publishing is a separate human step.
+Canon: `docs/ops/lanes.md`. Rules enforced in code: evidence only from `signals` / `artifacts` /
+`companies` / `institutions` / `faraday_*` (+ Jurisdiction Watch tables, read-only, for
+jurisdiction briefs); every factual sentence carries `[Sn]` resolving to `source_refs`; public
+vocabulary only (Theater / Sector / Thread / Signal, never "Key Player"); Profiles carry no Take,
+CTA or rating and are flagged thin below 6 Signals; page counts are measured from the PDF and
+out-of-range drafts are staged but logged `G1-AUTO · FAIL`. `npm run lanes:samples` regenerates
+`docs/briefs/samples/` from the captured fixture evidence.
