@@ -2,7 +2,7 @@
 
 **Release 46-26-v01 · Briefing Library project · PR opened 2026-11-09 CT. The migration is NOT applied.**
 Founder decision 4 (2026-11-09): the merged PR is the approval to apply; the Myke-present session that
-merges it applies `supabase/migrations/20261109150000_bl2_03_tier_and_type.sql`, re-runs the §Verify
+merges it applies `supabase/migrations/20261109160000_bl2_03_tier_and_type.sql`, re-runs the §Verify
 queries below, posts the counts as a Linear comment and writes one status-log line per lane.
 
 Everything in this document was read **read-only** from Supabase project `ycadmmngkdhvpcsrcuaq`
@@ -31,6 +31,11 @@ dry runs** of the migration itself (see §5). The migration file is generated �
 
 The issue title still says "462-row shelf"; that is the pre-raise figure (25 states). The body table,
 which the Founder approved, sums to 467, and the verification gate asserts 467.
+
+**File name.** The prompt named the file `20261109150000_bl2_03_tier_and_type.sql`, but main already
+carries two migrations with that version prefix (BL2-05 `…_manuscript_md`, BL2-07 `…_briefing_signoff`),
+and the Supabase CLI rejects duplicate versions. The file is `20261109160000_…` instead; the MCP
+`apply_migration` path stamps its own version anyway, so nothing else changes.
 
 ## 2. What the migration does (one plpgsql block, every step set-based and idempotent)
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// BL2-03 (FDY-279): generates supabase/migrations/20261109150000_bl2_03_tier_and_type.sql from
+// BL2-03 (FDY-279): generates supabase/migrations/20261109160000_bl2_03_tier_and_type.sql from
 //   docs/briefs/entity-universe.csv       (BL-07 — 347 tiered rows; the 357 placeholders are not briefings)
 //   docs/briefs/jurisdiction-scope.csv    (BL2-02 — states ranked 1–30 + the 15 in-scope countries)
 //   scripts/bl2-03/pinned.json            (fill pool, re-link map, universe remap, lane quotas — read live 2026-11-09)
@@ -588,7 +588,7 @@ if (isMain) {
   }
   const out = dryRun
     ? resolve(process.env.BL203_DRY_RUN_OUT ?? resolve(root, 'bl2_03_dry_run.sql'))
-    : resolve(root, 'supabase/migrations/20261109150000_bl2_03_tier_and_type.sql');
+    : resolve(root, 'supabase/migrations/20261109160000_bl2_03_tier_and_type.sql');
   writeFileSync(out, sql);
   console.log(`${dryRun ? 'dry-run' : 'migration'} written: ${out} (${sql.length} bytes)`);
 }

@@ -4,7 +4,7 @@ import { resolve } from "node:path";
 import { buildMigration, loadInputs, parseCsv } from "../../scripts/bl2-03/build-migration.mjs";
 
 const root = resolve(__dirname, "../..");
-const MIGRATION = resolve(root, "supabase/migrations/20261109150000_bl2_03_tier_and_type.sql");
+const MIGRATION = resolve(root, "supabase/migrations/20261109160000_bl2_03_tier_and_type.sql");
 
 // BL2-03 (FDY-279): the committed migration must be exactly what the generator produces from the
 // committed inputs, must carry none of the three destructive statement kinds (the unattended-run
