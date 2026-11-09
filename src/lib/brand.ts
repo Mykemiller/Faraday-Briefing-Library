@@ -11,6 +11,7 @@ export const TYPE_EYEBROW: Record<BriefingType, string> = {
   theater: "Theater Briefing",
   sector: "Sector Briefing",
   thread: "Thread Briefing",
+  company: "Company Briefing",
   jurisdiction: "Jurisdiction Briefing",
 };
 
@@ -19,6 +20,7 @@ export const SHELF_GROUPS: { type: BriefingType; label: string; note: string }[]
   { type: "theater", label: "Theater Briefings", note: "The strategic arenas of the buildout" },
   { type: "sector", label: "Sector Briefings", note: "Analyst coverage areas inside each Theater" },
   { type: "thread", label: "Thread Briefings", note: "Persistent storylines, followed Signal by Signal" },
+  { type: "company", label: "Company Briefings", note: "One operator, read on the record" },
   { type: "jurisdiction", label: "Jurisdiction Briefings", note: "The rules of the ground, read closely" },
 ];
 
@@ -44,7 +46,7 @@ export function coverBgClass(b: Pick<CatalogBriefing, "briefingType" | "status">
     case "thread":
       return "bg-cover-thread";
     default:
-      return "bg-cover-sector"; // sector + jurisdiction share the sector treatment
+      return "bg-cover-sector"; // sector + company + jurisdiction share the sector treatment
   }
 }
 

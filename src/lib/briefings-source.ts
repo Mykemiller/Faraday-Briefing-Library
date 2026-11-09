@@ -21,7 +21,8 @@ export interface BriefingRow {
   theme_tags: string[] | null; // faraday_themes.theme_code[]
   company_id: string | null; // companies.company_uid
   institution_id: string | null;
-  briefing_type: string | null; // FDY-181: theater | sector | thread
+  jurisdiction_id: string | null; // BL2-01: US-XX | ISO-3166 alpha-2 (Jurisdiction Watch ids, read never forked)
+  briefing_type: string | null; // FDY-181 + BL2-01: theater | sector | thread | company | jurisdiction
   byline: string | null; // FDY-181: Gilbert | Mach
   hypothesis: string | null; // FDY-181
   contents: string[] | null; // FDY-181
@@ -46,7 +47,7 @@ export interface ShelfSource {
 }
 
 export const BRIEFING_SELECT =
-  "id,airtable_record_id,title,status,tier,sector_id,thread_id,theme_tags,company_id,institution_id," +
+  "id,airtable_record_id,title,status,tier,sector_id,thread_id,theme_tags,company_id,institution_id,jurisdiction_id," +
   "briefing_type,byline,hypothesis,contents,published_at,last_refreshed,updated_at";
 
 const PAGE = 1000;
