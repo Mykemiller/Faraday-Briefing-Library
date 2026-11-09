@@ -187,18 +187,18 @@ describe("G2 / G3 — verdict rules and presets", () => {
     const light = pickPreset({ sector_id: "D6", tier: "profile", briefing_type: "company" });
     expect(light.members).toEqual(["victoria-stroud"]);
     expect(light.chair).toBeNull();
-    for (const p of Object.values(PRESETS) as any[]) if (p.chair) expect(p.members).toContain("constance-wright");
+    for (const p of Object.values(PRESETS) as any[]) if (p?.chair) expect(p.members).toContain("constance-wright");
   });
   it("builds the panel prompts from the manuscript and the sources list only, and gives Reviewer A raw source texts", () => {
     const draft = { briefing_id: "41d4c4e2-0000", version: 2, tier: "profile", sector_id: "D6", briefing_type: "company", contents: [manuscript], source_refs: refs };
     const built = buildPrompts(draft, { resolve, castDir: "/nonexistent" });
-    const panelist = built.prompts.find((p: any) => p.role === "panelist");
+    const panelist = built.prompts.find((p: any) => p.role === "panelist") as any;
     expect(panelist.user).toContain("## Sources list");
     expect(panelist.user).not.toContain("Raw source texts");
-    const a = built.prompts.find((p: any) => p.role === "xcheck-facts");
+    const a = built.prompts.find((p: any) => p.role === "xcheck-facts") as any;
     expect(a.user).toContain("Vertiv to acquire UtilityInnovation Group");
     expect(a.system).not.toMatch(/Brand Bible/);
-    const b = built.prompts.find((p: any) => p.role === "xcheck-voice");
+    const b = built.prompts.find((p: any) => p.role === "xcheck-voice") as any;
     expect(b.user).toContain("## 06. Voice Variant");
     expect(importName(draft, "xcheck-facts")).toBe("41d4c4e2-v2.G3.xcheck-facts.json");
   });
@@ -225,7 +225,7 @@ describe("flow", () => {
   });
   it("finds the previous attempt at a gate and maps PARKED onto a FAIL row with notes.parked", () => {
     const rows = [{ id: "1", briefing_id: "b", version: 1, gate: "G1-AUTO", result: "FAIL", created_at: "2026-11-08T00:00:00Z" }];
-    expect(previousAttempt(rows, { briefing_id: "b", version: 2 }, "G1-AUTO")?.result).toBe("FAIL");
+    expect((previousAttempt(rows, { briefing_id: "b", version: 2 }, "G1-AUTO") as any)?.result).toBe("FAIL");
     expect(previousAttempt(rows, { briefing_id: "b", version: 2 }, "G2-PANEL")).toBeNull();
     const row = reviewRow({ draft: { briefing_id: "b", version: 2 }, gate: "G3-XCHECK", reviewer: "x", result: "PARKED", blockers: [] });
     expect(row.result).toBe("FAIL");

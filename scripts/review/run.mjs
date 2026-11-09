@@ -365,6 +365,10 @@ export async function gateG3({ draft, resolve, mode, importDir, castDir, model }
 // The run
 // ---------------------------------------------------------------------------------------------
 
+/**
+ * Run the chain over the due drafts. Returns a summary; throws only for configuration errors.
+ * @param {{gate: string, lane?: string|null, quota?: number, dryRun?: boolean, allGates?: boolean, panel?: string, importDir?: string, emitPrompts?: string, outDir?: string, castDir?: string, model?: string, db: any, statuslog: any, now?: () => Date, out?: (s: string) => void}} opts
+ */
 export async function runChain({ gate, lane, quota, dryRun = false, allGates = false, panel = 'api', importDir, emitPrompts, outDir, castDir = DEFAULT_CAST_DIR, model, db, statuslog, now = () => new Date(), out = (s) => console.log(s) }) {
   const startedAt = now();
   const gates = gatesToRun(gate);
