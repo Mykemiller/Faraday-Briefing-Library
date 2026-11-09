@@ -313,7 +313,7 @@ export function tierTemplateText(draft) {
   return text;
 }
 
-const manuscriptOf = (draft) => (Array.isArray(draft?.contents) ? draft.contents[0] : '') ?? '';
+const manuscriptOf = (draft) => draft?.manuscript_md ?? (Array.isArray(draft?.contents) ? draft.contents[0] : '') ?? '';
 
 /** Every prompt the G2/G3 reviewers of one draft receive. Same text for api and emit modes. */
 export function buildPrompts(draft, { resolve, castDir = DEFAULT_CAST_DIR, preset = pickPreset(draft) } = {}) {

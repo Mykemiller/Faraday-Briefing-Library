@@ -35,15 +35,49 @@ export const INTERNAL_CODE_PATTERNS = Object.freeze([
 
 const MARKER_RE = /\[((?:S?\d+)(?:\s*,\s*S?\d+)*)\]/g;
 
-export function markersIn(text) {
+/** Bare `[n]` markers are accepted only up to this many refs; `[Sn]` always counts. A title's "[2026]" is not a marker. */
+export const BARE_MARKER_MAX = 500;
+
+export function markersIn(text, { bareMax = BARE_MARKER_MAX } = {}) {
   const out = [];
   for (const m of String(text ?? '').matchAll(MARKER_RE)) {
     for (const part of m[1].split(/\s*,\s*/)) {
+      const bare = !/^S/i.test(part);
       const n = Number(part.replace(/^S/i, ''));
-      if (Number.isInteger(n) && n > 0) out.push(n);
+      if (!Number.isInteger(n) || n <= 0) continue;
+      if (bare && n > bareMax) continue;
+      out.push(n);
     }
   }
   return out;
+}
+
+/**
+ * Statements ABOUT the record (BL2-05 compose.mjs writes them deterministically from the evidence pack):
+ * counts of Signals, the evidence window, register tallies, scale descriptors. Their numbers are corpus
+ * statistics, not claims a source states, so they are stripped before the number check. Each pattern
+ * removes only the meta phrase; any cited fact in the rest of the sentence is still checked.
+ */
+export const RECORD_STATEMENT_STRIPS = Object.freeze([
+  /^The record holds \d+ dated Signals?\b[^;]*;\s*the newest (?:is|being)\s*/i,
+  /^The record holds \d+ dated Signals?\b[^.]*\.?/i,
+  /^The record in this Briefing is \d+ sourced items?\b.*?dated between [^.]*\./i,
+  /^\[S\d+\]\s*The record in this Briefing is \d+ sourced items?\b.*?dated between [^.]*\./i,
+  /Over the \d+ months to [A-Z][a-z]{2,8}\.? \d{1,2}, \d{4},?/,
+  /;\s*the \d+ most recent are set out below,?/i,
+  /\bthe \d+ most recent are set out below,?/i,
+  /\(score [\d.]+ on the 0[-–]100 scale\)/i,
+  /\bon the 0[-–]100 scale\b/i,
+  /\bnamed in \d+ Signals?\b/i,
+  /^The weight of the record for [^.]*\./i,
+  /^Faraday's reading of this record:.*?records in scope sit under [^.]*\.\s*/i,
+  /\b\d+ of the \d+ records in scope\b/gi,
+]);
+
+export function stripRecordStatements(text) {
+  let t = String(text ?? '');
+  for (const re of RECORD_STATEMENT_STRIPS) t = t.replace(re, ' ');
+  return t;
 }
 
 export function refNumber(ref) {
@@ -285,7 +319,7 @@ export function urlsOf(ref) {
 export function runG1({ draft, briefing, pages, resolve, manuscript, renderNote }) {
   const blockers = [];
   const push = (code, message, extra = {}) => blockers.push({ code, message, ...extra });
-  const md = manuscript ?? (Array.isArray(draft?.contents) ? draft.contents[0] : '') ?? '';
+  const md = manuscript ?? draft?.manuscript_md ?? (Array.isArray(draft?.contents) ? draft.contents[0] : '') ?? '';
   const refs = Array.isArray(draft?.source_refs) ? draft.source_refs : [];
   const tier = String(draft?.tier ?? '').toLowerCase();
   const type = draft?.briefing_type ?? briefing?.briefing_type ?? null;
@@ -363,7 +397,7 @@ export function runG1({ draft, briefing, pages, resolve, manuscript, renderNote 
     if (s.isCoverish) continue;
     for (const u of unitsOf(s.body)) {
       stats.units += 1;
-      const tokens = numberTokens(u.text);
+      const tokens = numberTokens(stripRecordStatements(u.text));
       if (!tokens.length) continue;
       stats.numeric_units += 1;
       if (!u.cites.length) {

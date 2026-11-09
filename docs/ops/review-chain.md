@@ -101,12 +101,16 @@ not re-draft blindly. A G3 disagreement (§6) also parks. The `briefing_reviews.
 ### 3.4 G3 PASS → QUEUED
 
 Status line `… · QUEUED · PASS · Queued for sign-off: v2, 13 pages, panel min score 3/5; see
-v_briefing_signoff_queue.` No table write is needed: `docs/ops/signoff-queue.sql` defines
-`v_briefing_signoff_queue` over `briefing_reviews` ⋈ `briefings_versions` ⋈ `briefings` — current
-draft version with a G3 PASS, not yet promoted (`version > briefings.version`), not parked. Columns:
-briefing, title, version, lane, tier, pages, scores (panel scores + xcheck + G1 stats), preview path,
-queued/drafted timestamps. Security-invoker view, `service_role` only. **Not applied** (Founder
-decision 4: the merged PR is the approval to apply).
+v_briefing_signoff_queue.` No table write is needed. BL2-07 (FDY-283, migration
+`20261109150000_bl2_07_briefing_signoff.sql`) already created `v_briefing_signoff_queue` — every staged
+draft ahead of the live row with its latest G1/G2/G3 result and Myke's `briefing_signoff` approval.
+`docs/ops/signoff-queue.sql` is a `create or replace` of that view that keeps BL2-07's 20 columns
+verbatim and **appends** the review-chain columns the ticket asked for: `lane`, `pages` (the G1 row's
+score), `scores` (panel scores/min/preset/could-a-buyer-act, facts+voice verdicts with the
+numbers-checked counts, G1 stats — read from `briefing_reviews.notes`), `preview_path`, and two
+booleans, `queued` (latest G3 is PASS and not parked) and `parked`. It must be applied **after** the
+BL2-07 migration; the daily query is `where queued and not approved`. Security-invoker, `service_role`
+only. **Not applied** (Founder decision 4: the merged PR is the approval to apply).
 
 ## 4. G1-AUTO (deterministic)
 
@@ -248,14 +252,18 @@ gains a dated watch section or the criterion is relaxed for those tiers. Decisio
 
 ## 9. Deviations and flags for Myke
 
-- **Samples.** Not BL2-05 output (none exists). The three stub drafts are honest: they are what the lane
-  runner stages today, and the chain fails them for the right reasons. The four real manuscripts were
-  converted from BL-08/BL-09 material; two conversion choices show up in Reviewer B's violations and
-  should be read as fixture artefacts, not sample defects: the BL-09 cover eyebrow/record line was not
-  reproduced, and **Thread codes were kept off body headings** because FDY-281 confines internal codes
-  to the Sources page while the BL-09 template prints them in Thread headings — the two specs conflict,
-  and G1 enforces FDY-281. Likewise the Profile identity card's "Faraday record" row (the `cmp_…` id)
-  was dropped for the same reason.
+- **Samples.** The seven drafts ARE BL2-05 output: `docs/briefs/samples/*.md` (FDY-281) as staged by the
+  lane runner, with the evidence packs it composed from standing in for the Faraday tables (fixtures
+  README). An earlier pass of this ticket ran before BL2-05 landed, on BL-08/BL-09 material plus three
+  BL2-04 stubs; its findings are kept in §8 as a note because they were real and are not reproduced by
+  the BL2-05 corpus (different manuscripts).
+- **Two fixture-side lessons from the BL2-05 run.** (1) The generator composes sentences from a
+  signal's `faradays_take` as well as its `framing` — the fixture resolver first missed that and G1
+  reported three false mismatches on the Malaysia sentence of the theaters brief; `recordFor` now
+  includes it. A live run resolves against `signals`/`artifacts` and does not have this gap, but Reviewer
+  A's "raw source texts" should include `faradays_take` for the same reason. (2) G1's remaining FAIL
+  (Germany) is a genuine BL2-05 defect: the Polar "€1B" sentence is cited to the waste-heat article
+  (S3) when the Polar item is S2. The lane runner's citation picker, not the chain, owns that fix.
 - **`what_to_watch_useful` vs the Standard/Profile templates** (§8) — template change or tier-specific
   criterion; the chain implements the ticket as written.
 - **Panel execution.** Subagents, not the ThoughtForge API (§5). `--panel api` is implemented against

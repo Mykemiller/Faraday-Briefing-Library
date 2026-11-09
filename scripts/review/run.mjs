@@ -22,7 +22,7 @@ import { tmpdir } from 'node:os';
 import { createStatusLog } from '../statuslog.mjs';
 import { assertServiceRole, LANES } from '../lanes/run.mjs';
 import { runG1, summariseG1, normaliseUrl } from './g1.mjs';
-import { measurePages } from './render.mjs';
+import { measurePages, closeRenderer } from './render.mjs';
 import { buildPrompts, pickPreset, panelVerdict, xcheckVerdict, runPanelApi, runXcheckApi, importPanel, importXcheck, importName, DEFAULT_CAST_DIR } from './panel.mjs';
 
 export const GATES = Object.freeze(['G1-AUTO', 'G2-PANEL', 'G3-XCHECK']);
@@ -188,15 +188,18 @@ export function createFixtureDb(fx) {
     },
     resolve(url) {
       const key = normaliseUrl(url);
-      if (records[url] || records[key]) {
-        const r = records[url] ?? records[key];
-        return { resolved: true, kind: r.kind, id: r.id, text: r.text ?? null };
-      }
-      const e = byUrl[key];
-      if (e) {
+      const rec = records[url] ?? records[key];
+      if (rec) return { resolved: true, kind: rec.kind, id: rec.id, text: rec.text ?? null, title: rec.title ?? null, published_at: rec.published_at ?? null };
+      const e = byUrl[url] ?? byUrl[key]; // raw url first: two events can share a page and differ only by fragment
+      if (e && e.best_artifact !== undefined) {
+        // BL-09 capture shape (artifact bodies + signal framings)
         const framings = (e.signals ?? []).map((s) => s.framing).filter(Boolean);
         const text = [e.best_artifact?.text, ...framings].filter(Boolean).join('\n');
         return { resolved: true, kind: e.best_artifact ? 'artifact' : 'signal', id: e.best_artifact?.id ?? e.signals?.[0]?.id ?? null, text: text || null, title: e.best_artifact?.title ?? null, published_at: e.best_artifact?.published_at ?? null, dates: (e.signals ?? []).map((s) => s.fired_at).filter(Boolean), truncated: Boolean(e.best_artifact?.truncated), artifact_ids: e.artifact_ids ?? [], signal_ids: (e.signals ?? []).map((s) => s.id) };
+      }
+      if (e) {
+        // BL2-05 evidence-pack shape (the record the generator composed from)
+        return { resolved: Boolean(e.found ?? e.text), kind: e.kind, id: e.id, artifact_id: e.artifact_id ?? null, text: e.text ?? null, title: e.title ?? null, published_at: e.published_at ?? null, dates: e.dates ?? [] };
       }
       return { resolved: false };
     },
@@ -311,7 +314,7 @@ function wrapResolver(resolve, briefing) {
 
 export async function gateG1({ draft, briefing, resolve, outDir, db, dryRun }) {
   const basename = `${String(draft.briefing_id).slice(0, 8)}-v${draft.version}`;
-  const measured = await measurePages({ manuscript: draft.contents?.[0] ?? '', tier: draft.tier, title: draft.title, outDir, basename });
+  const measured = await measurePages({ manuscript: draft.manuscript_md ?? draft.contents?.[0] ?? '', tier: draft.tier, outDir, basename });
   let previewPath = measured.pdf_path;
   if (!dryRun && measured.pdf_path && db.kind === 'supabase') {
     try { previewPath = await db.uploadPreview(measured.pdf_path, `review/${draft.briefing_id}/v${draft.version}.pdf`); } catch (e) { measured.upload_error = String(e?.message ?? e); }
@@ -473,6 +476,7 @@ export async function runChain({ gate, lane, quota, dryRun = false, allGates = f
     notes: `review-chain gate=${gate} lane=${lane ?? 'all'} panel=${panel} dry_run=${dryRun} pass=${summary.passed} fail=${summary.failed} parked=${summary.parked} queued=${summary.queued}`,
   };
   if (!dryRun && panel !== 'emit') await db.insertHealth(health); else out(`[review-chain dry-run] would write automation_health_log ${JSON.stringify(health)}`);
+  await closeRenderer();
   return summary;
 }
 
