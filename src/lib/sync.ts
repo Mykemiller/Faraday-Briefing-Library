@@ -1,20 +1,37 @@
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { fetchShelfBriefings, type BriefingRow, type Lookups } from "@/lib/briefings-source";
-import { BRIEFINGS_SOURCE, BRIEFING_ACTIVE_CAP, type ShelfStatus } from "@/config/constants";
+import { BRIEFINGS_SOURCE, BRIEFING_ACTIVE_CAP, type BriefingType, type ShelfStatus } from "@/config/constants";
 import { briefingSlug } from "@/lib/slug";
 
-/**
- * briefing_type from IDF placement: subdomain ⇒ thread; domain ⇒ sector; theme ⇒ theater;
- * no IDF placement at all ⇒ null (unplaced). A company link feeds the companies facet only;
- * it never decides the type. Editorial can override by setting `briefings.briefing_type`
- * directly (FDY-181) — that value always wins over the derivation.
- * byline brand rule: theater ⇒ Mach (forward thesis), else Gilbert (empirical).
- */
-export function deriveBriefingType(row: {
+/** Inputs to the type derivation: the briefing's entity keys plus its resolved IDF placement. */
+export interface TypeDerivationInput {
+  /** briefings.jurisdiction_id — 'US-XX' or ISO-3166 alpha-2 (BL2-01). */
+  jurisdictionId?: string | null;
+  /** briefings.company_id — companies.company_uid (BL2-01: now decides the type). */
+  companyId?: string | null;
+  /** briefings.institution_id — institutions.institution_uid (counts as a company-type entity key). */
+  institutionId?: string | null;
   themes: string[];
   domains: string[];
   subdomains: string[];
-}): "theater" | "sector" | "thread" | null {
+}
+
+/**
+ * briefing_type derivation (BL2-01, FDY-277 — founder decisions 1 + 2, 2026-11-09):
+ *   jurisdiction_id ⇒ jurisdiction;  company_id (or institution_id) ⇒ company;
+ *   then IDF placement: subdomain ⇒ thread; domain ⇒ sector; theme ⇒ theater;
+ *   nothing at all ⇒ null (unplaced).
+ * Entity keys outrank IDF placement because a key names WHAT the brief is about while placement
+ * says WHERE it sits on the shelf; a company brief filed under a Thread is still a company brief.
+ * (Measured 2026-11-09: 337 live rows carry company_id, 4 of them also carry a placement.)
+ * Editorial can override by setting `briefings.briefing_type` directly (FDY-181) — that value
+ * always wins over the derivation; the DB CHECK constraints keep the override honest
+ * (jurisdiction ⇒ jurisdiction_id; company ⇒ company_id or institution_id).
+ * byline brand rule: theater ⇒ Mach (forward thesis), else Gilbert (empirical).
+ */
+export function deriveBriefingType(row: TypeDerivationInput): BriefingType | null {
+  if (row.jurisdictionId) return "jurisdiction";
+  if (row.companyId || row.institutionId) return "company";
   if (row.subdomains.length) return "thread";
   if (row.domains.length) return "sector";
   if (row.themes.length) return "theater";
@@ -66,8 +83,8 @@ export interface CacheRow {
 /**
  * Map one `briefings` row → a denormalized catalog cache row, or null when the row is not
  * shelf-eligible. `existingType` is the type the cache already holds for this id: a row with no
- * IDF placement and no explicit type keeps it rather than churning (the 357 company
- * placeholders carry no placement today — the public vocabulary has no "company" type yet, G3).
+ * entity key, no IDF placement and no explicit type keeps it rather than churning. (G3 is closed:
+ * since BL2-01 a company placeholder derives `company` from its company_id.)
  */
 export function toCacheRow(
   b: BriefingRow,
@@ -85,7 +102,12 @@ export function toCacheRow(
     subdomains: b.thread_id ? [lookups.subdomains.get(b.thread_id) ?? b.thread_id] : [],
     companies: b.company_id ? [lookups.companies.get(b.company_id) ?? b.company_id] : [],
   };
-  const derived = deriveBriefingType(facets);
+  const derived = deriveBriefingType({
+    jurisdictionId: b.jurisdiction_id,
+    companyId: b.company_id,
+    institutionId: b.institution_id,
+    ...facets,
+  });
   const briefingType = b.briefing_type ?? derived ?? (existingType || null) ?? "sector";
   const byline = (b.byline as "Gilbert" | "Mach" | null) ?? deriveByline(briefingType);
   return {

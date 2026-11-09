@@ -42,8 +42,12 @@ export const BRIEFINGS_SOURCE = {
   shelfStatuses: { published: "Available", planned: "Coming Soon" },
 } as const;
 
-/** Public-vocabulary briefing types (Theater/Sector/Thread [+ Jurisdiction]). */
-export const BRIEFING_TYPES = ["theater", "sector", "thread", "jurisdiction"] as const;
+/**
+ * Public-vocabulary briefing types. Theater/Sector/Thread (IDF placement), plus the two entity-keyed
+ * types approved 2026-11-09 (BL2-01, FDY-277): Company (companies.company_uid / institutions) and
+ * Jurisdiction (US states + countries, briefings.jurisdiction_id). Order = shelf group order.
+ */
+export const BRIEFING_TYPES = ["theater", "sector", "thread", "company", "jurisdiction"] as const;
 export type BriefingType = (typeof BRIEFING_TYPES)[number];
 
 /** Byline brand rule: Mach = forward thesis (Theater); Gilbert = empirical (everything else). */

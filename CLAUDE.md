@@ -28,9 +28,11 @@ Build Plan v2.0*. Next.js (App Router) · Clerk · Supabase · Stripe · Gamma.
   entitlements stay stable) and `briefings.id` for native rows. The sync writes ONLY the columns
   it owns — `briefing_description`, `canonical_flag`, `gamma_*`, `download_count`,
   `preview_*` are never overwritten (field-map gaps G1/G2/G6 have no `briefings` column yet).
-  `briefing_type`/`byline` come from the FDY-181 columns when set, else are derived from IDF
-  placement; a company-only placeholder with neither keeps its existing cache type (the public
-  vocabulary has no "company" type yet — G3, Myke's call).
+  `briefing_type`/`byline` come from the FDY-181 columns when set, else are derived
+  (BL2-01, FDY-277, founder decisions 2026-11-09): `jurisdiction_id` ⇒ `jurisdiction`,
+  `company_id`/`institution_id` ⇒ `company`, then IDF placement (subdomain ⇒ thread, domain ⇒
+  sector, theme ⇒ theater). Entity keys outrank placement. G3 is closed — the public vocabulary is
+  now five types; a row with no key, no placement and no explicit type keeps its existing cache type.
 - **Virtualized, section-aware shelf (L5).** `Shelf.tsx` windows rows (TanStack Virtual). Domain
   sections with zero Available briefings **ghost-collapse** to one line.
 - **Gamma export + content-addressing (L10).** A worker calls the Gamma **native export API** (PNG)
