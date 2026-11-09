@@ -159,7 +159,7 @@ reconstructed from the persona files in the `thoughtforge` repo** (`cast/<slug>/
 composed in the same order the ThoughtForge app composes its system prompts, plus the review turn. In
 production `--panel api` sends those prompts through the Anthropic SDK; **for this dry run every
 reviewer was an independent Claude Code subagent (fresh context, the exact emitted prompt file, no
-other input), 41 sessions in all** — 36 panelists and cross-checkers in parallel, then the 5 chairs.
+other input), 39 sessions in all** — 34 panelists and cross-checkers in parallel, then the 5 chairs.
 The repo copy of the cast is canonical (TF-DEC-40); nothing is copied into this repo.
 
 The panel receives **the manuscript and the sources list only**. Founder instruction encoded in the turn:
@@ -218,37 +218,57 @@ full panel carries the Fact-Checker; the Press Lead sits on every non-jurisdicti
 Status-log lines use `scripts/statuslog.mjs` (BL2-04) unchanged: gates `G1-AUTO · G2-PANEL ·
 G3-XCHECK · QUEUED`, results `PASS · FAIL · PARKED`, America/Chicago, one line per gate per brief.
 
-## 8. Dry run on the seven samples (2026-11-09, fixtures, nothing written)
+## 8. Dry run on the seven BL2-05 samples (2026-11-09, fixtures, nothing written)
 
-| Lane | Draft (tier, source) | G1-AUTO | G2-PANEL (preset · thesis/evidence/watch · factual edits) | G3-XCHECK (facts · voice) |
+The seven drafts are the BL2-05 lane runner's own output (`docs/briefs/samples/*.md`, FDY-281), read
+through the review fixtures (§7 of the fixtures README). All three gates ran on every draft
+(`--all-gates`); in production the chain stops at the first FAIL. G1 ran locally; the 39 G2/G3 reviewer
+sessions (34 panelists + cross-checkers in parallel, then the 5 chairs) were independent Claude Code
+subagents on the emitted prompt files (§5). `scripts/review/fixtures/reviews.sample.json` holds the 21
+rows; each reviewer's JSON is summarised in `notes`.
+
+| Lane | Draft (tier, version) | G1-AUTO | G2-PANEL (preset · thesis/evidence/watch · factual edits) | G3-XCHECK (facts · voice) |
 |---|---|---|---|---|
-| theaters | The Power Reckoning (deep, BL-08 sample) | **FAIL** 13 pp · 224 numbers checked · 1 mismatch: the Signals table's "28 Jan **2027**" — the cited Utility Dive piece says only "Jan. 28" | FAIL `power-grid` · 4/3/3 · buyer could act · 1 factual ("FERC told every grid operator" → the six FERC-jurisdictional RTOs/ISOs) | FAIL · facts PASS (152 checked, 4 unverifiable: S8 truncated at capture) · voice 6 violations |
-| domains | The Power Reckoning (standard, BL-09 sample) | PASS 9 pp · 154 checked | FAIL `power-grid` · 4/3/1 · 1 factual (Meta's up to 6.6 GW cited as *existing* capacity at [7]) | FAIL · facts 1 mismatch (the Take's "in eight weeks" is stated by none of [1, 5, 7]; S7 dates Meta's deals to January 2026) · voice 6 |
-| subdomains | The Thermal-Power Convergence Play (standard, BL-09 sample) | PASS 9 pp · 133 checked · 1 unverifiable | FAIL `thermal` · 4/3/1 · 1 factual ("Chillers began running on 800 V DC" — one chiller was demonstrated) | FAIL · facts PASS (72 checked) · voice 8 |
-| companies | CoreWeave (profile, BL-09 sample) | PASS 2 pp · 31 checked | FAIL `profile-light` (victoria-stroud) · 3/3/2 · 0 factual | FAIL · facts PASS (29 checked) · voice 1 (Dated Signals not newest-first: 7 Oct before 8 Oct) |
-| institutions | Lawrence Berkeley National Laboratory (profile, BL2-04 stub) | FAIL `no_sources`, `placeholder_content` | FAIL `profile-light` (albert-thorne) · 0/0/0 | FAIL · facts PASS (nothing to check) · voice 5 |
-| states | Texas (standard, jurisdiction, BL2-04 stub; prior G1 FAIL on v1) | **PARKED** — second consecutive FAIL (`no_sources`, `placeholder_content`, 2 pp, missing not-legal-advice line) + Questions line, default "skip this brief this release" | FAIL `jurisdiction` · 0/0/0 | FAIL · voice 7 |
-| countries | Germany (standard, jurisdiction, BL2-04 stub) | FAIL (same four blockers) | FAIL `jurisdiction` · 0/0/0 | FAIL · voice 7 |
+| theaters | The Power Reckoning (deep, v2) | PASS 13 pp · 216 numbers checked | FAIL `faraday-editorial` · 1/2/1 · buyer could not act · 2 factual ("Google News" named as publisher on S28/S30/S32; 219 vs 220 Signal count) | **PARKED** · facts PASS (87 checked, 0 mismatches) · voice FAIL (10) · 1 disagreement (the Oracle/Tencent sentence: A cleared, B flagged "reportedly") |
+| domains | Grid & Regulatory (standard, v2) | PASS 8 pp · 85 checked | FAIL `power-grid` · 1/2/1 · 1 factual (Signal register undercounts Google/AEP/National Grid against the sources list) | FAIL · facts PASS (60 checked) · voice FAIL (12: no hypothesis, internal taxonomy counts and a `media_events` enum in subscriber copy, scraper residue in headlines/At-a-glance cells) |
+| subdomains | Interconnection Queue & Grid Access (standard, v3) | PASS 10 pp · 100 checked | FAIL `power-grid` · 1/2/1 · 1 factual ("Google News" as publisher on S12/S13/S32); every panelist flagged the unreconciled ERCOT queue — 226 GW [S2] vs 410 GW [S27] | FAIL · facts FAIL (69 checked, 2 mismatches: "tripled" vs the source's "nearly triple" [S17]; "45%" vs "up to 45%" and an Ohio rate class stated as created where the source says pending [S4]) · voice FAIL (9) |
+| companies | CoreWeave (profile, v2) | PASS 2 pp · 19 checked | FAIL `profile-light` (victoria-stroud) · 2/2/1 · 1 factual (S8 drops the lessor attribution, so a landlord's 5.7 GW reads as CoreWeave's against 526 MW supported) | FAIL · facts PASS (18 checked) · voice FAIL (2: "What the record shows" is one sentence against the template's two–three; identity card 8 pairs against 6–7) |
+| institutions | Electric Reliability Council of Texas (profile, v2) | PASS 2 pp · 20 checked | FAIL `profile-light` (gilbert-faraday) · 2/2/1 · 1 factual (identity card calls the ISO a "Regulator"); three queue figures (438/226/92 GW) unreconciled | **PARKED** · facts PASS (19 checked) · voice FAIL (4: identity card 5 pairs, no Theater/Sector; "What the record shows" 1 sentence; S5 Signal does not mention the entity) · 2 disagreements |
+| states | Texas (standard, jurisdiction, v2) | PASS 10 pp · 70 checked | FAIL `jurisdiction` · 1/2/1 · 2 factual (S4/S10 dated 2026-11-30, after the brief's own 9 Nov date; "18 sourced items" vs 19); cover posture "Leading, stable" (scored July) unreconciled with the post-election moratorium record | FAIL · facts FAIL (73 checked, 2 date mismatches — the same S4/S10 rows) · voice FAIL (7: no hypothesis-led opening; Take restates the body; all six Thread sections at 3 entries against the 4-entry floor) |
+| countries | Germany (standard, jurisdiction, v2) | **FAIL** 10 pp · 102 checked · 2 `number_mismatch`: "€1B" Polar funding cited to S3 (the waste-heat article) — the Polar item is S2; same sentence in the argument and the Take | FAIL `jurisdiction` · 2/2/1 · 2 factual (S10 publisher is a headline fragment — the domain is enkiai.com; Microsoft register count); Amazon €2B vs €16B vs €7.8B unreconciled; "Legislation & rules" prints empty while EnEfG/National Strategy sit under other threads | FAIL · facts FAIL (62 checked, 1 mismatch: "Amazon plans to invest 2 billion euros … by 2027" [S17] — the German source says "steckt 2027 Milliarden", no 2-billion figure, 2027 is the investment year) · voice FAIL (10) |
 
-21 rows: 3 PASS, 17 FAIL, 1 PARKED, 0 QUEUED. Gates after a FAIL ran only because of `--all-gates`
-(the dry run needed every gate exercised); in production the chain stops at the first FAIL.
-`scripts/review/fixtures/reviews.sample.json` holds the rows; the 41 reviewer JSONs are summarised in
-`notes`.
+**21 rows: 6 PASS, 13 FAIL, 2 PARKED, 0 QUEUED.** Status-log lines, requeue entries and the two
+Questions-for-Myke lines (default "skip this brief this release") were printed exactly as the live
+run would write them.
 
-**What the chain caught on real, hand-curated samples** — three findings that were true before this
-ticket and that no earlier gate had surfaced:
+**What the chain caught on the BL2-05 corpus.**
 
-1. The Deep sample infers a year the source does not state (G1, deterministic).
-2. The Standard Power Reckoning's Take says the record "in eight weeks logs agreements covering
-   several gigawatts" citing [1, 5, 7]; [7] (Meta–TerraPower/Oklo/Vistra) is dated January 2026, so the
-   claim is not supported by its own citations (Reviewer A); the same source is cited for "existing"
-   nuclear capacity though most of it is new build (panel, factual edit).
-3. The Thermal sample pluralises one chiller demonstration into "chillers began running" (panel).
+1. **G1 is now clean on six of seven** — page counts match the generator's (13/8/10/2/2/10/10), every
+   source resolves, no banned vocabulary or internal codes leaked, Profiles carry no Take. The one FAIL
+   is a real mis-citation in the Germany sample (Polar €1B → S3 instead of S2).
+2. **Reviewer A found four factual defects G1 structurally cannot:** two hedge-dropping paraphrases
+   ("tripled", "45%" for "nearly triple", "up to 45%"), a status paraphrase (Ohio rate class
+   created vs pending), and a mistranslation (Amazon "2 billion euros" from "2027 Milliarden"). Plus
+   the Texas S4/S10 dates, which both the panel and Reviewer A flagged independently.
+3. **Every draft fails G2 on `thesis_clear` (1–2) and `what_to_watch_useful` (1), and every chair
+   ruled "buyer could not act".** The failure is the same in all seven: the BL2-05 templates fill the
+   cover thesis, the argument and the Take with restated Signal summaries plus record housekeeping
+   ("The record holds N dated Signals…"), and the "Signals to watch" block lists past headlines rather
+   than dated forward triggers. This is a generator finding, not a reviewer artefact — four personas
+   per panel reached it independently, and Reviewer B's violations say the same thing in template
+   terms. It is the single highest-leverage fix for BL2-05.
+4. **Recurring factual-edit classes the generator can fix mechanically:** "Google News" rendered as a
+   publisher when the source URL is a Google News redirect (3 drafts); register counts in the
+   Signal-register intro that do not match the entries printed; conflicting figures for one fact
+   printed side by side with no reconciliation (ERCOT 226/410 GW; Amazon €2B/€16B); Signals dated
+   after the brief's own prepare date.
 
-And one systemic finding: **every Standard and Profile sample scored 1–2 on `what_to_watch_useful`**,
-because the BL-09 Standard and Profile templates have no forward-looking section (the Deep template
-has "Signals to watch"). As specified, G2 will fail every Standard brief until either the template
-gains a dated watch section or the criterion is relaxed for those tiers. Decision for Myke (§9).
+**Earlier pass (BL-08/BL-09 material, before BL2-05 landed) — kept for the record.** The same chain,
+run on four hand-converted BL-08/BL-09 samples and three BL2-04 stubs, caught a year the Deep sample
+inferred that its source did not state ("28 Jan 2027"), a Take claim ("in eight weeks") unsupported by
+its own citations, and one chiller demonstration pluralised into "chillers began running". Those
+manuscripts are not in the BL2-05 corpus, so the findings do not recur here; they are evidence of the
+same gates working on different material.
 
 ## 9. Deviations and flags for Myke
 
@@ -264,8 +284,18 @@ gains a dated watch section or the criterion is relaxed for those tiers. Decisio
   A's "raw source texts" should include `faradays_take` for the same reason. (2) G1's remaining FAIL
   (Germany) is a genuine BL2-05 defect: the Polar "€1B" sentence is cited to the waste-heat article
   (S3) when the Polar item is S2. The lane runner's citation picker, not the chain, owns that fix.
-- **`what_to_watch_useful` vs the Standard/Profile templates** (§8) — template change or tier-specific
-  criterion; the chain implements the ticket as written.
+- **`what_to_watch_useful` and `thesis_clear`** (§8 finding 3) — every BL2-05 draft scores 1–2 on both,
+  so as specified G2 fails the whole corpus. The chain implements the ticket as written; the fix sits in
+  the BL2-05 generator (a real thesis sentence, a dated forward watch list, the Take as an opinion).
+  Until then every lane will requeue at G2 and park on the second attempt.
+- **PARKED fires on cross-dimension disagreement.** The ticket's rule "disagreement on the same
+  sentence → PARKED" is implemented literally: a draft parks when Reviewer A lists a sentence as
+  cleared and Reviewer B flags the same sentence. Because A checks facts and B checks voice, that
+  happens whenever a voice violation lands on a factually-clean sentence — two of seven here
+  (theaters: "reportedly" on the Oracle/Tencent sentence; institutions: two identity-card/record
+  sentences), both on the FIRST attempt, which pre-empts the two-consecutive-FAILs rule. If PARKED is
+  meant for genuine fact disputes, narrow `xcheckVerdict` to same-dimension conflicts (A cleared vs B
+  `factual`-kind, or B cleared vs A mismatch) — a four-line change in `panel.mjs`. Decision for Myke.
 - **Panel execution.** Subagents, not the ThoughtForge API (§5). `--panel api` is implemented against
   the SDK (`claude-opus-5-5`, `output_config.format` JSON schema, streaming) but could not be run here
   (no key); first live run should be a single draft with `--dry-run`. Server-side refusal fallbacks are
@@ -285,5 +315,7 @@ gains a dated watch section or the criterion is relaxed for those tiers. Decisio
   in the environment that runs it; cron via `cron_http_post` + Vault (FAR-344) is a later ticket.
 - `v_briefing_signoff_queue` is a file, not applied.
 - Registry id for the health row is provisional (`AUTO-PROVISIONAL`); replace the constant when granted.
-- Reviewer A on the stubs returned `numbers_checked = 0` — fine, but the chain could skip G2/G3 outright
-  when G1 reports `no_sources` or `placeholder_content`; today only `--all-gates` reaches them anyway.
+- The chain could skip G2/G3 outright when G1 reports `no_sources` or `placeholder_content`; today
+  only `--all-gates` reaches them anyway.
+- The live resolver now reads `signals.faradays_take` alongside `framing` (the generator composes from
+  it — §9) so Reviewer A and G1 see the same record text the fixture path does; untested live.

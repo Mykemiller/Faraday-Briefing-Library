@@ -218,9 +218,9 @@ export function createSupabaseDb(client, { briefingResolve = true } = {}) {
     if (/^https?:\/\//i.test(key)) {
       const variants = [...new Set([url, key, key.replace(/^https:/, ''), `${key}?utm_source=rss&utm_medium=feed&utm_campaign=rss_campaign`])];
       const { data: arts } = await client.from('artifacts').select('artifact_id, body_text, raw_content, published_at, signal_envelope').in('source_url', variants).limit(8);
-      const { data: sigs } = await client.from('signals').select('id, artifact_id, framing, fired_at').in('source_url', variants).limit(8);
+      const { data: sigs } = await client.from('signals').select('id, artifact_id, framing, faradays_take, fired_at').in('source_url', variants).limit(8);
       const best = (arts ?? []).map((a) => ({ id: a.artifact_id, text: a.body_text ?? a.raw_content ?? '', published_at: a.published_at, title: a.signal_envelope?.title ?? a.signal_envelope?.headline ?? null })).sort((a, b) => b.text.length - a.text.length)[0];
-      const framings = (sigs ?? []).map((s) => s.framing).filter(Boolean);
+      const framings = (sigs ?? []).flatMap((s) => [s.framing, s.faradays_take]).filter(Boolean); // the generator composes from faradays_take too (fixtures README)
       if (best || sigs?.length) {
         res = { resolved: true, kind: best ? 'artifact' : 'signal', id: best?.id ?? sigs[0].id, text: [best?.text, ...framings].filter(Boolean).join('\n') || null, title: best?.title ?? null, published_at: best?.published_at ?? null, dates: (sigs ?? []).map((s) => s.fired_at).filter(Boolean), artifact_ids: (arts ?? []).map((a) => a.artifact_id), signal_ids: (sigs ?? []).map((s) => s.id) };
       }
