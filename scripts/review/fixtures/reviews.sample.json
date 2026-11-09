@@ -1,0 +1,850 @@
+[
+ {
+  "id": null,
+  "created_at": "2026-11-09T11:06:50.539Z",
+  "briefing_id": "41d4c4e2-53da-4098-8ed4-8b22481857ec",
+  "version": 2,
+  "gate": "G1-AUTO",
+  "reviewer": "g1-auto",
+  "result": "PASS",
+  "score": 2,
+  "blockers": [],
+  "notes": "{\"summary\":\"Automated gate passed: 2 pages, 10 sources, 31 numbers checked.\",\"stats\":{\"units\":11,\"numeric_units\":9,\"numbers_checked\":31,\"numbers_matched\":31,\"numbers_unverifiable\":0,\"numbers_mismatched\":0,\"uncited_numeric_units\":0,\"markers\":10,\"refs\":10,\"pages\":2,\"tier\":\"profile\",\"briefing_type\":\"company\"},\"warnings\":[],\"preview_path\":\"/tmp/claude-0/-home-user/b6ee6df7-8a05-54f2-b70a-a27874d25a45/scratchpad/pdf/41d4c4e2-v2.pdf\",\"html_path\":\"/tmp/claude-0/-home-user/b6ee6df7-8a05-54f2-b70a-a27874d25a45/scratchpad/pdf/41d4c4e2-v2.html\",\"fonts_loaded\":[\"IBM Plex Mono\",\"IBM Plex Sans\",\"Source Serif 4\"],\"render_error\":null,\"upload_error\":null,\"chain\":\"briefing-review-chain_v0.1\"}",
+  "lane": "companies",
+  "title": "CoreWeave",
+  "tier": "profile",
+  "status_result": "PASS"
+ },
+ {
+  "id": null,
+  "created_at": "2026-11-09T11:06:50.542Z",
+  "briefing_id": "41d4c4e2-53da-4098-8ed4-8b22481857ec",
+  "version": 2,
+  "gate": "G2-PANEL",
+  "reviewer": "tf-panel:profile-light",
+  "result": "FAIL",
+  "score": 2,
+  "blockers": [
+   {
+    "code": "score_below_3",
+    "message": "what_to_watch_useful = 2",
+    "dimension": "what_to_watch_useful",
+    "score": 2
+   }
+  ],
+  "notes": "{\"preset\":\"profile-light\",\"preset_label\":\"Profile Light\",\"members\":[{\"slug\":\"victoria-stroud\",\"scores\":{\"thesis_clear\":3,\"evidence_sufficient\":3,\"what_to_watch_useful\":2},\"could_a_buyer_act\":false,\"required_edits\":3,\"note\":\"Numbers are clean and trace to sources. But backlog $60.7B against debt $35B is never netted or interpreted, and nothing forward is dated. A lender cannot size exposure or know what to watch. Add the leverage read and a dated trigger list.\"}],\"chair\":null,\"scores\":{\"thesis_clear\":3,\"evidence_sufficient\":3,\"what_to_watch_useful\":2},\"could_a_buyer_act\":false,\"required_edits\":[{\"kind\":\"structural\",\"location\":\"After 'Dated Signals'\",\"edit\":\"Add a short dated watch list built only from the cited sources: the year-end 1.85 GW capacity target [4], the delayed-draw loan's draw schedule [5], the 2028 Indonesia delivery date [6], and the 240 MW India timeline [9]. Mark each item as a stated date or an open question.\",\"reason\":\"The brief has no forward items. A lender or counterparty cannot tell which dates or triggers should change their next move.\"},{\"kind\":\"structural\",\"location\":\"What the record shows, opening\",\"edit\":\"Add one sentence that gives the financing read: $60.7B backlog against $35B debt [3, 4]. State plainly that this is the leverage-versus-contracted-revenue relationship a buyer should watch.\",\"reason\":\"The facts are accurate but unranked. Backlog, capacity and debt sit side by side with no stated implication, so the reader has no thesis.\"},{\"kind\":\"style\",\"location\":\"Dated Signals\",\"edit\":\"Order the entries strictly newest to oldest. The 2 Oct entry currently sits below 7 and 8 Oct.\",\"reason\":\"A scan-reader will assume the list is chronological.\"}],\"note\":\"Numbers are clean and trace to sources. But backlog $60.7B against debt $35B is never netted or interpreted, and nothing forward is dated. A lender cannot size exposure or know what to watch. Add the leverage read and a dated trigger list.\",\"mode\":\"import\",\"chain\":\"briefing-review-chain_v0.1\"}",
+  "lane": "companies",
+  "title": "CoreWeave",
+  "tier": "profile",
+  "status_result": "FAIL"
+ },
+ {
+  "id": null,
+  "created_at": "2026-11-09T11:06:50.543Z",
+  "briefing_id": "41d4c4e2-53da-4098-8ed4-8b22481857ec",
+  "version": 2,
+  "gate": "G3-XCHECK",
+  "reviewer": "xcheck-facts+xcheck-voice",
+  "result": "FAIL",
+  "score": null,
+  "blockers": [
+   {
+    "code": "voice_violation",
+    "reviewer": "xcheck-voice",
+    "message": "Tier template (Profile) §2 Section list: Dated Signals are 'newest first': Dated Signals: the first two entries, \"7 Oct 2026 · Converge Digest — Enters India with AdaniConneX.\" followed by \"8 Oct 2026 · SiliconANGLE — Willow picks CoreWeave for training.\"",
+    "sentence": "Dated Signals: the first two entries, \"7 Oct 2026 · Converge Digest — Enters India with AdaniConneX.\" followed by \"8 Oct 2026 · SiliconANGLE — Willow picks CoreWeave for training.\"",
+    "rule": "Tier template (Profile) §2 Section list: Dated Signals are 'newest first'",
+    "note": "The 7 Oct entry is listed above the 8 Oct entry, so the list is not newest first. The 8 Oct entry should come first. The rest of the list is in correct descending order: 2 Oct, 18 Sept, 11 Aug, 10 Aug, 4 Aug, 9 Apr."
+   }
+  ],
+  "notes": "{\"a\":\"PASS\",\"b\":\"FAIL\",\"mismatches\":0,\"violations\":1,\"unverifiable\":0,\"numbers_checked\":29,\"disagreements\":[],\"summaries\":{\"facts\":\"All 29 cited figures and dates across 10 sentences re-derive from their cited sources: $60.7B backlog, $4.25B/$1.25B/$3.0B raise (S3, 9 Apr 2026); 1.85 GW year-end capacity up from 1.7 GW, $35B debt, Q2 doubling (S4); $2.6B delayed draw term loan (S5); three Indonesian facilities, 2028, 360 MW, first Asia-Pacific presence (S6, both Converge Digest and DCD); 240 MW at AdaniConneX Taloja, Navi Mumbai, first India footprint (S9). Signal dates for S7, S8 and S10 are not stated in the source body text but match the publication dates in the source listing (S10's URL also carries 2026/10/08); treated as supported. The S3 backlog is stated 'as of Dec 31 2025' in an April 2026 filing, consistent with 'reported ... in an April 2026 SEC filing'. No mismatches; no unverifiable figures (S2 has no source text but backs only non-numeric identity fields).\",\"voice\":\"One template violation: Dated Signals are not strictly newest first. The 7 Oct entry precedes the 8 Oct entry. Structure, section order, section budgets, Take absence, sourced-claims voice and public vocabulary all comply. The opening leads with the most material sourced fact rather than a thesis. I cleared that because the Profile template calls for sourced facts only, with no forecast or rating, and that overrides the Brand Bible's thesis-first rule. No fact or number was judged, as that is another reviewer's job.\"},\"mode\":\"import\",\"chain\":\"briefing-review-chain_v0.1\"}",
+  "lane": "companies",
+  "title": "CoreWeave",
+  "tier": "profile",
+  "status_result": "FAIL"
+ },
+ {
+  "id": null,
+  "created_at": "2026-11-09T11:06:51.854Z",
+  "briefing_id": "4311f8af-c04c-41b4-8af5-db9de3edc5e6",
+  "version": 2,
+  "gate": "G1-AUTO",
+  "reviewer": "g1-auto",
+  "result": "PASS",
+  "score": 9,
+  "blockers": [],
+  "notes": "{\"summary\":\"Automated gate passed: 9 pages, 30 sources, 133 numbers checked, 1 unverifiable.\",\"stats\":{\"units\":73,\"numeric_units\":50,\"numbers_checked\":133,\"numbers_matched\":133,\"numbers_unverifiable\":0,\"numbers_mismatched\":0,\"uncited_numeric_units\":1,\"markers\":30,\"refs\":30,\"pages\":9,\"tier\":\"standard\",\"briefing_type\":\"thread\"},\"warnings\":[{\"code\":\"uncited_number\",\"message\":\"Numeric sentence carries no citation: \\\"This Briefing rests on thirty sourced items, Faraday Signals and crawled articles, dated between 8 September and 12 October 2026.\\\"\",\"sentence\":\"This Briefing rests on thirty sourced items, Faraday Signals and crawled articles, dated between 8 September and 12 October 2026.\",\"numbers\":[\"8\",\"12\"],\"section\":\"The argument\",\"severity\":\"warn\"}],\"preview_path\":\"/tmp/claude-0/-home-user/b6ee6df7-8a05-54f2-b70a-a27874d25a45/scratchpad/pdf/4311f8af-v2.pdf\",\"html_path\":\"/tmp/claude-0/-home-user/b6ee6df7-8a05-54f2-b70a-a27874d25a45/scratchpad/pdf/4311f8af-v2.html\",\"fonts_loaded\":[\"IBM Plex Mono\",\"IBM Plex Sans\",\"Source Serif 4\"],\"render_error\":null,\"upload_error\":null,\"chain\":\"briefing-review-chain_v0.1\"}",
+  "lane": "subdomains",
+  "title": "The Thermal-Power Convergence Play",
+  "tier": "standard",
+  "status_result": "PASS"
+ },
+ {
+  "id": null,
+  "created_at": "2026-11-09T11:06:51.856Z",
+  "briefing_id": "4311f8af-c04c-41b4-8af5-db9de3edc5e6",
+  "version": 2,
+  "gate": "G2-PANEL",
+  "reviewer": "tf-panel:thermal",
+  "result": "FAIL",
+  "score": 1,
+  "blockers": [
+   {
+    "code": "score_below_3",
+    "message": "what_to_watch_useful = 1",
+    "dimension": "what_to_watch_useful",
+    "score": 1
+   },
+   {
+    "code": "factual_edit",
+    "message": "Cover paragraph and 'Heat and power are now one procurement': Replace 'Chillers began running on 800 V DC' with 'One chiller was demonstrated on 800 V DC [15]', 'joint reference designs' with 'a joint Trane–Eaton reference design [17]', and drop or qualify 'stopped being bought as separate systems'. Note that the 'up to 2% higher efficiency' figure has no stated baseline in the record.",
+    "edit": {
+     "kind": "factual",
+     "location": "Cover paragraph and 'Heat and power are now one procurement'",
+     "edit": "Replace 'Chillers began running on 800 V DC' with 'One chiller was demonstrated on 800 V DC [15]', 'joint reference designs' with 'a joint Trane–Eaton reference design [17]', and drop or qualify 'stopped being bought as separate systems'. Note that the 'up to 2% higher efficiency' figure has no stated baseline in the record.",
+     "reason": "The sources list supports one demonstration and one reference design, and no cited item reports buyer purchasing behaviour. The plurals and the procurement claim are unsupported as stated."
+    }
+   }
+  ],
+  "notes": "{\"preset\":\"thermal\",\"preset_label\":\"Thermal\",\"members\":[{\"slug\":\"constance-wright\",\"scores\":{\"thesis_clear\":4,\"evidence_sufficient\":3,\"what_to_watch_useful\":1},\"could_a_buyer_act\":false,\"required_edits\":3,\"note\":\"Thesis is legible. Evidence is graded SRC at best: vendor releases and sponsored items carry the convergence claim, and a demonstration is not procurement. The Take is hedged, which is right. No forward section, so nothing tells a buyer what to do next. Hold until added.\"},{\"slug\":\"delia-marchetti\",\"scores\":{\"thesis_clear\":4,\"evidence_sufficient\":3,\"what_to_watch_useful\":1},\"could_a_buyer_act\":false,\"required_edits\":3,\"note\":\"Thesis lands fast and citations are tidy. But on a headline, 'one demo chiller' becomes 'chillers run on 800 V DC'. Evidence is mostly vendor and sponsored announcements, so the buyer conclusion is judgment. There is no watch list: no dates, no triggers, nothing to calendar.\"},{\"slug\":\"ingrid-halverson\",\"scores\":{\"thesis_clear\":4,\"evidence_sufficient\":3,\"what_to_watch_useful\":1},\"could_a_buyer_act\":false,\"required_edits\":4,\"note\":\"Thesis is clear: heat and power converge under NVIDIA's gate. Evidence is adequate as reported vendor events, though thin on thermal performance. No forward section exists, so I cannot say what to watch or when. Show me the approach temperature.\"},{\"slug\":\"mach-eigen\",\"scores\":{\"thesis_clear\":4,\"evidence_sufficient\":3,\"what_to_watch_useful\":1},\"could_a_buyer_act\":false,\"required_edits\":3,\"note\":\"Thesis lands and the cited facts match the sources list. But a buyer gets no dates, triggers or calendar, and the 'one procurement' claim rests on one demo plus vendor releases. Add a real watch list and a labelled buyer action.\"}],\"chair\":\"gilbert-faraday\",\"scores\":{\"thesis_clear\":4,\"evidence_sufficient\":3,\"what_to_watch_useful\":1},\"could_a_buyer_act\":false,\"required_edits\":[{\"kind\":\"structural\",\"location\":\"New section after 'Signal register', before 'Faraday's Take'\",\"edit\":\"Add a 'What to watch' section of dated or triggered items, each with source and evidence tier: further DSX Ready qualifications (chillers, switchgear, BESS beyond Tesla, LG and Hitachi); whether the Trane/Eaton/Danfoss 800 V DC chiller becomes a shipping product with a date; OCP 800 V DC specification follow-through after the Global Summit; closing of Eaton/COL and Vertiv/King. For each, state what it would change in a buyer's specification or RFP.\",\"reason\":\"All four panelists found no forward items. Without triggers or dates a buyer has nothing to calendar and no next move.\"},{\"kind\":\"factual\",\"location\":\"Cover paragraph and 'Heat and power are now one procurement'\",\"edit\":\"Replace 'Chillers began running on 800 V DC' with 'One chiller was demonstrated on 800 V DC [15]', 'joint reference designs' with 'a joint Trane–Eaton reference design [17]', and drop or qualify 'stopped being bought as separate systems'. Note that the 'up to 2% higher efficiency' figure has no stated baseline in the record.\",\"reason\":\"The sources list supports one demonstration and one reference design, and no cited item reports buyer purchasing behaviour. The plurals and the procurement claim are unsupported as stated.\"},{\"kind\":\"structural\",\"location\":\"Faraday's Take\",\"edit\":\"Label the 'one heat-and-power system' and 'subcontract rather than contract' conclusions as Faraday's inference [INF], add one sentence on what the evidence does not show (buyer-side specification), and add one or two sentences of buyer action: ask suppliers for DSX Ready status, 800 V DC roadmaps and joint design support before letting thermal and power contracts separately.\",\"reason\":\"The Take rests on vendor announcements, not buyer evidence, and currently gives a buyer no action.\"},{\"kind\":\"style\",\"location\":\"The argument and Sources & methodology\",\"edit\":\"Flag sponsored items (S5, S24) and vendor-origin statements (S2, S10, S11, S12, S28) inline where they carry the argument, and drop or demote [28] and [30] as tangential.\",\"reason\":\"Much of the thesis is carried by vendor and sponsored sources; the reader should weigh them accordingly, and the two tangential items dilute the argument.\"}],\"note\":\"The panel is unanimous and right. The thesis reads clearly, but one demonstration has been inflated into a plural trend, and nothing tells a buyer what to watch or do. Ruling: hold for a watch list, corrected framing and a labelled buyer action. Would change if: a cited buyer RFP specifying joint heat-and-power systems.\",\"mode\":\"import\",\"chain\":\"briefing-review-chain_v0.1\"}",
+  "lane": "subdomains",
+  "title": "The Thermal-Power Convergence Play",
+  "tier": "standard",
+  "status_result": "FAIL"
+ },
+ {
+  "id": null,
+  "created_at": "2026-11-09T11:06:51.857Z",
+  "briefing_id": "4311f8af-c04c-41b4-8af5-db9de3edc5e6",
+  "version": 2,
+  "gate": "G3-XCHECK",
+  "reviewer": "xcheck-facts+xcheck-voice",
+  "result": "FAIL",
+  "score": null,
+  "blockers": [
+   {
+    "code": "voice_violation",
+    "reviewer": "xcheck-voice",
+    "message": "Template §2 row 1: Cover must carry the eyebrow (Library · Sector Briefing) and a record line (Threads covered, number of Signals cited, record id, date prepared): Cover block (Tier / Coverage / Byline / Evidence window / Status)",
+    "sentence": "Cover block (Tier / Coverage / Byline / Evidence window / Status)",
+    "rule": "Template §2 row 1: Cover must carry the eyebrow (Library · Sector Briefing) and a record line (Threads covered, number of Signals cited, record id, date prepared)",
+    "note": "No record line appears: no Threads covered, no record id, no date prepared. The eyebrow is also absent. Only '30 sources' inside the evidence window is present."
+   },
+   {
+    "code": "voice_violation",
+    "reviewer": "xcheck-voice",
+    "message": "Template §2 row 3: one section per Thread in scope, each headed with Thread code + name; public vocabulary Theater / Sector / Thread / Signal: Thread sections: '## Direct-to-Chip Cooling & the Coolant Supply Chain', '## 800 V DC Distribution Reaches the Cooling Plant', '## Power Conversion, Switchgear & Storage', '## Water, Siting & the Control Layer'",
+    "sentence": "Thread sections: '## Direct-to-Chip Cooling & the Coolant Supply Chain', '## 800 V DC Distribution Reaches the Cooling Plant', '## Power Conversion, Switchgear & Storage', '## Water, Siting & the Control Layer'",
+    "rule": "Template §2 row 3: one section per Thread in scope, each headed with Thread code + name; public vocabulary Theater / Sector / Thread / Signal",
+    "note": "No heading carries a Thread code. The sections read as editorial groupings. The methodology lists eight tagged Thread codes (D7.1-D7.4, D2.1, D2.3, D2.4, D2.10) against four sections, and the word 'Thread' never appears in the body."
+   },
+   {
+    "code": "voice_violation",
+    "reviewer": "xcheck-voice",
+    "message": "Template §2 row 3: one-sentence intro per Thread section: Intro to '800 V DC Distribution Reaches the Cooling Plant': 'The move to high-voltage DC began at the rack. In this window it reached the mechanical plant.'; intro to 'Power Conversion, Switchgear & Storage' (two sentences)",
+    "sentence": "Intro to '800 V DC Distribution Reaches the Cooling Plant': 'The move to high-voltage DC began at the rack. In this window it reached the mechanical plant.'; intro to 'Power Conversion, Switchgear & Storage' (two sentences)",
+    "rule": "Template §2 row 3: one-sentence intro per Thread section",
+    "note": "Both intros run to two sentences."
+   },
+   {
+    "code": "voice_violation",
+    "reviewer": "xcheck-voice",
+    "message": "Brand Bible §06 sourced claims throughout; Template §4.1 every factual sentence carries a numbered citation: 'The move to high-voltage DC began at the rack.' and 'Liquid cooling vendors spent the period qualifying products against NVIDIA's reference architecture and adding the fluids, services and factories behind them.' (also the intro 'The thermal choice now reaches beyond the hall, into water budgets, local approvals and the software that runs both systems together.')",
+    "sentence": "'The move to high-voltage DC began at the rack.' and 'Liquid cooling vendors spent the period qualifying products against NVIDIA's reference architecture and adding the fluids, services and factories behind them.' (also the intro 'The thermal choice now reaches beyond the hall, into water budgets, local approvals and the software that runs both systems together.')",
+    "rule": "Brand Bible §06 sourced claims throughout; Template §4.1 every factual sentence carries a numbered citation",
+    "note": "These are factual or characterising statements with no citation. 'Began at the rack' is a historical claim that no cited item supports."
+   },
+   {
+    "code": "voice_violation",
+    "reviewer": "xcheck-voice",
+    "message": "Template §4.5: vendor posts and sponsored posts are quoted as the vendor's own statement: 'Shell's direct liquid cooling fluid achieved NVIDIA DSX Ready Coolant qualification [5].' (entry and the argument sentence citing [5]); 'Vertiv's 2.3 MW CoolChip coolant distribution unit achieved DSX Ready qualification...' [2]; Wärtsilä entry [24]",
+    "sentence": "'Shell's direct liquid cooling fluid achieved NVIDIA DSX Ready Coolant qualification [5].' (entry and the argument sentence citing [5]); 'Vertiv's 2.3 MW CoolChip coolant distribution unit achieved DSX Ready qualification...' [2]; Wärtsilä entry [24]",
+    "rule": "Template §4.5: vendor posts and sponsored posts are quoted as the vendor's own statement",
+    "note": "[5] and [24] are labelled sponsored and [2] is Vertiv's own release. All three are stated as flat fact in the body, not attributed ('Shell says', 'Vertiv states'), unlike the Valeo and Schneider entries."
+   },
+   {
+    "code": "voice_violation",
+    "reviewer": "xcheck-voice",
+    "message": "Faraday's Take introduces no fact not already sourced in the body (Template §4.6): Faraday's Take: 'NVIDIA's qualification sits above all of them [1, 2, 5, 25].'",
+    "sentence": "Faraday's Take: 'NVIDIA's qualification sits above all of them [1, 2, 5, 25].'",
+    "rule": "Faraday's Take introduces no fact not already sourced in the body (Template §4.6)",
+    "note": "'All of them' includes Trane, Eaton and Schneider. The body shows qualification only for Vertiv, Shell and LG Energy Solution, so the Take asserts a governing role over the other vendors that no body item sources."
+   },
+   {
+    "code": "voice_violation",
+    "reviewer": "xcheck-voice",
+    "message": "Brand Bible §06 maximum-intensity editorial conviction; no hedge-padding: Faraday's Take: 'Read together, the evidence suggests buyers will specify one heat-and-power system...'",
+    "sentence": "Faraday's Take: 'Read together, the evidence suggests buyers will specify one heat-and-power system...'",
+    "rule": "Brand Bible §06 maximum-intensity editorial conviction; no hedge-padding",
+    "note": "'Read together, the evidence suggests' softens the one sentence of opinion the Take exists to deliver."
+   },
+   {
+    "code": "voice_violation",
+    "reviewer": "xcheck-voice",
+    "message": "Public vocabulary only (Template preamble: internal taxonomy and system terms never appear in subscriber copy): Sources & methodology: 'a Faraday Signal (Supabase public.signals) or crawled artifact (public.artifacts)'; cover and final-page 'Requires Myke sign-off (Brand Bible §07)'",
+    "sentence": "Sources & methodology: 'a Faraday Signal (Supabase public.signals) or crawled artifact (public.artifacts)'; cover and final-page 'Requires Myke sign-off (Brand Bible §07)'",
+    "rule": "Public vocabulary only (Template preamble: internal taxonomy and system terms never appear in subscriber copy)",
+    "note": "Database table names and an internal Brand Bible section reference appear in reader-facing text."
+   }
+  ],
+  "notes": "{\"a\":\"PASS\",\"b\":\"FAIL\",\"mismatches\":0,\"violations\":8,\"unverifiable\":0,\"numbers_checked\":72,\"disagreements\":[],\"summaries\":{\"facts\":\"Every cited number and date in the manuscript was re-derived from its cited source text, with no mismatches and no unverifiable figures. Two framings are loose but are not mismatches. First, the €810 million that the manuscript calls Eaton's \\\"agreed price\\\" is stated in S20 as an enterprise value. Second, the Hyosung figure appears in S23 both as \\\"~$300 million\\\" and as \\\"$300 million\\\".\",\"voice\":\"FAIL: 8 template or voice violations. Order, At-a-glance size, entry counts, the Take's presence and position, the Sources page and the hypothesis-led opening (cover thesis plus argument heading) pass. The failures are the missing cover record line and eyebrow, Thread headings without codes, two-sentence Thread intros, uncited factual intro sentences, sponsored or vendor claims stated flat, a Take line that overreaches the body ('sits above all of them') plus a hedge, and internal system names in reader-facing copy. I did not judge factual accuracy or page count.\"},\"mode\":\"import\",\"chain\":\"briefing-review-chain_v0.1\"}",
+  "lane": "subdomains",
+  "title": "The Thermal-Power Convergence Play",
+  "tier": "standard",
+  "status_result": "FAIL"
+ },
+ {
+  "id": null,
+  "created_at": "2026-11-09T11:06:53.287Z",
+  "briefing_id": "d86677a0-0b9c-41a7-b8e5-367f9044b8cf",
+  "version": 2,
+  "gate": "G1-AUTO",
+  "reviewer": "g1-auto",
+  "result": "FAIL",
+  "score": 13,
+  "blockers": [
+   {
+    "code": "number_mismatch",
+    "message": "\"2027\" does not appear in the cited source text (S5): \"28 Jan 2027 · Pennsylvania PUC target vote on curtailment order · [S5]\"",
+    "sentence": "28 Jan 2027 · Pennsylvania PUC target vote on curtailment order · [S5]",
+    "number": "2027",
+    "cites": [
+     5
+    ],
+    "section": "Signals to watch"
+   }
+  ],
+  "notes": "{\"summary\":\"1 blocker (number_mismatch×1); 13 pages.\",\"stats\":{\"units\":182,\"numeric_units\":94,\"numbers_checked\":224,\"numbers_matched\":223,\"numbers_unverifiable\":0,\"numbers_mismatched\":1,\"uncited_numeric_units\":3,\"markers\":11,\"refs\":11,\"pages\":13,\"tier\":\"deep\",\"briefing_type\":\"theater\"},\"warnings\":[{\"code\":\"uncited_number\",\"message\":\"Numeric sentence carries no citation: \\\"Between May and October 2026, federal regulators, every state that legislated, and the largest grid operator in Texas converged on one bargain: large loads conn\\\"\",\"sentence\":\"Between May and October 2026, federal regulators, every state that legislated, and the largest grid operator in Texas converged on one bargain: large loads connect faster if they pay the full incremental cost of serving them, bring or contract their own generation, and accept curtailment.\",\"numbers\":[\"2026\"],\"section\":\"Summary\",\"severity\":\"warn\"},{\"code\":\"uncited_number\",\"message\":\"Numeric sentence carries no citation: \\\"*Claim: the federal government accelerated large-load interconnection in 2026 while leaving the cost question to the states, and that division of labor is now t\\\"\",\"sentence\":\"*Claim: the federal government accelerated large-load interconnection in 2026 while leaving the cost question to the states, and that division of labor is now the operating framework.*\",\"numbers\":[\"2026\"],\"section\":\"3. Washington chose speed by order, not by rule\",\"severity\":\"warn\"},{\"code\":\"uncited_number\",\"message\":\"Numeric sentence carries no citation: \\\"Faraday's reading: the opposition maps onto the cost fight in sections 2 and 4.\\\"\",\"sentence\":\"Faraday's reading: the opposition maps onto the cost fight in sections 2 and 4.\",\"numbers\":[\"2\"],\"section\":\"7. Permission is a second grid\",\"severity\":\"warn\"}],\"preview_path\":\"/tmp/claude-0/-home-user/b6ee6df7-8a05-54f2-b70a-a27874d25a45/scratchpad/pdf/d86677a0-v2.pdf\",\"html_path\":\"/tmp/claude-0/-home-user/b6ee6df7-8a05-54f2-b70a-a27874d25a45/scratchpad/pdf/d86677a0-v2.html\",\"fonts_loaded\":[\"IBM Plex Sans Condensed\",\"Source Serif 4\",\"Spectral\"],\"render_error\":null,\"upload_error\":null,\"chain\":\"briefing-review-chain_v0.1\"}",
+  "lane": "theaters",
+  "title": "The Power Reckoning",
+  "tier": "deep",
+  "status_result": "FAIL"
+ },
+ {
+  "id": null,
+  "created_at": "2026-11-09T11:06:53.289Z",
+  "briefing_id": "d86677a0-0b9c-41a7-b8e5-367f9044b8cf",
+  "version": 2,
+  "gate": "G2-PANEL",
+  "reviewer": "tf-panel:power-grid",
+  "result": "FAIL",
+  "score": 3,
+  "blockers": [
+   {
+    "code": "factual_edit",
+    "message": "Faraday's Take, paragraph 1: Change 'FERC told every grid operator' to 'FERC told the six FERC-jurisdictional RTOs/ISOs'.",
+    "edit": {
+     "kind": "factual",
+     "location": "Faraday's Take, paragraph 1",
+     "edit": "Change 'FERC told every grid operator' to 'FERC told the six FERC-jurisdictional RTOs/ISOs'.",
+     "reason": "Per S3 and the brief's own Section 3, the orders went to PJM, MISO, SPP, CAISO, ISO-NE and NYISO. ERCOT was not included."
+    }
+   }
+  ],
+  "notes": "{\"preset\":\"power-grid\",\"preset_label\":\"Power & Grid\",\"members\":[{\"slug\":\"constance-wright\",\"scores\":{\"thesis_clear\":4,\"evidence_sufficient\":3,\"what_to_watch_useful\":3},\"could_a_buyer_act\":true,\"required_edits\":5,\"note\":\"Unsourced inference: 'power is not the binding constraint' is judgment, not carried by S1-S11. Key legal facts rest on secondary, partly advocacy sources, EST at best. The forward calendar is stale and omits the FERC compliance filings. Actionable, but only with the structural edits.\"},{\"slug\":\"delia-marchetti\",\"scores\":{\"thesis_clear\":5,\"evidence_sufficient\":4,\"what_to_watch_useful\":3},\"could_a_buyer_act\":true,\"required_edits\":3,\"note\":\"Here's page one: 'Power is no longer the constraint.' It's not what you mean, so reword it. The thesis is plain and the price-list framing sticks. A buyer can act. The calendar is thin: it skips the FERC compliance filings and doesn't say what is still open.\"},{\"slug\":\"mach-eigen\",\"scores\":{\"thesis_clear\":5,\"evidence_sufficient\":4,\"what_to_watch_useful\":3},\"could_a_buyer_act\":true,\"required_edits\":2,\"note\":\"Thesis is stated in one paragraph and the connection bargain is concrete: pay, bring supply, accept curtailment. Findings are well sourced. The watch list is the weak part: a midterm deadline already past, no ordering, no action attached. Fix that and a buyer can use it.\"},{\"slug\":\"albert-thorne\",\"scores\":{\"thesis_clear\":4,\"evidence_sufficient\":3,\"what_to_watch_useful\":3},\"could_a_buyer_act\":true,\"required_edits\":4,\"note\":\"The rule is well stated: show-cause orders, state tariffs, Batch Zero. The practice is thinner. Load wait times and any acceleration under the new terms are inference, and the watch list omits the compliance filings and carries lapsed dates. Plan for 30 months, not the paper timetable.\"}],\"chair\":\"gilbert-faraday\",\"scores\":{\"thesis_clear\":4,\"evidence_sufficient\":3,\"what_to_watch_useful\":3},\"could_a_buyer_act\":true,\"required_edits\":[{\"kind\":\"structural\",\"location\":\"Signals to watch table; Summary 'What to watch'\",\"edit\":\"Make the FERC show-cause compliance filings the lead signal: 30-day generation-adequacy reports (about 18 July 2026) and 60-day tariff responses (about 17 August 2026) from the six RTOs/ISOs. State that their outcomes are not in the evidence window, and that they are the test for the Section 5 co-location forecast.\",\"reason\":\"All four panelists flagged this. The brief names these filings as the test of its own forecast, then leaves them off the calendar. They are the nearest event that tells a buyer which tariff moves first.\"},{\"kind\":\"structural\",\"location\":\"Signals to watch table\",\"edit\":\"Add an as-of date (7 Oct 2026) and sort the rows chronologically. Mark lapsed items as 'outcome not in evidence window' with a re-check date: the PA tentative curtailment order (1 Oct), the ERCOT Batch Zero classification notices (Aug 2026), and Senate action 'before Nov 2026 midterms', which is now past and should be recast as lame-duck or 2027. Add a one-line buyer action to each row.\",\"reason\":\"The table is out of order, carries lapsed deadlines and gives no next move. A buyer cannot tell which triggers are still live.\"},{\"kind\":\"structural\",\"location\":\"Cover lede; Summary thesis; Faraday's Take\",\"edit\":\"Label 'power is no longer the binding constraint' and 'accepting the bargain yields a faster path' as Faraday's inference. Add one sentence reconciling them with the PJM 6,831 MW shortfall and the five-year waits. Reword the pull-quote line, e.g. 'connection terms, not megawatts alone, now set the pace'.\",\"reason\":\"No source in S1-S11 carries the reframing, and Findings 1-2 pull the other way. Lifted alone, the line reads as 'data centers have enough power', which the brief does not claim.\"},{\"kind\":\"factual\",\"location\":\"Faraday's Take, paragraph 1\",\"edit\":\"Change 'FERC told every grid operator' to 'FERC told the six FERC-jurisdictional RTOs/ISOs'.\",\"reason\":\"Per S3 and the brief's own Section 3, the orders went to PJM, MISO, SPP, CAISO, ISO-NE and NYISO. ERCOT was not included.\"},{\"kind\":\"structural\",\"location\":\"Finding 1 / Section 1 load wait (S4); Section 4 Virginia SCC rate (S4)\",\"edit\":\"Label the five-year wait for loads of 200 MW or more, and the Virginia 85%/60% minimums, as single secondary-source claims (American Action Forum), or cite a primary record such as the SCC order.\",\"reason\":\"The LBNL median covers generators, not loads. A buyer would price against the Virginia rate design, and a federal-policy think-tank note is a thin carrier for it.\"}],\"note\":\"The thesis holds and the price list is usable. A buyer can act. The calendar cannot be used as written: it is stale and omits the FERC compliance filings that test the forecast. The 'not the constraint' line is our inference and must be labelled as such. Ruling: pass with these edits. It would change if the filings contradict the co-location terms.\",\"mode\":\"import\",\"chain\":\"briefing-review-chain_v0.1\"}",
+  "lane": "theaters",
+  "title": "The Power Reckoning",
+  "tier": "deep",
+  "status_result": "FAIL"
+ },
+ {
+  "id": null,
+  "created_at": "2026-11-09T11:06:53.290Z",
+  "briefing_id": "d86677a0-0b9c-41a7-b8e5-367f9044b8cf",
+  "version": 2,
+  "gate": "G3-XCHECK",
+  "reviewer": "xcheck-facts+xcheck-voice",
+  "result": "FAIL",
+  "score": null,
+  "blockers": [
+   {
+    "code": "voice_violation",
+    "reviewer": "xcheck-voice",
+    "message": "Tier template section 1, Cover: the deck is one sentence, and the cover holds no body text.: Cover: \"The grid has stopped rationing electrons and started rationing permission. In 2026 every layer of American power governance moved to the same rule: a data center that wants to connect must pay its own way, wait its turn, or agree to be switched off.\"",
+    "sentence": "Cover: \"The grid has stopped rationing electrons and started rationing permission. In 2026 every layer of American power governance moved to the same rule: a data center that wants to connect must pay its own way, wait its turn, or agree to be switched off.\"",
+    "rule": "Tier template section 1, Cover: the deck is one sentence, and the cover holds no body text.",
+    "note": "The deck runs to two sentences. The second is a sweeping factual claim (\"every layer of American power governance\") with no source marker. Fold it into one sentence or move it to the Summary."
+   },
+   {
+    "code": "voice_violation",
+    "reviewer": "xcheck-voice",
+    "message": "Brand Bible 06, sourced claims throughout. Template 3: a claim with no source is removed, and opinion must say it is Faraday's reading.: Section 1: \"For a data center, that is longer than the construction schedule of the building it is meant to power.\"",
+    "sentence": "Section 1: \"For a data center, that is longer than the construction schedule of the building it is meant to power.\"",
+    "rule": "Brand Bible 06, sourced claims throughout. Template 3: a claim with no source is removed, and opinion must say it is Faraday's reading.",
+    "note": "This states a fact about data center construction schedules with no [Sn] marker. It is not labeled as Faraday's reading, and the [S4] sentence before it concerns load connection time only. Source it or label it as inference."
+   },
+   {
+    "code": "voice_violation",
+    "reviewer": "xcheck-voice",
+    "message": "Brand Bible 06, no unattributed collective claims (\"experts predict\", \"industry observers note\").: Section 3: \"On 18 June 2026 FERC acted, but not with the national rulemaking many expected.\"",
+    "sentence": "Section 3: \"On 18 June 2026 FERC acted, but not with the national rulemaking many expected.\"",
+    "rule": "Brand Bible 06, no unattributed collective claims (\"experts predict\", \"industry observers note\").",
+    "note": "\"many expected\" is the same kind of vague attribution the rule bans. No one is named, and the sentence carries no marker. Name who expected a rulemaking, with the source, or cut the clause."
+   },
+   {
+    "code": "voice_violation",
+    "reviewer": "xcheck-voice",
+    "message": "Template 3: inference is allowed only where it says it is Faraday's reading. Brand Bible 06, sourced claims.: Section 2: \"Those bill figures are the political fuel for everything in the next three sections.\"",
+    "sentence": "Section 2: \"Those bill figures are the political fuel for everything in the next three sections.\"",
+    "rule": "Template 3: inference is allowed only where it says it is Faraday's reading. Brand Bible 06, sourced claims.",
+    "note": "This is a causal claim about politics. It is not marked as Faraday's reading and has no source. Prefix it with \"Faraday's reading:\" as the brief does elsewhere, or remove it."
+   },
+   {
+    "code": "voice_violation",
+    "reviewer": "xcheck-voice",
+    "message": "Brand Bible 06, sourced claims throughout. Template 3: opinion must be visibly opinion.: Section 4: \"Georgia went furthest.\"",
+    "sentence": "Section 4: \"Georgia went furthest.\"",
+    "rule": "Brand Bible 06, sourced claims throughout. Template 3: opinion must be visibly opinion.",
+    "note": "This is a comparative judgement across all states with no marker and no Faraday's-reading label. The [S8] facts that follow support Georgia's measures, not the ranking. Label it as Faraday's reading or attribute the ranking."
+   },
+   {
+    "code": "voice_violation",
+    "reviewer": "xcheck-voice",
+    "message": "Tier template section 1, part 4: a dated forward calendar.: Section: Signals to watch (row order)",
+    "sentence": "Section: Signals to watch (row order)",
+    "rule": "Tier template section 1, part 4: a dated forward calendar.",
+    "note": "Rows are not in date order. \"Before Nov 2026 midterms\" sits after Jan 2027 and 28 Jan 2027. \"Late 2027\" sits before \"Summer 2027\" and \"Fall 2027\". A forward calendar should run chronologically."
+   }
+  ],
+  "notes": "{\"a\":\"PASS\",\"b\":\"FAIL\",\"mismatches\":0,\"violations\":6,\"unverifiable\":4,\"numbers_checked\":152,\"disagreements\":[],\"summaries\":{\"facts\":\"No mismatches found. Every cited figure and date was re-derived from its cited source except four claims citing S8 (Nixon Peabody), whose capture is truncated: NJ 20% bill increase in 2025, Virginia HB 1393's 25 MW threshold, Georgia CIR approval on 15 April 2026, and Florida SB 484's 1 July 2026 effective date and 50 MW threshold. The visible S8 text does not state these, so they are unverifiable rather than wrong. Note: S5 says the PUC vote was on a 'Thursday' in a piece dated Sept. 11, 2026 (a Friday), but S5 also calls the Sept. 11 release a 'Thursday release', so the manuscript's 11 September vote date was cleared on the source's own terms.\",\"voice\":\"Template and voice are largely compliant: the thesis arrives first, section order and the 4-7 body count are right, and the Take is in place with no new facts. There are six violations, all minor: a two-sentence cover deck, three unsourced or unlabeled claims or vague attributions (S1, S3, S4), one unlabeled inference in S2, and Signals rows out of date order. Page counts were not measurable from the manuscript. Fact correctness was not judged.\"},\"mode\":\"import\",\"chain\":\"briefing-review-chain_v0.1\"}",
+  "lane": "theaters",
+  "title": "The Power Reckoning",
+  "tier": "deep",
+  "status_result": "FAIL"
+ },
+ {
+  "id": null,
+  "created_at": "2026-11-09T11:06:54.339Z",
+  "briefing_id": "fx000300-0003-4000-8000-000000000003",
+  "version": 2,
+  "gate": "G1-AUTO",
+  "reviewer": "g1-auto",
+  "result": "PASS",
+  "score": 9,
+  "blockers": [],
+  "notes": "{\"summary\":\"Automated gate passed: 9 pages, 37 sources, 154 numbers checked, 1 unverifiable.\",\"stats\":{\"units\":86,\"numeric_units\":56,\"numbers_checked\":154,\"numbers_matched\":154,\"numbers_unverifiable\":0,\"numbers_mismatched\":0,\"uncited_numeric_units\":1,\"markers\":37,\"refs\":37,\"pages\":9,\"tier\":\"standard\",\"briefing_type\":\"sector\"},\"warnings\":[{\"code\":\"uncited_number\",\"message\":\"Numeric sentence carries no citation: \\\"The record in this Briefing is thirty-seven sourced items, Faraday Signals and crawled articles, dated between 13 August and 12 October 2026.\\\"\",\"sentence\":\"The record in this Briefing is thirty-seven sourced items, Faraday Signals and crawled articles, dated between 13 August and 12 October 2026.\",\"numbers\":[\"13\",\"12\"],\"section\":\"The argument\",\"severity\":\"warn\"}],\"preview_path\":\"/tmp/claude-0/-home-user/b6ee6df7-8a05-54f2-b70a-a27874d25a45/scratchpad/pdf/fx000300-v2.pdf\",\"html_path\":\"/tmp/claude-0/-home-user/b6ee6df7-8a05-54f2-b70a-a27874d25a45/scratchpad/pdf/fx000300-v2.html\",\"fonts_loaded\":[\"IBM Plex Mono\",\"IBM Plex Sans\",\"Source Serif 4\"],\"render_error\":null,\"upload_error\":null,\"chain\":\"briefing-review-chain_v0.1\"}",
+  "lane": "domains",
+  "title": "The Power Reckoning",
+  "tier": "standard",
+  "status_result": "PASS"
+ },
+ {
+  "id": null,
+  "created_at": "2026-11-09T11:06:54.340Z",
+  "briefing_id": "fx000300-0003-4000-8000-000000000003",
+  "version": 2,
+  "gate": "G2-PANEL",
+  "reviewer": "tf-panel:power-grid",
+  "result": "FAIL",
+  "score": 1,
+  "blockers": [
+   {
+    "code": "score_below_3",
+    "message": "what_to_watch_useful = 1",
+    "dimension": "what_to_watch_useful",
+    "score": 1
+   },
+   {
+    "code": "factual_edit",
+    "message": "The argument, paragraph 2 ('a rush to existing nuclear capacity ... Meta secured up to 6.6 GW [7]'); Faraday's Take, first sentence ('existing and uprated nuclear output [1, 5, 7]'): Remove [7] from both 'existing' claims, or reword them to say Meta's up to 6.6 GW includes advanced-reactor developers (TerraPower, Oklo) as well as Vistra.",
+    "edit": {
+     "kind": "factual",
+     "location": "The argument, paragraph 2 ('a rush to existing nuclear capacity ... Meta secured up to 6.6 GW [7]'); Faraday's Take, first sentence ('existing and uprated nuclear output [1, 5, 7]')",
+     "edit": "Remove [7] from both 'existing' claims, or reword them to say Meta's up to 6.6 GW includes advanced-reactor developers (TerraPower, Oklo) as well as Vistra.",
+     "reason": "The cited source names TerraPower and Oklo, so [7] does not support 'existing' or 'uprated' output. The claim is load-bearing and its citation does not support it."
+    }
+   }
+  ],
+  "notes": "{\"preset\":\"power-grid\",\"preset_label\":\"Power & Grid\",\"members\":[{\"slug\":\"constance-wright\",\"scores\":{\"thesis_clear\":4,\"evidence_sufficient\":3,\"what_to_watch_useful\":2},\"could_a_buyer_act\":false,\"required_edits\":5,\"note\":\"Thesis lands in one paragraph. Evidence mostly holds, but Meta [7] is graded as existing capacity when it names developers, and 45 GW against 9.8 GW is unreconciled. Project Jupiter rests on Stocktwits [13]. No watch list: dates are scattered and a buyer gets no triggers. Hold.\"},{\"slug\":\"delia-marchetti\",\"scores\":{\"thesis_clear\":4,\"evidence_sufficient\":3,\"what_to_watch_useful\":1},\"could_a_buyer_act\":false,\"required_edits\":4,\"note\":\"Headline version: 'Power isn't short, permission is.' That lands, and the Take is quotable. But a buyer finishes it with no calendar. Where is the date I'd circle? Add one, or the first misquote will be 'Faraday says wait.' Don't ship it without that.\"},{\"slug\":\"mach-eigen\",\"scores\":{\"thesis_clear\":4,\"evidence_sufficient\":4,\"what_to_watch_useful\":1},\"could_a_buyer_act\":false,\"required_edits\":3,\"note\":\"Mach: the thesis lands in thirty seconds and the cited record mostly carries it. But there is no watch list. A buyer gets no dates, no triggers and no next move. The sources already hold the calendar; put it in. As written, nobody can schedule against this.\"},{\"slug\":\"albert-thorne\",\"scores\":{\"thesis_clear\":4,\"evidence_sufficient\":3,\"what_to_watch_useful\":2},\"could_a_buyer_act\":false,\"required_edits\":3,\"note\":\"The thesis is legible: permission, not megawatts, is the constraint. But the brief gives me no watch list with dates and triggers, and the closing inference outruns its record. Jupiter is an on-site-generation case, not a queue case. Paper rule and practice are never separated, and no docket is verified.\"}],\"chair\":\"gilbert-faraday\",\"scores\":{\"thesis_clear\":4,\"evidence_sufficient\":3,\"what_to_watch_useful\":1},\"could_a_buyer_act\":false,\"required_edits\":[{\"kind\":\"structural\",\"location\":\"New section after 'Signal register', before 'Faraday's Take'\",\"edit\":\"Add a dated 'What to watch' section that uses only cited items: NERC computational-load standards due by year-end per FERC's directive [23]; the outcome of PJM's Bring Your Own New Capacity filing [19]; the ERCOT audit completion that ends the Texas permit freeze [28, 29]; the SCC review clock on Dominion-NextEra [33, 34]; the Duane Arnold licensing package expected January 2028 [10]. For each, name the trigger and what a buyer's siting or procurement move would be under either outcome. Mark any item with no date in the sources as unscheduled.\",\"reason\":\"All four panelists flagged this. The forward dates exist in the record but are scattered, so the brief gives a buyer no calendar and no next move. This is the reason the brief fails the gate.\"},{\"kind\":\"factual\",\"location\":\"The argument, paragraph 2 ('a rush to existing nuclear capacity ... Meta secured up to 6.6 GW [7]'); Faraday's Take, first sentence ('existing and uprated nuclear output [1, 5, 7]')\",\"edit\":\"Remove [7] from both 'existing' claims, or reword them to say Meta's up to 6.6 GW includes advanced-reactor developers (TerraPower, Oklo) as well as Vistra.\",\"reason\":\"The cited source names TerraPower and Oklo, so [7] does not support 'existing' or 'uprated' output. The claim is load-bearing and its citation does not support it.\"},{\"kind\":\"structural\",\"location\":\"Faraday's Take, last two sentences; The argument, paragraph 3\",\"edit\":\"Label the prediction that schedule-holders will be those who bought capacity already on the grid as Faraday's judgment (INF). Reconsider Project Jupiter as the example: say that its cited causes (power supply, air permits, land access [13]) and its fuel supply delays [14] are an on-site-generation case, not a FERC or PJM queue case, or replace it. Note that 9.8 GW announced against about 1 GW online before 2030 [12] undercuts delivery certainty for nuclear offtake too. Then state the buyer action this judgment implies.\",\"reason\":\"The thesis rests on this conclusion. The record shows no project that held its schedule, and the one illustration rests on a single Stocktwits report about delays that were mostly not caused by grid rules.\"},{\"kind\":\"structural\",\"location\":\"Nuclear & SMR Offtake, items [8] and [12]\",\"edit\":\"Add one line on why the 45 GW tracker total [8] differs from the 9.8 GW hyperscaler total [12], whether by scope or by date. If the sources do not explain the gap, say it is unreconciled and that the brief relies on [12].\",\"reason\":\"Two headline totals that differ by almost 5x sit side by side with no explanation, so a buyer cannot size the market.\"},{\"kind\":\"style\",\"location\":\"At a glance table, Date column; Behind-the-Fence item [16]\",\"edit\":\"Label the dates as publication dates, since the FERC row shows 2026-10-01 but the orders were issued in June 2026 [18]. Tag the sponsored Wärtsilä item as vendor-sponsored and not evidence of performance.\",\"reason\":\"Without the label, readers will take the publication date as the event date and will give the sponsored item the same weight as reported news.\"}],\"note\":\"Ruling: the thesis holds, but the brief is not yet usable for a decision. Hold it. Would change if: a dated watch list, the Meta attribution fixed, and the Take labelled as judgment with a fitting example. Rests on: [SRC] FERC orders, PJM filing, Texas pause; [INF] that existing-capacity buyers will hold their schedules.\",\"mode\":\"import\",\"chain\":\"briefing-review-chain_v0.1\"}",
+  "lane": "domains",
+  "title": "The Power Reckoning",
+  "tier": "standard",
+  "status_result": "FAIL"
+ },
+ {
+  "id": null,
+  "created_at": "2026-11-09T11:06:54.341Z",
+  "briefing_id": "fx000300-0003-4000-8000-000000000003",
+  "version": 2,
+  "gate": "G3-XCHECK",
+  "reviewer": "xcheck-facts+xcheck-voice",
+  "result": "FAIL",
+  "score": null,
+  "blockers": [
+   {
+    "code": "fact_mismatch",
+    "reviewer": "xcheck-facts",
+    "message": "The nuclear agreements cited at [1, 5, 7] fall within an eight-week span. None of the cited sources states an eight-week period. S7 dates Meta's agreements to January 2026, outside any eight-week window ending in October 2026. The billions-in-loans figure is supported by [6] ($4.2B) and [9] ($1.9B).: \"The cited record does not show a shortage of buyers or of capital: in eight weeks it logs agreements covering several gigawatts of existing and uprated nuclear output [1, 5, 7] and billions in federal loans [6, 9].\"",
+    "sentence": "The cited record does not show a shortage of buyers or of capital: in eight weeks it logs agreements covering several gigawatts of existing and uprated nuclear output [1, 5, 7] and billions in federal loans [6, 9].",
+    "cited": [
+     "S1",
+     "S5",
+     "S7"
+    ],
+    "source_excerpt": "Meta signed a suite of agreements in January 2026 to procure up to 6.6 GW of nuclear capacity by 2035 from TerraPower (up to eight Natrium reactors, ~2.8 GW), Oklo (1.2 GW in Southern Ohio), and Vistra (existing nuclear plants via 20-year PPA)"
+   },
+   {
+    "code": "voice_violation",
+    "reviewer": "xcheck-voice",
+    "message": "Template §2 row 1: Cover must carry the record line (Threads covered, number of Signals cited, record id, date prepared) and the eyebrow (Library · Sector Briefing): Cover block (Tier / Coverage / Byline / Evidence window / Status lines)",
+    "sentence": "Cover block (Tier / Coverage / Byline / Evidence window / Status lines)",
+    "rule": "Template §2 row 1: Cover must carry the record line (Threads covered, number of Signals cited, record id, date prepared) and the eyebrow (Library · Sector Briefing)",
+    "note": "The manuscript cover has the tier line, thesis, byline, evidence window (with 37 sources) and status, but no record id, no date prepared, no explicit Threads-covered entry and no eyebrow. If the renderer injects these from the record block they are not visible in the manuscript; as submitted, the required parts are absent."
+   },
+   {
+    "code": "voice_violation",
+    "reviewer": "xcheck-voice",
+    "message": "Template §2 row 3: each Thread section opens with Thread code + name: Thread section headings: 'Nuclear & SMR Offtake', 'Behind-the-Fence Gas & Fuel Cells', 'Large-Load Tariff Design & Co-Location Rules', 'Transmission, Reliability & Flexible Load', 'States, Moratoria & Utility Commissions'",
+    "sentence": "Thread section headings: 'Nuclear & SMR Offtake', 'Behind-the-Fence Gas & Fuel Cells', 'Large-Load Tariff Design & Co-Location Rules', 'Transmission, Reliability & Flexible Load', 'States, Moratoria & Utility Commissions'",
+    "rule": "Template §2 row 3: each Thread section opens with Thread code + name",
+    "note": "All five headings carry a name only. The Sources & methodology section cites the codes (D2.5, D2.6, D2.8, D3.1–D3.5), so they are available, but none is printed on a Thread section."
+   },
+   {
+    "code": "voice_violation",
+    "reviewer": "xcheck-voice",
+    "message": "Template §2 row 3: each Thread section has a one-sentence intro: Thread intros in four sections: Nuclear ('Hyperscalers bought existing nuclear output ... Every figure below is as reported by the cited source.'), Behind-the-Fence ('On-site generation is the main alternative to waiting for the grid. The record shows it carries its own permitting and fuel risks.'), Large-Load ('The rules for plugging a data center into a wholesale market are being rewritten ... The Susquehanna case is the reference point.'), States ('State actors moved faster than federal ones. Texas paused permits, ...')",
+    "sentence": "Thread intros in four sections: Nuclear ('Hyperscalers bought existing nuclear output ... Every figure below is as reported by the cited source.'), Behind-the-Fence ('On-site generation is the main alternative to waiting for the grid. The record shows it carries its own permitting and fuel risks.'), Large-Load ('The rules for plugging a data center into a wholesale market are being rewritten ... The Susquehanna case is the reference point.'), States ('State actors moved faster than federal ones. Texas paused permits, ...')",
+    "rule": "Template §2 row 3: each Thread section has a one-sentence intro",
+    "note": "Only the Transmission, Reliability & Flexible Load intro is a single sentence. The other four run to two or three sentences."
+   },
+   {
+    "code": "voice_violation",
+    "reviewer": "xcheck-voice",
+    "message": "Brand Bible §06 and Template §4.1: sourced claims throughout; every factual sentence carries a numbered citation: 'Hyperscalers bought existing nuclear output and uprates in September and October, and federal lending followed the same plants.' / 'Federal reliability bodies moved data center flexibility from a voluntary practice toward a standard, and industry formed groups to supply it.' / 'The rules for plugging a data center into a wholesale market are being rewritten through FERC dockets and RTO filings.' / 'The record shows it carries its own permitting and fuel risks.'",
+    "sentence": "'Hyperscalers bought existing nuclear output and uprates in September and October, and federal lending followed the same plants.' / 'Federal reliability bodies moved data center flexibility from a voluntary practice toward a standard, and industry formed groups to supply it.' / 'The rules for plugging a data center into a wholesale market are being rewritten through FERC dockets and RTO filings.' / 'The record shows it carries its own permitting and fuel risks.'",
+    "rule": "Brand Bible §06 and Template §4.1: sourced claims throughout; every factual sentence carries a numbered citation",
+    "note": "These Thread-intro sentences assert facts and trends with no [n] citation. They summarise the entries below them but do not trace to a source."
+   },
+   {
+    "code": "voice_violation",
+    "reviewer": "xcheck-voice",
+    "message": "Template §4.6: Faraday's Take is the one place for opinion: 'On-site generation is the main alternative to waiting for the grid.' / 'The Susquehanna case is the reference point.' / 'State actors moved faster than federal ones.' / 'Virginia's largest utility merger became a test of who speaks for ratepayers.'",
+    "sentence": "'On-site generation is the main alternative to waiting for the grid.' / 'The Susquehanna case is the reference point.' / 'State actors moved faster than federal ones.' / 'Virginia's largest utility merger became a test of who speaks for ratepayers.'",
+    "rule": "Template §4.6: Faraday's Take is the one place for opinion",
+    "note": "Each is an uncited evaluative claim: a ranking of alternatives, a judgement about which case is the reference, a comparative judgement and an interpretive framing. They sit in Thread intros, outside the Take, and none is sourced."
+   },
+   {
+    "code": "voice_violation",
+    "reviewer": "xcheck-voice",
+    "message": "Template §4.5: sponsored posts are labelled as such and quoted as the vendor's own statement: Behind-the-Fence entry: '10 Oct 2026 · Data Center Dynamics (sponsored) — A generator-to-chip delivery model. Wärtsilä, Schneider Electric and Stanley Consultants launched a coordinated approach integrating onsite generation, electrical infrastructure and engineering [16].'",
+    "sentence": "Behind-the-Fence entry: '10 Oct 2026 · Data Center Dynamics (sponsored) — A generator-to-chip delivery model. Wärtsilä, Schneider Electric and Stanley Consultants launched a coordinated approach integrating onsite generation, electrical infrastructure and engineering [16].'",
+    "rule": "Template §4.5: sponsored posts are labelled as such and quoted as the vendor's own statement",
+    "note": "The publisher label says 'sponsored', but the sentence states the launch and its content in the house voice. It is not attributed to the vendors, for example 'the vendors state that...' or 'according to the vendors' announcement'."
+   }
+  ],
+  "notes": "{\"a\":\"FAIL\",\"b\":\"FAIL\",\"mismatches\":1,\"violations\":6,\"unverifiable\":0,\"numbers_checked\":104,\"disagreements\":[],\"summaries\":{\"facts\":\"I re-derived every cited number and date from the cited source text. All of them match except one. In Faraday's Take, the claim that the nuclear agreements cited at [1, 5, 7] were logged \\\"in eight weeks\\\" is not stated by any of those sources, and S7 dates Meta's agreements to January 2026. There are two minor notes, neither a mismatch. S12's own text is internally inconsistent ('only 1 of 6 deals' vs 'only 1 GW'), but it does state the 1 GW figure the manuscript uses. S10 also gives a conflicting Q1 2029 target, but it states the January 2028 licensing-package date that is cited.\",\"voice\":\"FAIL on template and voice, with six violations. (1) The cover lacks the record line (record id, date prepared, Threads covered) and the eyebrow. (2) The five Thread sections have no Thread codes. (3) Four of five Thread intros run past one sentence. (4) Several intro sentences make factual or trend claims with no citation. (5) Four intro sentences are uncited opinion placed outside Faraday's Take. (6) The sponsored DCD entry [16] is stated in house voice rather than as the vendors' own statement. Overall structure and section order match the Standard template. The thesis arrives first on the cover and in the argument heading. The Take is present, opinion-only and cites only items already in the body. The Take cites only items in the body, and the Signal register adds no assessment. Fact accuracy was not examined.\"},\"mode\":\"import\",\"chain\":\"briefing-review-chain_v0.1\"}",
+  "lane": "domains",
+  "title": "The Power Reckoning",
+  "tier": "standard",
+  "status_result": "FAIL"
+ },
+ {
+  "id": null,
+  "created_at": "2026-11-09T11:06:55.298Z",
+  "briefing_id": "fx000700-0007-4000-8000-000000000007",
+  "version": 2,
+  "gate": "G1-AUTO",
+  "reviewer": "g1-auto",
+  "result": "FAIL",
+  "score": 2,
+  "blockers": [
+   {
+    "code": "no_sources",
+    "message": "source_refs is empty; a brief with no sources cannot pass the source rule."
+   },
+   {
+    "code": "placeholder_content",
+    "message": "Draft still carries BL2-04 stub placeholders (hypothesis or section bodies)."
+   }
+  ],
+  "notes": "{\"summary\":\"2 blockers (no_sources×1, placeholder_content×1); 2 pages.\",\"stats\":{\"units\":4,\"numeric_units\":4,\"numbers_checked\":0,\"numbers_matched\":0,\"numbers_unverifiable\":0,\"numbers_mismatched\":0,\"uncited_numeric_units\":4,\"markers\":0,\"refs\":0,\"pages\":2,\"tier\":\"profile\",\"briefing_type\":\"company\"},\"warnings\":[{\"code\":\"uncited_number\",\"message\":\"Numeric sentence carries no citation: \\\"_Placeholder — profile template skeleton (BL2-04).\\\"\",\"sentence\":\"_Placeholder — profile template skeleton (BL2-04).\",\"numbers\":[\"04\"],\"section\":\"What the record shows\",\"severity\":\"warn\"},{\"code\":\"uncited_number\",\"message\":\"Numeric sentence carries no citation: \\\"Replaced by the BL2-05 generator._\\\"\",\"sentence\":\"Replaced by the BL2-05 generator._\",\"numbers\":[\"05\"],\"section\":\"What the record shows\",\"severity\":\"warn\"},{\"code\":\"uncited_number\",\"message\":\"Numeric sentence carries no citation: \\\"_Placeholder — profile template skeleton (BL2-04).\\\"\",\"sentence\":\"_Placeholder — profile template skeleton (BL2-04).\",\"numbers\":[\"04\"],\"section\":\"Dated Signals\",\"severity\":\"warn\"},{\"code\":\"uncited_number\",\"message\":\"Numeric sentence carries no citation: \\\"Replaced by the BL2-05 generator._\\\"\",\"sentence\":\"Replaced by the BL2-05 generator._\",\"numbers\":[\"05\"],\"section\":\"Dated Signals\",\"severity\":\"warn\"}],\"preview_path\":\"/tmp/claude-0/-home-user/b6ee6df7-8a05-54f2-b70a-a27874d25a45/scratchpad/pdf/fx000700-v2.pdf\",\"html_path\":\"/tmp/claude-0/-home-user/b6ee6df7-8a05-54f2-b70a-a27874d25a45/scratchpad/pdf/fx000700-v2.html\",\"fonts_loaded\":[\"IBM Plex Sans\",\"Source Serif 4\"],\"render_error\":null,\"upload_error\":null,\"chain\":\"briefing-review-chain_v0.1\"}",
+  "lane": "institutions",
+  "title": "Lawrence Berkeley National Laboratory",
+  "tier": "profile",
+  "status_result": "FAIL"
+ },
+ {
+  "id": null,
+  "created_at": "2026-11-09T11:06:55.299Z",
+  "briefing_id": "fx000700-0007-4000-8000-000000000007",
+  "version": 2,
+  "gate": "G2-PANEL",
+  "reviewer": "tf-panel:profile-light",
+  "result": "FAIL",
+  "score": 0,
+  "blockers": [
+   {
+    "code": "score_below_3",
+    "message": "thesis_clear = 0",
+    "dimension": "thesis_clear",
+    "score": 0
+   },
+   {
+    "code": "score_below_3",
+    "message": "evidence_sufficient = 0",
+    "dimension": "evidence_sufficient",
+    "score": 0
+   },
+   {
+    "code": "score_below_3",
+    "message": "what_to_watch_useful = 0",
+    "dimension": "what_to_watch_useful",
+    "score": 0
+   }
+  ],
+  "notes": "{\"preset\":\"profile-light\",\"preset_label\":\"Profile Light\",\"members\":[{\"slug\":\"albert-thorne\",\"scores\":{\"thesis_clear\":0,\"evidence_sufficient\":0,\"what_to_watch_useful\":0},\"could_a_buyer_act\":false,\"required_edits\":4,\"note\":\"Every section is the BL2-04 placeholder and the sources list is empty. There is no thesis, no claim, no docket and no date to judge. I cannot verify anything, so I score all three zero. Regenerate through BL2-05 and resubmit.\"}],\"chair\":null,\"scores\":{\"thesis_clear\":0,\"evidence_sufficient\":0,\"what_to_watch_useful\":0},\"could_a_buyer_act\":false,\"required_edits\":[{\"kind\":\"structural\",\"location\":\"Header\",\"edit\":\"Replace the placeholder with the generated header and a one-sentence thesis on what Faraday thinks of Lawrence Berkeley National Laboratory and why it matters to a buyer.\",\"reason\":\"The section is a template skeleton. No thesis exists to read in 30 seconds.\"},{\"kind\":\"structural\",\"location\":\"What the record shows\",\"edit\":\"Generate the body. Each claim needs a tier label and a cited docket, tariff section or dated record.\",\"reason\":\"No claims are made, so nothing can be tested against a source.\"},{\"kind\":\"structural\",\"location\":\"Dated Signals\",\"edit\":\"Add dated forward items with triggers, naming the pending filing or order and its date.\",\"reason\":\"A buyer has no calendar or trigger to act on.\"},{\"kind\":\"structural\",\"location\":\"Sources list\",\"edit\":\"Populate the sources list and tie each claim to an entry.\",\"reason\":\"The list is empty, so no claim can be verified.\"}],\"note\":\"Every section is the BL2-04 placeholder and the sources list is empty. There is no thesis, no claim, no docket and no date to judge. I cannot verify anything, so I score all three zero. Regenerate through BL2-05 and resubmit.\",\"mode\":\"import\",\"chain\":\"briefing-review-chain_v0.1\"}",
+  "lane": "institutions",
+  "title": "Lawrence Berkeley National Laboratory",
+  "tier": "profile",
+  "status_result": "FAIL"
+ },
+ {
+  "id": null,
+  "created_at": "2026-11-09T11:06:55.299Z",
+  "briefing_id": "fx000700-0007-4000-8000-000000000007",
+  "version": 2,
+  "gate": "G3-XCHECK",
+  "reviewer": "xcheck-facts+xcheck-voice",
+  "result": "FAIL",
+  "score": null,
+  "blockers": [
+   {
+    "code": "voice_violation",
+    "reviewer": "xcheck-voice",
+    "message": "Template §2: Header must carry eyebrow (Library · Company Briefing), entity name, tier/status/record line and double rule: Header",
+    "sentence": "Header",
+    "rule": "Template §2: Header must carry eyebrow (Library · Company Briefing), entity name, tier/status/record line and double rule",
+    "note": "Body is only the placeholder line '_Placeholder — profile template skeleton (BL2-04). Replaced by the BL2-05 generator._'. None of the required parts are present."
+   },
+   {
+    "code": "voice_violation",
+    "reviewer": "xcheck-voice",
+    "message": "Template §2: 6–7 label/value pairs, each cited: Identity card",
+    "sentence": "Identity card",
+    "rule": "Template §2: 6–7 label/value pairs, each cited",
+    "note": "Placeholder only. No label/value pairs and no citations."
+   },
+   {
+    "code": "voice_violation",
+    "reviewer": "xcheck-voice",
+    "message": "Template §2 and Brand Bible §06 hypothesis-led opening: two or three cited sentences stating the most material facts first: What the record shows",
+    "sentence": "What the record shows",
+    "rule": "Template §2 and Brand Bible §06 hypothesis-led opening: two or three cited sentences stating the most material facts first",
+    "note": "Placeholder only. The reader cannot learn within 30 seconds what Faraday thinks or why it matters, because there is no thesis or restated fact."
+   },
+   {
+    "code": "voice_violation",
+    "reviewer": "xcheck-voice",
+    "message": "Template §2/§3: up to 8 dated Signals, newest first (date · publisher · headline · sourced sentences); flag as thin if fewer than 6: Dated Signals",
+    "sentence": "Dated Signals",
+    "rule": "Template §2/§3: up to 8 dated Signals, newest first (date · publisher · headline · sourced sentences); flag as thin if fewer than 6",
+    "note": "Placeholder only. No Signals, so the page is under budget, and it is not flagged as thin."
+   },
+   {
+    "code": "voice_violation",
+    "reviewer": "xcheck-voice",
+    "message": "Template §2 and Brand Bible §06: method note plus numbered source list as final page; sourced claims throughout: Sources & method",
+    "sentence": "Sources & method",
+    "rule": "Template §2 and Brand Bible §06: method note plus numbered source list as final page; sourced claims throughout",
+    "note": "Placeholder only. No method note and no numbered sources, so there are no sourced claims anywhere in the manuscript."
+   }
+  ],
+  "notes": "{\"a\":\"PASS\",\"b\":\"FAIL\",\"mismatches\":0,\"violations\":5,\"unverifiable\":0,\"numbers_checked\":0,\"disagreements\":[],\"summaries\":{\"facts\":\"No figures to check: every manuscript section is a template placeholder, and the raw source texts section is empty. There are no citation markers, numbers or dates, so no mismatches or unverifiable claims were raised.\",\"voice\":\"FAIL. The five section headings match the Profile template in order and no Faraday's Take is present, which is correct. Every section body is the BL2-04 placeholder line, so none of the required parts exist: no entity header, no cited identity pairs, no thesis-first opening, no Signals and no sources or method. This reads as an unfilled skeleton, not a draft; it needs the BL2-05 generator output before voice or budget can be judged.\"},\"mode\":\"import\",\"chain\":\"briefing-review-chain_v0.1\"}",
+  "lane": "institutions",
+  "title": "Lawrence Berkeley National Laboratory",
+  "tier": "profile",
+  "status_result": "FAIL"
+ },
+ {
+  "id": null,
+  "created_at": "2026-11-09T11:06:56.258Z",
+  "briefing_id": "fx000800-0008-4000-8000-000000000008",
+  "version": 2,
+  "gate": "G1-AUTO",
+  "reviewer": "g1-auto",
+  "result": "FAIL",
+  "score": 2,
+  "blockers": [
+   {
+    "code": "no_sources",
+    "message": "source_refs is empty; a brief with no sources cannot pass the source rule."
+   },
+   {
+    "code": "placeholder_content",
+    "message": "Draft still carries BL2-04 stub placeholders (hypothesis or section bodies)."
+   },
+   {
+    "code": "pages_out_of_range",
+    "message": "Measured 2 pages; standard tier requires 8–10.",
+    "pages": 2,
+    "range": [
+     8,
+     10
+    ]
+   },
+   {
+    "code": "missing_not_legal_advice",
+    "message": "Jurisdiction brief lacks the line \"Informational, not legal advice.\"."
+   }
+  ],
+  "notes": "{\"summary\":\"4 blockers (no_sources×1, placeholder_content×1, pages_out_of_range×1, missing_not_legal_advice×1); 2 pages.\",\"stats\":{\"units\":8,\"numeric_units\":8,\"numbers_checked\":0,\"numbers_matched\":0,\"numbers_unverifiable\":0,\"numbers_mismatched\":0,\"uncited_numeric_units\":6,\"markers\":0,\"refs\":0,\"pages\":2,\"tier\":\"standard\",\"briefing_type\":\"jurisdiction\"},\"warnings\":[{\"code\":\"uncited_number\",\"message\":\"Numeric sentence carries no citation: \\\"_Placeholder — standard template skeleton (BL2-04).\\\"\",\"sentence\":\"_Placeholder — standard template skeleton (BL2-04).\",\"numbers\":[\"04\"],\"section\":\"The argument\",\"severity\":\"warn\"},{\"code\":\"uncited_number\",\"message\":\"Numeric sentence carries no citation: \\\"Replaced by the BL2-05 generator._\\\"\",\"sentence\":\"Replaced by the BL2-05 generator._\",\"numbers\":[\"05\"],\"section\":\"The argument\",\"severity\":\"warn\"},{\"code\":\"uncited_number\",\"message\":\"Numeric sentence carries no citation: \\\"_Placeholder — standard template skeleton (BL2-04).\\\"\",\"sentence\":\"_Placeholder — standard template skeleton (BL2-04).\",\"numbers\":[\"04\"],\"section\":\"Thread sections\",\"severity\":\"warn\"},{\"code\":\"uncited_number\",\"message\":\"Numeric sentence carries no citation: \\\"Replaced by the BL2-05 generator._\\\"\",\"sentence\":\"Replaced by the BL2-05 generator._\",\"numbers\":[\"05\"],\"section\":\"Thread sections\",\"severity\":\"warn\"},{\"code\":\"uncited_number\",\"message\":\"Numeric sentence carries no citation: \\\"_Placeholder — standard template skeleton (BL2-04).\\\"\",\"sentence\":\"_Placeholder — standard template skeleton (BL2-04).\",\"numbers\":[\"04\"],\"section\":\"Signal register\",\"severity\":\"warn\"},{\"code\":\"uncited_number\",\"message\":\"Numeric sentence carries no citation: \\\"Replaced by the BL2-05 generator._\\\"\",\"sentence\":\"Replaced by the BL2-05 generator._\",\"numbers\":[\"05\"],\"section\":\"Signal register\",\"severity\":\"warn\"}],\"preview_path\":\"/tmp/claude-0/-home-user/b6ee6df7-8a05-54f2-b70a-a27874d25a45/scratchpad/pdf/fx000800-v2.pdf\",\"html_path\":\"/tmp/claude-0/-home-user/b6ee6df7-8a05-54f2-b70a-a27874d25a45/scratchpad/pdf/fx000800-v2.html\",\"fonts_loaded\":[\"IBM Plex Sans\",\"Source Serif 4\"],\"render_error\":null,\"upload_error\":null,\"chain\":\"briefing-review-chain_v0.1\"}",
+  "lane": "states",
+  "title": "Texas",
+  "tier": "standard",
+  "status_result": "FAIL"
+ },
+ {
+  "id": null,
+  "created_at": "2026-11-09T11:06:56.260Z",
+  "briefing_id": "fx000800-0008-4000-8000-000000000008",
+  "version": 2,
+  "gate": "G2-PANEL",
+  "reviewer": "tf-panel:jurisdiction",
+  "result": "FAIL",
+  "score": 0,
+  "blockers": [
+   {
+    "code": "score_below_3",
+    "message": "thesis_clear = 0",
+    "dimension": "thesis_clear",
+    "score": 0
+   },
+   {
+    "code": "score_below_3",
+    "message": "evidence_sufficient = 0",
+    "dimension": "evidence_sufficient",
+    "score": 0
+   },
+   {
+    "code": "score_below_3",
+    "message": "what_to_watch_useful = 0",
+    "dimension": "what_to_watch_useful",
+    "score": 0
+   }
+  ],
+  "notes": "{\"preset\":\"jurisdiction\",\"preset_label\":\"Jurisdiction\",\"members\":[{\"slug\":\"constance-wright\",\"scores\":{\"thesis_clear\":0,\"evidence_sufficient\":0,\"what_to_watch_useful\":0},\"could_a_buyer_act\":false,\"required_edits\":4,\"note\":\"Unsourced. Every section is a BL2-04 placeholder and the sources list is empty. There is no thesis, no claim to grade, no forward item. Nothing to tier, nothing to strike. Hold until the generator fills it.\"},{\"slug\":\"albert-thorne\",\"scores\":{\"thesis_clear\":0,\"evidence_sufficient\":0,\"what_to_watch_useful\":0},\"could_a_buyer_act\":false,\"required_edits\":3,\"note\":\"Every section is a template placeholder and the sources list is empty. There is no thesis, no docket or tariff citation, no paper-versus-practice timeline and no dated watch item. Nothing here can be verified or acted on. Return it after the generator has run.\"},{\"slug\":\"hartford-nakamura\",\"scores\":{\"thesis_clear\":0,\"evidence_sufficient\":0,\"what_to_watch_useful\":0},\"could_a_buyer_act\":false,\"required_edits\":4,\"note\":\"This is the template skeleton, not a brief. There is no thesis, no claims, and an empty sources list. Exposure: nothing here can be relied on. Mitigation: run the BL2-05 generator and resubmit. No factual edits, because there is nothing to check.\"},{\"slug\":\"rosalind-ferraro\",\"scores\":{\"thesis_clear\":0,\"evidence_sufficient\":0,\"what_to_watch_useful\":0},\"could_a_buyer_act\":false,\"required_edits\":4,\"note\":\"Every section is a template placeholder and the sources list is empty. I can't count a single vote here: no thesis, no evidence, no dates. A buyer has nothing to act on. Send it back when the generator has actually run.\"}],\"chair\":\"gilbert-faraday\",\"scores\":{\"thesis_clear\":0,\"evidence_sufficient\":0,\"what_to_watch_useful\":0},\"could_a_buyer_act\":false,\"required_edits\":[{\"kind\":\"structural\",\"location\":\"The argument\",\"edit\":\"Replace the template placeholder with Faraday's stated thesis on Texas, including ERCOT large-load interconnection and PUCT treatment, and why it changes a buyer's decision.\",\"reason\":\"Every section is BL2-04 skeleton text. There is no thesis to read, grade or rule on.\"},{\"kind\":\"structural\",\"location\":\"Thread sections / Signal register\",\"edit\":\"Write the substantive sections with dated, tier-labelled claims (VRF/SRC/EST/INF) covering power, approvals, incentives and clawback terms.\",\"reason\":\"No claims exist, so nothing can be tested against sources or acted on.\"},{\"kind\":\"structural\",\"location\":\"Sources list\",\"edit\":\"Populate the sources list and tie each load-bearing claim to a named source, citing the primary record (docket, tariff section, order date, queue data) where one exists.\",\"reason\":\"The sources list is empty, so any claim the generator adds would be unsourced.\"},{\"kind\":\"structural\",\"location\":\"Faraday's Take / Signal register / Sources & methodology\",\"edit\":\"Add the Take, the methodology, and forward items with dates and triggers (hearings, filings, rulemakings, queue milestones, clawback deadlines), each tied to a buyer move.\",\"reason\":\"A buyer has no calendar, trigger or next step to act on.\"}],\"note\":\"The panel agrees unanimously, and on the record I agree too. This is the template skeleton with an empty sources list, so there is no claim for Constance to grade and nothing for a buyer to act on. Ruling: return it. Would change if: the generator runs and the claims come back sourced.\",\"mode\":\"import\",\"chain\":\"briefing-review-chain_v0.1\"}",
+  "lane": "states",
+  "title": "Texas",
+  "tier": "standard",
+  "status_result": "FAIL"
+ },
+ {
+  "id": null,
+  "created_at": "2026-11-09T11:06:56.260Z",
+  "briefing_id": "fx000800-0008-4000-8000-000000000008",
+  "version": 2,
+  "gate": "G3-XCHECK",
+  "reviewer": "xcheck-facts+xcheck-voice",
+  "result": "FAIL",
+  "score": null,
+  "blockers": [
+   {
+    "code": "voice_violation",
+    "reviewer": "xcheck-voice",
+    "message": "Template §2 row 1: Cover must carry eyebrow, tier line, headline, one-paragraph thesis, Gilbert byline, evidence window, status and record line: ## Cover",
+    "sentence": "## Cover",
+    "rule": "Template §2 row 1: Cover must carry eyebrow, tier line, headline, one-paragraph thesis, Gilbert byline, evidence window, status and record line",
+    "note": "Body is only the placeholder line \"Placeholder — standard template skeleton (BL2-04). Replaced by the BL2-05 generator.\" None of the required parts is present, including the Gilbert byline required for a Jurisdiction briefing (§06)."
+   },
+   {
+    "code": "voice_violation",
+    "reviewer": "xcheck-voice",
+    "message": "§06 hypothesis-led opening; Template §2 row 2 (3–4 cited paragraphs plus At a glance table of 6–8 figures): ## The argument",
+    "sentence": "## The argument",
+    "rule": "§06 hypothesis-led opening; Template §2 row 2 (3–4 cited paragraphs plus At a glance table of 6–8 figures)",
+    "note": "No thesis, no argument paragraphs, no At a glance table. The reader cannot learn within 30 seconds what Faraday thinks about Texas or why it matters."
+   },
+   {
+    "code": "voice_violation",
+    "reviewer": "xcheck-voice",
+    "message": "Template §2 row 3 and Jurisdiction variant (FDY-281): six Thread sections (Legislation & rules · Permitting & siting · Power & utility regulation · Incentives & tax · Water/environment · Signals to watch), each with Thread code and name, one-sentence intro and 4–13 dated Signal entries: ## Thread sections",
+    "sentence": "## Thread sections",
+    "rule": "Template §2 row 3 and Jurisdiction variant (FDY-281): six Thread sections (Legislation & rules · Permitting & siting · Power & utility regulation · Incentives & tax · Water/environment · Signals to watch), each with Thread code and name, one-sentence intro and 4–13 dated Signal entries",
+    "note": "A single placeholder replaces all six Thread sections. No Thread headings, intros or Signal entries exist; the 4–5 page budget is wholly unmet."
+   },
+   {
+    "code": "voice_violation",
+    "reviewer": "xcheck-voice",
+    "message": "Template §2 row 4: table of named parties with role as reported and citations: ## Signal register",
+    "sentence": "## Signal register",
+    "rule": "Template §2 row 4: table of named parties with role as reported and citations",
+    "note": "Placeholder only; no table, no named parties, no citations."
+   },
+   {
+    "code": "voice_violation",
+    "reviewer": "xcheck-voice",
+    "message": "§06 Faraday's Take callout required on every Briefing; Template §4.6 Take is opinion only, reasoning over cited items: ## Faraday's Take",
+    "sentence": "## Faraday's Take",
+    "rule": "§06 Faraday's Take callout required on every Briefing; Template §4.6 Take is opinion only, reasoning over cited items",
+    "note": "The section heading is present but the body is a placeholder, so there is no opinion paragraph. It also cannot reason over cited items because the body cites nothing."
+   },
+   {
+    "code": "voice_violation",
+    "reviewer": "xcheck-voice",
+    "message": "§06 Sources & methodology page always final; Template §2 row 5 and Jurisdiction variant method-note line: ## Sources & methodology",
+    "sentence": "## Sources & methodology",
+    "rule": "§06 Sources & methodology page always final; Template §2 row 5 and Jurisdiction variant method-note line",
+    "note": "No source rule, selection method, limits, status or numbered source list. The required line \"Informational, not legal advice.\" is absent."
+   },
+   {
+    "code": "voice_violation",
+    "reviewer": "xcheck-voice",
+    "message": "§06 sourced claims throughout; Template §4.1 every factual sentence carries a numbered citation; Template §3 page budget 8–10 pages: Whole manuscript",
+    "sentence": "Whole manuscript",
+    "rule": "§06 sourced claims throughout; Template §4.1 every factual sentence carries a numbered citation; Template §3 page budget 8–10 pages",
+    "note": "The manuscript contains no editorial content at all: no sourced claims, no citations and no public vocabulary (Theater / Sector / Thread / Signal). It would render far under the 8-page minimum, and the template says not to pad. It is an unreplaced BL2-04 skeleton, not a draft."
+   }
+  ],
+  "notes": "{\"a\":\"PASS\",\"b\":\"FAIL\",\"mismatches\":0,\"violations\":7,\"unverifiable\":0,\"numbers_checked\":0,\"disagreements\":[],\"summaries\":{\"facts\":\"The manuscript contains only placeholder template text in every section. It has no citation markers, numbers, dates or other checkable claims. The raw source texts section is empty. Nothing could be checked, so there are no mismatches, no unverifiable figures and nothing cleared.\",\"voice\":\"FAIL. The six top-level headings are present and in the correct order, but every body is the same BL2-04 placeholder line. There is no hypothesis-led opening, no Gilbert byline, none of the six Jurisdiction Thread sections, no Signal register content, no Faraday's Take text, no source list, no \\\"Informational, not legal advice.\\\" line and no citations. The manuscript has not been through the BL2-05 generator and cannot pass template or voice review.\"},\"mode\":\"import\",\"chain\":\"briefing-review-chain_v0.1\"}",
+  "lane": "states",
+  "title": "Texas",
+  "tier": "standard",
+  "status_result": "FAIL"
+ },
+ {
+  "id": null,
+  "created_at": "2026-11-09T11:06:57.226Z",
+  "briefing_id": "fx000900-0009-4000-8000-000000000009",
+  "version": 2,
+  "gate": "G1-AUTO",
+  "reviewer": "g1-auto",
+  "result": "FAIL",
+  "score": 2,
+  "blockers": [
+   {
+    "code": "no_sources",
+    "message": "source_refs is empty; a brief with no sources cannot pass the source rule."
+   },
+   {
+    "code": "placeholder_content",
+    "message": "Draft still carries BL2-04 stub placeholders (hypothesis or section bodies)."
+   },
+   {
+    "code": "pages_out_of_range",
+    "message": "Measured 2 pages; standard tier requires 8–10.",
+    "pages": 2,
+    "range": [
+     8,
+     10
+    ]
+   },
+   {
+    "code": "missing_not_legal_advice",
+    "message": "Jurisdiction brief lacks the line \"Informational, not legal advice.\"."
+   }
+  ],
+  "notes": "{\"summary\":\"4 blockers (no_sources×1, placeholder_content×1, pages_out_of_range×1, missing_not_legal_advice×1); 2 pages.\",\"stats\":{\"units\":8,\"numeric_units\":8,\"numbers_checked\":0,\"numbers_matched\":0,\"numbers_unverifiable\":0,\"numbers_mismatched\":0,\"uncited_numeric_units\":6,\"markers\":0,\"refs\":0,\"pages\":2,\"tier\":\"standard\",\"briefing_type\":\"jurisdiction\"},\"warnings\":[{\"code\":\"uncited_number\",\"message\":\"Numeric sentence carries no citation: \\\"_Placeholder — standard template skeleton (BL2-04).\\\"\",\"sentence\":\"_Placeholder — standard template skeleton (BL2-04).\",\"numbers\":[\"04\"],\"section\":\"The argument\",\"severity\":\"warn\"},{\"code\":\"uncited_number\",\"message\":\"Numeric sentence carries no citation: \\\"Replaced by the BL2-05 generator._\\\"\",\"sentence\":\"Replaced by the BL2-05 generator._\",\"numbers\":[\"05\"],\"section\":\"The argument\",\"severity\":\"warn\"},{\"code\":\"uncited_number\",\"message\":\"Numeric sentence carries no citation: \\\"_Placeholder — standard template skeleton (BL2-04).\\\"\",\"sentence\":\"_Placeholder — standard template skeleton (BL2-04).\",\"numbers\":[\"04\"],\"section\":\"Thread sections\",\"severity\":\"warn\"},{\"code\":\"uncited_number\",\"message\":\"Numeric sentence carries no citation: \\\"Replaced by the BL2-05 generator._\\\"\",\"sentence\":\"Replaced by the BL2-05 generator._\",\"numbers\":[\"05\"],\"section\":\"Thread sections\",\"severity\":\"warn\"},{\"code\":\"uncited_number\",\"message\":\"Numeric sentence carries no citation: \\\"_Placeholder — standard template skeleton (BL2-04).\\\"\",\"sentence\":\"_Placeholder — standard template skeleton (BL2-04).\",\"numbers\":[\"04\"],\"section\":\"Signal register\",\"severity\":\"warn\"},{\"code\":\"uncited_number\",\"message\":\"Numeric sentence carries no citation: \\\"Replaced by the BL2-05 generator._\\\"\",\"sentence\":\"Replaced by the BL2-05 generator._\",\"numbers\":[\"05\"],\"section\":\"Signal register\",\"severity\":\"warn\"}],\"preview_path\":\"/tmp/claude-0/-home-user/b6ee6df7-8a05-54f2-b70a-a27874d25a45/scratchpad/pdf/fx000900-v2.pdf\",\"html_path\":\"/tmp/claude-0/-home-user/b6ee6df7-8a05-54f2-b70a-a27874d25a45/scratchpad/pdf/fx000900-v2.html\",\"fonts_loaded\":[\"IBM Plex Sans\",\"Source Serif 4\"],\"render_error\":null,\"upload_error\":null,\"chain\":\"briefing-review-chain_v0.1\"}",
+  "lane": "countries",
+  "title": "Germany",
+  "tier": "standard",
+  "status_result": "FAIL"
+ },
+ {
+  "id": null,
+  "created_at": "2026-11-09T11:06:57.227Z",
+  "briefing_id": "fx000900-0009-4000-8000-000000000009",
+  "version": 2,
+  "gate": "G2-PANEL",
+  "reviewer": "tf-panel:jurisdiction",
+  "result": "FAIL",
+  "score": 0,
+  "blockers": [
+   {
+    "code": "score_below_3",
+    "message": "thesis_clear = 0",
+    "dimension": "thesis_clear",
+    "score": 0
+   },
+   {
+    "code": "score_below_3",
+    "message": "evidence_sufficient = 0",
+    "dimension": "evidence_sufficient",
+    "score": 0
+   },
+   {
+    "code": "score_below_3",
+    "message": "what_to_watch_useful = 0",
+    "dimension": "what_to_watch_useful",
+    "score": 0
+   }
+  ],
+  "notes": "{\"preset\":\"jurisdiction\",\"preset_label\":\"Jurisdiction\",\"members\":[{\"slug\":\"constance-wright\",\"scores\":{\"thesis_clear\":0,\"evidence_sufficient\":0,\"what_to_watch_useful\":0},\"could_a_buyer_act\":false,\"required_edits\":4,\"note\":\"Unsourced, all of it. Every section is a template placeholder and the sources list is empty. There is no thesis, no claim to grade, no watch item. Nothing to tier, nothing to strike. Hold until the generator output exists.\"},{\"slug\":\"albert-thorne\",\"scores\":{\"thesis_clear\":0,\"evidence_sufficient\":0,\"what_to_watch_useful\":0},\"could_a_buyer_act\":false,\"required_edits\":4,\"note\":\"This is the template skeleton, not a draft. There is no thesis, no claim and no cited source, so I cannot grade evidence or watch items above zero. Nothing here is wrong, because nothing is stated. Resubmit once the generator has produced content.\"},{\"slug\":\"hartford-nakamura\",\"scores\":{\"thesis_clear\":0,\"evidence_sufficient\":0,\"what_to_watch_useful\":0},\"could_a_buyer_act\":false,\"required_edits\":4,\"note\":\"The exposure is total: this is the empty template skeleton, not a draft. No thesis, no claims, no sources, no forward items. A buyer has nothing to act on. Generate the brief, then resubmit. I would brake this at the gate.\"},{\"slug\":\"rosalind-ferraro\",\"scores\":{\"thesis_clear\":0,\"evidence_sufficient\":0,\"what_to_watch_useful\":0},\"could_a_buyer_act\":false,\"required_edits\":4,\"note\":\"Nothing to count here. Six placeholder headings, no thesis, no claims, no sources, no dates. A buyer cannot act on a skeleton. Send it back for the BL2-05 generator to fill, and I'll score the real draft.\"}],\"chair\":\"gilbert-faraday\",\"scores\":{\"thesis_clear\":0,\"evidence_sufficient\":0,\"what_to_watch_useful\":0},\"could_a_buyer_act\":false,\"required_edits\":[{\"kind\":\"structural\",\"location\":\"The argument\",\"edit\":\"Replace the placeholder with Faraday's thesis on Germany: grid connection, regulatory and permitting position, and why it matters to a buyer, readable in 30 seconds.\",\"reason\":\"All four panelists found every section to be BL2-04 template skeleton. There is no thesis.\"},{\"kind\":\"structural\",\"location\":\"Thread sections / Signal register\",\"edit\":\"Populate the body with claims on grid connection rules and timelines, approvals and incentives. Keep the paper process separate from observed practice, and give each claim a VRF/SRC/EST/INF label tied to a cited source.\",\"reason\":\"No claim exists, so there is nothing for Constance to grade and nothing to rule on.\"},{\"kind\":\"structural\",\"location\":\"Sources list\",\"edit\":\"Supply the sources list with the primary records (statutes, regulator decisions, operator filings) and the reporting behind each load-bearing claim.\",\"reason\":\"The list is empty. Nothing can be traced to a primary record.\"},{\"kind\":\"structural\",\"location\":\"Faraday's Take / Sources & methodology\",\"edit\":\"Write the Take and the methodology note, with dated forward items: decision bodies, filing and vote dates, and the triggers that would change a buyer's next move.\",\"reason\":\"Both sections are placeholders, and there are no watch items.\"}],\"note\":\"The panel is unanimous and right: this is the template skeleton, not a draft. Ruling: fail, and return it to the BL2-05 generator. Would change if: a populated manuscript with a sourced, tiered thesis arrives. Rests on: the placeholder text in all six sections and the empty sources list.\",\"mode\":\"import\",\"chain\":\"briefing-review-chain_v0.1\"}",
+  "lane": "countries",
+  "title": "Germany",
+  "tier": "standard",
+  "status_result": "FAIL"
+ },
+ {
+  "id": null,
+  "created_at": "2026-11-09T11:06:57.227Z",
+  "briefing_id": "fx000900-0009-4000-8000-000000000009",
+  "version": 2,
+  "gate": "G3-XCHECK",
+  "reviewer": "xcheck-facts+xcheck-voice",
+  "result": "FAIL",
+  "score": null,
+  "blockers": [
+   {
+    "code": "voice_violation",
+    "reviewer": "xcheck-voice",
+    "message": "Template §2 row 1: Cover must carry eyebrow, tier line, headline, one-paragraph thesis, byline, evidence window, status and record line: ## Cover",
+    "sentence": "## Cover",
+    "rule": "Template §2 row 1: Cover must carry eyebrow, tier line, headline, one-paragraph thesis, byline, evidence window, status and record line",
+    "note": "Section body is only the placeholder line \"Placeholder — standard template skeleton (BL2-04). Replaced by the BL2-05 generator.\" None of the required cover parts is present, and there is no Gilbert byline (Jurisdiction variant, Brand Bible §06)."
+   },
+   {
+    "code": "voice_violation",
+    "reviewer": "xcheck-voice",
+    "message": "Brand Bible §06 hypothesis-led opening; Template §2 row 2 (3-4 cited paragraphs plus an At a glance table of 6-8 dated, cited figures): ## The argument",
+    "sentence": "## The argument",
+    "rule": "Brand Bible §06 hypothesis-led opening; Template §2 row 2 (3-4 cited paragraphs plus an At a glance table of 6-8 dated, cited figures)",
+    "note": "Contains no thesis, no paragraphs and no At a glance table. The reader cannot learn within 30 seconds what Faraday thinks about Germany or why it matters."
+   },
+   {
+    "code": "voice_violation",
+    "reviewer": "xcheck-voice",
+    "message": "Template §2 row 3 and Jurisdiction variant (FDY-281): Legislation & rules, Permitting & siting, Power & utility regulation, Incentives & tax, Water/environment, Signals to watch: ## Thread sections",
+    "sentence": "## Thread sections",
+    "rule": "Template §2 row 3 and Jurisdiction variant (FDY-281): Legislation & rules, Permitting & siting, Power & utility regulation, Incentives & tax, Water/environment, Signals to watch",
+    "note": "None of the six Jurisdiction Thread sections exists. There are no Thread codes, intros or dated Signal entries, so the 4-5 page budget is unmet and there are no sourced claims."
+   },
+   {
+    "code": "voice_violation",
+    "reviewer": "xcheck-voice",
+    "message": "Template §2 row 4: table of named parties with role as reported and citations: ## Signal register",
+    "sentence": "## Signal register",
+    "rule": "Template §2 row 4: table of named parties with role as reported and citations",
+    "note": "No register table is present, only the placeholder line."
+   },
+   {
+    "code": "voice_violation",
+    "reviewer": "xcheck-voice",
+    "message": "Brand Bible §06 (Take callout on every Briefing); Template §4.6 (opinion only, reasons over cited items): ## Faraday's Take",
+    "sentence": "## Faraday's Take",
+    "rule": "Brand Bible §06 (Take callout on every Briefing); Template §4.6 (opinion only, reasons over cited items)",
+    "note": "Take is required on a Standard Briefing but contains no opinion paragraph. A Take cannot be checked for new-fact introduction while empty."
+   },
+   {
+    "code": "voice_violation",
+    "reviewer": "xcheck-voice",
+    "message": "Brand Bible §06 (Sources & methodology page, always final); Template §2 row 5 and Jurisdiction variant method note: ## Sources & methodology",
+    "sentence": "## Sources & methodology",
+    "rule": "Brand Bible §06 (Sources & methodology page, always final); Template §2 row 5 and Jurisdiction variant method note",
+    "note": "Missing the source rule, selection method, limits and status, the numbered source list, and the required line \"Informational, not legal advice.\" The heading is in the correct final position but has no content."
+   },
+   {
+    "code": "voice_violation",
+    "reviewer": "xcheck-voice",
+    "message": "Template §3 page budget (Standard 8-10 pages) and §4.1 (every factual sentence cited): Whole manuscript",
+    "sentence": "Whole manuscript",
+    "rule": "Template §3 page budget (Standard 8-10 pages) and §4.1 (every factual sentence cited)",
+    "note": "Every section is placeholder text, so the document is far under the 8-10 page target and carries no sourced claims. It cannot ship as a Standard."
+   }
+  ],
+  "notes": "{\"a\":\"PASS\",\"b\":\"FAIL\",\"mismatches\":0,\"violations\":7,\"unverifiable\":0,\"numbers_checked\":0,\"disagreements\":[],\"summaries\":{\"facts\":\"The manuscript contains only placeholder template text in every section, with no sentences carrying citation markers, numbers, dates or other checkable figures. The 'Raw source texts' section is empty. There was nothing to cross-check, so no mismatches or unverifiable figures were found and nothing was cleared.\",\"voice\":\"FAIL. The six top-level headings are present and in the template order. Every body is the BL2-04 placeholder line, so there is no thesis-first opening, no Cover parts or Gilbert byline, none of the six Jurisdiction Thread sections, no Signal register, no Take opinion, and no methodology or \\\"Informational, not legal advice.\\\" line. These are structural and template violations of Brand Bible §06 and the Standard jurisdiction template. Factual accuracy was not assessed.\"},\"mode\":\"import\",\"chain\":\"briefing-review-chain_v0.1\"}",
+  "lane": "countries",
+  "title": "Germany",
+  "tier": "standard",
+  "status_result": "FAIL"
+ }
+]

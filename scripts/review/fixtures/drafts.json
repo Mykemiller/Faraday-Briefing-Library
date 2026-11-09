@@ -1,0 +1,1222 @@
+[
+ {
+  "id": "draft-d86677a0-v2",
+  "briefing_id": "d86677a0-0b9c-41a7-b8e5-367f9044b8cf",
+  "version": 2,
+  "kind": "draft",
+  "status": "draft",
+  "title": "The Power Reckoning",
+  "tier": "deep",
+  "page_target": 12,
+  "sector_id": "D3",
+  "thread_id": "D3.5",
+  "theme_tags": [
+   "T-001"
+  ],
+  "source_refs": [
+   {
+    "ref": "S1",
+    "url": "https://www.ercot.com/news/release/06182026-puct-approves-ercots",
+    "title": "PUCT Approves ERCOT's Batch Zero Process for Connecting Large Electricity Users While Protecting System Reliability for Texans",
+    "publisher": "ERCOT",
+    "published_at": "2026-06-18",
+    "artifact_id": "911412db-8990-4cc6-a691-1d94bf1d8440",
+    "used_in": [
+     "summary",
+     "s2",
+     "s5",
+     "signals"
+    ],
+    "n": 1,
+    "kind": "artifact",
+    "id": "911412db-8990-4cc6-a691-1d94bf1d8440"
+   },
+   {
+    "ref": "S2",
+    "url": "https://emp.lbl.gov/queues",
+    "title": "Queued Up: 2026 Edition, Characteristics of Power Plants Seeking Transmission Interconnection",
+    "publisher": "Lawrence Berkeley National Laboratory",
+    "published_at": "2026-07-16",
+    "artifact_id": "3ea143bd-49fe-46f5-bd4a-afdfd780500f",
+    "used_in": [
+     "summary",
+     "s1"
+    ],
+    "n": 2,
+    "kind": "artifact",
+    "id": "3ea143bd-49fe-46f5-bd4a-afdfd780500f"
+   },
+   {
+    "ref": "S3",
+    "url": "https://www.ferc.gov/news-events/news/ferc-launches-aggressive-targeted-action-speed-large-load-integration",
+    "title": "FERC Launches Aggressive Targeted Action to Speed Large Load Integration",
+    "publisher": "Federal Energy Regulatory Commission",
+    "published_at": "2026-06-18",
+    "artifact_id": "807d50ba-3b0b-44ba-8a86-74bbdf8d9dda",
+    "used_in": [
+     "summary",
+     "s3",
+     "s5"
+    ],
+    "n": 3,
+    "kind": "artifact",
+    "id": "807d50ba-3b0b-44ba-8a86-74bbdf8d9dda"
+   },
+   {
+    "ref": "S4",
+    "url": "https://www.americanactionforum.org/insight/ferc-data-center-orders-accelerate-grid-connection/",
+    "title": "FERC Data Center Orders Accelerate Grid Connection",
+    "publisher": "American Action Forum",
+    "published_at": "2026-06-18",
+    "artifact_id": "1583a02d-d937-4ca7-91fa-9f6d6dfb88ac",
+    "used_in": [
+     "summary",
+     "s1",
+     "s3",
+     "s4",
+     "s5",
+     "signals"
+    ],
+    "n": 4,
+    "kind": "artifact",
+    "id": "1583a02d-d937-4ca7-91fa-9f6d6dfb88ac"
+   },
+   {
+    "ref": "S5",
+    "url": "https://www.utilitydive.com/news/pennsylvania-puc-to-consider-rates-and-curtailment-as-data-centers-grow/830174/",
+    "title": "Pennsylvania PUC to consider ratemaking, ROE and curtailment as data center load grows",
+    "publisher": "Utility Dive",
+    "published_at": "2026-09-11",
+    "artifact_id": "54205445-b2a4-4774-b023-00316abb0ea9",
+    "used_in": [
+     "summary",
+     "s2",
+     "s4",
+     "signals"
+    ],
+    "n": 5,
+    "kind": "artifact",
+    "id": "54205445-b2a4-4774-b023-00316abb0ea9"
+   },
+   {
+    "ref": "S6",
+    "url": "https://www.utilitydive.com/news/house-passes-ratepayer-protection-bill-data-centers/830658/",
+    "title": "House passes ratepayer protection bill to limit data center cost shifts",
+    "publisher": "Utility Dive",
+    "published_at": "2026-09-17",
+    "artifact_id": "8f567e0f-c354-46df-a9a4-9763ec606cdd",
+    "used_in": [
+     "summary",
+     "s3",
+     "s4",
+     "s6",
+     "signals"
+    ],
+    "n": 6,
+    "kind": "artifact",
+    "id": "8f567e0f-c354-46df-a9a4-9763ec606cdd"
+   },
+   {
+    "ref": "S7",
+    "url": "https://www.cleanegroup.org/states-are-stepping-up-to-protect-households-from-rising-energy-bills-due-to-data-centers/",
+    "title": "States are stepping up to protect households from rising energy bills due to data centers",
+    "publisher": "Clean Energy Group",
+    "published_at": "2026-07-16",
+    "artifact_id": "9dcfbf68-74c0-46c1-a78f-91fae6bb3eee",
+    "used_in": [
+     "summary",
+     "s2",
+     "s3",
+     "s4",
+     "s7"
+    ],
+    "n": 7,
+    "kind": "artifact",
+    "id": "9dcfbf68-74c0-46c1-a78f-91fae6bb3eee"
+   },
+   {
+    "ref": "S8",
+    "url": "https://www.nixonpeabody.com/insights/alerts/2026/05/07/data-center-site-selection-strategy-update",
+    "title": "Data center site selection strategy update",
+    "publisher": "Nixon Peabody",
+    "published_at": "2026-05-07",
+    "artifact_id": "e471f64d-384d-457b-a4d8-e35fdf1199bd",
+    "used_in": [
+     "summary",
+     "s2",
+     "s3",
+     "s4",
+     "s5",
+     "s7",
+     "signals"
+    ],
+    "n": 8,
+    "kind": "artifact",
+    "id": "e471f64d-384d-457b-a4d8-e35fdf1199bd"
+   },
+   {
+    "ref": "S9",
+    "url": "https://www.datacenterfrontier.com/site-selection/blog/55394817/the-data-center-industrys-permission-to-build",
+    "title": "The Data Center Industry's Permission to Build",
+    "publisher": "Data Center Frontier",
+    "published_at": "2026-07-31",
+    "artifact_id": "c5dc5867-e321-4702-b30e-03b8c872ad7c",
+    "used_in": [
+     "summary",
+     "s2",
+     "s7"
+    ],
+    "n": 9,
+    "kind": "artifact",
+    "id": "c5dc5867-e321-4702-b30e-03b8c872ad7c"
+   },
+   {
+    "ref": "S10",
+    "url": "https://convergedigest.com/black-hills-google-cheyenne-data-center-power/",
+    "title": "Black Hills to Invest $1.8B to Power Google Data Center in Wyoming",
+    "publisher": "Converge Digest",
+    "published_at": "2026-10-07",
+    "artifact_id": "e63e54d5-1b17-442a-bacb-f179249724a7",
+    "used_in": [
+     "summary",
+     "s6",
+     "signals"
+    ],
+    "n": 10,
+    "kind": "artifact",
+    "id": "e63e54d5-1b17-442a-bacb-f179249724a7"
+   },
+   {
+    "ref": "S11",
+    "url": "https://convergedigest.com/vertiv-acquire-uig-ai-data-center-microgrids/",
+    "title": "Vertiv to Acquire UtilityInnovation Group for $1.45B",
+    "publisher": "Converge Digest",
+    "published_at": "2026-09-03",
+    "artifact_id": "ee94462b-f6c8-44c5-8b0e-c8676a19762d",
+    "used_in": [
+     "summary",
+     "s6",
+     "signals"
+    ],
+    "n": 11,
+    "kind": "artifact",
+    "id": "ee94462b-f6c8-44c5-8b0e-c8676a19762d"
+   }
+  ],
+  "institution_id": null,
+  "company_id": null,
+  "jurisdiction_id": null,
+  "briefing_type": "theater",
+  "byline": "Gilbert Faraday, with the forward call by Mach Eigen",
+  "hypothesis": "Power is no longer the binding constraint on American data center growth in the way the industry describes it. The binding constraint is the terms of connection. Between May and October 2026, federal regulators, every state that legislated, and the largest grid operator in Texas converged on one bargain: large loads connect faster if they pay the full incremental cost of serving them, bring or contract their own generation, and accept curtailment. Developers who structure projects around that bargain will connect. Developers who wait for the old terms will wait in a queue that is already longer than a construction cycle.",
+  "contents": [
+   "<!-- Deep brief sample (BL-08 / FDY-174). Manuscript of record for deep-sample.html.\n     Source Draft: Airtable Briefing Library recMlmb655VUUXSFl — see Sources & methodology.\n     Markers [Sn] resolve to the source_refs array at the end of this file. -->\n\n:::cover\n# The Power Reckoning\n\nThe grid has stopped rationing electrons and started rationing permission. In 2026 every layer of American power governance moved to the same rule: a data center that wants to connect must pay its own way, wait its turn, or agree to be switched off.\n\n- **Tier:** Deep brief\n- **Coverage:** Theater: The Power Reckoning › Sector: Grid & Regulatory (secondary: Power Architecture) › Thread: Large-Load Tariff Design & Co-Location Rules\n- **Byline:** Gilbert Faraday, with the forward call by Mach Eigen\n- **Evidence window:** 7 May – 7 Oct 2026, eleven sources, de-duplicated by URL\n- **Status:** DRAFT. Template sample, not for distribution. Requires Myke sign-off (Deep tier).\n:::\n\n## Summary\n\n**Faraday's thesis.** Power is no longer the binding constraint on American data center growth in the way the industry describes it. The binding constraint is the terms of connection. Between May and October 2026, federal regulators, every state that legislated, and the largest grid operator in Texas converged on one bargain: large loads connect faster if they pay the full incremental cost of serving them, bring or contract their own generation, and accept curtailment. Developers who structure projects around that bargain will connect. Developers who wait for the old terms will wait in a queue that is already longer than a construction cycle.\n\n**Findings**\n\n1. **The queue is longer than the build.** Lawrence Berkeley National Laboratory counts over 2,060 GW of generation and storage seeking interconnection at the end of 2025, with a median of more than five years from request to commercial operation for projects built in 2025 [S2]. Large loads face a similar clock: connecting a load of 200 MW or more typically takes at least five years [S4].\n2. **Demand requests dwarf the system.** ERCOT is tracking more than 438,000 MW of large-load requests, nearly 89% of them from data centers [S1]. PJM's July 2026 capacity auction identified a reliability shortfall of 6,831 MW for the 2028–29 delivery year [S5].\n3. **Washington chose speed by order, not by rule.** On 18 June 2026 FERC issued six tailored show-cause orders instead of a national rulemaking, giving grid operators 60 days to justify or reform their large-load tariffs and 30 days to report on generation adequacy [S3][S4].\n4. **The states are writing the bill.** Only 13 states lack any utility tariff setting requirements for data centers and other large loads [S6]. Eight states had enacted cost-protection laws by July 2026 [S7]. The House passed the Ratepayer Protection Act 417–3 on 16 September [S6].\n5. **\"Bring your own power\" is now a product.** Black Hills' agreements to serve Google in Cheyenne pair up to 590 MW of grid service with about 2.1 GW of third-party resources run through a private microgrid [S10]. Vertiv agreed to pay about $1.45 billion for a microgrid and behind-the-meter specialist [S11].\n6. **Permission is a second grid.** New York, Montgomery County (Maryland) and Prince William County (Virginia) have each paused data center approvals or seen them invalidated [S9]; one legal survey counts more than 140 local groups blocking or delaying about $60 billion or more of investment [S8].\n\n**What to watch:** Pennsylvania's curtailment order (vote targeted 28 January) [S5]; ERCOT's Batch Zero transmission plan (fall 2027) [S1]; Senate action on the Ratepayer Protection Act [S6]; Vertiv–UIG close (Q4 2026) [S11].\n\n## 1. The queue is longer than the build\n\n*Claim: the time it takes to connect, not the volume of power available, now sets the pace of the buildout.*\n\nThe clearest measure of the constraint is the interconnection queue. Lawrence Berkeley National Laboratory's *Queued Up: 2026 Edition*, built with GridTracker from all seven ISOs/RTOs and 50 non-ISO utilities covering about 98% of installed US generating capacity, reports that over 2,060 GW of generation and storage capacity was actively seeking grid connection at the end of 2025 [S2]. That total is about 8,200 projects: 1,312 GW of generation and roughly 749 GW of storage [S2].\n\nThe volume is not the problem. The conversion rate is. Only 13% of the capacity that requested interconnection from 2000 to 2020 had reached commercial operation by the end of 2025; 75% had been withdrawn and 10% was still active [S2]. And the projects that do get built take longer: for regions with available data, the median time from interconnection request to commercial operation exceeded five years for projects built in 2025 [S2].\n\nThe mix inside the queue is shifting toward firm power. Active natural gas capacity rose 86% in 2025 to 253 GW, while solar fell 19% to 773 GW, storage fell 16% to 749 GW and wind fell 19% to 220 GW [S2]. Total active queue volume fell 10% year over year on high withdrawals and fewer new requests [S2]. A further 549 GW already holds a draft or executed interconnection agreement but has not reached operation, including 45 GW of gas [S2].\n\nLoad faces its own version of the clock. The American Action Forum's analysis of FERC's June action states that a large energy user of 200 MW or more typically waits at least five years from initial interconnection request to commercial operation [S4]. For a data center, that is longer than the construction schedule of the building it is meant to power.\n\n| Indicator | Value | Source |\n|---|---|---|\n| Generation + storage seeking interconnection, end-2025 | > 2,060 GW | [S2] |\n| Median request-to-operation, projects built 2025 | > 5 years | [S2] |\n| Share of 2000–2020 requested capacity operating by end-2025 | 13% | [S2] |\n| Active gas capacity in queues, change in 2025 | 253 GW, +86% | [S2] |\n| Typical time to connect a ≥ 200 MW load | ≥ 5 years | [S4] |\n\nLBNL itself cautions that FERC Order 2023 and other reforms are being implemented but that it is too early to measure their full effect [S2]. Faraday's reading: any siting model that assumes a grid connection inside a normal construction cycle is assuming a reform outcome that the data do not yet show.\n\n## 2. Demand requests dwarf the system\n\n*Claim: the requests now filed by large loads are so large that grid operators have stopped treating them as individual customers and started treating them as a system-planning event.*\n\nERCOT reports that it is tracking more than 438,000 MW of large-load requests, nearly 89% of them from data centers alone [S1]. ERCOT's own description of its system gives the scale: it serves more than 27 million Texas customers, about 90% of the state's electric load, over 55,000 miles of transmission and more than 1,460 generation units [S1]. Not every request becomes a project, and ERCOT says so; it also says its data show the majority of requests expect to be operational by 2030 [S1].\n\nIn New York, Executive Order 62 points to nearly 12 GW of data center load requests in the NYISO queue as of May 2026, according to Data Center Frontier's account of the order [S9].\n\nIn PJM the pressure shows up in the capacity market. Pennsylvania's Public Utility Commission, announcing its September action, stated that PJM's July 2026 capacity auction identified a system-wide reliability shortfall of 6,831 MW for the 2028–29 delivery year [S5]. The commission's August report projected industrial load growth of 18.56% in Pennsylvania over the next five years, driven primarily by PPL Electric Utilities' large-load forecast, even though electricity usage declined from 2024 to 2025 [S5]. The report attributed the strain to \"an insufficient level of construction of electric generation and continued retirement of base load electric generation\" [S5].\n\nHouseholds feel the result. Clean Energy Group cites a Duke Energy proposal in North Carolina for an 18% rate increase to prepare for data center demand, adding $280–$355 a year to the average household bill, and an expectation that data centers will raise household bills in the PJM region by $70 a month by 2028 [S7]. Nixon Peabody reports that PJM data center demand drove a 20% increase in New Jersey household bills in 2025 [S8].\n\nThose bill figures are the political fuel for everything in the next three sections.\n\n## 3. Washington chose speed by order, not by rule\n\n*Claim: the federal government accelerated large-load interconnection in 2026 while leaving the cost question to the states, and that division of labor is now the operating framework.*\n\nThe federal sequence ran over eight months. On 23 October 2025, Energy Secretary Chris Wright asked FERC, using the rarely invoked Section 403 of the Department of Energy Organization Act, to consider rules for connecting loads above 20 MW to the interstate transmission system [S4]. In December 2025 FERC directed PJM to adopt transparent tariff rules for loads co-located with generation [S3], and on 14 January 2026 it accepted Southwest Power Pool's High Impact Large Loads framework [S8]. On 16 April 2026 FERC issued an Order Regarding Intent to Act in Docket RM26-4-000 [S8].\n\nOn 18 June 2026 FERC acted, but not with the national rulemaking many expected. It issued tailored show-cause orders under Section 206 of the Federal Power Act to each of the six RTOs/ISOs under its jurisdiction: PJM, MISO, SPP, CAISO, ISO New England and NYISO [S3]. Each operator and its transmission owners had 60 days to justify their tariffs as just and reasonable without large-load provisions, or to file changes, and 30 days to report how they would ensure adequate generation for existing and new large loads [S3]. The orders set out five reform categories [S3]:\n\n- efficient transmission service application and study processes;\n- preventing cost shifting, with transparency into transmission costs;\n- accommodating co-location agreements and behind-the-meter generation;\n- new transmission services for flexible large loads;\n- a process to study generation serving electrically proximate and co-located loads.\n\nThe American Action Forum's analysis argues that a rulemaking would likely have taken two to five years, and that the region-specific orders, confined to FERC's jurisdiction, are built to withstand challenges from state stakeholders [S4]. FERC's orders state that nothing in them intrudes on state authority to site generation or set retail rates, and that they leave to the states the job of preventing cost shifting among retail customers [S4]. State regulators had asked for exactly that line: the National Association of Regulatory Utility Commissioners told FERC on 13 April 2026 that federal regulation of large-load interconnection would impede states' ability to protect affordability [S4].\n\nReliability regulation moved in parallel. On 4 May 2026 NERC issued a Level 3 Essential Action Alert on computational load risks and created a Computational Load Entity registration class for sites of 20 MW or more aggregate connected capacity at a single point of interconnection of 60 kV or more [S8]. Nixon Peabody expects enforceable obligations for in-scope data centers and utilities starting in 2027 [S8].\n\nThe political layer came last. On 4 March 2026 Amazon, Google, Meta, Microsoft, OpenAI, Oracle and xAI signed the White House Ratepayer Protection Pledge, committing to build, bring or buy all new generation and to pay for delivery upgrades [S8]. The pledge is voluntary and, per Clean Energy Group, has no enforcement mechanism [S7]. On 16 September the House passed the Ratepayer Protection Act 417–3; it requires states to consider standards for loads above 100 MW covering the full incremental cost of generation, transmission and distribution upgrades [S6]. ClearView Energy Partners, quoted by Utility Dive, judged the bill unlikely to pass the Senate before the November midterms [S6].\n\n## 4. The states are writing the bill\n\n*Claim: cost allocation for data center load is now settled policy in most of the country; what remains open is how much each state charges and how it collects.*\n\nThe count is already lopsided. Citing the Smart Electric Power Alliance's large-load tariff database, Utility Dive reports that only 13 states lack any utility tariff setting requirements for data centers and other large loads, and at least three of those were considering requirements as of July [S6]. Nixon Peabody counts more than 300 data center bills filed in more than 30 states in 2026 [S8].\n\nClean Energy Group lists eight states that had enacted ratepayer-protection legislation by July 2026 [S7]:\n\n| State | Law | Signed | Core provision (per [S7]) |\n|---|---|---|---|\n| Florida | SB 484 | May 2026 | Prevents cost pass-through; preserves local siting authority |\n| Tennessee | HB 1847 | May 2026 | Data Center Cost Responsibility Act |\n| Oklahoma | HB 2992 | May 2026 | Separate tariffs for large-load customers |\n| South Dakota | SB 135 | March 2026 | Protects residents from cost increases and shortages |\n| Oregon | HB 3546 (POWER Act) | August 2025 | Separate rate category for large loads |\n| Texas | SB 6 | June 2025 | Expanded oversight of new large loads |\n| Minnesota | HF 16 | June 2025 | Separate customer class; ends electricity sales-tax exemption |\n| New Jersey | A796 | July 2026 | Large-load rate class; efficiency-for-capacity incentive |\n\nThe mechanisms are converging. State regulators increasingly require large loads to pay upfront for system impact studies, ramp to full load within a set number of months, and pay exit fees if they stop development or cut service [S6]. Virginia's State Corporation Commission approved a large-customer rate starting January 2027 under which affected customers pay for at least 85% of contracted distribution and transmission demand and 60% of generation demand [S4]. Virginia's HB 1393 requires loads of 25 MW or more to pay for new generation capacity [S8]. Alabama's SB 270 requires contracts of 150 MW or more to pass a ratepayer benefit test [S8]. Texas SB 6 regulates loads of 75 MW or more, with disconnection protocols [S8].\n\nGeorgia went furthest. Its Public Service Commission approved the Customer-Identified Resource program on 15 April 2026, under which large customers bring their own clean power through sleeved power purchase agreements; Nixon Peabody calls participation a de facto interconnection prerequisite [S8]. Georgia's SB 476 also eliminated data center tax credits, which Nixon Peabody puts at $2.5 billion a year in forgone revenue [S8].\n\nPennsylvania shows the next step: regulators examining curtailment and cost of capital together. On 11 September its PUC voted unanimously to have staff propose updated emergency curtailment rules, to hold a technical conference on large-load cost allocation, and to form a ratemaking working group examining return on equity [S5]. A tentative curtailment order was due at the 1 October meeting, with a final vote targeted for 28 January [S5].\n\n## 5. The queue, redesigned\n\n*Claim: grid operators are trading faster connection for control; flexibility and self-supply have become the price of admission.*\n\nERCOT's Batch Zero is the template. Approved by the Public Utility Commission of Texas on 18 June 2026, it groups qualified large projects of 75 MW or more into a single study so ERCOT can see future demand at once, allocate available capacity and identify transmission upgrades, replacing project-by-project review [S1]. ERCOT describes itself as the first ISO in the nation to use a batch process for large users [S1].\n\nTwo features matter more than the batch itself. First, the framework gives a pathway to large customers that build onsite generation to self-supply some or all of their electricity; facilities truly islanded with no grid connection generally fall outside ERCOT's interconnection process, though they may still have to register with the PUCT [S1]. Second, it creates a connection pathway for large customers who agree to let ERCOT curtail their power use in response to local transmission constraints [S1].\n\nThe timetable is long. ERCOT expected to notify Batch Zero applicants of their classification in August 2026, expects to publish a final transmission plan for the whole batch in fall 2027, and expects applications for Batch 1 to open in summer 2027 [S1].\n\nFERC's orders point the same way. Two of the five reform categories are accommodating co-location and behind-the-meter generation, and new transmission services for flexible large loads [S3]. FERC singled out SPP's High Impact Large Load and related generation assessment processes as standing out, which the American Action Forum reads as a potential model for other operators [S4].\n\nThe economics of hiding load are closing. Nixon Peabody expected FERC's large-load rules to require behind-the-meter generation to be reported and modeled in load forecasts, co-located loads above 50 MW to pay full transmission charges without netting, and generators serving co-located load to reduce their capacity interconnection rights dollar for dollar. Its conclusion: the prior cost advantage of masking load behind the meter is being eliminated [S8]. That expectation predates the June orders, and the orders as issued set categories, not those specific terms [S3]. It is a forecast to test against the compliance filings, not a settled outcome.\n\n## 6. Bring your own power becomes a product\n\n*Claim: self-supply has moved from a workaround to a contract structure and an acquisition category.*\n\nThe Black Hills–Google agreements in Cheyenne, Wyoming, effective 30 September 2026 and running through 2048, are the clearest public example [S10]. They combine up to 590 MW of grid-connected service with about 2.1 GW of Wyoming third-party contracted resources managed through a privately run microgrid under Black Hills' Large Power Contract Service tariff, for a total resource portfolio of about 2.7 GW including reserve margins [S10].\n\n| Term | Value (per [S10]) |\n|---|---|\n| Black Hills investment, 2027–2029 | $1.8 billion |\n| New company-owned gas generation | 564 MW, at Cheyenne Prairie Generating Station, via a non-regulated affiliate |\n| Grid-connected service | Up to 590 MW |\n| Third-party resources via private microgrid | ≈ 2.1 GW |\n| First power / peak ramp | Late 2027 / 2030 |\n| Google refundable advances for long-lead equipment | $399 million |\n| Expected Black Hills net income contribution, 2030 | ≈ $150 million |\n\nThe structure answers the cost question directly. Black Hills says Google bears all costs of serving the data center over the life of the project, with cost pass-through, full recovery of the generation investment over the contract term, stranded-asset protection, early-termination provisions and collateral requirements [S10]. Converge Digest's analysis draws the conclusion: the utility connection and the total energy architecture are no longer the same thing [S10].\n\nThe equipment market is pricing the same shift. On 2 September 2026 Vertiv agreed to acquire UtilityInnovation Group for about $1.45 billion in cash, with up to $1.15 billion more tied to 12- and 24-month EBITDA targets, for potential total consideration of about $2.6 billion [S11]. UIG designs grid-connected, bridge-to-grid and islanded power architectures with its own controls platform and microgrid switchgear [S11]. The initial price is about 13 times UIG's expected 2027 EBITDA, and the deal is expected to close in Q4 2026 [S11]. Vertiv's chief executive framed the rationale as speed: competitive advantage \"increasingly depends on how quickly they can move from site selection to first token\" [S11].\n\nSelf-supply is not free of time cost. ClearView Energy Partners warned that requiring data centers to bring their own new capacity could extend construction by years, because a power plant typically takes far longer to build than a data center [S6]. Black Hills' first service date is late 2027 for an agreement signed in 2026 [S10].\n\n## 7. Permission is a second grid\n\n*Claim: local and state consent now constrains siting as tightly as megawatts do, and it is failing in the same places power is scarcest.*\n\nData Center Frontier's editor-in-chief described the summer of 2026 as the moment \"the public has entered the room\" [S9]. His account, citing Reuters, records 142 demonstrations across 42 states on 18 July in what Reuters described as the first coordinated national protest against the buildout, and a June Reuters/Ipsos poll in which 57% of respondents would oppose a data center in their community and 14% said they would be comfortable with one nearby [S9]. Clean Energy Group cites a separate Gallup poll in which 70% of Americans oppose data center construction in their area [S7]. The two polls ask different questions; both point the same way.\n\nThe actions are concrete:\n\n- **New York** imposed a one-year pause on certain environmental approvals for new hyperscale data centers while it develops standards and a host-community benefits framework [S9]. Clean Energy Group describes New York as the first state to initiate a moratorium on data centers over 40 MW [S7].\n- **Montgomery County, Maryland** voted unanimously on 28 July to pause new data center permits for 18 months [S9].\n- **Prince William County, Virginia:** the Digital Gateway collapsed after years of opposition and litigation; approvals were invalidated over public-notice defects and QTS withdrew the last appeal [S9].\n- **Nationally**, Nixon Peabody counts more than 140 local groups blocking or delaying about $60 billion or more in investment, and 12 or more moratorium bills [S8].\n\nNixon Peabody names the shift: from \"energy-first\" siting to \"power-plus-permission\", in which a project needs a social license (legislative durability, ratepayer-protection commitments, transparent operations and community acceptance) alongside power access [S8]. Water is becoming part of that license. Florida's SB 484, effective 1 July 2026, creates a consumptive-use permitting framework for data centers of 50 MW or more [S8].\n\nFaraday's reading: the opposition maps onto the cost fight in sections 2 and 4. The bill impact is the argument residents use, and the cost-allocation laws are the concession states make. A developer that arrives with a cost-bearing tariff and its own supply has answered the most common objection before the hearing.\n\n## Signals to watch\n\nEach row is an event a source names with a date or window.\n\n| When | Signal | Source |\n|---|---|---|\n| Q4 2026 | Vertiv–UtilityInnovation Group acquisition expected to close | [S11] |\n| Fall 2026 | Pennsylvania PUC technical conference on large-load cost allocation | [S5] |\n| 31 Dec 2026 | NERC revised registry criteria filing due (Computational Load Entity class) | [S8] |\n| Jan 2027 | Virginia SCC large-customer rate takes effect (85% T&D / 60% generation minimums) | [S4] |\n| 28 Jan 2027 | Pennsylvania PUC target vote on curtailment order | [S5] |\n| Before Nov 2026 midterms | Senate action on the Ratepayer Protection Act, judged unlikely by ClearView | [S6] |\n| Late 2027 | Google Cheyenne begins taking power from Black Hills | [S10] |\n| Summer 2027 | ERCOT opens Batch 1 applications | [S1] |\n| Fall 2027 | ERCOT publishes the Batch Zero transmission plan | [S1] |\n\n:::take\n## Faraday's Take\n\nThe industry still talks about power as a commodity it cannot buy enough of. The record of 2026 says something narrower and more useful: power is available on new terms, and the terms are now written down. FERC told every grid operator to justify or rewrite its large-load rules. Most states have a large-load tariff. Texas built a queue that rewards self-supply and curtailment. The largest buyers signed a pledge to build, bring or buy their own generation.\n\nRead together, these are not obstacles. They are a price list. Pay the full incremental cost. Bring capacity, or contract for it. Accept that the grid can switch you off when it is short. A developer that accepts all three gets a path to connection that the queue alone cannot offer. A developer that waits for the old bargain, cheap shared upgrades and firm service on demand, is waiting for terms that no regulator in this record is offering.\n\nOur view is that the winners of the next cycle are the ones who treat the connection agreement as the product, and the data hall as the part that follows. Black Hills and Google show the shape: a modest grid connection wrapped in a much larger private supply portfolio, with the customer carrying the cost. Vertiv's purchase shows the supply chain has already priced it.\n\nThe risk we would watch is time. Self-supply moves the bottleneck from the queue to the power plant, and power plants are slower to build than data centers. The firms that solve that, with bridge power, staged ramps and curtailable designs, will set the pace for everyone else.\n\n*— Mach Eigen, with Gilbert Faraday*\n:::\n\n## Sources & methodology\n\n| Ref | Source | Publisher | Date | Supabase artifact |\n|---|---|---|---|---|\n| S1 | [PUCT Approves ERCOT's Batch Zero Process for Connecting Large Electricity Users](https://www.ercot.com/news/release/06182026-puct-approves-ercots) | ERCOT | 2026-06-18 | 911412db-8990-4cc6-a691-1d94bf1d8440 |\n| S2 | [Queued Up: 2026 Edition, Characteristics of Power Plants Seeking Transmission Interconnection](https://emp.lbl.gov/queues) | Lawrence Berkeley National Laboratory | 2026-07-16 | 3ea143bd-49fe-46f5-bd4a-afdfd780500f |\n| S3 | [FERC Launches Aggressive Targeted Action to Speed Large Load Integration](https://www.ferc.gov/news-events/news/ferc-launches-aggressive-targeted-action-speed-large-load-integration) | FERC | 2026-06-18 | 807d50ba-3b0b-44ba-8a86-74bbdf8d9dda |\n| S4 | [FERC Data Center Orders Accelerate Grid Connection](https://www.americanactionforum.org/insight/ferc-data-center-orders-accelerate-grid-connection/) | American Action Forum | 2026-06-18 | 1583a02d-d937-4ca7-91fa-9f6d6dfb88ac |\n| S5 | [Pennsylvania PUC to consider ratemaking, ROE and curtailment as data center load grows](https://www.utilitydive.com/news/pennsylvania-puc-to-consider-rates-and-curtailment-as-data-centers-grow/830174/) | Utility Dive | 2026-09-11 | 54205445-b2a4-4774-b023-00316abb0ea9 |\n| S6 | [House passes ratepayer protection bill to limit data center cost shifts](https://www.utilitydive.com/news/house-passes-ratepayer-protection-bill-data-centers/830658/) | Utility Dive | 2026-09-17 | 8f567e0f-c354-46df-a9a4-9763ec606cdd |\n| S7 | [States are stepping up to protect households from rising energy bills due to data centers](https://www.cleanegroup.org/states-are-stepping-up-to-protect-households-from-rising-energy-bills-due-to-data-centers/) | Clean Energy Group | 2026-07-16 | 9dcfbf68-74c0-46c1-a78f-91fae6bb3eee |\n| S8 | [Data center site selection strategy update](https://www.nixonpeabody.com/insights/alerts/2026/05/07/data-center-site-selection-strategy-update) | Nixon Peabody | 2026-05-07 | e471f64d-384d-457b-a4d8-e35fdf1199bd |\n| S9 | [The Data Center Industry's Permission to Build](https://www.datacenterfrontier.com/site-selection/blog/55394817/the-data-center-industrys-permission-to-build) | Data Center Frontier | 2026-07-31 | c5dc5867-e321-4702-b30e-03b8c872ad7c |\n| S10 | [Black Hills to Invest $1.8B to Power Google Data Center in Wyoming](https://convergedigest.com/black-hills-google-cheyenne-data-center-power/) | Converge Digest | 2026-10-07 | e63e54d5-1b17-442a-bacb-f179249724a7 |\n| S11 | [Vertiv to Acquire UtilityInnovation Group for $1.45B](https://convergedigest.com/vertiv-acquire-uig-ai-data-center-microgrids/) | Converge Digest | 2026-09-03 | ee94462b-f6c8-44c5-8b0e-c8676a19762d |\n\n**Method.** This sample was built for the BL-08 Deep template from the Briefing Library Draft *The Power Reckoning* (Airtable `appxfti7VuoHYUeu6` / `tbl4kbby85nx6Z891`, record `recMlmb655VUUXSFl`, read-only). That record holds a title, a one-line description (\"Thematic brief on power as the binding constraint on AI data center growth\"), links to the Sectors Power Architecture and Grid & Regulatory, and a link to a retired Gamma deck. It holds no source list. The Gamma deck was not opened (Gamma is retired from the V2 pipeline), so none of its claims are carried here. Every claim in this brief was read from the body text of a Supabase `artifacts` row (project `ycadmmngkdhvpcsrcuaq`, read-only), cited by the row's `source_url`.\n\n**Coverage mapping (proposed, for the `briefings` row):** `tier = deep`, `sector_id = D3` (Grid & Regulatory; secondary D2 Power Architecture), `thread_id = D3.5` (Large-Load Tariff Design & Co-Location Rules), `status = draft`.\n\n**Excluded for lack of a source in the corpus read:** transformer and gas-turbine lead times, equipment backlogs, and any data center electricity consumption forecast. None of the artifacts read supported a figure, so the brief makes no claim about them. Where a source attributes a figure to a third party (Reuters, Reuters/Ipsos, Gallup, SEPA, ClearView), the brief names the third party and cites the source it read.\n\n```json source_refs\n[\n  {\"ref\":\"S1\",\"url\":\"https://www.ercot.com/news/release/06182026-puct-approves-ercots\",\"title\":\"PUCT Approves ERCOT's Batch Zero Process for Connecting Large Electricity Users While Protecting System Reliability for Texans\",\"publisher\":\"ERCOT\",\"published_at\":\"2026-06-18\",\"artifact_id\":\"911412db-8990-4cc6-a691-1d94bf1d8440\",\"used_in\":[\"summary\",\"s2\",\"s5\",\"signals\"]},\n  {\"ref\":\"S2\",\"url\":\"https://emp.lbl.gov/queues\",\"title\":\"Queued Up: 2026 Edition, Characteristics of Power Plants Seeking Transmission Interconnection\",\"publisher\":\"Lawrence Berkeley National Laboratory\",\"published_at\":\"2026-07-16\",\"artifact_id\":\"3ea143bd-49fe-46f5-bd4a-afdfd780500f\",\"used_in\":[\"summary\",\"s1\"]},\n  {\"ref\":\"S3\",\"url\":\"https://www.ferc.gov/news-events/news/ferc-launches-aggressive-targeted-action-speed-large-load-integration\",\"title\":\"FERC Launches Aggressive Targeted Action to Speed Large Load Integration\",\"publisher\":\"Federal Energy Regulatory Commission\",\"published_at\":\"2026-06-18\",\"artifact_id\":\"807d50ba-3b0b-44ba-8a86-74bbdf8d9dda\",\"used_in\":[\"summary\",\"s3\",\"s5\"]},\n  {\"ref\":\"S4\",\"url\":\"https://www.americanactionforum.org/insight/ferc-data-center-orders-accelerate-grid-connection/\",\"title\":\"FERC Data Center Orders Accelerate Grid Connection\",\"publisher\":\"American Action Forum\",\"published_at\":\"2026-06-18\",\"artifact_id\":\"1583a02d-d937-4ca7-91fa-9f6d6dfb88ac\",\"used_in\":[\"summary\",\"s1\",\"s3\",\"s4\",\"s5\",\"signals\"]},\n  {\"ref\":\"S5\",\"url\":\"https://www.utilitydive.com/news/pennsylvania-puc-to-consider-rates-and-curtailment-as-data-centers-grow/830174/\",\"title\":\"Pennsylvania PUC to consider ratemaking, ROE and curtailment as data center load grows\",\"publisher\":\"Utility Dive\",\"published_at\":\"2026-09-11\",\"artifact_id\":\"54205445-b2a4-4774-b023-00316abb0ea9\",\"used_in\":[\"summary\",\"s2\",\"s4\",\"signals\"]},\n  {\"ref\":\"S6\",\"url\":\"https://www.utilitydive.com/news/house-passes-ratepayer-protection-bill-data-centers/830658/\",\"title\":\"House passes ratepayer protection bill to limit data center cost shifts\",\"publisher\":\"Utility Dive\",\"published_at\":\"2026-09-17\",\"artifact_id\":\"8f567e0f-c354-46df-a9a4-9763ec606cdd\",\"used_in\":[\"summary\",\"s3\",\"s4\",\"s6\",\"signals\"]},\n  {\"ref\":\"S7\",\"url\":\"https://www.cleanegroup.org/states-are-stepping-up-to-protect-households-from-rising-energy-bills-due-to-data-centers/\",\"title\":\"States are stepping up to protect households from rising energy bills due to data centers\",\"publisher\":\"Clean Energy Group\",\"published_at\":\"2026-07-16\",\"artifact_id\":\"9dcfbf68-74c0-46c1-a78f-91fae6bb3eee\",\"used_in\":[\"summary\",\"s2\",\"s3\",\"s4\",\"s7\"]},\n  {\"ref\":\"S8\",\"url\":\"https://www.nixonpeabody.com/insights/alerts/2026/05/07/data-center-site-selection-strategy-update\",\"title\":\"Data center site selection strategy update\",\"publisher\":\"Nixon Peabody\",\"published_at\":\"2026-05-07\",\"artifact_id\":\"e471f64d-384d-457b-a4d8-e35fdf1199bd\",\"used_in\":[\"summary\",\"s2\",\"s3\",\"s4\",\"s5\",\"s7\",\"signals\"]},\n  {\"ref\":\"S9\",\"url\":\"https://www.datacenterfrontier.com/site-selection/blog/55394817/the-data-center-industrys-permission-to-build\",\"title\":\"The Data Center Industry's Permission to Build\",\"publisher\":\"Data Center Frontier\",\"published_at\":\"2026-07-31\",\"artifact_id\":\"c5dc5867-e321-4702-b30e-03b8c872ad7c\",\"used_in\":[\"summary\",\"s2\",\"s7\"]},\n  {\"ref\":\"S10\",\"url\":\"https://convergedigest.com/black-hills-google-cheyenne-data-center-power/\",\"title\":\"Black Hills to Invest $1.8B to Power Google Data Center in Wyoming\",\"publisher\":\"Converge Digest\",\"published_at\":\"2026-10-07\",\"artifact_id\":\"e63e54d5-1b17-442a-bacb-f179249724a7\",\"used_in\":[\"summary\",\"s6\",\"signals\"]},\n  {\"ref\":\"S11\",\"url\":\"https://convergedigest.com/vertiv-acquire-uig-ai-data-center-microgrids/\",\"title\":\"Vertiv to Acquire UtilityInnovation Group for $1.45B\",\"publisher\":\"Converge Digest\",\"published_at\":\"2026-09-03\",\"artifact_id\":\"ee94462b-f6c8-44c5-8b0e-c8676a19762d\",\"used_in\":[\"summary\",\"s6\",\"signals\"]}\n]\n```\n"
+  ],
+  "last_refreshed": null,
+  "published_at": null,
+  "job": "lane-theaters",
+  "evidence_from": "2026-05-07",
+  "evidence_to": "2026-10-07",
+  "created_at": "2026-11-09T12:00:00.000Z",
+  "created_by": "bl2-06-fixture-builder",
+  "fixture_source": "docs/templates/deep-sample.md"
+ },
+ {
+  "id": "draft-fx000300-v2",
+  "briefing_id": "fx000300-0003-4000-8000-000000000003",
+  "version": 2,
+  "kind": "draft",
+  "status": "draft",
+  "title": "The Power Reckoning",
+  "tier": "standard",
+  "page_target": 9,
+  "sector_id": "D3",
+  "thread_id": null,
+  "theme_tags": [
+   "T-001"
+  ],
+  "source_refs": [
+   {
+    "ref": "S1",
+    "n": 1,
+    "kind": "signal",
+    "url": "https://w.media/google-and-constellation-sign-nuclear-power-deal-to-add-890-mw-to-pjm-grid/",
+    "publisher": "W.Media",
+    "published_at": "2026-10-12",
+    "title": "Google and Constellation sign nuclear power deal to add 890 MW to PJM grid",
+    "id": "a3a542f9"
+   },
+   {
+    "ref": "S2",
+    "n": 2,
+    "kind": "signal",
+    "url": "https://siliconangle.com/2026/10/06/google-goes-nuclear-to-power-its-ai-data-centers-committing-to-purchase-890-megawatts-of-energy-from-constellation/",
+    "publisher": "SiliconANGLE",
+    "published_at": "2026-10-06",
+    "title": "Google goes nuclear to power its AI data centers, committing to buy 890 megawatts of energy from Constellation",
+    "id": "e8e09533"
+   },
+   {
+    "ref": "S3",
+    "n": 3,
+    "kind": "signal",
+    "url": "https://www.power-eng.com/nuclear/google-constellation-doe-nuclear-plant-investment/",
+    "publisher": "Power Engineering",
+    "published_at": "2026-10-07",
+    "title": "Constellation, Vistra uprate deals signal fastest path to new nuclear megawatts",
+    "id": "50c017c2"
+   },
+   {
+    "ref": "S4",
+    "n": 4,
+    "kind": "signal",
+    "url": "https://www.canarymedia.com/articles/nuclear/constellation-google-nuclear-uprates",
+    "publisher": "Canary Media",
+    "published_at": "2026-10-08",
+    "title": "Constellation and Google go in on nuclear uprates to unlock clean power",
+    "id": "ad5667f5"
+   },
+   {
+    "ref": "S5",
+    "n": 5,
+    "kind": "signal",
+    "url": "https://www.utilitydive.com/news/amazon-constellation-sign-20-year-ppa-to-expand-maryland-nuclear-plant/832145/",
+    "publisher": "Utility Dive",
+    "published_at": "2026-10-05",
+    "title": "Amazon, Constellation sign 20-year PPA to expand Maryland nuclear plant",
+    "id": "c7b2532d"
+   },
+   {
+    "ref": "S6",
+    "n": 6,
+    "kind": "signal",
+    "url": "https://www.powermag.com/vistra-in-line-for-doe-loan-package-to-uprate-nuclear-plants-in-ohio-and-pennsylvania/",
+    "publisher": "POWER Magazine",
+    "published_at": "2026-10-05",
+    "title": "Vistra in Line for $4.2B DOE Loan Package to Uprate Nuclear Plants in Ohio and Pennsylvania",
+    "id": "0121e30c"
+   },
+   {
+    "ref": "S7",
+    "n": 7,
+    "kind": "signal",
+    "url": "https://www.datacenterdynamics.com/en/news/meta-secures-up-to-66gw-of-nuclear-power-from-terrapower-oklo-and-vistra/",
+    "publisher": "Data Center Dynamics",
+    "published_at": "2026-09-30",
+    "title": "Meta secures up to 6.6GW of nuclear power from TerraPower, Oklo, and Vistra",
+    "id": "1d703972"
+   },
+   {
+    "ref": "S8",
+    "n": 8,
+    "kind": "signal",
+    "url": "https://www.nuclearnewsnetwork.com/news/nuclear-power-data-centers-explained",
+    "publisher": "Nuclear News Network",
+    "published_at": "2026-10-01",
+    "title": "Nuclear Power for Data Centers, Explained: Every Deal Tracked",
+    "id": "64018690"
+   },
+   {
+    "ref": "S9",
+    "n": 9,
+    "kind": "signal",
+    "url": "https://neutronbytes.com/2026/09/08/doe-closes-1-9-billion-loan-to-restart-duane-arnold-nuclear-plant-in-iowa/",
+    "publisher": "Neutron Bytes",
+    "published_at": "2026-09-08",
+    "title": "DOE Closes $1.9 Billion Loan to Restart Duane Arnold Nuclear Plant in Iowa",
+    "id": "f6c0bb67"
+   },
+   {
+    "ref": "S10",
+    "n": 10,
+    "kind": "signal",
+    "url": "https://www.ans.org/news/article-7942/nrc-shares-duane-arnold-restart-progress-at-public-hearing/",
+    "publisher": "American Nuclear Society",
+    "published_at": "2026-09-12",
+    "title": "NRC Shares Duane Arnold Restart Progress at Public Hearing",
+    "id": "ce135998"
+   },
+   {
+    "ref": "S11",
+    "n": 11,
+    "kind": "signal",
+    "url": "https://www.canarymedia.com/articles/nuclear/federal-funding-x-energy-small-nuclear-reactor",
+    "publisher": "Canary Media",
+    "published_at": "2026-09-23",
+    "title": "With federal funding windfall, X-energy advances small nuclear reactor",
+    "id": "68d5c07b"
+   },
+   {
+    "ref": "S12",
+    "n": 12,
+    "kind": "signal",
+    "url": "https://enkiai.com/data-center/microsoft-nuclear-x-energy/",
+    "publisher": "Enki AI",
+    "published_at": "2026-08-19",
+    "title": "Microsoft Nuclear 2026: 6 GW PJM Shortfall, Constellation",
+    "id": "565081e1"
+   },
+   {
+    "ref": "S13",
+    "n": 13,
+    "kind": "signal",
+    "url": "https://stocktwits.com/news-articles/markets/equity/ai-data-center-delays-new-questions-orcl-be-apld/cZDFMNFRB1s",
+    "publisher": "Stocktwits",
+    "published_at": "2026-10-05",
+    "title": "AI Data Center Delays Raise New Questions For ORCL, BE And APLD",
+    "id": "5a0c4e8c"
+   },
+   {
+    "ref": "S14",
+    "n": 14,
+    "kind": "briefing_record",
+    "url": "https://247wallst.com/investing/2026/09/24/bloom-energys-single-largest-fuel-cell-deployment-is-in-trouble/",
+    "publisher": "24/7 Wall St.",
+    "published_at": "2026-09-24",
+    "title": "Bloom Energy's Single Largest Fuel Cell Deployment Is In Trouble",
+    "ids": [
+     "f818d9fc",
+     "4afd7b56"
+    ]
+   },
+   {
+    "ref": "S15",
+    "n": 15,
+    "kind": "artifact",
+    "url": "https://www.indexbox.io/blog/nebius-endorses-bloom-energy-fuel-cells-for-planned-new-jersey-data-center/",
+    "publisher": "IndexBox",
+    "published_at": "2026-10-02",
+    "title": "Nebius Backs Bloom Energy Fuel Cells for 300MW New Jersey AI Data Center",
+    "id": "998bf4da"
+   },
+   {
+    "ref": "S16",
+    "n": 16,
+    "kind": "artifact",
+    "url": "https://www.datacenterdynamics.com/en/product-news/w%C3%A4rtsil%C3%A4-schneider-electric-and-stanley-consultants-launch-coordinated-approach-for-faster-us-data-center-power-delivery/",
+    "publisher": "Data Center Dynamics (sponsored)",
+    "published_at": "2026-10-10",
+    "title": "Wärtsilä, Schneider Electric, and Stanley Consultants launch coordinated approach for faster US data center power delivery",
+    "id": "0a982f28"
+   },
+   {
+    "ref": "S17",
+    "n": 17,
+    "kind": "signal",
+    "url": "https://www.datacenterdynamics.com/en/news/new-era-signs-20-year-gas-ppa-with-vistra-subsidiary-to-power-250mw-data-center-in-ector-county-texas/",
+    "publisher": "Data Center Dynamics",
+    "published_at": "2026-09-22",
+    "title": "New Era signs 20-year gas PPA with Vistra subsidiary to power 250MW data center in Ector County, Texas",
+    "id": "3ca2ed14"
+   },
+   {
+    "ref": "S18",
+    "n": 18,
+    "kind": "signal",
+    "url": "https://datacenterfrontier.com/energy/article/55409000/data-center-private-power-who-regulates-behind-the-meter-generation",
+    "publisher": "Data Center Frontier",
+    "published_at": "2026-10-01",
+    "title": "Data Center Private Power: Who Regulates Behind-the-Meter Generation?",
+    "id": "d6d83e9e"
+   },
+   {
+    "ref": "S19",
+    "n": 19,
+    "kind": "signal",
+    "url": "https://www.datacenterknowledge.com/energy-power-supply/pjm-s-new-deal-for-data-centers-bring-power-or-face-cuts",
+    "publisher": "Data Center Knowledge",
+    "published_at": "2026-08-15",
+    "title": "PJM's New Deal for Data Centers: Bring Power or Face Cuts",
+    "id": "3bd253d1"
+   },
+   {
+    "ref": "S20",
+    "n": 20,
+    "kind": "briefing_record",
+    "url": "https://drops.mts.now/ai-capex/wiki/documents/ferc-er24-2172-talen-amazon/",
+    "publisher": "MTS Drops",
+    "published_at": "2026-08-13",
+    "title": "FERC ER24-2172: The Talen-Amazon Order, Annotated",
+    "ids": [
+     "a45a15e9",
+     "ac53c949"
+    ]
+   },
+   {
+    "ref": "S21",
+    "n": 21,
+    "kind": "signal",
+    "url": "https://measuredai.substack.com/p/amazon-susquehanna-data-center-campus",
+    "publisher": "Measured AI",
+    "published_at": "2026-08-26",
+    "title": "Amazon's Susquehanna Data Center Campus: Talen-FERC Saga Drives Broader Co-Location Framework",
+    "id": "481dcbb8"
+   },
+   {
+    "ref": "S22",
+    "n": 22,
+    "kind": "signal",
+    "url": "https://www.rtoinsider.com/147193-caiso-pge-spar-over-large-loads-definition/",
+    "publisher": "RTO Insider",
+    "published_at": "2026-10-04",
+    "title": "CAISO, PG&E Spar Over 'Large Loads' Definition",
+    "id": "4bbc404a"
+   },
+   {
+    "ref": "S23",
+    "n": 23,
+    "kind": "signal",
+    "url": "https://www.carbon-direct.com/insights/the-billion-dollar-case-for-enabling-data-center-load-flexibility",
+    "publisher": "Carbon Direct",
+    "published_at": "2026-09-18",
+    "title": "The $5.5 Billion-Dollar Case for Enabling Data Center Load Flexibility",
+    "id": "6df7d474"
+   },
+   {
+    "ref": "S24",
+    "n": 24,
+    "kind": "signal",
+    "url": "https://siliconangle.com/2026/09/17/nvidia-google-and-emerald-ai-launch-flexible-data-center-consortium/",
+    "publisher": "SiliconANGLE",
+    "published_at": "2026-09-17",
+    "title": "Nvidia, Google and Emerald AI launch flexible data center consortium",
+    "id": "8e8ce239"
+   },
+   {
+    "ref": "S25",
+    "n": 25,
+    "kind": "signal",
+    "url": "https://www.ess-news.com/2026/09/22/nvidia-launches-bess-qualification-program-for-ai-data-centers-names-just-tesla-lg-hitachi/",
+    "publisher": "ESS News",
+    "published_at": "2026-09-22",
+    "title": "Nvidia launches BESS qualification program for AI data centers, names just Tesla, LG, Hitachi",
+    "id": "d9927f8a"
+   },
+   {
+    "ref": "S26",
+    "n": 26,
+    "kind": "signal",
+    "url": "https://scdailygazette.com/2026/09/25/repub/energy-department-unveils-project-to-squeeze-more-juice-through-existing-power-lines/",
+    "publisher": "SC Daily Gazette",
+    "published_at": "2026-09-25",
+    "title": "Energy Department unveils project to squeeze more juice through existing power lines",
+    "id": "85ec1f8a"
+   },
+   {
+    "ref": "S27",
+    "n": 27,
+    "kind": "signal",
+    "url": "https://pv-magazine-usa.com/2026/09/22/solar-growth-accelerates-in-ercot-and-miso-as-data-centers-drive-demand/",
+    "publisher": "pv magazine USA",
+    "published_at": "2026-09-22",
+    "title": "Solar growth accelerates in ERCOT and MISO as data centers drive demand",
+    "id": "662ae6c0"
+   },
+   {
+    "ref": "S28",
+    "n": 28,
+    "kind": "signal",
+    "url": "https://www.datacenterdynamics.com/en/news/abbott-halts-new-texas-data-center-permits-pending-ercot-audit/",
+    "publisher": "Data Center Dynamics",
+    "published_at": "2026-09-23",
+    "title": "Abbott halts new Texas data center permits pending ERCOT audit",
+    "id": "1a265310"
+   },
+   {
+    "ref": "S29",
+    "n": 29,
+    "kind": "signal",
+    "url": "https://www.globalelr.com/2026/10/texas-pauses-certain-data-center-approvals-amid-grid-water-and-community-concerns/",
+    "publisher": "Global Environmental Law Review",
+    "published_at": "2026-10-06",
+    "title": "Texas Pauses Certain Data Center Approvals Amid Grid, Water, and Community Concerns",
+    "id": "9a5498b4"
+   },
+   {
+    "ref": "S30",
+    "n": 30,
+    "kind": "signal",
+    "url": "https://www.utilitydive.com/news/north-carolina-regulators-deny-dukes-gas-turbine-request-over-staggering/831015/",
+    "publisher": "Utility Dive",
+    "published_at": "2026-09-22",
+    "title": "North Carolina regulators deny Duke Energy gas turbine request over 'staggering' cost, uncertain need",
+    "id": "95568775"
+   },
+   {
+    "ref": "S31",
+    "n": 31,
+    "kind": "signal",
+    "url": "https://pv-magazine-usa.com/2026/09/23/googles-fair-share-plus-data-center-deal-with-entergy-sparks-arkansas-ratepayer-concerns/",
+    "publisher": "pv magazine USA",
+    "published_at": "2026-09-23",
+    "title": "Google's \"Fair Share Plus\" data center deal with Entergy sparks Arkansas ratepayer concerns",
+    "id": "0ae92515"
+   },
+   {
+    "ref": "S32",
+    "n": 32,
+    "kind": "signal",
+    "url": "https://convergedigest.com/terawulf-muskie-data-campus-1gw-power/",
+    "publisher": "Converge Digest",
+    "published_at": "2026-10-05",
+    "title": "TeraWulf Doubles Contracted Power at Muskie Data Campus to 1 GW",
+    "id": "bad4e465"
+   },
+   {
+    "ref": "S33",
+    "n": 33,
+    "kind": "signal",
+    "url": "https://virginiamercury.com/2026/09/21/a-different-deal-on-the-table-ag-jay-jones-asks-scc-to-reset-the-clock-on-dominion-nextera-merger/",
+    "publisher": "Virginia Mercury",
+    "published_at": "2026-09-21",
+    "title": "'A different deal on the table': AG Jay Jones asks SCC to reset the clock on Dominion-NextEra merger",
+    "id": "06482ffc"
+   },
+   {
+    "ref": "S34",
+    "n": 34,
+    "kind": "signal",
+    "url": "https://cardinalnews.org/2026/10/01/legislators-say-window-has-closed-to-call-for-a-special-session-to-extend-review-of-dominion-nextera-merger/",
+    "publisher": "Cardinal News",
+    "published_at": "2026-10-01",
+    "title": "Legislators say window has closed to call for a special session to extend review of Dominion-NextEra merger",
+    "id": "84aef452"
+   },
+   {
+    "ref": "S35",
+    "n": 35,
+    "kind": "signal",
+    "url": "https://penncapital-star.com/energy-environment/pennsylvanians-call-on-shapiro-lawmakers-to-pass-data-center-moratorium/",
+    "publisher": "Pennsylvania Capital-Star",
+    "published_at": "2026-10-06",
+    "title": "A call for Gov. Shapiro and state lawmakers to pass a data center moratorium in Pa.",
+    "id": "b104a32a"
+   },
+   {
+    "ref": "S36",
+    "n": 36,
+    "kind": "signal",
+    "url": "https://www.rtoinsider.com/147430-powering-grid-both-ends-why-big-techs-nuclear-gamble-needs-energy-efficiency/",
+    "publisher": "RTO Insider",
+    "published_at": "2026-10-05",
+    "title": "Powering the Grid from Both Ends: Why Big Tech's Nuclear Gamble Needs Energy Efficiency",
+    "id": "20f11b5e"
+   },
+   {
+    "ref": "S37",
+    "n": 37,
+    "kind": "signal",
+    "url": "https://spokesman.com/stories/2026/oct/05/amazons-1b-data-center-pledge-underscores-rising-t",
+    "publisher": "The Spokesman-Review",
+    "published_at": "2026-10-05",
+    "title": "Amazon's $1B Data Center Pledge Underscores Rising Tension Over AI Build-Out",
+    "id": "0ecba21f"
+   }
+  ],
+  "institution_id": null,
+  "company_id": null,
+  "jurisdiction_id": null,
+  "briefing_type": "sector",
+  "byline": "Gilbert Faraday",
+  "hypothesis": "Between August and October 2026 the scarce input for AI data centers stopped being megawatts alone and became permission: permission to connect, to co-locate and to build. Buyers reached for existing nuclear plants, while FERC, PJM and state officials in Texas, North Carolina and Virginia began rewriting who pays and who waits.",
+  "contents": [
+   ":::cover\n# The Power Reckoning\n\nBetween August and October 2026 the scarce input for AI data centers stopped being megawatts alone and became permission: permission to connect, to co-locate and to build. Buyers reached for existing nuclear plants, while FERC, PJM and state officials in Texas, North Carolina and Virginia began rewriting who pays and who waits.\n\n- **Tier:** Standard brief\n- **Coverage:** Theater: The Power Reckoning › Sectors: Power Architecture, Grid & Regulatory\n- **Byline:** Gilbert Faraday\n- **Evidence window:** 13 Aug 2026 – 12 Oct 2026, 37 sources\n- **Status:** DRAFT. Staged by the lane runner; not for distribution. Requires Myke sign-off (Brand Bible §07).\n:::\n\n## The argument\n\n### Permission has joined power as the constraint\n\nThe record in this Briefing is thirty-seven sourced items, Faraday Signals and crawled articles, dated between 13 August and 12 October 2026. Read together, they show two movements happening at once.\n\nThe first is a rush to existing nuclear capacity. Google signed a 20-year agreement with Constellation for 890 MW from upgrades at 11 existing units in Illinois, Pennsylvania and New Jersey [1], with Constellation investing over $4.3 billion [2]. Amazon signed a 20-year agreement around Calvert Cliffs in Maryland [5]. Meta secured up to 6.6 GW from TerraPower, Oklo and Vistra [7]. The Department of Energy is lending into the same plants: a conditional $4.2 billion package for Vistra uprates adding 433 MW [6] and a closed $1.9 billion loan to restart Duane Arnold in Iowa [9].\n\nThe second is a tightening of the rules for connecting large loads. FERC issued show-cause orders in June 2026 to six grid operators over interconnection rules for loads above 50 MW [18]. PJM filed a mechanism that would require new large data center loads to bring qualifying capacity or face backstop procurement [19]. Texas paused new data center permits pending an ERCOT audit [28, 29]. North Carolina regulators refused a Duke Energy gas turbine request on cost and uncertain need [30].\n\nWhere those two movements meet, projects slip. Oracle invoked force majeure with STACK Infrastructure over delays at Project Jupiter, citing power supply, air permits and land access [13], and the 2.45 GW Bloom Energy fuel cell deployment tied to that site faces fuel supply delays [14]. The same report that tallied 9.8 GW of hyperscaler nuclear deals projected only 1 GW online before 2030 [12].\n\n**At a glance**\n\n| Figure | What it measures | Date |\n|---|---|---|\n| 890 MW | Google–Constellation 20-year PPA, from upgrades at 11 existing nuclear units [1] | 2026-10-12 |\n| Up to 6.6 GW | Nuclear power secured by Meta from TerraPower, Oklo and Vistra [7] | 2026-09-30 |\n| $4.2 B | Conditional DOE loan commitment to Vistra for uprates adding 433 MW [6] | 2026-10-05 |\n| $1.9 B | DOE loan closed to NextEra to restart Duane Arnold, Iowa [9] | 2026-09-08 |\n| 50 MW | Load threshold in FERC's June 2026 show-cause orders to six grid operators [18] | 2026-10-01 |\n| 2.45 GW | Bloom fuel cell deployment for Oracle's Project Jupiter, now facing fuel supply delays [14] | 2026-09-24 |\n| $67 B | Dominion–NextEra merger whose review clock Virginia's Attorney General asked the SCC to reset [33] | 2026-09-21 |\n\n## Nuclear & SMR Offtake\n\nHyperscalers bought existing nuclear output and uprates in September and October, and federal lending followed the same plants. Every figure below is as reported by the cited source.\n\n- **12 Oct 2026 · W.Media — Google and Constellation add 890 MW to PJM.** Google and Constellation Energy signed a 20-year power purchase agreement to add 890 MW of nuclear capacity to the PJM grid through upgrades at 11 existing nuclear units across Illinois, Pennsylvania and New Jersey [1].\n- **6 Oct 2026 · SiliconANGLE — Constellation's side of the Google deal.** Google committed to a 20-year agreement to secure 890 MW of nuclear power for its AI data centers, with Constellation investing over $4.3 billion in the partnership [2].\n- **7 Oct 2026 · Power Engineering — Uprates as the fastest path to new megawatts.** Google, Meta and the Department of Energy are backing over 1.3 GW of reactor uprate deals through Constellation and Vistra, primarily targeting PJM capacity [3].\n- **8 Oct 2026 · Canary Media — Uprates and the federal 5 GW goal.** Constellation framed its uprate plans as supporting the administration's goal of adding 5 GW of carbon-free nuclear capacity by 2029 [4].\n- **5 Oct 2026 · Utility Dive — Amazon backs Calvert Cliffs.** Amazon and Constellation signed a 20-year agreement supporting expansion and renovation at Maryland's 1,790 MW Calvert Cliffs plant [5].\n- **5 Oct 2026 · POWER Magazine — DOE lines up $4.2 billion for Vistra.** DOE's Energy Dominance Financing office announced a conditional $4.2 billion loan commitment for uprates and modernization at Beaver Valley (PA), Davis-Besse and Perry (OH), adding 433 MW [6].\n- **30 Sept 2026 · Data Center Dynamics — Meta secures up to 6.6 GW.** Meta secured up to 6.6 GW of nuclear power through agreements with TerraPower, Oklo and Vistra [7].\n- **1 Oct 2026 · Nuclear News Network — A running tally of data center nuclear deals.** The tracker reports nuclear capacity agreements for data centers have grown to 45 GW [8].\n- **8 Sept 2026 · Neutron Bytes — Duane Arnold restart financed.** DOE closed a $1.9 billion loan to NextEra Energy to restart the Duane Arnold plant in Iowa [9].\n- **12 Sept 2026 · American Nuclear Society — NRC timeline for Duane Arnold.** The NRC is conducting 2026 site inspections ahead of a potential restart, with a licensing package expected by January 2028 [10].\n- **23 Sept 2026 · Canary Media — X-energy's federal windfall.** X-energy received $1 billion in DOE funding for advanced small modular reactor development [11].\n- **5 Oct 2026 · RTO Insider — Georgia Power subscription for uprates.** Google partnered with Georgia Power to finance capacity uprates at nuclear facilities through a subscription program [36].\n- **19 Aug 2026 · Enki AI — The gap between deals and delivery.** Hyperscalers have announced 9.8 GW of nuclear deals, but only 1 GW is projected online before 2030, a 6 GW shortfall in PJM [12].\n\n## Behind-the-Fence Gas & Fuel Cells\n\nOn-site generation is the main alternative to waiting for the grid. The record shows it carries its own permitting and fuel risks.\n\n- **5 Oct 2026 · Stocktwits — Oracle invokes force majeure at Project Jupiter.** Oracle invoked force majeure with Blue Owl's STACK Infrastructure over Project Jupiter delays, citing power supply, air permits and land access [13].\n- **24 Sept 2026 · 24/7 Wall St. — Bloom's largest deployment at risk.** Bloom Energy's 2.45 GW solid oxide fuel cell deployment at Project Jupiter in New Mexico faces fuel supply delays, putting its largest contracted project at risk [14].\n- **2 Oct 2026 · IndexBox — Nebius picks fuel cells for New Jersey.** Nebius endorsed Bloom Energy fuel cells for a planned 300 MW AI data center in Vineland, New Jersey, citing faster deployment and less community opposition than gas turbines [15].\n- **10 Oct 2026 · Data Center Dynamics (sponsored) — A generator-to-chip delivery model.** Wärtsilä, Schneider Electric and Stanley Consultants launched a coordinated approach integrating onsite generation, electrical infrastructure and engineering [16].\n- **22 Sept 2026 · Data Center Dynamics — A 20-year gas PPA in the Permian.** New Era signed a 20-year agreement with a Vistra subsidiary for 250 MW of gas-fired power for a data center in Ector County, Texas [17].\n\n## Large-Load Tariff Design & Co-Location Rules\n\nThe rules for plugging a data center into a wholesale market are being rewritten through FERC dockets and RTO filings. The Susquehanna case is the reference point.\n\n- **1 Oct 2026 · Data Center Frontier — FERC orders six operators to revise rules.** FERC issued June 2026 show-cause orders to six grid operators requiring revised interconnection rules for loads above 50 MW, covering behind-the-meter generation, co-location and cost allocation [18].\n- **15 Aug 2026 · Data Center Knowledge — PJM: bring power or face cuts.** PJM filed a tariff revision proposing a 'Bring Your Own New Capacity' mechanism requiring new large data center loads to supply qualifying capacity or face reliability backstop procurement [19].\n- **13 Aug 2026 · MTS Drops (FERC ER24-2172 annotated) — The Talen–Amazon order.** FERC rejected Talen–Amazon's behind-the-meter arrangement at Susquehanna in November 2024, forcing a front-of-the-meter model by spring 2026 in which Talen supplies AWS via the PJM grid. The order directs PJM to create explicit transmission services for co-located loads [20].\n- **26 Aug 2026 · Measured AI — Susquehanna goes front-of-meter.** Amazon's Susquehanna campus transitioned to a front-of-the-meter configuration in spring 2026 after the regulatory proceedings concluded [21].\n- **4 Oct 2026 · RTO Insider — California argues over 'large load'.** CAISO and PG&E are in dispute over the definition of 'large loads' as AI data centers seek grid access in California [22].\n\n## Transmission, Reliability & Flexible Load\n\nFederal reliability bodies moved data center flexibility from a voluntary practice toward a standard, and industry formed groups to supply it.\n\n- **18 Sept 2026 · Carbon Direct — NERC alert, then a FERC mandate.** NERC issued a Level 3 Alert on computational loads in May 2026, and FERC then directed NERC to develop computational-load reliability standards by year-end [23].\n- **17 Sept 2026 · SiliconANGLE — An alliance for flexible data centers.** Nvidia, Google and Emerald AI launched the AI Energy Management Alliance to promote data centers that can cut power draw during grid strain [24].\n- **22 Sept 2026 · ESS News — Nvidia qualifies three battery suppliers.** Nvidia launched a battery energy storage qualification program for AI data centers, initially naming Tesla, LG and Hitachi [25].\n- **25 Sept 2026 · SC Daily Gazette — More capacity from existing lines.** The Department of Energy launched a project to increase capacity on existing power lines to support data center demand [26].\n- **22 Sept 2026 · pv magazine USA — Solar growth follows load in ERCOT and MISO.** U.S. solar generation is projected to accelerate through 2027, driven primarily by data center demand in ERCOT and MISO [27].\n\n## States, Moratoria & Utility Commissions\n\nState actors moved faster than federal ones. Texas paused permits, North Carolina refused new gas, and Virginia's largest utility merger became a test of who speaks for ratepayers.\n\n- **23 Sept 2026 · Data Center Dynamics — Texas halts new permits.** Governor Greg Abbott halted new data center permits pending completion of an ERCOT audit of grid capacity and reliability [28].\n- **6 Oct 2026 · Global Environmental Law Review — Two agencies, one pause.** The pause combines the governor's 3 August ERCOT audit directive with a 21 September TCEQ freeze on new data center permitting until the audit is complete [29].\n- **22 Sept 2026 · Utility Dive — North Carolina rejects Duke turbines.** Regulators rejected Duke Energy's request for a gas turbine facility, citing staggering cost and uncertain need [30].\n- **23 Sept 2026 · pv magazine USA — Arkansas ratepayers question Google–Entergy terms.** Google's 'Fair Share Plus' arrangement with Entergy for a $4 billion West Memphis facility drew ratepayer concerns over redacted filings and trade-secret claims [31].\n- **5 Oct 2026 · Converge Digest — Kentucky doubles TeraWulf's power.** TeraWulf doubled contracted power at its Muskie campus from 500 MW to 1 GW under an amended agreement with Kentucky Power, pulling the second phase from 2030 to 2029 [32].\n- **21 Sept 2026 · Virginia Mercury — Reset the clock on Dominion–NextEra.** Attorney General Jay Jones asked the State Corporation Commission to reset the 180-day review of the $67 billion merger after the companies filed supplemental documents [33]. Legislators later said the window had closed to call a special session to extend the review [34].\n- **6 Oct 2026 · Pennsylvania Capital-Star — Pennsylvania groups seek a moratorium.** Environmental and community groups called on Governor Shapiro and lawmakers to pass a data center moratorium [35].\n- **5 Oct 2026 · The Spokesman-Review — Amazon pledges $1 billion to host communities.** Amazon pledged $1 billion to host communities as Washington Governor Bob Ferguson rolled back state tax breaks; Microsoft has sworn off seeking local subsidies [37].\n\n## Signal register\n\nEvery party below appears in at least one cited Signal. The role column restates what the source reports; it adds no assessment.\n\n| Party | Role as reported | Cites |\n|---|---|---|\n| Constellation Energy | Counterparty to Google (890 MW, uprates) and Amazon (Calvert Cliffs) 20-year agreements | [1] [2] [4] [5] |\n| Vistra | Uprate borrower ($4.2 B DOE commitment); Meta supplier; 250 MW gas PPA via a subsidiary | [6] [7] [17] |\n| NextEra Energy | Duane Arnold restart borrower; party to the Dominion merger under SCC review | [9] [10] [33] |\n| Oracle / STACK Infrastructure | Project Jupiter force majeure; site of the 2.45 GW Bloom deployment | [13] [14] |\n| FERC | June 2026 show-cause orders; ER24-2172 Talen–Amazon order; directive to NERC | [18] [20] [23] |\n| PJM Interconnection | Filed Bring Your Own New Capacity; directed to create co-location services | [19] [20] |\n| ERCOT / TCEQ / Gov. Abbott | Audit directive and permit freeze in Texas | [28] [29] |\n| North Carolina regulators / Duke Energy | Gas turbine request denied | [30] |\n| Entergy | Google 'Fair Share Plus' arrangement in Arkansas | [31] |\n| Kentucky Power / TeraWulf | Amended agreement doubling Muskie to 1 GW | [32] |\n\n:::take\n## Faraday's Take\n\nThe cited record does not show a shortage of buyers or of capital: in eight weeks it logs agreements covering several gigawatts of existing and uprated nuclear output [1, 5, 7] and billions in federal loans [6, 9]. What it shows instead is a queue of permissions, at FERC [18], in PJM [19], in Texas [28] and in state commissions [30, 33], each deciding who pays to connect large loads. On this evidence, the projects that slip will be the ones that waited for those decisions, as Project Jupiter shows [13]. The ones that hold their schedules will be the ones that bought capacity already on the grid.\n\n*— Gilbert Faraday*\n:::\n\n## Sources & methodology\n\nSource rule: every factual sentence carries a numbered citation to a Faraday Signal (Supabase public.signals) or crawled artifact (public.artifacts); each records the publisher URL below. Sentences restate the recorded framing, using only its complete clauses where the record was truncated. Nothing comes from the retired Gamma deck or from model memory.\n\nSelection: Signals tagged D2.5, D2.6, D2.8, D3.1–D3.5, fired 31 Jul–13 Oct 2026, de-duplicated by headline, Google News redirects excluded, then curated by hand. Mis-tagged Signals were dropped, and one report that described the Google–Constellation deal differently was excluded rather than reconciled.\n\nLimits: primary articles were not re-fetched for this sample. Faraday's Take is analysis of the cited items and adds no facts. Status: draft, not signed off (Brand Bible §07).\n\n| Ref | Source | Publisher | Date | Faraday record |\n|---|---|---|---|---|\n| S1 | [Google and Constellation sign nuclear power deal to add 890 MW to PJM grid](https://w.media/google-and-constellation-sign-nuclear-power-deal-to-add-890-mw-to-pjm-grid/) | W.Media | 2026-10-12 | signal a3a542f9 |\n| S2 | [Google goes nuclear to power its AI data centers, committing to buy 890 megawatts of energy from Constellation](https://siliconangle.com/2026/10/06/google-goes-nuclear-to-power-its-ai-data-centers-committing-to-purchase-890-megawatts-of-energy-from-constellation/) | SiliconANGLE | 2026-10-06 | signal e8e09533 |\n| S3 | [Constellation, Vistra uprate deals signal fastest path to new nuclear megawatts](https://www.power-eng.com/nuclear/google-constellation-doe-nuclear-plant-investment/) | Power Engineering | 2026-10-07 | signal 50c017c2 |\n| S4 | [Constellation and Google go in on nuclear uprates to unlock clean power](https://www.canarymedia.com/articles/nuclear/constellation-google-nuclear-uprates) | Canary Media | 2026-10-08 | signal ad5667f5 |\n| S5 | [Amazon, Constellation sign 20-year PPA to expand Maryland nuclear plant](https://www.utilitydive.com/news/amazon-constellation-sign-20-year-ppa-to-expand-maryland-nuclear-plant/832145/) | Utility Dive | 2026-10-05 | signal c7b2532d |\n| S6 | [Vistra in Line for $4.2B DOE Loan Package to Uprate Nuclear Plants in Ohio and Pennsylvania](https://www.powermag.com/vistra-in-line-for-doe-loan-package-to-uprate-nuclear-plants-in-ohio-and-pennsylvania/) | POWER Magazine | 2026-10-05 | signal 0121e30c |\n| S7 | [Meta secures up to 6.6GW of nuclear power from TerraPower, Oklo, and Vistra](https://www.datacenterdynamics.com/en/news/meta-secures-up-to-66gw-of-nuclear-power-from-terrapower-oklo-and-vistra/) | Data Center Dynamics | 2026-09-30 | signal 1d703972 |\n| S8 | [Nuclear Power for Data Centers, Explained: Every Deal Tracked](https://www.nuclearnewsnetwork.com/news/nuclear-power-data-centers-explained) | Nuclear News Network | 2026-10-01 | signal 64018690 |\n| S9 | [DOE Closes $1.9 Billion Loan to Restart Duane Arnold Nuclear Plant in Iowa](https://neutronbytes.com/2026/09/08/doe-closes-1-9-billion-loan-to-restart-duane-arnold-nuclear-plant-in-iowa/) | Neutron Bytes | 2026-09-08 | signal f6c0bb67 |\n| S10 | [NRC Shares Duane Arnold Restart Progress at Public Hearing](https://www.ans.org/news/article-7942/nrc-shares-duane-arnold-restart-progress-at-public-hearing/) | American Nuclear Society | 2026-09-12 | signal ce135998 |\n| S11 | [With federal funding windfall, X-energy advances small nuclear reactor](https://www.canarymedia.com/articles/nuclear/federal-funding-x-energy-small-nuclear-reactor) | Canary Media | 2026-09-23 | signal 68d5c07b |\n| S12 | [Microsoft Nuclear 2026: 6 GW PJM Shortfall, Constellation](https://enkiai.com/data-center/microsoft-nuclear-x-energy/) | Enki AI | 2026-08-19 | signal 565081e1 |\n| S13 | [AI Data Center Delays Raise New Questions For ORCL, BE And APLD](https://stocktwits.com/news-articles/markets/equity/ai-data-center-delays-new-questions-orcl-be-apld/cZDFMNFRB1s) | Stocktwits | 2026-10-05 | signal 5a0c4e8c |\n| S14 | [Bloom Energy's Single Largest Fuel Cell Deployment Is In Trouble](https://247wallst.com/investing/2026/09/24/bloom-energys-single-largest-fuel-cell-deployment-is-in-trouble/) | 24/7 Wall St. | 2026-09-24 | signals f818d9fc, 4afd7b56 |\n| S15 | [Nebius Backs Bloom Energy Fuel Cells for 300MW New Jersey AI Data Center](https://www.indexbox.io/blog/nebius-endorses-bloom-energy-fuel-cells-for-planned-new-jersey-data-center/) | IndexBox | 2026-10-02 | artifact 998bf4da |\n| S16 | [Wärtsilä, Schneider Electric, and Stanley Consultants launch coordinated approach for faster US data center power delivery](https://www.datacenterdynamics.com/en/product-news/w%C3%A4rtsil%C3%A4-schneider-electric-and-stanley-consultants-launch-coordinated-approach-for-faster-us-data-center-power-delivery/) | Data Center Dynamics (sponsored) | 2026-10-10 | artifact 0a982f28 |\n| S17 | [New Era signs 20-year gas PPA with Vistra subsidiary to power 250MW data center in Ector County, Texas](https://www.datacenterdynamics.com/en/news/new-era-signs-20-year-gas-ppa-with-vistra-subsidiary-to-power-250mw-data-center-in-ector-county-texas/) | Data Center Dynamics | 2026-09-22 | signal 3ca2ed14 |\n| S18 | [Data Center Private Power: Who Regulates Behind-the-Meter Generation?](https://datacenterfrontier.com/energy/article/55409000/data-center-private-power-who-regulates-behind-the-meter-generation) | Data Center Frontier | 2026-10-01 | signal d6d83e9e |\n| S19 | [PJM's New Deal for Data Centers: Bring Power or Face Cuts](https://www.datacenterknowledge.com/energy-power-supply/pjm-s-new-deal-for-data-centers-bring-power-or-face-cuts) | Data Center Knowledge | 2026-08-15 | signal 3bd253d1 |\n| S20 | [FERC ER24-2172: The Talen-Amazon Order, Annotated](https://drops.mts.now/ai-capex/wiki/documents/ferc-er24-2172-talen-amazon/) | MTS Drops | 2026-08-13 | signals a45a15e9, ac53c949 |\n| S21 | [Amazon's Susquehanna Data Center Campus: Talen-FERC Saga Drives Broader Co-Location Framework](https://measuredai.substack.com/p/amazon-susquehanna-data-center-campus) | Measured AI | 2026-08-26 | signal 481dcbb8 |\n| S22 | [CAISO, PG&E Spar Over 'Large Loads' Definition](https://www.rtoinsider.com/147193-caiso-pge-spar-over-large-loads-definition/) | RTO Insider | 2026-10-04 | signal 4bbc404a |\n| S23 | [The $5.5 Billion-Dollar Case for Enabling Data Center Load Flexibility](https://www.carbon-direct.com/insights/the-billion-dollar-case-for-enabling-data-center-load-flexibility) | Carbon Direct | 2026-09-18 | signal 6df7d474 |\n| S24 | [Nvidia, Google and Emerald AI launch flexible data center consortium](https://siliconangle.com/2026/09/17/nvidia-google-and-emerald-ai-launch-flexible-data-center-consortium/) | SiliconANGLE | 2026-09-17 | signal 8e8ce239 |\n| S25 | [Nvidia launches BESS qualification program for AI data centers, names just Tesla, LG, Hitachi](https://www.ess-news.com/2026/09/22/nvidia-launches-bess-qualification-program-for-ai-data-centers-names-just-tesla-lg-hitachi/) | ESS News | 2026-09-22 | signal d9927f8a |\n| S26 | [Energy Department unveils project to squeeze more juice through existing power lines](https://scdailygazette.com/2026/09/25/repub/energy-department-unveils-project-to-squeeze-more-juice-through-existing-power-lines/) | SC Daily Gazette | 2026-09-25 | signal 85ec1f8a |\n| S27 | [Solar growth accelerates in ERCOT and MISO as data centers drive demand](https://pv-magazine-usa.com/2026/09/22/solar-growth-accelerates-in-ercot-and-miso-as-data-centers-drive-demand/) | pv magazine USA | 2026-09-22 | signal 662ae6c0 |\n| S28 | [Abbott halts new Texas data center permits pending ERCOT audit](https://www.datacenterdynamics.com/en/news/abbott-halts-new-texas-data-center-permits-pending-ercot-audit/) | Data Center Dynamics | 2026-09-23 | signal 1a265310 |\n| S29 | [Texas Pauses Certain Data Center Approvals Amid Grid, Water, and Community Concerns](https://www.globalelr.com/2026/10/texas-pauses-certain-data-center-approvals-amid-grid-water-and-community-concerns/) | Global Environmental Law Review | 2026-10-06 | signal 9a5498b4 |\n| S30 | [North Carolina regulators deny Duke Energy gas turbine request over 'staggering' cost, uncertain need](https://www.utilitydive.com/news/north-carolina-regulators-deny-dukes-gas-turbine-request-over-staggering/831015/) | Utility Dive | 2026-09-22 | signal 95568775 |\n| S31 | [Google's \"Fair Share Plus\" data center deal with Entergy sparks Arkansas ratepayer concerns](https://pv-magazine-usa.com/2026/09/23/googles-fair-share-plus-data-center-deal-with-entergy-sparks-arkansas-ratepayer-concerns/) | pv magazine USA | 2026-09-23 | signal 0ae92515 |\n| S32 | [TeraWulf Doubles Contracted Power at Muskie Data Campus to 1 GW](https://convergedigest.com/terawulf-muskie-data-campus-1gw-power/) | Converge Digest | 2026-10-05 | signal bad4e465 |\n| S33 | ['A different deal on the table': AG Jay Jones asks SCC to reset the clock on Dominion-NextEra merger](https://virginiamercury.com/2026/09/21/a-different-deal-on-the-table-ag-jay-jones-asks-scc-to-reset-the-clock-on-dominion-nextera-merger/) | Virginia Mercury | 2026-09-21 | signal 06482ffc |\n| S34 | [Legislators say window has closed to call for a special session to extend review of Dominion-NextEra merger](https://cardinalnews.org/2026/10/01/legislators-say-window-has-closed-to-call-for-a-special-session-to-extend-review-of-dominion-nextera-merger/) | Cardinal News | 2026-10-01 | signal 84aef452 |\n| S35 | [A call for Gov. Shapiro and state lawmakers to pass a data center moratorium in Pa.](https://penncapital-star.com/energy-environment/pennsylvanians-call-on-shapiro-lawmakers-to-pass-data-center-moratorium/) | Pennsylvania Capital-Star | 2026-10-06 | signal b104a32a |\n| S36 | [Powering the Grid from Both Ends: Why Big Tech's Nuclear Gamble Needs Energy Efficiency](https://www.rtoinsider.com/147430-powering-grid-both-ends-why-big-techs-nuclear-gamble-needs-energy-efficiency/) | RTO Insider | 2026-10-05 | signal 20f11b5e |\n| S37 | [Amazon's $1B Data Center Pledge Underscores Rising Tension Over AI Build-Out](https://spokesman.com/stories/2026/oct/05/amazons-1b-data-center-pledge-underscores-rising-t) | The Spokesman-Review | 2026-10-05 | signal 0ecba21f |\n"
+  ],
+  "last_refreshed": null,
+  "published_at": null,
+  "job": "lane-domains",
+  "evidence_from": "2026-08-13",
+  "evidence_to": "2026-10-12",
+  "created_at": "2026-11-09T12:00:00.000Z",
+  "created_by": "bl2-06-fixture-builder",
+  "fixture_source": "docs/templates/samples/data/standard-power-reckoning.json"
+ },
+ {
+  "id": "draft-4311f8af-v2",
+  "briefing_id": "4311f8af-c04c-41b4-8af5-db9de3edc5e6",
+  "version": 2,
+  "kind": "draft",
+  "status": "draft",
+  "title": "The Thermal-Power Convergence Play",
+  "tier": "standard",
+  "page_target": 9,
+  "sector_id": "D7",
+  "thread_id": "D7.1",
+  "theme_tags": [
+   "T-002"
+  ],
+  "source_refs": [
+   {
+    "ref": "S1",
+    "n": 1,
+    "kind": "signal",
+    "url": "https://datacenternews.asia/story/vertiv-wins-nvidia-dsx-ready-cooling-qualification",
+    "publisher": "DataCenterNews Asia",
+    "published_at": "2026-10-05",
+    "title": "Vertiv wins NVIDIA DSX Ready cooling qualification",
+    "id": "cee2fd57"
+   },
+   {
+    "ref": "S2",
+    "n": 2,
+    "kind": "signal",
+    "url": "https://www.vertiv.com/en-us/about/news-and-events/corporate-news/2026/vertiv-coolant-distribution-unit-qualified-as-nvidia-dsx-ready-for-ai-factory-infrastructure/",
+    "publisher": "Vertiv",
+    "published_at": "2026-09-21",
+    "title": "Vertiv Coolant Distribution Unit qualified as NVIDIA DSX ready for AI factory infrastructure",
+    "id": "13948e20"
+   },
+   {
+    "ref": "S3",
+    "n": 3,
+    "kind": "signal",
+    "url": "https://www.hpcwire.com/off-the-wire/vertiv-to-buy-king-environmental-services-to-bolster-data-center-cooling/",
+    "publisher": "HPCwire",
+    "published_at": "2026-09-24",
+    "title": "Vertiv to Buy King Environmental Services to Bolster Data Center Cooling",
+    "id": "98dcb5b6"
+   },
+   {
+    "ref": "S4",
+    "n": 4,
+    "kind": "artifact",
+    "url": "https://www.coolingpost.com/world-news/vertiv-to-expand-slovakian-data-centre-cooling-plant/",
+    "publisher": "Cooling Post",
+    "published_at": "2026-09-29",
+    "title": "Vertiv to expand Slovakian data centre cooling plant",
+    "id": "f6fb916e"
+   },
+   {
+    "ref": "S5",
+    "n": 5,
+    "kind": "artifact",
+    "url": "https://www.datacenterdynamics.com/en/product-news/shell-achieves-nvidia-dsx-ready-coolant-qualification-for-direct-liquid-cooling-advancing-high-performance-ai-computing/",
+    "publisher": "Data Center Dynamics (sponsored)",
+    "published_at": "2026-10-08",
+    "title": "Shell achieves NVIDIA DSX Ready Coolant qualification for direct liquid cooling",
+    "id": "54427a89"
+   },
+   {
+    "ref": "S6",
+    "n": 6,
+    "kind": "artifact",
+    "url": "https://www.intelligentdatacentres.com/2026/10/01/castrol-launches-castrol-core-an-integrated-thermal-management-offer-for-data-centres/",
+    "publisher": "Intelligent Data Centres",
+    "published_at": "2026-10-01",
+    "title": "Castrol launches 'Castrol CORE', an integrated thermal management offer for data centres",
+    "id": "f1960f46"
+   },
+   {
+    "ref": "S7",
+    "n": 7,
+    "kind": "signal",
+    "url": "https://convergedigest.com/liquidstack-cdu-2x-nvidia-vera-rubin-liquid-cooling/",
+    "publisher": "Converge Digest",
+    "published_at": "2026-09-28",
+    "title": "LiquidStack Launches CDU 2.X for NVIDIA Vera Rubin Era Cooling",
+    "id": "8ed5545f"
+   },
+   {
+    "ref": "S8",
+    "n": 8,
+    "kind": "signal",
+    "url": "https://capacityglobal.com/news/submer-group-launches-corenix/",
+    "publisher": "Capacity",
+    "published_at": "2026-09-28",
+    "title": "Submer Group launches Corenix with 500MW liquid-cooling track record",
+    "id": "5fc8b43b"
+   },
+   {
+    "ref": "S9",
+    "n": 9,
+    "kind": "artifact",
+    "url": "https://www.datacenter-insider.de/schneider-electric-kombiniert-luft-und-fluessigkeitskuehlung-a-9d0465b4b72fd315cf80ed2ef75cad44/",
+    "publisher": "DataCenter-Insider",
+    "published_at": "2026-10-05",
+    "title": "Schneider Electric kombiniert Luft- und Flüssigkeitskühlung",
+    "id": "20897171"
+   },
+   {
+    "ref": "S10",
+    "n": 10,
+    "kind": "artifact",
+    "url": "https://www.valeo.com/en/valeo-presents-breakthrough-aluminum-cooling-technology-for-data-centers-at-ocp-global-summit-2026-and-reaches-significant-durability-milestones/",
+    "publisher": "Valeo",
+    "published_at": "2026-10-07",
+    "title": "Valeo Presents Breakthrough Aluminum Cooling Technology for Data Centers at OCP Global Summit 2026",
+    "id": "19afe409"
+   },
+   {
+    "ref": "S11",
+    "n": 11,
+    "kind": "artifact",
+    "url": "https://blog.se.com/services/2026/10/07/services-and-system-intelligence-for-ai-data-center-reliability-sgm/",
+    "publisher": "Schneider Electric",
+    "published_at": "2026-10-07",
+    "title": "From Cooling capacity to System Intelligence: The critical role of Services in reliable AI Data Centers",
+    "id": "8936c524"
+   },
+   {
+    "ref": "S12",
+    "n": 12,
+    "kind": "artifact",
+    "url": "https://blog.se.com/datacenter/2026/10/08/data-center-community-opposition-how-cooling-design-affects-water-noise-and-permitting/",
+    "publisher": "Schneider Electric",
+    "published_at": "2026-10-08",
+    "title": "Data center community opposition: How cooling design affects water, noise, and permitting",
+    "id": "cfa94de8"
+   },
+   {
+    "ref": "S13",
+    "n": 13,
+    "kind": "artifact",
+    "url": "https://www.electronics-cooling.com/2026/10/thermal-orchestration-the-missing-control-layer-for-ai-factories/",
+    "publisher": "Electronics Cooling",
+    "published_at": "2026-10-07",
+    "title": "Thermal Orchestration: The Missing Control Layer for AI Factories",
+    "id": "707f3189"
+   },
+   {
+    "ref": "S14",
+    "n": 14,
+    "kind": "artifact",
+    "url": "https://www.insidedeeptech.com/800-vdc-power-distribution-ai-data-centers-full-guide/",
+    "publisher": "Inside Deep Tech",
+    "published_at": "2026-10-06",
+    "title": "800 VDC Power Distribution: A Full Guide to How AI Data Centers Leave 48-Volt Behind",
+    "id": "e2975cb1"
+   },
+   {
+    "ref": "S15",
+    "n": 15,
+    "kind": "artifact",
+    "url": "https://convergedigest.com/trane-800-vdc-chiller-ai-data-centers/",
+    "publisher": "Converge Digest · HPCwire",
+    "published_at": "2026-10-01",
+    "title": "Trane Demonstrates 3.5 MW 800 VDC Chiller",
+    "alt_urls": [
+     "https://www.hpcwire.com/off-the-wire/trane-technologies-demonstrates-800-volt-direct-current-chiller-for-next-gen-ai-data-centers/"
+    ],
+    "ids": [
+     "6e445d08",
+     "1dd9984a"
+    ]
+   },
+   {
+    "ref": "S16",
+    "n": 16,
+    "kind": "signal",
+    "url": "https://www.datacenterdynamics.com/en/videos/dcd-talks-what-800-vdc-means-for-data-center-cooling-with-mike-donahue-schneider-electric-global/",
+    "publisher": "Data Center Dynamics",
+    "published_at": "2026-09-18",
+    "title": "DCD Talks: What 800 VDC means for data center cooling with Mike Donahue, Schneider Electric",
+    "id": "aed67cb0"
+   },
+   {
+    "ref": "S17",
+    "n": 17,
+    "kind": "signal",
+    "url": "https://itwiz.pl/trane-technologies-i-eaton-integruja-zasilanie-i-chlodzenie-dla-fabryk-ai/",
+    "publisher": "ITwiz",
+    "published_at": "2026-09-15",
+    "title": "Trane Technologies i Eaton integrują zasilanie i chłodzenie dla fabryk AI",
+    "id": "ee8fb258"
+   },
+   {
+    "ref": "S18",
+    "n": 18,
+    "kind": "signal",
+    "url": "https://convergedigest.com/navitas-microchip-800v-6v-gan-ai-power/",
+    "publisher": "Converge Digest",
+    "published_at": "2026-10-05",
+    "title": "Navitas and Microchip Unveil 20 kW 800V-to-6V GaN for AI Racks",
+    "id": "73a920b8"
+   },
+   {
+    "ref": "S19",
+    "n": 19,
+    "kind": "signal",
+    "url": "https://convergedigest.com/infineon-c2i-ai-data-center-power/",
+    "publisher": "Converge Digest",
+    "published_at": "2026-10-05",
+    "title": "Infineon Completes C2i Acquisition, Adding Digital Power Control",
+    "id": "8fe2557d"
+   },
+   {
+    "ref": "S20",
+    "n": 20,
+    "kind": "signal",
+    "url": "https://convergedigest.com/eaton-col-group-810m-data-center-power/",
+    "publisher": "Converge Digest",
+    "published_at": "2026-09-25",
+    "title": "Eaton to Acquire COL Group for €810M, Expanding European Power Capacity",
+    "id": "5078c659"
+   },
+   {
+    "ref": "S21",
+    "n": 21,
+    "kind": "artifact",
+    "url": "https://convergedigest.com/schneider-software-defined-medium-voltage-equinix-ai-data-centers/",
+    "publisher": "Converge Digest",
+    "published_at": "2026-09-28",
+    "title": "Schneider Brings Software-Defined Control to Voltage Power",
+    "id": "ffdea5b6"
+   },
+   {
+    "ref": "S22",
+    "n": 22,
+    "kind": "signal",
+    "url": "https://convergedigest.com/flex-axiom-2b-investment-37-5b-valuation/",
+    "publisher": "Converge Digest",
+    "published_at": "2026-10-06",
+    "title": "Flex Secures $2B Investment for Axiom at $37.5B Enterprise Value",
+    "id": "c2689278"
+   },
+   {
+    "ref": "S23",
+    "n": 23,
+    "kind": "signal",
+    "url": "https://techedgeai.com/hyosung-targets-ai-data-center-power-market-with-solid-state-transformers/",
+    "publisher": "TechEdge AI",
+    "published_at": "2026-09-08",
+    "title": "Hyosung Targets AI Data Center Power Market with Solid-State Transformers",
+    "id": "a9baf7de"
+   },
+   {
+    "ref": "S24",
+    "n": 24,
+    "kind": "artifact",
+    "url": "https://www.datacenterdynamics.com/en/product-news/w%C3%A4rtsil%C3%A4-schneider-electric-and-stanley-consultants-launch-coordinated-approach-for-faster-us-data-center-power-delivery/",
+    "publisher": "Data Center Dynamics (sponsored)",
+    "published_at": "2026-10-10",
+    "title": "Wärtsilä, Schneider Electric, and Stanley Consultants launch coordinated approach for faster US data center power delivery",
+    "id": "0a982f28"
+   },
+   {
+    "ref": "S25",
+    "n": 25,
+    "kind": "signal",
+    "url": "https://www.saurenergy.com/solar-energy-news/why-nvidias-dsx-ready-qualification-matters-for-lg-energy-solutions-bess-12562620",
+    "publisher": "Saur Energy",
+    "published_at": "2026-09-22",
+    "title": "LG Energy Solution's New BESS Qualification Opens Door to AI Data Centre Market",
+    "id": "729fabb4"
+   },
+   {
+    "ref": "S26",
+    "n": 26,
+    "kind": "signal",
+    "url": "https://www.ess-news.com/2026/09/22/nvidia-launches-bess-qualification-program-for-ai-data-centers-names-just-tesla-lg-hitachi/",
+    "publisher": "ESS News",
+    "published_at": "2026-09-22",
+    "title": "Nvidia launches BESS qualification program for AI data centers, names just Tesla, LG, Hitachi",
+    "id": "d9927f8a"
+   },
+   {
+    "ref": "S27",
+    "n": 27,
+    "kind": "signal",
+    "url": "https://marketintelligencetools.com/reports/ai-environmental-impact-statistics/",
+    "publisher": "Market Intelligence Tools",
+    "published_at": "2026-09-30",
+    "title": "AI Environmental Impact Statistics 2026: 485 TWh, and Google's Water Use Up 34%",
+    "id": "52f9530c"
+   },
+   {
+    "ref": "S28",
+    "n": 28,
+    "kind": "artifact",
+    "url": "https://blog.se.com/datacenter/2026/09/29/using-treated-and-recycled-water-in-indian-data-centre-cooling/",
+    "publisher": "Schneider Electric",
+    "published_at": "2026-09-29",
+    "title": "Using treated and recycled water in Indian data centre cooling",
+    "id": "7ae4d9a0"
+   },
+   {
+    "ref": "S29",
+    "n": 29,
+    "kind": "artifact",
+    "url": "https://openpr.com/news/4650569/data-center-infrastructure-management-market-puts-power",
+    "publisher": "openPR",
+    "published_at": "2026-10-03",
+    "title": "DCIM Market: Vertiv SmartRun Digital Twin, NTT DATA–Daikin AI Cooling Trial",
+    "ids": [
+     "5ffafbe4",
+     "145a3c7d"
+    ]
+   },
+   {
+    "ref": "S30",
+    "n": 30,
+    "kind": "signal",
+    "url": "https://prnewswire.com/news-releases/data-center-infrastructure-management-market-worth-8-42-billion-by-2031--report-by-marketsandmarkets-302895676.html",
+    "publisher": "PR Newswire",
+    "published_at": "2026-10-02",
+    "title": "Data Center Infrastructure Management Market Worth $8.42 Billion by 2031 – MarketsandMarkets",
+    "id": "42043205"
+   }
+  ],
+  "institution_id": null,
+  "company_id": null,
+  "jurisdiction_id": null,
+  "briefing_type": "thread",
+  "byline": "Gilbert Faraday",
+  "hypothesis": "In September and October 2026 the cooling plant and the power train stopped being bought as separate systems. Chillers began running on 800 V DC, power and cooling vendors published joint reference designs, and NVIDIA's DSX Ready qualification became the gate that coolant, CDU and battery suppliers each rushed to pass.",
+  "contents": [
+   ":::cover\n# The Thermal-Power Convergence Play\n\nIn September and October 2026 the cooling plant and the power train stopped being bought as separate systems. Chillers began running on 800 V DC, power and cooling vendors published joint reference designs, and NVIDIA's DSX Ready qualification became the gate that coolant, CDU and battery suppliers each rushed to pass.\n\n- **Tier:** Standard brief\n- **Coverage:** Theater: The Rack Revolution › Sectors: Cooling & Water Technology, Power Architecture\n- **Byline:** Gilbert Faraday\n- **Evidence window:** 8 Sept 2026 – 12 Oct 2026, 30 sources\n- **Status:** DRAFT. Staged by the lane runner; not for distribution. Requires Myke sign-off (Brand Bible §07).\n:::\n\n## The argument\n\n### Heat and power are now one procurement\n\nThis Briefing rests on thirty sourced items, Faraday Signals and crawled articles, dated between 8 September and 12 October 2026. They describe three changes that point the same way.\n\nThe first is a shared voltage. One guide reports the industry converging on 800 V DC as the reference for power distribution, with NVIDIA, Google and Microsoft advancing it through the Open Compute Project [14]. Trane, working with Eaton and Danfoss, then ran a chiller of more than 3.5 MW directly from an 800 V DC feed, with up to 2% higher efficiency [15]. Trane and Eaton had already published an integrated reference design combining thermal management and power systems [17].\n\nThe second is a shared gate. NVIDIA's DSX Ready qualification now covers liquid cooling systems from Vertiv [1], Vertiv's 2.3 MW CoolChip CDU [2], Shell's direct liquid cooling fluid [5] and LG Energy Solution's battery system [25]. Nvidia separately named Tesla, LG and Hitachi in its first battery storage qualification [26].\n\nThe third is consolidation of capacity and services around both. Vertiv agreed to buy King Environmental Services for liquid-cooling fluid management and commissioning [3] and is adding about 22,000 m² to its Slovakian plant [4]. Eaton agreed to buy COL Group for €810 million to expand medium-voltage capacity in Europe [20], and Flex raised $2 billion for its Axiom spin-off at a $37.5 billion enterprise value [22].\n\n**At a glance**\n\n| Figure | What it measures | Date |\n|---|---|---|\n| 800 V DC | Reference voltage the industry is converging on, per one guide; advanced through OCP [14] | 2026-10-06 |\n| > 3.5 MW | Cooling capacity of Trane's 800 V DC chiller demonstration, up to 2% more efficient [15] | 2026-10-01 |\n| 2.3 MW | Vertiv CoolChip CDU qualified DSX Ready [2] | 2026-09-21 |\n| 3,750 L/min | Maximum flow of Trane's LiquidStack CDU 2.X [7] | 2026-09-28 |\n| €810 M | Eaton's agreed price for COL Group, a medium-voltage manufacturer [20] | 2026-09-25 |\n| $37.5 B | Enterprise value of Flex's Axiom spin-off after a $2 billion investment [22] | 2026-10-06 |\n| 10.9 B gal | Google water use after a 34% rise, as reported with IEA electricity data [27] | 2026-09-30 |\n\n## Direct-to-Chip Cooling & the Coolant Supply Chain\n\nLiquid cooling vendors spent the period qualifying products against NVIDIA's reference architecture and adding the fluids, services and factories behind them.\n\n- **5 Oct 2026 · DataCenterNews Asia — Vertiv qualifies its liquid cooling systems.** Vertiv achieved NVIDIA DSX Ready qualification for liquid cooling systems [1].\n- **21 Sept 2026 · Vertiv — A 2.3 MW CDU passes the gate.** Vertiv's 2.3 MW CoolChip coolant distribution unit achieved DSX Ready qualification for AI factory infrastructure [2].\n- **24 Sept 2026 · HPCwire — Vertiv buys fluid-management services.** Vertiv announced the acquisition of King Environmental Services, a European provider of fluid management and commissioning services for liquid-cooled data centers [3].\n- **29 Sept 2026 · Cooling Post — More factory floor in Slovakia.** Vertiv is adding a further 22,000 m² of manufacturing capacity to its existing 56,000 m² power and cooling factory in Slovakia [4].\n- **8 Oct 2026 · Data Center Dynamics (sponsored) — Shell's coolant qualifies.** Shell's direct liquid cooling fluid achieved NVIDIA DSX Ready Coolant qualification [5].\n- **1 Oct 2026 · Intelligent Data Centres — Castrol bundles its thermal business.** Castrol launched Castrol CORE, an end-to-end offer for its data centre thermal management business [6].\n- **28 Sept 2026 · Converge Digest — LiquidStack CDU 2.X.** Trane's LiquidStack released an architecture-agnostic coolant distribution unit supporting up to 3,750 litres per minute, designed for platforms including NVIDIA Vera Rubin [7].\n- **28 Sept 2026 · Capacity — Submer launches Corenix.** Submer Group launched Corenix, a modular data centre infrastructure company citing 500 MW of liquid-cooling deployment experience, with Martin Renkis, formerly of Johnson Controls, as CEO [8].\n- **5 Oct 2026 · DataCenter-Insider — Schneider pairs air and liquid.** Schneider Electric's new coolant distribution unit combines fan-wall air cooling with liquid cooling, at up to 3.5 MW of cooling per unit [9].\n- **7 Oct 2026 · Valeo — An automotive supplier enters the hall.** Valeo said it would present, with OVHcloud, an aluminium heat exchanger delivering a 38% increase in cooling capacity at the OCP Global Summit [10].\n\n## 800 V DC Distribution Reaches the Cooling Plant\n\nThe move to high-voltage DC began at the rack. In this window it reached the mechanical plant.\n\n- **6 Oct 2026 · Inside Deep Tech — Leaving 48 volts behind.** As of mid-2026, the guide reports, the industry is converging on 800 V DC as the reference voltage for power distribution, with NVIDIA, Google and Microsoft jointly advancing the architecture through the Open Compute Project [14].\n- **1 Oct 2026 · Converge Digest · HPCwire — A chiller on 800 V DC.** Trane Technologies, with Eaton and Danfoss, demonstrated a chiller operating directly from an 800 V DC feed, delivering more than 3.5 MW of cooling and up to 2% higher efficiency [15].\n- **18 Sept 2026 · Data Center Dynamics — What 800 V DC means for cooling.** Schneider Electric's Mike Donahue discussed 800 V DC and its implications for data center cooling as AI workloads raise rack power density [16].\n- **15 Sept 2026 · ITwiz — One reference design for heat and power.** Trane Technologies and Eaton developed an integrated reference design for high-density data centers that combines thermal management and power systems [17].\n- **7 Oct 2026 · Schneider Electric — Densities of 200 to 300 kW.** Schneider Electric writes that as rack densities rise to 200–300 kW and beyond, cooling capacity has become a critical requirement [11].\n\n## Power Conversion, Switchgear & Storage\n\nBehind the new voltage sits a supply chain of semiconductors, transformers and switchgear. The period brought reference designs, acquisitions and factory expansions across it.\n\n- **5 Oct 2026 · Converge Digest — Direct 800 V to 6 V conversion.** Navitas Semiconductor and Microchip unveiled a 20 kW reference design for direct 800 V to 6 V DC conversion using GaN devices, targeting 96% peak efficiency and 2,100 W/in³ [18].\n- **5 Oct 2026 · Converge Digest — Infineon completes C2i.** Infineon completed its acquisition of C2i Semiconductors, a Bengaluru company specialising in digital power management and multiphase controllers for AI data centers [19].\n- **25 Sept 2026 · Converge Digest — Eaton buys medium-voltage capacity.** Eaton agreed to acquire Italy-based COL Group for €810 million to strengthen its medium-voltage capabilities in Europe [20].\n- **28 Sept 2026 · Converge Digest — Software-defined switchgear.** Schneider Electric is extending software-defined architecture into the medium-voltage layer of AI data centers with a standardized switchgear platform [21].\n- **6 Oct 2026 · Converge Digest — Flex values Axiom at $37.5 billion.** Flex secured a $2.0 billion convertible preferred investment in Axiom Solutions International from General Catalyst, Koch Equity Development and co-investors, valuing the AI infrastructure spin-off at $37.5 billion enterprise value [22].\n- **8 Sept 2026 · TechEdge AI — Hyosung expands in Memphis.** Hyosung is investing $300 million in Memphis transformer manufacturing, with capacity expansion of more than 50% by 2028 [23].\n- **10 Oct 2026 · Data Center Dynamics (sponsored) — Generator to chip.** Wärtsilä, Schneider Electric and Stanley Consultants launched a coordinated approach integrating onsite generation, electrical infrastructure and engineering [24].\n- **22 Sept 2026 · Saur Energy — LG's battery system qualifies.** LG Energy Solution's 2.5 MW / 5.1 MWh battery energy storage system achieved NVIDIA DSX Ready qualification [25].\n- **22 Sept 2026 · ESS News — Three battery makers named.** Nvidia launched a battery storage qualification program for AI data centers, initially naming Tesla, LG and Hitachi [26].\n\n## Water, Siting & the Control Layer\n\nThe thermal choice now reaches beyond the hall, into water budgets, local approvals and the software that runs both systems together.\n\n- **30 Sept 2026 · Market Intelligence Tools — Electricity and water, by the numbers.** Citing the IEA, the report puts global data center electricity use at 485 TWh in 2025, up 17%, and Google's water use up 34% to 10.9 billion gallons [27].\n- **8 Oct 2026 · Schneider Electric — Cooling design and community opposition.** A Motivair executive writes that community opposition and local approvals are becoming bigger constraints on capacity, and that cooling design affects water, noise and permitting [12].\n- **29 Sept 2026 · Schneider Electric — Recycled water in India.** The post notes India has around 18% of the world's population but only 4% of its freshwater resources [28].\n- **7 Oct 2026 · Electronics Cooling — Thermal orchestration.** The article argues that workload, flow, pressure, coolant chemistry and facility heat rejection now move together in high-density racks and need an orchestration layer [13].\n- **3 Oct 2026 · openPR — Digital twins for power and cooling.** The report records Vertiv's SmartRun digital twin progress within NVIDIA Omniverse DSX for coordinated power-cooling simulation, and an NTT DATA–Daikin validation of AI that predicts server thermal conditions [29].\n- **2 Oct 2026 · PR Newswire — DCIM market forecast.** MarketsandMarkets projects the DCIM market will reach $8.42 billion by 2031 [30].\n\n## Signal register\n\nEvery party below appears in at least one cited Signal. The role column restates what the source reports; it adds no assessment.\n\n| Party | Role as reported | Cites |\n|---|---|---|\n| Vertiv | DSX Ready liquid cooling and 2.3 MW CDU; King Environmental acquisition; Slovakia expansion; SmartRun digital twin | [1] [2] [3] [4] [29] |\n| Trane Technologies (LiquidStack) | 800 V DC chiller with Eaton and Danfoss; reference design with Eaton; CDU 2.X | [7] [15] [17] |\n| Eaton | Partner on the 800 V DC chiller and the Trane reference design; COL Group acquisition | [15] [17] [20] |\n| Schneider Electric (Motivair) | Hybrid air-liquid CDU; software-defined MV switchgear; generator-to-chip partnership; 800 V DC commentary | [9] [11] [16] [21] [24] |\n| NVIDIA | DSX Ready qualification for cooling, coolant and batteries; battery qualification program | [1] [2] [5] [25] [26] |\n| Shell · Castrol | Coolant qualification; integrated thermal management offer | [5] [6] |\n| Navitas · Microchip · Infineon | 800 V to 6 V GaN reference design; C2i acquisition | [18] [19] |\n| Flex (Axiom) | $2 billion investment at $37.5 billion enterprise value | [22] |\n| Hyosung | $300 million transformer manufacturing investment in Memphis | [23] |\n| Submer (Corenix) · Valeo | Modular platform launch; aluminium heat exchanger | [8] [10] |\n\n:::take\n## Faraday's Take\n\nThe cited record shows vendors from opposite sides of the hall entering each other's line of business: a chiller maker running on the power vendor's DC bus [15], a power vendor shipping coolant distribution units [9], and an integrated reference design from both [17]. NVIDIA's qualification sits above all of them [1, 2, 5, 25]. Read together, the evidence suggests buyers will specify one heat-and-power system against NVIDIA's reference architecture, and that a vendor offering only one half will compete for the subcontract rather than the contract.\n\n*— Gilbert Faraday*\n:::\n\n## Sources & methodology\n\nSource rule: every factual sentence carries a numbered citation to a Faraday Signal (Supabase public.signals) or crawled artifact (public.artifacts); each records the publisher URL below. Sentences restate the recorded framing or summary, using only complete clauses where the record was truncated. Nothing comes from the retired Gamma deck or from model memory.\n\nSelection: Signals and artifacts tagged D7.1–D7.4, D2.1, D2.3, D2.4 and D2.10, dated 8 Sep–12 Oct 2026, filtered for cooling and power-conversion terms, de-duplicated, Google News redirects excluded, then curated by hand. Items mis-tagged to these Threads (chip smuggling, optics, storage) were dropped. Vendor blogs are cited as the vendor's own statement.\n\nLimits: primary articles were not re-fetched for this sample. Faraday's Take is analysis of the cited items and adds no facts. Status: draft, not signed off (Brand Bible §07).\n\n| Ref | Source | Publisher | Date | Faraday record |\n|---|---|---|---|---|\n| S1 | [Vertiv wins NVIDIA DSX Ready cooling qualification](https://datacenternews.asia/story/vertiv-wins-nvidia-dsx-ready-cooling-qualification) | DataCenterNews Asia | 2026-10-05 | signal cee2fd57 |\n| S2 | [Vertiv Coolant Distribution Unit qualified as NVIDIA DSX ready for AI factory infrastructure](https://www.vertiv.com/en-us/about/news-and-events/corporate-news/2026/vertiv-coolant-distribution-unit-qualified-as-nvidia-dsx-ready-for-ai-factory-infrastructure/) | Vertiv | 2026-09-21 | signal 13948e20 |\n| S3 | [Vertiv to Buy King Environmental Services to Bolster Data Center Cooling](https://www.hpcwire.com/off-the-wire/vertiv-to-buy-king-environmental-services-to-bolster-data-center-cooling/) | HPCwire | 2026-09-24 | signal 98dcb5b6 |\n| S4 | [Vertiv to expand Slovakian data centre cooling plant](https://www.coolingpost.com/world-news/vertiv-to-expand-slovakian-data-centre-cooling-plant/) | Cooling Post | 2026-09-29 | artifact f6fb916e |\n| S5 | [Shell achieves NVIDIA DSX Ready Coolant qualification for direct liquid cooling](https://www.datacenterdynamics.com/en/product-news/shell-achieves-nvidia-dsx-ready-coolant-qualification-for-direct-liquid-cooling-advancing-high-performance-ai-computing/) | Data Center Dynamics (sponsored) | 2026-10-08 | artifact 54427a89 |\n| S6 | [Castrol launches 'Castrol CORE', an integrated thermal management offer for data centres](https://www.intelligentdatacentres.com/2026/10/01/castrol-launches-castrol-core-an-integrated-thermal-management-offer-for-data-centres/) | Intelligent Data Centres | 2026-10-01 | artifact f1960f46 |\n| S7 | [LiquidStack Launches CDU 2.X for NVIDIA Vera Rubin Era Cooling](https://convergedigest.com/liquidstack-cdu-2x-nvidia-vera-rubin-liquid-cooling/) | Converge Digest | 2026-09-28 | signal 8ed5545f |\n| S8 | [Submer Group launches Corenix with 500MW liquid-cooling track record](https://capacityglobal.com/news/submer-group-launches-corenix/) | Capacity | 2026-09-28 | signal 5fc8b43b |\n| S9 | [Schneider Electric kombiniert Luft- und Flüssigkeitskühlung](https://www.datacenter-insider.de/schneider-electric-kombiniert-luft-und-fluessigkeitskuehlung-a-9d0465b4b72fd315cf80ed2ef75cad44/) | DataCenter-Insider | 2026-10-05 | artifact 20897171 |\n| S10 | [Valeo Presents Breakthrough Aluminum Cooling Technology for Data Centers at OCP Global Summit 2026](https://www.valeo.com/en/valeo-presents-breakthrough-aluminum-cooling-technology-for-data-centers-at-ocp-global-summit-2026-and-reaches-significant-durability-milestones/) | Valeo | 2026-10-07 | artifact 19afe409 |\n| S11 | [From Cooling capacity to System Intelligence: The critical role of Services in reliable AI Data Centers](https://blog.se.com/services/2026/10/07/services-and-system-intelligence-for-ai-data-center-reliability-sgm/) | Schneider Electric | 2026-10-07 | artifact 8936c524 |\n| S12 | [Data center community opposition: How cooling design affects water, noise, and permitting](https://blog.se.com/datacenter/2026/10/08/data-center-community-opposition-how-cooling-design-affects-water-noise-and-permitting/) | Schneider Electric | 2026-10-08 | artifact cfa94de8 |\n| S13 | [Thermal Orchestration: The Missing Control Layer for AI Factories](https://www.electronics-cooling.com/2026/10/thermal-orchestration-the-missing-control-layer-for-ai-factories/) | Electronics Cooling | 2026-10-07 | artifact 707f3189 |\n| S14 | [800 VDC Power Distribution: A Full Guide to How AI Data Centers Leave 48-Volt Behind](https://www.insidedeeptech.com/800-vdc-power-distribution-ai-data-centers-full-guide/) | Inside Deep Tech | 2026-10-06 | artifact e2975cb1 |\n| S15 | [Trane Demonstrates 3.5 MW 800 VDC Chiller](https://convergedigest.com/trane-800-vdc-chiller-ai-data-centers/) | Converge Digest · HPCwire | 2026-10-01 | artifacts 6e445d08, 1dd9984a |\n| S16 | [DCD Talks: What 800 VDC means for data center cooling with Mike Donahue, Schneider Electric](https://www.datacenterdynamics.com/en/videos/dcd-talks-what-800-vdc-means-for-data-center-cooling-with-mike-donahue-schneider-electric-global/) | Data Center Dynamics | 2026-09-18 | signal aed67cb0 |\n| S17 | [Trane Technologies i Eaton integrują zasilanie i chłodzenie dla fabryk AI](https://itwiz.pl/trane-technologies-i-eaton-integruja-zasilanie-i-chlodzenie-dla-fabryk-ai/) | ITwiz | 2026-09-15 | signal ee8fb258 |\n| S18 | [Navitas and Microchip Unveil 20 kW 800V-to-6V GaN for AI Racks](https://convergedigest.com/navitas-microchip-800v-6v-gan-ai-power/) | Converge Digest | 2026-10-05 | signal 73a920b8 |\n| S19 | [Infineon Completes C2i Acquisition, Adding Digital Power Control](https://convergedigest.com/infineon-c2i-ai-data-center-power/) | Converge Digest | 2026-10-05 | signal 8fe2557d |\n| S20 | [Eaton to Acquire COL Group for €810M, Expanding European Power Capacity](https://convergedigest.com/eaton-col-group-810m-data-center-power/) | Converge Digest | 2026-09-25 | signal 5078c659 |\n| S21 | [Schneider Brings Software-Defined Control to Voltage Power](https://convergedigest.com/schneider-software-defined-medium-voltage-equinix-ai-data-centers/) | Converge Digest | 2026-09-28 | artifact ffdea5b6 |\n| S22 | [Flex Secures $2B Investment for Axiom at $37.5B Enterprise Value](https://convergedigest.com/flex-axiom-2b-investment-37-5b-valuation/) | Converge Digest | 2026-10-06 | signal c2689278 |\n| S23 | [Hyosung Targets AI Data Center Power Market with Solid-State Transformers](https://techedgeai.com/hyosung-targets-ai-data-center-power-market-with-solid-state-transformers/) | TechEdge AI | 2026-09-08 | signal a9baf7de |\n| S24 | [Wärtsilä, Schneider Electric, and Stanley Consultants launch coordinated approach for faster US data center power delivery](https://www.datacenterdynamics.com/en/product-news/w%C3%A4rtsil%C3%A4-schneider-electric-and-stanley-consultants-launch-coordinated-approach-for-faster-us-data-center-power-delivery/) | Data Center Dynamics (sponsored) | 2026-10-10 | artifact 0a982f28 |\n| S25 | [LG Energy Solution's New BESS Qualification Opens Door to AI Data Centre Market](https://www.saurenergy.com/solar-energy-news/why-nvidias-dsx-ready-qualification-matters-for-lg-energy-solutions-bess-12562620) | Saur Energy | 2026-09-22 | signal 729fabb4 |\n| S26 | [Nvidia launches BESS qualification program for AI data centers, names just Tesla, LG, Hitachi](https://www.ess-news.com/2026/09/22/nvidia-launches-bess-qualification-program-for-ai-data-centers-names-just-tesla-lg-hitachi/) | ESS News | 2026-09-22 | signal d9927f8a |\n| S27 | [AI Environmental Impact Statistics 2026: 485 TWh, and Google's Water Use Up 34%](https://marketintelligencetools.com/reports/ai-environmental-impact-statistics/) | Market Intelligence Tools | 2026-09-30 | signal 52f9530c |\n| S28 | [Using treated and recycled water in Indian data centre cooling](https://blog.se.com/datacenter/2026/09/29/using-treated-and-recycled-water-in-indian-data-centre-cooling/) | Schneider Electric | 2026-09-29 | artifact 7ae4d9a0 |\n| S29 | [DCIM Market: Vertiv SmartRun Digital Twin, NTT DATA–Daikin AI Cooling Trial](https://openpr.com/news/4650569/data-center-infrastructure-management-market-puts-power) | openPR | 2026-10-03 | artifacts 5ffafbe4, 145a3c7d |\n| S30 | [Data Center Infrastructure Management Market Worth $8.42 Billion by 2031 – MarketsandMarkets](https://prnewswire.com/news-releases/data-center-infrastructure-management-market-worth-8-42-billion-by-2031--report-by-marketsandmarkets-302895676.html) | PR Newswire | 2026-10-02 | signal 42043205 |\n"
+  ],
+  "last_refreshed": null,
+  "published_at": null,
+  "job": "lane-subdomains",
+  "evidence_from": "2026-09-08",
+  "evidence_to": "2026-10-12",
+  "created_at": "2026-11-09T12:00:00.000Z",
+  "created_by": "bl2-06-fixture-builder",
+  "fixture_source": "docs/templates/samples/data/standard-thermal-power-convergence.json"
+ },
+ {
+  "id": "draft-41d4c4e2-v2",
+  "briefing_id": "41d4c4e2-53da-4098-8ed4-8b22481857ec",
+  "version": 2,
+  "kind": "draft",
+  "status": "draft",
+  "title": "CoreWeave",
+  "tier": "profile",
+  "page_target": 2,
+  "sector_id": "D6",
+  "thread_id": "D6.1",
+  "theme_tags": [
+   "T-005"
+  ],
+  "source_refs": [
+   {
+    "ref": "S1",
+    "n": 1,
+    "kind": "briefing_record",
+    "url": "supabase://ycadmmngkdhvpcsrcuaq/public.companies?company_uid=cmp_115f2b3f0dc7f35f",
+    "publisher": "Faraday · Supabase public.companies",
+    "published_at": "2026-10-13",
+    "title": "Row cmp_115f2b3f0dc7f35f (CoreWeave)"
+   },
+   {
+    "ref": "S2",
+    "n": 2,
+    "kind": "briefing_record",
+    "url": "airtable://appxfti7VuoHYUeu6/tbl4kbby85nx6Z891/recIXg6yYr6MNIJGm",
+    "publisher": "Faraday · Airtable Briefing Library",
+    "published_at": "2026-06-20",
+    "title": "Draft record #4 'CoreWeave — From Ethereum Miners to the Fastest Cloud in History'"
+   },
+   {
+    "ref": "S3",
+    "n": 3,
+    "kind": "artifact",
+    "url": "https://www.sec.gov/Archives/edgar/data/1769628/000119312526148912/d136714dex993.htm",
+    "publisher": "SEC EDGAR",
+    "published_at": "2026-04-09",
+    "title": "CoreWeave 8-K: $4.25B Debt Offering — $60.7B Revenue Backlog, NVIDIA Exemplar Cloud",
+    "id": "a336d965"
+   },
+   {
+    "ref": "S4",
+    "n": 4,
+    "kind": "artifact",
+    "url": "https://www.thestack.technology/life-of-a-neocloud-coreweave-doubles-both-revenue-and-net-loss-in-q2-as-debt-hits-35b/",
+    "publisher": "The Stack",
+    "published_at": "2026-08-11",
+    "title": "Life of a neocloud: CoreWeave doubles both revenue and net loss in Q2, as debt hits $35B",
+    "id": "0caf04e4"
+   },
+   {
+    "ref": "S5",
+    "n": 5,
+    "kind": "artifact",
+    "url": "https://convergedigest.com/coreweave-2-6b-loan-gpu-ai-infrastructure-financing/",
+    "publisher": "Converge Digest",
+    "published_at": "2026-08-10",
+    "title": "CoreWeave Secures $2.6B Loan as Lenders Take on GPU Renewal Risk",
+    "id": "cd2a6d5f"
+   },
+   {
+    "ref": "S6",
+    "n": 6,
+    "kind": "artifact",
+    "url": "https://convergedigest.com/coreweave-expands-with-360-mw-buildout-in-indonesia/",
+    "publisher": "Converge Digest · Data Center Dynamics",
+    "published_at": "2026-08-04",
+    "title": "CoreWeave Expands with 360 MW Buildout in Indonesia · CoreWeave plans to launch 360MW of data center capacity in Indonesia",
+    "alt_urls": [
+     "https://www.datacenterdynamics.com/en/news/coreweave-plans-to-launch-360mw-of-data-center-capacity-in-indonesia/"
+    ],
+    "ids": [
+     "ad31cbbd",
+     "ef043367"
+    ]
+   },
+   {
+    "ref": "S7",
+    "n": 7,
+    "kind": "artifact",
+    "url": "https://www.datacenterdynamics.com/en/news/blockfusion-signs-coreweave-as-a-customer-in-niagara-falls-new-york/",
+    "publisher": "Data Center Dynamics",
+    "published_at": "2026-09-18",
+    "title": "Blockfusion signs CoreWeave as a customer in Niagara Falls, New York",
+    "id": "143a7530"
+   },
+   {
+    "ref": "S8",
+    "n": 8,
+    "kind": "artifact",
+    "url": "https://convergedigest.com/coreweave-moves-up-ai-stack/",
+    "publisher": "Converge Digest",
+    "published_at": "2026-10-02",
+    "title": "CoreWeave Moves Up the AI Stack",
+    "id": "33818706"
+   },
+   {
+    "ref": "S9",
+    "n": 9,
+    "kind": "artifact",
+    "url": "https://convergedigest.com/coreweave-india-adaniconnex-240mw-ai-cloud/",
+    "publisher": "Converge Digest",
+    "published_at": "2026-10-07",
+    "title": "CoreWeave Enters India with 240 MW AdaniConneX",
+    "id": "ce1625df"
+   },
+   {
+    "ref": "S10",
+    "n": 10,
+    "kind": "artifact",
+    "url": "https://siliconangle.com/2026/10/08/willow-taps-coreweave-simplify-ai-model-training-fullyconnected/",
+    "publisher": "SiliconANGLE",
+    "published_at": "2026-10-08",
+    "title": "Willow taps CoreWeave to simplify AI model training",
+    "id": "c3f06cc7"
+   }
+  ],
+  "institution_id": null,
+  "company_id": "cmp_115f2b3f0dc7f35f",
+  "jurisdiction_id": null,
+  "briefing_type": "company",
+  "byline": null,
+  "hypothesis": "CoreWeave reported a $60.7 billion revenue backlog in an April 2026 SEC filing [3] and expects to end 2026 with 1.85 GW of data center capacity [4]. Between April and October it raised debt through notes, convertible notes and a term loan [3, 5] and announced its first sites in Asia-Pacific and India [6, 9].",
+  "contents": [
+   "# CoreWeave\n\nLibrary · Company Briefing · Profile · not signed off · prepared 2026-10-13\n\n## Identity card\n\n| Field | Value |\n|---|---|\n| Company type | Neocloud / GPU cloud [1] |\n| Ownership · Ticker | Public · CRWV [1] |\n| Headquarters | Roseland, NJ, USA [1] |\n| Website | coreweave.com [1] |\n| Theater | The Inference Economy [2] |\n| Sectors | Hyperscaler Activity · New Entrants [2] |\n\n## What the record shows\n\nCoreWeave reported a $60.7 billion revenue backlog in an April 2026 SEC filing [3] and expects to end 2026 with 1.85 GW of data center capacity [4]. Between April and October it raised debt through notes, convertible notes and a term loan [3, 5] and announced its first sites in Asia-Pacific and India [6, 9].\n\n### Dated Signals\n\n- **7 Oct 2026 · Converge Digest — Enters India with AdaniConneX.** CoreWeave plans a 240 MW AI cloud deployment at the AdaniConneX Taloja campus in Navi Mumbai, its first footprint in India [9].\n- **8 Oct 2026 · SiliconANGLE — Willow picks CoreWeave for training.** Willow Care, maker of the Willow Voice dictation app, chose CoreWeave for model training [10].\n- **2 Oct 2026 · Converge Digest — CoreWeave Forge.** CoreWeave launched Forge, a development environment connecting model training, inference, observability, evaluation and post-training [8].\n- **18 Sept 2026 · Data Center Dynamics — Customer at Blockfusion, Niagara Falls.** Blockfusion signed CoreWeave as a customer at its Niagara Falls, New York campus [7].\n- **11 Aug 2026 · The Stack — Q2: revenue and net loss both double.** CoreWeave doubled both revenue and net loss in Q2 as debt reached $35 billion, and raised its year-end capacity expectation from 1.7 GW to 1.85 GW [4].\n- **10 Aug 2026 · Converge Digest — $2.6 billion delayed-draw loan.** CoreWeave closed a $2.6 billion delayed draw term loan facility [5].\n- **4 Aug 2026 · Converge Digest · DCD — First Asia-Pacific sites, in Indonesia.** CoreWeave announced three Indonesian facilities scheduled for 2028, its first data center presence in Asia-Pacific; DCD reports 360 MW of capacity [6].\n- **9 Apr 2026 · SEC (Form 8-K exhibit) — $4.25 billion debt offering.** CoreWeave raised $4.25 billion through $1.25 billion of senior unsecured notes and $3 billion of convertible notes, and reported a $60.7 billion revenue backlog [3].\n\n## Sources & method\n\nSourced facts only. Identity fields come from the Faraday companies row [1]; Theater and Sectors from the Airtable Briefing Library record [2]; every other sentence restates a crawled artifact's recorded summary [3–10]. No Faraday's Take, no forecast and no call-to-action appear in a Profile. Primary articles were not re-fetched. Status: draft, not signed off (Brand Bible §07).\n\n| Ref | Source | Publisher | Date | Faraday record |\n|---|---|---|---|---|\n| S1 | [Row cmp_115f2b3f0dc7f35f (CoreWeave)](supabase://ycadmmngkdhvpcsrcuaq/public.companies?company_uid=cmp_115f2b3f0dc7f35f) | Faraday · Supabase public.companies | 2026-10-13 | read 2026-10-13 |\n| S2 | [Draft record #4 'CoreWeave — From Ethereum Miners to the Fastest Cloud in History'](airtable://appxfti7VuoHYUeu6/tbl4kbby85nx6Z891/recIXg6yYr6MNIJGm) | Faraday · Airtable Briefing Library | 2026-06-20 | read 2026-10-13 |\n| S3 | [CoreWeave 8-K: $4.25B Debt Offering — $60.7B Revenue Backlog, NVIDIA Exemplar Cloud](https://www.sec.gov/Archives/edgar/data/1769628/000119312526148912/d136714dex993.htm) | SEC EDGAR | 2026-04-09 | artifact a336d965 |\n| S4 | [Life of a neocloud: CoreWeave doubles both revenue and net loss in Q2, as debt hits $35B](https://www.thestack.technology/life-of-a-neocloud-coreweave-doubles-both-revenue-and-net-loss-in-q2-as-debt-hits-35b/) | The Stack | 2026-08-11 | artifact 0caf04e4 |\n| S5 | [CoreWeave Secures $2.6B Loan as Lenders Take on GPU Renewal Risk](https://convergedigest.com/coreweave-2-6b-loan-gpu-ai-infrastructure-financing/) | Converge Digest | 2026-08-10 | artifact cd2a6d5f |\n| S6 | [CoreWeave Expands with 360 MW Buildout in Indonesia · CoreWeave plans to launch 360MW of data center capacity in Indonesia](https://convergedigest.com/coreweave-expands-with-360-mw-buildout-in-indonesia/) | Converge Digest · Data Center Dynamics | 2026-08-04 | artifacts ad31cbbd, ef043367 |\n| S7 | [Blockfusion signs CoreWeave as a customer in Niagara Falls, New York](https://www.datacenterdynamics.com/en/news/blockfusion-signs-coreweave-as-a-customer-in-niagara-falls-new-york/) | Data Center Dynamics | 2026-09-18 | artifact 143a7530 |\n| S8 | [CoreWeave Moves Up the AI Stack](https://convergedigest.com/coreweave-moves-up-ai-stack/) | Converge Digest | 2026-10-02 | artifact 33818706 |\n| S9 | [CoreWeave Enters India with 240 MW AdaniConneX](https://convergedigest.com/coreweave-india-adaniconnex-240mw-ai-cloud/) | Converge Digest | 2026-10-07 | artifact ce1625df |\n| S10 | [Willow taps CoreWeave to simplify AI model training](https://siliconangle.com/2026/10/08/willow-taps-coreweave-simplify-ai-model-training-fullyconnected/) | SiliconANGLE | 2026-10-08 | artifact c3f06cc7 |\n"
+  ],
+  "last_refreshed": null,
+  "published_at": null,
+  "job": "lane-companies",
+  "evidence_from": "2025-10-13",
+  "evidence_to": "2026-10-13",
+  "created_at": "2026-11-09T12:00:00.000Z",
+  "created_by": "bl2-06-fixture-builder",
+  "fixture_source": "docs/templates/samples/data/profile-coreweave.json"
+ },
+ {
+  "id": "draft-fx000700-v2",
+  "briefing_id": "fx000700-0007-4000-8000-000000000007",
+  "version": 2,
+  "kind": "draft",
+  "status": "draft",
+  "title": "Lawrence Berkeley National Laboratory",
+  "tier": "profile",
+  "page_target": 2,
+  "sector_id": "D3",
+  "thread_id": null,
+  "theme_tags": [],
+  "source_refs": [],
+  "institution_id": "inst_lbnl",
+  "company_id": null,
+  "jurisdiction_id": null,
+  "briefing_type": "company",
+  "byline": null,
+  "hypothesis": "[PLACEHOLDER THESIS — BL2-04 runner skeleton. No claim is made here; the BL2-05 generator supplies the sourced thesis.]",
+  "contents": [
+   "## Header\n\n_Placeholder — profile template skeleton (BL2-04). Replaced by the BL2-05 generator._\n\n## Identity card\n\n_Placeholder — profile template skeleton (BL2-04). Replaced by the BL2-05 generator._\n\n## What the record shows\n\n_Placeholder — profile template skeleton (BL2-04). Replaced by the BL2-05 generator._\n\n## Dated Signals\n\n_Placeholder — profile template skeleton (BL2-04). Replaced by the BL2-05 generator._\n\n## Sources & method\n\n_Placeholder — profile template skeleton (BL2-04). Replaced by the BL2-05 generator._",
+   "## Identity card\n\n_Placeholder — profile template skeleton (BL2-04). Replaced by the BL2-05 generator._",
+   "## What the record shows\n\n_Placeholder — profile template skeleton (BL2-04). Replaced by the BL2-05 generator._",
+   "## Dated Signals\n\n_Placeholder — profile template skeleton (BL2-04). Replaced by the BL2-05 generator._",
+   "## Sources & method\n\n_Placeholder — profile template skeleton (BL2-04). Replaced by the BL2-05 generator._"
+  ],
+  "last_refreshed": null,
+  "published_at": null,
+  "job": "lane-institutions",
+  "evidence_from": "2025-11-09T12:00:00.000Z",
+  "evidence_to": "2026-11-09T12:00:00.000Z",
+  "created_at": "2026-11-09T12:00:00.000Z",
+  "created_by": "briefing-lane-runner_v0.1",
+  "fixture_source": "scripts/lanes/generate.mjs (BL2-04 stub)"
+ },
+ {
+  "id": "draft-fx000800-v2",
+  "briefing_id": "fx000800-0008-4000-8000-000000000008",
+  "version": 2,
+  "kind": "draft",
+  "status": "draft",
+  "title": "Texas",
+  "tier": "standard",
+  "page_target": 9,
+  "sector_id": "D3",
+  "thread_id": null,
+  "theme_tags": [],
+  "source_refs": [],
+  "institution_id": null,
+  "company_id": null,
+  "jurisdiction_id": "US-TX",
+  "briefing_type": "jurisdiction",
+  "byline": "Gilbert Faraday",
+  "hypothesis": "[PLACEHOLDER THESIS — BL2-04 runner skeleton. No claim is made here; the BL2-05 generator supplies the sourced thesis.]",
+  "contents": [
+   "## Cover\n\n_Placeholder — standard template skeleton (BL2-04). Replaced by the BL2-05 generator._\n\n## The argument\n\n_Placeholder — standard template skeleton (BL2-04). Replaced by the BL2-05 generator._\n\n## Thread sections\n\n_Placeholder — standard template skeleton (BL2-04). Replaced by the BL2-05 generator._\n\n## Signal register\n\n_Placeholder — standard template skeleton (BL2-04). Replaced by the BL2-05 generator._\n\n## Faraday's Take\n\n_Placeholder — standard template skeleton (BL2-04). Replaced by the BL2-05 generator._\n\n## Sources & methodology\n\n_Placeholder — standard template skeleton (BL2-04). Replaced by the BL2-05 generator._",
+   "## The argument\n\n_Placeholder — standard template skeleton (BL2-04). Replaced by the BL2-05 generator._",
+   "## Thread sections\n\n_Placeholder — standard template skeleton (BL2-04). Replaced by the BL2-05 generator._",
+   "## Signal register\n\n_Placeholder — standard template skeleton (BL2-04). Replaced by the BL2-05 generator._",
+   "## Faraday's Take\n\n_Placeholder — standard template skeleton (BL2-04). Replaced by the BL2-05 generator._",
+   "## Sources & methodology\n\n_Placeholder — standard template skeleton (BL2-04). Replaced by the BL2-05 generator._"
+  ],
+  "last_refreshed": null,
+  "published_at": null,
+  "job": "lane-states",
+  "evidence_from": "2026-05-09T12:00:00.000Z",
+  "evidence_to": "2026-11-09T12:00:00.000Z",
+  "created_at": "2026-11-09T12:00:00.000Z",
+  "created_by": "briefing-lane-runner_v0.1",
+  "fixture_source": "scripts/lanes/generate.mjs (BL2-04 stub)"
+ },
+ {
+  "id": "draft-fx000900-v2",
+  "briefing_id": "fx000900-0009-4000-8000-000000000009",
+  "version": 2,
+  "kind": "draft",
+  "status": "draft",
+  "title": "Germany",
+  "tier": "standard",
+  "page_target": 9,
+  "sector_id": "D3",
+  "thread_id": null,
+  "theme_tags": [],
+  "source_refs": [],
+  "institution_id": null,
+  "company_id": null,
+  "jurisdiction_id": "DE",
+  "briefing_type": "jurisdiction",
+  "byline": "Gilbert Faraday",
+  "hypothesis": "[PLACEHOLDER THESIS — BL2-04 runner skeleton. No claim is made here; the BL2-05 generator supplies the sourced thesis.]",
+  "contents": [
+   "## Cover\n\n_Placeholder — standard template skeleton (BL2-04). Replaced by the BL2-05 generator._\n\n## The argument\n\n_Placeholder — standard template skeleton (BL2-04). Replaced by the BL2-05 generator._\n\n## Thread sections\n\n_Placeholder — standard template skeleton (BL2-04). Replaced by the BL2-05 generator._\n\n## Signal register\n\n_Placeholder — standard template skeleton (BL2-04). Replaced by the BL2-05 generator._\n\n## Faraday's Take\n\n_Placeholder — standard template skeleton (BL2-04). Replaced by the BL2-05 generator._\n\n## Sources & methodology\n\n_Placeholder — standard template skeleton (BL2-04). Replaced by the BL2-05 generator._",
+   "## The argument\n\n_Placeholder — standard template skeleton (BL2-04). Replaced by the BL2-05 generator._",
+   "## Thread sections\n\n_Placeholder — standard template skeleton (BL2-04). Replaced by the BL2-05 generator._",
+   "## Signal register\n\n_Placeholder — standard template skeleton (BL2-04). Replaced by the BL2-05 generator._",
+   "## Faraday's Take\n\n_Placeholder — standard template skeleton (BL2-04). Replaced by the BL2-05 generator._",
+   "## Sources & methodology\n\n_Placeholder — standard template skeleton (BL2-04). Replaced by the BL2-05 generator._"
+  ],
+  "last_refreshed": null,
+  "published_at": null,
+  "job": "lane-countries",
+  "evidence_from": "2026-05-09T12:00:00.000Z",
+  "evidence_to": "2026-11-09T12:00:00.000Z",
+  "created_at": "2026-11-09T12:00:00.000Z",
+  "created_by": "briefing-lane-runner_v0.1",
+  "fixture_source": "scripts/lanes/generate.mjs (BL2-04 stub)"
+ }
+]

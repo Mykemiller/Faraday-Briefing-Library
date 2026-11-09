@@ -1,0 +1,65 @@
+[
+ {
+  "lane": "theaters",
+  "daily_quota": 3,
+  "cursor": {
+   "last_id": null,
+   "last_run_at": "2026-11-09T12:00:00.000Z"
+  },
+  "blocked_reason": null
+ },
+ {
+  "lane": "domains",
+  "daily_quota": 3,
+  "cursor": {
+   "last_id": null,
+   "last_run_at": "2026-11-09T12:00:00.000Z"
+  },
+  "blocked_reason": null
+ },
+ {
+  "lane": "subdomains",
+  "daily_quota": 3,
+  "cursor": {
+   "last_id": null,
+   "last_run_at": "2026-11-09T12:00:00.000Z"
+  },
+  "blocked_reason": null
+ },
+ {
+  "lane": "companies",
+  "daily_quota": 3,
+  "cursor": {
+   "last_id": null,
+   "last_run_at": "2026-11-09T12:00:00.000Z"
+  },
+  "blocked_reason": null
+ },
+ {
+  "lane": "states",
+  "daily_quota": 3,
+  "cursor": {
+   "last_id": null,
+   "last_run_at": "2026-11-09T12:00:00.000Z"
+  },
+  "blocked_reason": null
+ },
+ {
+  "lane": "countries",
+  "daily_quota": 3,
+  "cursor": {
+   "last_id": null,
+   "last_run_at": "2026-11-09T12:00:00.000Z"
+  },
+  "blocked_reason": null
+ },
+ {
+  "lane": "institutions",
+  "daily_quota": 3,
+  "cursor": {
+   "last_id": null,
+   "last_run_at": "2026-11-09T12:00:00.000Z"
+  },
+  "blocked_reason": null
+ }
+]
