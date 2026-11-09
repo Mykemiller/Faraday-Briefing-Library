@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPublished } from "@/lib/briefings";
-import { TIER_META, formatDate } from "@/lib/model";
+import { TIER_META, formatDate, jurisdictionName } from "@/lib/model";
 import { entityFor } from "@/lib/entities";
 import { DoubleRule } from "@/components/DoubleRule";
 import { EntityMark } from "@/components/EntityMark";
@@ -37,6 +37,7 @@ export default async function BriefingPage({ params }: Props) {
 
   const facts: { term: string; value: React.ReactNode }[] = [];
   if (b.byline) facts.push({ term: "Byline", value: b.byline });
+  if (b.jurisdiction) facts.push({ term: "Jurisdiction", value: jurisdictionName(b.jurisdiction) });
   if (b.publishedAt) facts.push({ term: "Published", value: <time dateTime={b.publishedAt}>{formatDate(b.publishedAt)}</time> });
   if (b.lastRefreshed && b.lastRefreshed !== b.publishedAt)
     facts.push({ term: "Refreshed", value: <time dateTime={b.lastRefreshed}>{formatDate(b.lastRefreshed)}</time> });

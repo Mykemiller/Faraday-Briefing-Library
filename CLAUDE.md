@@ -57,6 +57,15 @@ Build Plan v2.0*. Next.js (App Router) · Clerk · Supabase · Stripe · Gamma.
   (the wallet's identity, resolved by email) rather than `auth.users`, so the JW wallet is reused
   rather than forked. Clerk is the auth front; server routes use the service role with explicit
   ownership checks (RLS is the deny-by-default backstop).
+- **Publishing is Myke's step (BL2-07, FDY-283).** `briefing_signoff` (one row per staged
+  version Myke approves) + `v_briefing_signoff_queue` (staged drafts ahead of the live row, with
+  G1/G2/G3 verdicts and `approved`) — migration `20261109150000`, additive only. `scripts/publish-batch.mjs`
+  promotes (`briefings_version_promote`, which snapshots first) and flips `status='published'` for
+  approved rows only; dry run by default, `--apply` to write, one `PUBLISHED` status-log line per
+  brief. No runner ever writes a sign-off. Runbook: `docs/ops/publish-batch.md`.
+- **Read-only storefront (`storefront/`, BL-12 → BL2-07):** filters are `?type=` (five public
+  shelves) · `?tier=` · `?jurisdiction=US-XX|CC` read from `briefings.jurisdiction_id`; no title
+  inference. Fixtures render only locally or on a Vercel *preview* that opts in; never production.
 
 ## Config constants (bound, never literal)
 
