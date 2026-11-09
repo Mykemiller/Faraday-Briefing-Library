@@ -624,7 +624,12 @@ export function numbersSupported(sentence, items) {
   return toks.every((t) => pool.includes(t.trim()));
 }
 
-/** Dispatch on tier (+ jurisdiction variant). */
+/**
+ * Dispatch on tier (+ jurisdiction variant).
+ * @param {object} brief public.briefings row
+ * @param {object} pack EvidencePack from buildPack()
+ * @param {{ budget?: Record<string, any>, now?: Date }} [opts]
+ */
 export function compose(brief, pack, { budget, now = new Date() } = {}) {
   const tier = brief?.tier;
   if (!TIERS.includes(tier)) throw new Error(`unknown tier "${tier}" (expected ${TIERS.join('|')})`);

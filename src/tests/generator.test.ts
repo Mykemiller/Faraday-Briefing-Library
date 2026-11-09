@@ -178,7 +178,7 @@ describe("composer — every tier, every rule", () => {
     expect(d.meta.thin).toBe(true);
     expect(d.meta.signal_count).toBe(4);
     expect(d.manuscript_md).toMatch(/\*\*Thin record\.\*\* Fewer than 6 sourced Signals \(4\)/);
-    const cut = compose(b, pk, { now, budget: { perSection: 4 } });
+    const cut = compose(b, pk, { now, budget: { perSection: 4 } } as any);
     expect(cut.meta.thin).toBe(false);
     expect(PROFILE_THIN_BELOW).toBe(6);
   });
