@@ -1,0 +1,9 @@
+[
+  { "lane": "theaters",     "daily_quota": 2, "cursor": null, "blocked_reason": null },
+  { "lane": "domains",      "daily_quota": 3, "cursor": null, "blocked_reason": null },
+  { "lane": "subdomains",   "daily_quota": 3, "cursor": null, "blocked_reason": null },
+  { "lane": "companies",    "daily_quota": 3, "cursor": null, "blocked_reason": null },
+  { "lane": "states",       "daily_quota": 2, "cursor": null, "blocked_reason": null },
+  { "lane": "countries",    "daily_quota": 2, "cursor": null, "blocked_reason": null },
+  { "lane": "institutions", "daily_quota": 1, "cursor": null, "blocked_reason": "fixture: lane paused pending institution taxonomy" }
+]
