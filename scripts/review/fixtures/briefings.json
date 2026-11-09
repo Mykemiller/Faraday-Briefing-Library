@@ -1,0 +1,120 @@
+[
+ {
+  "id": "fx000100-0001-4000-8000-000000000001",
+  "title": "The Power Reckoning",
+  "tier": "deep",
+  "status": "planned",
+  "briefing_type": "theater",
+  "version": 1,
+  "page_target": 12,
+  "sector_id": null,
+  "thread_id": null,
+  "theme_tags": [
+   "T-001"
+  ],
+  "company_id": null,
+  "institution_id": null,
+  "jurisdiction_id": null,
+  "source_refs": []
+ },
+ {
+  "id": "fx000300-0003-4000-8000-000000000003",
+  "title": "Grid & Regulatory",
+  "tier": "standard",
+  "status": "planned",
+  "briefing_type": "sector",
+  "version": 1,
+  "page_target": 8,
+  "sector_id": "D3",
+  "thread_id": null,
+  "theme_tags": [
+   "The Power Reckoning"
+  ],
+  "company_id": null,
+  "institution_id": null,
+  "jurisdiction_id": null,
+  "source_refs": []
+ },
+ {
+  "id": "fx000500-0005-4000-8000-000000000005",
+  "title": "Interconnection Queue & Grid Access",
+  "tier": "standard",
+  "status": "draft",
+  "briefing_type": "thread",
+  "version": 2,
+  "page_target": 8,
+  "sector_id": "D3",
+  "thread_id": "D3.1",
+  "theme_tags": [],
+  "company_id": null,
+  "institution_id": null,
+  "jurisdiction_id": null,
+  "source_refs": []
+ },
+ {
+  "id": "fx000600-0006-4000-8000-000000000006",
+  "title": "CoreWeave",
+  "tier": "profile",
+  "status": "planned",
+  "briefing_type": "company",
+  "version": 1,
+  "page_target": 2,
+  "sector_id": "D6",
+  "thread_id": "D6.1",
+  "theme_tags": [
+   "The Inference Economy"
+  ],
+  "company_id": "cmp_115f2b3f0dc7f35f",
+  "institution_id": null,
+  "jurisdiction_id": null,
+  "source_refs": []
+ },
+ {
+  "id": "fx000700-0007-4000-8000-000000000007",
+  "title": "Electric Reliability Council of Texas",
+  "tier": "profile",
+  "status": "planned",
+  "briefing_type": "company",
+  "version": 1,
+  "page_target": 2,
+  "sector_id": null,
+  "thread_id": null,
+  "theme_tags": [],
+  "company_id": null,
+  "institution_id": "rb_9bcdea8152642ac7",
+  "jurisdiction_id": null,
+  "source_refs": []
+ },
+ {
+  "id": "fx000800-0008-4000-8000-000000000008",
+  "title": "Texas",
+  "tier": "standard",
+  "status": "planned",
+  "briefing_type": "jurisdiction",
+  "version": 1,
+  "page_target": 8,
+  "sector_id": null,
+  "thread_id": null,
+  "theme_tags": [],
+  "company_id": null,
+  "institution_id": null,
+  "jurisdiction_id": "US-TX",
+  "source_refs": []
+ },
+ {
+  "id": "fx000900-0009-4000-8000-000000000009",
+  "title": "Germany",
+  "tier": "standard",
+  "status": "planned",
+  "briefing_type": "jurisdiction",
+  "version": 1,
+  "page_target": 8,
+  "sector_id": null,
+  "thread_id": null,
+  "theme_tags": [],
+  "company_id": null,
+  "institution_id": null,
+  "jurisdiction_id": "DE",
+  "source_refs": []
+ }
+]

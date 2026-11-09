@@ -14,7 +14,9 @@
     "lanes:run": "node scripts/lanes/run.mjs",
     "lanes:all": "node scripts/lanes/run-all.mjs",
     "lanes:samples": "node scripts/lanes/run-all.mjs --dry-run --emit docs/briefs/samples",
-    "render:manuscript": "node scripts/templates/render.mjs --manuscript"
+    "render:manuscript": "node scripts/templates/render.mjs --manuscript",
+    "review": "node scripts/review/run.mjs",
+    "review:fixtures": "node scripts/review/fixtures/build.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^1.6.0",

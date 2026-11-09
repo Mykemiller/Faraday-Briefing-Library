@@ -1,0 +1,23 @@
+[
+ {
+  "id": "rev-fixture-0001",
+  "briefing_id": "fx000800-0008-4000-8000-000000000008",
+  "version": 1,
+  "gate": "G1-AUTO",
+  "reviewer": "g1-auto",
+  "result": "FAIL",
+  "score": 2,
+  "blockers": [
+   {
+    "code": "no_sources",
+    "message": "source_refs is empty"
+   },
+   {
+    "code": "placeholder_content",
+    "message": "stub placeholders"
+   }
+  ],
+  "notes": "{\"fixture\":\"prior FAIL (the BL2-04 stub v1) so a v2 FAIL would be the second consecutive and park\"}",
+  "created_at": "2026-11-08T12:00:00.000Z"
+ }
+]
