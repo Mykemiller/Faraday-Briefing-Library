@@ -14,17 +14,36 @@ import {
   runLane,
   selectCandidates,
 } from "../../scripts/lanes/run.mjs";
-import { TEMPLATE_SKELETONS, generate } from "../../scripts/lanes/generate.mjs";
+import { generate, EVIDENCE_MONTHS } from "../../scripts/lanes/generate.mjs";
+import { createFixtureEvidence } from "../../scripts/lanes/evidence.mjs";
+import { EVIDENCE_FIXTURES_DIR, buildReviewRow, draftedSentence } from "../../scripts/lanes/run.mjs";
 
 const NOW = () => new Date("2026-11-09T15:04:00Z");
 const jwt = (payload: object) => `h.${Buffer.from(JSON.stringify(payload)).toString("base64url")}.sig`;
 const fixtures = loadFixtures();
+const evidence = createFixtureEvidence(EVIDENCE_FIXTURES_DIR);
+
+/** A fast stand-in for the sourced generator: the runner's own behaviour is what these tests cover. */
+function fakeGenerate(opts: { pages?: (b: any) => number | null; thin?: (b: any) => boolean } = {}) {
+  return async (brief: any, _opts?: any) => {
+    if (!["deep", "standard", "profile"].includes(brief.tier)) throw new Error(`unknown tier "${brief.tier}" (expected deep|standard|profile)`);
+    const pages = opts.pages ? opts.pages(brief) : brief.tier === "profile" ? 2 : brief.tier === "deep" ? 12 : 9;
+    const range = brief.tier === "profile" ? [2, 2] : brief.tier === "deep" ? [10, 15] : [8, 10];
+    return {
+      title: brief.title, hypothesis: "Thesis. [S1]", contents: [":::cover\n# T\n:::", "## A\n\nx [S1]"], source_refs: [{ ref: "S1", url: "https://x", title: "t" }],
+      byline: brief.tier === "profile" ? null : brief.tier === "deep" ? "Faraday Editorial" : "Gilbert Faraday",
+      evidence_from: "2026-05-09T00:00:00.000Z", evidence_to: "2026-11-09T23:59:59.000Z", manuscript_md: ":::cover\n# T\n:::\n\n## A\n\nx [S1]\n",
+      pages, page_range: range, in_range: pages == null ? null : pages >= range[0] && pages <= range[1], render_checked: pages != null,
+      thin: opts.thin ? opts.thin(brief) : false, thin_below: 6, signal_count: 8, source_count: 1, items_in_scope: 8, fit: [], polished: false, stub: false,
+    };
+  };
+}
 
 function harness(overrides: Record<string, unknown> = {}) {
   const db = createFixtureDb(fixtures);
   const out = vi.fn();
   const statuslog = createStatusLog({ token: undefined, now: NOW, out }); // no token ⇒ prints, never fetches
-  return { db, out, statuslog, run: (o: Record<string, unknown>) => runLane({ lane: "domains", db, statuslog, now: NOW, out, ...overrides, ...o } as any) };
+  return { db, out, statuslog, run: (o: Record<string, unknown>) => runLane({ lane: "domains", db, statuslog, now: NOW, out, generate: fakeGenerate(), ...overrides, ...o } as any) };
 }
 
 describe("lane runner — guards", () => {
@@ -55,7 +74,7 @@ describe("lane runner — selection", () => {
     expect(pick("domains")).toEqual(["Grid & Regulatory", "Thermal & Power Convergence"]); // the bad-tier row is eligible; it fails at generate()
     expect(pick("subdomains")).toEqual(["Interconnection Queue & Grid Access"]);
     expect(pick("companies")).toEqual(["CoreWeave"]);
-    expect(pick("institutions")).toEqual(["Lawrence Berkeley National Laboratory"]);
+    expect(pick("institutions")).toEqual(["Electric Reliability Council of Texas"]);
     expect(pick("states")).toEqual(["Texas"]);
     expect(pick("countries")).toEqual(["Germany"]);
     const all = LANES.flatMap((l: string) => pick(l));
@@ -79,33 +98,50 @@ describe("lane runner — selection", () => {
   });
 });
 
-describe("generate() stub and draft row", () => {
-  it("returns the tier skeleton, a placeholder thesis and empty source_refs", async () => {
-    const g = await generate({ title: "T", tier: "standard" }, { now: NOW() });
-    expect(g.stub).toBe(true);
-    expect(g.source_refs).toEqual([]);
-    expect(g.hypothesis).toMatch(/PLACEHOLDER/);
-    expect(g.contents).toHaveLength(TEMPLATE_SKELETONS.standard.length);
-    expect(g.contents[0]).toMatch(/^## Cover/);
+describe("generate() and the draft row", () => {
+  it("drafts from Faraday evidence: real sources, tier byline, tier window, no placeholder", async () => {
+    const g = await generate(fixtures.briefings.find((b: any) => b.title === "Grid & Regulatory"), { evidence, now: NOW() });
+    expect(g.stub).toBe(false);
+    expect(g.source_refs.length).toBeGreaterThan(10);
+    expect(g.hypothesis).not.toMatch(/PLACEHOLDER/);
+    expect(g.hypothesis).toMatch(/\[S\d+\]/);
+    expect(g.contents[0]).toMatch(/^:::cover/);
     expect(g.contents.at(-1)).toMatch(/^## Sources & methodology/);
     expect(g.byline).toBe("Gilbert Faraday");
-    expect(g.evidence_to).toBe("2026-11-09T15:04:00.000Z");
-    expect(g.evidence_from).toBe("2026-05-09T15:04:00.000Z"); // Standard = 6 months
-    expect((await generate({ title: "P", tier: "profile" })).byline).toBeNull();
-    await expect(generate({ title: "x", tier: "brief" })).rejects.toThrow(/unknown tier/);
+    expect(EVIDENCE_MONTHS).toEqual({ deep: 12, standard: 6, profile: 12, jurisdiction: 12 });
+    expect(g.evidence_to.slice(0, 10)).toBe("2026-11-09"); // fixture packs draft as of capture (2026-11-09)
+    expect(g.evidence_from.slice(0, 10)).toBe("2026-05-09"); // Standard = 6 months
+    expect((await generate(fixtures.briefings.find((b: any) => b.title === "CoreWeave"), { evidence })).byline).toBeNull();
+    await expect(generate({ title: "x", tier: "brief" }, { evidence })).rejects.toThrow(/unknown tier/);
   });
 
-  it("stages version+1 as kind=draft/status=draft with job=lane-<lane> and no live-row fields touched", async () => {
+  it("stages version+1 as kind=draft/status=draft with job=lane-<lane>, the manuscript in its column, and no live-row fields touched", async () => {
     const brief = fixtures.briefings.find((b: any) => b.title === "The Inference Economy");
-    const row = buildDraftRow(brief, await generate(brief, { now: NOW() }), "theaters");
-    expect(row).toMatchObject({ briefing_id: brief.id, version: 4, kind: "draft", status: "draft", job: "lane-theaters", tier: "deep", briefing_type: "theater", created_by: CRAWLER_ID });
-    expect(row.source_refs).toEqual([]);
+    const gen = await fakeGenerate()(brief);
+    const row = buildDraftRow(brief, gen, "theaters");
+    expect(row).toMatchObject({ briefing_id: brief.id, version: 4, kind: "draft", status: "draft", job: "lane-theaters", tier: "deep", briefing_type: "theater", created_by: CRAWLER_ID, byline: "Faraday Editorial" });
+    expect(row.source_refs).toEqual(gen.source_refs);
+    expect((row as any).manuscript_md).toBe(gen.manuscript_md);
+    expect(row.contents).toEqual(gen.contents);
     expect(row.published_at).toBeNull();
     expect(row.last_refreshed).toBeNull();
     expect(row).not.toHaveProperty("id");
     expect(row).toHaveProperty("jurisdiction_id", null); // fixtures carry the BL2-01 column
-    const legacy = buildDraftRow({ id: "x", title: "t", tier: "deep", briefing_type: "theater", version: 1 }, await generate({ title: "t", tier: "deep" }), "theaters");
+    const legacy = buildDraftRow({ id: "x", title: "t", tier: "deep", briefing_type: "theater", version: 1 }, gen, "theaters");
     expect(legacy).not.toHaveProperty("jurisdiction_id"); // pre-BL2-01 rows never send the column
+    // BL2-05 migration not applied ⇒ the manuscript rides as contents[0]
+    const fallback = buildDraftRow(brief, gen, "theaters", { manuscriptColumn: false });
+    expect(fallback).not.toHaveProperty("manuscript_md");
+    expect(fallback.contents[0]).toBe(gen.manuscript_md);
+    expect(fallback.contents.slice(1)).toEqual(gen.contents);
+  });
+
+  it("the DRAFTED sentence carries tier, page count and source count; G1 review rows carry blockers", async () => {
+    const brief = fixtures.briefings.find((b: any) => b.title === "CoreWeave");
+    const gen = await fakeGenerate()(brief);
+    expect(draftedSentence(brief, gen, 2)).toBe('Staged draft v2 of "CoreWeave" (profile, 2 pp, 1 sources).');
+    expect(draftedSentence(brief, { ...gen, render_checked: false, pages: null }, 2)).toMatch(/pages unmeasured/);
+    expect(buildReviewRow(brief, 2, [{ code: "thin" }], "n")).toMatchObject({ briefing_id: brief.id, version: 2, gate: "G1-AUTO", result: "FAIL", reviewer: CRAWLER_ID });
   });
 });
 
@@ -123,7 +159,9 @@ describe("lane runner — a run", () => {
     expect(db.writes.health).toHaveLength(1);
     expect(db.writes.health[0]).toMatchObject({ auto_id: AUTO_ID, crawler_id: CRAWLER_ID, artifacts_found: 2, artifacts_new: 2, artifacts_duped: 0, success: true, errors: [] });
     expect(s.lines).toHaveLength(2);
-    expect(s.lines[0]).toMatch(/^2026-11-09 09:04 CT · fx000100 · theaters · deep · DRAFTED · PASS · Staged draft v2 of "The Power Reckoning"/);
+    expect(s.lines[0]).toMatch(/^2026-11-09 09:04 CT · fx000100 · theaters · deep · DRAFTED · PASS · Staged draft v2 of "The Power Reckoning" \(deep, 12 pp, 1 sources\)\./);
+    expect(s.in_range).toBe(2);
+    expect(db.writes.reviews).toHaveLength(0);
   });
 
   it("per-brief try/catch: a bad tier fails that brief, the run continues, health row records it", async () => {
@@ -165,8 +203,10 @@ describe("lane runner — a run", () => {
   });
 
   it("a blocked lane writes only its health row", async () => {
-    const { db, run } = harness();
-    const s = await run({ lane: "institutions" });
+    const db = createFixtureDb({ lanes: [{ lane: "institutions", daily_quota: 1, cursor: null, blocked_reason: "fixture: lane paused pending institution taxonomy" }] as any, briefings: fixtures.briefings });
+    const statuslog = createStatusLog({ token: undefined, now: NOW, out: () => {} });
+    const run = (o: any) => runLane({ lane: "institutions", db, statuslog, now: NOW, out: () => {}, generate: fakeGenerate(), ...o });
+    const s = await run({});
     expect(s.blocked).toMatch(/paused/);
     expect(db.writes.versions).toHaveLength(0);
     expect(db.writes.health).toHaveLength(1);
@@ -189,10 +229,47 @@ describe("lane runner — a run", () => {
   it("refuses to run without a lane row unless --quota is given", async () => {
     const db = createFixtureDb({ lanes: [], briefings: fixtures.briefings });
     const statuslog = createStatusLog({ token: undefined, now: NOW, out: () => {} });
-    await expect(runLane({ lane: "theaters", db, statuslog, now: NOW, out: () => {} })).rejects.toThrow(/no row for lane/);
-    const s = await runLane({ lane: "theaters", db, statuslog, now: NOW, out: () => {}, quota: 1 });
+    const generate = fakeGenerate();
+    await expect(runLane({ lane: "theaters", db, statuslog, now: NOW, out: () => {}, generate })).rejects.toThrow(/no row for lane/);
+    const s = await runLane({ lane: "theaters", db, statuslog, now: NOW, out: () => {}, quota: 1, generate });
     expect(s.drafted).toBe(1);
     const missing = { ...db, getLane: async () => undefined };
-    await expect(runLane({ lane: "theaters", db: missing, statuslog, now: NOW, out: () => {} })).rejects.toThrow(/BL2-01/);
+    await expect(runLane({ lane: "theaters", db: missing, statuslog, now: NOW, out: () => {}, generate })).rejects.toThrow(/BL2-01/);
+    await expect(runLane({ lane: "theaters", db, statuslog, now: NOW, out: () => {}, quota: 1 })).rejects.toThrow(/generate\(\) function/);
+  });
+
+  it("out-of-range and thin drafts are STILL staged, logged G1-AUTO FAIL, and get a briefing_reviews blocker", async () => {
+    const { db, run } = harness();
+    const s = await run({ lane: "companies", generate: fakeGenerate({ pages: () => 3, thin: () => true }) });
+    expect(s.drafted).toBe(1);
+    expect(s.out_of_range).toBe(1);
+    expect(s.thin).toBe(1);
+    expect(db.writes.versions).toHaveLength(1);
+    expect(db.writes.reviews).toHaveLength(1);
+    expect(db.writes.reviews[0]).toMatchObject({ gate: "G1-AUTO", result: "FAIL", version: 2 });
+    expect(db.writes.reviews[0].blockers.map((b: any) => b.code)).toEqual(["page_range", "thin"]);
+    const g1 = s.lines.filter((l: string) => l.includes("· G1-AUTO · FAIL ·"));
+    expect(g1).toHaveLength(2);
+    expect(g1[0]).toMatch(/Page count 3 outside the profile range 2–2/);
+    expect(g1[1]).toMatch(/Thin record: 8 sourced Signals/);
+  });
+
+  it("processes briefs --width at a time and the cursor only advances over completed prefixes", async () => {
+    const { db, run } = harness();
+    let inflight = 0;
+    let peak = 0;
+    const slow = fakeGenerate();
+    const generate = async (b: any, o: any) => {
+      inflight += 1;
+      peak = Math.max(peak, inflight);
+      await new Promise((r) => setTimeout(r, b.title === "The Power Reckoning" ? 20 : 1));
+      inflight -= 1;
+      return slow(b, o);
+    };
+    const s = await run({ lane: "theaters", width: 2, generate });
+    expect(peak).toBe(2);
+    expect(s.drafted).toBe(2);
+    expect(db.writes.cursors.map((c: any) => c.cursor.last_id)).toEqual(["fx000200-0002-4000-8000-000000000002"]); // the slow first brief gates the checkpoint
+    expect(s.cursor_out.last_id).toBe("fx000200-0002-4000-8000-000000000002");
   });
 });

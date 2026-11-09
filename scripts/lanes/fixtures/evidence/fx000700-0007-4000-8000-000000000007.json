@@ -1,0 +1,2421 @@
+{
+ "captured_at": "2026-11-09T10:37:25.406045+00:00",
+ "window": {
+  "from": "2025-11-09T10:37:25.406045+00:00",
+  "to": "2026-11-09T10:37:25.406045+00:00"
+ },
+ "subject": {
+  "kind": "institution",
+  "code": "rb_9bcdea8152642ac7"
+ },
+ "taxonomy": {
+  "themes": [
+   {
+    "theme_code": "T-001",
+    "name": "The Power Reckoning",
+    "tagline": "The grid wasn't built for this."
+   },
+   {
+    "theme_code": "T-002",
+    "name": "The Thermal Reckoning",
+    "tagline": "Air is over. The question is what replaces it."
+   },
+   {
+    "theme_code": "T-003",
+    "name": "The Consent Crisis",
+    "tagline": "Communities are the new permitting authority."
+   },
+   {
+    "theme_code": "T-004",
+    "name": "The Capital Concentration",
+    "tagline": "Fewer hands. More capital. Higher stakes."
+   },
+   {
+    "theme_code": "T-005",
+    "name": "The Inference Economy",
+    "tagline": "Training built the factories. Inference fills them."
+   },
+   {
+    "theme_code": "T-006",
+    "name": "The Sovereign AI Race",
+    "tagline": "Compute is the new strategic reserve."
+   },
+   {
+    "theme_code": "T-007",
+    "name": "The New Energy Stack",
+    "tagline": "The grid is no longer the default."
+   }
+  ],
+  "domains": [
+   {
+    "domain_code": "D1",
+    "domain_name": "Chips & Density",
+    "short_desc": "GPU generations cause every downstream consequence"
+   },
+   {
+    "domain_code": "D2",
+    "domain_name": "Power Architecture",
+    "short_desc": "800V DC will reshape the entire build stack"
+   },
+   {
+    "domain_code": "D3",
+    "domain_name": "Grid & Regulatory",
+    "short_desc": "Entitled powered land is the scarcest asset"
+   },
+   {
+    "domain_code": "D4",
+    "domain_name": "M&A & Capital Markets",
+    "short_desc": "Capital velocity is an intelligence product"
+   },
+   {
+    "domain_code": "D5",
+    "domain_name": "Hyperscaler Activity",
+    "short_desc": "The Big 5 set the demand curve"
+   },
+   {
+    "domain_code": "D6",
+    "domain_name": "New Entrants",
+    "short_desc": "The gold rush is attracting new capital categories"
+   },
+   {
+    "domain_code": "D7",
+    "domain_name": "Cooling & Water Technology",
+    "short_desc": "Liquid cooling is the biggest capex opportunity now"
+   },
+   {
+    "domain_code": "D8",
+    "domain_name": "People & Signals",
+    "short_desc": "Executive moves are leading indicators"
+   },
+   {
+    "domain_code": "D9",
+    "domain_name": "Orchestration Intelligence & Control Plane",
+    "short_desc": "Orchestration decisions affect facility capex"
+   },
+   {
+    "domain_code": "D10",
+    "domain_name": "Construction",
+    "short_desc": "Build execution is now a strategic differentiator"
+   },
+   {
+    "domain_code": "D11",
+    "domain_name": "Sustainability",
+    "short_desc": "Sustainability is a first-order siting driver"
+   },
+   {
+    "domain_code": "D12",
+    "domain_name": "Networking & Interconnect",
+    "short_desc": "Network architecture — subsea cable to NVLink — is the under-tracked constraint on AI compute delivery"
+   },
+   {
+    "domain_code": "D13",
+    "domain_name": "Community Relations",
+    "short_desc": "Data centers are losing at the planning commission"
+   },
+   {
+    "domain_code": "D14",
+    "domain_name": "Real Estate & Site Selection",
+    "short_desc": "Entitled powered land is the scarcest asset"
+   },
+   {
+    "domain_code": "D15",
+    "domain_name": "Sovereign AI & Geopolitics",
+    "short_desc": "Export controls reshape the global compute map"
+   },
+   {
+    "domain_code": "D16",
+    "domain_name": "Cyber & Physical Security and Resilience",
+    "short_desc": "Security for AI infrastructure is a distinct risk surface enterprise frameworks don't address"
+   },
+   {
+    "domain_code": "D17",
+    "domain_name": "Workforce & Labor Markets",
+    "short_desc": "Labor is now a hard delivery constraint"
+   },
+   {
+    "domain_code": "D18",
+    "domain_name": "Community Opposition & Regulatory Risk",
+    "short_desc": "Opposition is the supply constraint markets ignore"
+   },
+   {
+    "domain_code": "D19",
+    "domain_name": "Tax, Incentives & Fiscal Policy",
+    "short_desc": "Fiscal policy is the second power grid"
+   },
+   {
+    "domain_code": "D20",
+    "domain_name": "Facility IT & Operational Technology",
+    "short_desc": "The facility's nervous system is a separate intelligence surface from its compute workload"
+   },
+   {
+    "domain_code": "D21",
+    "domain_name": "Insurance & Risk Markets",
+    "short_desc": "Insurability is the next siting constraint after power and water"
+   },
+   {
+    "domain_code": "D22",
+    "domain_name": "Industry Media & Analyst Coverage",
+    "short_desc": "Who covers the story shapes what the market believes"
+   },
+   {
+    "domain_code": "D23",
+    "domain_name": "Outage Intelligence & Emergency Response",
+    "short_desc": "Failure is the cheapest intelligence"
+   }
+  ],
+  "subdomains": [
+   {
+    "subdomain_code": "D2.11",
+    "domain_code": "D2",
+    "display_name": "Power Price Formation & Cost Structure",
+    "theme_tags": [
+     "T-001",
+     "T-007"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D14.8",
+    "domain_code": "D14",
+    "display_name": "Facility Inventory & Classification",
+    "theme_tags": [
+     "T-001",
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D1.1",
+    "domain_code": "D1",
+    "display_name": "GPU Architecture & Roadmap",
+    "theme_tags": [
+     "T-002",
+     "T-005"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D1.2",
+    "domain_code": "D1",
+    "display_name": "Rack & Power Density Progression",
+    "theme_tags": [
+     "T-001",
+     "T-002"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D1.3",
+    "domain_code": "D1",
+    "display_name": "Competing Silicon & Merchant Accelerators",
+    "theme_tags": [
+     "T-005"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D1.4",
+    "domain_code": "D1",
+    "display_name": "Memory (HBM & Next-Gen)",
+    "theme_tags": [
+     "T-002",
+     "T-005"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D1.5",
+    "domain_code": "D1",
+    "display_name": "Inference-Class Silicon & Economics",
+    "theme_tags": [
+     "T-005"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D1.6",
+    "domain_code": "D1",
+    "display_name": "Chip Allocation & Supply Politics",
+    "theme_tags": [
+     "T-005",
+     "T-006"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D1.7",
+    "domain_code": "D1",
+    "display_name": "Hyperscaler-Class Silicon & Custom Accelerators",
+    "theme_tags": [
+     "T-005"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D1.8",
+    "domain_code": "D1",
+    "display_name": "Advanced Packaging & Substrate Capacity",
+    "theme_tags": [
+     "T-002",
+     "T-005"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D2.1",
+    "domain_code": "D2",
+    "display_name": "800V DC Power Distribution",
+    "theme_tags": [
+     "T-001",
+     "T-007"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D2.3",
+    "domain_code": "D2",
+    "display_name": "UPS, Storage & Power Conditioning",
+    "theme_tags": [
+     "T-007"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D2.4",
+    "domain_code": "D2",
+    "display_name": "DC Power Delivery at the Rack",
+    "theme_tags": [
+     "T-002",
+     "T-001"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D2.5",
+    "domain_code": "D2",
+    "display_name": "Nuclear & SMR Offtake",
+    "theme_tags": [
+     "T-001",
+     "T-006",
+     "T-007"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D2.2",
+    "domain_code": "D2",
+    "display_name": "BTM Strategy & Cross-Cutting Economics",
+    "theme_tags": [
+     "T-001",
+     "T-007"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D2.6",
+    "domain_code": "D2",
+    "display_name": "Behind-the-Fence Gas & Fuel Cells",
+    "theme_tags": [
+     "T-001",
+     "T-007"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D2.7",
+    "domain_code": "D2",
+    "display_name": "Renewables, Storage & PPAs for DC Power",
+    "theme_tags": [
+     "T-007",
+     "T-001"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D2.8",
+    "domain_code": "D2",
+    "display_name": "Grid-Interactive Load & Demand Response",
+    "theme_tags": [
+     "T-001",
+     "T-007"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D2.9",
+    "domain_code": "D2",
+    "display_name": "Microgrid Integration & Islanding",
+    "theme_tags": [
+     "T-001",
+     "T-007"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D2.10",
+    "domain_code": "D2",
+    "display_name": "Solid-State Transformers & Advanced Power Conversion",
+    "theme_tags": [
+     "T-001",
+     "T-002",
+     "T-007"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D3.1",
+    "domain_code": "D3",
+    "display_name": "Interconnection Queue & Grid Access",
+    "theme_tags": [
+     "T-001",
+     "T-003"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D3.2",
+    "domain_code": "D3",
+    "display_name": "State Moratorium & Legislative Landscape",
+    "theme_tags": [
+     "T-001",
+     "T-003"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D3.3",
+    "domain_code": "D3",
+    "display_name": "Utility Rate Cases & PUC Proceedings",
+    "theme_tags": [
+     "T-001",
+     "T-003",
+     "T-007"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D3.4",
+    "domain_code": "D3",
+    "display_name": "Transmission Buildout & FERC Policy",
+    "theme_tags": [
+     "T-001",
+     "T-007"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D3.5",
+    "domain_code": "D3",
+    "display_name": "Large-Load Tariff Design & Co-Location Rules",
+    "theme_tags": [
+     "T-001",
+     "T-007"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D4.1",
+    "domain_code": "D4",
+    "display_name": "PE & Infrastructure Fund Activity",
+    "theme_tags": [
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D4.2",
+    "domain_code": "D4",
+    "display_name": "DC REIT Performance & Valuation",
+    "theme_tags": [
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D4.3",
+    "domain_code": "D4",
+    "display_name": "Sovereign Wealth & Institutional Capital",
+    "theme_tags": [
+     "T-004",
+     "T-006"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D4.4",
+    "domain_code": "D4",
+    "display_name": "Integrated Infrastructure Vendor M&A",
+    "theme_tags": [
+     "T-002",
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D4.5",
+    "domain_code": "D4",
+    "display_name": "Private Credit & DC Debt Financing",
+    "theme_tags": [
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D4.6",
+    "domain_code": "D4",
+    "display_name": "GPU-Backed & Neocloud Financing",
+    "theme_tags": [
+     "T-004",
+     "T-005"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D5.1",
+    "domain_code": "D5",
+    "display_name": "Big 5 Capex & Campus Announcements",
+    "theme_tags": [
+     "T-001",
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D5.2",
+    "domain_code": "D5",
+    "display_name": "Hyperscaler Custom Silicon Strategy",
+    "theme_tags": [
+     "T-005"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D5.3",
+    "domain_code": "D5",
+    "display_name": "Build-vs-Lease & Colocation Strategy",
+    "theme_tags": [
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D5.4",
+    "domain_code": "D5",
+    "display_name": "Capacity Geography & Region Expansion",
+    "theme_tags": [
+     "T-001",
+     "T-006"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D6.1",
+    "domain_code": "D6",
+    "display_name": "Neocloud Infrastructure",
+    "theme_tags": [
+     "T-004",
+     "T-005"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D6.2",
+    "domain_code": "D6",
+    "display_name": "Sovereign AI Programs & National Compute",
+    "theme_tags": [
+     "T-006"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D6.3",
+    "domain_code": "D6",
+    "display_name": "AI Labs & Model Developers as Infrastructure Buyers",
+    "theme_tags": [
+     "T-004",
+     "T-005"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D7.1",
+    "domain_code": "D7",
+    "display_name": "Direct-to-Chip Liquid Cooling (DLC)",
+    "theme_tags": [
+     "T-002"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D7.2",
+    "domain_code": "D7",
+    "display_name": "Immersion Cooling",
+    "theme_tags": [
+     "T-002"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D7.3",
+    "domain_code": "D7",
+    "display_name": "Water Use & Waterless Cooling Strategies",
+    "theme_tags": [
+     "T-002",
+     "T-003"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D7.4",
+    "domain_code": "D7",
+    "display_name": "Thermal Components & Coolant Supply Chain",
+    "theme_tags": [
+     "T-002"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D8.1",
+    "domain_code": "D8",
+    "display_name": "Executive Movement & C-Suite Intelligence",
+    "theme_tags": [
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D8.2",
+    "domain_code": "D8",
+    "display_name": "Conference Intelligence & Speaking Circuit",
+    "theme_tags": [
+     "T-001",
+     "T-002",
+     "T-003",
+     "T-004",
+     "T-005",
+     "T-006",
+     "T-007"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D8.3",
+    "domain_code": "D8",
+    "display_name": "Talent Flows & Specialized Hiring Signals",
+    "theme_tags": [
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D8.4",
+    "domain_code": "D8",
+    "display_name": "Founder & Operator Network Mapping",
+    "theme_tags": [
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D8.5",
+    "domain_code": "D8",
+    "display_name": "Earnings-Call & Investor-Day Signal Extraction",
+    "theme_tags": [
+     "T-004",
+     "T-005"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D9.1",
+    "domain_code": "D9",
+    "display_name": "AI Factory Orchestration & DCIM",
+    "theme_tags": [
+     "T-005"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D9.2",
+    "domain_code": "D9",
+    "display_name": "GPU Utilization & Compute Scheduling Economics",
+    "theme_tags": [
+     "T-005"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D9.3",
+    "domain_code": "D9",
+    "display_name": "Inference Serving & Model-Routing Infrastructure",
+    "theme_tags": [
+     "T-005"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D9.4",
+    "domain_code": "D9",
+    "display_name": "Power-Aware & Grid-Responsive Workload Orchestration",
+    "theme_tags": [
+     "T-001",
+     "T-005"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D10.1",
+    "domain_code": "D10",
+    "display_name": "Long-Lead Equipment & Supply Chain",
+    "theme_tags": [
+     "T-001"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D10.2",
+    "domain_code": "D10",
+    "display_name": "GC/EPC Capacity & Stick-Built Execution",
+    "theme_tags": [
+     "T-001"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D10.3",
+    "domain_code": "D10",
+    "display_name": "Modular & Prefabricated Delivery",
+    "theme_tags": [
+     "T-002",
+     "T-001"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D10.4",
+    "domain_code": "D10",
+    "display_name": "Project Delivery & Schedule Intelligence",
+    "theme_tags": [
+     "T-001",
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D10.5",
+    "domain_code": "D10",
+    "display_name": "Construction Cost Curves & Inflation",
+    "theme_tags": [
+     "T-001",
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D11.1",
+    "domain_code": "D11",
+    "display_name": "Clean Energy Procurement (PPA/REC/CFE)",
+    "theme_tags": [
+     "T-007"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D11.2",
+    "domain_code": "D11",
+    "display_name": "Carbon Accounting & Scope 1-3",
+    "theme_tags": [
+     "T-003"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D11.3",
+    "domain_code": "D11",
+    "display_name": "Water Stewardship & Rights",
+    "theme_tags": [
+     "T-002",
+     "T-003",
+     "T-007"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D11.4",
+    "domain_code": "D11",
+    "display_name": "Heat Recovery & Circular DC",
+    "theme_tags": [
+     "T-002",
+     "T-007"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D11.5",
+    "domain_code": "D11",
+    "display_name": "Sustainability Regulation & Disclosure",
+    "theme_tags": [
+     "T-003",
+     "T-007"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D11.6",
+    "domain_code": "D11",
+    "display_name": "Embodied Carbon & Materials",
+    "theme_tags": [
+     "T-003"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D12.1",
+    "domain_code": "D12",
+    "display_name": "Long-Haul & Dark Fiber Leasing",
+    "theme_tags": [
+     "T-001",
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D12.2",
+    "domain_code": "D12",
+    "display_name": "Subsea Cable Systems",
+    "theme_tags": [
+     "T-004",
+     "T-005",
+     "T-006"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D12.3",
+    "domain_code": "D12",
+    "display_name": "AI Back-End Fabric & Interconnect",
+    "theme_tags": [
+     "T-002",
+     "T-005"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D12.4",
+    "domain_code": "D12",
+    "display_name": "Cross-Connect & Cloud On-Ramp",
+    "theme_tags": [
+     "T-005",
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D12.5",
+    "domain_code": "D12",
+    "display_name": "Optical Transceivers & Co-Packaged Optics",
+    "theme_tags": [
+     "T-002",
+     "T-005"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D12.6",
+    "domain_code": "D12",
+    "display_name": "Small Cell, Private 5G & Terrestrial Wireless",
+    "theme_tags": [
+     "T-005",
+     "T-001"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D12.7",
+    "domain_code": "D12",
+    "display_name": "LEO / Satellite Broadband",
+    "theme_tags": [
+     "T-001",
+     "T-005",
+     "T-006"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D13.1",
+    "domain_code": "D13",
+    "display_name": "Community Benefits & Host Agreements",
+    "theme_tags": [
+     "T-003",
+     "T-001"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D13.2",
+    "domain_code": "D13",
+    "display_name": "Opposition Movements & Organized Groups",
+    "theme_tags": [
+     "T-003",
+     "T-001"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D13.3",
+    "domain_code": "D13",
+    "display_name": "Local Permitting & Entitlement Strategy",
+    "theme_tags": [
+     "T-003",
+     "T-001"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D13.4",
+    "domain_code": "D13",
+    "display_name": "Public Engagement Practice",
+    "theme_tags": [
+     "T-003"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D13.5",
+    "domain_code": "D13",
+    "display_name": "Economic Impact Narratives & Legitimacy",
+    "theme_tags": [
+     "T-003"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D14.2",
+    "domain_code": "D14",
+    "display_name": "Primary Market Intelligence (NA Tier 1)",
+    "theme_tags": [
+     "T-001",
+     "T-003",
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D14.3",
+    "domain_code": "D14",
+    "display_name": "Emerging & Second-Tier Markets",
+    "theme_tags": [
+     "T-001",
+     "T-003",
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D14.4",
+    "domain_code": "D14",
+    "display_name": "International Markets",
+    "theme_tags": [
+     "T-004",
+     "T-006"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D14.5",
+    "domain_code": "D14",
+    "display_name": "Land Pricing & Acquisition",
+    "theme_tags": [
+     "T-004",
+     "T-001"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D14.7",
+    "domain_code": "D14",
+    "display_name": "Campus Portfolio Strategy & Build Models",
+    "theme_tags": [
+     "T-004",
+     "T-005"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D15.1",
+    "domain_code": "D15",
+    "display_name": "Chip Export Controls & Outbound Dual-Use",
+    "theme_tags": [
+     "T-006"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D15.2",
+    "domain_code": "D15",
+    "display_name": "National Compute Strategies & Sovereign Programs",
+    "theme_tags": [
+     "T-006",
+     "T-005",
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D15.3",
+    "domain_code": "D15",
+    "display_name": "Bilateral & Multilateral AI Diplomacy",
+    "theme_tags": [
+     "T-006"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D15.4",
+    "domain_code": "D15",
+    "display_name": "Strategic Minerals & Upstream Supply",
+    "theme_tags": [
+     "T-006",
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D15.5",
+    "domain_code": "D15",
+    "display_name": "Data Sovereignty & Cross-Border Flows",
+    "theme_tags": [
+     "T-006",
+     "T-003"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D15.6",
+    "domain_code": "D15",
+    "display_name": "Inbound Investment Screening",
+    "theme_tags": [
+     "T-006",
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D16.1",
+    "domain_code": "D16",
+    "display_name": "Enterprise IT & Cloud Security",
+    "theme_tags": [
+     "T-006"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D16.2",
+    "domain_code": "D16",
+    "display_name": "OT / ICS / SCADA Cybersecurity",
+    "theme_tags": [
+     "T-006"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D16.3",
+    "domain_code": "D16",
+    "display_name": "Physical Security & Access Control",
+    "theme_tags": [
+     "T-006"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D16.4",
+    "domain_code": "D16",
+    "display_name": "State-Sponsored & Advanced Persistent Threats",
+    "theme_tags": [
+     "T-006"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D16.5",
+    "domain_code": "D16",
+    "display_name": "Software Supply Chain & Vendor Risk",
+    "theme_tags": [
+     "T-006"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D16.6",
+    "domain_code": "D16",
+    "display_name": "Security Operations & Incident Response",
+    "theme_tags": [
+     "T-006"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D17.1",
+    "domain_code": "D17",
+    "display_name": "Construction & Skilled Trades Labor",
+    "theme_tags": [
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D17.2",
+    "domain_code": "D17",
+    "display_name": "Operations & Technical Workforce",
+    "theme_tags": [
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D17.3",
+    "domain_code": "D17",
+    "display_name": "Immigration, Policy & Regional Labor Competition",
+    "theme_tags": [
+     "T-003",
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D18.1",
+    "domain_code": "D18",
+    "display_name": "Project Opposition Register",
+    "theme_tags": [
+     "T-003"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D18.2",
+    "domain_code": "D18",
+    "display_name": "Regulatory & Permitting Denial Tracking",
+    "theme_tags": [
+     "T-003"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D18.3",
+    "domain_code": "D18",
+    "display_name": "Reputational & Political Risk Register",
+    "theme_tags": [
+     "T-003"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D19.1",
+    "domain_code": "D19",
+    "display_name": "State & Local Tax Incentives",
+    "theme_tags": [
+     "T-003",
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D19.2",
+    "domain_code": "D19",
+    "display_name": "Federal Tax Policy",
+    "theme_tags": [
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D19.3",
+    "domain_code": "D19",
+    "display_name": "International Tax & Transfer Pricing",
+    "theme_tags": [
+     "T-006",
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D19.4",
+    "domain_code": "D19",
+    "display_name": "Tax Incentive Backlash & Clawback",
+    "theme_tags": [
+     "T-003"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D19.5",
+    "domain_code": "D19",
+    "display_name": "Tax-Driven Deal Structuring",
+    "theme_tags": [
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D20.1",
+    "domain_code": "D20",
+    "display_name": "Building Management Systems & HVAC Control",
+    "theme_tags": [
+     "T-001",
+     "T-002"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D20.2",
+    "domain_code": "D20",
+    "display_name": "Facility DCIM & Digital Twin",
+    "theme_tags": [
+     "T-001",
+     "T-002"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D21.1",
+    "domain_code": "D21",
+    "display_name": "DC Property & Casualty Insurance",
+    "theme_tags": [
+     "T-001"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D21.2",
+    "domain_code": "D21",
+    "display_name": "Cyber Insurance & Tech E&O",
+    "theme_tags": [
+     "T-004",
+     "T-006"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D21.3",
+    "domain_code": "D21",
+    "display_name": "Climate & Parametric Risk Products",
+    "theme_tags": [
+     "T-003"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D21.4",
+    "domain_code": "D21",
+    "display_name": "Lender Insurance & Risk Transfer",
+    "theme_tags": [
+     "T-001",
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D22.1",
+    "domain_code": "D22",
+    "display_name": "U.S. Media Coverage",
+    "theme_tags": [
+     "T-001",
+     "T-002",
+     "T-003",
+     "T-004",
+     "T-005",
+     "T-006",
+     "T-007"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D22.2",
+    "domain_code": "D22",
+    "display_name": "EU Media Coverage",
+    "theme_tags": [
+     "T-001",
+     "T-002",
+     "T-003",
+     "T-004",
+     "T-005",
+     "T-006",
+     "T-007"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D22.3",
+    "domain_code": "D22",
+    "display_name": "APAC / LATAM / MENA Media Coverage",
+    "theme_tags": [
+     "T-001",
+     "T-002",
+     "T-003",
+     "T-004",
+     "T-005",
+     "T-006",
+     "T-007"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D22.4",
+    "domain_code": "D22",
+    "display_name": "Industry Analysts",
+    "theme_tags": [
+     "T-001",
+     "T-002",
+     "T-003",
+     "T-004",
+     "T-005",
+     "T-006",
+     "T-007"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D23.1",
+    "domain_code": "D23",
+    "display_name": "Major Outage Postmortems",
+    "theme_tags": [
+     "T-001",
+     "T-005"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D23.2",
+    "domain_code": "D23",
+    "display_name": "Grid Events & Physical Disasters",
+    "theme_tags": [
+     "T-001",
+     "T-003"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D23.3",
+    "domain_code": "D23",
+    "display_name": "Cyber Incidents Targeting DC Infrastructure",
+    "theme_tags": [
+     "T-006"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D23.4",
+    "domain_code": "D23",
+    "display_name": "Business Continuity & Disaster Recovery",
+    "theme_tags": [
+     "T-001"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D14.1",
+    "domain_code": "D14",
+    "display_name": "Site Selection Methodology & Site Readiness",
+    "theme_tags": [
+     "T-001",
+     "T-003",
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D14.6",
+    "domain_code": "D14",
+    "display_name": "Site Certification & Readiness",
+    "theme_tags": [
+     "T-001",
+     "T-004"
+    ],
+    "active": false
+   }
+  ]
+ },
+ "signals": [
+  {
+   "id": "cdf13edd-e6ee-4623-9af0-40add68eb0f0",
+   "fired_at": "2026-11-09T07:30:00.220003+00:00",
+   "event_date": "2026-11-02",
+   "source": "pipeline:auto:enrichment",
+   "framing": "iMasons Texas hosted an executive conference in Houston on November 2, 2026, bringing together energy producers, equipment manufacturers, and AI data center developers to discuss ERCOT updates, power procurement, and AI infrastructure power",
+   "faradays_take": "iMasons Texas hosted an executive conference in Houston on November 2, 2026, bringing together energy producers, equipment manufacturers, and AI data center developers to discuss ERCOT updates, power procurement, and AI infrastructure power requirements for the South Central U.S. market.",
+   "byline": "Gil",
+   "conviction": "Medium",
+   "theme_tags": [],
+   "domain_tags": [
+    "D7"
+   ],
+   "subdomain_tags": [],
+   "company_tags": [
+    "cmp_679f547e89735198"
+   ],
+   "source_url": "https://imasons.org/activity/2026-11-02_datacenterenergyindustryupdate_tx/",
+   "artifact_id": "80a76680-dfa0-45c8-9330-4a8838a9d7e2",
+   "artifact": {
+    "title": "Data Center Energy Industry Update – Houston, TX (November 2, 2026)",
+    "source_name": null,
+    "summary": "iMasons Texas Local Chapter co-hosted a one-day executive conference in Houston on November 2, 2026, uniting energy producers, equipment manufacturers, and AI data center developers focused on the South Central U.S. market. The agenda covered ERCOT large load updates, power procurement, generation and load forecasts, and debottlenecking power for AI infrastructure.",
+    "published_at": "2026-11-02T00:00:00+00:00",
+    "source_type": "web_news",
+    "license_status": null,
+    "source_url": "https://imasons.org/activity/2026-11-02_datacenterenergyindustryupdate_tx/"
+   }
+  },
+  {
+   "id": "2de1ca78-d16a-4339-9e84-52a8958c9b60",
+   "fired_at": "2026-11-08T07:30:00.146404+00:00",
+   "event_date": "2026-11-01",
+   "source": "pipeline:auto:enrichment",
+   "framing": "ERCOT's large load interconnection queue surged to 226 GW by November 2026, nearly quadrupling from 63 GW in end-2024, with data centers representing 77% of demand targeting 2030 grid connection. Texas Governor Abbott signed legislation in ",
+   "faradays_take": "ERCOT's large load interconnection queue surged to 226 GW by November 2026, nearly quadrupling from 63 GW in end-2024, with data centers representing 77% of demand targeting 2030 grid connection. Texas Governor Abbott signed legislation in July 2026 requiring the PUC to establish transparency requirements and cost-allocation reforms for large-load customers, with rulemaking due by December 2026.",
+   "byline": "Mach",
+   "conviction": "High",
+   "theme_tags": [],
+   "domain_tags": [
+    "D3"
+   ],
+   "subdomain_tags": [
+    "D18.3",
+    "D19.1",
+    "D3.1",
+    "D3.2",
+    "D3.3"
+   ],
+   "company_tags": [
+    "cmp_679f547e89735198"
+   ],
+   "source_url": "https://www.latitudemedia.com/news/ercots-large-load-queue-has-nearly-quadrupled-in-a-single-year/",
+   "artifact_id": "eb8e59c7-9bee-42d5-a30b-d63bfa9015b9",
+   "artifact": {
+    "title": "ERCOT's Large Load Queue Has Nearly Quadrupled in a Single Year to 226 GW",
+    "source_name": null,
+    "summary": "ERCOT's large load interconnection queue reached approximately 226 GW as of November 2026, nearly quadrupling from 63 GW at end-2024, with roughly 77% of that demand attributable to data centers targeting grid connection by 2030. Texas Governor Abbott signed a law in July 2026 directing the PUC to create new transparency requirements for large-load customers and cost-allocation reforms, with rulemaking due by December 2026.",
+    "published_at": "2026-11-01T00:00:00+00:00",
+    "source_type": "regulatory",
+    "license_status": null,
+    "source_url": "https://www.latitudemedia.com/news/ercots-large-load-queue-has-nearly-quadrupled-in-a-single-year/"
+   }
+  },
+  {
+   "id": "59ab7d4c-3209-44eb-a232-3560dbac0774",
+   "fired_at": "2026-10-30T07:30:00.175866+00:00",
+   "event_date": "2026-10-29",
+   "source": "pipeline:auto:enrichment",
+   "framing": "US data center pipeline expanded by 54 GW in Q2 2026 (29% YoY growth) with cumulative pipeline now exceeding 430 GW, driven by power availability concerns. Nearly 80 GW under construction, with 201 GW backed by signed utility agreements, bu",
+   "faradays_take": "US data center pipeline expanded by 54 GW in Q2 2026 (29% YoY growth) with cumulative pipeline now exceeding 430 GW, driven by power availability concerns. Nearly 80 GW under construction, with 201 GW backed by signed utility agreements, but growth faces headwinds from 400+ state moratoriums affecting 100+ GW of capacity.",
+   "byline": "Gil",
+   "conviction": "Medium",
+   "theme_tags": [],
+   "domain_tags": [
+    "D11"
+   ],
+   "subdomain_tags": [
+    "D3.1"
+   ],
+   "company_tags": [
+    "cmp_679f547e89735198"
+   ],
+   "source_url": "https://www.saurenergy.com/solar-energy-news/us-data-centre-boom-adds-54-gw-to-pipeline-raising-re-demand-12762967",
+   "artifact_id": "248ae894-f936-45fa-b061-7ca4ade59143",
+   "artifact": {
+    "title": "US Data Centre Boom Adds 54 GW to Pipeline, Raising RE Demand",
+    "source_name": "Saur Energy International",
+    "summary": "The US data centre development pipeline expanded by 54 GW in the second quarter of 2026, marking a 29% increase year-on-year as developers accelerated construction amid growing concerns over power availability, according to a new report by Wood Mackenzie. The expansion is expected to intensify the focus on electricity supply, grid infrastructure and clean energy procurement as data centres emerge as a major source of incremental power demand in the US. The cumulative disclosed data centre pipeline has crossed 430 GW, with around 59% of the capacity under active development. Nearly 80 GW of projects were under construction, up from 44 GW at the end of the first quarter, Wood Mackenzie said in its US data centre pipeline report. The pipeline added 5% capacity quarter-on-quarter. Meanwhile, utility commitments backed by signed electricity service or construction agreements reached 201 GW, equivalent to 26% of projected US peak electricity demand in 2026. However, the rapid expansion is facing mounting opposition from local communities and lawmakers. More than 400 data centre moratoriums have been introduced across 42 states since January 2026, affecting 18% of tracked sites and putting more than 100 GW of planned capacity under scrutiny. &ldquo;The latest data reveals projects are steadily advancing from early development to permitting and construction phases,&rdquo; said Caitlin Connelly, senior analyst at Wood Mackenzie. However, power availability and local opposition will re",
+    "published_at": "2026-10-29T04:01:53+00:00",
+    "source_type": "web_news",
+    "license_status": "cleared",
+    "source_url": "https://www.saurenergy.com/solar-energy-news/us-data-centre-boom-adds-54-gw-to-pipeline-raising-re-demand-12762967"
+   }
+  },
+  {
+   "id": "184331e0-c339-4337-9006-b33e1ca6fc53",
+   "fired_at": "2026-10-24T07:30:00.156992+00:00",
+   "event_date": "2026-10-22",
+   "source": "pipeline:auto:enrichment",
+   "framing": "Texas issued at least 16 data center permits after Governor Abbott's September 21 moratorium directive, revealing regulatory compliance gaps. Following watchdog pressure, TCEQ suspended those permits and is shutting down its automatic filin",
+   "faradays_take": "Texas issued at least 16 data center permits after Governor Abbott's September 21 moratorium directive, revealing regulatory compliance gaps. Following watchdog pressure, TCEQ suspended those permits and is shutting down its automatic filing system pending ERCOT's grid-and-water audit due December 10.",
+   "byline": "Gil",
+   "conviction": "Medium",
+   "theme_tags": [],
+   "domain_tags": [
+    "D11"
+   ],
+   "subdomain_tags": [],
+   "company_tags": [
+    "cmp_679f547e89735198"
+   ],
+   "source_url": "https://www.tpr.org/economy-and-labor/2026-10-22/despite-abbott-moratorium-texas-kept-on-issuing-data-center-permits-now-the-state-agency-is-shutting-down-its-automatic-filing-system",
+   "artifact_id": "b543839f-4642-436f-842a-9d4902b70eee",
+   "artifact": {
+    "title": "Despite Abbott Moratorium, Texas Kept on Issuing Data Center Permits. Now the State Agency Is Shutting Down Its Automatic Filing System.",
+    "source_name": null,
+    "summary": "An investigation found that at least 16 data center permits were issued by TCEQ after Governor Abbott's September 21 directive ordering all data center permitting halted pending an ERCOT grid-and-water audit, exposing a compliance gap. Following watchdog scrutiny by Public Citizen and FracTracker, TCEQ announced it is suspending those permits and shutting down its automatic filing system; ERCOT is not expected to deliver audit findings until December 10.",
+    "published_at": "2026-10-22T00:00:00+00:00",
+    "source_type": "web_news",
+    "license_status": null,
+    "source_url": "https://www.tpr.org/economy-and-labor/2026-10-22/despite-abbott-moratorium-texas-kept-on-issuing-data-center-permits-now-the-state-agency-is-shutting-down-its-automatic-filing-system"
+   }
+  },
+  {
+   "id": "a3116827-304a-44bc-8680-967d43917231",
+   "fired_at": "2026-10-25T07:30:00.163049+00:00",
+   "event_date": "2026-10-21",
+   "source": "pipeline:auto:enrichment",
+   "framing": "Modo Energy reports 92 GW of data center capacity in advanced planning stages across ERCOT requesting grid access as of October 2026, plus 11 GW in expansion projects. Development is concentrated in DFW, West Texas, the Panhandle, and Centr",
+   "faradays_take": "Modo Energy reports 92 GW of data center capacity in advanced planning stages across ERCOT requesting grid access as of October 2026, plus 11 GW in expansion projects. Development is concentrated in DFW, West Texas, the Panhandle, and Central Texas I-35 Corridor, with AI leases financing construction and electricity demand ramping.",
+   "byline": "Gil",
+   "conviction": "Medium",
+   "theme_tags": [],
+   "domain_tags": [
+    "D7"
+   ],
+   "subdomain_tags": [
+    "D3.1"
+   ],
+   "company_tags": [
+    "cmp_679f547e89735198"
+   ],
+   "source_url": "https://modoenergy.com/research/en/ercot-data-center-buildout-forecast-october-2026",
+   "artifact_id": "db58af61-1af0-4dd1-b9b0-a3c4bfce058b",
+   "artifact": {
+    "title": "Modo Energy: ERCOT Data Center Buildout Forecast – October 2026",
+    "source_name": null,
+    "summary": "As of October 21, 2026, Modo Energy tracks 92 GW of advanced-planning data center load requesting grid access in ERCOT, with an additional 11 GW of expansion projects, spanning development corridors from Dallas–Fort Worth into West Texas, the Panhandle, and the Central Texas I-35 Corridor. Long-term AI leases are financing construction, with electricity demand ramping as developers connect to the grid and install computing equipment.",
+    "published_at": "2026-10-21T00:00:00+00:00",
+    "source_type": "web_news",
+    "license_status": null,
+    "source_url": "https://modoenergy.com/research/en/ercot-data-center-buildout-forecast-october-2026"
+   }
+  },
+  {
+   "id": "bc0c19eb-db9b-46c8-8381-185a679b9060",
+   "fired_at": "2026-11-04T07:30:00.155128+00:00",
+   "event_date": "2026-10-20",
+   "source": "pipeline:auto:enrichment",
+   "framing": "ERCOT reported 438 GW of large-load requests in May 2026 dominated by data centers, with interconnection queue wait times reaching 12 years in congested regions. Queue position has become the critical bottleneck for AI infrastructure deploy",
+   "faradays_take": "ERCOT reported 438 GW of large-load requests in May 2026 dominated by data centers, with interconnection queue wait times reaching 12 years in congested regions. Queue position has become the critical bottleneck for AI infrastructure deployment across U.S. ISOs.",
+   "byline": "Mach",
+   "conviction": "High",
+   "theme_tags": [],
+   "domain_tags": [
+    "D3"
+   ],
+   "subdomain_tags": [
+    "D3.1"
+   ],
+   "company_tags": [
+    "cmp_679f547e89735198"
+   ],
+   "source_url": "https://safeguard.sh/resources/blog/interconnection-queue-explained-why-new-power-plants-wait-years-2026",
+   "artifact_id": "3d630436-e81e-4e38-80d9-64800e78004a",
+   "artifact": {
+    "title": "Interconnection Queues Explained: Why New Power Waits Years — 2026 Data Center Update",
+    "source_name": null,
+    "summary": "ERCOT VP Jeff Billo reported at a late-May 2026 board presentation that large-load requests totaled 438 GW — nearly equal to the 452 GW of generation requests — with data centers comprising the vast majority; large-load processes across all ISOs are being rewritten in 2026. Worst-case interconnection wait times for data centers can reach up to 12 years in congested regions, reinforcing that queue position has become the scarcest asset in U.S. AI infrastructure siting.",
+    "published_at": "2026-10-20T00:00:00+00:00",
+    "source_type": "regulatory",
+    "license_status": null,
+    "source_url": "https://safeguard.sh/resources/blog/interconnection-queue-explained-why-new-power-plants-wait-years-2026"
+   }
+  },
+  {
+   "id": "bf0532b3-16c9-4457-808b-550a88fc8f1e",
+   "fired_at": "2026-10-26T07:30:00.136011+00:00",
+   "event_date": "2026-10-20",
+   "source": "pipeline:auto:enrichment",
+   "framing": "Texas Governor Abbott issued a September 21 directive to pause data center permit approvals, but environmental nonprofits discovered the Texas Commission on Environmental Quality continued processing permit-related activities despite the st",
+   "faradays_take": "Texas Governor Abbott issued a September 21 directive to pause data center permit approvals, but environmental nonprofits discovered the Texas Commission on Environmental Quality continued processing permit-related activities despite the stated halt. Abbott's office claims no new permits were formally approved, though the contradiction raises questions about permit processing transparency.",
+   "byline": "Gil",
+   "conviction": "Medium",
+   "theme_tags": [],
+   "domain_tags": [
+    "D11"
+   ],
+   "subdomain_tags": [
+    "D18.3",
+    "D19.1",
+    "D3.1",
+    "D3.2",
+    "D3.3"
+   ],
+   "company_tags": [
+    "cmp_679f547e89735198"
+   ],
+   "source_url": "https://www.404media.co/it-aint-right-texas-said-it-would-halt-data-center-permits-the-state-is-pushing-ahead-anyway/",
+   "artifact_id": "364a8e89-5563-41fa-ada5-3c94437286fb",
+   "artifact": {
+    "title": "'It Ain't Right:' Texas Said It Would Halt Data Center Permits. The State is Pushing Ahead Anyway",
+    "source_name": null,
+    "summary": "Despite Governor Abbott's September 21 directive pausing data center permit approvals pending review by multiple state agencies, nonprofits Public Citizen and FracTracker Alliance found that the Texas Commission on Environmental Quality had continued processing permit-related activities at data center sites. Abbott's office denied that any new permits had been formally approved, stating that no state agency will act until the PUC, ERCOT, and Water Development Board have sufficient information.",
+    "published_at": "2026-10-20T00:00:00+00:00",
+    "source_type": "web_news",
+    "license_status": null,
+    "source_url": "https://www.404media.co/it-aint-right-texas-said-it-would-halt-data-center-permits-the-state-is-pushing-ahead-anyway/"
+   }
+  },
+  {
+   "id": "8528dd4e-3bf9-4d6c-a9a5-359246112c2b",
+   "fired_at": "2026-10-31T07:30:00.149092+00:00",
+   "event_date": "2026-10-19",
+   "source": "pipeline:auto:enrichment",
+   "framing": "Analysis of regional power grid interconnection queues shows ERCOT leading with 474 GW of data center requests (90% of queue) at 4.79× peak load ratio, NYISO with 12,670 MW across 51 projects, and CAISO projecting 1.8-4.9 GW data center gro",
+   "faradays_take": "Analysis of regional power grid interconnection queues shows ERCOT leading with 474 GW of data center requests (90% of queue) at 4.79× peak load ratio, NYISO with 12,670 MW across 51 projects, and CAISO projecting 1.8-4.9 GW data center growth through 2040. FERC initiated six large-load proceedings in June 2026, indicating intensifying regulatory scrutiny of data center power demands.",
+   "byline": "Mach",
+   "conviction": "Medium",
+   "theme_tags": [],
+   "domain_tags": [
+    "D3"
+   ],
+   "subdomain_tags": [
+    "D3.1"
+   ],
+   "company_tags": [
+    "cmp_679f547e89735198"
+   ],
+   "source_url": "https://commercialbuildersandcontractors.com/data-center-power-interconnection/",
+   "artifact_id": "6bff9333-0ed1-4d0c-8811-63093c19fa23",
+   "artifact": {
+    "title": "Data Center Power Demand and Grid Queues by Region, 2026",
+    "source_name": null,
+    "summary": "A nine-region comparison using LBNL Queued Up data shows ERCOT tracking approximately 474 GW of large-load requests as of June 2026 (roughly 90% data centers) and having the largest queue relative to peak load at 4.79×, while NYISO counted 51 large-load projects totaling nearly 12,670 MW by May 2026. FERC opened six large-load proceedings in June 2026, and CAISO's CEC forecast projects data center load growth of 1.8 GW by 2030 and 4.9 GW by 2040.",
+    "published_at": "2026-10-19T00:00:00+00:00",
+    "source_type": "regulatory",
+    "license_status": null,
+    "source_url": "https://commercialbuildersandcontractors.com/data-center-power-interconnection/"
+   }
+  },
+  {
+   "id": "9d98c394-39df-4e6a-b3c5-a6cc739f0f49",
+   "fired_at": "2026-10-21T07:30:00.122189+00:00",
+   "event_date": "2026-10-19",
+   "source": "pipeline:auto:enrichment",
+   "framing": "ERCOT's interconnection queue for large loads surged to 474 GW by June 2026, with ~90% attributed to data centers, prompting Governor Abbott to direct audits of all advancing data centers and a pause in batch studies by August 2026.",
+   "faradays_take": "ERCOT's interconnection queue for large loads surged to 474 GW by June 2026, with ~90% attributed to data centers, prompting Governor Abbott to direct audits of all advancing data centers and a pause in batch studies by August 2026.",
+   "byline": "Mach",
+   "conviction": "High",
+   "theme_tags": [],
+   "domain_tags": [
+    "D3"
+   ],
+   "subdomain_tags": [],
+   "company_tags": [
+    "cmp_679f547e89735198"
+   ],
+   "source_url": "https://tricitylocalnews.com/data-centers-in-texas/",
+   "artifact_id": "87e32c45-a5dc-4b90-9841-6b61b266b5dd",
+   "artifact": {
+    "title": "Data Centers in Texas Statistics 2026: Grid, Tax and Water",
+    "source_name": null,
+    "summary": "ERCOT's large-load interconnection queue reached approximately 474 GW by June 2026—about 90% data centers—up from 232 GW at end of 2025, representing roughly 5.5 times ERCOT's all-time peak demand. On August 3, 2026, Governor Abbott directed PUCT and ERCOT to audit all data centers advancing through the interconnection process, and ERCOT simultaneously paused its Batch Zero study to verify eligibility of large loads.",
+    "published_at": "2026-10-19T00:00:00+00:00",
+    "source_type": "regulatory",
+    "license_status": null,
+    "source_url": "https://tricitylocalnews.com/data-centers-in-texas/"
+   }
+  },
+  {
+   "id": "088e3e5f-7afe-466c-b041-314f055654b3",
+   "fired_at": "2026-11-02T07:30:00.121124+00:00",
+   "event_date": "2026-10-15",
+   "source": "pipeline:auto:enrichment",
+   "framing": "Virginia implemented a $0.011/kWh statewide electricity consumption tax on data centers expected to generate $600M annually as of June 2026, while Illinois paused data center incentive applications and Texas launched an audit of data center",
+   "faradays_take": "Virginia implemented a $0.011/kWh statewide electricity consumption tax on data centers expected to generate $600M annually as of June 2026, while Illinois paused data center incentive applications and Texas launched an audit of data center grid connections amid massive connection requests to ERCOT.",
+   "byline": "Mach",
+   "conviction": "Medium",
+   "theme_tags": [],
+   "domain_tags": [
+    "D19"
+   ],
+   "subdomain_tags": [
+    "D3.1"
+   ],
+   "company_tags": [
+    "cmp_679f547e89735198"
+   ],
+   "source_url": "https://abc17news.com/stacker-real-estate/2026/10/15/how-data-centers-are-rewriting-homeowners-property-tax-and-power-bills-in-2026/",
+   "artifact_id": "98563131-d782-464c-9306-5ee3cf224a24",
+   "artifact": {
+    "title": "How Data Centers Are Rewriting Homeowners' Property Tax and Power Bills in 2026 (ABC17 / Ownwell)",
+    "source_name": null,
+    "summary": "Virginia's two-year state budget effective June 29, 2026 imposed a statewide electricity consumption tax on data centers of $0.011 per kilowatt-hour expected to generate up to $600 million annually, while Illinois Governor Pritzker paused processing of data center incentive applications for two years starting July 1, citing energy affordability and water use. Texas Governor Abbott ordered an audit of data center grid connections on August 3, 2026, with ERCOT facing roughly 474 gigawatts of connection requests — approximately 90% from data centers.",
+    "published_at": "2026-10-15T00:00:00+00:00",
+    "source_type": "regulatory",
+    "license_status": null,
+    "source_url": "https://abc17news.com/stacker-real-estate/2026/10/15/how-data-centers-are-rewriting-homeowners-property-tax-and-power-bills-in-2026/"
+   }
+  },
+  {
+   "id": "340c39d4-80f8-4ec0-83f7-c66b9eefc98c",
+   "fired_at": "2026-10-28T07:30:00.127015+00:00",
+   "event_date": "2026-10-13",
+   "source": "pipeline:auto:enrichment",
+   "framing": "California enacted AB 2469 and AB 2619 linking data center permitting to water-use disclosure and drought planning obligations, while Texas Governor Abbott ordered a halt to data center permits pending grid and water-resource audits. These ",
+   "faradays_take": "California enacted AB 2469 and AB 2619 linking data center permitting to water-use disclosure and drought planning obligations, while Texas Governor Abbott ordered a halt to data center permits pending grid and water-resource audits. These regulatory actions reflect growing state-level requirements for data centers to address water infrastructure impacts.",
+   "byline": "Gil",
+   "conviction": "Medium",
+   "theme_tags": [],
+   "domain_tags": [
+    "D11"
+   ],
+   "subdomain_tags": [
+    "D11.3",
+    "D3.1"
+   ],
+   "company_tags": [
+    "cmp_679f547e89735198"
+   ],
+   "source_url": "https://www.legal500.com/intelligence/united-states/environment/california-links-data-center-permitting-and-licensing-to-new-water-use-disclosure-and-drought-planning-obligations",
+   "artifact_id": "d65eb35e-c9c4-4a9a-80d2-f806f3d8fbd8",
+   "artifact": {
+    "title": "California Links Data Center Permitting And Licensing To New Water Use Disclosure And Drought Planning Obligations",
+    "source_name": null,
+    "summary": "California's newly enacted AB 2469 and AB 2619 impose water-supply assessments, efficiency reporting, and drought contingency planning obligations that fundamentally reshape data center permitting; separately, Texas Governor Abbott ordered TCEQ to halt all data center permit issuance until ERCOT completes a grid and water-resource audit. These actions reflect an accelerating national trend of states requiring data centers to internalize water infrastructure costs.",
+    "published_at": "2026-10-13T00:00:00+00:00",
+    "source_type": "regulatory",
+    "license_status": null,
+    "source_url": "https://www.legal500.com/intelligence/united-states/environment/california-links-data-center-permitting-and-licensing-to-new-water-use-disclosure-and-drought-planning-obligations"
+   }
+  },
+  {
+   "id": "9a5498b4-6c5e-4521-99dd-13711cf09660",
+   "fired_at": "2026-10-13T07:30:00.153979+00:00",
+   "event_date": "2026-10-06",
+   "source": "pipeline:auto:enrichment",
+   "framing": "Texas has implemented a dual-agency pause on data center approvals, with Governor Abbott's August 3 ERCOT audit directive followed by a September 21 TCEQ permit freeze halting all new data center permitting until the audit is complete. This",
+   "faradays_take": "Texas has implemented a dual-agency pause on data center approvals, with Governor Abbott's August 3 ERCOT audit directive followed by a September 21 TCEQ permit freeze halting all new data center permitting until the audit is complete. This regulatory action reflects growing concerns about grid capacity, water resources, and community impacts from accelerating data center development.",
+   "byline": "Mach",
+   "conviction": "High",
+   "theme_tags": [],
+   "domain_tags": [
+    "D3"
+   ],
+   "subdomain_tags": [
+    "D18.3",
+    "D19.1",
+    "D3.1",
+    "D3.2",
+    "D3.3"
+   ],
+   "company_tags": [
+    "cmp_679f547e89735198"
+   ],
+   "source_url": "https://www.globalelr.com/2026/10/texas-pauses-certain-data-center-approvals-amid-grid-water-and-community-concerns/",
+   "artifact_id": "84e6592f-d7f5-4238-8503-6f30ab12408e",
+   "artifact": {
+    "title": "Texas Pauses Certain Data Center Approvals Amid Grid, Water, and Community Concerns",
+    "source_name": null,
+    "summary": "Texas has effectively halted new data center approvals through both the ERCOT interconnection process and TCEQ permitting: Governor Abbott's August 3 ERCOT audit directive was followed on September 21 by a TCEQ permit freeze for all data centers until ERCOT's audit is complete. The dual-agency pause creates compounding uncertainty for projects across the state.",
+    "published_at": "2026-10-06T00:00:00+00:00",
+    "source_type": "regulatory",
+    "license_status": null,
+    "source_url": "https://www.globalelr.com/2026/10/texas-pauses-certain-data-center-approvals-amid-grid-water-and-community-concerns/"
+   }
+  },
+  {
+   "id": "20018394-91e0-48f0-8c76-9112d7d3b6ca",
+   "fired_at": "2026-10-15T07:30:00.180995+00:00",
+   "event_date": "2026-10-04",
+   "source": "pipeline:auto:enrichment",
+   "framing": "ERCOT's interconnection queue surged from 63 GW to 410 GW between December 2024 and March 2026, with 87% driven by AI data center demand. Texas regulators implemented SB 6 rulemakings requiring $50,000/MW financial security, mandatory curta",
+   "faradays_take": "ERCOT's interconnection queue surged from 63 GW to 410 GW between December 2024 and March 2026, with 87% driven by AI data center demand. Texas regulators implemented SB 6 rulemakings requiring $50,000/MW financial security, mandatory curtailment for post-January 2026 connections, and new transmission cost allocation standards.",
+   "byline": "Mach",
+   "conviction": "Medium",
+   "theme_tags": [],
+   "domain_tags": [
+    "D3"
+   ],
+   "subdomain_tags": [
+    "D14.1",
+    "D3.1",
+    "D3.2"
+   ],
+   "company_tags": [
+    "cmp_679f547e89735198"
+   ],
+   "source_url": "https://computelaw.blog/power/ercot-large-load-interconnection-texas/",
+   "artifact_id": "4df70aeb-b495-44b3-9383-a848bb0ff5ba",
+   "artifact": {
+    "title": "Texas ERCOT Market and Large-Load Connections for AI Data Centers",
+    "source_name": null,
+    "summary": "ERCOT's large-load interconnection queue grew from 63 GW in December 2024 to 410 GW by March 2026, with roughly 87% attributable to AI data centers—a transformation the PUCT is addressing through a suite of SB 6 rulemakings finalized in September–October 2026. Key new rules include mandatory $50,000/MW financial security postings, mandatory curtailment for any large load connecting on or after January 1, 2026, and formal interconnection standards under 16 TAC §25.194, with transmission cost allocation rules due by December 31, 2026.",
+    "published_at": "2026-10-04T00:00:00+00:00",
+    "source_type": "regulatory",
+    "license_status": null,
+    "source_url": "https://computelaw.blog/power/ercot-large-load-interconnection-texas/"
+   }
+  },
+  {
+   "id": "f5f25f94-48d7-4a00-91b5-a0a8834022eb",
+   "fired_at": "2026-10-22T07:30:00.156996+00:00",
+   "event_date": "2026-10-03",
+   "source": "pipeline:auto:enrichment",
+   "framing": "Regulatory analysis of large-load grid connection procedures across seven major U.S. ISOs for AI data centers in 2026, detailing PJM's five-pillar program and ERCOT's PGRR145 Batch Zero launch with pause for eligibility verification. The co",
+   "faradays_take": "Regulatory analysis of large-load grid connection procedures across seven major U.S. ISOs for AI data centers in 2026, detailing PJM's five-pillar program and ERCOT's PGRR145 Batch Zero launch with pause for eligibility verification. The content emphasizes interconnect rights as a scarce asset class for power infrastructure.",
+   "byline": "Mach",
+   "conviction": "Medium",
+   "theme_tags": [],
+   "domain_tags": [
+    "D3"
+   ],
+   "subdomain_tags": [],
+   "company_tags": [
+    "cmp_679f547e89735198"
+   ],
+   "source_url": "https://computelaw.blog/power/large-load-grid-connection/",
+   "artifact_id": "73da9224-3121-43f5-9dc9-d57ef60d51c6",
+   "artifact": {
+    "title": "Large Load Grid Connection and Study Agreements for AI Data Centers",
+    "source_name": null,
+    "summary": "A comprehensive review of how PJM, ERCOT, MISO, SPP, CAISO, ISO-NE, and NYISO each handle large-load interconnection for AI data centers in 2026, including PJM's January 2026 decisional letter establishing a five-pillar large-load program and ERCOT's PGRR145 Batch Zero launch (effective July 11, 2026, then paused August 3, 2026 for eligibility verification). The piece highlights that existing surplus interconnect rights have become arguably the scarcest asset class in U.S. power.",
+    "published_at": "2026-10-03T00:00:00+00:00",
+    "source_type": "regulatory",
+    "license_status": null,
+    "source_url": "https://computelaw.blog/power/large-load-grid-connection/"
+   }
+  },
+  {
+   "id": "b21076ef-13fd-4307-b3de-2eaf882c9296",
+   "fired_at": "2026-10-14T07:30:00.169851+00:00",
+   "event_date": "2026-10-01",
+   "source": "pipeline:auto:enrichment",
+   "framing": "iMasons is hosting an executive conference in Houston on November 2, 2026, focused on ERCOT grid capacity, power procurement, and AI data center infrastructure challenges in Texas. The event brings together energy producers, equipment manuf",
+   "faradays_take": "iMasons is hosting an executive conference in Houston on November 2, 2026, focused on ERCOT grid capacity, power procurement, and AI data center infrastructure challenges in Texas. The event brings together energy producers, equipment manufacturers, and data center developers to address power constraints for large AI workloads in the South Central region.",
+   "byline": "Mach",
+   "conviction": "Medium",
+   "theme_tags": [],
+   "domain_tags": [
+    "D3"
+   ],
+   "subdomain_tags": [
+    "D11.6",
+    "D17.1",
+    "D3.1"
+   ],
+   "company_tags": [
+    "cmp_679f547e89735198"
+   ],
+   "source_url": "https://imasons.org/activity/events-2026-11-02_datacenterenergyindustryupdate_tx/",
+   "artifact_id": "a02b4708-8ffd-4fe2-88ff-7feac42aef9d",
+   "artifact": {
+    "title": "Data Center Energy Industry Update – iMasons Texas / ERCOT Large Load Focus",
+    "source_name": null,
+    "summary": "An upcoming iMasons executive conference in Houston on November 2, 2026, co-hosted with The Power Connection, will specifically cover ERCOT large load updates, power procurement, generation and load forecasts, and debottlenecking power for AI data centers in the South Central United States. The event unites energy producers, equipment manufacturers, and infrastructure providers with AI data center developers navigating Texas grid constraints.",
+    "published_at": "2026-10-01T00:00:00+00:00",
+    "source_type": "regulatory",
+    "license_status": null,
+    "source_url": "https://imasons.org/activity/events-2026-11-02_datacenterenergyindustryupdate_tx/"
+   }
+  },
+  {
+   "id": "33ec9f5e-6fe6-40e4-9405-1325f054fa11",
+   "fired_at": "2026-10-09T07:30:00.166005+00:00",
+   "event_date": "2026-10-01",
+   "source": "pipeline:auto:enrichment",
+   "framing": "PJM and MISO face severe interconnection queue delays exceeding 8 years, with PJM managing 260+ GW of requests and ERCOT seeing 198 GW of large load applications in Q1 2026, predominantly from data centers. PJM projects a 15 GW capacity sho",
+   "faradays_take": "PJM and MISO face severe interconnection queue delays exceeding 8 years, with PJM managing 260+ GW of requests and ERCOT seeing 198 GW of large load applications in Q1 2026, predominantly from data centers. PJM projects a 15 GW capacity shortfall by 2030, creating significant regulatory and infrastructure challenges for hyperscaler expansion.",
+   "byline": "Mach",
+   "conviction": "High",
+   "theme_tags": [],
+   "domain_tags": [
+    "D3"
+   ],
+   "subdomain_tags": [
+    "D3.1"
+   ],
+   "company_tags": [
+    "cmp_679f547e89735198"
+   ],
+   "source_url": "https://megawatthorizon.com/posts/miso-and-pjm-interconnection-queue-delays-for-data-centers",
+   "artifact_id": "aec98845-fc0c-426e-825e-bfb902976e14",
+   "artifact": {
+    "title": "MISO and PJM Interconnection Queue Delays for Data Centers",
+    "source_name": null,
+    "summary": "As of late 2025/early 2026, PJM's average interconnection timeline has stretched past eight years, with the queue carrying more than 260 GW of requests and PJM logging 95 large-load adjustment requests totaling ~54 GW through November 2025. In ERCOT, 198 GW of large load applied for interconnection in Q1 2026 alone, with data centers accounting for the vast majority, while PJM faces a potential 15 GW capacity shortfall by 2030.",
+    "published_at": "2026-10-01T00:00:00+00:00",
+    "source_type": "regulatory",
+    "license_status": null,
+    "source_url": "https://megawatthorizon.com/posts/miso-and-pjm-interconnection-queue-delays-for-data-centers"
+   }
+  },
+  {
+   "id": "8b5460d7-eeb5-497d-8298-b4ac2ec5a1dc",
+   "fired_at": "2026-10-10T07:30:00.16817+00:00",
+   "event_date": "2026-09-29",
+   "source": "pipeline:auto:enrichment",
+   "framing": "Texas Governor Greg Abbott issued a directive on September 21, 2026 halting all environmental permits for data centers pending ERCOT's audit of grid and water impacts. The pause extends scrutiny across permitting, water consumption, noise, ",
+   "faradays_take": "Texas Governor Greg Abbott issued a directive on September 21, 2026 halting all environmental permits for data centers pending ERCOT's audit of grid and water impacts. The pause extends scrutiny across permitting, water consumption, noise, light, traffic, and financial assistance, creating significant uncertainty for Texas data center projects.",
+   "byline": "Gil",
+   "conviction": "Medium",
+   "theme_tags": [],
+   "domain_tags": [
+    "D11"
+   ],
+   "subdomain_tags": [
+    "D18.3",
+    "D19.1",
+    "D3.1",
+    "D3.2",
+    "D3.3"
+   ],
+   "company_tags": [
+    "cmp_679f547e89735198"
+   ],
+   "source_url": "https://www.bdlaw.com/publications/texas-pauses-all-environmental-permitting-for-data-centers/",
+   "artifact_id": "447b8a24-a1e7-4563-b69f-8861ee2eacb7",
+   "artifact": {
+    "title": "Texas Pauses All Environmental Permitting for Data Centers",
+    "source_name": null,
+    "summary": "On September 21, 2026, Texas Governor Greg Abbott directed the TCEQ to halt issuance of all environmental permits for data centers until ERCOT completes an audit of grid and water resource impacts. The directive extends state scrutiny to environmental permitting, water consumption, noise, light, traffic, and financial assistance disclosures, creating broad uncertainty for new and in-process Texas data center projects.",
+    "published_at": "2026-09-29T00:00:00+00:00",
+    "source_type": "web_news",
+    "license_status": null,
+    "source_url": "https://www.bdlaw.com/publications/texas-pauses-all-environmental-permitting-for-data-centers/"
+   }
+  },
+  {
+   "id": "b97ac28b-3e09-4662-bc94-0a15f6ace5ae",
+   "fired_at": "2026-10-11T07:30:00.170995+00:00",
+   "event_date": "2026-09-28",
+   "source": "pipeline:auto:enrichment",
+   "framing": "Regulatory analysis comparing demand response and curtailment frameworks across DOE, PJM, ERCOT, and FERC shows AI data center curtailment thresholds ranging from 20-75 MW, with expedited interconnection pathways for voluntary participation",
+   "faradays_take": "Regulatory analysis comparing demand response and curtailment frameworks across DOE, PJM, ERCOT, and FERC shows AI data center curtailment thresholds ranging from 20-75 MW, with expedited interconnection pathways for voluntary participation. FERC's April 2026 decision preserves state-level control over demand response aggregation opt-outs.",
+   "byline": "Gil",
+   "conviction": "Medium",
+   "theme_tags": [],
+   "domain_tags": [
+    "D2"
+   ],
+   "subdomain_tags": [
+    "D2.8",
+    "D3.1",
+    "D3.4",
+    "D3.5"
+   ],
+   "company_tags": [
+    "cmp_679f547e89735198"
+   ],
+   "source_url": "https://computelaw.blog/power/demand-response-curtailment-large-ai-data-centers/",
+   "artifact_id": "bea3e313-33fb-40a0-b1af-bdffb840907a",
+   "artifact": {
+    "title": "Demand Response and Curtailment for Large AI Data Centers",
+    "source_name": null,
+    "summary": "A detailed regulatory comparison across DOE, PJM, ERCOT, and FERC Order 2222 frameworks shows that curtailment thresholds for AI data centers range from 20 MW (DOE ANOPR) to 75 MW (ERCOT), with expedited 60-day interconnection studies offered to loads that voluntarily agree to be curtailable. In April 2026, FERC withdrew its inquiry on removing the state opt-out for demand response aggregations, leaving a key flexibility mechanism to states.",
+    "published_at": "2026-09-28T00:00:00+00:00",
+    "source_type": "regulatory",
+    "license_status": null,
+    "source_url": "https://computelaw.blog/power/demand-response-curtailment-large-ai-data-centers/"
+   }
+  },
+  {
+   "id": "1a265310-4fb1-4a8d-a92c-d3669ca85696",
+   "fired_at": "2026-09-24T07:30:00.13601+00:00",
+   "event_date": "2026-09-23",
+   "source": "pipeline:auto:enrichment",
+   "framing": "Texas Governor Greg Abbott has halted new data center permits in the state pending completion of an audit by ERCOT (Electric Reliability Council of Texas) into grid capacity and reliability. ERCOT has committed to completing the audit by De",
+   "faradays_take": "Texas Governor Greg Abbott has halted new data center permits in the state pending completion of an audit by ERCOT (Electric Reliability Council of Texas) into grid capacity and reliability. ERCOT has committed to completing the audit by December, which will inform future data center development policies in Texas.",
+   "byline": "Gil",
+   "conviction": "Medium",
+   "theme_tags": [],
+   "domain_tags": [
+    "D22"
+   ],
+   "subdomain_tags": [
+    "D3.1"
+   ],
+   "company_tags": [
+    "cmp_679f547e89735198"
+   ],
+   "source_url": "https://www.datacenterdynamics.com/en/news/abbott-halts-new-texas-data-center-permits-pending-ercot-audit/",
+   "artifact_id": "f3971339-e948-4df6-bc97-c2b61ffa56c4",
+   "artifact": {
+    "title": "Abbott halts new Texas data center permits pending ERCOT audit",
+    "source_name": "Data Center Dynamics",
+    "summary": "ERCOT claims the audit will be completed by December",
+    "published_at": "2026-09-23T08:49:00+00:00",
+    "source_type": "web_news",
+    "license_status": "cleared",
+    "source_url": "https://www.datacenterdynamics.com/en/news/abbott-halts-new-texas-data-center-permits-pending-ercot-audit/"
+   }
+  },
+  {
+   "id": "662ae6c0-3050-43e1-a9a0-d61bbd3ce81c",
+   "fired_at": "2026-09-23T07:30:00.142008+00:00",
+   "event_date": "2026-09-22",
+   "source": "pipeline:auto:enrichment",
+   "framing": "U.S. solar generation is projected to accelerate through 2027, driven primarily by data center electricity demand concentrated in ERCOT (Texas) and MISO (Midwest) regions. This growth reflects the increasing power requirements of hyperscale",
+   "faradays_take": "U.S. solar generation is projected to accelerate through 2027, driven primarily by data center electricity demand concentrated in ERCOT (Texas) and MISO (Midwest) regions. This growth reflects the increasing power requirements of hyperscale data center infrastructure.",
+   "byline": "Gil",
+   "conviction": "Medium",
+   "theme_tags": [],
+   "domain_tags": [
+    "D11"
+   ],
+   "subdomain_tags": [
+    "D3.1"
+   ],
+   "company_tags": [
+    "cmp_679f547e89735198"
+   ],
+   "source_url": "https://pv-magazine-usa.com/2026/09/22/solar-growth-accelerates-in-ercot-and-miso-as-data-centers-drive-demand/",
+   "artifact_id": "0d7687c3-752f-40c3-84cf-9137e4176039",
+   "artifact": {
+    "title": "Solar growth accelerates in ERCOT and MISO as data centers drive demand",
+    "source_name": "PV Magazine USA",
+    "summary": "U.S. solar generation is expected to rise sharply through 2027 as electricity demand reaches record levels, with much of the growth concentrated in Texas and the Midwest.",
+    "published_at": "2026-09-22T12:00:00+00:00",
+    "source_type": "web_news",
+    "license_status": "cleared",
+    "source_url": "https://pv-magazine-usa.com/2026/09/22/solar-growth-accelerates-in-ercot-and-miso-as-data-centers-drive-demand/"
+   }
+  },
+  {
+   "id": "cd31e61e-7341-4502-a523-ff32bb263973",
+   "fired_at": "2026-10-11T07:30:00.170995+00:00",
+   "event_date": "2026-09-21",
+   "source": "pipeline:auto:enrichment",
+   "framing": "Texas Governor Greg Abbott issued a directive to halt all data center permits pending a comprehensive ERCOT audit of grid and water impacts, effective September 21, 2026. No state agency may approve data center development until audit findi",
+   "faradays_take": "Texas Governor Greg Abbott issued a directive to halt all data center permits pending a comprehensive ERCOT audit of grid and water impacts, effective September 21, 2026. No state agency may approve data center development until audit findings are obtained.",
+   "byline": "Gil",
+   "conviction": "High",
+   "theme_tags": [],
+   "domain_tags": [
+    "D11"
+   ],
+   "subdomain_tags": [
+    "D18.3",
+    "D19.1",
+    "D3.1",
+    "D3.2",
+    "D3.3"
+   ],
+   "company_tags": [
+    "cmp_679f547e89735198"
+   ],
+   "source_url": "https://gov.texas.gov/news/post/governor-abbott-directs-tceq-to-halt-data-center-permits",
+   "artifact_id": "53398da2-73d6-4ace-88fc-de0b9d01c199",
+   "artifact": {
+    "title": "Governor Abbott Directs TCEQ to Halt Data Center Permits Pending ERCOT Audit",
+    "source_name": null,
+    "summary": "Texas Governor Greg Abbott directed the Texas Commission on Environmental Quality (TCEQ) to halt all data center permits until ERCOT completes a full audit of grid and water impacts on September 21, 2026. No state agency may move forward with regulatory approvals for data center development until the audit information is acquired.",
+    "published_at": "2026-09-21T00:00:00+00:00",
+    "source_type": "web_news",
+    "license_status": null,
+    "source_url": "https://gov.texas.gov/news/post/governor-abbott-directs-tceq-to-halt-data-center-permits"
+   }
+  },
+  {
+   "id": "f34ccba3-9ac9-4da9-9ffe-89690c22dbde",
+   "fired_at": "2026-10-11T07:30:00.170995+00:00",
+   "event_date": "2026-09-21",
+   "source": "pipeline:auto:enrichment",
+   "framing": "Texas PUC reduced data center interconnection security deposits from $100,000 to $50,000 per MW and eliminated a non-refundable fee in September 2026, while ERCOT's large-load queue reaches 474 GW saturation. The commission extended queue p",
+   "faradays_take": "Texas PUC reduced data center interconnection security deposits from $100,000 to $50,000 per MW and eliminated a non-refundable fee in September 2026, while ERCOT's large-load queue reaches 474 GW saturation. The commission extended queue position retention periods during an ongoing queue pause.",
+   "byline": "Mach",
+   "conviction": "Medium",
+   "theme_tags": [],
+   "domain_tags": [
+    "D3"
+   ],
+   "subdomain_tags": [
+    "D3.1"
+   ],
+   "company_tags": [
+    "cmp_679f547e89735198"
+   ],
+   "source_url": "https://mgrid.org/2026/09/21/texas-cuts-the-data-center-grid-deposit-from-100000-to-50000-per-mw-during-its-own-queue-pause/",
+   "artifact_id": "e33e083c-7122-4411-8e54-b618c15dc89c",
+   "artifact": {
+    "title": "Texas Cuts the Data Center Grid Deposit From $100,000 to $50,000 per MW During Its Own Queue Pause",
+    "source_name": null,
+    "summary": "The Texas Public Utility Commission voted in September 2026 to adopt large load interconnection standards for ERCOT, cutting the security deposit from $100,000 to $50,000 per MW and eliminating a proposed non-refundable $50,000/MW fee, even as ERCOT's large-load queue stands at 474 GW. The commission also extended how long a stalled project retains its queue position, during a pause triggered by queue saturation.",
+    "published_at": "2026-09-21T00:00:00+00:00",
+    "source_type": "regulatory",
+    "license_status": null,
+    "source_url": "https://mgrid.org/2026/09/21/texas-cuts-the-data-center-grid-deposit-from-100000-to-50000-per-mw-during-its-own-queue-pause/"
+   }
+  },
+  {
+   "id": "f7faca23-b61a-4780-82fa-8e08031aa88d",
+   "fired_at": "2026-10-01T07:30:00.114992+00:00",
+   "event_date": "2026-09-21",
+   "source": "pipeline:auto:enrichment",
+   "framing": "Texas Governor Greg Abbott issued a freeze on environmental permit approvals for data centers pending an ERCOT grid interconnection audit, marking a regulatory reversal for a state previously focused on attracting data center investment thr",
+   "faradays_take": "Texas Governor Greg Abbott issued a freeze on environmental permit approvals for data centers pending an ERCOT grid interconnection audit, marking a regulatory reversal for a state previously focused on attracting data center investment through economic incentives.",
+   "byline": "Mach",
+   "conviction": "Medium",
+   "theme_tags": [],
+   "domain_tags": [
+    "D3"
+   ],
+   "subdomain_tags": [
+    "D18.3",
+    "D19.1",
+    "D3.1",
+    "D3.2",
+    "D3.3"
+   ],
+   "company_tags": [
+    "cmp_679f547e89735198"
+   ],
+   "source_url": "https://www.texastribune.org/2026/09/21/texas-data-center-moratorium-water-energy/",
+   "artifact_id": "1ba5c01f-b48e-440f-bea0-cdc9efb6c21a",
+   "artifact": {
+    "title": "Texas Pauses Environmental Permit Approval for Data Centers",
+    "source_name": null,
+    "summary": "Texas Governor Greg Abbott directed TCEQ to freeze all environmental permit approvals for data centers on September 21, 2026, pending an ERCOT audit of the grid interconnection queue — a move framed as protecting state natural resources. The action represents a significant regulatory reversal for a state that had previously offered generous economic development incentives to attract data center investment.",
+    "published_at": "2026-09-21T00:00:00+00:00",
+    "source_type": "regulatory",
+    "license_status": null,
+    "source_url": "https://www.texastribune.org/2026/09/21/texas-data-center-moratorium-water-energy/"
+   }
+  },
+  {
+   "id": "b38adcdb-42a6-46e7-9b8b-4d0ca2c22548",
+   "fired_at": "2026-09-27T07:30:00.162524+00:00",
+   "event_date": "2026-09-21",
+   "source": "pipeline:auto:enrichment",
+   "framing": "Texas PUC voted in September 2026 to reduce data center grid deposit requirements from $100,000 to $50,000 per MW for large loads over 75 MW on ERCOT, while eliminating a proposed non-refundable interconnection fee and implementing a flat $",
+   "faradays_take": "Texas PUC voted in September 2026 to reduce data center grid deposit requirements from $100,000 to $50,000 per MW for large loads over 75 MW on ERCOT, while eliminating a proposed non-refundable interconnection fee and implementing a flat $100,000 study fee.",
+   "byline": "Mach",
+   "conviction": "Medium",
+   "theme_tags": [],
+   "domain_tags": [
+    "D3"
+   ],
+   "subdomain_tags": [],
+   "company_tags": [
+    "cmp_679f547e89735198"
+   ],
+   "source_url": "https://mgrid.org/2026/09/21/texas-cuts-the-data-center-grid-deposit-from-100000-to-50000-per-mw-during-its-own-queue-pause/",
+   "artifact_id": "d41399dd-7ef8-458d-b4a0-f791e63a71f6",
+   "artifact": {
+    "title": "Texas Cuts the Data Center Grid Deposit From $100,000 to $50,000 per MW During Its Own Queue Pause",
+    "source_name": null,
+    "summary": "The Public Utility Commission of Texas voted in September 2026 to adopt large load interconnection standards for ERCOT, halving the financial security deposit from $100,000 to $50,000 per MW of requested peak demand and eliminating a proposed non-refundable $50,000/MW interconnection fee. The rules apply to loads with peak demand over 75 MW and replaced tiered study fees with a flat $100,000 study fee for all large load customers.",
+    "published_at": "2026-09-21T00:00:00+00:00",
+    "source_type": "regulatory",
+    "license_status": null,
+    "source_url": "https://mgrid.org/2026/09/21/texas-cuts-the-data-center-grid-deposit-from-100000-to-50000-per-mw-during-its-own-queue-pause/"
+   }
+  },
+  {
+   "id": "e769b7f3-96a8-41fd-ba40-706c41b7b0f8",
+   "fired_at": "2026-09-25T07:30:00.160024+00:00",
+   "event_date": "2026-09-21",
+   "source": "pipeline:auto:enrichment",
+   "framing": "Texas Governor Greg Abbott expanded a moratorium on data center permits to include environmental approvals from TCEQ, pending an ERCOT grid audit. The action reflects growing public opposition to data centers, with 64% of Americans expressi",
+   "faradays_take": "Texas Governor Greg Abbott expanded a moratorium on data center permits to include environmental approvals from TCEQ, pending an ERCOT grid audit. The action reflects growing public opposition to data centers, with 64% of Americans expressing electoral concerns about local construction support.",
+   "byline": "Gil",
+   "conviction": "Medium",
+   "theme_tags": [],
+   "domain_tags": [
+    "D11"
+   ],
+   "subdomain_tags": [
+    "D18.3",
+    "D19.1",
+    "D19.4",
+    "D3.1",
+    "D3.2",
+    "D3.3"
+   ],
+   "company_tags": [
+    "cmp_679f547e89735198"
+   ],
+   "source_url": "https://www.cnbc.com/2026/09/21/texas-governor-abbott-ai-data-center-permits.html",
+   "artifact_id": "3ffd66e5-b0f5-4451-92a5-c3b3c4ca1f1c",
+   "artifact": {
+    "title": "Texas Gov. Abbott Orders Data Center Permit Halt, Expands Moratorium to Environmental Approvals",
+    "source_name": null,
+    "summary": "Texas Governor Greg Abbott ordered the state's environmental regulator (TCEQ) to halt all data center-related permits until ERCOT completes an audit of the grid connection waitlist, expanding an August moratorium on grid approvals. Data centers have become a major flashpoint in the 2026 midterm elections, with a recent NBC News poll finding 64% of Americans less likely to vote for candidates who support local data center construction.",
+    "published_at": "2026-09-21T00:00:00+00:00",
+    "source_type": "web_news",
+    "license_status": null,
+    "source_url": "https://www.cnbc.com/2026/09/21/texas-governor-abbott-ai-data-center-permits.html"
+   }
+  },
+  {
+   "id": "5e15924d-16a3-464c-b75a-c502f07fc6bf",
+   "fired_at": "2026-09-21T07:30:00.179919+00:00",
+   "event_date": "2026-09-18",
+   "source": "pipeline:auto:enrichment",
+   "framing": "Legislative guide examining how states are responding to AI data center electricity demands through policy mechanisms. Texas opts for regulatory cost-allocation rather than construction moratoriums, while 11 states have introduced moratoriu",
+   "faradays_take": "Legislative guide examining how states are responding to AI data center electricity demands through policy mechanisms. Texas opts for regulatory cost-allocation rather than construction moratoriums, while 11 states have introduced moratorium bills in 2026.",
+   "byline": "Mach",
+   "conviction": "Medium",
+   "theme_tags": [],
+   "domain_tags": [
+    "D3"
+   ],
+   "subdomain_tags": [
+    "D3.1"
+   ],
+   "company_tags": [
+    "cmp_679f547e89735198"
+   ],
+   "source_url": "https://www.multistate.us/resources/state-data-center-policy-101",
+   "artifact_id": "5dee7ff7-9da0-4e96-a57d-db3c12c5339e",
+   "artifact": {
+    "title": "State Data Center Policy 101: 2026 Legislative Guide — Texas and ERCOT Grid Context",
+    "source_name": null,
+    "summary": "Updated in March 2026, this legislative guide documents how AI-driven demand for data centers has prompted policymakers — including in Texas — to balance sufficient electricity supply for large loads against impacts on residential customers and grid reliability. State-level moratorium bills have been introduced in 11 states in 2026, while Texas has chosen regulatory cost-allocation over construction pauses.",
+    "published_at": "2026-09-18T00:00:00+00:00",
+    "source_type": "regulatory",
+    "license_status": null,
+    "source_url": "https://www.multistate.us/resources/state-data-center-policy-101"
+   }
+  },
+  {
+   "id": "aac34320-b0cf-4e92-ac18-d8a97a1b7979",
+   "fired_at": "2026-09-20T07:30:00.161456+00:00",
+   "event_date": "2026-09-17",
+   "source": "pipeline:auto:enrichment",
+   "framing": "AWS launched AI agents in September 2026 to automate grid interconnection workflows, targeting massive data center backlogs of 438 GW in ERCOT and 811 applications in PJM. Grid connection has become the primary constraint limiting AI infras",
+   "faradays_take": "AWS launched AI agents in September 2026 to automate grid interconnection workflows, targeting massive data center backlogs of 438 GW in ERCOT and 811 applications in PJM. Grid connection has become the primary constraint limiting AI infrastructure expansion.",
+   "byline": "Mach",
+   "conviction": "Medium",
+   "theme_tags": [],
+   "domain_tags": [
+    "D3"
+   ],
+   "subdomain_tags": [],
+   "company_tags": [
+    "cmp_679f547e89735198"
+   ],
+   "source_url": "https://shattered.io/aws-agentic-grid-planning-438gw-queue-2026/",
+   "artifact_id": "927ccc14-a9a3-4d05-b33f-059a3a473345",
+   "artifact": {
+    "title": "AWS Grid AI Agents Launch as Queue Hits 438 GW",
+    "source_name": null,
+    "summary": "On September 17, 2026, Amazon Web Services announced 'Agentic Grid Planning on AWS,' a suite of AI agents handed to utilities to automate grid interconnection study workflows, directly targeting the 438 GW ERCOT large-load backlog (87% data centers) and PJM's 2026 Cycle 1 of 811 separate applications. ERCOT's queue grew from 63 GW at end-2024 to 233 GW at end-2025 and 438 GW by late August 2026, making grid connection the defining constraint on the AI buildout.",
+    "published_at": "2026-09-17T00:00:00+00:00",
+    "source_type": "regulatory",
+    "license_status": null,
+    "source_url": "https://shattered.io/aws-agentic-grid-planning-438gw-queue-2026/"
+   }
+  },
+  {
+   "id": "fded74d5-a20a-4c37-810e-6a2eca37a53a",
+   "fired_at": "2026-09-20T07:30:00.161456+00:00",
+   "event_date": "2026-09-12",
+   "source": "pipeline:auto:enrichment",
+   "framing": "MMCG's September 2026 report documents U.S. data center capacity at 69 GW operational and 43 GW under construction across 1,778 properties, with hyperscale representing 64% of existing capacity. The analysis projects a 50% decline in nation",
+   "faradays_take": "MMCG's September 2026 report documents U.S. data center capacity at 69 GW operational and 43 GW under construction across 1,778 properties, with hyperscale representing 64% of existing capacity. The analysis projects a 50% decline in national deliveries by 2028, driven by grid interconnection process redesigns in PJM and ERCOT markets.",
+   "byline": "Gil",
+   "conviction": "Medium",
+   "theme_tags": [],
+   "domain_tags": [
+    "D22"
+   ],
+   "subdomain_tags": [],
+   "company_tags": [
+    "cmp_679f547e89735198"
+   ],
+   "source_url": "https://www.mmcginvest.com/post/u-s-data-center-industry-report-2026-two-industries-under-one-name",
+   "artifact_id": "e9fb5a36-7541-45dc-af32-a4babfa271cc",
+   "artifact": {
+    "title": "U.S. Data Center Industry Report 2026: Two Industries Under One Name",
+    "source_name": null,
+    "summary": "MMCG's September 2026 national industry report places existing US data center capacity at roughly 69 GW of total load and 43 GW under construction, with 1,778 deduplicated properties tracked as of June 2026; hyperscale accounts for 64% of existing capacity and colocation 31%. The report projects that national deliveries could fall by half in 2028, concentrated in PJM and ERCOT markets where grid interconnection processes are being redesigned.",
+    "published_at": "2026-09-12T00:00:00+00:00",
+    "source_type": "web_news",
+    "license_status": null,
+    "source_url": "https://www.mmcginvest.com/post/u-s-data-center-industry-report-2026-two-industries-under-one-name"
+   }
+  },
+  {
+   "id": "bb5e1173-6b00-4552-861f-467518d7fcd1",
+   "fired_at": "2026-09-13T07:30:00.161252+00:00",
+   "event_date": "2026-09-10",
+   "source": "pipeline:auto:enrichment",
+   "framing": "ERCOT's interconnection queue has reached 474 GW with 90% from data centers, while PJM waits extend to 7 years for large AI campuses. Governor Abbott paused new Texas data center connections in August 2026 pending audit, indicating grid con",
+   "faradays_take": "ERCOT's interconnection queue has reached 474 GW with 90% from data centers, while PJM waits extend to 7 years for large AI campuses. Governor Abbott paused new Texas data center connections in August 2026 pending audit, indicating grid congestion as a critical constraint on AI infrastructure expansion.",
+   "byline": "Mach",
+   "conviction": "High",
+   "theme_tags": [],
+   "domain_tags": [
+    "D3"
+   ],
+   "subdomain_tags": [],
+   "company_tags": [
+    "cmp_679f547e89735198"
+   ],
+   "source_url": "https://www.electricchoice.com/datacenters/interconnection-queue/",
+   "artifact_id": "a9d96e71-450a-47ac-8ff3-b2b00057d50b",
+   "artifact": {
+    "title": "Data Center Interconnection Queue: Wait Times, Backlogs & Grid Impact",
+    "source_name": null,
+    "summary": "ERCOT's large-load queue has hit 474 GW with approximately 90% of requests from data centers, while PJM interconnection waits now approach 7 years for large AI campuses in Northern Virginia. Governor Abbott paused all new Texas data center grid connections in August 2026 pending a comprehensive audit, underscoring how queue congestion has become the binding constraint on AI infrastructure buildout.",
+    "published_at": "2026-09-10T00:00:00+00:00",
+    "source_type": "regulatory",
+    "license_status": null,
+    "source_url": "https://www.electricchoice.com/datacenters/interconnection-queue/"
+   }
+  },
+  {
+   "id": "eaab1c89-f0b4-4664-8996-f8422ac7b45b",
+   "fired_at": "2026-09-11T07:30:00.142992+00:00",
+   "event_date": "2026-09-10",
+   "source": "pipeline:auto:enrichment",
+   "framing": "EIA forecasts record electricity demand through 2027 driven primarily by data centers and manufacturing growth, with ERCOT leading demand increases and PJM leading supply growth across regional transmission operators.",
+   "faradays_take": "EIA forecasts record electricity demand through 2027 driven primarily by data centers and manufacturing growth, with ERCOT leading demand increases and PJM leading supply growth across regional transmission operators.",
+   "byline": "Mach",
+   "conviction": "Medium",
+   "theme_tags": [],
+   "domain_tags": [
+    "D3"
+   ],
+   "subdomain_tags": [
+    "D3.1"
+   ],
+   "company_tags": [
+    "cmp_679f547e89735198"
+   ],
+   "source_url": "//www.rtoinsider.com/142972-eia-generation-growth-fuel-prices-demand/",
+   "artifact_id": "5aa12cad-ad26-496a-bae7-702e08e73749",
+   "artifact": {
+    "title": "EIA: ERCOT Leads in Demand Growth, PJM in Supply Growth Through 2027",
+    "source_name": "RTO Insider",
+    "summary": "EIA's latest Short-Term Energy Outlook forecasts record electricity demand driven by data centers and increased manufacturing activity in the commercial and industrial sectors. The post EIA: ERCOT Leads in Demand Growth, PJM in Supply Growth Through 2027 appeared first on RTO Insider .",
+    "published_at": "2026-09-10T00:23:09+00:00",
+    "source_type": "web_news",
+    "license_status": "cleared",
+    "source_url": "//www.rtoinsider.com/142972-eia-generation-growth-fuel-prices-demand/"
+   }
+  },
+  {
+   "id": "2b3c23c5-feb6-4996-a6f2-faa52e518b79",
+   "fired_at": "2026-09-09T07:30:00.170197+00:00",
+   "event_date": "2026-09-07",
+   "source": "pipeline:auto:enrichment",
+   "framing": "ERCOT (Electric Reliability Council of Texas) is conducting an audit of Texas data centers by December following an order from the governor. This audit examines the operational and power consumption impacts of data centers on the Texas grid",
+   "faradays_take": "ERCOT (Electric Reliability Council of Texas) is conducting an audit of Texas data centers by December following an order from the governor. This audit examines the operational and power consumption impacts of data centers on the Texas grid.",
+   "byline": "Gil",
+   "conviction": "Medium",
+   "theme_tags": [],
+   "domain_tags": [
+    "D22"
+   ],
+   "subdomain_tags": [
+    "D3.1"
+   ],
+   "company_tags": [
+    "cmp_679f547e89735198"
+   ],
+   "source_url": "https://www.datacenterdynamics.com/en/news/ercot-to-complete-texas-data-center-audit-by-december/",
+   "artifact_id": "8d1b9628-bc67-4914-90c5-ec574f36d0a0",
+   "artifact": {
+    "title": "ERCOT to complete Texas data center audit by December",
+    "source_name": "Data Center Dynamics",
+    "summary": "Audit ordered by governor last month",
+    "published_at": "2026-09-07T10:45:00+00:00",
+    "source_type": "web_news",
+    "license_status": "cleared",
+    "source_url": "https://www.datacenterdynamics.com/en/news/ercot-to-complete-texas-data-center-audit-by-december/"
+   }
+  },
+  {
+   "id": "2f70f60c-78a3-4338-a473-ca5ef74a81f3",
+   "fired_at": "2026-09-10T07:30:00.099676+00:00",
+   "event_date": "2026-09-01",
+   "source": "pipeline:auto:enrichment",
+   "framing": "Live tracker monitoring 226 GW queued in ERCOT and ~55 GW targeted for PJM by 2030 across seven US ISOs, with data center projects comprising growing share in Northern Virginia, Texas, and Chicago. Geographic and queue-position constraints ",
+   "faradays_take": "Live tracker monitoring 226 GW queued in ERCOT and ~55 GW targeted for PJM by 2030 across seven US ISOs, with data center projects comprising growing share in Northern Virginia, Texas, and Chicago. Geographic and queue-position constraints significantly impact data center interconnection timelines.",
+   "byline": "Mach",
+   "conviction": "Medium",
+   "theme_tags": [],
+   "domain_tags": [
+    "D3"
+   ],
+   "subdomain_tags": [],
+   "company_tags": [
+    "cmp_679f547e89735198"
+   ],
+   "source_url": "https://dchub.cloud/interconnection-queue",
+   "artifact_id": "835724ed-84d8-4156-b25b-cd8a43a528ba",
+   "artifact": {
+    "title": "Interconnection Queue Tracker 2026 — ERCOT, PJM, MISO, SPP",
+    "source_name": null,
+    "summary": "A live tracker of large-load interconnection queues across seven US ISOs shows approximately 226 GW queued in ERCOT and ~800 projects totaling ~55 GW targeted for PJM by 2030, with data center share growing rapidly in Northern Virginia, Texas, and Chicago markets. The tracker highlights where geographic and queue-position constraints most acutely affect data center time-to-power calculations.",
+    "published_at": "2026-09-01T00:00:00+00:00",
+    "source_type": "state_puc_filing",
+    "license_status": null,
+    "source_url": "https://dchub.cloud/interconnection-queue"
+   }
+  },
+  {
+   "id": "3df08478-87b5-4952-91ba-64374bb45ab8",
+   "fired_at": "2026-09-10T07:30:00.099676+00:00",
+   "event_date": "2026-08-26",
+   "source": "pipeline:auto:enrichment",
+   "framing": "ERCOT is implementing RFI requirements for data center developers with capacity thresholds (≥75 MW for audits, ≥25 MW for community reviews) and strict grid model deadlines under PGRR145. Grid operator interconnection studies and queue rule",
+   "faradays_take": "ERCOT is implementing RFI requirements for data center developers with capacity thresholds (≥75 MW for audits, ≥25 MW for community reviews) and strict grid model deadlines under PGRR145. Grid operator interconnection studies and queue rules are critical determinants of data center project timelines and energization eligibility.",
+   "byline": "Mach",
+   "conviction": "Medium",
+   "theme_tags": [],
+   "domain_tags": [
+    "D3"
+   ],
+   "subdomain_tags": [],
+   "company_tags": [
+    "cmp_679f547e89735198"
+   ],
+   "source_url": "https://savrn.com/data-center-grid-operator-watchlist",
+   "artifact_id": "b436b34a-06a6-479b-b374-c48c9e295a3e",
+   "artifact": {
+    "title": "Data Center Grid Operator Watchlist: ERCOT, PJM, FERC & Every RTO",
+    "source_name": null,
+    "summary": "ERCOT is issuing RFIs to data center developers through TSPs/DSPs for Batch Zero eligibility audits (≥75 MW) and community impact reviews (≥25 MW computational loads), with a strict dynamic model data deadline under PGRR145. A data center cannot energize until its grid operator completes interconnection studies, making each operator's queue rules and curtailment conditions the primary determinant of project timelines.",
+    "published_at": "2026-08-26T00:00:00+00:00",
+    "source_type": "regulatory",
+    "license_status": null,
+    "source_url": "https://savrn.com/data-center-grid-operator-watchlist"
+   }
+  }
+ ],
+ "companies": [
+  {
+   "company_uid": "cmp_679f547e89735198",
+   "canonical_name": "ERCOT",
+   "company_type": "Grid Operator / ISO"
+  }
+ ],
+ "artifacts": [],
+ "company": {
+  "company_uid": "cmp_679f547e89735198",
+  "canonical_name": "ERCOT",
+  "company_type": "Grid Operator / ISO",
+  "ownership_public_private": "Non-Profit / Assoc.",
+  "hq_location_raw": "Austin, TX, USA",
+  "hq_country": null,
+  "ticker": null,
+  "website_url": null,
+  "legal_structure": "Nonprofit / association",
+  "size_band": "Medium (250-999)",
+  "business_role": "Utility / Grid",
+  "status": "active",
+  "updated_at": "2026-09-03T07:36:46.742653+00:00"
+ },
+ "institution": {
+  "institution_uid": "rb_9bcdea8152642ac7",
+  "canonical_name": "Electric Reliability Council of Texas",
+  "aliases": [
+   "ERCOT"
+  ],
+  "archetype_band": "regulator",
+  "secondary_archetypes": [],
+  "website_url": "https://www.ercot.com",
+  "hq_country": "US",
+  "company_uid": "cmp_679f547e89735198",
+  "jurisdiction_ids": [],
+  "status": "active",
+  "license_status": "unreviewed",
+  "updated_at": "2026-09-07T14:18:01.543126+00:00"
+ },
+ "jurisdiction": null,
+ "jw": null
+}

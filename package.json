@@ -2,7 +2,7 @@
   "name": "faraday-briefing-library",
   "version": "1.0.0",
   "private": true,
-  "description": "The Briefing Library storefront — a token-metered reading room for Faraday's cultivated intelligence.",
+  "description": "The Briefing Library storefront \u2014 a token-metered reading room for Faraday's cultivated intelligence.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -10,9 +10,14 @@
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "lanes:run": "node scripts/lanes/run.mjs",
+    "lanes:all": "node scripts/lanes/run-all.mjs",
+    "lanes:samples": "node scripts/lanes/run-all.mjs --dry-run --emit docs/briefs/samples",
+    "render:manuscript": "node scripts/templates/render.mjs --manuscript"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^1.6.0",
     "@clerk/nextjs": "^6.12.0",
     "@supabase/supabase-js": "^2.45.0",
     "@tanstack/react-virtual": "^3.10.8",
