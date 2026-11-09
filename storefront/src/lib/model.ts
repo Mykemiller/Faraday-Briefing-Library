@@ -13,15 +13,31 @@ export const TIER_META: Record<Tier, { label: string; pages: string }> = {
   profile: { label: "Profile", pages: "2 pp" },
 };
 
-/** Public vocabulary (Theater › Sector › Thread). Internal D-codes and type keys never render. */
-const TYPE_LABEL: Record<string, string> = {
-  theater: "Theater Briefing",
-  sector: "Sector Briefing",
-  thread: "Thread Briefing",
-  jurisdiction: "Jurisdiction Briefing",
-  company: "Company Briefing",
-  institution: "Institution Briefing",
+const str = (v: unknown): string | null => (typeof v === "string" && v.trim() !== "" ? v.trim() : null);
+const num = (v: unknown): number | null => (typeof v === "number" && Number.isFinite(v) ? v : null);
+const strArr = (v: unknown): string[] => (Array.isArray(v) ? v.map(str).filter((s): s is string => s !== null) : []);
+
+/**
+ * Public vocabulary (Brand Bible: Theater › Sector › Thread, plus Company and Jurisdiction).
+ * `label` is the eyebrow on one briefing; `shelf` is the shelf-nav label. Internal D-codes and
+ * type keys never render.
+ */
+export const BRIEFING_TYPES = ["theater", "sector", "thread", "company", "jurisdiction"] as const;
+export type BriefingType = (typeof BRIEFING_TYPES)[number];
+
+export const TYPE_META: Record<BriefingType, { label: string; shelf: string }> = {
+  theater: { label: "Theater Briefing", shelf: "Theater Briefings" },
+  sector: { label: "Sector Briefing", shelf: "Sector Briefings" },
+  thread: { label: "Thread Briefing", shelf: "Thread Briefings" },
+  company: { label: "Company Briefing", shelf: "Company Briefings" },
+  jurisdiction: { label: "Jurisdiction Briefing", shelf: "Jurisdiction Briefings" },
 };
+
+/** Rows typed with a retired or unknown key (e.g. `keyplayer`, `institution`) carry no type. */
+export function parseType(v: unknown): BriefingType | null {
+  const key = str(v)?.toLowerCase();
+  return key && (BRIEFING_TYPES as readonly string[]).includes(key) ? (key as BriefingType) : null;
+}
 
 /** Exactly the columns the storefront reads. Never `*`. */
 export const BRIEFING_COLUMNS = [
@@ -36,6 +52,7 @@ export const BRIEFING_COLUMNS = [
   "source_refs",
   "company_id",
   "institution_id",
+  "jurisdiction_id",
   "page_target",
   "version",
   "published_at",
@@ -50,6 +67,7 @@ export type Briefing = {
   id: string;
   title: string;
   tier: Tier | null;
+  type: BriefingType | null;
   typeLabel: string | null;
   byline: string | null;
   hypothesis: string | null;
@@ -61,12 +79,10 @@ export type Briefing = {
   version: number | null;
   publishedAt: string | null;
   lastRefreshed: string | null;
-  state: UsState | null;
+  /** `briefings.jurisdiction_id`: `US-XX` for a US state, ISO-3166 alpha-2 for a country. */
+  jurisdiction: JurisdictionId | null;
 };
 
-const str = (v: unknown): string | null => (typeof v === "string" && v.trim() !== "" ? v.trim() : null);
-const num = (v: unknown): number | null => (typeof v === "number" && Number.isFinite(v) ? v : null);
-const strArr = (v: unknown): string[] => (Array.isArray(v) ? v.map(str).filter((s): s is string => s !== null) : []);
 
 /** Internal taxonomy codes (D3, D7.2, T1 …) are never printed. */
 const INTERNAL_CODE = /^[A-Z]{1,3}\d+(\.\d+)*$/;
@@ -99,12 +115,13 @@ export function normalize(row: BriefingRow): Briefing | null {
   if (!id || !title) return null;
   const tierRaw = str(row.tier)?.toLowerCase();
   const tier = (TIERS as readonly string[]).includes(tierRaw ?? "") ? (tierRaw as Tier) : null;
-  const typeKey = str(row.briefing_type)?.toLowerCase();
+  const type = parseType(row.briefing_type);
   return {
     id,
     title,
     tier,
-    typeLabel: typeKey ? TYPE_LABEL[typeKey] ?? null : null,
+    type,
+    typeLabel: type ? TYPE_META[type].label : null,
     byline: str(row.byline),
     hypothesis: str(row.hypothesis),
     contents: strArr(row.contents),
@@ -115,7 +132,7 @@ export function normalize(row: BriefingRow): Briefing | null {
     version: num(row.version),
     publishedAt: str(row.published_at),
     lastRefreshed: str(row.last_refreshed),
-    state: inferState(title),
+    jurisdiction: parseJurisdiction(row.jurisdiction_id),
   };
 }
 
@@ -131,11 +148,10 @@ export function sortNewestFirst(list: Briefing[]): Briefing[] {
   });
 }
 
-// ── US state ─────────────────────────────────────────────────────────────────────────
-// `briefings` has no state column (BL-03). Until one exists, the state of a briefing is
-// read from its title: a full state name as a whole word, or ", XX" after a place name.
-// This only ever narrows a list; a briefing with no recognisable state is simply not
-// offered under any state. Replace with the real column when it lands.
+// ── Jurisdiction ─────────────────────────────────────────────────────────────────────
+// BL2-01 added `briefings.jurisdiction_id`: `US-XX` for a US state (incl. DC and PR), ISO-3166
+// alpha-2 for a country. That column is the ONLY source of a briefing's jurisdiction; nothing is
+// inferred from the title any more. A value outside the shape is treated as absent.
 
 export const US_STATES = {
   AL: "Alabama", AK: "Alaska", AZ: "Arizona", AR: "Arkansas", CA: "California", CO: "Colorado",
@@ -145,50 +161,80 @@ export const US_STATES = {
   MI: "Michigan", MN: "Minnesota", MS: "Mississippi", MO: "Missouri", MT: "Montana",
   NE: "Nebraska", NV: "Nevada", NH: "New Hampshire", NJ: "New Jersey", NM: "New Mexico",
   NY: "New York", NC: "North Carolina", ND: "North Dakota", OH: "Ohio", OK: "Oklahoma",
-  OR: "Oregon", PA: "Pennsylvania", RI: "Rhode Island", SC: "South Carolina", SD: "South Dakota",
-  TN: "Tennessee", TX: "Texas", UT: "Utah", VT: "Vermont", VA: "Virginia", WA: "Washington",
-  WV: "West Virginia", WI: "Wisconsin", WY: "Wyoming",
+  OR: "Oregon", PA: "Pennsylvania", PR: "Puerto Rico", RI: "Rhode Island", SC: "South Carolina",
+  SD: "South Dakota", TN: "Tennessee", TX: "Texas", UT: "Utah", VT: "Vermont", VA: "Virginia",
+  WA: "Washington", WV: "West Virginia", WI: "Wisconsin", WY: "Wyoming",
 } as const;
 export type UsState = keyof typeof US_STATES;
 
-const BY_NAME = Object.entries(US_STATES)
-  // Longest first so "West Virginia" wins over "Virginia".
-  .sort((a, b) => b[1].length - a[1].length)
-  .map(([code, name]) => ({ code: code as UsState, re: new RegExp(`\\b${name.replace(/ /g, "\\s+")}\\b`, "i") }));
+/** The column's CHECK shape (migration 20261109120000 §2). */
+const JURISDICTION_ID = /^(US-[A-Z]{2}|[A-Z]{2})$/;
+export type JurisdictionId = string;
 
-export function inferState(title: string): UsState | null {
-  if (/\bWashington,?\s*D\.?\s*C\.?(?![a-z])/i.test(title)) return "DC";
-  const abbr = title.match(/,\s*([A-Z]{2})\b/);
-  if (abbr && abbr[1] in US_STATES) return abbr[1] as UsState;
-  for (const { code, re } of BY_NAME) if (re.test(title)) return code;
-  return null;
+/** `US-XX` or `XX`; case-insensitive on the way in, canonical upper-case on the way out. */
+export function parseJurisdiction(v: unknown): JurisdictionId | null {
+  const id = str(v)?.toUpperCase();
+  if (!id || !JURISDICTION_ID.test(id)) return null;
+  if (id.startsWith("US-") && !(id.slice(3) in US_STATES)) return null;
+  return id;
+}
+
+export const isUsState = (id: JurisdictionId): boolean => id.startsWith("US-");
+
+const REGION_NAMES = (() => {
+  try {
+    return new Intl.DisplayNames(["en"], { type: "region", fallback: "none" });
+  } catch {
+    return null;
+  }
+})();
+
+/** Display name: the state name for `US-XX`, the English country name for an ISO code. */
+export function jurisdictionName(id: JurisdictionId): string {
+  if (isUsState(id)) return US_STATES[id.slice(3) as UsState] ?? id;
+  return REGION_NAMES?.of(id) ?? id;
 }
 
 // ── Filters ─────────────────────────────────────────────────────────────────────────
 
-export type Filters = { tier: Tier | null; state: UsState | null };
+export type Filters = { tier: Tier | null; type: BriefingType | null; jurisdiction: JurisdictionId | null };
 
+export const NO_FILTERS: Filters = { tier: null, type: null, jurisdiction: null };
+
+/**
+ * `?tier=deep|standard|profile` · `?type=theater|sector|thread|company|jurisdiction` ·
+ * `?jurisdiction=US-TX|DE|…`. `?state=TX` (the BL-12 parameter) is still accepted as an alias
+ * for `?jurisdiction=US-TX` so old links keep working; `?jurisdiction` wins when both are sent.
+ */
 export function parseFilters(sp: Record<string, string | string[] | undefined>): Filters {
   const one = (v: string | string[] | undefined) => (Array.isArray(v) ? v[0] : v)?.trim();
   const tier = one(sp.tier)?.toLowerCase();
   const state = one(sp.state)?.toUpperCase();
   return {
     tier: (TIERS as readonly string[]).includes(tier ?? "") ? (tier as Tier) : null,
-    state: state && state in US_STATES ? (state as UsState) : null,
+    type: parseType(one(sp.type)),
+    jurisdiction: parseJurisdiction(one(sp.jurisdiction)) ?? (state ? parseJurisdiction(`US-${state}`) : null),
   };
 }
 
 export function applyFilters(list: Briefing[], f: Filters): Briefing[] {
-  return list.filter((b) => (!f.tier || b.tier === f.tier) && (!f.state || b.state === f.state));
+  return list.filter(
+    (b) => (!f.tier || b.tier === f.tier) && (!f.type || b.type === f.type) && (!f.jurisdiction || b.jurisdiction === f.jurisdiction),
+  );
 }
 
-/** States present in the list, alphabetical by name: the state menu never offers a dead option. */
-export function stateOptions(list: Briefing[]): { code: UsState; name: string; count: number }[] {
-  const counts = new Map<UsState, number>();
-  for (const b of list) if (b.state) counts.set(b.state, (counts.get(b.state) ?? 0) + 1);
+export type JurisdictionOption = { id: JurisdictionId; name: string; count: number; group: "us" | "country" };
+
+/**
+ * Jurisdictions present in the list — US states first, then countries, each alphabetical by
+ * name. The menu never offers a dead option.
+ */
+export function jurisdictionOptions(list: Briefing[]): JurisdictionOption[] {
+  const counts = new Map<JurisdictionId, number>();
+  for (const b of list) if (b.jurisdiction) counts.set(b.jurisdiction, (counts.get(b.jurisdiction) ?? 0) + 1);
   return [...counts]
-    .map(([code, count]) => ({ code, name: US_STATES[code], count }))
-    .sort((a, b) => a.name.localeCompare(b.name));
+    .map(([id, count]) => ({ id, name: jurisdictionName(id), count, group: isUsState(id) ? ("us" as const) : ("country" as const) }))
+    .sort((a, b) => (a.group !== b.group ? (a.group === "us" ? -1 : 1) : a.name.localeCompare(b.name)));
 }
 
 export function tierCounts(list: Briefing[]): Record<Tier, number> {
@@ -197,13 +243,27 @@ export function tierCounts(list: Briefing[]): Record<Tier, number> {
   return c;
 }
 
+export function typeCounts(list: Briefing[]): Record<BriefingType, number> {
+  const c: Record<BriefingType, number> = { theater: 0, sector: 0, thread: 0, company: 0, jurisdiction: 0 };
+  for (const b of list) if (b.type) c[b.type]++;
+  return c;
+}
+
 /** Build a query string for a filter link, dropping empty values. */
 export function filterHref(f: Filters): string {
   const p = new URLSearchParams();
+  if (f.type) p.set("type", f.type);
   if (f.tier) p.set("tier", f.tier);
-  if (f.state) p.set("state", f.state);
+  if (f.jurisdiction) p.set("jurisdiction", f.jurisdiction);
   const s = p.toString();
   return s ? `/?${s}` : "/";
+}
+
+/** The human label for the active filters, e.g. "Jurisdiction Briefings · Deep · Texas". */
+export function activeFilterLabel(f: Filters): string {
+  return [f.type ? TYPE_META[f.type].shelf : null, f.tier ? TIER_META[f.tier].label : null, f.jurisdiction ? jurisdictionName(f.jurisdiction) : null]
+    .filter(Boolean)
+    .join(" · ");
 }
 
 // ── Dates ───────────────────────────────────────────────────────────────────────────

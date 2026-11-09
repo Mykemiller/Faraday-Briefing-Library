@@ -1,8 +1,9 @@
 import { listPublished } from "@/lib/briefings";
-import { applyFilters, parseFilters, stateOptions, tierCounts, filterHref, US_STATES, TIER_META } from "@/lib/model";
+import { NO_FILTERS, activeFilterLabel, applyFilters, filterHref, jurisdictionOptions, parseFilters, tierCounts, typeCounts } from "@/lib/model";
 import { DoubleRule } from "@/components/DoubleRule";
+import { TypeNav } from "@/components/TypeNav";
 import { TierChips } from "@/components/TierChips";
-import { StateSelect } from "@/components/StateSelect";
+import { JurisdictionSelect } from "@/components/JurisdictionSelect";
 import { BriefingRow } from "@/components/BriefingRow";
 import { EmptyState } from "@/components/EmptyState";
 import Link from "next/link";
@@ -15,10 +16,12 @@ export default async function LibraryIndex({ searchParams }: { searchParams: Rec
   const all = await listPublished();
   const filters = parseFilters(searchParams);
   const shown = applyFilters(all, filters);
-  const isFiltered = Boolean(filters.tier || filters.state);
-  const activeLabel = [filters.tier ? TIER_META[filters.tier].label : null, filters.state ? US_STATES[filters.state] : null]
-    .filter(Boolean)
-    .join(" · ");
+  const isFiltered = Boolean(filters.tier || filters.type || filters.jurisdiction);
+  const activeLabel = activeFilterLabel(filters);
+  // Each control counts against the OTHER active filters, so a count is what you would get by picking it.
+  const forTypes = applyFilters(all, { ...filters, type: null });
+  const forTiers = applyFilters(all, { ...filters, tier: null });
+  const forJurisdictions = applyFilters(all, { ...filters, jurisdiction: null });
 
   return (
     <div className="mx-auto max-w-page px-4 sm:px-8">
@@ -35,10 +38,13 @@ export default async function LibraryIndex({ searchParams }: { searchParams: Rec
       </section>
 
       {all.length > 0 ? (
-        <section aria-label="Filters" className="flex flex-col gap-6 pb-8 sm:flex-row sm:items-end sm:justify-between">
-          <TierChips filters={filters} counts={tierCounts(applyFilters(all, { ...filters, tier: null }))} total={applyFilters(all, { ...filters, tier: null }).length} />
-          <StateSelect options={stateOptions(applyFilters(all, { ...filters, state: null }))} value={filters.state} tier={filters.tier} />
-        </section>
+        <>
+          <TypeNav filters={filters} counts={typeCounts(forTypes)} total={forTypes.length} />
+          <section aria-label="Filters" className="flex flex-col gap-6 py-8 sm:flex-row sm:items-end sm:justify-between">
+            <TierChips filters={filters} counts={tierCounts(forTiers)} total={forTiers.length} />
+            <JurisdictionSelect options={jurisdictionOptions(forJurisdictions)} value={filters.jurisdiction} tier={filters.tier} type={filters.type} />
+          </section>
+        </>
       ) : null}
 
       {all.length > 0 ? (
@@ -48,7 +54,7 @@ export default async function LibraryIndex({ searchParams }: { searchParams: Rec
             {activeLabel ? <span className="text-ink"> · {activeLabel}</span> : null}
           </p>
           {isFiltered ? (
-            <Link href={filterHref({ tier: null, state: null })} className="text-sm text-forest underline decoration-gold underline-offset-4 hover:text-forest-mid">
+            <Link href={filterHref(NO_FILTERS)} className="text-sm text-forest underline decoration-gold underline-offset-4 hover:text-forest-mid">
               Clear filters
             </Link>
           ) : null}

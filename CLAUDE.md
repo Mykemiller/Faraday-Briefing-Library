@@ -57,6 +57,15 @@ Build Plan v2.0*. Next.js (App Router) · Clerk · Supabase · Stripe · Gamma.
   (the wallet's identity, resolved by email) rather than `auth.users`, so the JW wallet is reused
   rather than forked. Clerk is the auth front; server routes use the service role with explicit
   ownership checks (RLS is the deny-by-default backstop).
+- **Publishing is Myke's step (BL2-07, FDY-283).** `briefing_signoff` (one row per staged
+  version Myke approves) + `v_briefing_signoff_queue` (staged drafts ahead of the live row, with
+  G1/G2/G3 verdicts and `approved`) — migration `20261109150000`, additive only. `scripts/publish-batch.mjs`
+  promotes (`briefings_version_promote`, which snapshots first) and flips `status='published'` for
+  approved rows only; dry run by default, `--apply` to write, one `PUBLISHED` status-log line per
+  brief. No runner ever writes a sign-off. Runbook: `docs/ops/publish-batch.md`.
+- **Read-only storefront (`storefront/`, BL-12 → BL2-07):** filters are `?type=` (five public
+  shelves) · `?tier=` · `?jurisdiction=US-XX|CC` read from `briefings.jurisdiction_id`; no title
+  inference. Fixtures render only locally or on a Vercel *preview* that opts in; never production.
 
 ## Config constants (bound, never literal)
 
@@ -98,3 +107,15 @@ Nothing flips to subscriber-live or commerce-on without Myke. Deploy to a flag-g
 
 `npm run dev` · `npm run build` · `npm run typecheck` · `npm test` (Vitest: idempotency,
 cart-rollback, FTS/facet/keyset). Install uses `--legacy-peer-deps`.
+
+## V2.0 regeneration lanes (BL2-04 / BL2-05)
+
+`scripts/lanes/` drafts briefings from Faraday records and stages them in `briefings_versions`
+(kind=draft) — the live `briefings` row is never touched; publishing is a separate human step.
+Canon: `docs/ops/lanes.md`. Rules enforced in code: evidence only from `signals` / `artifacts` /
+`companies` / `institutions` / `faraday_*` (+ Jurisdiction Watch tables, read-only, for
+jurisdiction briefs); every factual sentence carries `[Sn]` resolving to `source_refs`; public
+vocabulary only (Theater / Sector / Thread / Signal, never "Key Player"); Profiles carry no Take,
+CTA or rating and are flagged thin below 6 Signals; page counts are measured from the PDF and
+out-of-range drafts are staged but logged `G1-AUTO · FAIL`. `npm run lanes:samples` regenerates
+`docs/briefs/samples/` from the captured fixture evidence.

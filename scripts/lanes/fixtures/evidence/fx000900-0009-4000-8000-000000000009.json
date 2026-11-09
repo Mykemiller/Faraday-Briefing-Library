@@ -1,0 +1,4397 @@
+{
+ "captured_at": "2026-11-09T10:38:08.896789+00:00",
+ "window": {
+  "from": "2025-11-09T10:38:08.896789+00:00",
+  "to": "2026-11-09T10:38:08.896789+00:00"
+ },
+ "subject": {
+  "kind": "jurisdiction",
+  "code": "DE"
+ },
+ "taxonomy": {
+  "themes": [
+   {
+    "theme_code": "T-001",
+    "name": "The Power Reckoning",
+    "tagline": "The grid wasn't built for this."
+   },
+   {
+    "theme_code": "T-002",
+    "name": "The Thermal Reckoning",
+    "tagline": "Air is over. The question is what replaces it."
+   },
+   {
+    "theme_code": "T-003",
+    "name": "The Consent Crisis",
+    "tagline": "Communities are the new permitting authority."
+   },
+   {
+    "theme_code": "T-004",
+    "name": "The Capital Concentration",
+    "tagline": "Fewer hands. More capital. Higher stakes."
+   },
+   {
+    "theme_code": "T-005",
+    "name": "The Inference Economy",
+    "tagline": "Training built the factories. Inference fills them."
+   },
+   {
+    "theme_code": "T-006",
+    "name": "The Sovereign AI Race",
+    "tagline": "Compute is the new strategic reserve."
+   },
+   {
+    "theme_code": "T-007",
+    "name": "The New Energy Stack",
+    "tagline": "The grid is no longer the default."
+   }
+  ],
+  "domains": [
+   {
+    "domain_code": "D1",
+    "domain_name": "Chips & Density",
+    "short_desc": "GPU generations cause every downstream consequence"
+   },
+   {
+    "domain_code": "D2",
+    "domain_name": "Power Architecture",
+    "short_desc": "800V DC will reshape the entire build stack"
+   },
+   {
+    "domain_code": "D3",
+    "domain_name": "Grid & Regulatory",
+    "short_desc": "Entitled powered land is the scarcest asset"
+   },
+   {
+    "domain_code": "D4",
+    "domain_name": "M&A & Capital Markets",
+    "short_desc": "Capital velocity is an intelligence product"
+   },
+   {
+    "domain_code": "D5",
+    "domain_name": "Hyperscaler Activity",
+    "short_desc": "The Big 5 set the demand curve"
+   },
+   {
+    "domain_code": "D6",
+    "domain_name": "New Entrants",
+    "short_desc": "The gold rush is attracting new capital categories"
+   },
+   {
+    "domain_code": "D7",
+    "domain_name": "Cooling & Water Technology",
+    "short_desc": "Liquid cooling is the biggest capex opportunity now"
+   },
+   {
+    "domain_code": "D8",
+    "domain_name": "People & Signals",
+    "short_desc": "Executive moves are leading indicators"
+   },
+   {
+    "domain_code": "D9",
+    "domain_name": "Orchestration Intelligence & Control Plane",
+    "short_desc": "Orchestration decisions affect facility capex"
+   },
+   {
+    "domain_code": "D10",
+    "domain_name": "Construction",
+    "short_desc": "Build execution is now a strategic differentiator"
+   },
+   {
+    "domain_code": "D11",
+    "domain_name": "Sustainability",
+    "short_desc": "Sustainability is a first-order siting driver"
+   },
+   {
+    "domain_code": "D12",
+    "domain_name": "Networking & Interconnect",
+    "short_desc": "Network architecture — subsea cable to NVLink — is the under-tracked constraint on AI compute delivery"
+   },
+   {
+    "domain_code": "D13",
+    "domain_name": "Community Relations",
+    "short_desc": "Data centers are losing at the planning commission"
+   },
+   {
+    "domain_code": "D14",
+    "domain_name": "Real Estate & Site Selection",
+    "short_desc": "Entitled powered land is the scarcest asset"
+   },
+   {
+    "domain_code": "D15",
+    "domain_name": "Sovereign AI & Geopolitics",
+    "short_desc": "Export controls reshape the global compute map"
+   },
+   {
+    "domain_code": "D16",
+    "domain_name": "Cyber & Physical Security and Resilience",
+    "short_desc": "Security for AI infrastructure is a distinct risk surface enterprise frameworks don't address"
+   },
+   {
+    "domain_code": "D17",
+    "domain_name": "Workforce & Labor Markets",
+    "short_desc": "Labor is now a hard delivery constraint"
+   },
+   {
+    "domain_code": "D18",
+    "domain_name": "Community Opposition & Regulatory Risk",
+    "short_desc": "Opposition is the supply constraint markets ignore"
+   },
+   {
+    "domain_code": "D19",
+    "domain_name": "Tax, Incentives & Fiscal Policy",
+    "short_desc": "Fiscal policy is the second power grid"
+   },
+   {
+    "domain_code": "D20",
+    "domain_name": "Facility IT & Operational Technology",
+    "short_desc": "The facility's nervous system is a separate intelligence surface from its compute workload"
+   },
+   {
+    "domain_code": "D21",
+    "domain_name": "Insurance & Risk Markets",
+    "short_desc": "Insurability is the next siting constraint after power and water"
+   },
+   {
+    "domain_code": "D22",
+    "domain_name": "Industry Media & Analyst Coverage",
+    "short_desc": "Who covers the story shapes what the market believes"
+   },
+   {
+    "domain_code": "D23",
+    "domain_name": "Outage Intelligence & Emergency Response",
+    "short_desc": "Failure is the cheapest intelligence"
+   }
+  ],
+  "subdomains": [
+   {
+    "subdomain_code": "D2.11",
+    "domain_code": "D2",
+    "display_name": "Power Price Formation & Cost Structure",
+    "theme_tags": [
+     "T-001",
+     "T-007"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D14.8",
+    "domain_code": "D14",
+    "display_name": "Facility Inventory & Classification",
+    "theme_tags": [
+     "T-001",
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D1.1",
+    "domain_code": "D1",
+    "display_name": "GPU Architecture & Roadmap",
+    "theme_tags": [
+     "T-002",
+     "T-005"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D1.2",
+    "domain_code": "D1",
+    "display_name": "Rack & Power Density Progression",
+    "theme_tags": [
+     "T-001",
+     "T-002"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D1.3",
+    "domain_code": "D1",
+    "display_name": "Competing Silicon & Merchant Accelerators",
+    "theme_tags": [
+     "T-005"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D1.4",
+    "domain_code": "D1",
+    "display_name": "Memory (HBM & Next-Gen)",
+    "theme_tags": [
+     "T-002",
+     "T-005"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D1.5",
+    "domain_code": "D1",
+    "display_name": "Inference-Class Silicon & Economics",
+    "theme_tags": [
+     "T-005"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D1.6",
+    "domain_code": "D1",
+    "display_name": "Chip Allocation & Supply Politics",
+    "theme_tags": [
+     "T-005",
+     "T-006"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D1.7",
+    "domain_code": "D1",
+    "display_name": "Hyperscaler-Class Silicon & Custom Accelerators",
+    "theme_tags": [
+     "T-005"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D1.8",
+    "domain_code": "D1",
+    "display_name": "Advanced Packaging & Substrate Capacity",
+    "theme_tags": [
+     "T-002",
+     "T-005"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D2.1",
+    "domain_code": "D2",
+    "display_name": "800V DC Power Distribution",
+    "theme_tags": [
+     "T-001",
+     "T-007"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D2.3",
+    "domain_code": "D2",
+    "display_name": "UPS, Storage & Power Conditioning",
+    "theme_tags": [
+     "T-007"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D2.4",
+    "domain_code": "D2",
+    "display_name": "DC Power Delivery at the Rack",
+    "theme_tags": [
+     "T-002",
+     "T-001"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D2.5",
+    "domain_code": "D2",
+    "display_name": "Nuclear & SMR Offtake",
+    "theme_tags": [
+     "T-001",
+     "T-006",
+     "T-007"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D2.2",
+    "domain_code": "D2",
+    "display_name": "BTM Strategy & Cross-Cutting Economics",
+    "theme_tags": [
+     "T-001",
+     "T-007"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D2.6",
+    "domain_code": "D2",
+    "display_name": "Behind-the-Fence Gas & Fuel Cells",
+    "theme_tags": [
+     "T-001",
+     "T-007"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D2.7",
+    "domain_code": "D2",
+    "display_name": "Renewables, Storage & PPAs for DC Power",
+    "theme_tags": [
+     "T-007",
+     "T-001"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D2.8",
+    "domain_code": "D2",
+    "display_name": "Grid-Interactive Load & Demand Response",
+    "theme_tags": [
+     "T-001",
+     "T-007"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D2.9",
+    "domain_code": "D2",
+    "display_name": "Microgrid Integration & Islanding",
+    "theme_tags": [
+     "T-001",
+     "T-007"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D2.10",
+    "domain_code": "D2",
+    "display_name": "Solid-State Transformers & Advanced Power Conversion",
+    "theme_tags": [
+     "T-001",
+     "T-002",
+     "T-007"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D3.1",
+    "domain_code": "D3",
+    "display_name": "Interconnection Queue & Grid Access",
+    "theme_tags": [
+     "T-001",
+     "T-003"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D3.2",
+    "domain_code": "D3",
+    "display_name": "State Moratorium & Legislative Landscape",
+    "theme_tags": [
+     "T-001",
+     "T-003"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D3.3",
+    "domain_code": "D3",
+    "display_name": "Utility Rate Cases & PUC Proceedings",
+    "theme_tags": [
+     "T-001",
+     "T-003",
+     "T-007"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D3.4",
+    "domain_code": "D3",
+    "display_name": "Transmission Buildout & FERC Policy",
+    "theme_tags": [
+     "T-001",
+     "T-007"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D3.5",
+    "domain_code": "D3",
+    "display_name": "Large-Load Tariff Design & Co-Location Rules",
+    "theme_tags": [
+     "T-001",
+     "T-007"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D4.1",
+    "domain_code": "D4",
+    "display_name": "PE & Infrastructure Fund Activity",
+    "theme_tags": [
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D4.2",
+    "domain_code": "D4",
+    "display_name": "DC REIT Performance & Valuation",
+    "theme_tags": [
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D4.3",
+    "domain_code": "D4",
+    "display_name": "Sovereign Wealth & Institutional Capital",
+    "theme_tags": [
+     "T-004",
+     "T-006"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D4.4",
+    "domain_code": "D4",
+    "display_name": "Integrated Infrastructure Vendor M&A",
+    "theme_tags": [
+     "T-002",
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D4.5",
+    "domain_code": "D4",
+    "display_name": "Private Credit & DC Debt Financing",
+    "theme_tags": [
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D4.6",
+    "domain_code": "D4",
+    "display_name": "GPU-Backed & Neocloud Financing",
+    "theme_tags": [
+     "T-004",
+     "T-005"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D5.1",
+    "domain_code": "D5",
+    "display_name": "Big 5 Capex & Campus Announcements",
+    "theme_tags": [
+     "T-001",
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D5.2",
+    "domain_code": "D5",
+    "display_name": "Hyperscaler Custom Silicon Strategy",
+    "theme_tags": [
+     "T-005"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D5.3",
+    "domain_code": "D5",
+    "display_name": "Build-vs-Lease & Colocation Strategy",
+    "theme_tags": [
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D5.4",
+    "domain_code": "D5",
+    "display_name": "Capacity Geography & Region Expansion",
+    "theme_tags": [
+     "T-001",
+     "T-006"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D6.1",
+    "domain_code": "D6",
+    "display_name": "Neocloud Infrastructure",
+    "theme_tags": [
+     "T-004",
+     "T-005"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D6.2",
+    "domain_code": "D6",
+    "display_name": "Sovereign AI Programs & National Compute",
+    "theme_tags": [
+     "T-006"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D6.3",
+    "domain_code": "D6",
+    "display_name": "AI Labs & Model Developers as Infrastructure Buyers",
+    "theme_tags": [
+     "T-004",
+     "T-005"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D7.1",
+    "domain_code": "D7",
+    "display_name": "Direct-to-Chip Liquid Cooling (DLC)",
+    "theme_tags": [
+     "T-002"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D7.2",
+    "domain_code": "D7",
+    "display_name": "Immersion Cooling",
+    "theme_tags": [
+     "T-002"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D7.3",
+    "domain_code": "D7",
+    "display_name": "Water Use & Waterless Cooling Strategies",
+    "theme_tags": [
+     "T-002",
+     "T-003"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D7.4",
+    "domain_code": "D7",
+    "display_name": "Thermal Components & Coolant Supply Chain",
+    "theme_tags": [
+     "T-002"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D8.1",
+    "domain_code": "D8",
+    "display_name": "Executive Movement & C-Suite Intelligence",
+    "theme_tags": [
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D8.2",
+    "domain_code": "D8",
+    "display_name": "Conference Intelligence & Speaking Circuit",
+    "theme_tags": [
+     "T-001",
+     "T-002",
+     "T-003",
+     "T-004",
+     "T-005",
+     "T-006",
+     "T-007"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D8.3",
+    "domain_code": "D8",
+    "display_name": "Talent Flows & Specialized Hiring Signals",
+    "theme_tags": [
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D8.4",
+    "domain_code": "D8",
+    "display_name": "Founder & Operator Network Mapping",
+    "theme_tags": [
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D8.5",
+    "domain_code": "D8",
+    "display_name": "Earnings-Call & Investor-Day Signal Extraction",
+    "theme_tags": [
+     "T-004",
+     "T-005"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D9.1",
+    "domain_code": "D9",
+    "display_name": "AI Factory Orchestration & DCIM",
+    "theme_tags": [
+     "T-005"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D9.2",
+    "domain_code": "D9",
+    "display_name": "GPU Utilization & Compute Scheduling Economics",
+    "theme_tags": [
+     "T-005"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D9.3",
+    "domain_code": "D9",
+    "display_name": "Inference Serving & Model-Routing Infrastructure",
+    "theme_tags": [
+     "T-005"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D9.4",
+    "domain_code": "D9",
+    "display_name": "Power-Aware & Grid-Responsive Workload Orchestration",
+    "theme_tags": [
+     "T-001",
+     "T-005"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D10.1",
+    "domain_code": "D10",
+    "display_name": "Long-Lead Equipment & Supply Chain",
+    "theme_tags": [
+     "T-001"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D10.2",
+    "domain_code": "D10",
+    "display_name": "GC/EPC Capacity & Stick-Built Execution",
+    "theme_tags": [
+     "T-001"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D10.3",
+    "domain_code": "D10",
+    "display_name": "Modular & Prefabricated Delivery",
+    "theme_tags": [
+     "T-002",
+     "T-001"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D10.4",
+    "domain_code": "D10",
+    "display_name": "Project Delivery & Schedule Intelligence",
+    "theme_tags": [
+     "T-001",
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D10.5",
+    "domain_code": "D10",
+    "display_name": "Construction Cost Curves & Inflation",
+    "theme_tags": [
+     "T-001",
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D11.1",
+    "domain_code": "D11",
+    "display_name": "Clean Energy Procurement (PPA/REC/CFE)",
+    "theme_tags": [
+     "T-007"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D11.2",
+    "domain_code": "D11",
+    "display_name": "Carbon Accounting & Scope 1-3",
+    "theme_tags": [
+     "T-003"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D11.3",
+    "domain_code": "D11",
+    "display_name": "Water Stewardship & Rights",
+    "theme_tags": [
+     "T-002",
+     "T-003",
+     "T-007"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D11.4",
+    "domain_code": "D11",
+    "display_name": "Heat Recovery & Circular DC",
+    "theme_tags": [
+     "T-002",
+     "T-007"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D11.5",
+    "domain_code": "D11",
+    "display_name": "Sustainability Regulation & Disclosure",
+    "theme_tags": [
+     "T-003",
+     "T-007"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D11.6",
+    "domain_code": "D11",
+    "display_name": "Embodied Carbon & Materials",
+    "theme_tags": [
+     "T-003"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D12.1",
+    "domain_code": "D12",
+    "display_name": "Long-Haul & Dark Fiber Leasing",
+    "theme_tags": [
+     "T-001",
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D12.2",
+    "domain_code": "D12",
+    "display_name": "Subsea Cable Systems",
+    "theme_tags": [
+     "T-004",
+     "T-005",
+     "T-006"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D12.3",
+    "domain_code": "D12",
+    "display_name": "AI Back-End Fabric & Interconnect",
+    "theme_tags": [
+     "T-002",
+     "T-005"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D12.4",
+    "domain_code": "D12",
+    "display_name": "Cross-Connect & Cloud On-Ramp",
+    "theme_tags": [
+     "T-005",
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D12.5",
+    "domain_code": "D12",
+    "display_name": "Optical Transceivers & Co-Packaged Optics",
+    "theme_tags": [
+     "T-002",
+     "T-005"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D12.6",
+    "domain_code": "D12",
+    "display_name": "Small Cell, Private 5G & Terrestrial Wireless",
+    "theme_tags": [
+     "T-005",
+     "T-001"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D12.7",
+    "domain_code": "D12",
+    "display_name": "LEO / Satellite Broadband",
+    "theme_tags": [
+     "T-001",
+     "T-005",
+     "T-006"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D13.1",
+    "domain_code": "D13",
+    "display_name": "Community Benefits & Host Agreements",
+    "theme_tags": [
+     "T-003",
+     "T-001"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D13.2",
+    "domain_code": "D13",
+    "display_name": "Opposition Movements & Organized Groups",
+    "theme_tags": [
+     "T-003",
+     "T-001"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D13.3",
+    "domain_code": "D13",
+    "display_name": "Local Permitting & Entitlement Strategy",
+    "theme_tags": [
+     "T-003",
+     "T-001"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D13.4",
+    "domain_code": "D13",
+    "display_name": "Public Engagement Practice",
+    "theme_tags": [
+     "T-003"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D13.5",
+    "domain_code": "D13",
+    "display_name": "Economic Impact Narratives & Legitimacy",
+    "theme_tags": [
+     "T-003"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D14.2",
+    "domain_code": "D14",
+    "display_name": "Primary Market Intelligence (NA Tier 1)",
+    "theme_tags": [
+     "T-001",
+     "T-003",
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D14.3",
+    "domain_code": "D14",
+    "display_name": "Emerging & Second-Tier Markets",
+    "theme_tags": [
+     "T-001",
+     "T-003",
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D14.4",
+    "domain_code": "D14",
+    "display_name": "International Markets",
+    "theme_tags": [
+     "T-004",
+     "T-006"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D14.5",
+    "domain_code": "D14",
+    "display_name": "Land Pricing & Acquisition",
+    "theme_tags": [
+     "T-004",
+     "T-001"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D14.7",
+    "domain_code": "D14",
+    "display_name": "Campus Portfolio Strategy & Build Models",
+    "theme_tags": [
+     "T-004",
+     "T-005"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D15.1",
+    "domain_code": "D15",
+    "display_name": "Chip Export Controls & Outbound Dual-Use",
+    "theme_tags": [
+     "T-006"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D15.2",
+    "domain_code": "D15",
+    "display_name": "National Compute Strategies & Sovereign Programs",
+    "theme_tags": [
+     "T-006",
+     "T-005",
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D15.3",
+    "domain_code": "D15",
+    "display_name": "Bilateral & Multilateral AI Diplomacy",
+    "theme_tags": [
+     "T-006"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D15.4",
+    "domain_code": "D15",
+    "display_name": "Strategic Minerals & Upstream Supply",
+    "theme_tags": [
+     "T-006",
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D15.5",
+    "domain_code": "D15",
+    "display_name": "Data Sovereignty & Cross-Border Flows",
+    "theme_tags": [
+     "T-006",
+     "T-003"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D15.6",
+    "domain_code": "D15",
+    "display_name": "Inbound Investment Screening",
+    "theme_tags": [
+     "T-006",
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D16.1",
+    "domain_code": "D16",
+    "display_name": "Enterprise IT & Cloud Security",
+    "theme_tags": [
+     "T-006"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D16.2",
+    "domain_code": "D16",
+    "display_name": "OT / ICS / SCADA Cybersecurity",
+    "theme_tags": [
+     "T-006"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D16.3",
+    "domain_code": "D16",
+    "display_name": "Physical Security & Access Control",
+    "theme_tags": [
+     "T-006"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D16.4",
+    "domain_code": "D16",
+    "display_name": "State-Sponsored & Advanced Persistent Threats",
+    "theme_tags": [
+     "T-006"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D16.5",
+    "domain_code": "D16",
+    "display_name": "Software Supply Chain & Vendor Risk",
+    "theme_tags": [
+     "T-006"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D16.6",
+    "domain_code": "D16",
+    "display_name": "Security Operations & Incident Response",
+    "theme_tags": [
+     "T-006"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D17.1",
+    "domain_code": "D17",
+    "display_name": "Construction & Skilled Trades Labor",
+    "theme_tags": [
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D17.2",
+    "domain_code": "D17",
+    "display_name": "Operations & Technical Workforce",
+    "theme_tags": [
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D17.3",
+    "domain_code": "D17",
+    "display_name": "Immigration, Policy & Regional Labor Competition",
+    "theme_tags": [
+     "T-003",
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D18.1",
+    "domain_code": "D18",
+    "display_name": "Project Opposition Register",
+    "theme_tags": [
+     "T-003"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D18.2",
+    "domain_code": "D18",
+    "display_name": "Regulatory & Permitting Denial Tracking",
+    "theme_tags": [
+     "T-003"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D18.3",
+    "domain_code": "D18",
+    "display_name": "Reputational & Political Risk Register",
+    "theme_tags": [
+     "T-003"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D19.1",
+    "domain_code": "D19",
+    "display_name": "State & Local Tax Incentives",
+    "theme_tags": [
+     "T-003",
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D19.2",
+    "domain_code": "D19",
+    "display_name": "Federal Tax Policy",
+    "theme_tags": [
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D19.3",
+    "domain_code": "D19",
+    "display_name": "International Tax & Transfer Pricing",
+    "theme_tags": [
+     "T-006",
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D19.4",
+    "domain_code": "D19",
+    "display_name": "Tax Incentive Backlash & Clawback",
+    "theme_tags": [
+     "T-003"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D19.5",
+    "domain_code": "D19",
+    "display_name": "Tax-Driven Deal Structuring",
+    "theme_tags": [
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D20.1",
+    "domain_code": "D20",
+    "display_name": "Building Management Systems & HVAC Control",
+    "theme_tags": [
+     "T-001",
+     "T-002"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D20.2",
+    "domain_code": "D20",
+    "display_name": "Facility DCIM & Digital Twin",
+    "theme_tags": [
+     "T-001",
+     "T-002"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D21.1",
+    "domain_code": "D21",
+    "display_name": "DC Property & Casualty Insurance",
+    "theme_tags": [
+     "T-001"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D21.2",
+    "domain_code": "D21",
+    "display_name": "Cyber Insurance & Tech E&O",
+    "theme_tags": [
+     "T-004",
+     "T-006"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D21.3",
+    "domain_code": "D21",
+    "display_name": "Climate & Parametric Risk Products",
+    "theme_tags": [
+     "T-003"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D21.4",
+    "domain_code": "D21",
+    "display_name": "Lender Insurance & Risk Transfer",
+    "theme_tags": [
+     "T-001",
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D22.1",
+    "domain_code": "D22",
+    "display_name": "U.S. Media Coverage",
+    "theme_tags": [
+     "T-001",
+     "T-002",
+     "T-003",
+     "T-004",
+     "T-005",
+     "T-006",
+     "T-007"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D22.2",
+    "domain_code": "D22",
+    "display_name": "EU Media Coverage",
+    "theme_tags": [
+     "T-001",
+     "T-002",
+     "T-003",
+     "T-004",
+     "T-005",
+     "T-006",
+     "T-007"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D22.3",
+    "domain_code": "D22",
+    "display_name": "APAC / LATAM / MENA Media Coverage",
+    "theme_tags": [
+     "T-001",
+     "T-002",
+     "T-003",
+     "T-004",
+     "T-005",
+     "T-006",
+     "T-007"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D22.4",
+    "domain_code": "D22",
+    "display_name": "Industry Analysts",
+    "theme_tags": [
+     "T-001",
+     "T-002",
+     "T-003",
+     "T-004",
+     "T-005",
+     "T-006",
+     "T-007"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D23.1",
+    "domain_code": "D23",
+    "display_name": "Major Outage Postmortems",
+    "theme_tags": [
+     "T-001",
+     "T-005"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D23.2",
+    "domain_code": "D23",
+    "display_name": "Grid Events & Physical Disasters",
+    "theme_tags": [
+     "T-001",
+     "T-003"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D23.3",
+    "domain_code": "D23",
+    "display_name": "Cyber Incidents Targeting DC Infrastructure",
+    "theme_tags": [
+     "T-006"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D23.4",
+    "domain_code": "D23",
+    "display_name": "Business Continuity & Disaster Recovery",
+    "theme_tags": [
+     "T-001"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D14.1",
+    "domain_code": "D14",
+    "display_name": "Site Selection Methodology & Site Readiness",
+    "theme_tags": [
+     "T-001",
+     "T-003",
+     "T-004"
+    ],
+    "active": true
+   },
+   {
+    "subdomain_code": "D14.6",
+    "domain_code": "D14",
+    "display_name": "Site Certification & Readiness",
+    "theme_tags": [
+     "T-001",
+     "T-004"
+    ],
+    "active": false
+   }
+  ]
+ },
+ "signals": [
+  {
+   "id": "014bbe94-a474-4c36-828b-5b9ec9f087bf",
+   "fired_at": "2026-11-07T07:30:00.143666+00:00",
+   "event_date": "2026-11-05",
+   "source": "pipeline:auto:enrichment",
+   "framing": "Polar DC Group Limited secured over €1B in 2026 funding from H.I.G. Capital, LIAN Group, and Palistar Capital to advance AI data center development in Finland and Germany, focusing on land acquisition, grid connections, design, and permitti",
+   "faradays_take": "Polar DC Group Limited secured over €1B in 2026 funding from H.I.G. Capital, LIAN Group, and Palistar Capital to advance AI data center development in Finland and Germany, focusing on land acquisition, grid connections, design, and permitting.",
+   "byline": "Gil",
+   "conviction": "Medium",
+   "theme_tags": [],
+   "domain_tags": [
+    "D1"
+   ],
+   "subdomain_tags": [
+    "D4.4"
+   ],
+   "company_tags": [
+    "cmp_650a629685b30154"
+   ],
+   "source_url": "https://www.unite.ai/polar-secures-over-1b-in-2026-funding-for-ai-data-centers/",
+   "artifact_id": "94b6d3af-dd1b-4d4d-9c8b-765c31457487",
+   "artifact": {
+    "title": "Polar Secures Over €1B in 2026 Funding for AI Data Centers",
+    "source_name": null,
+    "summary": "Polar DC Group Limited announced on November 5, 2026 that it has secured more than €1 billion in aggregate funding commitments during 2026, combining additional shareholder investment from H.I.G. Capital and LIAN Group with a new Palistar Capital facility. Capital is directed at advancing its European development pipeline in Finland and Germany, covering early-stage land acquisition, grid connections, design, and permitting.",
+    "published_at": "2026-11-05T00:00:00+00:00",
+    "source_type": "web_news",
+    "license_status": null,
+    "source_url": "https://www.unite.ai/polar-secures-over-1b-in-2026-funding-for-ai-data-centers/"
+   }
+  },
+  {
+   "id": "c6a46599-db8e-4836-8617-98057eaaaca7",
+   "fired_at": "2026-11-03T07:30:00.132194+00:00",
+   "event_date": "2026-11-02",
+   "source": "pipeline:auto:enrichment",
+   "framing": "Alibaba Cloud launched its first public cloud region in the Netherlands with two Amsterdam data centres on November 2, 2026, expanding its global network to 32 regions. The expansion supports European cloud and AI demand with planned furthe",
+   "faradays_take": "Alibaba Cloud launched its first public cloud region in the Netherlands with two Amsterdam data centres on November 2, 2026, expanding its global network to 32 regions. The expansion supports European cloud and AI demand with planned further buildout in Finland, Germany, and France.",
+   "byline": "Gil",
+   "conviction": "Medium",
+   "theme_tags": [],
+   "domain_tags": [
+    "D14"
+   ],
+   "subdomain_tags": [],
+   "company_tags": [
+    "cmp_1f237abbd163733c"
+   ],
+   "source_url": "https://thetechcapital.com/alibaba-cloud-launches-amsterdam-region-with-two-new-data-centres/",
+   "artifact_id": "9e0fdb52-b386-460c-a528-9ae670fb5de0",
+   "artifact": {
+    "title": "Alibaba Cloud Launches Amsterdam Region with Two New Data Centres",
+    "source_name": null,
+    "summary": "Alibaba Cloud launched its first public cloud region in the Netherlands on November 2, 2026, opening two data centres in Amsterdam to serve European cloud and AI demand. The expansion brings Alibaba Cloud's global network to 32 regions, with further buildout planned in Finland, Germany, and France.",
+    "published_at": "2026-11-02T00:00:00+00:00",
+    "source_type": "web_news",
+    "license_status": null,
+    "source_url": "https://thetechcapital.com/alibaba-cloud-launches-amsterdam-region-with-two-new-data-centres/"
+   }
+  },
+  {
+   "id": "b4f487fd-4e7e-4600-a506-f5cdeed58f68",
+   "fired_at": "2026-11-08T07:30:00.146404+00:00",
+   "event_date": "2026-10-31",
+   "source": "pipeline:auto:enrichment",
+   "framing": "Europe's data center market valued at $144.3B in 2025 with 12.75% CAGR through 2033; Asia-Pacific growing faster at 15.11% CAGR. AWS announced €7.8B investment in European Sovereign Cloud in Brandenburg, Germany.",
+   "faradays_take": "Europe's data center market valued at $144.3B in 2025 with 12.75% CAGR through 2033; Asia-Pacific growing faster at 15.11% CAGR. AWS announced €7.8B investment in European Sovereign Cloud in Brandenburg, Germany.",
+   "byline": "Gil",
+   "conviction": "Medium",
+   "theme_tags": [],
+   "domain_tags": [
+    "D14"
+   ],
+   "subdomain_tags": [
+    "D14.4",
+    "D5.1"
+   ],
+   "company_tags": [
+    "cmp_471d41bfea8b0180"
+   ],
+   "source_url": "https://www.kingsresearch.com/report/global-data-center-market-3179",
+   "artifact_id": "f7a8da7f-b76a-40cd-b15c-52f338c8b0f6",
+   "artifact": {
+    "title": "Data Center Market Size, Share & Growth Report 2026–2033 – Kings Research",
+    "source_name": null,
+    "summary": "The Europe data center market is valued at $144.3 billion in 2025 and projected to grow at 12.75% CAGR through 2033, while Asia-Pacific is forecast as the fastest-growing region at 15.11% CAGR. In January 2026, AWS launched its European Sovereign Cloud in Brandenburg, Germany, backed by over €7.8 billion in planned investment.",
+    "published_at": "2026-10-31T00:00:00+00:00",
+    "source_type": "web_news",
+    "license_status": null,
+    "source_url": "https://www.kingsresearch.com/report/global-data-center-market-3179"
+   }
+  },
+  {
+   "id": "fe819f35-7370-46b6-a54c-34ea516115fe",
+   "fired_at": "2026-10-30T07:30:00.175866+00:00",
+   "event_date": "2026-10-29",
+   "source": "pipeline:auto:enrichment",
+   "framing": "PreussenElektra and NVIDIA are evaluating former nuclear plant sites in Germany for potential conversion into AI data centers, assessing power supply, grid connectivity, and industrial infrastructure requirements.",
+   "faradays_take": "PreussenElektra and NVIDIA are evaluating former nuclear plant sites in Germany for potential conversion into AI data centers, assessing power supply, grid connectivity, and industrial infrastructure requirements.",
+   "byline": "Gil",
+   "conviction": "Medium",
+   "theme_tags": [],
+   "domain_tags": [
+    "D22"
+   ],
+   "subdomain_tags": [
+    "D1.1"
+   ],
+   "company_tags": [
+    "cmp_540df7f83845146f"
+   ],
+   "source_url": "https://w.media/preussenelektra-and-nvidia-assess-former-nuclear-plant-sites-for-ai-data-centers/",
+   "artifact_id": "811fdd42-e723-44d5-89e6-41020a410350",
+   "artifact": {
+    "title": "PreussenElektra and NVIDIA assess former nuclear plant sites for AI data centers",
+    "source_name": "W.Media",
+    "summary": "PreussenElektra, a German energy company, and NVIDIA are assessing whether former nuclear power plant sites in Germany could be redeveloped as AI data centers. The assessment will examine whether the sites have the power supply, grid connections, industrial infrastructure and available land needed to support large-scale AI operations. According to a press release, PreussenElektra will […]",
+    "published_at": "2026-10-29T05:42:41+00:00",
+    "source_type": "web_news",
+    "license_status": "cleared",
+    "source_url": "https://w.media/preussenelektra-and-nvidia-assess-former-nuclear-plant-sites-for-ai-data-centers/"
+   }
+  },
+  {
+   "id": "f6c72c40-9c12-4f02-a794-f57ad184c6a1",
+   "fired_at": "2026-11-04T07:30:00.155128+00:00",
+   "event_date": "2026-10-26",
+   "source": "pipeline:auto:enrichment",
+   "framing": "Germany's Energy Efficiency Act mandates minimum 10-20% energy reuse factors for new data centers starting 2026, driving waste heat recovery as a regulatory requirement. Google's Hamina facility demonstrates commercial viability by supplyin",
+   "faradays_take": "Germany's Energy Efficiency Act mandates minimum 10-20% energy reuse factors for new data centers starting 2026, driving waste heat recovery as a regulatory requirement. Google's Hamina facility demonstrates commercial viability by supplying 80% of local district heating demand, with heat recovery capex ranging €400,000-€700,000 per MW.",
+   "byline": "Gil",
+   "conviction": "Medium",
+   "theme_tags": [],
+   "domain_tags": [
+    "D11"
+   ],
+   "subdomain_tags": [],
+   "company_tags": [
+    "cmp_c822c1b63853ed27"
+   ],
+   "source_url": "https://www.moduledge.com/blog/data-center-waste-heat-recovery",
+   "artifact_id": "993bb6cd-f75e-4aff-b115-4603d467b4f5",
+   "artifact": {
+    "title": "Data Center Waste Heat Recovery: Turn Cooling Costs Into Revenue",
+    "source_name": null,
+    "summary": "Germany's Energy Efficiency Act (EnEfG) mandated a minimum Energy Reuse Factor (ERF) of 10% for new data centers from July 1, 2026, escalating to 20% by July 2028, making waste heat recovery a legal requirement across Europe's largest economy; capital expenditure for heat recovery infrastructure runs €400,000–€700,000 per MW on the data center side. Google's Hamina, Finland data center already supplies 80% of the city's annual district heating demand via a 7.5 MW heat pump plant.",
+    "published_at": "2026-10-26T00:00:00+00:00",
+    "source_type": "web_news",
+    "license_status": null,
+    "source_url": "https://www.moduledge.com/blog/data-center-waste-heat-recovery"
+   }
+  },
+  {
+   "id": "11560874-c568-4e36-9ae1-e69dad89166e",
+   "fired_at": "2026-10-26T07:30:00.136011+00:00",
+   "event_date": "2026-10-24",
+   "source": "pipeline:auto:enrichment",
+   "framing": "Germany's Energy Efficiency Act mandates data centers with ≥300 kW IT capacity must reuse 10-20% of waste heat by 2028, with Meta's Odense facility in Denmark exemplifying reference-scale heat recovery delivering 100,000 MWh annually to dis",
+   "faradays_take": "Germany's Energy Efficiency Act mandates data centers with ≥300 kW IT capacity must reuse 10-20% of waste heat by 2028, with Meta's Odense facility in Denmark exemplifying reference-scale heat recovery delivering 100,000 MWh annually to district heating networks.",
+   "byline": "Gil",
+   "conviction": "Medium",
+   "theme_tags": [],
+   "domain_tags": [
+    "D11"
+   ],
+   "subdomain_tags": [
+    "D11.4",
+    "D14.8",
+    "D5.1"
+   ],
+   "company_tags": [
+    "cmp_e9a23cbc45515895"
+   ],
+   "source_url": "https://www.26yc.com/data-center-waste-heat-recovery-guide/",
+   "artifact_id": "72540b2b-0eaf-4ed1-8085-e707f38f7801",
+   "artifact": {
+    "title": "Data Center Waste Heat Recovery: The Complete Engineering Guide (2026)",
+    "source_name": null,
+    "summary": "Germany's Energy Efficiency Act (EnEfG) now mandates that data centers with ≥300 kW IT capacity must reuse 10% of waste heat by July 2026, rising to 15% by 2027 and 20% by 2028, establishing binding heat reuse thresholds across European markets. Meta's Odense data center in Denmark is cited as a reference-scale deployment, producing 100,000 MWh per year of recovered heat delivered to the local district heating network.",
+    "published_at": "2026-10-24T00:00:00+00:00",
+    "source_type": "web_news",
+    "license_status": null,
+    "source_url": "https://www.26yc.com/data-center-waste-heat-recovery-guide/"
+   }
+  },
+  {
+   "id": "6be8adb3-a5c9-4bfa-9f4a-abfa3c6076ea",
+   "fired_at": "2026-11-09T07:30:00.220003+00:00",
+   "event_date": "2026-10-23",
+   "source": "pipeline:auto:enrichment",
+   "framing": "E.ON's PreussenElektra unit is partnering with Nvidia to evaluate nuclear power sites in Germany for potential AI data center development. This represents a strategic effort to leverage existing nuclear infrastructure to power energy-intens",
+   "faradays_take": "E.ON's PreussenElektra unit is partnering with Nvidia to evaluate nuclear power sites in Germany for potential AI data center development. This represents a strategic effort to leverage existing nuclear infrastructure to power energy-intensive AI operations.",
+   "byline": "Gil",
+   "conviction": "Medium",
+   "theme_tags": [],
+   "domain_tags": [
+    "D22"
+   ],
+   "subdomain_tags": [
+    "D1.1",
+    "D11.4"
+   ],
+   "company_tags": [
+    "cmp_540df7f83845146f"
+   ],
+   "source_url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNUkFaQ0h6Q3RLTU5DZEgzNUdFcGF3azU5Q1ZBZ0c5Rl8wa3k3bkN1OVdtZUVtMF91VHBVYURpQTdXTkVWaGZWM2JBV3c5cDh3VnNvZjdvSzhfdk15SkI1OGtpcUdBSlk5cERQN2M2ZVE0aGdWYlRrTlhEc1lqaHdWeS15RVhCU0MxYVNNakxRYU9WVExoSlVkcldjeG5pcllzeVFubnBQa3JZRVJGalktaGRFd2NhQ0JJYWc?oc=5",
+   "artifact_id": "45ef2c26-421e-4be7-9d76-3e7f8d41ae35",
+   "artifact": {
+    "title": "E.ON unit PreussenElektra taps Nvidia to assess nuclear sites for AI data centers - Seeking Alpha",
+    "source_name": "Google News search: \"E.ON\" (public_companies watch)",
+    "summary": "E.ON unit PreussenElektra taps Nvidia to assess nuclear sites for AI data centers &nbsp;&nbsp; Seeking Alpha",
+    "published_at": "2026-10-23T07:00:00+00:00",
+    "source_type": "web_news",
+    "license_status": "attribution_required",
+    "source_url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNUkFaQ0h6Q3RLTU5DZEgzNUdFcGF3azU5Q1ZBZ0c5Rl8wa3k3bkN1OVdtZUVtMF91VHBVYURpQTdXTkVWaGZWM2JBV3c5cDh3VnNvZjdvSzhfdk15SkI1OGtpcUdBSlk5cERQN2M2ZVE0aGdWYlRrTlhEc1lqaHdWeS15RVhCU0MxYVNNakxRYU9WVExoSlVkcldjeG5pcllzeVFubnBQa3JZRVJGalktaGRFd2NhQ0JJYWc?oc=5"
+   }
+  },
+  {
+   "id": "9ad85d64-b8e2-4b0b-8a1b-43b5c8eeeec0",
+   "fired_at": "2026-10-29T07:30:00.15034+00:00",
+   "event_date": "2026-10-23",
+   "source": "pipeline:auto:enrichment",
+   "framing": "European data center financing and investment surge in October 2026: Nebius secures $3.5B facility with Citi, Microsoft commits £22B UK investment despite AI data center withdrawal, Amazon plans €16B Germany expansion, and regional players ",
+   "faradays_take": "European data center financing and investment surge in October 2026: Nebius secures $3.5B facility with Citi, Microsoft commits £22B UK investment despite AI data center withdrawal, Amazon plans €16B Germany expansion, and regional players expand through partnerships.",
+   "byline": "Gil",
+   "conviction": "Medium",
+   "theme_tags": [],
+   "domain_tags": [
+    "D22"
+   ],
+   "subdomain_tags": [
+    "D1.1",
+    "D14.7",
+    "D22.2",
+    "D5.1",
+    "D6.1"
+   ],
+   "company_tags": [
+    "cmp_fe1704f586646f14"
+   ],
+   "source_url": "https://dataxconnect.com/weekly-data-centre-news-23rd-october-2026/",
+   "artifact_id": "31402c61-4719-4172-b762-ca74ae791547",
+   "artifact": {
+    "title": "Weekly Data Centre News – 23rd October 2026",
+    "source_name": null,
+    "summary": "DataX Connect's October 23, 2026 European data center roundup covers Nebius securing a $3.5 billion financing facility with Citi, Microsoft pulling out of the UK's largest AI data center while affirming its £22B UK investment commitment, and Amazon announcing a €16 billion Germany investment plan for 2027. Additional European stories include Heim Datacenter partnering with Omnes Capital to build a European platform and Polar expanding its Crusoe partnership in Norway with a new 40MW AI infrastructure development.",
+    "published_at": "2026-10-23T00:00:00+00:00",
+    "source_type": "web_news",
+    "license_status": null,
+    "source_url": "https://dataxconnect.com/weekly-data-centre-news-23rd-october-2026/"
+   }
+  },
+  {
+   "id": "5cfa56aa-85bf-4bda-a26c-07248432b8f7",
+   "fired_at": "2026-10-22T07:30:00.156996+00:00",
+   "event_date": "2026-10-21",
+   "source": "pipeline:auto:enrichment",
+   "framing": "Amazon plans to invest 2 billion euros in cloud and AI infrastructure in Germany by 2027, while Nvidia, Siemens, and the German federal government advance industrial AI initiatives. The investment includes satellite internet capabilities al",
+   "faradays_take": "Amazon plans to invest 2 billion euros in cloud and AI infrastructure in Germany by 2027, while Nvidia, Siemens, and the German federal government advance industrial AI initiatives. The investment includes satellite internet capabilities alongside data center and AI infrastructure expansion.",
+   "byline": "Gil",
+   "conviction": "Medium",
+   "theme_tags": [],
+   "domain_tags": [
+    "D22"
+   ],
+   "subdomain_tags": [
+    "D1.1",
+    "D5.1",
+    "D9.1"
+   ],
+   "company_tags": [
+    "cmp_471d41bfea8b0180"
+   ],
+   "source_url": "https://www.datacenter-insider.de/amazon-nvidia-siemens-milliarden-fuer-cloud-und-industrielle-ki-a-c6f8e65f92ca94bd69ae6754988f85ac/",
+   "artifact_id": "403171c7-05e3-4314-9a1a-9b8255a1fdb8",
+   "artifact": {
+    "title": "Amazon, Nvidia, Siemens – Milliarden für Cloud und industrielle KI",
+    "source_name": "DataCenter-Insider",
+    "summary": "Amazon steckt 2027 Milliarden in Cloud- und KI-Infrastruktur in Deutschland. Gleichzeitig treiben Nvidia, Siemens und die Bundesregierung industrielle KI voran. Auch Satelliteninternet gehört zu den Investitionsplänen.",
+    "published_at": "2026-10-21T05:03:00+00:00",
+    "source_type": "web_news",
+    "license_status": "cleared",
+    "source_url": "https://www.datacenter-insider.de/amazon-nvidia-siemens-milliarden-fuer-cloud-und-industrielle-ki-a-c6f8e65f92ca94bd69ae6754988f85ac/"
+   }
+  },
+  {
+   "id": "34593e05-0a29-4360-b3e9-44495d21c4c9",
+   "fired_at": "2026-10-21T07:30:00.122189+00:00",
+   "event_date": "2026-10-20",
+   "source": "pipeline:auto:enrichment",
+   "framing": "Amazon announces €16 billion investment in Germany for 2027, with significant allocation to cloud and AI infrastructure, primarily concentrated around Frankfurt data center region.",
+   "faradays_take": "Amazon announces €16 billion investment in Germany for 2027, with significant allocation to cloud and AI infrastructure, primarily concentrated around Frankfurt data center region.",
+   "byline": "Gil",
+   "conviction": "Medium",
+   "theme_tags": [],
+   "domain_tags": [
+    "D22"
+   ],
+   "subdomain_tags": [
+    "D5.1"
+   ],
+   "company_tags": [
+    "cmp_471d41bfea8b0180"
+   ],
+   "source_url": "https://www.heise.de/news/Cloud-und-KI-Amazon-will-2027-16-Milliarden-Euro-in-Deutschland-investieren-11493822.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "artifact_id": "21d500c3-5bf4-4383-a10f-be3cccd2b212",
+   "artifact": {
+    "title": "Amazon investiert im nächsten Jahr 16 Milliarden Euro in deutsche Cloud und KI",
+    "source_name": "heise online",
+    "summary": "16 Milliarden Euro will Amazon 2027 in Deutschland investieren – ein großer Teil soll in Cloud und KI rund um Frankfurt fließen.",
+    "published_at": "2026-10-20T09:53:00+00:00",
+    "source_type": "web_news",
+    "license_status": "cleared",
+    "source_url": "https://www.heise.de/news/Cloud-und-KI-Amazon-will-2027-16-Milliarden-Euro-in-Deutschland-investieren-11493822.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag"
+   }
+  },
+  {
+   "id": "92f31ed8-c1e9-4606-a3e2-9ec9b9e8a574",
+   "fired_at": "2026-10-18T07:30:00.127379+00:00",
+   "event_date": "2026-10-17",
+   "source": "pipeline:auto:enrichment",
+   "framing": "German heat exchanger manufacturer Kelvion has secured an $800 million data center cooling order in the US, marking its largest US contract to date. This signals significant capital deployment in data center cooling infrastructure.",
+   "faradays_take": "German heat exchanger manufacturer Kelvion has secured an $800 million data center cooling order in the US, marking its largest US contract to date. This signals significant capital deployment in data center cooling infrastructure.",
+   "byline": "Gil",
+   "conviction": "Medium",
+   "theme_tags": [],
+   "domain_tags": [
+    "D7"
+   ],
+   "subdomain_tags": [
+    "D7.4"
+   ],
+   "company_tags": [
+    "cmp_0f7fbfcedd3b34f4"
+   ],
+   "source_url": "https://www.coolingpost.com/world-news/kelvion-wins-800m-us-data-centre-order/",
+   "artifact_id": "a7969b1e-5ec8-47bb-ae95-f6d3c4222672",
+   "artifact": {
+    "title": "Kelvion wins $800m US data centre order",
+    "source_name": "Cooling Post",
+    "summary": "USA: German heat exchanger product manufacturer Kelvion reports that it has secured a data centre cooling order valued at over $800m – its largest US contract to date.... Read More... The post Kelvion wins $800m US data centre order appeared first on Cooling Post .",
+    "published_at": "2026-10-17T09:12:39+00:00",
+    "source_type": "web_news",
+    "license_status": "cleared",
+    "source_url": "https://www.coolingpost.com/world-news/kelvion-wins-800m-us-data-centre-order/"
+   }
+  },
+  {
+   "id": "43da9a9a-5882-433f-a825-75ab8c9beffd",
+   "fired_at": "2026-10-22T07:30:00.156996+00:00",
+   "event_date": "2026-10-06",
+   "source": "pipeline:auto:enrichment",
+   "framing": "The EU Energy Efficiency Directive (2023) mandates waste heat recovery for data centers exceeding 1 MW, with Germany implementing strict timelines and a 2026 amendment under consideration. Operational examples from Meta's Odense facility an",
+   "faradays_take": "The EU Energy Efficiency Directive (2023) mandates waste heat recovery for data centers exceeding 1 MW, with Germany implementing strict timelines and a 2026 amendment under consideration. Operational examples from Meta's Odense facility and Microsoft-Fortum partnership in Finland demonstrate viability of heat reuse for district heating systems, establishing precedent for broader European adoption.",
+   "byline": "Gil",
+   "conviction": "Medium",
+   "theme_tags": [],
+   "domain_tags": [
+    "D11"
+   ],
+   "subdomain_tags": [],
+   "company_tags": [
+    "cmp_a7141984501069dc"
+   ],
+   "source_url": "https://www.blackforgedatacenters.com/guides/data-center-heat-reuse-and-district-heating",
+   "artifact_id": "f798544f-80c6-4fde-a7b7-0a84189ffa81",
+   "artifact": {
+    "title": "Data Center Heat Reuse and District Heating: EU Rules, Nordic Examples and U.S. Site Implications",
+    "source_name": null,
+    "summary": "The 2023 EU Energy Efficiency Directive now classifies data center waste heat as a regulated resource for facilities above 1 MW, with Germany setting the tightest national schedule and a 2026 amendment moving through parliament to ease some duties. Working deployments in Denmark and Finland—including Meta's Odense campus lifting server heat to 70–75°C and Microsoft-Fortum covering ~40% of district heating in three Finnish municipalities—are cited as proof-of-concept for the broader European rollout.",
+    "published_at": "2026-10-06T00:00:00+00:00",
+    "source_type": "web_news",
+    "license_status": null,
+    "source_url": "https://www.blackforgedatacenters.com/guides/data-center-heat-reuse-and-district-heating"
+   }
+  },
+  {
+   "id": "f6f774d2-733c-45ac-9361-257b4d400516",
+   "fired_at": "2026-10-07T07:30:00.178769+00:00",
+   "event_date": "2026-10-05",
+   "source": "pipeline:auto:enrichment",
+   "framing": "Karlsruhe Institute of Technology in Germany unveiled HoreKa 2, a 33 petaflops hybrid supercomputer powered by AMD Turin CPUs and Nvidia GB200 GPUs. The system represents a significant upgrade in German high-performance computing infrastruc",
+   "faradays_take": "Karlsruhe Institute of Technology in Germany unveiled HoreKa 2, a 33 petaflops hybrid supercomputer powered by AMD Turin CPUs and Nvidia GB200 GPUs. The system represents a significant upgrade in German high-performance computing infrastructure combining CPU and GPU acceleration.",
+   "byline": "Gil",
+   "conviction": "Medium",
+   "theme_tags": [],
+   "domain_tags": [
+    "D22"
+   ],
+   "subdomain_tags": [
+    "D1.1"
+   ],
+   "company_tags": [
+    "cmp_5dc984e2aef527ea"
+   ],
+   "source_url": "https://www.datacenterdynamics.com/en/news/germanys-karlsruhe-institute-of-technology-unveils-33-petaflops-horeka-2-supercomputer/",
+   "artifact_id": "8dadfb85-264c-42f9-8b1e-017b5bd4822c",
+   "artifact": {
+    "title": "Germany’s Karlsruhe Institute of Technology unveils 33 petaflops HoreKa 2 supercomputer",
+    "source_name": "Data Center Dynamics",
+    "summary": "Hybrid system powered by AMD Turin CPUs and Nvidia GB200 GPUs",
+    "published_at": "2026-10-05T13:40:36.609+00:00",
+    "source_type": "web_news",
+    "license_status": "cleared",
+    "source_url": "https://www.datacenterdynamics.com/en/news/germanys-karlsruhe-institute-of-technology-unveils-33-petaflops-horeka-2-supercomputer/"
+   }
+  },
+  {
+   "id": "ce333069-01a0-42fb-b077-1376b6ae2350",
+   "fired_at": "2026-10-15T07:30:00.180995+00:00",
+   "event_date": "2026-09-30",
+   "source": "pipeline:auto:enrichment",
+   "framing": "Amazon AWS achieved 0.12 L/kWh water usage efficiency in 2024, significantly outperforming industry average, and reached 75% progress toward its 2030 water-positive goal. Amazon and Microsoft announced a joint water replenishment project wi",
+   "faradays_take": "Amazon AWS achieved 0.12 L/kWh water usage efficiency in 2024, significantly outperforming industry average, and reached 75% progress toward its 2030 water-positive goal. Amazon and Microsoft announced a joint water replenishment project with NABU in Germany expected to return 750+ million liters annually.",
+   "byline": "Gil",
+   "conviction": "Medium",
+   "theme_tags": [],
+   "domain_tags": [
+    "D11"
+   ],
+   "subdomain_tags": [],
+   "company_tags": [
+    "cmp_5f532a3fc4f1ea40"
+   ],
+   "source_url": "https://sustainability.aboutamazon.com/natural-resources/water",
+   "artifact_id": "03e602e9-b5d5-4bcc-96b6-9e53864a93fe",
+   "artifact": {
+    "title": "Amazon AWS Water Stewardship: 75% Toward Water Positive by 2030 as of 2025",
+    "source_name": null,
+    "summary": "AWS achieved a global data center WUE of 0.12 L/kWh in 2024 — seven times better than the industry average of 0.84 L/kWh — and reached 75% toward its water-positive-by-2030 goal in 2025, up from 53% in 2024. In September 2026, Amazon and Microsoft announced a joint water replenishment project with NABU in Germany, expected to return more than 750 million liters of water annually to secure long-term drinking water supply.",
+    "published_at": "2026-09-30T00:00:00+00:00",
+    "source_type": "regulatory",
+    "license_status": null,
+    "source_url": "https://sustainability.aboutamazon.com/natural-resources/water"
+   }
+  },
+  {
+   "id": "59793f2d-2fd1-4c2c-8499-567e58503fe5",
+   "fired_at": "2026-09-03T07:30:00.127345+00:00",
+   "event_date": "2026-08-29",
+   "source": "pipeline:auto:enrichment",
+   "framing": "Schwarz Group commits €5.6B for a 240 MW data center campus in Dummersdorf, Germany with expansion potential to 1 GW by 2045 using renewable wind and free cooling. atNorth engages YIT for FIN04 campus expansion in Finland, while Nexspace be",
+   "faradays_take": "Schwarz Group commits €5.6B for a 240 MW data center campus in Dummersdorf, Germany with expansion potential to 1 GW by 2045 using renewable wind and free cooling. atNorth engages YIT for FIN04 campus expansion in Finland, while Nexspace begins construction on a new Austrian facility in Graz.",
+   "byline": "Gil",
+   "conviction": "Medium",
+   "theme_tags": [],
+   "domain_tags": [
+    "D22"
+   ],
+   "subdomain_tags": [
+    "D22.2"
+   ],
+   "company_tags": [
+    "src_bb85cc081666f9ff"
+   ],
+   "source_url": "https://baxtel.com/news/data-centers/europe",
+   "artifact_id": "72bd12a3-ab4f-4656-8cc9-6bdb69ef3dbe",
+   "artifact": {
+    "title": "Europe Data Center News: Schwarz Group €5.6B Germany Campus, atNorth Finland Expansion, Nexspace Austria",
+    "source_name": null,
+    "summary": "Baxtel's Europe news feed (late August 2026) reports Schwarz Group and Mecklenburg-Western Pomerania planning a 240 MW data center in Dummersdorf, Germany backed by a €5.6 billion investment, with potential to expand to 1 GW by 2045 using renewable wind power and free cooling. Additional developments include atNorth appointing YIT as main contractor for a new building at its FIN04 campus in Finland, and Nexspace beginning construction on a new facility in Graz, Austria.",
+    "published_at": "2026-08-29T00:00:00+00:00",
+    "source_type": "web_news",
+    "license_status": null,
+    "source_url": "https://baxtel.com/news/data-centers/europe"
+   }
+  },
+  {
+   "id": "87cc48f5-35ce-41f5-948a-ddb816b835a8",
+   "fired_at": "2026-09-02T07:30:00.132154+00:00",
+   "event_date": "2026-08-27",
+   "source": "pipeline:auto:enrichment",
+   "framing": "K+S and Accenture are planning to convert abandoned potassium and salt mines in Germany into underground data centers for cloud and AI workloads, addressing constraints around land scarcity, energy costs, and security concerns.",
+   "faradays_take": "K+S and Accenture are planning to convert abandoned potassium and salt mines in Germany into underground data centers for cloud and AI workloads, addressing constraints around land scarcity, energy costs, and security concerns.",
+   "byline": "Gil",
+   "conviction": "Medium",
+   "theme_tags": [],
+   "domain_tags": [
+    "D22"
+   ],
+   "subdomain_tags": [],
+   "company_tags": [
+    "reccpBCR94rwCmJQJ"
+   ],
+   "source_url": "https://www.datacenter-insider.de/deutschlands-neue-datacenter-fahren-unter-tage-ein-a-b97118ce235fdc9b8bef531fc1009478/",
+   "artifact_id": "e847a2c1-5a1e-4505-be9b-48beb300447f",
+   "artifact": {
+    "title": "Deutschlands neue Datacenter fahren unter Tage ein",
+    "source_name": "DataCenter-Insider",
+    "summary": "Wenn Flächen knapp, Energie teuer und Sicherheitsrisiken größer werden, braucht Deutschland dann ein radikal neues Standortkonzept für Rechenzentren? K+S und Accenture sagen Ja: Sie wollen aus Kali- und Salzbergwerke hunderte Meter unter der Erde Cloud- und KI-Festungen machen.",
+    "published_at": "2026-08-27T09:00:00+00:00",
+    "source_type": "web_news",
+    "license_status": "cleared",
+    "source_url": "https://www.datacenter-insider.de/deutschlands-neue-datacenter-fahren-unter-tage-ein-a-b97118ce235fdc9b8bef531fc1009478/"
+   }
+  },
+  {
+   "id": "152d063f-02c5-4044-a13b-fb1e1dca9bb4",
+   "fired_at": "2026-08-26T07:30:00.106263+00:00",
+   "event_date": "2026-08-11",
+   "source": "pipeline:auto:enrichment",
+   "framing": "Germany's Energy Efficiency Act mandates 10% minimum waste heat reuse for data centers after July 2026, escalating to 20% by 2028. Equinix is partnering with A2A on the ML5 data center project, positioning the Nordic region as advantaged fo",
+   "faradays_take": "Germany's Energy Efficiency Act mandates 10% minimum waste heat reuse for data centers after July 2026, escalating to 20% by 2028. Equinix is partnering with A2A on the ML5 data center project, positioning the Nordic region as advantaged for heat reuse compliance due to existing district heating infrastructure.",
+   "byline": "Gil",
+   "conviction": "Medium",
+   "theme_tags": [],
+   "domain_tags": [
+    "D11"
+   ],
+   "subdomain_tags": [
+    "D11.4"
+   ],
+   "company_tags": [
+    "recM6wXF7XZeQmJtp"
+   ],
+   "source_url": "https://enkiai.com/policy-and-regulations/equinix-heat-reuse-data-center/",
+   "artifact_id": "c0312dd0-0714-4e0a-9038-74e08d914f3b",
+   "artifact": {
+    "title": "Equinix Heat Reuse 2026: ML5 Data Center Deal with A2A",
+    "source_name": null,
+    "summary": "Germany's Energy Efficiency Act (EnEfG) mandates that new data centers commissioned after July 1, 2026, must reuse a minimum of 10% of waste heat, escalating to 20% by 2028, making heat reuse a non-negotiable design parameter across Europe's largest market. The Nordic countries hold a structural advantage in attracting investment from operators seeking compliant sites, given their established district heating infrastructure and history of successful heat reuse projects.",
+    "published_at": "2026-08-11T00:00:00+00:00",
+    "source_type": "web_news",
+    "license_status": null,
+    "source_url": "https://enkiai.com/policy-and-regulations/equinix-heat-reuse-data-center/"
+   }
+  },
+  {
+   "id": "49765c7d-1406-4ddb-b197-e1a8a1e0525d",
+   "fired_at": "2026-08-11T07:30:00.104961+00:00",
+   "event_date": "2026-08-10",
+   "source": "pipeline:auto:enrichment",
+   "framing": "Equinix's ML5 data center in Milan announced a waste heat reuse deal with Italian utility A2A in July 2026, establishing a commercial template for European heat reuse. Germany's EnEfG law mandates minimum 10% Energy Reuse Factor for new dat",
+   "faradays_take": "Equinix's ML5 data center in Milan announced a waste heat reuse deal with Italian utility A2A in July 2026, establishing a commercial template for European heat reuse. Germany's EnEfG law mandates minimum 10% Energy Reuse Factor for new data centers effective July 2026, escalating to 20% by 2028 with penalties exceeding €100,000 for non-compliance.",
+   "byline": "Gil",
+   "conviction": "Medium",
+   "theme_tags": [],
+   "domain_tags": [
+    "D11"
+   ],
+   "subdomain_tags": [
+    "D11.4"
+   ],
+   "company_tags": [
+    "recM6wXF7XZeQmJtp"
+   ],
+   "source_url": "https://enkiai.com/policy-and-regulations/equinix-heat-reuse-data-center/",
+   "artifact_id": "af99821f-b883-4989-8399-e7c430be5d1f",
+   "artifact": {
+    "title": "Equinix Heat Reuse 2026: ML5 Data Center Deal with A2A",
+    "source_name": null,
+    "summary": "Equinix announced in July 2026 that its ML5 data center in Milan will supply waste heat to Italian utility A2A's local district heating network, providing a replicable commercial template for European heat reuse deals. Germany's EnEfG law, effective July 1, 2026, now mandates a minimum 10% Energy Reuse Factor (ERF) for all new data centers, escalating to 20% by 2028, with non-compliance fines exceeding €100,000.",
+    "published_at": "2026-08-10T00:00:00+00:00",
+    "source_type": "web_news",
+    "license_status": null,
+    "source_url": "https://enkiai.com/policy-and-regulations/equinix-heat-reuse-data-center/"
+   }
+  },
+  {
+   "id": "1a8172f8-5df0-4aa9-bbe4-0ca42637f4e0",
+   "fired_at": "2026-07-29T07:30:00.061374+00:00",
+   "event_date": null,
+   "source": "pipeline:auto:enrichment",
+   "framing": "EU data center regulations for 2026 impose new waste heat reuse mandates in Germany (10% by July 2026) and face challenges from aggressive taxation in Finland, which prompted Google to suspend a major investment. The EU Commission is develo",
+   "faradays_take": "EU data center regulations for 2026 impose new waste heat reuse mandates in Germany (10% by July 2026) and face challenges from aggressive taxation in Finland, which prompted Google to suspend a major investment. The EU Commission is developing an energy efficiency rating scheme that will define compliance through 2027.",
+   "byline": "Gil",
+   "conviction": "Medium",
+   "theme_tags": [],
+   "domain_tags": [
+    "D22"
+   ],
+   "subdomain_tags": [
+    "D22.2"
+   ],
+   "company_tags": [
+    "src_c822c1b63853ed27"
+   ],
+   "source_url": null,
+   "artifact_id": null,
+   "artifact": null
+  },
+  {
+   "id": "c3fcbeb5-41da-4db9-8b91-2ab870f25130",
+   "fired_at": "2026-07-21T07:30:00.062787+00:00",
+   "event_date": null,
+   "source": "pipeline:auto:enrichment",
+   "framing": "EU regulations taking effect in 2026 impose strict efficiency requirements on data centers, including Germany's EnEfG mandate for PUE ≤1.2 and energy reuse targets, while Finland's proposed electricity tax increase prompted Google to suspen",
+   "faradays_take": "EU regulations taking effect in 2026 impose strict efficiency requirements on data centers, including Germany's EnEfG mandate for PUE ≤1.2 and energy reuse targets, while Finland's proposed electricity tax increase prompted Google to suspend a major investment pending subsidy restructuring.",
+   "byline": "Gil",
+   "conviction": "Medium",
+   "theme_tags": [],
+   "domain_tags": [
+    "D22"
+   ],
+   "subdomain_tags": [
+    "D22.2"
+   ],
+   "company_tags": [
+    "src_c822c1b63853ed27"
+   ],
+   "source_url": null,
+   "artifact_id": null,
+   "artifact": null
+  }
+ ],
+ "companies": [
+  {
+   "company_uid": "cmp_540df7f83845146f",
+   "canonical_name": "NVIDIA",
+   "company_type": "GPU / AI Silicon / Ecosystem Platform"
+  },
+  {
+   "company_uid": "cmp_5f532a3fc4f1ea40",
+   "canonical_name": "Microsoft",
+   "company_type": null
+  },
+  {
+   "company_uid": "cmp_471d41bfea8b0180",
+   "canonical_name": "Amazon",
+   "company_type": "Hyperscaler / Cloud Provider"
+  },
+  {
+   "company_uid": "cmp_a7141984501069dc",
+   "canonical_name": "Fortum",
+   "company_type": null
+  },
+  {
+   "company_uid": "cmp_e9a23cbc45515895",
+   "canonical_name": "Meta",
+   "company_type": "Hyperscaler / Social / AI"
+  },
+  {
+   "company_uid": "cmp_c822c1b63853ed27",
+   "canonical_name": "Google",
+   "company_type": null
+  },
+  {
+   "company_uid": "cmp_1f237abbd163733c",
+   "canonical_name": "Alibaba Cloud",
+   "company_type": "Hyperscaler / Cloud Provider"
+  },
+  {
+   "company_uid": "cmp_650a629685b30154",
+   "canonical_name": "Palistar Capital",
+   "company_type": null
+  },
+  {
+   "company_uid": "cmp_fe1704f586646f14",
+   "canonical_name": "Nebius",
+   "company_type": "Neocloud / GPU Cloud"
+  },
+  {
+   "company_uid": "cmp_0f7fbfcedd3b34f4",
+   "canonical_name": "Kelvion",
+   "company_type": null
+  },
+  {
+   "company_uid": "cmp_5dc984e2aef527ea",
+   "canonical_name": "AMD",
+   "company_type": "Semiconductor / GPU-CPU Manufacturer"
+  }
+ ],
+ "artifacts": [
+  {
+   "artifact_id": "2d1f18e2-5084-4d1e-9d30-933279d8d1c4",
+   "source_url": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxNRmgxc1hIZERUbE5YUlczYjZfV1M2aFZ6ZGpJcGZydWVqM2Z2aXRLaFpRckJMZVZkR2hlZnhDZXFBbWFPTUVSalhPeUVnc3JhN05tcjR0ZDBTMUEyZF9VNUZlbTFMRW82SDBZR1RDXzM2SzlmRV9SS0d6Z3pHNDJ6MFJkMUYxQkQ0M0hSamJzNVNEMm1ZRGQwWU9iLVFDZ1VORmFZQ1lWNG5wSFJvZUVhaWVINGxFMmFnYjUwbEV0ajdWR3BPWEFBYVZhTHItNC1vN2xCS05WNE5ES0gweGlZbjh4Y0RrU0Rrd3p0UQ?oc=5",
+   "published_at": "2026-10-28T10:10:03+00:00",
+   "source_type": "web_news",
+   "title": "Nvidia partners with PreussenElektra to explore deployment of AI data centers at former nuclear sites in Germany - Data Center Dynamics",
+   "source_name": "Google News search: \"NVIDIA\" data center OR AI OR infrastructure",
+   "summary": "Nvidia partners with PreussenElektra to explore deployment of AI data centers at former nuclear sites in Germany &nbsp;&nbsp; Data Center Dynamics",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D1",
+    "D9"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "fa2a3adb-e2ae-4377-904b-ee4e83529453",
+   "source_url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPalZIclZtZzhOdnlLbVdQRHlldkFKcU04SWV5V3F2ZHlYN0dYSVlmaTFkcHhuWEx5MDlObFpRTzVuN29lRjdnVmtqN3NhclgtTkpGNEFWLXVjeHBmWS1HaE1QUFBwQXpBZ2dGZXk2cDFoT3NZbll0ZHpNbEJ4T1VkZlhwcWRubEpKODlZdS1JcUZWSTl2eHdUdXREemoxWkROY09iWFh2bXlWWGs?oc=5",
+   "published_at": "2026-10-26T17:53:51+00:00",
+   "source_type": "web_news",
+   "title": "Cadence unveils Nvidia-powered AI data center in Munich, Germany - Data Center Dynamics",
+   "source_name": "Google News search: \"NVIDIA\" data center OR AI OR infrastructure",
+   "summary": "Cadence unveils Nvidia-powered AI data center in Munich, Germany &nbsp;&nbsp; Data Center Dynamics",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D1",
+    "D9"
+   ],
+   "ifs_subdomains": [
+    "D1.1",
+    "D20.2"
+   ]
+  },
+  {
+   "artifact_id": "7de1b33e-adae-4fc5-9d76-27001efcdee3",
+   "source_url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPRkhJNXVTMUtjRlU0bzFTaTUwS2dRZUFlRUpYMkpMTGxWLTNYOUdITHBJcEg1TlM4a3N2dWpvZ1NLRXprVnU5THJOcldURGE5d0tyQkFYakZqMmF0M2FmNDdpZ2RMYThIZHdYUzRJQ1NHOGkyNEJ4Q3JiNDVPUHdUcXVMR281NU5PRnhBd0VHeEFVSFR1MVZMaUltdWxzemtqdWJEYmRHS3l2aGRDTjFBTms3VGd2RWgyZEd2TkRTZEdad0xuSTJuYnU3T0YwQQ?oc=5",
+   "published_at": "2026-10-08T07:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Waste heat from Goodman data center in Frankfurt, Germany, to power district heating system - Data Center Dynamics",
+   "source_name": "Google News search: \"Goodman Group\" (public_companies watch)",
+   "summary": "Waste heat from Goodman data center in Frankfurt, Germany, to power district heating system &nbsp;&nbsp; Data Center Dynamics",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "6bfae286-557e-4df3-b51e-56ede722140e",
+   "source_url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOSkVyTDZBSGFYeVYzd3RRRG8wcWwyaFMzTi1kZDZwVWpGc2JjX3l5OFh4MGJyTVNTa0tKUlhWS19pd01TUUZXTHpLUm16NTVnQ0ZYSGt3bG5CLXU1NWFUSV81Q1d5ZFp2c3E2TldabExLRjE0ckJvbWFlclltOGI1R2JvVlFpb3YwYk5zUXFkcFVHdnlZVlpOV1BZLUpvVmpkd2doSkhfWE9adw?oc=5",
+   "published_at": "2026-09-22T07:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Plans progress for 200MW data center in Schladen-Werla, Germany - Data Center Dynamics",
+   "source_name": "Google News search: \"Green Datacenter\" (dc_operators watch)",
+   "summary": "Plans progress for 200MW data center in Schladen-Werla, Germany &nbsp;&nbsp; Data Center Dynamics",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "46da4c89-eb7b-4210-96da-6603681d51bf",
+   "source_url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNVVFHcElZN2xjWEltODFZMDBYUGx0U1cwMFJVazQ4VUNoLU81cHlCVDhpWVd6aHhHVkNGV01nMzhGMkNjY1pKRTJINUxzdnlibm1CZ0VPZi0zZ18yNnZ0WU9QeE41S2xDUzVVeXBRbFFRQ3lCeHM3My1JVUNZVjkyRk5qWVU4YTJUaWRLeVZjZmFpMjFQbEtSSHNQNXU4ZDRKSGc?oc=5",
+   "published_at": "2026-09-17T11:39:33+00:00",
+   "source_type": "web_news",
+   "title": "NorthC breaks ground on data center in Frankfurt, Germany - Data Center Dynamics",
+   "source_name": "Google News search: \"NorthC\" (dc_operators watch)",
+   "summary": "NorthC breaks ground on data center in Frankfurt, Germany &nbsp;&nbsp; Data Center Dynamics",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": [
+    "D12.4",
+    "D14.4",
+    "D22.2"
+   ]
+  },
+  {
+   "artifact_id": "0d76dea8-25bb-4ca7-a39c-01a31e98dc6b",
+   "source_url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNVVFHcElZN2xjWEltODFZMDBYUGx0U1cwMFJVazQ4VUNoLU81cHlCVDhpWVd6aHhHVkNGV01nMzhGMkNjY1pKRTJINUxzdnlibm1CZ0VPZi0zZ18yNnZ0WU9QeE41S2xDUzVVeXBRbFFRQ3lCeHM3My1JVUNZVjkyRk5qWVU4YTJUaWRLeVZjZmFpMjFQbEtSSHNQNXU4ZDRKSGc?oc=5",
+   "published_at": "2026-09-17T07:00:00+00:00",
+   "source_type": "web_news",
+   "title": "NorthC breaks ground on data center in Frankfurt, Germany - Data Center Dynamics",
+   "source_name": "Google News search: \"NLDC\" (company gap watch)",
+   "summary": "NorthC breaks ground on data center in Frankfurt, Germany &nbsp;&nbsp; Data Center Dynamics",
+   "license_status": "attribution_required",
+   "ifs_domains": null,
+   "ifs_subdomains": [
+    "D12.4",
+    "D14.4",
+    "D22.2"
+   ]
+  },
+  {
+   "artifact_id": "30a2904e-59a6-4791-a819-727c2e19e17a",
+   "source_url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxOd25QVHNKREREZml1OXRsN1J2X2RZeXZoMzZ6NTRhSVhNYlpvVEFXYTVMY0Jqa3k0YVRqSFVpbTFpSUNhTG4tdkFFVnhQeHZTekY1R1JubXVIQms5bi1NeEdaN3l2a1E1UUZySjlMelJFMElhSlFqcFFKZ1VHX3EyR0JqcHFhQndBWVdGLUp4OFdlYkxyendKcFlyWVZYVWY0cTFXYVVsbWlMdFU1OTBUMFYyd3BvZFNyN0wzbXZMdVdvVjRLU0FrbGpB?oc=5",
+   "published_at": "2026-08-27T17:33:17+00:00",
+   "source_type": "web_news",
+   "title": "Schwarz Group commits €5.6bn investment in data center in Mecklenburg-Vorpommern, Germany - Data Center Dynamics",
+   "source_name": "Google News search: \"STACKIT\" (hyperscalers watch)",
+   "summary": "Schwarz Group commits €5.6bn investment in data center in Mecklenburg-Vorpommern, Germany &nbsp;&nbsp; Data Center Dynamics",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": [
+    "D19.5"
+   ]
+  },
+  {
+   "artifact_id": "f3cc6e26-a59b-42ef-b939-3fd817d30b87",
+   "source_url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQb3IxbGZPRWk3cmcyOVhwUTV0T0RNLWlmbTZPVUM5Q1pwTXlacDVEdU16Qm1sSTZwUHlGNUhlVHlQWHdzNXMtSHZDX2wzTy1MMzB0ZkJqamZ6YkpBcjMzQzdyLVlZb1BmM0RTVlFoeVhjdEl5TmtUa2hOS0lrQ3VOd1JURTJndS1FakhZMzJRcnFWd1duNC0yamhWa3BEYWU2YXktWXZWMXktcjBVcnBELVZZcU56dw?oc=5",
+   "published_at": "2026-08-05T13:13:46+00:00",
+   "source_type": "web_news",
+   "title": "AtlasEdge starts next expansion phase of data center in Hamburg, Germany - Data Center Dynamics",
+   "source_name": "Google News search: \"AtlasEdge\" (dc_operators watch)",
+   "summary": "AtlasEdge starts next expansion phase of data center in Hamburg, Germany &nbsp;&nbsp; Data Center Dynamics",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "0d646530-c634-4fd3-9b35-cd84984d0cf6",
+   "source_url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPd3YzUVh0MW5ud0FHMi14Tm5Jd1ZlbUtVZlEyN21aVjFWTGpQOFh6RzQ0WkIzVFEzRTJXbFk4TlRXVGdiaVhuWlQ0TERXVHhBWXBWUXdpTVJvbDZDNEZ1M1k1NGg4XzUxcG1nZHBDXzMtcHprU1dsMFdTR01BelN6VTRka1llLUVuUmdSOTFESWl2c0tEdVFFb2JDcFFHVF95eUZCYldFLU1vc0pKd3FNY0xXelk?oc=5",
+   "published_at": "2026-08-04T15:14:08+00:00",
+   "source_type": "web_news",
+   "title": "Germany’s Maincubes completes first module of new Frankfurt data center - Data Center Dynamics",
+   "source_name": "Google News search: \"maincubes\" (startups watch)",
+   "summary": "Germany’s Maincubes completes first module of new Frankfurt data center &nbsp;&nbsp; Data Center Dynamics",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": [
+    "D12.4",
+    "D14.4",
+    "D22.2"
+   ]
+  },
+  {
+   "artifact_id": "3395c7ae-211f-4653-86d0-041e8664b72e",
+   "source_url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNWndRZy0yc3FyT1V6X2cyWUU4ei03ZmtQdDUwOGVxNElZZ1dGZE15Wk1PVlJaYWZRc1FsS05Lc09sS0l2b2hJcGdEUFhURnhFUmpTdHpFcGt2bThxZU5TaXluSFhwRDZFYzNiaGlhb0JjR2hDZnotNFY3WEpJUnNINVNnNE94SER0cDFGWTlQX2g3OHh5RU5oS1VYSkFydHVEblR1LWZhVl9ZNlBn?oc=5",
+   "published_at": "2026-07-30T07:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Energy firm Uniper to build new data center hub in Hesse, Germany - Data Center Dynamics",
+   "source_name": "Google News search: \"E.ON\" (public_companies watch)",
+   "summary": "Energy firm Uniper to build new data center hub in Hesse, Germany &nbsp;&nbsp; Data Center Dynamics",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "26f7ae1c-8b39-4d0d-b9f5-d39c408d3be2",
+   "source_url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQdTFQb3VSWG96akdtc1hPVm1OMTNlVzJJSnZ2Y25XU01UNVRHRW95dm9NeC1lSU51T2hIeUxlVlliUlByMll2VHhyVnVZSVhYN1FTeF91THpqM0llNGhMRDZHTlVBVnVPTjJFV2NyY3MwVGh3eUs3ZHJRWVBPQ0lwb3A2QmEzVEU1eTJfX0pjUHVvNy1O?oc=5",
+   "published_at": "2026-07-18T07:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Equinix tops out Munich data center in Germany - Data Center Dynamics",
+   "source_name": "Google News search: \"Equinix\" data center OR AI OR infrastructure",
+   "summary": "Equinix tops out Munich data center in Germany &nbsp;&nbsp; Data Center Dynamics",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D12",
+    "D6"
+   ],
+   "ifs_subdomains": [
+    "D11.4",
+    "D12.4",
+    "D12.6",
+    "D19.5",
+    "D2.6",
+    "D23.4",
+    "D3.1"
+   ]
+  },
+  {
+   "artifact_id": "adaf0858-ba3b-4049-8795-9b57e105ab95",
+   "source_url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPVkllR2FMczVGbENyRFRYMlV2YUNUVXZ2U0xiN1EwOXFWOEhHTEtrTVJGTjlRZVVhY2V0azNFUjFrbVRFeExVWWJObU5KVXJfd0plS2QtOGdGWlFEYUk0eXdYWDBNZUVSX3Y4RjZFNUtReTAwdlg2a0RhZV9ZbVdPTlljUDhra1o1LURzUkU0bVRrM2c?oc=5",
+   "published_at": "2026-05-29T07:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Portus tops out second data in Munich, Germany - Data Center Dynamics",
+   "source_name": "Google News search: \"Arcus Infrastructure Partners\" (investors watch)",
+   "summary": "Portus tops out second data in Munich, Germany &nbsp;&nbsp; Data Center Dynamics",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": [
+    "D19.5"
+   ]
+  },
+  {
+   "artifact_id": "b6bcd0ca-e372-4e3f-9813-bf371d4539cd",
+   "source_url": "https://news.google.com/rss/articles/CBMi5gJBVV95cUxPWDVhSFdESkdBUkk0V3UtNUpjZW5vangzV2RfOEdjY2hhZ1BsWUx5Zk1MckpEWGFyMWNreEVUYmtvWFlURG9uaVJvTGRIQnJmWEV2TXc3azdIMU43QjUxcExFOEVnWDNzV2FiQTA0UmRoYXdzdm9QZ2NRQ1lFX2NJRnY1T1hFU21TOTR1Wlo1QkRhYlN2TXhQeENNQ01YbDYxNmc1TDFvSU1YekpRMzhvMWMwbEl0UnVqaU51WjUyY3k4dVZKbmZtQTJ5cnlpcW5hSWV0TklienVfbEF0VFVVV0ZXV2p0TXE1eGZJbDVhdTd1dFYxUUs0SV8wQjktSFp2cDIwOEFxTElBVEhERGlDMk9rZEwyMGtqV2ZhZ193b0tjVTNnTlBlZXRpQS1Xc3VYeU5RUWJyUFhTOWFPQUpEV1QzVF9oMGdfZUViNUlCQUQ5ejN2V1lJb2Naa3VLakFBNEJiRzRn?oc=5",
+   "published_at": "2026-05-14T07:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Germany Data Center Market Investment Analysis Report - GlobeNewswire",
+   "source_name": "Google News search: \"Comarch\" (dc_operators watch)",
+   "summary": "Germany Data Center Market Investment Analysis Report &nbsp;&nbsp; GlobeNewswire",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "a9bcc884-1016-4bbc-b224-f5c7283148f7",
+   "source_url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9TNkV2ZkV0Q002QTRwWmxYdXZKRkJuaG1sM3Qzd1pBaUtKN3pZckQtT1IzZ0hpb2JaellrVXUwUWJfQVYwWG9WTC1LQVlmTzU0UHVuOFRPbHhqRERyTlZINUdn?oc=5",
+   "published_at": "2026-05-14T07:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Germany Data Center Market Investment Analysis Report 2026-2031: 194+ Existing and 43 Upcoming Facilities, Offering Insights on Colocation, Hyperscale, and Enterprise Operators - Data Centre Magazine",
+   "source_name": "Google News search: \"Virtus Data Centres\" (company gap watch)",
+   "summary": "Germany Data Center Market Investment Analysis Report 2026-2031: 194+ Existing and 43 Upcoming Facilities, Offering Insights on Colocation, Hyperscale, and Enterprise Operators &nbsp;&nbsp; Data Centre Magazine",
+   "license_status": "attribution_required",
+   "ifs_domains": null,
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "c690db91-0054-491f-b4f2-8f19b7189d65",
+   "source_url": "https://news.google.com/rss/articles/CBMi5gJBVV95cUxPWDVhSFdESkdBUkk0V3UtNUpjZW5vangzV2RfOEdjY2hhZ1BsWUx5Zk1MckpEWGFyMWNreEVUYmtvWFlURG9uaVJvTGRIQnJmWEV2TXc3azdIMU43QjUxcExFOEVnWDNzV2FiQTA0UmRoYXdzdm9QZ2NRQ1lFX2NJRnY1T1hFU21TOTR1Wlo1QkRhYlN2TXhQeENNQ01YbDYxNmc1TDFvSU1YekpRMzhvMWMwbEl0UnVqaU51WjUyY3k4dVZKbmZtQTJ5cnlpcW5hSWV0TklienVfbEF0VFVVV0ZXV2p0TXE1eGZJbDVhdTd1dFYxUUs0SV8wQjktSFp2cDIwOEFxTElBVEhERGlDMk9rZEwyMGtqV2ZhZ193b0tjVTNnTlBlZXRpQS1Xc3VYeU5RUWJyUFhTOWFPQUpEV1QzVF9oMGdfZUViNUlCQUQ5ejN2V1lJb2Naa3VLakFBNEJiRzRn?oc=5",
+   "published_at": "2026-05-14T07:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Germany Data Center Market Investment Analysis Report - GlobeNewswire",
+   "source_name": "Google News search: \"Noris Network\" data center OR AI OR infrastructure",
+   "summary": "Germany Data Center Market Investment Analysis Report &nbsp;&nbsp; GlobeNewswire",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "8f4187e5-c05d-4614-9f6a-30d73742aa8a",
+   "source_url": "https://news.google.com/rss/articles/CBMi5gJBVV95cUxPWDVhSFdESkdBUkk0V3UtNUpjZW5vangzV2RfOEdjY2hhZ1BsWUx5Zk1MckpEWGFyMWNreEVUYmtvWFlURG9uaVJvTGRIQnJmWEV2TXc3azdIMU43QjUxcExFOEVnWDNzV2FiQTA0UmRoYXdzdm9QZ2NRQ1lFX2NJRnY1T1hFU21TOTR1Wlo1QkRhYlN2TXhQeENNQ01YbDYxNmc1TDFvSU1YekpRMzhvMWMwbEl0UnVqaU51WjUyY3k4dVZKbmZtQTJ5cnlpcW5hSWV0TklienVfbEF0VFVVV0ZXV2p0TXE1eGZJbDVhdTd1dFYxUUs0SV8wQjktSFp2cDIwOEFxTElBVEhERGlDMk9rZEwyMGtqV2ZhZ193b0tjVTNnTlBlZXRpQS1Xc3VYeU5RUWJyUFhTOWFPQUpEV1QzVF9oMGdfZUViNUlCQUQ5ejN2V1lJb2Naa3VLakFBNEJiRzRn?oc=5",
+   "published_at": "2026-05-14T07:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Germany Data Center Market Investment Analysis Report - GlobeNewswire",
+   "source_name": "Google News search: \"ITENOS\" (dc_operators watch)",
+   "summary": "Germany Data Center Market Investment Analysis Report &nbsp;&nbsp; GlobeNewswire",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "cb22040c-aee2-43e0-b9f6-ba761149fdc8",
+   "source_url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9TNkV2ZkV0Q002QTRwWmxYdXZKRkJuaG1sM3Qzd1pBaUtKN3pZckQtT1IzZ0hpb2JaellrVXUwUWJfQVYwWG9WTC1LQVlmTzU0UHVuOFRPbHhqRERyTlZINUdn?oc=5",
+   "published_at": "2026-05-14T07:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Germany Data Center Market Investment Analysis Report 2026-2031: 194+ Existing and 43 Upcoming Facilities, Offering Insights on Colocation, Hyperscale, and Enterprise Operators - Data Centre Magazine",
+   "source_name": "Google News search: \"Collen Construction\" (supply_chain watch)",
+   "summary": "Germany Data Center Market Investment Analysis Report 2026-2031: 194+ Existing and 43 Upcoming Facilities, Offering Insights on Colocation, Hyperscale, and Enterprise Operators &nbsp;&nbsp; Data Centre Magazine",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "57ec2ea3-3091-4fc3-abc4-1ad50549a267",
+   "source_url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9TNkV2ZkV0Q002QTRwWmxYdXZKRkJuaG1sM3Qzd1pBaUtKN3pZckQtT1IzZ0hpb2JaellrVXUwUWJfQVYwWG9WTC1LQVlmTzU0UHVuOFRPbHhqRERyTlZINUdn?oc=5",
+   "published_at": "2026-05-14T07:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Germany Data Center Market Investment Analysis Report 2026-2031: 194+ Existing and 43 Upcoming Facilities, Offering Insights on Colocation, Hyperscale, and Enterprise Operators - Data Centre Magazine",
+   "source_name": "Google News search: \"3U Telecom\" (company gap watch)",
+   "summary": "Germany Data Center Market Investment Analysis Report 2026-2031: 194+ Existing and 43 Upcoming Facilities, Offering Insights on Colocation, Hyperscale, and Enterprise Operators &nbsp;&nbsp; Data Centre Magazine",
+   "license_status": "attribution_required",
+   "ifs_domains": null,
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "ea23327f-e232-48de-ae2d-f286b64a8d85",
+   "source_url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9TNkV2ZkV0Q002QTRwWmxYdXZKRkJuaG1sM3Qzd1pBaUtKN3pZckQtT1IzZ0hpb2JaellrVXUwUWJfQVYwWG9WTC1LQVlmTzU0UHVuOFRPbHhqRERyTlZINUdn?oc=5",
+   "published_at": "2026-05-14T07:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Germany Data Center Market Investment Analysis Report 2026-2031: 194+ Existing and 43 Upcoming Facilities, Offering Insights on Colocation, Hyperscale, and Enterprise Operators - Data Centre Magazine",
+   "source_name": "Google News search: \"Noris Network\" data center OR AI OR infrastructure",
+   "summary": "Germany Data Center Market Investment Analysis Report 2026-2031: 194+ Existing and 43 Upcoming Facilities, Offering Insights on Colocation, Hyperscale, and Enterprise Operators &nbsp;&nbsp; Data Centre Magazine",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "8c50024c-58f9-4682-9334-d705aa1a1042",
+   "source_url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOcDF3WXh0dUxVQ1pjTTZiejNnZ05XWjJVWnZVQU95d3lsc01pRjBHNTJVczhPLXRxdExjeE1KY20zWlZFTlR2ZkRZX0RNRWZ3dUFsdnVUcEI2TFJuVG1MLW00blZmSGltazktNDh0cWEyYVBoSHZTLVA3dU41NlFYWVBwRnF3ZmtGamh6WENXSGc3WjF1RXRiQm9TcmZlZ2VnOFIwTVdpQ25VdmxGcFE?oc=5",
+   "published_at": "2026-04-24T07:00:00+00:00",
+   "source_type": "web_news",
+   "title": "700MW data center planned for Freyenstein, Germany sparks protests - Data Center Dynamics",
+   "source_name": "Google News search: \"Bitkom\" (industry_orgs watch)",
+   "summary": "700MW data center planned for Freyenstein, Germany sparks protests &nbsp;&nbsp; Data Center Dynamics",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "2a32e3b4-aceb-4ebb-a205-67b0b82a2787",
+   "source_url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNN3NVRWo0YmtHWDN2bWE1VXBDWXJFbnZNZVJrQnpjVTYxbkVRdnd0c0dTd1J1eFdhQ3UxQzhad0FMMllfM3RpWFluOFpQMU1Ob2xLaEtyYXpjZlRzd2wtSEduQmhiYVBZalFidzlsQnZLUHEzek9lMGViaGNXZ2t0UU9jdDNvRDE0SzM3QV93S0VIUFp5M2QzaEU3M3B4Sjl4OU5USmV2emtEZEtWNEEtRC1tSXg?oc=5",
+   "published_at": "2026-04-16T07:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Construction begins on 204MW data center campus outside Berlin, Germany - Data Center Dynamics",
+   "source_name": "Google News search: \"Virtus Data Centres\" (company gap watch)",
+   "summary": "Construction begins on 204MW data center campus outside Berlin, Germany &nbsp;&nbsp; Data Center Dynamics",
+   "license_status": "attribution_required",
+   "ifs_domains": null,
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "ded319d7-0069-4ebb-a947-1c7ac325aa1c",
+   "source_url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNajRRblJHcWxZSTk2dFVFcjFXYTVLY1hsSXphdmYzTG0tZ2lLUmVFLUxEZzhQWFNrUDFaRUVMeEN1YU4yLW5JeUxUTkk2SFVRTU9PZWthUF83b0VDZXdzY2U2VnhENGRxVWhUX3ZUWmNLWTFJcVh2Vl9nbGtfRUlvWUNOME1aRXN0Mno2cHZSYV91cmtmbkQ1RWsyTGdGeHlVcTFVYTNGVWFGNXVSMXFKUWNCdWgxVDZ6?oc=5",
+   "published_at": "2026-04-01T07:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Telis Energie Deutschland plans 500MW data center in Lower Saxony, Germany - Data Center Dynamics",
+   "source_name": "Google News search: \"Nxtra\" (dc_operators watch)",
+   "summary": "Telis Energie Deutschland plans 500MW data center in Lower Saxony, Germany &nbsp;&nbsp; Data Center Dynamics",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "57f8139e-341c-4b06-bf51-f509e0838866",
+   "source_url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxPaFl5OXJzS0FaZkg4TnlNTHhmbndhdllFMjhaeEVRaXVHSHhTN0RaVDhnYkZlR081VG8xdEZuaGRjM0N2R0NDbmI3Z1BncUxMUDFyTFJ5RHpIVUt4bXBXaDh3TlZvSjRIaWwzdXROUTRLbzJyeUV4RmZLdGJiTk0yVVo2YXRSMlo3Q3VFUGZtQTl4MjZ6cFZMSkI4RkNPVGRpa3hFNm5fVW1XZWFIY3ZzRkhSS3kzRFY4VDhMTzFQZnQ2eG5IckhXQ1BBSQ?oc=5",
+   "published_at": "2026-03-06T08:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Telefónica Germany deploys energy management platform across data center portfolio - Data Center Dynamics",
+   "source_name": "Google News search: \"EkkoSense\" (company gap watch)",
+   "summary": "Telefónica Germany deploys energy management platform across data center portfolio &nbsp;&nbsp; Data Center Dynamics",
+   "license_status": "attribution_required",
+   "ifs_domains": null,
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "223803f3-f5aa-44c5-8def-ca76e7521700",
+   "source_url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNcG1DWmtoR2FGMUxUOUNneWJBOGlJU0ZtcHFxaDZjdzdFZmlOZXQxd0l5QjBxZEJodzVCUW1iYUFfRENwLVJ5M1BqdzR0MjJ1TEVKWTRGZGp4cGVQT2d6TC10NjlWaHF2MEVrdGlEMzFQcFVtc2RyelFPTUlCQ3k0cUhobjZoTTluVjhKSDRWUHF5TjF0LTZuLVZUNlp1LWNtX0RiaGtnLVU0dw?oc=5",
+   "published_at": "2026-02-13T08:00:00+00:00",
+   "source_type": "web_news",
+   "title": "NorthC buys property outside Frankfurt, Germany, for data center - Data Center Dynamics",
+   "source_name": "Google News search: \"NLDC\" (company gap watch)",
+   "summary": "NorthC buys property outside Frankfurt, Germany, for data center &nbsp;&nbsp; Data Center Dynamics",
+   "license_status": "attribution_required",
+   "ifs_domains": null,
+   "ifs_subdomains": [
+    "D12.4",
+    "D14.4",
+    "D22.2"
+   ]
+  },
+  {
+   "artifact_id": "ec74598a-b8e3-44a9-b4b4-2a06d6efd842",
+   "source_url": "https://news.google.com/rss/articles/CBMi3AJBVV95cUxQcWloOEozaHZnZmV4Z2ZLUllYMV9QNDhqTVRwazNVYUVBVk9RMUdmdl9hZ3NhS3AzaXp0TmlPTnItNTl6ZDNiSVpoU0hhTkJEQnpNOVpaVUcyMVppT3hIYXJRZVJnM2hmTngwbjZWM0pfMUFyMkFfLXBkdHZsMDlLNWVWNmx6VmxnODdxSnBvb0IyQUdsTzZpZmtZaEF6YUpLQTF0WmNJaG5VMFJFVzd5ODZTWVpjRjNidHp1UVNuZ2tXVzY4X1ctck9wX0xZeGlLYkttU3JnMTFXQTcyMVQwdFIwSlEyV3F0TG1WSU90OFhta0lGUVI5d0liQjkwaHpyeU9iWGd2MUtIYkc2SUItSl8xVU5hMVZDTUVxak5JMFRNT1NCTHcyaXJEVG5JZFF0WklFVl9lLXJ5UlpkY2toNGIxSHdTLXFvZHEwN052b1Y1VUtvbkpON2pmaWI?oc=5",
+   "published_at": "2025-12-04T08:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Germany Data Center Colocation Market Supply & Demand - GlobeNewswire",
+   "source_name": "Google News search: \"ITENOS\" (dc_operators watch)",
+   "summary": "Germany Data Center Colocation Market Supply & Demand &nbsp;&nbsp; GlobeNewswire",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "502bcfaf-36c7-47b6-a4ac-9aa4d40560c6",
+   "source_url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNeUJhX1NPNGJ1NzloWnpXbUQwZmVDMXJMMFRBUWtPTHFLYTRFMElNYmJtMXlDUjhOTkxwX1Q4R0lWY2pyYWVLUkZpWkZTTXVkOElJODJPeWU1NzFNR1ZiUTNwNDFYbng1S0ZTNGRlR29mZnhsTXIyaTdRaVhkZVpGTDZfX0VhcEd2Z2pZLTlST1Y2YTJLNDBFcHlB?oc=5",
+   "published_at": "2025-11-21T08:00:00+00:00",
+   "source_type": "web_news",
+   "title": "AWS plans more data centers near Frankfurt, Germany - datacenterdynamics.com",
+   "source_name": "Google News search: \"Hetzner\" (hyperscalers watch)",
+   "summary": "AWS plans more data centers near Frankfurt, Germany &nbsp;&nbsp; datacenterdynamics.com",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": [
+    "D12.4",
+    "D14.4",
+    "D22.2",
+    "D23.1",
+    "D23.3",
+    "D5.1"
+   ]
+  },
+  {
+   "artifact_id": "9032605f-6378-4b3c-a6ff-7d8275d75386",
+   "source_url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQaFlfbnItajhvMUNBMkg0NERmbWw4MmxWeHYyUm45SUx6MV9UeUM4eEY0ZFpWRVRQWjVrNW1scjZkNk9YRVh2M3Vkc2V3QzdTRjdoZU9iTGlDVHpXbzdTZlotRlV3NGdpa3NrZkNYTE5rMm5ZcU5lZUl4elRLQWUtNktLRlFtTDdVeE9wdUEtdkNmWHRYU00wclNXNnlGMkFuQmFRSk5GbEFMZ2JvZWh6anZnUm5LYWxGMElRSQ?oc=5",
+   "published_at": "2026-11-06T00:58:56+00:00",
+   "source_type": "web_news",
+   "title": "ACS's Hochtief opens second YEXIO data center in Germany - VZ VermögensZentrum",
+   "source_name": "Google News search: \"Hochtief\" (public_companies watch)",
+   "summary": "ACS's Hochtief opens second YEXIO data center in Germany &nbsp;&nbsp; VZ VermögensZentrum",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": [
+    "D14.8"
+   ]
+  },
+  {
+   "artifact_id": "0470ba60-6fe9-4d1f-bf7a-378316f4c314",
+   "source_url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPU3FxRG9mVGdncUxHMktvYlRjaDVsMjhCLVVmQmNUN3ZONFFxOW9xMXlKQ0d3SHV5c2oyVml5bFF2T1lIUEk0ejBfandRekdQNUtTX3VkY0VLaTh2VFJVRXRyU0pBV2Fyb19QVnJwZW9UNTF1ZzA1ME1IazFCTUMxd3p2Zw?oc=5",
+   "published_at": "2026-09-29T10:26:33+00:00",
+   "source_type": "web_news",
+   "title": "Germany Plans to Double Data Center Capacity - en.tempo.co",
+   "source_name": "Google News search: \"EdgeConneX\" data center OR AI OR infrastructure",
+   "summary": "Germany Plans to Double Data Center Capacity &nbsp;&nbsp; en.tempo.co",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D4",
+    "D6"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "bc575178-e976-453c-a3c9-0693dc56ac30",
+   "source_url": "https://www.datacenterdynamics.com/en/regions/europe/",
+   "published_at": "2026-08-27T00:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Schwarz Group Commits €5.6bn Data Center Investment in Germany; DCD Europe Coverage Hub",
+   "source_name": null,
+   "summary": "DCD's Europe hub reports Schwarz Group (Lidl/Kaufland parent) committing €5.6 billion to a fully renewable-powered data center in Mecklenburg-Vorpommern, Germany, one of the largest single European data center investments announced in 2026. DCD also covers Proton's Frankfurt cooling failure outage and ongoing 2026 European data center trend and trajectory analysis.",
+   "license_status": null,
+   "ifs_domains": [
+    "D22.2"
+   ],
+   "ifs_subdomains": [
+    "D12.4",
+    "D12.5",
+    "D13.4",
+    "D19.5",
+    "D22.1",
+    "D22.2"
+   ]
+  },
+  {
+   "artifact_id": "8388a85f-cf65-428b-ae5c-8a64f5b610b1",
+   "source_url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxORl9vUVdDcENwSkR4ZVZLRmhkZUtNTmdzT2Uxb1Z3WFlvSU4zSEFxWDBOMjU1MHU0bUpPaERxYVVIUmNabDJ6SkZnZ052S3dSano4TUg5WjU5eC0wak5TTGxfOFROYThacjBWaUtfX0tiS2o0d0VKUXVfa0RiRW9NTVVCc01fVzk2NlZmYmZVSXlwOXN3Zkt4LUZzVnI?oc=5",
+   "published_at": "2026-08-06T21:43:36+00:00",
+   "source_type": "web_news",
+   "title": "Germany Data Center Networking Market Size, Share,Trends, Growth Analysis Report, 2030 - MarketsandMarkets",
+   "source_name": "Google News search: \"Foxconn Industrial Internet\" (public_companies watch)",
+   "summary": "Germany Data Center Networking Market Size, Share,Trends, Growth Analysis Report, 2030 &nbsp;&nbsp; MarketsandMarkets",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "036ed5c1-c732-4260-ac5e-a775ae3ddf82",
+   "source_url": "https://thecoolingreport.com/intel/germany-heat-reuse-mandate",
+   "published_at": "2026-07-01T00:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Germany Says Your Data Center Has to Heat the Neighborhood. The Deadline Is July 1.",
+   "source_name": null,
+   "summary": "Germany's Energy Efficiency Act (EnEfG) took effect July 1, 2026, mandating any new data center reuse at least 10% of waste heat, rising to 15% by 2027 and 20% by 2028, with a required PUE of 1.2 or lower — the most aggressive heat reuse mandate in any major data center market globally. Telehouse Germany's Frankfurt data center already supplies residual heat to a neighboring residential quarter, covering over 60% of that district's heating and hot water needs.",
+   "license_status": null,
+   "ifs_domains": [
+    "D11.4"
+   ],
+   "ifs_subdomains": [
+    "D11.4",
+    "D12.4",
+    "D14.4",
+    "D22.2"
+   ]
+  },
+  {
+   "artifact_id": "8d6ab9f5-6fa2-423a-b507-790360514479",
+   "source_url": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxOSlNmUlp5QUhwQTZmRGJvcFF6Mzg2YzRZTW9XUi1RQUQxVUIzbzFOYl9SMXBTTko1Ym5GT0tabU03YTVKTE9fLWM5a0JwM0dERE9CWUNHWUhxR3FZcmdKd2poNjNpNkppMHg3Q0kyMWFNdmdiN0o2cHMwc0VGdk5UWGw1Zll0NTNTWk1zLUFqd0VWUnlSRnU2bmtwcXFzMnhfbFUxRzh1MENCNDEtdFZoMlNtRnZocVJSWFF2R0p5TVRPTFZOdGJNVHhraUd5UVFibGZVRnJUNFdMWm84VlZVR1VzRWhEZ1pES1HSAe4BQVVfeXFMTTdWUnItVWZJZUxZMzhLVDFzQm0zZkY3YWpGRjZuYTlnbTN3d3BZVDVsXzJMdGdmSVhCd1paQnZ0T21JZk5yQjZfSjQ0YWcxUDQ5TEticHdDSFdhWUJPa3pGYVZMQW8tTEpzS0ZwWDBpbENTZ01HZVYyOUhzVFJRZmQ0bk5VQUxnTXN5c19ZSzBYUTREZ2NBdWpHYkNDQnM0SnZBRHkzdTBXb2trc0JVeTRtbkdtdklGRHIxSXdmb1hHV3M4dXF5d2tpUmhOcG0xM0swTnBEakJteGtGU3ZranA5SVozd2xDdDRqeGxRZw?oc=5",
+   "published_at": "2026-06-20T07:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Firstcolo begins construction of 24MW data center in Germany - ET Datacenters",
+   "source_name": "Google News search: \"firstcolo\" (dc_operators watch)",
+   "summary": "Firstcolo begins construction of 24MW data center in Germany &nbsp;&nbsp; ET Datacenters",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "b054d647-3d56-406f-a4f7-faf3351bd7f0",
+   "source_url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxNUUozazBkRVdqMXN2cURiNEVsX2V1X0stVHUyMWt5U01nNkd4OUR0OENCUWpRc2tDN3Q5MWh2bW9sMnVEQjZ0ZFY5SkRhaVFyeUp4UjVJaWRsa2R6cVFjejdmSF9FUUJ2Q1hac0x2TEdlbmtVZ2xPcjEzQ080ZHZJcWlmc1k5MEdXbjhEQUM4VXNiWGs1eTFQNmoybFp3bnRLY1NpUHhXNG0xaWd1VjBMTXpmRzBra0VKOWlmNnl3S3RQMHB3U0laODhNbGJuak5uNUxmSFNXRXBoTU9PSUQzQ1Q1bTFWU2Yx0gHuAUFVX3lxTE03VlJyLVVmSWVMWTM4S1Qxc0JtM2ZGN2FqRkY2bmE5Z20zd3dwWVQ1bF8yTHRnZklYQndaWkJ2dE9tSWZOckI2X0o0NGFnMVA0OUxLYnB3Q0hXYVlCT2t6RmFWTEFvLUxKc0tGcFgwaWxDU2dNR2VWMjlIc1RSUWZkNG5OVUFMZ01zeXNfWUswWFE0RGdjQXVqR2JDQ0JzNEp2QUR5M3UwV29ra3NCVXk0bW5HbXZJRkRyMUl3Zm9YR1dzOHVxeXdraVJoTnBtMTNLME5wRGpCbXhrRlN2a2pwOUlaM3dsQ3Q0anhsUWc?oc=5",
+   "published_at": "2026-06-20T07:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Firstcolo begins construction of 24MW data center in Germany - ET Datacenters",
+   "source_name": "Google News search: \"firstcolo\" (dc_operators watch)",
+   "summary": "Firstcolo begins construction of 24MW data center in Germany &nbsp;&nbsp; ET Datacenters",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "c90acc59-3f0f-465d-ade2-881c422bb228",
+   "source_url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOQlJLSzJBbVZJSEhsQlVmY0JPbFpOU0ZaSTQyLVJjV2c1VUdidHl5WW1QcFZaNk1WZ3p0NGJmYjVoTVhzSWxSbFp3MDlzVFAtbjRYalgtTTBQX0p0RHdiZ1pBeG9BaV9XLXlVUmEtZkJqU2NVVmFrZmt4ZHBHeDdDMGlyZENUQzlOSmRaRW1aaGctOHE3WHFvdzVOX2lZM2dYQUlEWTFtSC10LXh6Vmc?oc=5",
+   "published_at": "2026-06-15T07:00:00+00:00",
+   "source_type": "web_news",
+   "title": "firstcolo Begins Construction of 24 MW FRA7 Data Center in Germany - HPCwire",
+   "source_name": "Google News search: \"SPIE\" (supply_chain watch)",
+   "summary": "firstcolo Begins Construction of 24 MW FRA7 Data Center in Germany &nbsp;&nbsp; HPCwire",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": [
+    "D14.8"
+   ]
+  },
+  {
+   "artifact_id": "f333ff5b-8752-4e45-b09c-84c7b125ac67",
+   "source_url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOQlJLSzJBbVZJSEhsQlVmY0JPbFpOU0ZaSTQyLVJjV2c1VUdidHl5WW1QcFZaNk1WZ3p0NGJmYjVoTVhzSWxSbFp3MDlzVFAtbjRYalgtTTBQX0p0RHdiZ1pBeG9BaV9XLXlVUmEtZkJqU2NVVmFrZmt4ZHBHeDdDMGlyZENUQzlOSmRaRW1aaGctOHE3WHFvdzVOX2lZM2dYQUlEWTFtSC10LXh6Vmc?oc=5",
+   "published_at": "2026-06-15T07:00:00+00:00",
+   "source_type": "web_news",
+   "title": "firstcolo Begins Construction of 24 MW FRA7 Data Center in Germany - HPCwire",
+   "source_name": "Google News search: \"Parallel Works\" (startups watch)",
+   "summary": "firstcolo Begins Construction of 24 MW FRA7 Data Center in Germany &nbsp;&nbsp; HPCwire",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "9bd72af7-3443-40d4-9cde-9efb4bba0c31",
+   "source_url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOQlJLSzJBbVZJSEhsQlVmY0JPbFpOU0ZaSTQyLVJjV2c1VUdidHl5WW1QcFZaNk1WZ3p0NGJmYjVoTVhzSWxSbFp3MDlzVFAtbjRYalgtTTBQX0p0RHdiZ1pBeG9BaV9XLXlVUmEtZkJqU2NVVmFrZmt4ZHBHeDdDMGlyZENUQzlOSmRaRW1aaGctOHE3WHFvdzVOX2lZM2dYQUlEWTFtSC10LXh6Vmc?oc=5",
+   "published_at": "2026-06-15T07:00:00+00:00",
+   "source_type": "web_news",
+   "title": "firstcolo Begins Construction of 24 MW FRA7 Data Center in Germany - HPCwire",
+   "source_name": "Google News search: \"Vector Institute\" (industry_orgs watch)",
+   "summary": "firstcolo Begins Construction of 24 MW FRA7 Data Center in Germany &nbsp;&nbsp; HPCwire",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "61773a06-694f-4935-8443-bf8cade766a5",
+   "source_url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOQlJLSzJBbVZJSEhsQlVmY0JPbFpOU0ZaSTQyLVJjV2c1VUdidHl5WW1QcFZaNk1WZ3p0NGJmYjVoTVhzSWxSbFp3MDlzVFAtbjRYalgtTTBQX0p0RHdiZ1pBeG9BaV9XLXlVUmEtZkJqU2NVVmFrZmt4ZHBHeDdDMGlyZENUQzlOSmRaRW1aaGctOHE3WHFvdzVOX2lZM2dYQUlEWTFtSC10LXh6Vmc?oc=5",
+   "published_at": "2026-06-15T07:00:00+00:00",
+   "source_type": "web_news",
+   "title": "firstcolo Begins Construction of 24 MW FRA7 Data Center in Germany - HPCwire",
+   "source_name": "Google News search: \"firstcolo\" (dc_operators watch)",
+   "summary": "firstcolo Begins Construction of 24 MW FRA7 Data Center in Germany &nbsp;&nbsp; HPCwire",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "1582f740-72fc-425b-93f9-1e1c23ce0360",
+   "source_url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPbWs3SV9IM29CcDl2eC04ZW1pdG5sMkF1U0t0UEg4aUdERUZOS0xVdlN3cVIxcVdaNXpDMXljZnJxU0lXTWZsUG1PdnFtV1gyX3pWYkR0LTNYb3JJVHBxVnhsYkxWY3c1Y25EVUNvSDNnQVFTMFJiUGV6MHRmUk9qV3FjZVdySTBmSGU3ZFBJT3hUODA4R2J1cTdUUWNjX20zNnRiVEhad3I1Zw?oc=5",
+   "published_at": "2026-05-22T07:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Thales and Google Cloud partner for sovereign cloud in Germany - Data Center Dynamics",
+   "source_name": "Google News search: \"THALES\" (company gap watch)",
+   "summary": "Thales and Google Cloud partner for sovereign cloud in Germany &nbsp;&nbsp; Data Center Dynamics",
+   "license_status": "attribution_required",
+   "ifs_domains": null,
+   "ifs_subdomains": [
+    "D12.2"
+   ]
+  },
+  {
+   "artifact_id": "1fe87558-20c0-4773-9a00-9f547689969f",
+   "source_url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOUzlxTnFLR2tna2pWT1o0emxhQUVPSjVwLWtTRF9xV0U3dHhRUXVYT0VVMWxwcHFqaXN4eDlBb2tjSFUyV2hoeVNoZ0xhZEliQXFRTWFJTzRNR2lSNmtQcF9xemoxU09vMDVFRUk5NW9SbDF5SU5VRVlBRkE2dUwza01qUDBGVm1wa2RuZ2FZSUl3Rmc1VkVGaEtKMGxFZ2l5U2ZQbFlpYw?oc=5",
+   "published_at": "2026-05-19T07:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Bull delivers second HPC system to Airbus, located in Germany - Data Center Dynamics",
+   "source_name": "Google News search: \"Airbus\" (company gap watch)",
+   "summary": "Bull delivers second HPC system to Airbus, located in Germany &nbsp;&nbsp; Data Center Dynamics",
+   "license_status": "attribution_required",
+   "ifs_domains": null,
+   "ifs_subdomains": [
+    "D12.7",
+    "D15.3"
+   ]
+  },
+  {
+   "artifact_id": "49bef49e-d66e-4374-9946-eeb9ff056458",
+   "source_url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNaTVlLW9fbF92dWNpcDNMam11N2UtM0J4cHVvRHVkcU52VnJETEtQUF9DRnpjbnlqVlMwc3VJSzhBcDA1V3RsWmMtaGdfa2tKbUNXa2xQSV9VMWhXTDhPQy1MZWZyaXNBQXBWaHVScWxBVTl1U21maXhwc1JybGhqQ2lJYmJlZnl5b3hz?oc=5",
+   "published_at": "2026-05-05T07:00:00+00:00",
+   "source_type": "web_news",
+   "title": "DMO brings data center online outside Munster, Germany - bebeez.eu",
+   "source_name": "Google News search: \"H&MV Engineering\" (supply_chain watch)",
+   "summary": "DMO brings data center online outside Munster, Germany &nbsp;&nbsp; bebeez.eu",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "e66030c5-d205-4c3a-9a6d-a07eb199197f",
+   "source_url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPbEtnRGF4RWpoekxHNGg0Q3hsaURmSTYyVVVJeWxCXzUwaGJiOGhzNk1ZMVFCSVlOS1VaVHBNeV9taUkzaFl4VUdiSzU3bVNiYnNyNEx3b3dpNHpSYXRCcW10MUJsOWNlbmJZWWc5OWJpZkhHbFp6MEJLOS05Wmp3SkR1Nk9XQmxnQUMzUVdoVVgxQjV1ZXU0MHBXQXY2N05XY3MtV2xYWQ?oc=5",
+   "published_at": "2026-03-04T08:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Tencent Cloud launches availability zone in Frankfurt, Germany - Data Center Dynamics",
+   "source_name": "Google News search: \"Tencent\" (company gap watch)",
+   "summary": "Tencent Cloud launches availability zone in Frankfurt, Germany &nbsp;&nbsp; Data Center Dynamics",
+   "license_status": "attribution_required",
+   "ifs_domains": null,
+   "ifs_subdomains": [
+    "D12.4",
+    "D14.4",
+    "D22.2",
+    "D5.1"
+   ]
+  },
+  {
+   "artifact_id": "e91e9473-7f75-4b60-b2ea-24efc10b0766",
+   "source_url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOQ1F1U05KZ0lfZG9nSjZlTmxFN2xPamwzTmluUHJ2bFNpcU9rNDJMN3R2andyYWF4SmtacEFhSlhxeXlEVHpYMVFPaUV2bmo3LThNcVpNU3NnVThaTGFOdUd2emdRWG1wZmt1MHFtOVBYb25RcDNaRE8yZWtDdnF1SG93?oc=5",
+   "published_at": "2026-01-08T08:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Germany Data Center Market Size & Outlook, 2026-2033 - Grand View Research",
+   "source_name": "Google News search: \"Tencent Holdings\" (public_companies watch)",
+   "summary": "Germany Data Center Market Size & Outlook, 2026-2033 &nbsp;&nbsp; Grand View Research",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": [
+    "D12.4",
+    "D16.3",
+    "D22.3"
+   ]
+  },
+  {
+   "artifact_id": "89e372bc-1613-40f2-a433-5cbc49d2b744",
+   "source_url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPY0NiNnNtMjJ2VlpsUERFVkQ0aWVDRF8tSmg2dnQzdFFJTFN2SWsxOVdoTlpJWS05NFNQX2xRM1dtalk1S2xEc25tX1ZWVzl0QkhYb2l1cEtmY1FsNnhpZE03UTZqV3RoakZnRGNGZmNxMTkxdWFuNnkyVEZVRFFVTXZZOF9VMTY3OHdXQ0x6cw?oc=5",
+   "published_at": "2026-09-17T15:01:06+00:00",
+   "source_type": "web_news",
+   "title": "NorthC breaks ground on data center in Frankfurt, Germany - BeBeez International",
+   "source_name": "Google News search: \"NorthC\" (dc_operators watch)",
+   "summary": "NorthC breaks ground on data center in Frankfurt, Germany &nbsp;&nbsp; BeBeez International",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": [
+    "D12.4",
+    "D14.4",
+    "D22.2"
+   ]
+  },
+  {
+   "artifact_id": "a71c6dab-7de6-4191-b1e1-bd0866d1393c",
+   "source_url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNRUNLeHlsdXIxN3otR2JPRUd3eFY0cEp1SFhZQk1fdzBucTJueGU2d3FkZmN1T0tVM1VsMFJLX1Y3LWFSMkFubzZhNzNQMEJtTE5QTlhGc3B5dHYydnZZM0Ruam55Z3NCQ25Weld1bkJWNmdYczhKUDlEaWVuTWtPWExSV213eFo3SGxIQkRSZktlZFFOMEZ3ZFNPUEhQTEZXeXZaYTJVREFKLVZrUmZtdFR0LTljbDlobmN4ODN5LXhCNHYyc3c?oc=5",
+   "published_at": "2026-08-12T00:32:50+00:00",
+   "source_type": "web_news",
+   "title": "CloudKleyer Executives Attend FRA1 Data Center Groundbreaking in Germany - The Fast Mode",
+   "source_name": "Google News search: \"CloudKleyer\" (dc_operators watch)",
+   "summary": "CloudKleyer Executives Attend FRA1 Data Center Groundbreaking in Germany &nbsp;&nbsp; The Fast Mode",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "093a1849-a786-4642-9cc3-a0cc26b47cfa",
+   "source_url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNRUNLeHlsdXIxN3otR2JPRUd3eFY0cEp1SFhZQk1fdzBucTJueGU2d3FkZmN1T0tVM1VsMFJLX1Y3LWFSMkFubzZhNzNQMEJtTE5QTlhGc3B5dHYydnZZM0Ruam55Z3NCQ25Weld1bkJWNmdYczhKUDlEaWVuTWtPWExSV213eFo3SGxIQkRSZktlZFFOMEZ3ZFNPUEhQTEZXeXZaYTJVREFKLVZrUmZtdFR0LTljbDlobmN4ODN5LXhCNHYyc3c?oc=5",
+   "published_at": "2026-08-11T23:55:09+00:00",
+   "source_type": "web_news",
+   "title": "CloudKleyer Executives Attend FRA1 Data Center Groundbreaking in Germany - The Fast Mode",
+   "source_name": "Google News search: \"Noris Network\" data center OR AI OR infrastructure",
+   "summary": "CloudKleyer Executives Attend FRA1 Data Center Groundbreaking in Germany &nbsp;&nbsp; The Fast Mode",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "11ac1fae-ea37-4785-b49c-4882cd7cfbff",
+   "source_url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPQjAwNEhFa00yNXd4eGtrZDRyQmdrSjllRzZRMWgyM1RBaXdPRU5WYlRLVnRNM0lxM0plZGZBZUtKNHBxUjJuUEx0NmJYcWUzWWRDTE1YX2tfbDZQMnkwa3c4MEZtT1VMeGNYbHFOQzFGanZJdkZaSHk1bXNfRkJMZXNLT0ZoYkttd3ZwaDF6NnN0YmdkU3RSb3h1clRqVDZJT3c0VUVEaTlnOGRkdm9r?oc=5",
+   "published_at": "2026-08-11T09:34:01+00:00",
+   "source_type": "web_news",
+   "title": "Uniper Targets Data Center Sales in UK, Germany on AI Demand - Bloomberg.com",
+   "source_name": "Google News search: \"Uniper\" (public_companies watch)",
+   "summary": "Uniper Targets Data Center Sales in UK, Germany on AI Demand &nbsp;&nbsp; Bloomberg.com",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": [
+    "D16.3",
+    "D23.3",
+    "D23.4"
+   ]
+  },
+  {
+   "artifact_id": "4a5d6c63-be5e-4e5d-8cfb-6db4e2617934",
+   "source_url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQZVZYQjlBaWlPWFZzS3VzVXBtdTJ0Zm5lcllBckN6cU9YbmNqbV9aY1I1Y25pZWVFU3JNbjBEZVJyVjhnbVczVmh4NURCVmZfd3U1MmtZMDNDLTZmZk9JSDdudVpxSHpBN3pHRVdKdGdtUG1kOUdBZnhnM0d2WEpmWm9QN0d1b081LXg5ODI0RQ?oc=5",
+   "published_at": "2026-08-06T06:27:47+00:00",
+   "source_type": "web_news",
+   "title": "Germany: Businesses benefit from US data center boom - Agenzia Nova",
+   "source_name": "Google News search: \"Nova\" (public_companies watch)",
+   "summary": "Germany: Businesses benefit from US data center boom &nbsp;&nbsp; Agenzia Nova",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": [
+    "D15.5"
+   ]
+  },
+  {
+   "artifact_id": "4701518c-3d7e-47ff-b830-78d8bc2e8b57",
+   "source_url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQZVZYQjlBaWlPWFZzS3VzVXBtdTJ0Zm5lcllBckN6cU9YbmNqbV9aY1I1Y25pZWVFU3JNbjBEZVJyVjhnbVczVmh4NURCVmZfd3U1MmtZMDNDLTZmZk9JSDdudVpxSHpBN3pHRVdKdGdtUG1kOUdBZnhnM0d2WEpmWm9QN0d1b081LXg5ODI0RQ?oc=5",
+   "published_at": "2026-08-06T06:27:47+00:00",
+   "source_type": "web_news",
+   "title": "Germany: Businesses benefit from US data center boom - Agenzia Nova",
+   "source_name": "Google News search: \"Pfisterer\" (public_companies watch)",
+   "summary": "Germany: Businesses benefit from US data center boom &nbsp;&nbsp; Agenzia Nova",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "2995224d-7c16-4633-9d51-bb3d779a21ed",
+   "source_url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQZVZYQjlBaWlPWFZzS3VzVXBtdTJ0Zm5lcllBckN6cU9YbmNqbV9aY1I1Y25pZWVFU3JNbjBEZVJyVjhnbVczVmh4NURCVmZfd3U1MmtZMDNDLTZmZk9JSDdudVpxSHpBN3pHRVdKdGdtUG1kOUdBZnhnM0d2WEpmWm9QN0d1b081LXg5ODI0RQ?oc=5",
+   "published_at": "2026-08-06T06:27:47+00:00",
+   "source_type": "web_news",
+   "title": "Germany: Businesses benefit from US data center boom - Agenzia Nova",
+   "source_name": "Google News search: \"Hochtief\" (public_companies watch)",
+   "summary": "Germany: Businesses benefit from US data center boom &nbsp;&nbsp; Agenzia Nova",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": [
+    "D15.5"
+   ]
+  },
+  {
+   "artifact_id": "9ad7f4dc-c218-49f6-be1c-87c1553b8c3f",
+   "source_url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQZVZYQjlBaWlPWFZzS3VzVXBtdTJ0Zm5lcllBckN6cU9YbmNqbV9aY1I1Y25pZWVFU3JNbjBEZVJyVjhnbVczVmh4NURCVmZfd3U1MmtZMDNDLTZmZk9JSDdudVpxSHpBN3pHRVdKdGdtUG1kOUdBZnhnM0d2WEpmWm9QN0d1b081LXg5ODI0RQ?oc=5",
+   "published_at": "2026-08-06T06:27:47+00:00",
+   "source_type": "web_news",
+   "title": "Germany: Businesses benefit from US data center boom - Agenzia Nova",
+   "source_name": "Google News search: \"Technotrans\" (public_companies watch)",
+   "summary": "Germany: Businesses benefit from US data center boom &nbsp;&nbsp; Agenzia Nova",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": [
+    "D15.5"
+   ]
+  },
+  {
+   "artifact_id": "62a5dee2-2084-4d8f-b178-d84055b37fbc",
+   "source_url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9JOHdsQnh6eHN1c1d3aDlvVVQ4aFctU0hjNF8tWENDSlFEWnlKQktBZnBqT1NhdDZEd1ctdU16OTFGVGwzbjVuV2RnMG9zMWM3RnREcW1IYVlKM1pTbWVHZkNaSXE?oc=5",
+   "published_at": "2026-06-22T07:00:00+00:00",
+   "source_type": "web_news",
+   "title": "LG Energy Solution Unveils Integrated AI Data Center Solutions in Germany - 아시아경제",
+   "source_name": "Google News search: \"LG Energy Solution\" (public_companies watch)",
+   "summary": "LG Energy Solution Unveils Integrated AI Data Center Solutions in Germany &nbsp;&nbsp; 아시아경제",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": [
+    "D2.3"
+   ]
+  },
+  {
+   "artifact_id": "9280d579-3a89-4055-91d3-118fbbd1565b",
+   "source_url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOWlZsaU5zN2RWVkZmekJoaVFKNXlvUHk4WGpaN3F6ZlI4SzFVVnRwNl9WY3pFMXcyRDFra25ObFljRmR6ZjZuQ01ZSnczU19jS2pnRUNRbUVGemtYXzk3aHlJcVlUV2x0bFcxZEFFWERnSEQybTJTMXFZWTZfOFRSRTJnb2p2eTBwXzdJYTk2WQ?oc=5",
+   "published_at": "2026-06-10T07:00:00+00:00",
+   "source_type": "web_news",
+   "title": "University of Bonn to get new HPC data center in Germany - BeBeez International",
+   "source_name": "Google News search: \"Greater London Authority\" (intl_gov watch)",
+   "summary": "University of Bonn to get new HPC data center in Germany &nbsp;&nbsp; BeBeez International",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "38e5df94-0c7e-4f0b-97fa-8d58852c288c",
+   "source_url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOWlZsaU5zN2RWVkZmekJoaVFKNXlvUHk4WGpaN3F6ZlI4SzFVVnRwNl9WY3pFMXcyRDFra25ObFljRmR6ZjZuQ01ZSnczU19jS2pnRUNRbUVGemtYXzk3aHlJcVlUV2x0bFcxZEFFWERnSEQybTJTMXFZWTZfOFRSRTJnb2p2eTBwXzdJYTk2WQ?oc=5",
+   "published_at": "2026-06-10T07:00:00+00:00",
+   "source_type": "web_news",
+   "title": "University of Bonn to get new HPC data center in Germany - BeBeez International",
+   "source_name": "Google News search: \"Bender\" (supply_chain watch)",
+   "summary": "University of Bonn to get new HPC data center in Germany &nbsp;&nbsp; BeBeez International",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "0f416877-328a-4550-bee7-2ba3c8a68040",
+   "source_url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxQcF9NMmxvRXlfZ0hRbjk3YS1UbjlxcDEzazNiYWFubVdmZ3lPTXRrR0xqMVA3Tml6MUJldVVkblFyNUdXdVpFWlYzZXROSUFFU0hmUllIT1VQal9DSHdERVZOWTFrLTdpd0dsWmVFNmhabmp5eWU2YVJiYmU3ZUxOb1BwUzBGd3BUMVZYZmpTamtuYWNkYjdYaU9tOEpNbUx0TG1zbWZOSWJsREpDLTBsYXlQb2xjOVVtaEd3bXg0Zks1UHphQ3VZd082Y2ZCem5IWlBfMXNBX0JXdmM?oc=5",
+   "published_at": "2026-06-01T07:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Virtus completes installation of two super-grid transformers at Wustermark Campus in Berlin, Germany - Data Center Dynamics",
+   "source_name": "Google News search: \"Virtus Data Centres\" (company gap watch)",
+   "summary": "Virtus completes installation of two super-grid transformers at Wustermark Campus in Berlin, Germany &nbsp;&nbsp; Data Center Dynamics",
+   "license_status": "attribution_required",
+   "ifs_domains": null,
+   "ifs_subdomains": [
+    "D14.8"
+   ]
+  },
+  {
+   "artifact_id": "6393e363-eb2b-4285-ad8b-20a4f4ebd859",
+   "source_url": "https://news.google.com/rss/articles/CBMigAJBVV95cUxQbDhpMHZGbnNwOTE3ay1SUGUtc0xsaUdoZENvOXlzOUVtSm5Ud0hsVzk4NU95VHl4YXpPaXYyWU1XWUJuRFNwek92VVVHVUpMd2d5SlhQTWJiYlhIOHJSZHItZ2lNZnRFYjlVdFBFYXdJS1Q3cVVZMm9yRzF4ZExIc1VuS2ZPTXVKSG5ucUZvNWdKd2k4eUZCUmVUXzlwT2RMUXF5UG5vRkJwMW9wUmRfQkYwWTJBRlNuOF94S1k2OFZKVTIxTm1DQnRZZXFMXzNOV2VQeHVUZjZ6WE82ZUk5X0xLN1dlclNRbjN3MnNzY2dTSk5SWmZPbndna3JvSXNf0gGEAkFVX3lxTE1jZ3d4NFZIZkROS2M2cHpnLWtkSXhHUzloU0hIQ2xlV09tbWFrMm9yRHFXeWl6TXFGb2lkM3F4emRHVkwtOTVscWxLbWNvZHB1ekowb1lXWU5aeVExS3BhOTBTdk1LM1BwODZUQkJ4bVFnRU90N0YtbW5MeFZMb09ULWpqR0w2Qk9oVDRCU0hwNVRBZFlhSmJVMEstcEFjRGZXSlVOaTVVUVM5aURMcl9yZTVWSkxOTTk3X1dOMzV0b1dITUZHdVlBX2hOakNKbjY5SEROMUJqcFE2bnRDRkdGOFU0d0trblYwN0g3MnZhVFRJMW1uWFBNd0ttY1F1cHhZd0dY?oc=5",
+   "published_at": "2026-05-28T07:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Hochtief, Yorizon Begin Herne Data Center Construction for Germany West Region - ET Datacenters",
+   "source_name": "Google News search: \"Palladio Partners\" (investors watch)",
+   "summary": "Hochtief, Yorizon Begin Herne Data Center Construction for Germany West Region &nbsp;&nbsp; ET Datacenters",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": [
+    "D14.8"
+   ]
+  },
+  {
+   "artifact_id": "94cba4e2-d5da-4316-9bb8-9f93818b77b2",
+   "source_url": "https://news.google.com/rss/articles/CBMigAJBVV95cUxQbDhpMHZGbnNwOTE3ay1SUGUtc0xsaUdoZENvOXlzOUVtSm5Ud0hsVzk4NU95VHl4YXpPaXYyWU1XWUJuRFNwek92VVVHVUpMd2d5SlhQTWJiYlhIOHJSZHItZ2lNZnRFYjlVdFBFYXdJS1Q3cVVZMm9yRzF4ZExIc1VuS2ZPTXVKSG5ucUZvNWdKd2k4eUZCUmVUXzlwT2RMUXF5UG5vRkJwMW9wUmRfQkYwWTJBRlNuOF94S1k2OFZKVTIxTm1DQnRZZXFMXzNOV2VQeHVUZjZ6WE82ZUk5X0xLN1dlclNRbjN3MnNzY2dTSk5SWmZPbndna3JvSXNf?oc=5",
+   "published_at": "2026-05-28T07:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Hochtief, Yorizon Begin Herne Data Center Construction for Germany West Region - ET Datacenters",
+   "source_name": "Google News search: \"Palladio Partners\" (investors watch)",
+   "summary": "Hochtief, Yorizon Begin Herne Data Center Construction for Germany West Region &nbsp;&nbsp; ET Datacenters",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "7ce9c16a-3c22-479b-aad6-1dacf9169731",
+   "source_url": "https://news.google.com/rss/articles/CBMigAJBVV95cUxQbDhpMHZGbnNwOTE3ay1SUGUtc0xsaUdoZENvOXlzOUVtSm5Ud0hsVzk4NU95VHl4YXpPaXYyWU1XWUJuRFNwek92VVVHVUpMd2d5SlhQTWJiYlhIOHJSZHItZ2lNZnRFYjlVdFBFYXdJS1Q3cVVZMm9yRzF4ZExIc1VuS2ZPTXVKSG5ucUZvNWdKd2k4eUZCUmVUXzlwT2RMUXF5UG5vRkJwMW9wUmRfQkYwWTJBRlNuOF94S1k2OFZKVTIxTm1DQnRZZXFMXzNOV2VQeHVUZjZ6WE82ZUk5X0xLN1dlclNRbjN3MnNzY2dTSk5SWmZPbndna3JvSXNf?oc=5",
+   "published_at": "2026-05-28T07:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Hochtief, Yorizon Begin Herne Data Center Construction for Germany West Region - ET Datacenters",
+   "source_name": "Google News search: \"Hochtief\" (public_companies watch)",
+   "summary": "Hochtief, Yorizon Begin Herne Data Center Construction for Germany West Region &nbsp;&nbsp; ET Datacenters",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "a75f370c-ba1c-4afc-8194-fb2bfcdf4114",
+   "source_url": "https://news.google.com/rss/articles/CBMigAJBVV95cUxQbDhpMHZGbnNwOTE3ay1SUGUtc0xsaUdoZENvOXlzOUVtSm5Ud0hsVzk4NU95VHl4YXpPaXYyWU1XWUJuRFNwek92VVVHVUpMd2d5SlhQTWJiYlhIOHJSZHItZ2lNZnRFYjlVdFBFYXdJS1Q3cVVZMm9yRzF4ZExIc1VuS2ZPTXVKSG5ucUZvNWdKd2k4eUZCUmVUXzlwT2RMUXF5UG5vRkJwMW9wUmRfQkYwWTJBRlNuOF94S1k2OFZKVTIxTm1DQnRZZXFMXzNOV2VQeHVUZjZ6WE82ZUk5X0xLN1dlclNRbjN3MnNzY2dTSk5SWmZPbndna3JvSXNf0gGEAkFVX3lxTE1jZ3d4NFZIZkROS2M2cHpnLWtkSXhHUzloU0hIQ2xlV09tbWFrMm9yRHFXeWl6TXFGb2lkM3F4emRHVkwtOTVscWxLbWNvZHB1ekowb1lXWU5aeVExS3BhOTBTdk1LM1BwODZUQkJ4bVFnRU90N0YtbW5MeFZMb09ULWpqR0w2Qk9oVDRCU0hwNVRBZFlhSmJVMEstcEFjRGZXSlVOaTVVUVM5aURMcl9yZTVWSkxOTTk3X1dOMzV0b1dITUZHdVlBX2hOakNKbjY5SEROMUJqcFE2bnRDRkdGOFU0d0trblYwN0g3MnZhVFRJMW1uWFBNd0ttY1F1cHhZd0dY?oc=5",
+   "published_at": "2026-05-28T07:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Hochtief, Yorizon Begin Herne Data Center Construction for Germany West Region - ET Datacenters",
+   "source_name": "Google News search: \"Kasi Cloud\" (dc_operators watch)",
+   "summary": "Hochtief, Yorizon Begin Herne Data Center Construction for Germany West Region &nbsp;&nbsp; ET Datacenters",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": [
+    "D14.8"
+   ]
+  },
+  {
+   "artifact_id": "53f83888-8e11-4fff-9589-4fd52f16188a",
+   "source_url": "https://news.google.com/rss/articles/CBMigAJBVV95cUxQbDhpMHZGbnNwOTE3ay1SUGUtc0xsaUdoZENvOXlzOUVtSm5Ud0hsVzk4NU95VHl4YXpPaXYyWU1XWUJuRFNwek92VVVHVUpMd2d5SlhQTWJiYlhIOHJSZHItZ2lNZnRFYjlVdFBFYXdJS1Q3cVVZMm9yRzF4ZExIc1VuS2ZPTXVKSG5ucUZvNWdKd2k4eUZCUmVUXzlwT2RMUXF5UG5vRkJwMW9wUmRfQkYwWTJBRlNuOF94S1k2OFZKVTIxTm1DQnRZZXFMXzNOV2VQeHVUZjZ6WE82ZUk5X0xLN1dlclNRbjN3MnNzY2dTSk5SWmZPbndna3JvSXNf0gGEAkFVX3lxTE1jZ3d4NFZIZkROS2M2cHpnLWtkSXhHUzloU0hIQ2xlV09tbWFrMm9yRHFXeWl6TXFGb2lkM3F4emRHVkwtOTVscWxLbWNvZHB1ekowb1lXWU5aeVExS3BhOTBTdk1LM1BwODZUQkJ4bVFnRU90N0YtbW5MeFZMb09ULWpqR0w2Qk9oVDRCU0hwNVRBZFlhSmJVMEstcEFjRGZXSlVOaTVVUVM5aURMcl9yZTVWSkxOTTk3X1dOMzV0b1dITUZHdVlBX2hOakNKbjY5SEROMUJqcFE2bnRDRkdGOFU0d0trblYwN0g3MnZhVFRJMW1uWFBNd0ttY1F1cHhZd0dY?oc=5",
+   "published_at": "2026-05-28T07:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Hochtief, Yorizon Begin Herne Data Center Construction for Germany West Region - ET Datacenters",
+   "source_name": "Google News search: \"Hochtief\" (public_companies watch)",
+   "summary": "Hochtief, Yorizon Begin Herne Data Center Construction for Germany West Region &nbsp;&nbsp; ET Datacenters",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": [
+    "D14.8"
+   ]
+  },
+  {
+   "artifact_id": "4369fc6b-88cc-40a4-9b9c-70254579949b",
+   "source_url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPTFFKS1Z3NkNUbTZwNlR5N2E3amxiblRpRW1UR2F5MVU1UTRBd0VuQWlTNFJ4MWxMcVdZcHItbnVBcnNoUHhmeURPSWR3LTVtRDdQVFItdk9Ha05ib3BiSGxwcXJFbEdrLU5FVFdDYldjLUtfMDVrR2t2bjRObUNWQ2hQRGVUajVSanIzZw?oc=5",
+   "published_at": "2026-05-26T07:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Hochtief breaks ground on data center in Herne, Germany - BeBeez International",
+   "source_name": "Google News search: \"Hochtief\" (public_companies watch)",
+   "summary": "Hochtief breaks ground on data center in Herne, Germany &nbsp;&nbsp; BeBeez International",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "96c064cf-fc98-40a3-b112-14215ed242b2",
+   "source_url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNNlczdlZDdEoxMnd0YzBnVEQzbEE0WEtnUVYtVkRoTWdibXlMME1CbU9fQjJCZW81VHd6SGd3TzRGeE5qamI0TF9qWTU4d0pDeWE3NmkyNEx3QUl0aHJfQm45VlJkZjZrbEZuQ1NtS1NRSG5VV01faTgxWEl4NjhNWkpRc1FjZ2s0OTdBeHctdw?oc=5",
+   "published_at": "2026-05-14T07:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Germany Data Center Market Investment Analysis Report 2026-2031: 194+ Existing and 43 Upcoming Facilities, Offering Insights on Colocation, Hyperscale, and Enterprise Operators - Yahoo Finance UK",
+   "source_name": "Google News search: \"Africa Data Centres\" data center OR AI OR infrastructure",
+   "summary": "Germany Data Center Market Investment Analysis Report 2026-2031: 194+ Existing and 43 Upcoming Facilities, Offering Insights on Colocation, Hyperscale, and Enterprise Operators &nbsp;&nbsp; Yahoo Finance UK",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D6"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "1683291c-1a09-4c27-b2cc-4c71d8dba1c9",
+   "source_url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxQdUVOYTd0NnJUcGZxZ0pENlZ4V0RIdnRCLU9sZDR3OERBV2ZhVXFjWXBWbXNTaFN4ZmFkT2E5bmg2M1hTNHUyWFBhTnM4dWVjRUdiSjFrMjNpQTItT3cyNHd2NUlKSFV1RVFyRFhrR2U5YUs5VG55eHA3dV9lNDhJZk0yUGlNWU5VQzRlSGw1bWx2QnhCQkJOZkh0SEJOdTBIWGx5cmh6eXQ3ZzVsTFJ1Z29mbFNhMThpZWRxWjd0dlVLMUNXUVNxQkt6aUNKZ0JFTERCd3JuWC0?oc=5",
+   "published_at": "2026-03-17T07:00:00+00:00",
+   "source_type": "web_news",
+   "title": "EuroHPC JU signs contract with HPE to deploy HammerHAI supercomputer at HLRS in Stuttgart, Germany - Data Center Dynamics",
+   "source_name": "Google News search: \"Union.ai\" (startups watch)",
+   "summary": "EuroHPC JU signs contract with HPE to deploy HammerHAI supercomputer at HLRS in Stuttgart, Germany &nbsp;&nbsp; Data Center Dynamics",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": [
+    "D1.1"
+   ]
+  },
+  {
+   "artifact_id": "ea31a4c7-1bf2-4271-b8d2-a429fdbb1879",
+   "source_url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQMkRYbzlCVFV5MUpxbzNMWGNGbkM1OVJ0VkFYTVpFZmRnZG5senpYR2tZbzFNdENhSi1EWjRrMlRScGZMR1FQVTkzcXpnQUUtQ0ZYZk9ibDRNYW5NbFhtU2pBMXBNbkxJZWE2V2FkWVJuWk5KQTJwZWdfcl9EOFBPV3FfQTdMNnB3eEZWRVhBQUczZmQyR0RvMUp1MnNaX0dUcjZ3VzR1bHp0UXFGMUNFSlJueDZRQQ?oc=5",
+   "published_at": "2026-01-15T08:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Blackstone could invest up to $4.65 billion for data center in Germany, Handelsblatt reports - Reuters",
+   "source_name": "Google News search: \"Blackstone\" data center OR AI OR infrastructure",
+   "summary": "Blackstone could invest up to $4.65 billion for data center in Germany, Handelsblatt reports &nbsp;&nbsp; Reuters",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D4"
+   ],
+   "ifs_subdomains": [
+    "D22.1",
+    "D4.1"
+   ]
+  },
+  {
+   "artifact_id": "4cb190bc-db37-4269-84ea-fa822e3de1ca",
+   "source_url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNakNybHhObDlsLU9oQmV1OEtvTjNFVEFPaEdaNG5aWVd5NjJZSTN0MzU1cTEwVVRjZXNWYVBtbjMzTjd1T3B6RHkxNTJLbkd0OUFzTEN4SGJUZjY3em1rVjNFTUR5MDA3aFEtZDlYS1c0Wkh6X1VrZHpNOUVKaXZCNDNvdG5UZm5qekQta1pRUnl2VFppYkHSAZYBQVVfeXFMT0ZWWHR6aE44UnZCWFRsMDgyMF9iNWZLeUF0cndFVjZSdmlfZWczNGhsZHhiLU5DakN4S01VeFdrWTV1M3dZNGpyVkVncVpzYkIwSjlNcGw5YXhVRGUwUVIxRXhRdm01YTJXakZPRDQyLVktbVhscjR5QThIUEtVM01LRFc1Sk8xSWRLcnA3aE9iUGQ2OTBR?oc=5",
+   "published_at": "2026-09-29T20:23:23+00:00",
+   "source_type": "web_news",
+   "title": "AI: Concern grows as Germany plans to double data center capacity - DW.com",
+   "source_name": "Google News search: \"EdgeConneX\" data center OR AI OR infrastructure",
+   "summary": "AI: Concern grows as Germany plans to double data center capacity &nbsp;&nbsp; DW.com",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D4",
+    "D6"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "c9fe2cf8-fad9-491f-8433-1086dd01543e",
+   "source_url": "https://thecoolingreport.com/intel/germany-heat-reuse-mandate",
+   "published_at": "2026-03-17T00:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Germany Says Your Data Center Has to Heat the Neighborhood. The Deadline Is July 1.",
+   "source_name": null,
+   "summary": "Germany's July 1, 2026 EnEfG mandate requires all newly commissioned data centers to reuse at least 10% of waste heat, the most aggressive heat reuse law in any major data center market globally. The article contrasts this regulatory approach with the mature Nordic model (Stockholm Exergi's Open District Heating platform, active since 2012) where district heating infrastructure already exists, making data center heat integration primarily a plumbing rather than market-creation challenge.",
+   "license_status": null,
+   "ifs_domains": [
+    "D11.4"
+   ],
+   "ifs_subdomains": [
+    "D11.4",
+    "D14.8"
+   ]
+  },
+  {
+   "artifact_id": "20a7ccd6-c3bb-454e-b5d7-d45920178449",
+   "source_url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOVnZZUDhzVFA4VjkxdTRSb21aZC1IcUc2bEk5SjdlZll3RUFTRUJNVGFiSURwOVhsOHlFQ2tjbkxRNFB4b0ZVN3R4aGpKanBqR0hxUUh6TzA4d2p6TFlFazdxSjl4LUhBNldFLVI3UVplZjNIVkR3Nm1oMVpsdmpHdXJSUkxaREttSkk5TXVKOF9JSkpF0gGUAUFVX3lxTE1ncUhJN3FWTVM0dy1JN1VIRHYwRHdGZjkyQjNOSjh3ZWNnRldCNEF1TnF3QUZCdmNyR1RKNUFoRmxoeWpfMTdwM19jUWx0MmJoTTJid3lDRVdndl9ucWE2T2RsUE5oQzFhS3hiUFM5Z0hMYWZTa2lOR2R6V1NubVFRaVRVZmp3S2tTSmctRVVXTFducW4?oc=5",
+   "published_at": "2025-11-13T08:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Why Google's data center plans spark concern in Germany - DW.com",
+   "source_name": "Google News search: \"Spark\" data center OR AI OR infrastructure",
+   "summary": "Why Google's data center plans spark concern in Germany &nbsp;&nbsp; DW.com",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": [
+    "D12.2"
+   ]
+  },
+  {
+   "artifact_id": "f5c14265-9119-4797-bb02-427ed41d2c6c",
+   "source_url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPZHlXbnBqUTF3NGxQN3owYk5reUEzcUNVbU5FZzFaSlZER3dRZUM5RXZJMUtxLXZteS1heGFMbDVLc3FSbWxqUGNjQWNVMkZiUDFxT2paNUpCcmx4SnViSEUyYTYyaEpsNUlGdlhIMFp4RHB1NXUyOENTQVcyNURYcjZJaDFlSVlWcDBDeVpPUkZpZVNha2ZwdzkzX3dVYzhCUmJPaTRpZWhiUHBDcXNF?oc=5",
+   "published_at": "2026-07-21T07:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Yorizon Cloud deploys on-site solar array at data center in Heiligenhaus, Germany - BeBeez International",
+   "source_name": "Google News search: \"Hochtief\" (public_companies watch)",
+   "summary": "Yorizon Cloud deploys on-site solar array at data center in Heiligenhaus, Germany &nbsp;&nbsp; BeBeez International",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "d8d70bba-7468-445d-bf76-3d1e2aa7c5bb",
+   "source_url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxOdzlaX2FyQldGMVEyVHFuXzNyZzYtR2lZUlQyUDFMeWFieEZYSU9UWTMzQjBxbTFvYlNJOXo5VkRVMjI4M0xVVkx6dk9zbE5yQnhJdWZRb1FPQ2gxYmF0dTFlUExLNmZsTm1uYVBxVjFyUURBQnA3eEFwa01TLXJidl95S0U1YmROTEp0LXZ5cGNnem5tNGtUcjNUN1lReVhHZ3R6bmY5eENueG5PUmlqaks5U3lLVWxaUXI4Zkc4NTFIQQ?oc=5",
+   "published_at": "2026-01-28T08:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Latham Advises Blackstone on Potential Development of Major Data Center Campus in Germany - Latham & Watkins LLP",
+   "source_name": "Google News search: \"Blackstone\" data center OR AI OR infrastructure",
+   "summary": "Latham Advises Blackstone on Potential Development of Major Data Center Campus in Germany &nbsp;&nbsp; Latham & Watkins LLP",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D4"
+   ],
+   "ifs_subdomains": [
+    "D14.5",
+    "D22.1",
+    "D4.1"
+   ]
+  },
+  {
+   "artifact_id": "56c06675-ac9c-4e8a-aa60-967a80472f59",
+   "source_url": "https://thecoolingreport.com/intel/germany-heat-reuse-mandate",
+   "published_at": "2026-07-01T00:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Germany's Data Center Heat Reuse Mandate Takes Effect July 1, 2026",
+   "source_name": null,
+   "summary": "A German law effective July 1, 2026 requires all new data centers to reuse at least 10% of waste heat (ERF ≥ 0.10), rising to 15% by 2027 and 20% by 2028, with a mandatory PUE of 1.2 or lower—marking the most comprehensive national heat reuse mandate in any major data center market. Stockholm's Open District Heating platform is cited as the operational model, having served 800,000 people since 2012.",
+   "license_status": null,
+   "ifs_domains": [
+    "D11.4"
+   ],
+   "ifs_subdomains": [
+    "D11.4"
+   ]
+  },
+  {
+   "artifact_id": "4b3580ca-e75f-48c2-86a2-f8aa90628974",
+   "source_url": "https://thecoolingreport.com/intel/germany-heat-reuse-mandate",
+   "published_at": "2026-07-01T00:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Germany's Data Center Heat Reuse Mandate Takes Effect July 1, 2026",
+   "source_name": null,
+   "summary": "A German law effective July 1, 2026 requires all newly commissioned data centers to reuse at least 10% of their waste heat, rising to 15% in 2027 and 20% in 2028, alongside a mandatory PUE ceiling of 1.2 — the most ambitious statutory heat reuse regime in any major data center market. Stockholm Exergi's Open District Heating platform, operating since 2012 across 3,000 km of pipes serving 800,000+ people, is cited as the Nordic benchmark the German mandate emulates.",
+   "license_status": null,
+   "ifs_domains": [
+    "D11.4"
+   ],
+   "ifs_subdomains": [
+    "D11.3",
+    "D11.4"
+   ]
+  },
+  {
+   "artifact_id": "640416ea-496d-4093-ace4-22668eeca312",
+   "source_url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxOMnl4dkk3TUQwMkFRVjBsMHZZSjlSbXBqN0JTTVRHMS0wYk9CVFVBaUR4YUNmMk1oeEl0WDNKck5KcHF6ME1iemVLS1BPUzQ5UFgxbDV2MFc5LUZYdmpQNnJBVGJEdzdLNzdpSWtNa0RUemNMbXJ2WFBRSF9HeW0xbHVQOXZfVUZ0eXV1dlJESlhFU3dJcWs3OEhSNHN1RFBlM1dlUm9VREQ1SjkyaG1VUW0tTGdyZXFlbzRYZU9TaXJNQQ?oc=5",
+   "published_at": "2026-07-14T07:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Hitachi Energy to deliver 110kV grid connection for Kauri CAB data center in Frankfurt, Germany - BeBeez International",
+   "source_name": "Google News search: \"Hitachi Energy\" (supply_chain watch)",
+   "summary": "Hitachi Energy to deliver 110kV grid connection for Kauri CAB data center in Frankfurt, Germany &nbsp;&nbsp; BeBeez International",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": [
+    "D2.10"
+   ]
+  },
+  {
+   "artifact_id": "4db052ea-7c95-45b3-ae0e-e07eeaba41ee",
+   "source_url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxOdzlaX2FyQldGMVEyVHFuXzNyZzYtR2lZUlQyUDFMeWFieEZYSU9UWTMzQjBxbTFvYlNJOXo5VkRVMjI4M0xVVkx6dk9zbE5yQnhJdWZRb1FPQ2gxYmF0dTFlUExLNmZsTm1uYVBxVjFyUURBQnA3eEFwa01TLXJidl95S0U1YmROTEp0LXZ5cGNnem5tNGtUcjNUN1lReVhHZ3R6bmY5eENueG5PUmlqaks5U3lLVWxaUXI4Zkc4NTFIQQ?oc=5",
+   "published_at": "2026-01-28T08:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Latham & Watkins Advises Blackstone on Potential Development of Major Data Center Campus in Germany - Latham & Watkins LLP",
+   "source_name": "Google News search: \"Latham & Watkins\" (company gap watch)",
+   "summary": "Latham & Watkins Advises Blackstone on Potential Development of Major Data Center Campus in Germany &nbsp;&nbsp; Latham & Watkins LLP",
+   "license_status": "attribution_required",
+   "ifs_domains": null,
+   "ifs_subdomains": [
+    "D14.5",
+    "D19.5",
+    "D22.1",
+    "D4.1"
+   ]
+  },
+  {
+   "artifact_id": "663b2a17-3d6c-464d-bdea-cffc2b1da36b",
+   "source_url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNanZTZ1p5dXR0VWJMOWN0Qy1MSUdrMnNWNG9OMHhfb1labi1qWFlLVTJkcmhWVDJUdjhoZV9IcmNWS2NIdm8tdEM1MXZDazUxWGpmSUJLT1lZdjZ5dENTZDZtaHMxVmt3SlM3TURaUGVPcE90c2lWUUhHbXFZMUc4MUhBTVpISldIOHJCdjl5T2ROc0diLU1n?oc=5",
+   "published_at": "2025-11-12T08:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Google to invest €5.5bn in data centers and offices in Germany - BeBeez International",
+   "source_name": "Google News search: \"IONOS\" (hyperscalers watch)",
+   "summary": "Google to invest €5.5bn in data centers and offices in Germany &nbsp;&nbsp; BeBeez International",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": [
+    "D12.2"
+   ]
+  },
+  {
+   "artifact_id": "049b1027-f598-4902-91c0-43b8f92cfaa0",
+   "source_url": "https://www.globenewswire.com/news-release/2026/10/20/3384202/28124/en/data-center-heat-reuse-market-global-forecast-to-2036-ai-data-centers-and-liquid-cooling-fuel-16-cagr-unlocking-an-8-4-billion-opportunity.html",
+   "published_at": "2026-10-20T00:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Data Center Heat Reuse Market — Global Forecast to 2036: AI Data Centers and Liquid Cooling Fuel 16% CAGR, Unlocking an $8.4 Billion Opportunity",
+   "source_name": null,
+   "summary": "The global data center heat reuse market is projected to reach $8.4 billion by 2036, expanding at a 16% CAGR driven by AI data center growth, high-density liquid cooling, and district heating integration. Europe holds the largest market share, with Denmark, Sweden, Finland, Norway, Germany, and the Netherlands identified as the leading markets integrating recovered data-center heat into district-energy networks.",
+   "license_status": null,
+   "ifs_domains": [
+    "D11.4"
+   ],
+   "ifs_subdomains": [
+    "D11.4",
+    "D12.1",
+    "D14.4",
+    "D22.2"
+   ]
+  },
+  {
+   "artifact_id": "80e669df-6f47-4ca3-8f20-bd8188df9505",
+   "source_url": "https://www.globenewswire.com/news-release/2026/10/20/3384202/28124/en/data-center-heat-reuse-market-global-forecast-to-2036-ai-data-centers-and-liquid-cooling-fuel-16-cagr-unlocking-an-8-4-billion-opportunity.html",
+   "published_at": "2026-10-20T00:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Data Center Heat Reuse Market — Global Forecast to 2036: AI Data Centers and Liquid Cooling Fuel 16% CAGR, Unlocking an $8.4 Billion Opportunity",
+   "source_name": null,
+   "summary": "The global data center heat reuse market is projected to grow at a 16% CAGR through 2036, driven by AI data center expansion, high-density computing, liquid cooling adoption, and carbon-neutrality mandates, with Europe holding the largest current market share due to extensive district heating infrastructure. Denmark, Sweden, Finland, Norway, Germany, and the Netherlands are identified as leading markets integrating recovered data-center heat into district-energy networks.",
+   "license_status": null,
+   "ifs_domains": [
+    "D11.4"
+   ],
+   "ifs_subdomains": [
+    "D11.4",
+    "D12.1",
+    "D14.4",
+    "D22.2"
+   ]
+  },
+  {
+   "artifact_id": "42aa5c72-35e0-4de0-93bc-4e33bfb44896",
+   "source_url": "https://www.globenewswire.com/news-release/2026/10/20/3384202/28124/en/data-center-heat-reuse-market-global-forecast-to-2036-ai-data-centers-and-liquid-cooling-fuel-16-cagr-unlocking-an-8-4-billion-opportunity.html",
+   "published_at": "2026-10-20T00:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Data Center Heat Reuse Market – Global Forecast to 2036: AI Data Centers and Liquid Cooling Fuel 16% CAGR, Unlocking an $8.4 Billion Opportunity",
+   "source_name": null,
+   "summary": "A market forecast published October 20, 2026 projects the data center heat reuse sector will grow at a 16% CAGR to reach $8.4 billion by 2036, driven by AI data center expansion, high-density liquid cooling, and European carbon-neutrality mandates. Europe currently leads globally in heat reuse market share, with Denmark, Sweden, Finland, Norway, Germany, and the Netherlands the most active markets integrating recovered data center heat into district-energy networks.",
+   "license_status": null,
+   "ifs_domains": [
+    "D11.4"
+   ],
+   "ifs_subdomains": [
+    "D11.4",
+    "D12.1",
+    "D14.4",
+    "D22.2"
+   ]
+  },
+  {
+   "artifact_id": "951d5a9b-293c-4aee-aa87-c91eab54f54e",
+   "source_url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQOEdvVURqM3hSYmlqZGZBTGd6SGNmbmVvekV1dFdpYVNObjJiOWlFX3NyRDhNd3czMWFNQTdvdXNaRmNOMzNCRkxmSG9JRXdyaU1KbVpSLVRQQ0tNakdNZVF5T09DNDF0bkloREx0dGEwSWVZRXNia2lfTjlMeW5mejdjTTNNVVVKZUJOVF9lMU51ODI2bDN3?oc=5",
+   "published_at": "2026-09-22T07:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Plans progress for 200MW data center in Schladen-Werla, Germany - BeBeez International",
+   "source_name": "Google News search: \"Nel ASA\" (public_companies watch)",
+   "summary": "Plans progress for 200MW data center in Schladen-Werla, Germany &nbsp;&nbsp; BeBeez International",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "a6b35b48-5a4d-4391-ba2e-22752b6873c0",
+   "source_url": "https://thecoolingreport.com/intel/germany-heat-reuse-mandate",
+   "published_at": "2026-06-20T00:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Germany Says Your Data Center Has to Heat the Neighborhood. The Deadline Is July 1.",
+   "source_name": null,
+   "summary": "Germany's Energy Efficiency Act (EnEfG) took effect July 1, 2026, mandating that all new data centers reuse at least 10% of waste heat, rising to 15% in 2027 and 20% in 2028—the most ambitious waste-heat reuse regulation attempted by any major data center market. Nordic operators including DigiPlex (Stockholm), Google (Hamina, Finland), and atNorth (Copenhagen) are cited as proven models for the policy.",
+   "license_status": null,
+   "ifs_domains": [
+    "D11.4"
+   ],
+   "ifs_subdomains": [
+    "D11.4",
+    "D12.2",
+    "D14.4",
+    "D5.3"
+   ]
+  },
+  {
+   "artifact_id": "0b66215e-0fd5-448e-b692-8ad1a1d9e282",
+   "source_url": "https://thecoolingreport.com/intel/germany-heat-reuse-mandate",
+   "published_at": "2026-03-15T00:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Germany Says Your Data Center Has to Heat the Neighborhood. The Deadline Is July 1.",
+   "source_name": null,
+   "summary": "Germany's Energy Efficiency Act took effect July 1, 2026, requiring all newly commissioned data centers to achieve a PUE of 1.2 or lower and reuse at least 10% of waste heat immediately — escalating to 15% in 2027 and 20% in 2028 — marking the most aggressive national heat-reuse mandate in any major data center market. Facilities must feed recovered heat either on-site or into district heating networks to satisfy the Energy Reuse Factor (ERF) threshold.",
+   "license_status": null,
+   "ifs_domains": [
+    "D11.4"
+   ],
+   "ifs_subdomains": [
+    "D11.3",
+    "D11.4"
+   ]
+  },
+  {
+   "artifact_id": "1e348a71-1b07-48f5-b199-e2b3d443a95e",
+   "source_url": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxPRWFESUJnV2VyMUJUS1pvelZSaVVXNlZyWFQxSnRTNWM3TjJPSWdOYy1IUGM0dDU3LWtTN1A4aUhTUDBEVmxnbUI0RmFyVXF0enZKdnVEcUZFSEJkRXpoUndEYk9CeFk4LTNwQ2FwUEtoUEJuYXRMWlB6dUxMM0s0ei1GWkxuNWVCRWpiOVpjNnZSRklNWFB4X21MR21zTURLZzZ0OWhnU2dfbDVOSEY2ekdDSDdab1NqNHJBb1VRNjlYc3AwNlNLckc2aE5odUtqUzJUVVZiemJqSDhCRUc0Skxn?oc=5",
+   "published_at": "2025-12-16T01:53:18+00:00",
+   "source_type": "web_news",
+   "title": "Antin Expands Data Center Footprint in Netherlands, Germany & Switzerland with NorthC Deal - The Fast Mode",
+   "source_name": "Google News search: \"DWS\" (investors watch)",
+   "summary": "Antin Expands Data Center Footprint in Netherlands, Germany & Switzerland with NorthC Deal &nbsp;&nbsp; The Fast Mode",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": [
+    "D11.4",
+    "D19.3",
+    "D22.2"
+   ]
+  },
+  {
+   "artifact_id": "033204eb-855b-41ca-99c0-a5047587e264",
+   "source_url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNaUh0eU44YVdjYWp0LVNvNlJBQnRSQXhGOHd2WXVqOU1vQzhBQl9zQUpQVTZUdm16TVBUYlBKWFdCM2ZLTGJ4NmdWWllvaGtGZXJPZ3NwODhOSU9rZE1ZUXRwZ1R3VzlDMXJtUzE3Nll3ZVZzeEpsZkZ0Ykk5YTBaQWRSb2FEVWNQdV9mNlhwOElxWEdpQWh1WU1uXzd4Tmc2SFJja1kzTm1XRDFYR1RHeWhB?oc=5",
+   "published_at": "2026-03-06T08:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Telefónica Germany deploys energy management platform across data center portfolio - BeBeez International",
+   "source_name": "Google News search: \"Server Technology\" (supply_chain watch)",
+   "summary": "Telefónica Germany deploys energy management platform across data center portfolio &nbsp;&nbsp; BeBeez International",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "8810ef63-0c29-4e95-9134-6fd54c8c7755",
+   "source_url": "https://thecoolingreport.com/intel/germany-heat-reuse-mandate",
+   "published_at": "2026-04-01T00:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Germany Says Your Data Center Has to Heat the Neighborhood. The Deadline Is July 1.",
+   "source_name": null,
+   "summary": "Germany's EnEfG law took effect July 1, 2026, requiring any new data center commissioned on or after that date to reuse at least 10% of its waste heat, rising to 15% in 2027 and 20% in 2028, with a mandatory PUE ceiling of 1.2. Telehouse Germany's Frankfurt facility already supplies heat covering over 60% of a neighboring residential quarter's heating and hot water needs.",
+   "license_status": null,
+   "ifs_domains": [
+    "D11.4"
+   ],
+   "ifs_subdomains": [
+    "D11.4",
+    "D22.2"
+   ]
+  },
+  {
+   "artifact_id": "1c69b6d8-e74a-4cb0-94b3-1719fdd3e4e0",
+   "source_url": "https://enkiai.com/policy-and-regulations/equinix-heat-reuse-data-center/",
+   "published_at": "2026-08-10T00:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Equinix Heat Reuse 2026, ML5 Data Center Deal with A2A — Germany EnEfG Mandate Analysis",
+   "source_name": null,
+   "summary": "Germany's Energy Efficiency Act (EnEfG) mandates that all new data centers commissioned after July 1, 2026 must reuse at least 10% of waste heat, escalating to 15% in 2027 and 20% in 2028, turning heat reuse from a voluntary pilot into a non-negotiable design requirement. The Nordic countries hold a structural advantage due to established district heating infrastructure, while Germany becomes the key EU testbed for compliance technologies and business models.",
+   "license_status": null,
+   "ifs_domains": [
+    "D11.4"
+   ],
+   "ifs_subdomains": [
+    "D11.4",
+    "D12.4",
+    "D12.6",
+    "D2.6",
+    "D23.4",
+    "D3.1"
+   ]
+  },
+  {
+   "artifact_id": "34e8c874-8412-42b2-9636-f6b234c00809",
+   "source_url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQR2lrak96aTRNandtZXJ1TUhsS09sQTFRZ0ZnVWdhS0VWUDdldXFhdDZVSWx1QnJtZGx5SWV5V3FsdDhVeDc5c1VUOEtjcDE0UDVfcHVEbGdNelMzek5OVC1Mb1NKY2p6QkJrRVA3VUE2bjV4TFQtd3Z1c2w3VlU5NDBB?oc=5",
+   "published_at": "2026-08-18T12:53:20+00:00",
+   "source_type": "web_news",
+   "title": "Pokémon Center: Data breach affects customers in Britain and Germany - SecNews.gr",
+   "source_name": "Google News search: \"Digital Fortress\" (dc_operators watch)",
+   "summary": "Pokémon Center: Data breach affects customers in Britain and Germany &nbsp;&nbsp; SecNews.gr",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "e8516695-5ece-4d3e-a231-6048b51e843f",
+   "source_url": "https://www.globenewswire.com/news-release/2026/10/20/3384202/28124/en/data-center-heat-reuse-market-global-forecast-to-2036-ai-data-centers-and-liquid-cooling-fuel-16-cagr-unlocking-an-8-4-billion-opportunity.html",
+   "published_at": "2026-10-20T00:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Data Center Heat Reuse Market — Global Forecast to 2036: AI Data Centers and Liquid Cooling Fuel 16% CAGR, Unlocking an $8.4 Billion Opportunity",
+   "source_name": null,
+   "summary": "The global data center heat reuse market was valued at USD 1.6 billion in 2025 and is estimated to reach USD 1.9 billion in 2026, growing to USD 8.4 billion by 2036 at a 16% CAGR, driven by AI data center expansion, liquid cooling adoption, and district heating integration. Europe holds the largest market share, supported by extensive district heating infrastructure and carbon-neutrality mandates, with Denmark, Sweden, Finland, Norway, Germany, and the Netherlands as the prominent deployment markets.",
+   "license_status": null,
+   "ifs_domains": [
+    "D11.4"
+   ],
+   "ifs_subdomains": [
+    "D11.4",
+    "D12.1",
+    "D14.4",
+    "D22.2"
+   ]
+  },
+  {
+   "artifact_id": "464aebfc-9bd2-4304-b4e9-d793d2056f23",
+   "source_url": "https://enkiai.com/policy-and-regulations/equinix-heat-reuse-data-center/",
+   "published_at": "2026-08-07T00:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Equinix Heat Reuse 2026: ML5 Data Center Deal with A2A & Germany's EnEfG Mandate",
+   "source_name": null,
+   "summary": "Germany's Energy Efficiency Act (EnEfG) entered legally enforceable status in 2026, requiring new data centers commissioned after July 1, 2026 to reuse a minimum 10% of waste heat, escalating to 20% by 2028, transforming waste heat from a cost to a regulated asset. The Nordic countries hold a structural advantage given existing district heating infrastructure, while Germany has become the key EU testbed for compliance models that will influence broader EU regulatory approaches.",
+   "license_status": null,
+   "ifs_domains": [
+    "D11.4"
+   ],
+   "ifs_subdomains": [
+    "D11.4",
+    "D12.4",
+    "D12.6",
+    "D15.5",
+    "D2.6",
+    "D23.4",
+    "D3.1"
+   ]
+  },
+  {
+   "artifact_id": "5ad148fa-d580-416d-a186-83c8179fde9a",
+   "source_url": "https://www.globenewswire.com/news-release/2026/10/20/3384202/28124/en/data-center-heat-reuse-market-global-forecast-to-2036-ai-data-centers-and-liquid-cooling-fuel-16-cagr-unlocking-an-8-4-billion-opportunity.html",
+   "published_at": "2026-10-20T00:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Data Center Heat Reuse Market – Global Forecast to 2036: AI Data Centers and Liquid Cooling Fuel 16% CAGR, Unlocking an $8.4 Billion Opportunity",
+   "source_name": null,
+   "summary": "The global data center heat reuse market was valued at $7.4 billion in 2025 and is projected to reach $21.6 billion by 2034 at a 12.6% CAGR, with Europe holding the largest current share driven by its extensive district heating infrastructure and carbon-neutrality mandates. Denmark, Sweden, Finland, Norway, Germany, and the Netherlands are cited as the prominent markets integrating recovered data-center heat into district-energy networks, with industrial process heating forecast as the fastest-growing application segment.",
+   "license_status": null,
+   "ifs_domains": [
+    "D11.4"
+   ],
+   "ifs_subdomains": [
+    "D11.4",
+    "D12.1",
+    "D22.2"
+   ]
+  },
+  {
+   "artifact_id": "25118339-c3cb-4a44-bd2f-62c7d59d944d",
+   "source_url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOQTlmdjh0VF90UmpfZXM3cExRdXYwUXNYbk1MVXZWU1A0V3dfOW1TRFNlWDlMYzc4dkZoS3FLSlR2Rno5STVCRHlqSTVBWHRRZkw0R282OHBSUXVjbUFmSUtDSkw3R1ZhWl9QQVB5ZU4zazgxVlFES1d4ZzlUZlFoNlU1YTBZck9LWE5J?oc=5",
+   "published_at": "2026-02-04T08:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Germany’s Infineon boosts investment in AI data centers - Tech in Asia",
+   "source_name": "Google News search: \"Infineon\" (supply_chain watch)",
+   "summary": "Germany’s Infineon boosts investment in AI data centers &nbsp;&nbsp; Tech in Asia",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "4a445c86-4535-4c86-b0f4-8996c48a4b84",
+   "source_url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPUjlnQ1VoS0lpZGdJcXBpZFJHQS1ZdTBYQWhxWjEyUEFzdGx1NEp2UXlFQlpHU3JjVzR2YUtQZGtRdzNBd2xtWUxlaVcwWUNUaHNocWZEMmRpSmwxbVlkcGVRb3JpaTg3NUZhM1pSOUJ1MW5acGE1VHpKMXB6MERQWHhUS3UwLUhOdkFmdXBqNlgyb3NjWnc?oc=5",
+   "published_at": "2025-11-20T08:00:00+00:00",
+   "source_type": "web_news",
+   "title": "500MW data center campus in the works outside Leipzig, Germany - BeBeez International",
+   "source_name": "Google News search: \"1623 Farnam\" (dc_operators watch)",
+   "summary": "500MW data center campus in the works outside Leipzig, Germany &nbsp;&nbsp; BeBeez International",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "b6bc62af-d76f-4fc3-bfa4-b095adbd8295",
+   "source_url": "https://www.morganlewis.com/pubs/2026/04/german-government-adopts-national-data-center-strategy",
+   "published_at": "2026-04-16T00:00:00+00:00",
+   "source_type": "regulatory",
+   "title": "German Government Adopts National Data Center Strategy",
+   "source_name": null,
+   "summary": "Germany's federal government formally adopted its National Data Center Strategy on March 18, 2026, elevating data centers to critical infrastructure status and targeting a doubling of overall capacity plus a fourfold increase in AI and HPC capacity by 2030. The strategy includes supporting at least one AI gigafactory, expanding national HPC and quantum computing capacities, and funding research on sustainable data centers.",
+   "license_status": null,
+   "ifs_domains": [
+    "D1",
+    "D15",
+    "D4",
+    "D6"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "db623d41-efb0-44d0-8fa6-19d3e808b600",
+   "source_url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNdEtEdTJGOHloZUd3OTV4VnRqdkZ3b0NEdmVQX2JOTGNETXNvc0doSktEWEktMTJ2ZERLZ0FITy1kcHd5bUUyLXhPUlZoeURPWkFGSExiZzJHWjY1bFdmT0lkWjNsdmdHWTFyb1ZMbkU1dVhxWG9VQkNfVWlkQjNnajh1cjg0d3hoalUyTHlGUEpGWDdQVnFfV1VMUklzSm5xZVA1NThyVEVUc3FvdXlUdnpPa0Y5UGV2Rnc?oc=5",
+   "published_at": "2026-08-27T18:10:37+00:00",
+   "source_type": "web_news",
+   "title": "Schwarz Group commits €5.6bn investment in data center in Mecklenburg-Vorpommern, Germany - BeBeez International",
+   "source_name": "Google News search: \"STACKIT\" (hyperscalers watch)",
+   "summary": "Schwarz Group commits €5.6bn investment in data center in Mecklenburg-Vorpommern, Germany &nbsp;&nbsp; BeBeez International",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": [
+    "D22.2"
+   ]
+  },
+  {
+   "artifact_id": "9627cb57-4204-47a9-a96d-18ba85fb45b4",
+   "source_url": "https://www.morganlewis.com/pubs/2026/04/german-government-adopts-national-data-center-strategy",
+   "published_at": "2026-04-16T00:00:00+00:00",
+   "source_type": "regulatory",
+   "title": "German Government Adopts National Data Center Strategy",
+   "source_name": null,
+   "summary": "Germany adopted its National Data Center Strategy on 18 March 2026, formally classifying data centers as critical infrastructure and targeting a doubling of overall capacity and a fourfold increase in AI/HPC capacity by 2030. Measures include supporting at least one AI gigafactory, expanding quantum computing capacities, and prioritizing digital sovereignty across the full technology stack.",
+   "license_status": null,
+   "ifs_domains": [
+    "D15",
+    "D6",
+    "D4",
+    "D1"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "ab2cf329-086b-4fb3-aafc-f789d33c5409",
+   "source_url": "https://www.morganlewis.com/pubs/2026/04/german-government-adopts-national-data-center-strategy",
+   "published_at": "2026-04-16T00:00:00+00:00",
+   "source_type": "regulatory",
+   "title": "German Government Adopts National Data Center Strategy",
+   "source_name": null,
+   "summary": "Germany's federal government adopted its National Data Center Strategy on 18 March 2026, formally elevating data centers to critical infrastructure and targeting a doubling of overall capacity and fourfold increase in AI/HPC capacity by 2030. The strategy includes supporting at least one AI gigafactory, subsidized electricity pricing, and expanded cybersecurity requirements, while aligning with an EU-level draft Delegated Regulation on data center efficiency ratings.",
+   "license_status": null,
+   "ifs_domains": [
+    "D15",
+    "D6",
+    "D4",
+    "D1"
+   ],
+   "ifs_subdomains": [
+    "D15.6",
+    "D19.3",
+    "D22.2"
+   ]
+  },
+  {
+   "artifact_id": "d3c60724-ee8c-45da-a86e-520151010ef1",
+   "source_url": "https://www.morganlewis.com/pubs/2026/04/german-government-adopts-national-data-center-strategy",
+   "published_at": "2026-04-16T00:00:00+00:00",
+   "source_type": "regulatory",
+   "title": "German Government Adopts National Data Center Strategy",
+   "source_name": null,
+   "summary": "Germany's federal government adopted its National Data Center Strategy on 18 March 2026, formally elevating data centers to critical infrastructure and targeting a doubling of overall capacity and fourfold increase in AI/HPC capacity by 2030. The strategy includes support for at least one AI gigafactory, competitive electricity price mechanisms, and EU-level regulatory harmonization including a draft EU data center rating scheme.",
+   "license_status": null,
+   "ifs_domains": [
+    "D1",
+    "D15",
+    "D4",
+    "D6"
+   ],
+   "ifs_subdomains": [
+    "D15.5"
+   ]
+  },
+  {
+   "artifact_id": "d7125887-6748-4825-a13f-5294f21ccfb8",
+   "source_url": "https://www.morganlewis.com/pubs/2026/04/german-government-adopts-national-data-center-strategy",
+   "published_at": "2026-04-16T00:00:00+00:00",
+   "source_type": "regulatory",
+   "title": "German Government Adopts National Data Center Strategy",
+   "source_name": null,
+   "summary": "Germany's federal government adopted its National Data Center Strategy on 18 March 2026, formally elevating data centers to critical infrastructure and targeting a doubling of overall capacity and fourfold increase in AI/HPC capacity by 2030. The strategy includes support for at least one AI gigafactory, competitive electricity subsidies, and EU-level coordination through a new European Commission data center rating scheme.",
+   "license_status": null,
+   "ifs_domains": [
+    "D15",
+    "D6",
+    "D4",
+    "D1"
+   ],
+   "ifs_subdomains": [
+    "D11.5",
+    "D15.5",
+    "D2.5",
+    "D22.2"
+   ]
+  },
+  {
+   "artifact_id": "f2116389-4099-42b2-8d48-b30a0800c7ab",
+   "source_url": "https://www.morganlewis.com/pubs/2026/04/german-government-adopts-national-data-center-strategy",
+   "published_at": "2026-04-16T00:00:00+00:00",
+   "source_type": "regulatory",
+   "title": "German Government Adopts National Data Center Strategy",
+   "source_name": null,
+   "summary": "Germany formally adopted its National Data Center Strategy on 18 March 2026, elevating data centers to critical infrastructure and targeting a doubling of overall capacity and a fourfold increase in AI/HPC capacity by 2030. The strategy supports at least one AI gigafactory, competitive electricity pricing, and prioritizes cybersecurity and digital sovereignty across the full technology stack.",
+   "license_status": null,
+   "ifs_domains": [
+    "D15",
+    "D6",
+    "D4",
+    "D1"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "a2fb8447-aeee-42ad-8611-6b0598112bf4",
+   "source_url": "https://www.morganlewis.com/pubs/2026/04/german-government-adopts-national-data-center-strategy",
+   "published_at": "2026-04-16T00:00:00+00:00",
+   "source_type": "regulatory",
+   "title": "German Government Adopts National Data Center Strategy",
+   "source_name": null,
+   "summary": "Germany formally adopted its National Data Center Strategy on 18 March 2026, elevating data centers to critical infrastructure and targeting a doubling of overall capacity and fourfold increase in AI/HPC capacity by 2030. The strategy includes support for at least one AI gigafactory, competitive electricity pricing mechanisms, and expansion across the full technology stack from microelectronics to software to strengthen digital sovereignty.",
+   "license_status": null,
+   "ifs_domains": [
+    "D15",
+    "D6",
+    "D4",
+    "D1"
+   ],
+   "ifs_subdomains": [
+    "D15.6",
+    "D19.3",
+    "D22.2"
+   ]
+  },
+  {
+   "artifact_id": "3627e66b-0707-4414-8171-019274cab46b",
+   "source_url": "https://www.morganlewis.com/pubs/2026/04/german-government-adopts-national-data-center-strategy",
+   "published_at": "2026-04-16T00:00:00+00:00",
+   "source_type": "regulatory",
+   "title": "German Government Adopts National Data Center Strategy",
+   "source_name": null,
+   "summary": "Germany formally adopted its National Data Center Strategy on March 18, 2026, elevating data centers to critical infrastructure status and targeting a doubling of overall capacity and a fourfold increase in AI/HPC capacity by 2030. The strategy includes support for at least one AI gigafactory, competitive electricity pricing mechanisms, and integration of European hardware and software to advance digital sovereignty.",
+   "license_status": null,
+   "ifs_domains": [
+    "D15",
+    "D6",
+    "D4",
+    "D1"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "54faf6f6-60f2-4cb8-ac15-c8dd4e9a2469",
+   "source_url": "https://www.morganlewis.com/pubs/2026/04/german-government-adopts-national-data-center-strategy",
+   "published_at": "2026-04-16T00:00:00+00:00",
+   "source_type": "regulatory",
+   "title": "German Government Adopts National Data Center Strategy",
+   "source_name": null,
+   "summary": "Germany formally adopted its National Data Center Strategy on March 18, 2026, targeting a doubling of overall data center capacity and a fourfold increase in AI and HPC capacity by 2030. The strategy elevates data centers to critical infrastructure, supports at least one AI gigafactory, and prioritizes cybersecurity, digital sovereignty, and European hardware integration.",
+   "license_status": null,
+   "ifs_domains": [
+    "D15",
+    "D6",
+    "D4",
+    "D1"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "54bbb8ed-0280-4768-be22-a4017c2f362e",
+   "source_url": "https://www.morganlewis.com/pubs/2026/04/german-government-adopts-national-data-center-strategy",
+   "published_at": "2026-04-16T00:00:00+00:00",
+   "source_type": "regulatory",
+   "title": "German Government Adopts National Data Center Strategy",
+   "source_name": null,
+   "summary": "Germany formally adopted its National Data Center Strategy on March 18, 2026, elevating data centers to critical infrastructure and targeting a doubling of overall capacity and a fourfold increase in AI/HPC capacity by 2030. The strategy includes support for at least one AI gigafactory, expanded HPC and quantum computing, and competitive electricity pricing, while prioritizing cybersecurity and digital sovereignty.",
+   "license_status": null,
+   "ifs_domains": [
+    "D15",
+    "D6",
+    "D4",
+    "D1"
+   ],
+   "ifs_subdomains": [
+    "D15.6",
+    "D19.3",
+    "D22.2"
+   ]
+  },
+  {
+   "artifact_id": "f151b971-9a3a-47f5-91f8-46c89f330503",
+   "source_url": "https://www.morganlewis.com/pubs/2026/04/german-government-adopts-national-data-center-strategy",
+   "published_at": "2026-04-16T00:00:00+00:00",
+   "source_type": "regulatory",
+   "title": "German Government Adopts National Data Center Strategy",
+   "source_name": null,
+   "summary": "Germany formally adopted its National Data Center Strategy on March 18, 2026, elevating data centers to critical infrastructure status and targeting a doubling of overall capacity plus a fourfold increase in AI and HPC capacity by 2030. The strategy supports at least one AI gigafactory, expands quantum computing capacities, and strengthens national digital sovereignty across the full technology stack.",
+   "license_status": null,
+   "ifs_domains": [
+    "D15",
+    "D6",
+    "D4",
+    "D1"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "11645a88-64f3-40dc-b8e8-7164c9ea1e2b",
+   "source_url": "https://www.morganlewis.com/pubs/2026/04/german-government-adopts-national-data-center-strategy",
+   "published_at": "2026-04-16T00:00:00+00:00",
+   "source_type": "regulatory",
+   "title": "German Government Adopts National Data Center Strategy",
+   "source_name": null,
+   "summary": "Germany formally adopted its National Data Center Strategy on 18 March 2026, elevating data centers to critical infrastructure and targeting a doubling of overall capacity with a fourfold increase in AI and HPC capacity by 2030. The strategy includes supporting at least one AI gigafactory, expanding national HPC and quantum computing capacities, and strengthening European digital sovereignty across the full technology stack.",
+   "license_status": null,
+   "ifs_domains": [
+    "D15",
+    "D6",
+    "D4",
+    "D1"
+   ],
+   "ifs_subdomains": [
+    "D15.6",
+    "D19.3",
+    "D22.2"
+   ]
+  },
+  {
+   "artifact_id": "830d417c-a263-4064-b765-24f99c5bc9f6",
+   "source_url": "https://www.morganlewis.com/pubs/2026/04/german-government-adopts-national-data-center-strategy",
+   "published_at": "2026-04-16T00:00:00+00:00",
+   "source_type": "regulatory",
+   "title": "German Government Adopts National Data Center Strategy",
+   "source_name": null,
+   "summary": "Germany formally adopted its National Data Center Strategy on 18 March 2026, elevating data centers to critical infrastructure and targeting a doubling of overall capacity and a fourfold increase in AI/HPC capacity by 2030. The strategy includes support for at least one AI gigafactory, state electricity subsidies, and prioritization of cybersecurity as a sovereign digital resilience measure.",
+   "license_status": null,
+   "ifs_domains": [
+    "D15",
+    "D6",
+    "D4",
+    "D1"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "a2c5d9e8-c13a-46c0-98ab-35eb6f1b3746",
+   "source_url": "https://www.morganlewis.com/pubs/2026/04/german-government-adopts-national-data-center-strategy",
+   "published_at": "2026-04-16T00:00:00+00:00",
+   "source_type": "regulatory",
+   "title": "German Government Adopts National Data Center Strategy",
+   "source_name": null,
+   "summary": "Germany formally adopted its National Data Center Strategy on March 18, 2026, elevating data centers to critical infrastructure status and targeting a doubling of overall capacity and a fourfold increase in AI/HPC capacity by 2030. The strategy supports at least one AI gigafactory, expands quantum computing, and prioritizes cybersecurity, competitive electricity pricing, and European digital sovereignty.",
+   "license_status": null,
+   "ifs_domains": [
+    "D15",
+    "D6",
+    "D4",
+    "D1"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "c7ce8b8d-a691-40e8-9662-a37240ebc472",
+   "source_url": "https://www.morganlewis.com/pubs/2026/04/german-government-adopts-national-data-center-strategy",
+   "published_at": "2026-03-18T00:00:00+00:00",
+   "source_type": "regulatory",
+   "title": "German Government Adopts National Data Center Strategy",
+   "source_name": null,
+   "summary": "Germany formally adopted its National Data Center Strategy on 18 March 2026, elevating data centers to critical infrastructure and targeting a doubling of overall capacity and a fourfold increase in AI/HPC capacity by 2030. The strategy promotes sovereign, energy-efficient infrastructure integrating European hardware and software as part of the broader 'Deutschland-Stack' initiative.",
+   "license_status": null,
+   "ifs_domains": [
+    "D1",
+    "D15",
+    "D4",
+    "D6"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "064f0e68-cb3e-48ee-a73b-6a12e6e67b09",
+   "source_url": "https://www.morganlewis.com/pubs/2026/04/german-government-adopts-national-data-center-strategy",
+   "published_at": "2026-03-18T00:00:00+00:00",
+   "source_type": "regulatory",
+   "title": "German Government Adopts National Data Center Strategy",
+   "source_name": null,
+   "summary": "Germany formally adopted its National Data Center Strategy on 18 March 2026, elevating data centers to critical infrastructure status and targeting a doubling of overall capacity plus a fourfold increase in AI and HPC capacity by 2030. The strategy emphasizes digital sovereignty, renewable energy, and integration of European hardware and software.",
+   "license_status": null,
+   "ifs_domains": [
+    "D1",
+    "D15",
+    "D4",
+    "D6"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "b20d8836-e060-4d4d-bb9d-cb2e48541898",
+   "source_url": "https://enkiai.com/policy-and-regulations/equinix-heat-reuse-data-center/",
+   "published_at": "2026-08-13T00:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Equinix Heat Reuse 2026: ML5 Data Center Deal with A2A — Germany's EnEfG Mandate Takes Effect",
+   "source_name": null,
+   "summary": "Germany's Energy Efficiency Act (EnEfG) set a hard July 1, 2026 deadline requiring new data centers to reuse a minimum of 10% of waste heat, escalating to 15% in 2027 and 20% in 2028, making heat reuse a non-negotiable design parameter across Europe's largest market. The regulation transforms waste heat from a cost liability into a potentially monetizable asset, with Germany serving as the EU's compliance testbed.",
+   "license_status": null,
+   "ifs_domains": [
+    "D11.4"
+   ],
+   "ifs_subdomains": [
+    "D11.4",
+    "D12.4",
+    "D12.6",
+    "D2.6",
+    "D23.4",
+    "D3.1"
+   ]
+  },
+  {
+   "artifact_id": "01cf39a1-7476-4407-acbc-e8dea2c27717",
+   "source_url": "https://www.datacenterdynamics.com/en/news/northc-breaks-ground-on-data-center-in-frankfurt-germany/",
+   "published_at": "2026-09-17T11:33:30.573+00:00",
+   "source_type": "web_news",
+   "title": "NorthC breaks ground on data center in Frankfurt, Germany",
+   "source_name": "DCD — Investment channel",
+   "summary": "6MW facility due live in 2028",
+   "license_status": "cleared",
+   "ifs_domains": [
+    "D4",
+    "D7",
+    "D8"
+   ],
+   "ifs_subdomains": [
+    "D12.4",
+    "D14.4",
+    "D22.2"
+   ]
+  },
+  {
+   "artifact_id": "dfa20654-05c7-4c73-854c-374dcebe0f26",
+   "source_url": "https://www.datacenterdynamics.com/en/news/northc-breaks-ground-on-data-center-in-frankfurt-germany/",
+   "published_at": "2026-09-17T11:33:30.573+00:00",
+   "source_type": "web_news",
+   "title": "NorthC breaks ground on data center in Frankfurt, Germany",
+   "source_name": "Data Center Dynamics",
+   "summary": "6MW facility due live in 2028",
+   "license_status": "cleared",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": [
+    "D12.4",
+    "D14.4",
+    "D22.2"
+   ]
+  },
+  {
+   "artifact_id": "8de30442-beb0-4f90-a483-f56645dd6637",
+   "source_url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQUlpYQ3NhRnZhbXRmMjNQZDc1ZHJDa0VaOUhONHNaTDJXVzdQdXlWN2tMQzE0eEM4ekRFa2FmTm1mN2IyM0pQaXEybW9waUthaHJSTWc1QWRRSExZWTAwRUdUajE0a1hBMXhuc2xsZE9DUlVMM0lEa0tpdm5GS1BUVUVsLW50UHJtQ1Y2NVAxX1JqZS0wUnh5dDMwT2J2Z3pmODZIMnllb0ZCZ1pzRjREREFYa2dEcFFCX25j?oc=5",
+   "published_at": "2026-06-25T07:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Germany's Infrastructure Push and AI Data Center Boom Lift Hochtief's Growth Outlook - Konsulteer",
+   "source_name": "Google News search: \"Turner Construction\" data center OR AI OR infrastructure",
+   "summary": "Germany's Infrastructure Push and AI Data Center Boom Lift Hochtief's Growth Outlook &nbsp;&nbsp; Konsulteer",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "b83d2baf-ac25-488c-9258-a61643b1be40",
+   "source_url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQUlpYQ3NhRnZhbXRmMjNQZDc1ZHJDa0VaOUhONHNaTDJXVzdQdXlWN2tMQzE0eEM4ekRFa2FmTm1mN2IyM0pQaXEybW9waUthaHJSTWc1QWRRSExZWTAwRUdUajE0a1hBMXhuc2xsZE9DUlVMM0lEa0tpdm5GS1BUVUVsLW50UHJtQ1Y2NVAxX1JqZS0wUnh5dDMwT2J2Z3pmODZIMnllb0ZCZ1pzRjREREFYa2dEcFFCX25j?oc=5",
+   "published_at": "2026-06-25T07:00:00+00:00",
+   "source_type": "web_news",
+   "title": "Germany's Infrastructure Push and AI Data Center Boom Lift Hochtief's Growth Outlook - Konsulteer",
+   "source_name": "Google News search: \"Hochtief\" (public_companies watch)",
+   "summary": "Germany's Infrastructure Push and AI Data Center Boom Lift Hochtief's Growth Outlook &nbsp;&nbsp; Konsulteer",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "111c59fa-99de-40f4-83ec-6306f87c7a3f",
+   "source_url": "https://www.datacenterdynamics.com/en/news/atlasedge-starts-next-expansion-phase-of-data-center-in-hamburg-germany/",
+   "published_at": "2026-08-05T13:00:39.049+00:00",
+   "source_type": "web_news",
+   "title": "AtlasEdge starts next expansion phase of data center in Hamburg, Germany",
+   "source_name": "DCD — Investment channel",
+   "summary": "AtlasEdge starts second of four phases of HAM002",
+   "license_status": "cleared",
+   "ifs_domains": [
+    "D4",
+    "D7",
+    "D8"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "ced6a08a-a0ff-48af-b39a-3a75934cb9bd",
+   "source_url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNUmVvbzBBMEd3NUNpeXBJSXJTMkZmcTNXZE5EQTJad014VFhmTlVfeDJoeHpjU25DckNSWks3dDBKcURtYW9VNWxlQ1pMSUo5bEx4RHpRb3ZBYUVZbXJDeXk3em0xVExCU2lRcmpvUGxIY1ptdE5yMVo5M1k3eTVXWE5WaTYySEdoN2ZVbmV2VG5Kd9IBlwFBVV95cUxONVB4R0M0Nnd3a09nYkZjQnlzcDlVSjZLYU8tZFM0eTFKZkdaakVFSDlYcjhjd3JTeFNIamxHckxvczlYYUtVU2p2OTBkZVhOeFk5b2dUZ2hKbkhiM0FDNnRsRlA0U1FoU050SzZkUVlFcmx6RWNqYmZRRm8tWkFFaGFRYTVzQUJhYklLemNvemFnTzhlZU1V?oc=5",
+   "published_at": "2026-08-19T13:35:41+00:00",
+   "source_type": "web_news",
+   "title": "Pokemon Center Store Affected By Data Breach In UK And Germany - NintendoSoup",
+   "source_name": "Google News search: \"CEVA\" (public_companies watch)",
+   "summary": "Pokemon Center Store Affected By Data Breach In UK And Germany &nbsp;&nbsp; NintendoSoup",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "770d0869-737b-4ee6-a3b5-2680f3d5b7da",
+   "source_url": "https://www.datacenterdynamics.com/en/news/cadence-unveils-nvidia-powered-ai-data-center-in-munich-germany/",
+   "published_at": "2026-10-26T17:17:15.586+00:00",
+   "source_type": "web_news",
+   "title": "Cadence unveils Nvidia-powered AI data center in Munich, Germany",
+   "source_name": "Data Center Dynamics",
+   "summary": "Facility will support electronic design automation (EDA), simulation, and offer sovereign AI cloud services",
+   "license_status": "cleared",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": [
+    "D1.1",
+    "D20.2"
+   ]
+  },
+  {
+   "artifact_id": "53d8e68c-2ea1-4098-80ff-6f58f282758f",
+   "source_url": "https://www.datacenterdynamics.com/en/news/cadence-unveils-nvidia-powered-ai-data-center-in-munich-germany/",
+   "published_at": "2026-10-26T17:17:15.586+00:00",
+   "source_type": "web_news",
+   "title": "Cadence unveils Nvidia-powered AI data center in Munich, Germany",
+   "source_name": "DCD — Investment channel",
+   "summary": "Facility will support electronic design automation (EDA), simulation, and offer sovereign AI cloud services",
+   "license_status": "cleared",
+   "ifs_domains": [
+    "D4",
+    "D7",
+    "D8"
+   ],
+   "ifs_subdomains": [
+    "D1.1",
+    "D20.2"
+   ]
+  },
+  {
+   "artifact_id": "a72bf8e9-742c-4244-9123-60d015018914",
+   "source_url": "https://www.datacenterdynamics.com/en/news/waste-heat-from-goodman-data-center-in-frankfurt-germany-to-power-district-heating-system/",
+   "published_at": "2026-10-08T15:55:25.966+00:00",
+   "source_type": "web_news",
+   "title": "Waste heat from Goodman data center in Frankfurt, Germany, to power district heating system",
+   "source_name": "DCD — Investment channel",
+   "summary": "Firm will recover and supply 50MW to warm buildings and a swimming pool",
+   "license_status": "cleared",
+   "ifs_domains": [
+    "D4",
+    "D7",
+    "D8"
+   ],
+   "ifs_subdomains": [
+    "D12.4",
+    "D14.4",
+    "D14.8",
+    "D22.2"
+   ]
+  },
+  {
+   "artifact_id": "749ca562-b45a-4fce-849d-cddfc4e66485",
+   "source_url": "https://www.datacenterdynamics.com/en/news/waste-heat-from-goodman-data-center-in-frankfurt-germany-to-power-district-heating-system/",
+   "published_at": "2026-10-08T15:55:25.966+00:00",
+   "source_type": "web_news",
+   "title": "Waste heat from Goodman data center in Frankfurt, Germany, to power district heating system",
+   "source_name": "Data Center Dynamics",
+   "summary": "Firm will recover and supply 50MW to warm buildings and a swimming pool",
+   "license_status": "cleared",
+   "ifs_domains": [
+    "D22"
+   ],
+   "ifs_subdomains": [
+    "D12.4",
+    "D14.4",
+    "D22.2"
+   ]
+  },
+  {
+   "artifact_id": "6e354407-c7d1-4028-9683-50293b104bd8",
+   "source_url": "https://www.morganlewis.com/pubs/2026/04/german-government-adopts-national-data-center-strategy",
+   "published_at": "2026-04-16T00:00:00+00:00",
+   "source_type": "regulatory",
+   "title": "German Government Adopts National Data Center Strategy",
+   "source_name": null,
+   "summary": "Germany's federal government adopted its National Data Center Strategy on March 18, 2026, targeting a doubling of overall capacity and a fourfold increase in AI and HPC capacity by 2030, with measures including supporting at least one AI gigafactory. The strategy elevates data centers to critical infrastructure status for digital transformation and economic security, while the EU simultaneously published a draft Delegated Regulation establishing a common EU data center rating scheme.",
+   "license_status": null,
+   "ifs_domains": [
+    "D15",
+    "D6",
+    "D4",
+    "D1"
+   ],
+   "ifs_subdomains": [
+    "D15.5"
+   ]
+  },
+  {
+   "artifact_id": "a9336e44-0077-4337-ae03-403b5739df5b",
+   "source_url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxPd042ZHNIUnliRy1uVVR1UjAzOFV6WnAyall5aU4tNkE4dzI2VE9OS3NVUVRNdmhsWXZBelpKR05tNFJKblNlcVJXS01JZlF0cThQcnR0VWdJTWd4Z2ZmWmFRZVpHMGh2NERtSG14LUo1N2RuZTVvaEtoUjVJTTJ4WTBKZ1JYcDRpWkE?oc=5",
+   "published_at": "2026-07-25T06:24:51+00:00",
+   "source_type": "web_news",
+   "title": "NorthC acquires six data centers from Colt Technology Services in Germany and the Netherlands - NorthC Datacenters",
+   "source_name": "Google News search: \"Colt\" (operator watch)",
+   "summary": "NorthC acquires six data centers from Colt Technology Services in Germany and the Netherlands &nbsp;&nbsp; NorthC Datacenters",
+   "license_status": "attribution_required",
+   "ifs_domains": [
+    "D6"
+   ],
+   "ifs_subdomains": [
+    "D11.4",
+    "D22.2"
+   ]
+  },
+  {
+   "artifact_id": "3ce72307-f8da-4c2f-886f-40068a8edcaf",
+   "source_url": "https://www.morganlewis.com/pubs/2026/04/german-government-adopts-national-data-center-strategy",
+   "published_at": "2026-04-16T00:00:00+00:00",
+   "source_type": "regulatory",
+   "title": "German Government Adopts National Data Center Strategy",
+   "source_name": null,
+   "summary": "Germany's federal government formally adopted its National Data Center Strategy on 18 March 2026, targeting a doubling of overall data center capacity and a fourfold increase in AI and HPC capacity by 2030. The strategy includes supporting at least one AI gigafactory, competitive electricity subsidies, and elevates data centers to critical infrastructure status.",
+   "license_status": null,
+   "ifs_domains": [
+    "D15",
+    "D6",
+    "D4",
+    "D1"
+   ],
+   "ifs_subdomains": [
+    "D15.6",
+    "D19.3",
+    "D22.2"
+   ]
+  },
+  {
+   "artifact_id": "22bce366-ccdd-446b-b538-5b202b7b88d1",
+   "source_url": "https://www.morganlewis.com/pubs/2026/04/german-government-adopts-national-data-center-strategy",
+   "published_at": "2026-04-01T00:00:00+00:00",
+   "source_type": "regulatory",
+   "title": "German Government Adopts National Data Center Strategy",
+   "source_name": null,
+   "summary": "Germany's federal government adopted its National Data Center Strategy on March 18, 2026, formally classifying data centers as critical infrastructure and targeting a doubling of overall capacity and a fourfold increase in AI/HPC capacity by 2030. The strategy outlines policy measures across energy, permitting, and cost competitiveness to secure Germany's role in the European AI ecosystem.",
+   "license_status": null,
+   "ifs_domains": [
+    "D1",
+    "D15",
+    "D4",
+    "D6"
+   ],
+   "ifs_subdomains": [
+    "D15.5"
+   ]
+  },
+  {
+   "artifact_id": "c6f85f28-ec5d-489b-b5ff-6e210f8c8fec",
+   "source_url": "https://www.morganlewis.com/pubs/2026/04/german-government-adopts-national-data-center-strategy",
+   "published_at": "2026-03-18T00:00:00+00:00",
+   "source_type": "regulatory",
+   "title": "German Government Adopts National Data Center Strategy",
+   "source_name": null,
+   "summary": "Germany's federal government adopted its National Data Center Strategy on 18 March 2026, formally classifying data centers as critical infrastructure and targeting a doubling of overall capacity and a fourfold increase in AI/HPC capacity by 2030. The strategy outlines policy measures emphasizing digital sovereignty, sustainable energy, regional resilience, and Germany's role in the European AI ecosystem.",
+   "license_status": null,
+   "ifs_domains": [
+    "D1",
+    "D15",
+    "D4",
+    "D6"
+   ],
+   "ifs_subdomains": [
+    "D15.5"
+   ]
+  },
+  {
+   "artifact_id": "af7c0640-c24e-4053-bfc3-902b35b9e319",
+   "source_url": "https://www.morganlewis.com/pubs/2026/04/german-government-adopts-national-data-center-strategy",
+   "published_at": "2026-04-16T00:00:00+00:00",
+   "source_type": "regulatory",
+   "title": "German Government Adopts National Data Center Strategy",
+   "source_name": null,
+   "summary": "Germany formally adopted its National Data Center Strategy on 18 March 2026, targeting a doubling of overall capacity and a fourfold increase in AI and HPC capacity by 2030, including support for at least one AI gigafactory. The strategy elevates data centers to critical infrastructure status and prioritizes cybersecurity, digital sovereignty, and competitive electricity pricing through state subsidies.",
+   "license_status": null,
+   "ifs_domains": [
+    "D15",
+    "D6",
+    "D4",
+    "D1"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "a56f2c22-6e78-4162-a7c6-cf49fdf64ba4",
+   "source_url": "https://www.morganlewis.com/pubs/2026/04/german-government-adopts-national-data-center-strategy",
+   "published_at": "2026-04-16T00:00:00+00:00",
+   "source_type": "regulatory",
+   "title": "German Government Adopts National Data Center Strategy",
+   "source_name": null,
+   "summary": "Germany formally adopted its National Data Center Strategy on 18 March 2026, targeting a doubling of overall capacity and a fourfold increase in AI/HPC capacity by 2030, with at least one AI gigafactory supported. The strategy elevates data centers to critical infrastructure status and prioritizes cybersecurity, digital sovereignty, and integration of European hardware and software.",
+   "license_status": null,
+   "ifs_domains": [
+    "D15",
+    "D6",
+    "D4",
+    "D1"
+   ],
+   "ifs_subdomains": [
+    "D15.5"
+   ]
+  },
+  {
+   "artifact_id": "cbfb802c-9b79-411e-bed0-4ce26838004c",
+   "source_url": "https://www.morganlewis.com/pubs/2026/04/german-government-adopts-national-data-center-strategy",
+   "published_at": "2026-04-16T00:00:00+00:00",
+   "source_type": "regulatory",
+   "title": "German Government Adopts National Data Center Strategy",
+   "source_name": null,
+   "summary": "Germany formally adopted its National Data Center Strategy on March 18, 2026, targeting a doubling of overall capacity and a fourfold increase in AI and HPC capacity by 2030, including support for at least one AI gigafactory. The strategy elevates data centers to critical infrastructure, prioritizes cybersecurity and resilience, and aims to strengthen national and European digital sovereignty across the full technology stack.",
+   "license_status": null,
+   "ifs_domains": [
+    "D15",
+    "D6",
+    "D4",
+    "D1"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "3df9085a-9900-4458-932b-0d3bb6f669f8",
+   "source_url": "https://www.morganlewis.com/pubs/2026/04/german-government-adopts-national-data-center-strategy",
+   "published_at": "2026-04-18T00:00:00+00:00",
+   "source_type": "regulatory",
+   "title": "German Government Adopts National Data Center Strategy",
+   "source_name": null,
+   "summary": "Germany's federal government adopted its National Data Center Strategy on 18 March 2026, formally elevating data centers to critical infrastructure and targeting a doubling of overall capacity plus a fourfold increase in AI and HPC capacity by 2030. The strategy emphasizes digital sovereignty, renewable energy, and integration of European hardware and software.",
+   "license_status": null,
+   "ifs_domains": [
+    "D1",
+    "D15",
+    "D4",
+    "D6"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "77762d61-bd32-43a5-866f-f9ae4fa2a8ec",
+   "source_url": "https://www.morganlewis.com/pubs/2026/04/german-government-adopts-national-data-center-strategy",
+   "published_at": "2026-04-16T00:00:00+00:00",
+   "source_type": "regulatory",
+   "title": "German Government Adopts National Data Center Strategy",
+   "source_name": null,
+   "summary": "Germany's federal government adopted its National Data Center Strategy on March 18, 2026, formally classifying data centers as critical infrastructure and targeting a doubling of overall capacity and fourfold increase in AI/HPC capacity by 2030. The strategy supports at least one AI gigafactory, expands HPC and quantum computing capacity, and addresses competitive electricity pricing and cybersecurity resilience.",
+   "license_status": null,
+   "ifs_domains": [
+    "D15",
+    "D6",
+    "D4",
+    "D1"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "a1305b15-dfb7-4699-a296-b6acafd46917",
+   "source_url": "https://www.morganlewis.com/pubs/2026/04/german-government-adopts-national-data-center-strategy",
+   "published_at": "2026-04-16T00:00:00+00:00",
+   "source_type": "regulatory",
+   "title": "German Government Adopts National Data Center Strategy",
+   "source_name": null,
+   "summary": "Germany's federal government adopted its National Data Center Strategy on 18 March 2026, formally classifying data centers as critical infrastructure and targeting a doubling of overall capacity and a fourfold increase in AI/HPC capacity by 2030. The strategy includes support for at least one AI gigafactory, state electricity subsidies, and mandates cybersecurity and resilience measures across the full technology stack.",
+   "license_status": null,
+   "ifs_domains": [
+    "D1",
+    "D15",
+    "D4",
+    "D6"
+   ],
+   "ifs_subdomains": [
+    "D15.6",
+    "D19.3",
+    "D22.2"
+   ]
+  },
+  {
+   "artifact_id": "b5e6f1ce-56e9-45d2-acba-4ef66859938a",
+   "source_url": "https://www.morganlewis.com/pubs/2026/04/german-government-adopts-national-data-center-strategy",
+   "published_at": "2026-04-16T00:00:00+00:00",
+   "source_type": "regulatory",
+   "title": "German Government Adopts National Data Center Strategy",
+   "source_name": null,
+   "summary": "Germany's federal government adopted its National Data Center Strategy on 18 March 2026, formally classifying data centers as critical infrastructure and targeting a doubling of overall capacity plus a fourfold increase in AI/HPC capacity by 2030. The strategy supports at least one AI gigafactory, expands quantum computing capacity, prioritizes cybersecurity resilience, and aims to strengthen European digital sovereignty across the full technology stack.",
+   "license_status": null,
+   "ifs_domains": [
+    "D1",
+    "D15",
+    "D4",
+    "D6"
+   ],
+   "ifs_subdomains": [
+    "D15.6",
+    "D19.3",
+    "D22.2"
+   ]
+  },
+  {
+   "artifact_id": "041a86f0-b9c5-450f-8ac0-f1d50e6c9f5e",
+   "source_url": "https://www.morganlewis.com/pubs/2026/04/german-government-adopts-national-data-center-strategy",
+   "published_at": "2026-04-16T00:00:00+00:00",
+   "source_type": "regulatory",
+   "title": "German Government Adopts National Data Center Strategy",
+   "source_name": null,
+   "summary": "Germany's federal government adopted its National Data Center Strategy on March 18, 2026, formally elevating data centers to critical infrastructure and targeting a doubling of overall capacity and a fourfold increase in AI and HPC capacity by 2030. Measures include supporting at least one AI gigafactory, expanding quantum computing capacities, subsidizing electricity costs, and prioritizing cybersecurity and resilience.",
+   "license_status": null,
+   "ifs_domains": [
+    "D15",
+    "D6",
+    "D4",
+    "D1"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "961df82f-0ec8-46fc-b710-00c15f98e5ec",
+   "source_url": "https://www.morganlewis.com/pubs/2026/04/german-government-adopts-national-data-center-strategy",
+   "published_at": "2026-04-16T00:00:00+00:00",
+   "source_type": "regulatory",
+   "title": "German Government Adopts National Data Center Strategy",
+   "source_name": null,
+   "summary": "Germany's federal government adopted its National Data Center Strategy on 18 March 2026, formally elevating data centers to critical infrastructure and targeting a fourfold increase in AI and HPC capacity by 2030. The strategy commits to supporting at least one AI gigafactory, expanding sovereign cloud infrastructure, and prioritizing cybersecurity and renewable energy across the full technology stack.",
+   "license_status": null,
+   "ifs_domains": [
+    "D15",
+    "D6",
+    "D4",
+    "D1"
+   ],
+   "ifs_subdomains": [
+    "D15.2",
+    "D6.2"
+   ]
+  },
+  {
+   "artifact_id": "a856aee4-b75e-49c8-b577-2217f2d6ad6a",
+   "source_url": "https://www.morganlewis.com/pubs/2026/04/german-government-adopts-national-data-center-strategy",
+   "published_at": "2026-04-16T00:00:00+00:00",
+   "source_type": "regulatory",
+   "title": "German Government Adopts National Data Center Strategy",
+   "source_name": null,
+   "summary": "Germany's federal government adopted its National Data Center Strategy on 18 March 2026, formally classifying data centers as critical infrastructure and targeting a doubling of overall capacity and a fourfold increase in AI/HPC capacity by 2030. The strategy includes support for at least one AI gigafactory, expanded quantum computing capacity, competitive electricity subsidies, and an emphasis on European digital sovereignty across the full technology stack.",
+   "license_status": null,
+   "ifs_domains": [
+    "D1",
+    "D15",
+    "D4",
+    "D6"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "50a3b46a-d4c1-42ce-8298-aee8cfa8fe8f",
+   "source_url": "https://www.morganlewis.com/pubs/2026/04/german-government-adopts-national-data-center-strategy",
+   "published_at": "2026-04-16T00:00:00+00:00",
+   "source_type": "regulatory",
+   "title": "German Government Adopts National Data Center Strategy",
+   "source_name": null,
+   "summary": "Germany's federal government adopted its National Data Center Strategy on 18 March 2026, formally classifying data centers as critical infrastructure and targeting a doubling of overall capacity and fourfold increase in AI/HPC capacity by 2030. The strategy supports at least one AI gigafactory, expands HPC and quantum computing, and prioritizes cybersecurity and digital sovereignty across the full technology stack.",
+   "license_status": null,
+   "ifs_domains": [
+    "D15",
+    "D6",
+    "D4",
+    "D1"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "ed35b232-fbfa-47c6-8bfc-b96aab09ae85",
+   "source_url": "https://www.morganlewis.com/pubs/2026/04/german-government-adopts-national-data-center-strategy",
+   "published_at": "2026-04-16T00:00:00+00:00",
+   "source_type": "regulatory",
+   "title": "German Government Adopts National Data Center Strategy",
+   "source_name": null,
+   "summary": "Germany's federal government adopted its National Data Center Strategy on 18 March 2026, formally elevating data centers to critical infrastructure and targeting a doubling of overall capacity and a fourfold increase in AI/HPC capacity by 2030. The strategy prioritizes digital sovereignty by expanding infrastructure across the full technology stack and supporting at least one AI gigafactory.",
+   "license_status": null,
+   "ifs_domains": [
+    "D15",
+    "D6",
+    "D4",
+    "D1"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "55e4ea79-b56c-4e23-963f-7694cbd02c3e",
+   "source_url": "https://www.morganlewis.com/pubs/2026/04/german-government-adopts-national-data-center-strategy",
+   "published_at": "2026-04-16T00:00:00+00:00",
+   "source_type": "regulatory",
+   "title": "German Government Adopts National Data Center Strategy",
+   "source_name": null,
+   "summary": "Germany's federal government adopted its National Data Center Strategy on 18 March 2026, formally classifying data centers as critical infrastructure and targeting a doubling of overall capacity with a fourfold increase in AI and HPC capacity by 2030. The strategy includes support for at least one AI gigafactory, expanded quantum computing, competitive electricity pricing mechanisms, and EU-level regulatory coordination.",
+   "license_status": null,
+   "ifs_domains": [
+    "D15",
+    "D6",
+    "D4",
+    "D1"
+   ],
+   "ifs_subdomains": [
+    "D15.6",
+    "D19.3",
+    "D22.2"
+   ]
+  },
+  {
+   "artifact_id": "167610f0-c7af-4f61-968c-9485fed8117a",
+   "source_url": "https://www.morganlewis.com/pubs/2026/04/german-government-adopts-national-data-center-strategy",
+   "published_at": "2026-04-16T00:00:00+00:00",
+   "source_type": "regulatory",
+   "title": "German Government Adopts National Data Center Strategy",
+   "source_name": null,
+   "summary": "Germany's federal government adopted its National Data Center Strategy on 18 March 2026, formally classifying data centers as critical infrastructure and targeting a doubling of overall capacity and fourfold increase in AI/HPC capacity by 2030. The strategy includes supporting at least one AI gigafactory, expanding national HPC and quantum capacities, and subsidizing competitive electricity prices.",
+   "license_status": null,
+   "ifs_domains": [
+    "D15",
+    "D6",
+    "D4",
+    "D1"
+   ],
+   "ifs_subdomains": [
+    "D15.6",
+    "D19.3",
+    "D22.2"
+   ]
+  },
+  {
+   "artifact_id": "02ad431f-8f68-46c8-946a-bd0575694888",
+   "source_url": "https://www.morganlewis.com/pubs/2026/04/german-government-adopts-national-data-center-strategy",
+   "published_at": "2026-04-16T00:00:00+00:00",
+   "source_type": "regulatory",
+   "title": "German Government Adopts National Data Center Strategy",
+   "source_name": null,
+   "summary": "Germany's federal government adopted its National Data Center Strategy on 18 March 2026, formally elevating data centers to critical infrastructure and targeting a doubling of overall capacity plus a fourfold increase in AI and HPC capacity by 2030. The strategy supports at least one AI gigafactory, prioritizes cybersecurity and resilience, and promotes a sovereign AI cloud for public administration.",
+   "license_status": null,
+   "ifs_domains": [
+    "D15",
+    "D6",
+    "D4",
+    "D1"
+   ],
+   "ifs_subdomains": [
+    "D15.2",
+    "D15.6",
+    "D19.3",
+    "D22.2",
+    "D6.2"
+   ]
+  },
+  {
+   "artifact_id": "9ed77d06-e6a1-455c-a2d3-745fc839a5e0",
+   "source_url": "https://www.morganlewis.com/pubs/2026/04/german-government-adopts-national-data-center-strategy",
+   "published_at": "2026-04-16T00:00:00+00:00",
+   "source_type": "regulatory",
+   "title": "German Government Adopts National Data Center Strategy",
+   "source_name": null,
+   "summary": "Germany's federal government adopted its National Data Center Strategy on March 18, 2026, formally elevating data centers to critical infrastructure and targeting a doubling of overall capacity and fourfold increase in AI/HPC capacity by 2030. The strategy aims to strengthen national and European digital sovereignty across the full technology stack, from microelectronics to software, and includes supporting at least one AI gigafactory.",
+   "license_status": null,
+   "ifs_domains": [
+    "D1",
+    "D15",
+    "D4",
+    "D6"
+   ],
+   "ifs_subdomains": [
+    "D15.5"
+   ]
+  },
+  {
+   "artifact_id": "ef230f7b-c6a5-4e3a-9d70-f49afa04beee",
+   "source_url": "https://www.morganlewis.com/pubs/2026/04/german-government-adopts-national-data-center-strategy",
+   "published_at": "2026-04-16T00:00:00+00:00",
+   "source_type": "regulatory",
+   "title": "German Government Adopts National Data Center Strategy",
+   "source_name": null,
+   "summary": "Germany's federal government adopted its National Data Center Strategy on 18 March 2026, formally elevating data centers to critical infrastructure and targeting a doubling of overall capacity and a fourfold increase in AI/HPC capacity by 2030. Measures include supporting at least one AI gigafactory, expanding HPC and quantum computing capacities, competitive electricity pricing, and prioritizing cybersecurity as part of a broader digital sovereignty framework.",
+   "license_status": null,
+   "ifs_domains": [
+    "D15",
+    "D6",
+    "D4",
+    "D1"
+   ],
+   "ifs_subdomains": []
+  },
+  {
+   "artifact_id": "0a1ddc77-6ff4-4e23-8066-0643230d9625",
+   "source_url": "https://www.morganlewis.com/pubs/2026/04/german-government-adopts-national-data-center-strategy",
+   "published_at": "2026-04-16T00:00:00+00:00",
+   "source_type": "regulatory",
+   "title": "German Government Adopts National Data Center Strategy",
+   "source_name": null,
+   "summary": "Germany's federal government adopted its National Data Center Strategy on March 18, 2026, formally elevating data centers to critical infrastructure and targeting a doubling of overall capacity and fourfold increase in AI/HPC capacity by 2030. Measures include supporting at least one AI gigafactory, competitive electricity subsidies, and full technology-stack digital sovereignty from microelectronics to software.",
+   "license_status": null,
+   "ifs_domains": [
+    "D15",
+    "D6",
+    "D4",
+    "D1"
+   ],
+   "ifs_subdomains": []
+  }
+ ],
+ "company": null,
+ "institution": null,
+ "jurisdiction": {
+  "id": "96fdd4cf-266a-4e40-8a05-dbbaef51332f",
+  "name": "Germany",
+  "slug": "germany",
+  "level": "country",
+  "state_abbr": null,
+  "country_code": "DE",
+  "iso_code": "DE",
+  "current_tier": "Mixed",
+  "current_score": 50,
+  "jps_trend": "stable",
+  "last_scored_date": "2026-07-13T13:32:30.385324+00:00",
+  "jpas_quality": null,
+  "jpas_quality_tier": null,
+  "jpas_completeness": 55,
+  "jpas_completeness_grade": "Medium",
+  "jds_tier": null,
+  "jds_score": null,
+  "iso_rto": null,
+  "is_competitive_market": null,
+  "utility_type": null,
+  "tax_equipment_exemption": null,
+  "tax_electricity_exemption": null,
+  "tax_property_abatement": null,
+  "tax_statute_citation": null,
+  "tax_source_last_verified": null,
+  "population": 83491249,
+  "dim_regulatory": 5,
+  "dim_permitting": 4,
+  "dim_power": 5,
+  "dim_opposition": 2,
+  "dim_incentives": 5,
+  "jps_history": [
+   {
+    "scored_at": "2026-07-13T13:32:30.385324+00:00",
+    "score": 50,
+    "tier": "Mixed",
+    "change_reason": "JPS scale migration 1.0–5.0 → 0–100 (CC-JPS-SCALE-MIGRATION-1.0; linear transform new = (old−1)/4×100, ordering preserved)",
+    "scale_version": "0-100"
+   },
+   {
+    "scored_at": "2026-06-06T03:14:47.276253+00:00",
+    "score": 3,
+    "tier": "Mixed",
+    "change_reason": "MVP baseline posture run (manual)",
+    "scale_version": "1-5"
+   }
+  ]
+ },
+ "jw": {
+  "moratoria": [],
+  "puc": [],
+  "permit_events": [],
+  "facilities": [],
+  "incentives": []
+ }
+}
