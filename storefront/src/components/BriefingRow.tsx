@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { TIER_META, formatDate, type Briefing } from "@/lib/model";
+import { TIER_META, formatDate, jurisdictionName, type Briefing } from "@/lib/model";
 import { entityFor } from "@/lib/entities";
 import { EntityMark } from "./EntityMark";
 
@@ -32,6 +32,7 @@ export function BriefingRow({ b }: { b: Briefing }) {
         {b.hypothesis ? <p className="mt-3 line-clamp-2 max-w-measure text-[0.98rem] leading-relaxed text-ink-soft">{b.hypothesis}</p> : null}
         <p className="mt-4 flex flex-wrap gap-x-5 gap-y-1 text-sm text-warm-gray">
           {b.byline ? <span>By {b.byline}</span> : null}
+          {b.jurisdiction ? <span>{jurisdictionName(b.jurisdiction)}</span> : null}
           <span>
             {b.sources.length} {b.sources.length === 1 ? "source" : "sources"}
           </span>

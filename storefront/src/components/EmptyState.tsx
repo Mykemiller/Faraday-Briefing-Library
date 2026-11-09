@@ -10,7 +10,7 @@ export function EmptyState({ filtered }: { filtered: boolean }) {
       </h2>
       <p className="mt-3 max-w-[46ch] text-base leading-relaxed text-ink-soft">
         {filtered
-          ? "No published briefing matches these filters. Try another tier or state, or see the whole library."
+          ? "No published briefing matches these filters. Try another shelf, tier or jurisdiction, or see the whole library."
           : "No briefings are published yet. Each one appears here as soon as it clears editorial review, newest first."}
       </p>
       {filtered ? (

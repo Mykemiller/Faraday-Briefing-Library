@@ -45,13 +45,18 @@ it never falls back to showing everything.
 
 | Route | Content |
 |---|---|
-| `/` | Published briefings, newest first (`published_at desc`, then `id`). Filter by tier (`?tier=deep\|standard\|profile`) and US state (`?state=TX`). Separate empty states for "nothing published" and "nothing matches". |
+| `/` | Published briefings, newest first (`published_at desc`, then `id`). Shelf nav by type (`?type=theater\|sector\|thread\|company\|jurisdiction`), tier chips (`?tier=deep\|standard\|profile`) and a jurisdiction menu (`?jurisdiction=US-TX\|DE\|…`, US states then countries). Separate empty states for "nothing published" and "nothing matches". |
 | `/b/[id]` | One published briefing: eyebrow (tier · pages · type), title, facts, thesis, contents, sources & methodology. Non-UUID or unpublished ids return 404. |
 | error | A failed read shows "could not be reached" with a retry. It never pretends the shelf is empty. |
 
-**State filter caveat.** `briefings` has no state column. A briefing's state is read from its
-title (a full state name, or ", XX" after a place) in `inferState()`, which is unit-tested. The
-menu only offers states that exist. Replace it with the real column when one lands.
+**Shelf labels (Brand Bible, BL2-07):** Theater Briefings · Sector Briefings · Thread Briefings ·
+Company Briefings · Jurisdiction Briefings. Internal type keys and D-codes never render.
+
+**Jurisdiction filter.** The column `briefings.jurisdiction_id` (BL2-01) is the only source of a
+briefing's jurisdiction: `US-XX` for a state, ISO-3166 alpha-2 for a country, shown by name
+(`jurisdictionName()`; unit-tested). Nothing is inferred from the title any more — the BL-12
+`inferState()` is gone. `?state=TX` is still accepted as an alias for `?jurisdiction=US-TX` so old
+links keep working. The menu only offers jurisdictions that exist in the result set.
 
 ## Local
 
@@ -64,8 +69,12 @@ STOREFRONT_FIXTURES=empty npm run dev  # the zero-row state (what production sho
 npm test && npm run typecheck && npm run build
 ```
 
-Fixtures are refused when `VERCEL=1` or `NODE_ENV=production` (tested), and every page shows a
-"Sample data" banner while they are on.
+Fixtures are refused on every production build — Vercel `VERCEL_ENV=production`, or
+`NODE_ENV=production` off Vercel (tested). The one deployment that may show them is a Vercel
+**preview** whose branch sets `STOREFRONT_FIXTURES=1` (BL2-07: so a reviewer can see all five types
+on the preview URL while production has zero published rows). Every page shows a "Sample data"
+banner while they are on. The fixture set carries one of each public type plus a US-state and a
+country jurisdiction; a test asserts it.
 
 ## Brand
 
