@@ -21,6 +21,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { tmpdir } from 'node:os';
 import { createStatusLog } from '../statuslog.mjs';
 import { assertServiceRole, LANES } from '../lanes/run.mjs';
+import { jurisdictionRecord, entityRecord, decodeEntities, completeSentences, JW_BASE } from '../lanes/evidence.mjs';
 import { runG1, summariseG1, normaliseUrl } from './g1.mjs';
 import { measurePages, closeRenderer } from './render.mjs';
 import { buildPrompts, pickPreset, panelVerdict, xcheckVerdict, runPanelApi, runXcheckApi, importPanel, importXcheck, importName, DEFAULT_CAST_DIR } from './panel.mjs';
@@ -209,21 +210,120 @@ export function createFixtureDb(fx) {
 const RECORD_TABLES = new Set(['companies', 'institutions', 'signals', 'artifacts']);
 const RECORD_PREFIXES = ['jw_', 'jpas_', 'jps_'];
 
+const JURISDICTION_COLS = 'id, name, slug, level, state_abbr, country_code, iso_code, fips_code, current_tier, current_score, jps_trend, last_scored_date, jpas_quality, jpas_quality_tier, jpas_completeness, jpas_completeness_grade, jds_tier, jds_score, iso_rto, is_competitive_market, utility_type, tax_equipment_exemption, tax_electricity_exemption, tax_property_abatement, tax_statute_citation, tax_source_last_verified, population, dim_regulatory, dim_permitting, dim_power, dim_opposition, dim_incentives'; // the generator's own list — never a breakdown column (JW invariant #2)
+const JW_URL_RE = new RegExp(`^${JW_BASE.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}/([a-z0-9-]+)(?:#signal-([0-9a-f-]{36}))?$`, 'i');
+
+/** Scalar leaves of a jsonb payload, one per line — the numbers a Jurisdiction Watch event carries. */
+function flattenScalars(v, out = [], depth = 0) {
+  if (v == null || depth > 4) return out;
+  if (Array.isArray(v)) { for (const x of v) flattenScalars(x, out, depth + 1); return out; }
+  if (typeof v === 'object') { for (const [k, x] of Object.entries(v)) { if (x == null) continue; if (typeof x === 'object') flattenScalars(x, out, depth + 1); else out.push(`${k}: ${x}`); } return out; }
+  out.push(String(v));
+  return out;
+}
+
 export function createSupabaseDb(client, { briefingResolve = true } = {}) {
   const cache = new Map();
-  async function resolveLive(url) {
+  const maybe = async (q) => { const { data, error } = await q; if (error) throw Object.assign(new Error(error.message), { code: error.code }); return data; };
+
+  // The generator (scripts/lanes/evidence.mjs) composes every sentence from a Faraday record: a
+  // signal's framing/faradays_take, an artifact's ENVELOPE SUMMARY (not its body), the Jurisdiction
+  // Watch posture record and its jw_signal_events, the companies/institutions row, a Moratorium
+  // Nation row. G1 and Reviewer A must therefore be handed that same record text — resolved by the
+  // ref's kind + id first, then by url — not a re-fetch of the page. Found on the first live run
+  // (FDY-284): every jurisdiction brief failed on its own JW citations, and digest URLs shared by
+  // several artifacts resolved to one body only.
+  async function resolveHttp(url, ref) {
     const key = normaliseUrl(url);
-    if (cache.has(key)) return cache.get(key);
+    const variants = [...new Set([url, key, key.replace(/^https:/, ''), `${key}?utm_source=rss&utm_medium=feed&utm_campaign=rss_campaign`])];
+    const arts = (await maybe(client.from('artifacts').select('artifact_id, body_text, raw_content, published_at, signal_envelope').in('source_url', variants).limit(12))) ?? [];
+    const sigs = (await maybe(client.from('signals').select('id, artifact_id, framing, faradays_take, fired_at').in('source_url', variants).limit(12))) ?? [];
+    // The ref names its record: make sure that record is in the set even when the url on the ref is
+    // the artifact's while the signal was captured under a redirect (or vice versa).
+    if (ref?.kind === 'signal' && ref.id && !sigs.some((g) => g.id === ref.id)) {
+      const g = await maybe(client.from('signals').select('id, artifact_id, framing, faradays_take, fired_at').eq('id', ref.id).maybeSingle());
+      if (g) sigs.push(g);
+    }
+    const wantArtifact = ref?.artifact_id ?? (ref?.kind === 'artifact' ? ref.id : null);
+    for (const aid of [...new Set([wantArtifact, ...sigs.map((g) => g.artifact_id)].filter(Boolean))]) {
+      if (arts.some((a) => a.artifact_id === aid)) continue;
+      const a = await maybe(client.from('artifacts').select('artifact_id, body_text, raw_content, published_at, signal_envelope').eq('artifact_id', aid).maybeSingle());
+      if (a) arts.push(a);
+    }
+    if (!arts.length && !sigs.length) return { resolved: false };
+    const texts = [];
+    for (const a of arts) texts.push(a.signal_envelope?.title, a.signal_envelope?.headline, a.signal_envelope?.summary, a.body_text, a.raw_content);
+    for (const g of sigs) texts.push(g.framing, g.faradays_take);
+    const best = arts.slice().sort((a, b) => String(b.body_text ?? b.raw_content ?? '').length - String(a.body_text ?? a.raw_content ?? '').length)[0];
+    return {
+      resolved: true,
+      kind: ref?.kind === 'signal' ? 'signal' : arts.length ? 'artifact' : 'signal',
+      id: ref?.id ?? best?.artifact_id ?? sigs[0]?.id,
+      text: [...new Set(texts.filter(Boolean).map(String))].join('\n') || null,
+      title: ref?.title ?? best?.signal_envelope?.title ?? best?.signal_envelope?.headline ?? null,
+      published_at: best?.published_at ?? ref?.published_at ?? null,
+      dates: [...arts.map((a) => a.published_at), ...sigs.map((g) => g.fired_at)].filter(Boolean),
+      artifact_ids: arts.map((a) => a.artifact_id),
+      signal_ids: sigs.map((g) => g.id),
+    };
+  }
+
+  async function resolveJw(slug, eventId) {
+    if (eventId) {
+      const e = await maybe(client.from('jw_signal_events').select('*').eq('id', eventId).maybeSingle());
+      if (!e) return { resolved: false };
+      const text = [
+        e.headline ? `${decodeEntities(e.headline).replace(/[.]$/, '')}.` : null,
+        e.prior_count != null && e.current_count != null ? `Recorded count ${e.prior_count} → ${e.current_count} for ${e.period_key}${e.pct_change != null ? ` (${Number(e.pct_change).toFixed(0)}%)` : ''}.` : null,
+        ...flattenScalars(e.payload),
+      ].filter(Boolean).join('\n');
+      return { resolved: true, kind: 'jw_event', id: e.id, text, title: e.headline ?? null, published_at: e.period_end ?? null, dates: [e.period_start, e.period_end, e.triggered_at].filter(Boolean) };
+    }
+    const j = await maybe(client.from('jurisdictions').select(JURISDICTION_COLS).eq('slug', slug).maybeSingle());
+    if (!j) return { resolved: false };
+    j.jps_history = (await maybe(client.from('jps_history').select('scored_at, score, tier, change_reason, scale_version').eq('jurisdiction_id', j.id).order('scored_at', { ascending: false }).limit(12))) ?? [];
+    const rec = jurisdictionRecord(j);
+    const text = [...rec.text, ...(rec.history ?? []).map((h) => `${h.date ?? ''}: ${h.tier ?? ''} ${h.score ?? ''}${h.reason ? ` — ${h.reason}` : ''}`.trim())].join('\n');
+    return { resolved: true, kind: 'record', id: j.id, text, title: rec.title, published_at: rec.published_at, dates: j.jps_history.map((h) => h.scored_at).filter(Boolean) };
+  }
+
+  async function resolveEntity(ref) {
+    const isInst = /institutions record/i.test(ref?.publisher ?? '') || /institutions record/i.test(ref?.title ?? '');
+    if (isInst) {
+      const i = await maybe(client.from('institutions').select('institution_uid, canonical_name, aliases, archetype_band, secondary_archetypes, website_url, hq_country, company_uid, jurisdiction_ids, status, license_status, updated_at').eq('institution_uid', ref.id).maybeSingle());
+      if (!i) return { resolved: false };
+      const c = i.company_uid ? await maybe(client.from('companies').select('company_uid, canonical_name, company_type, ownership_public_private, hq_location_raw, hq_country, ticker, website_url, nvidia_dsx_partner, legal_structure, size_band, business_role, status, updated_at').eq('company_uid', i.company_uid).maybeSingle()) : null;
+      const rec = entityRecord({ institution: i, company: c });
+      return { resolved: true, kind: 'institution', id: i.institution_uid, text: rec.text.join('\n'), title: rec.title, published_at: rec.published_at };
+    }
+    const c = await maybe(client.from('companies').select('company_uid, canonical_name, company_type, ownership_public_private, hq_location_raw, hq_country, ticker, website_url, nvidia_dsx_partner, legal_structure, size_band, business_role, status, updated_at').eq('company_uid', ref.id).maybeSingle());
+    if (!c) return { resolved: false };
+    const rec = entityRecord({ company: c });
+    return { resolved: true, kind: 'company', id: c.company_uid, text: rec.text.join('\n'), title: rec.title, published_at: rec.published_at };
+  }
+
+  async function resolveMoratorium(ref) {
+    const m = await maybe(client.from('moratorium_nation_inventory').select('moratorium_id, jurisdiction_name, jurisdiction_type, date_enacted_iso, duration, legal_basis, trigger_text, current_status, activity_level, enacted_status').eq('moratorium_id', ref.id).maybeSingle());
+    if (!m) return { resolved: false };
+    const parts = [];
+    if (m.current_status) parts.push(...completeSentences(m.current_status));
+    if (!parts.length && m.legal_basis) parts.push(`${decodeEntities(m.legal_basis)}.`);
+    if (m.trigger_text) parts.push(`Recorded trigger: ${decodeEntities(m.trigger_text).replace(/[.]$/, '')}.`);
+    parts.push(...flattenScalars({ duration: m.duration, activity_level: m.activity_level, enacted_status: m.enacted_status, date_enacted_iso: m.date_enacted_iso }));
+    return { resolved: true, kind: 'moratorium', id: m.moratorium_id, text: parts.join('\n'), title: `Moratorium Nation inventory — ${m.jurisdiction_name} (${m.moratorium_id})`, published_at: m.date_enacted_iso ?? null, dates: [m.date_enacted_iso].filter(Boolean) };
+  }
+
+  async function resolveLive(url, ref = null) {
+    const cacheKey = `${ref?.kind ?? ''}:${ref?.id ?? ''}:${url}`;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
     let res = { resolved: false };
-    if (/^https?:\/\//i.test(key)) {
-      const variants = [...new Set([url, key, key.replace(/^https:/, ''), `${key}?utm_source=rss&utm_medium=feed&utm_campaign=rss_campaign`])];
-      const { data: arts } = await client.from('artifacts').select('artifact_id, body_text, raw_content, published_at, signal_envelope').in('source_url', variants).limit(8);
-      const { data: sigs } = await client.from('signals').select('id, artifact_id, framing, faradays_take, fired_at').in('source_url', variants).limit(8);
-      const best = (arts ?? []).map((a) => ({ id: a.artifact_id, text: a.body_text ?? a.raw_content ?? '', published_at: a.published_at, title: a.signal_envelope?.title ?? a.signal_envelope?.headline ?? null })).sort((a, b) => b.text.length - a.text.length)[0];
-      const framings = (sigs ?? []).flatMap((s) => [s.framing, s.faradays_take]).filter(Boolean); // the generator composes from faradays_take too (fixtures README)
-      if (best || sigs?.length) {
-        res = { resolved: true, kind: best ? 'artifact' : 'signal', id: best?.id ?? sigs[0].id, text: [best?.text, ...framings].filter(Boolean).join('\n') || null, title: best?.title ?? null, published_at: best?.published_at ?? null, dates: (sigs ?? []).map((s) => s.fired_at).filter(Boolean), artifact_ids: (arts ?? []).map((a) => a.artifact_id), signal_ids: (sigs ?? []).map((s) => s.id) };
-      }
+    const jw = url.match(JW_URL_RE);
+    if (jw) res = await resolveJw(jw[1], jw[2] ?? null);
+    else if (ref?.kind === 'record' && ref.id && /^https?:\/\/faraday\.ai\/records\//i.test(url)) res = await resolveEntity(ref);
+    else if (ref?.kind === 'moratorium' && ref.id) res = await resolveMoratorium(ref);
+    else if (/^https?:\/\//i.test(normaliseUrl(url))) {
+      res = await resolveHttp(url, ref);
+      if (!res.resolved && ref?.kind === 'record' && ref.id) res = await resolveEntity(ref); // a company cited by its website url
     } else {
       const m = url.match(/^supabase:\/\/[^/]+\/public\.([a-z0-9_]+)\?([a-z0-9_]+)=([^&]+)/i);
       if (m && (RECORD_TABLES.has(m[1]) || RECORD_PREFIXES.some((p) => m[1].startsWith(p)))) {
@@ -231,7 +331,7 @@ export function createSupabaseDb(client, { briefingResolve = true } = {}) {
         if (data?.length) res = { resolved: true, kind: m[1].replace(/s$/, ''), id: decodeURIComponent(m[3]), text: JSON.stringify(data[0]) };
       }
     }
-    cache.set(key, res);
+    cache.set(cacheKey, res);
     return res;
   }
   return {
@@ -290,18 +390,21 @@ export function createSupabaseDb(client, { briefingResolve = true } = {}) {
 
 async function prefetchResolver(db, draft, briefing) {
   if (db.resolve) return db.resolve;
-  // Live: resolve every url up front so the gate itself stays synchronous.
+  // Live: resolve every url up front so the gate itself stays synchronous. Keyed on the RAW url —
+  // Jurisdiction Watch events share one page and differ only by #signal-<id>, which normaliseUrl strips.
   const map = new Map();
   for (const r of draft.source_refs ?? []) {
     for (const u of [r.url, ...(r.urls ?? []), ...(r.alt_urls ?? [])].filter(Boolean).flatMap((x) => String(x).split(/\s+·\s+/))) {
-      const key = normaliseUrl(u.trim());
-      if (!map.has(key)) map.set(key, await db.resolveAsync(u.trim()));
+      const raw = u.trim();
+      if (!map.has(raw)) map.set(raw, await db.resolveAsync(raw, r));
+      const key = normaliseUrl(raw);
+      if (!map.has(key)) map.set(key, map.get(raw));
     }
   }
   if (briefing?.airtable_record_id) map.set(`airtable:${briefing.airtable_record_id}`, { resolved: true, kind: 'briefing_record', text: null });
   return (url) => {
     if (/^airtable:\/\//.test(url) && briefing?.airtable_record_id && url.includes(briefing.airtable_record_id)) return { resolved: true, kind: 'briefing_record', id: briefing.airtable_record_id, text: null };
-    return map.get(normaliseUrl(url)) ?? { resolved: false };
+    return map.get(String(url).trim()) ?? map.get(normaliseUrl(url)) ?? { resolved: false };
   };
 }
 
