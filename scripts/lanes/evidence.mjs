@@ -591,6 +591,8 @@ export function createSupabaseEvidence(client, limits = LIMITS) {
     return out;
   }
 
+  // The *_tags columns are jsonb: `contains` must receive a JSON string (`cs.["code"]`), never a JS array,
+  // which supabase-js would send as a Postgres array literal (`cs.{code}`) and PostgREST rejects as invalid json.
   const base = (window, limit) =>
     client.from('signals').select(SIGNAL_COLS).gte('fired_at', window.from.toISOString()).lte('fired_at', window.to.toISOString()).order('fired_at', { ascending: false }).limit(limit);
 
@@ -621,14 +623,14 @@ export function createSupabaseEvidence(client, limits = LIMITS) {
       } else if (type === 'sector') {
         if (!brief.sector_id) throw new Error(`sector brief ${brief.id} has no sector_id`);
         raw.subject = { kind: 'sector', code: brief.sector_id };
-        const a = await base(window, limits.standard).contains('domain_tags', [brief.sector_id]).then(must);
+        const a = await base(window, limits.standard).contains('domain_tags', JSON.stringify([brief.sector_id])).then(must);
         const b = await signalsByJsonbAny('subdomain_tags', idx.subdomainsOfDomain(brief.sector_id), window, limits.standard);
         const m = new Map([...a, ...b].map((r) => [r.id, r]));
         raw.signals = [...m.values()].slice(0, limits.standard);
       } else if (type === 'thread') {
         if (!brief.thread_id) throw new Error(`thread brief ${brief.id} has no thread_id`);
         raw.subject = { kind: 'thread', code: brief.thread_id };
-        raw.signals = await base(window, limits.standard).contains('subdomain_tags', [brief.thread_id]).then(must);
+        raw.signals = await base(window, limits.standard).contains('subdomain_tags', JSON.stringify([brief.thread_id])).then(must);
       } else if (type === 'company') {
         let companyUid = brief.company_id ?? null;
         if (brief.institution_id) {
@@ -638,7 +640,7 @@ export function createSupabaseEvidence(client, limits = LIMITS) {
         }
         if (companyUid) {
           raw.company = await client.from('companies').select('company_uid, canonical_name, company_type, ownership_public_private, hq_location_raw, hq_country, ticker, website_url, nvidia_dsx_partner, legal_structure, size_band, business_role, status, updated_at').eq('company_uid', companyUid).maybeSingle().then(must);
-          raw.signals = await base(window, limits.profile).contains('company_tags', [companyUid]).then(must);
+          raw.signals = await base(window, limits.profile).contains('company_tags', JSON.stringify([companyUid])).then(must);
         }
         raw.subject = { kind: brief.institution_id && !brief.company_id ? 'institution' : 'company', code: brief.institution_id ?? companyUid };
       } else if (type === 'jurisdiction') {
