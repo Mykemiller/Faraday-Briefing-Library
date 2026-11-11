@@ -270,6 +270,13 @@ export function createSupabaseDb(client) {
         .in('briefing_type', LANE_TYPES[lane])
         .order('id', { ascending: true })
         .limit(Math.max(limit * 4, 20));
+      // Lane sub-filters that SQL can express go into the query too: `company` rows are ~4.5× as many
+      // as institution rows, so the JS-only filter starved the institutions lane (2 of 20 over-fetched
+      // rows on the first live run, FDY-284). selectCandidates() still applies the same rule after.
+      if (lane === 'companies') q = q.not('company_id', 'is', null);
+      else if (lane === 'institutions') q = q.is('company_id', null).not('institution_id', 'is', null);
+      else if (lane === 'states') q = q.like('jurisdiction_id', 'US-__');
+      else if (lane === 'countries') q = q.not('jurisdiction_id', 'is', null).not('jurisdiction_id', 'like', 'US-%');
       if (afterId) q = q.gt('id', afterId);
       const { data, error } = await q;
       if (error) throw error;
