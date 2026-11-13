@@ -20,6 +20,8 @@
 //
 // Markers: `[S3]`, `[3]`, `[3, 7]`, `[S3][S4]`. Refs: `{ref:'S3'}` or `{n:3}`.
 
+import { differentTitles, isIndexUrl, isRedirectUrl } from '../lanes/evidence.mjs';
+
 export const PAGE_RANGES = Object.freeze({ deep: [10, 15], standard: [8, 10], profile: [2, 2] });
 export const CTA_PATTERN = /\b(subscribe|sign up|contact us|get in touch|book a (?:call|demo|meeting)|request a demo|buy now|learn more at|visit us|call us|email us|schedule a|reach out)\b/i;
 export const NOT_LEGAL_ADVICE = 'Informational, not legal advice.';
@@ -145,12 +147,20 @@ export function unitsOf(sectionBody) {
     const p = para.join(' ').trim();
     para = [];
     if (!p) return;
-    const sentences = p.split(/(?<=[.!?])(?:\s+|$)(?=[A-Z"“(\[*]|$)/).map((s) => s.trim()).filter(Boolean);
-    // A trailing citation separated from its sentence ("... years. [S2]") is re-attached.
+    // Never split after a single-letter initial ("H.I.G. Capital", "U.S. Senate").
+    const sentences = p.split(/(?<=[.!?])(?<!(?:^|[\s.(])[A-Z]\.)(?:\s+|$)(?=[A-Z"“(\[*]|$)/).map((s) => s.trim()).filter(Boolean);
+    // The composer's convention is "Sentence. [S2]": a citation run that follows a sentence end belongs to
+    // that sentence, never to the one after it (BL3-06, FDY-330). Re-attach it, whether it stands alone
+    // ("... years. [S2]") or opens the next fragment ("... requirement. [S3] Polar secured ...").
+    const LEAD_MARKERS = /^((?:\[(?:S?\d+)(?:\s*,\s*S?\d+)*\]\s*)+)\.?/;
     const merged = [];
     for (const s of sentences) {
-      if (/^(\[(?:S?\d+)(?:\s*,\s*S?\d+)*\]\s*)+\.?$/.test(s) && merged.length) merged[merged.length - 1] += ' ' + s;
-      else merged.push(s);
+      const lead = s.match(LEAD_MARKERS);
+      if (lead && merged.length && markersIn(lead[1]).length) {
+        merged[merged.length - 1] += ' ' + lead[1].trim();
+        const rest = s.slice(lead[0].length).trim();
+        if (rest) merged.push(rest);
+      } else merged.push(s);
     }
     // A sentence without a marker inherits the citations of the next cited sentence in the same paragraph
     // (an end-of-paragraph marker covers the paragraph), else the paragraph's own set.
@@ -305,6 +315,52 @@ export function urlsOf(ref) {
 }
 
 // ---------------------------------------------------------------------------------------------
+// BL3-06 (FDY-330) checks — separate named functions, called from runG1's check list
+// ---------------------------------------------------------------------------------------------
+
+const NEWS_REF_KINDS = new Set(['signal', 'artifact', 'facility']);
+/** Same article URL: protocol-relative made absolute, fragment, utm_* and trailing slash dropped; the rest of the query kept (newscontent.aspx?refnum=1 ≠ ?refnum=2). */
+const sameArticleUrl = (u) => {
+  const s = String(u ?? '').trim().replace(/^\/\//, 'https://').replace(/#.*$/, '');
+  const [base, q] = s.split('?');
+  const kept = (q ?? '').split('&').filter((kv) => kv && !/^utm_/i.test(kv)).join('&');
+  return `${base.replace(/\/$/, '')}${kept ? `?${kept}` : ''}`;
+};
+
+/**
+ * Source hygiene: no ref at a news.google.com redirect (`source_redirect`), no news ref at an index /
+ * tag / search page or at a URL two differently titled refs share (`source_index_page`), and no
+ * "Google News" publisher (`publisher_google_news`).
+ */
+export function checkSourceHygiene(refs, push) {
+  const byUrl = new Map();
+  for (const r of refs) {
+    const u = sameArticleUrl(r?.url);
+    if (!byUrl.has(u)) byUrl.set(u, []);
+    byUrl.get(u).push(r);
+  }
+  for (const r of refs) {
+    const n = refNumber(r);
+    if (r?.url && isRedirectUrl(r.url)) push('source_redirect', `S${n} is a news.google.com redirect, not the publisher's article URL.`, { marker: n, url: r.url });
+    const news = !r?.kind || NEWS_REF_KINDS.has(r.kind);
+    const shared = (byUrl.get(sameArticleUrl(r?.url)) ?? []).some((o) => o !== r && differentTitles(o.title ?? '', r.title ?? ''));
+    if (news && r?.url && (isIndexUrl(r.url) || shared)) push('source_index_page', `S${n} cites an index or listing page as an article: ${r.url}`, { marker: n, url: r.url });
+    if (/google news/i.test(String(r?.publisher ?? ''))) push('publisher_google_news', `S${n} names "Google News" as its publisher.`, { marker: n });
+  }
+}
+
+/** Housekeeping lines (the record's own counts: "The record holds N dated Signals …") carry no marker. */
+export const HOUSEKEEPING_LINE = /^(?:The record holds \d+ dated Signals?\b|The record in this Briefing is \d+ sourced items?\b)/;
+export function checkHousekeepingMarkers(parsed, push) {
+  for (const s of bodySections(parsed)) {
+    for (const line of s.body.split('\n')) {
+      const t = line.trim();
+      if (HOUSEKEEPING_LINE.test(t) && markersIn(t).length) push('housekeeping_cited', `A housekeeping line about the record carries a citation marker: "${t.slice(0, 140)}"`, { section: s.heading, markers: markersIn(t) });
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------------------------
 // The gate
 // ---------------------------------------------------------------------------------------------
 
@@ -358,6 +414,7 @@ export function runG1({ draft, briefing, pages, resolve, manuscript, renderNote 
     resolved.set(n, hits);
     for (const h of hits) if (!h.resolved) push('source_unresolved', `S${n} url does not resolve to a Faraday record or a primary URL on the brief: ${h.url}`, { marker: n, url: h.url });
   }
+  checkSourceHygiene(refs, push); // 2b. BL3-06
 
   // 3. pages
   const range = PAGE_RANGES[tier];
@@ -382,6 +439,8 @@ export function runG1({ draft, briefing, pages, resolve, manuscript, renderNote 
 
   // 6. jurisdiction line
   if (type === 'jurisdiction' && !md.includes(NOT_LEGAL_ADVICE)) push('missing_not_legal_advice', `Jurisdiction brief lacks the line "${NOT_LEGAL_ADVICE}".`);
+
+  checkHousekeepingMarkers(parsed, push); // 6b. BL3-06
 
   // 7. numbers vs cited source text
   const sourceNorm = new Map(); // n -> normalised text or null
