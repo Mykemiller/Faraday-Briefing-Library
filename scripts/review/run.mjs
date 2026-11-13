@@ -422,7 +422,7 @@ export async function gateG1({ draft, briefing, resolve, outDir, db, dryRun }) {
   if (!dryRun && measured.pdf_path && db.kind === 'supabase') {
     try { previewPath = await db.uploadPreview(measured.pdf_path, `review/${draft.briefing_id}/v${draft.version}.pdf`); } catch (e) { measured.upload_error = String(e?.message ?? e); }
   }
-  const r = runG1({ draft, briefing, pages: measured.pages, resolve, renderNote: measured.error });
+  const r = runG1({ draft, briefing, pages: measured.pages, resolve, renderNote: measured.error, requireThesis: true });
   const detail = { summary: summariseG1(r), stats: r.stats, warnings: r.warnings.slice(0, 40), preview_path: previewPath, html_path: measured.html_path, fonts_loaded: measured.fonts_loaded, render_error: measured.error ?? null, upload_error: measured.upload_error ?? null };
   return { result: r.result, blockers: r.blockers, score: measured.pages, detail, sentence: detail.summary, requiredEdits: [] };
 }

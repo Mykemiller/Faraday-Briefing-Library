@@ -21,6 +21,7 @@
 // Markers: `[S3]`, `[3]`, `[3, 7]`, `[S3][S4]`. Refs: `{ref:'S3'}` or `{n:3}`.
 
 import { differentTitles, isIndexUrl, isRedirectUrl, verifyQualifiers } from '../lanes/evidence.mjs';
+import { readThesisMeta } from '../lanes/thesis.mjs';
 
 export const PAGE_RANGES = Object.freeze({ deep: [10, 15], standard: [8, 10], profile: [2, 2] });
 export const CTA_PATTERN = /\b(subscribe|sign up|contact us|get in touch|book a (?:call|demo|meeting)|request a demo|buy now|learn more at|visit us|call us|email us|schedule a|reach out)\b/i;
@@ -447,8 +448,21 @@ export function checkWatchEmpty(parsed, push) {
   if (s && NO_TRIGGERS_LINE.test(s.body)) push('watch_empty', 'Signals to watch carries no dated trigger: the record names no forward-dated event after the preparation date.', { section: s.heading, severity: 'warn' });
 }
 
-/** @param {{ draft: any, briefing: any, pages: any, resolve: any, manuscript?: any, renderNote?: any, now?: Date | string }} args */
-export function runG1({ draft, briefing, pages, resolve, manuscript, renderNote, now }) {
+/**
+ * thesis_missing (blocker): a Deep or Standard draft staged without the verified thesis + Take record that
+ * the BL3-08 generator writes (thesis text, Take, model id). Profiles are exempt. Opt-in per call
+ * (`requireThesis`) so drafts staged before BL3-08 can still be re-read; the review runner turns it on.
+ */
+export function checkThesisMissing(md, tier, push) {
+  if (tier === 'profile') return;
+  const m = readThesisMeta(md);
+  if (!m) push('thesis_missing', `${tier || 'draft'} has no verified thesis record (the BL3-08 generator stages none without one).`);
+  else if (!m.model) push('thesis_missing', 'thesis record carries no model id.');
+  else if (!String(md).replace(/<!--[\s\S]*?-->/g, '').includes(m.thesis)) push('thesis_missing', 'the recorded thesis is not the thesis printed in the manuscript.');
+}
+
+/** @param {{ draft: any, briefing: any, pages: any, resolve: any, manuscript?: any, renderNote?: any, now?: Date | string, requireThesis?: boolean }} args */
+export function runG1({ draft, briefing, pages, resolve, manuscript, renderNote, now, requireThesis }) {
   const blockers = [];
   const push = (code, message, extra = {}) => blockers.push({ code, message, ...extra });
   const md = manuscript ?? draft?.manuscript_md ?? (Array.isArray(draft?.contents) ? draft.contents[0] : '') ?? '';
@@ -519,6 +533,7 @@ export function runG1({ draft, briefing, pages, resolve, manuscript, renderNote,
   checkHousekeepingMarkers(parsed, push); // 6b. BL3-06
   checkFutureDated(parsed, refs, preparationDate(md, now), push); // 6c. BL3-07
   checkWatchEmpty(parsed, push); // 6d. BL3-08
+  if (requireThesis) checkThesisMissing(String(draft?.manuscript_md ?? (Array.isArray(draft?.contents) ? draft.contents.join('\n') : '')), tier, push); // 6e. BL3-08
 
   // 7. numbers vs cited source text
   const sourceNorm = new Map(); // n -> normalised text or null

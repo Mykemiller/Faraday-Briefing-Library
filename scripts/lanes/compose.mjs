@@ -51,6 +51,7 @@ export const UNCITED_OK = [
   /^The record holds no /,
   /^No Signal in the record /,
   /^No dated triggers in the record/,
+  /^\*\*(?:Source-reported|Verified|Faraday view)\.\*\* (?:Faraday's reading|Our view)/,
   /^The posture score above was last recorded before /,
   /^Each row is an event a source names/,
   /^Statements about the record itself/,
@@ -407,7 +408,7 @@ export function composeDeep(brief, pack, budget, now) {
   const summary = ['## Summary', '', thesis, '', '**Findings**', '', ...findings, '', watchLine].join('\n');
   const sources = sourcesPage(reg, pack, brief, methodNote(pack, brief));
   const blocks = [cover, summary, ...body, signals.join('\n'), take, sources];
-  return finish(brief, pack, reg, blocks, { hypothesis: thesis.replace(/^\*\*Faraday's thesis\.\*\*\s*/, ''), byline: BYLINES.deep, kind: 'deep', sections: sections.map((s) => ({ code: s.code, name: s.name, items: s.items.length, total: s.total })) });
+  return finish(brief, pack, reg, blocks, { hypothesis: thesis.replace(/^\*\*Faraday's thesis\.\*\*\s*/, ''), byline: BYLINES.deep, kind: 'deep', watch: { rows: watchRows.length, empty: watchRows.length < MIN_WATCH_ROWS }, sections: sections.map((s) => ({ code: s.code, name: s.name, items: s.items.length, total: s.total })) });
 }
 
 // ---------------------------------------------------------------------------------------------
