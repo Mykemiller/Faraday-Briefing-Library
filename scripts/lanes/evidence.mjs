@@ -50,7 +50,7 @@ export function evidenceWindow(brief, now = new Date()) {
 // Text helpers (pure)
 // ---------------------------------------------------------------------------------------------
 
-const GOOGLE_NEWS = /^Google News search/i;
+const GOOGLE_NEWS = /^Google News\b/i;
 const TERMINAL = /[.!?…]["')\]]?$/;
 
 export function decodeEntities(s) {
@@ -117,14 +117,148 @@ export function absUrl(url) {
   return u.startsWith('//') ? `https:${u}` : u;
 }
 
+/** The publisher host of a URL; a news.google.com redirect has no publisher host (never "Google News"). */
 export function hostOf(url) {
   try {
-    const h = new URL(url).hostname.replace(/^www\./, '');
-    return h === 'news.google.com' ? 'Google News' : h;
+    const h = new URL(absUrl(url)).hostname.replace(/^www\./, '');
+    return isRedirectUrl(url) ? null : h;
   } catch {
     return null;
   }
 }
+
+// ---------------------------------------------------------------------------------------------
+// Source hygiene (BL3-06, FDY-330): a cited ref is a real article at its publisher's URL.
+// ---------------------------------------------------------------------------------------------
+
+/** A Google News RSS/article redirect, not a publisher URL. */
+export function isRedirectUrl(url) {
+  try {
+    return /(^|\.)news\.google\.com$/i.test(new URL(absUrl(url)).hostname);
+  } catch {
+    return false;
+  }
+}
+
+/** Index, digest, tag, topic, archive and search pages are listings, never articles (decision 4). */
+export const INDEX_URL = /(\?|&)(term|s|q|tag|category)=|\/(tag|category|topics?|archive|search)\//i;
+/** An article path: a hyphenated slug of three or more words, an .html page, or a numeric id of 5+ digits. */
+const ARTICLE_PATH = /(?:^|\/)[^/]*[a-z0-9]+(?:-[a-z0-9]+){2,}[^/]*\/?$|\.s?html?$|\/\d{5,}\/?$/i;
+export function isIndexUrl(url) {
+  const u = absUrl(url);
+  if (!u) return false;
+  let path = '';
+  try {
+    path = new URL(u).pathname;
+  } catch {
+    return false;
+  }
+  if (/\/news\/?$/i.test(path)) return true;
+  if (!INDEX_URL.test(u)) return false;
+  // ?s= / ?q= / ?term= also ride on real article URLs (feed tracking, share links): on an article path
+  // they are not a search page. Tag/category parameters and listing path segments always are.
+  if (/\/(tag|category|topics?|archive|search)\//i.test(path) || /[?&](tag|category)=/i.test(u)) return true;
+  return !ARTICLE_PATH.test(path);
+}
+
+/**
+ * The URL a news item is cited at: the first of its recorded URLs (signal source_url, then the
+ * artifact's source_url) that is not a news.google.com redirect. When every recorded URL is a redirect
+ * the first one is returned unchanged, and isCitableSource() rejects the item.
+ */
+export function resolveSourceUrl(...urls) {
+  const all = urls.map(absUrl).filter(Boolean);
+  return all.find((u) => !isRedirectUrl(u)) ?? all[0] ?? null;
+}
+
+/**
+ * publisher = the artifact's source_name; when that is missing or a Google News feed label, the outlet a
+ * "Headline - Outlet" title names, then the host of the resolved URL. Never "Google News"; null when none.
+ */
+export function publisherOf(sourceName, title, url) {
+  const name = decodeEntities(sourceName);
+  if (name && !GOOGLE_NEWS.test(name)) return { publisher: name, headline: title ? decodeEntities(title) : null };
+  const sp = splitOutlet(title ?? '');
+  return { publisher: sp.outlet || hostOf(url) || null, headline: sp.headline || (title ? decodeEntities(title) : null) };
+}
+
+/** Kinds that are cited as news articles (index-page rules apply); primary records (dockets, JW rows) are not. */
+export const NEWS_KINDS = Object.freeze(new Set(['signal', 'artifact', 'facility']));
+
+/**
+ * Why an evidence item cannot be cited, or null when it can:
+ *   'redirect'       its URL is still a news.google.com redirect (no publisher source_url was recorded);
+ *   'index_page'     a news item at an index / tag / topic / archive / search URL (INDEX_URL, /news/);
+ *   'shared_url'     a news item whose URL two or more artifacts with different titles share (a listing);
+ *   'no_source_name' no publisher could be named (source_name, title outlet or URL host).
+ */
+export function citabilityReason(item) {
+  if (!item?.url || isRedirectUrl(item.url)) return 'redirect';
+  if (NEWS_KINDS.has(item.ref_kind)) {
+    if (isIndexUrl(item.url)) return 'index_page';
+    if (item.shared_url) return 'shared_url';
+  }
+  if (!item.source_name) return 'no_source_name';
+  return null;
+}
+
+/** True when an evidence item may be cited (BL3-06 amendment 1; FDY-329 imports this). */
+export function isCitableSource(item) {
+  return citabilityReason(item) === null;
+}
+
+/** Significant words of a title, for telling two different articles from one article re-crawled. */
+function titleWords(t) {
+  return new Set(
+    decodeEntities(t)
+      .toLowerCase()
+      .replace(/['’]s\b/g, '')
+      .split(/[^a-z0-9]+/)
+      .filter((w) => w && !STOP_WORDS.has(w))
+      .map((w) => (w.length > 3 ? w.replace(/s$/, '') : w)),
+  );
+}
+const STOP_WORDS = new Set(['the', 'a', 'an', 'and', 'or', 'of', 'to', 'in', 'on', 'for', 'with', 'by', 'at', 'is', 'are', 'as', 'its', 'from']);
+
+/** Two titles name different articles when fewer than half the smaller title's words are shared. */
+export function differentTitles(a, b) {
+  const x = titleWords(a);
+  const y = titleWords(b);
+  if (!x.size || !y.size) return false;
+  let shared = 0;
+  for (const w of x) if (y.has(w)) shared += 1;
+  return shared / Math.min(x.size, y.size) < 0.5;
+}
+
+/**
+ * Sponsored / vendor sources (BL3-06 amendment 6): marked sponsored, a press-wire release, a press-room
+ * path, or the subject's own website. Flagged on the ref and labelled in the Sources table; never dropped.
+ */
+const SPONSORED = /\b(sponsored|paid (?:post|content)|partner content|advertorial|brandvoice|promoted content)\b/i;
+const PRESS_WIRES = /(^|\.)(prnewswire|businesswire|globenewswire|accesswire|einpresswire|newswire|prweb)\.com$/i;
+const PRESS_PATH = /\/(press|press-releases?|pressroom|newsroom|news-releases?|media-(?:center|centre|room)|sponsored|partner-content|advertorial)(\/|$)/i;
+/**
+ * @param {any} item
+ * @param {string|null} [subjectHost]
+ */
+export function isVendorOrSponsored(item, subjectHost = null) {
+  const url = absUrl(item?.url);
+  let host = null;
+  let path = '';
+  try {
+    const u = new URL(url);
+    host = u.hostname.replace(/^www\./, '');
+    path = u.pathname;
+  } catch {
+    return false;
+  }
+  if (SPONSORED.test(`${item.title ?? ''} ${item.source_name ?? ''}`)) return true;
+  if (PRESS_WIRES.test(host) || PRESS_PATH.test(path)) return true;
+  return Boolean(subjectHost && (host === subjectHost || host.endsWith(`.${subjectHost}`)));
+}
+
+/** The share of a pack dropped above which a warning line is printed (amendment 4). */
+export const DROP_WARN_SHARE = 0.3;
 
 export function isoDate(v) {
   if (!v) return null;
@@ -162,18 +296,15 @@ function signalItem(g, companies) {
   const a = g.artifact ?? null;
   const license = a?.license_status ?? null;
   if (license && BLOCKED_LICENSES.includes(String(license).toLowerCase())) return null;
-  const url = absUrl(g.source_url || a?.source_url);
+  // A news.google.com redirect resolves to the artifact's publisher URL; with none, buildPack drops the item.
+  const url = resolveSourceUrl(g.source_url, a?.source_url);
   if (!url) return null;
   const text = completeSentences(fullText(g));
   if (!text.length) return null;
-  let publisher = a?.source_name ?? null;
-  let headline = a?.title ? decodeEntities(a.title) : null;
-  if (!publisher || GOOGLE_NEWS.test(publisher)) {
-    const sp = splitOutlet(headline ?? '');
-    headline = sp.headline || headline;
-    publisher = sp.outlet || hostOf(url) || 'Source';
-  }
+  let { publisher, headline } = publisherOf(a?.source_name, a?.title, url);
   if (!headline) headline = clip(text[0]);
+  const source_name = publisher;
+  publisher = publisher ?? 'Source';
   const date = isoDate(g.event_date) ?? isoDate(a?.published_at) ?? isoDate(g.fired_at);
   return {
     ref_kind: 'signal',
@@ -184,6 +315,7 @@ function signalItem(g, companies) {
     text,
     url,
     title: headline,
+    source_name,
     artifact_id: g.artifact_id ?? null,
     published_at: isoDate(a?.published_at) ?? date,
     license,
@@ -198,18 +330,15 @@ function signalItem(g, companies) {
 
 function artifactItem(a) {
   if (!a?.source_url) return null;
-  a = { ...a, source_url: absUrl(a.source_url) };
+  a = { ...a, source_url: resolveSourceUrl(a.source_url) };
   const license = a.license_status ?? null;
   if (license && BLOCKED_LICENSES.includes(String(license).toLowerCase())) return null;
   const text = completeSentences(a.summary);
   if (!text.length) return null;
-  let publisher = a.source_name ?? null;
-  let headline = decodeEntities(a.title);
-  if (!publisher || GOOGLE_NEWS.test(publisher)) {
-    const sp = splitOutlet(headline);
-    headline = sp.headline || headline;
-    publisher = sp.outlet || hostOf(a.source_url) || 'Source';
-  }
+  const pub = publisherOf(a.source_name, a.title, a.source_url);
+  const source_name = pub.publisher;
+  const publisher = pub.publisher ?? 'Source';
+  const headline = pub.headline ?? '';
   // Aggregator summaries that merely repeat the title carry no clause worth printing.
   if (text.length === 1 && decodeEntities(text[0]).replace(/[.…]$/, '').toLowerCase() === headline.toLowerCase()) return null;
   return {
@@ -221,6 +350,7 @@ function artifactItem(a) {
     text,
     url: a.source_url,
     title: headline,
+    source_name,
     artifact_id: a.artifact_id,
     published_at: isoDate(a.published_at),
     license,
@@ -324,10 +454,11 @@ function jwItems(raw, jurisdiction) {
       ref_kind: 'facility',
       id: f.id,
       date: f.announced_date ?? isoDate(f.updated_at),
-      publisher: f.source_name ?? hostOf(f.source_url) ?? 'Source',
+      publisher: publisherOf(f.source_name, null, f.source_url).publisher ?? 'Source',
+      source_name: publisherOf(f.source_name, null, f.source_url).publisher,
       headline: `${decodeEntities(f.facility_name)} — ${decodeEntities(f.status ?? 'facility record')}`,
       text: bits,
-      url: f.source_url,
+      url: resolveSourceUrl(f.source_url),
       title: decodeEntities(f.facility_name),
       artifact_id: null,
       published_at: f.announced_date ?? null,
@@ -462,20 +593,51 @@ const inWindow = (date, window) => {
 /**
  * Normalise a RawPack into the EvidencePack the composer reads.
  * Items are de-duplicated by URL and by headline, filtered to the evidence window, newest first.
+ * Non-citable items (isCitableSource: unresolved news.google.com redirects, index/tag/search pages, URLs
+ * shared by differently titled artifacts, no nameable publisher) are dropped after the window filter and
+ * before de-duplication and composition; `pack.hygiene` counts them by reason, and one log line per brief
+ * reports items in / dropped (plus a WARNING line above 30 %).
  */
-export function buildPack(raw, brief, window) {
+/**
+ * @param {any} raw
+ * @param {any} brief
+ * @param {{ from: Date, to: Date, months: number }} window
+ * @param {{ log?: ((line: string) => void) | null }} [opts] per-brief hygiene log (default console.log; null = silent)
+ */
+export function buildPack(raw, brief, window, { log = console.log } = {}) {
   const taxonomy = indexTaxonomy(raw?.taxonomy ?? {});
   const companies = new Map((raw?.companies ?? []).map((c) => [c.company_uid, c]));
   const jurisdiction = raw?.jurisdiction ?? null;
   const entity = entityRecord(raw);
   const jrec = jurisdictionRecord(jurisdiction);
+  const subjectHost = entity?.url && !/^https:\/\/faraday\.ai\/records\//.test(entity.url) ? hostOf(entity.url) : null;
 
   const candidates = [
     ...(raw?.signals ?? []).map((g) => signalItem(g, companies)),
     ...(raw?.artifacts ?? []).map(artifactItem),
     ...jwItems(raw, jurisdiction),
   ].filter(Boolean);
+  for (const it of candidates) {
+    if (!NEWS_KINDS.has(it.ref_kind) && it.source_name === undefined) it.source_name = it.publisher; // primary records name their keeper
+    it.vendor_or_sponsored = NEWS_KINDS.has(it.ref_kind) && isVendorOrSponsored(it, subjectHost);
+  }
 
+  // A URL that two or more artifacts with different titles share is a listing, not an article (amendment 3).
+  const titlesByUrl = new Map();
+  for (const it of candidates) {
+    if (!NEWS_KINDS.has(it.ref_kind) || !it.url) continue;
+    const u = normUrl(it.url);
+    if (!titlesByUrl.has(u)) titlesByUrl.set(u, []);
+    titlesByUrl.get(u).push(it.title ?? it.headline ?? '');
+  }
+  for (const it of candidates) {
+    const ts = NEWS_KINDS.has(it.ref_kind) && it.url ? titlesByUrl.get(normUrl(it.url)) : null;
+    if (ts && ts.some((t, i) => ts.slice(i + 1).some((t2) => differentTitles(t, t2)))) it.shared_url = true;
+  }
+
+  // Window first, then citability (BEFORE composition: a sentence is never composed from an item that is
+  // later removed), then de-duplication by URL and headline.
+  const hygiene = { items_in: 0, dropped: 0, by_reason: { redirect: 0, index_page: 0, shared_url: 0, no_source_name: 0 }, dropped_share: 0, warning: false };
   const seenUrl = new Set();
   const seenHead = new Set();
   const items = [];
@@ -484,12 +646,27 @@ export function buildPack(raw, brief, window) {
       if (it.date_floor && inWindow(it.date_floor, window) && it.date > isoDate(window.to)) it.date = isoDate(window.to);
       else continue;
     }
+    hygiene.items_in += 1;
+    const why = citabilityReason(it);
+    if (why) {
+      hygiene.dropped += 1;
+      hygiene.by_reason[why] += 1;
+      continue;
+    }
     const u = normUrl(it.url);
     const h = it.headline.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
     if (seenUrl.has(u) || (h && seenHead.has(h))) continue;
     seenUrl.add(u);
     if (h) seenHead.add(h);
     items.push(it);
+  }
+  hygiene.dropped_share = hygiene.items_in ? hygiene.dropped / hygiene.items_in : 0;
+  hygiene.warning = hygiene.dropped_share > DROP_WARN_SHARE;
+  if (log) {
+    const id8 = String(brief?.id ?? '').slice(0, 8);
+    const r = hygiene.by_reason;
+    log(`[evidence] ${id8} "${brief?.title ?? ''}": items in ${hygiene.items_in}, dropped ${hygiene.dropped} (${Math.round(hygiene.dropped_share * 100)}%) — redirect ${r.redirect} · index_page ${r.index_page} · shared_url ${r.shared_url} · no_source_name ${r.no_source_name}`);
+    if (hygiene.warning) log(`[evidence] WARNING ${id8}: ${Math.round(hygiene.dropped_share * 100)}% of the in-window evidence was dropped as non-citable (threshold ${Math.round(DROP_WARN_SHARE * 100)}%).`);
   }
 
   return {
@@ -502,6 +679,7 @@ export function buildPack(raw, brief, window) {
     jurisdiction,
     jurisdiction_record: jrec && jrec.text.length ? jrec : null,
     items,
+    hygiene,
   };
 }
 
