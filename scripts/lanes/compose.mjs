@@ -27,8 +27,26 @@ export const DEFAULT_BUDGET = Object.freeze({ deep: { perSection: 7, maxSections
 
 export const KICKER = Object.freeze({ theater: 'Theater Briefing', sector: 'Sector Briefing', thread: 'Thread Briefing', company: 'Company Briefing', institution: 'Institution Briefing', jurisdiction: 'Jurisdiction Briefing' });
 
+/**
+ * Housekeeping sentences (BL3-06, FDY-330): statements composed from the record's own counts and dates
+ * ("The record holds 12 dated Signals …"). They carry no marker and no figure from a Signal body.
+ */
+export const HOUSEKEEPING = [
+  /^The record holds \d+ dated Signals? (?:for this Sector|under this heading) in the Sources table, set out below newest first\.$/,
+  /^The record in this Briefing is \d+ sourced items\b/,
+];
+
+/**
+ * Counts printed in housekeeping and register lines are taken from the FINAL Sources table (amendment 5):
+ * composers write a token, finish() replaces it once every citation is made. COUNT(key) = refs cited
+ * under that section key; COUNT('*') = the whole table.
+ */
+const COUNT = (key) => `⟦n:${key}⟧`;
+const COUNT_RE = /⟦n:([^⟧]+)⟧/g;
+
 /** Uncited lines the validator accepts: statements about the record itself, labels, sign-offs. */
 export const UNCITED_OK = [
+  ...HOUSEKEEPING,
   /^The record holds no /,
   /^No Signal in the record /,
   /^Each row is an event a source names/,
@@ -51,13 +69,23 @@ const MONTH_WORDS = 'January|February|March|April|May|June|July|August|September
 // Citation registry
 // ---------------------------------------------------------------------------------------------
 
+/**
+ * Identity of the record an evidence item restates. Keyed on the record (kind + id), never on the URL:
+ * two records that share a URL (an index page, a re-crawled redirect) must never share a marker.
+ */
+export const recordKey = (item) => (item.id != null && item.ref_kind ? `${item.ref_kind}:${item.id}` : `url:${item.url}`);
+
 export function createRegistry() {
   const refs = [];
   const byKey = new Map();
-  return {
-    /** Register (once) and return the marker for an evidence item. */
-    cite(item, usedIn) {
-      const key = item.ref_kind === 'record' || item.ref_kind === 'moratorium' || item.ref_kind === 'jw_event' ? `${item.ref_kind}:${item.id}` : `url:${item.url}`;
+  const housekeeping = [];
+  const reg = {
+    /**
+     * Register (once) and return the marker for the evidence item a sentence was composed from. The
+     * marker is always that item's own (decision 1): never picked by position or id order.
+     */
+    register(item, usedIn) {
+      const key = recordKey(item);
       let r = byKey.get(key);
       if (!r) {
         r = {
@@ -71,6 +99,7 @@ export function createRegistry() {
           published_at: item.published_at ?? item.date ?? null,
           artifact_id: item.artifact_id ?? null,
           license_status: item.license ?? null,
+          vendor_or_sponsored: Boolean(item.vendor_or_sponsored),
           attribution: item.attribution ?? undefined,
           used_in: [],
         };
@@ -80,9 +109,38 @@ export function createRegistry() {
       if (usedIn && !r.used_in.includes(usedIn)) r.used_in.push(usedIn);
       return `[${r.ref}]`;
     },
+    /** A factual sentence restating `item`, followed by that item's marker. Throws if the sentence is not the item's own. */
+    fact(item, sentence, usedIn) {
+      const t = String(sentence ?? '').trim();
+      if (!t || !item.text.join(' ').includes(t)) throw new Error(`citation picker: sentence is not drawn from record ${recordKey(item)}: ${clip(t, 80)}`);
+      return `${t} ${reg.register(item, usedIn)}`;
+    },
+    /** A housekeeping sentence (kind 'housekeeping'): about the record itself, so no marker and no figure. */
+    housekeeping(sentence) {
+      const t = String(sentence ?? '').trim();
+      const probe = t.replace(COUNT_RE, '0');
+      if (/\[S\d+\]/.test(t) || extractFigures(probe).length || !HOUSEKEEPING.some((re) => re.test(probe))) throw new Error(`housekeeping sentence carries a marker or a figure, or is not a record statement: ${clip(t, 80)}`);
+      housekeeping.push(t);
+      return t;
+    },
+    /** The name the composers have always used; same as register(). */
+    cite(item, usedIn) {
+      return reg.register(item, usedIn);
+    },
+    /** @returns {string[]} */
+    housekeepingLines: () => housekeeping.map((h) => reg.resolveCounts(h)),
+    /**
+     * Replace COUNT tokens with counts from the Sources table as it stands (call after the last citation).
+     * @param {string} text
+     * @returns {string}
+     */
+    resolveCounts(text) {
+      return String(text).replace(COUNT_RE, (_, key) => String(key === '*' ? refs.length : refs.filter((r) => r.used_in.includes(key)).length));
+    },
     refs: () => refs.map((r) => ({ ...r, attribution: r.attribution ?? undefined })),
     size: () => refs.length,
   };
+  return reg;
 }
 
 // ---------------------------------------------------------------------------------------------
@@ -175,7 +233,7 @@ function sourcesPage(reg, pack, brief, method, heading = 'Sources & methodology'
   const lines = [`## ${heading}`, '', '| Ref | Source | Publisher | Date | Faraday record |', '|---|---|---|---|---|'];
   for (const r of refs) {
     const rec = r.artifact_id ? `artifacts ${r.artifact_id}` : `${r.kind} ${r.id}`;
-    lines.push(`| ${r.ref} | [${md(clip(r.title, 120))}](${r.url}) | ${md(r.publisher ?? '')} | ${r.published_at ?? ''} | ${md(rec)} |`);
+    lines.push(`| ${r.ref} | [${md(clip(r.title, 120))}](${r.url}) | ${md(r.publisher ?? '')}${r.vendor_or_sponsored ? ' (vendor/sponsored)' : ''} | ${r.published_at ?? ''} | ${md(rec)} |`);
   }
   lines.push('');
   for (const p of method) lines.push(p, '');
@@ -189,6 +247,8 @@ function methodNote(pack, brief, extra = []) {
     `**Method.** Drafted by the Briefing Library generator from Faraday records only — public.signals, public.artifacts (envelope title and summary; body text where fetched), public.companies, public.institutions, the Faraday taxonomy${brief.briefing_type === 'jurisdiction' ? ' and the Jurisdiction Watch tables (read-only)' : ''}. Evidence window ${fmtDate(pack.window.from)} to ${fmtDate(pack.window.to)}; ${pack.items.length} dated records in scope, ${pack.items_used ?? pack.items.length} cited. Sentences restate what each record says; truncated summaries contribute only complete clauses; nothing comes from model memory, the retired Gamma decks or any unrecorded source. Statements about the record itself are not cited; every statement about the world is.`,
     `**Coverage (internal codes, Sources page only):** ${brief.tier} · ${brief.briefing_type}${brief.sector_id ? ` · ${brief.sector_id}` : ''}${brief.thread_id ? ` · ${brief.thread_id}` : ''}${brief.theme_tags?.length ? ` · ${brief.theme_tags.join(', ')}` : ''}${brief.jurisdiction_id ? ` · ${brief.jurisdiction_id}` : ''}${brief.company_id ? ` · ${brief.company_id}` : ''}${brief.institution_id ? ` · ${brief.institution_id}` : ''} · record ${brief.airtable_record_id ?? brief.id} v${Number(brief.version ?? 1) + 1} · draft, not signed off.`,
   ];
+  const hy = pack.hygiene;
+  if (hy?.dropped) base.push(`**Source hygiene.** ${hy.dropped} of ${hy.items_in} in-window records were not cited: ${hy.by_reason.redirect} news items recorded only at a news.google.com redirect, ${hy.by_reason.index_page + hy.by_reason.shared_url} index or listing pages, ${hy.by_reason.no_source_name} with no nameable publisher. Sources marked (vendor/sponsored) are the issuer's own release or paid content.`);
   return [...base, ...extra];
 }
 
@@ -222,9 +282,9 @@ export function composeDeep(brief, pack, budget, now) {
   const lead = (s) => s.items[0];
   const thesis =
     `**Faraday's thesis.** Over the ${pack.window.months} months to ${fmtDate(pack.window.to)}, the record for ${theme.name} is densest in ${top.map((s) => s.name).join(' and ')}. ` +
-    top.map((s) => `${lead(s).text[0]} ${reg.cite(lead(s), 'summary')}`).join(' ');
+    top.map((s) => reg.fact(lead(s), lead(s).text[0], 'summary')).join(' ');
 
-  const findings = sections.slice(0, 6).map((s, i) => `${i + 1}. **${md(s.name)}.** ${lead(s).text[0]} ${reg.cite(lead(s), 'summary')}`);
+  const findings = sections.slice(0, 6).map((s, i) => `${i + 1}. **${md(s.name)}.** ${reg.fact(lead(s), lead(s).text[0], 'summary')}`);
   const watch = [...used].sort((a, b) => String(b.date).localeCompare(String(a.date))).slice(0, 4);
   const watchLine = `**What to watch:** ${watch.map((it) => `${md(clip(it.headline, 70))} (${fmtDate(it.date)}) ${reg.cite(it, 'summary')}`).join('; ')}.`;
 
@@ -234,9 +294,9 @@ export function composeDeep(brief, pack, budget, now) {
     const parts = [
       `## ${i + 1}. ${md(s.name)}`,
       '',
-      `*Claim: ${md(l.text[0].replace(/\.$/, ''))}.*`,
+      `*Claim: ${md(l.text[0].replace(/\.$/, ''))}.* ${reg.register(l, key)}`,
       '',
-      `The record holds ${s.total} dated Signal${s.total === 1 ? '' : 's'} for this Sector in the window; the ${s.items.length} most recent are set out below, the newest being ${md(clip(l.headline, 90))} ${reg.cite(l, key)}`,
+      reg.housekeeping(`The record holds ${COUNT(key)} dated Signal${s.items.length === 1 ? '' : 's'} for this Sector in the Sources table, set out below newest first.`),
       '',
       ...s.items.map((it) => entry(it, reg, key, budget.sentences, budget.headline)),
     ];
@@ -254,13 +314,13 @@ export function composeDeep(brief, pack, budget, now) {
     signals.push('No Signal in the record names a dated forward event inside this window.');
   }
 
-  const takeFacts = top.map((s) => `${lead(s).text[0]} ${reg.cite(lead(s), 'take')}`);
+  const takeFacts = top.map((s) => reg.fact(lead(s), lead(s).text[0], 'take'));
   const take = [
     ':::take',
     "## Faraday's Take",
     '',
     ...(theme.tagline ? [`*${md(theme.tagline)}*`, ''] : []),
-    `Faraday's reading of this record is that ${top.length > 1 ? `${top[0].name} and ${top[1].name} are moving together` : `${top[0].name} is carrying the Theater`}: ${sections.map((s) => `${s.total} of the ${pack.items_in_theater ?? pack.items.length} Signals fall in ${s.name}`).slice(0, 3).join(', ')}.`,
+    `Faraday's reading of this record is that ${top.length > 1 ? `${top[0].name} and ${top[1].name} are moving together` : `${top[0].name} is carrying the Theater`}: ${sections.map((s, i) => `${COUNT(`s${i + 1}`)} of the ${COUNT('*')} sources fall in ${s.name}`).slice(0, 3).join(', ')}.`,
     '',
     `The two facts the record puts first are these. ${takeFacts.join(' ')}`,
     '',
@@ -275,13 +335,13 @@ export function composeDeep(brief, pack, budget, now) {
     ':::cover',
     `# ${md(brief.title)}`,
     '',
-    `${lead(top[0]).text[0]} ${reg.cite(lead(top[0]), 'cover')}`,
+    reg.fact(lead(top[0]), lead(top[0]).text[0], 'cover'),
     '',
     coverMeta([
       ['Tier', 'Deep brief'],
       ['Coverage', `Theater: ${theme.name} › Sectors: ${sections.map((s) => s.name).join(' · ')}`],
       ['Byline', BYLINES.deep],
-      ['Evidence window', `${fmtDate(pack.window.from)} – ${fmtDate(pack.window.to)}, ${reg.size()} sources, de-duplicated by URL`],
+      ['Evidence window', `${fmtDate(pack.window.from)} – ${fmtDate(pack.window.to)}, ${COUNT('*')} sources, de-duplicated by URL`],
       ['Status', 'DRAFT. Staged by the Briefing Library generator. Requires Myke sign-off (Deep tier).'],
     ]),
     ':::',
@@ -358,6 +418,9 @@ export function composeStandard(brief, pack, budget, now) {
       fresh.slice(0, budget.perSection).forEach((it) => ownIds.add(it.id));
     }
   }
+  sections.forEach((s, i) => {
+    s.key = `t${i + 1}`;
+  });
   const used = sections.flatMap((s) => s.items);
   if (!used.length) throw new Error(`no sourced evidence for ${brief.briefing_type} "${brief.title}" in window ${pack.window.from}..${pack.window.to}`);
   const PROSE = new Set(['signal', 'artifact', 'moratorium', 'puc']);
@@ -367,25 +430,25 @@ export function composeStandard(brief, pack, budget, now) {
   // The argument — hypothesis-led, every factual sentence cited.
   const jrec = isJur ? pack.jurisdiction_record : null;
   const openers = [];
-  if (jrec) openers.push(`${jrec.text.slice(0, 3).join(' ')} ${reg.cite(jrec, 'argument')}`);
+  if (jrec) openers.push(reg.fact(jrec, jrec.text.slice(0, 3).join(' '), 'argument'), '');
   const dense = sections.filter((s) => s.items.length).sort((a, b) => b.total - a.total);
   const subjectName = isJur ? pack.jurisdiction?.name ?? brief.title : brief.briefing_type === 'sector' ? tax.domainName(brief.sector_id) : tax.subdomainName(brief.thread_id);
-  const thesisLead = jrec ? `${jrec.text[0]} ${reg.cite(jrec, 'cover')} ${newest[0].text[0]} ${reg.cite(newest[0], 'cover')}` : `${newest[0].text[0]} ${reg.cite(newest[0], 'cover')}`;
-  const p1 = `The record in this Briefing is ${used.length} sourced items, Faraday Signals${pack.items.some((i) => i.ref_kind === 'artifact') ? ' and crawled articles' : ''}${isJur ? ' and Jurisdiction Watch records' : ''}, dated between ${fmtDate(pack.window.from)} and ${fmtDate(pack.window.to)}. The weight of the record for ${md(subjectName)} sits under ${dense.slice(0, 2).map((s) => s.name).join(' and ')}; the newest entry is ${md(clip(newest[0].headline, 80))} ${reg.cite(newest[0], 'argument')}`;
+  const thesisLead = jrec ? `${reg.fact(jrec, jrec.text[0], 'cover')} ${reg.fact(newest[0], newest[0].text[0], 'cover')}` : reg.fact(newest[0], newest[0].text[0], 'cover');
+  // Housekeeping (counts and dates of the record itself): its own paragraph, no marker, no Signal figure.
+  const p1 = reg.housekeeping(`The record in this Briefing is ${COUNT('*')} sourced items, Faraday Signals${pack.items.some((i) => i.ref_kind === 'artifact') ? ' and crawled articles' : ''}${isJur ? ' and Jurisdiction Watch records' : ''}, dated between ${fmtDate(pack.window.from)} and ${fmtDate(pack.window.to)}. The weight of the record for ${md(subjectName)} sits under ${dense.slice(0, 2).map((s) => s.name).join(' and ')}.`);
   const leadsOf = (s) => [...s.items.filter((it) => PROSE.has(it.ref_kind)), ...s.items.filter((it) => !PROSE.has(it.ref_kind))];
-  const p2 = dense.slice(0, 2).map((s) => `${leadsOf(s)[0].text[0]} ${reg.cite(leadsOf(s)[0], 'argument')}`).join(' ');
-  const p3 = dense.slice(0, 2).map((s) => (leadsOf(s)[1] ? `${leadsOf(s)[1].text[0]} ${reg.cite(leadsOf(s)[1], 'argument')}` : '')).filter(Boolean).join(' ');
+  const p2 = dense.slice(0, 2).map((s) => reg.fact(leadsOf(s)[0], leadsOf(s)[0].text[0], 'argument')).join(' ');
+  const p3 = dense.slice(0, 2).map((s) => (leadsOf(s)[1] ? reg.fact(leadsOf(s)[1], leadsOf(s)[1].text[0], 'argument') : '')).filter(Boolean).join(' ');
   const glance = glanceRows(used, budget.glance ?? 8);
   const glanceTbl = glance.length >= 3 ? ['| Figure | What the record shows | Date |', '|---|---|---|', ...glance.map((g) => `| ${md(g.figure)} | ${md(clip(g.sentence, 110))} ${reg.cite(g.item, 'argument')} | ${fmtDate(g.item.date)} |`)].join('\n') : '';
 
   const argument = ['## The argument', '', ...openers, p1, '', p2, ...(p3 ? ['', p3] : []), ...(glanceTbl ? ['', '**At a glance**', '', glanceTbl] : [])].join('\n');
 
   const body = sections.map((s, i) => {
-    const key = `t${i + 1}`;
+    const key = s.key;
     const head = `## ${md(s.name)}`;
     if (!s.items.length) return `${head}\n\nThe record holds no dated Signal for this heading in the window.`;
-    const l = s.items[0];
-    const intro = `The record holds ${s.total} dated Signal${s.total === 1 ? '' : 's'} under this heading in the window; the newest is ${md(clip(l.headline, 90))} ${reg.cite(l, key)}`;
+    const intro = reg.housekeeping(`The record holds ${COUNT(key)} dated Signal${s.items.length === 1 ? '' : 's'} under this heading in the Sources table, set out below newest first.`);
     return [head, '', intro, '', ...s.items.map((it) => entry(it, reg, key, budget.sentences, budget.headline))].join('\n\n');
   });
 
@@ -394,14 +457,19 @@ export function composeStandard(brief, pack, budget, now) {
   const regLines = ['## Signal register', '', `Named parties that appear in the cited Signals, with the role recorded for them in Faraday's companies table${parties.length ? '' : ' — none of the cited records carries a resolved company tag'}.`];
   if (parties.length) {
     regLines.push('', '| Party | Role in the cited Signals | Sources |', '|---|---|---|');
-    for (const p of parties) regLines.push(`| ${md(p.name)} | ${md(p.type ?? 'recorded party')} — named in ${p.items.length} Signal${p.items.length === 1 ? '' : 's'} | ${p.items.slice(0, 4).map((it) => reg.cite(it, 'register')).join(' ')} |`);
+    for (const p of parties) {
+      const n = new Set(p.items.map((it) => reg.register(it))).size; // distinct Sources-table rows naming the party
+      regLines.push(`| ${md(p.name)} | ${md(p.type ?? 'recorded party')} — named in ${n} Signal${n === 1 ? '' : 's'} | ${p.items.slice(0, 4).map((it) => reg.cite(it, 'register')).join(' ')} |`);
+    }
   }
 
   const take = [
     ':::take',
     "## Faraday's Take",
     '',
-    `Faraday's reading of this record: ${dense.slice(0, 2).map((s) => `${s.total} of the ${pack.items.length} records in scope sit under ${s.name}`).join(' and ')}, which is where the sourced facts concentrate. ${leadsOf(dense[0])[0].text[0]} ${reg.cite(leadsOf(dense[0])[0], 'take')}${dense[1] ? ` ${leadsOf(dense[1])[0].text[0]} ${reg.cite(leadsOf(dense[1])[0], 'take')}` : ''}`,
+    `Faraday's reading of this record: ${dense.slice(0, 2).map((s) => `${COUNT(s.key)} of the ${COUNT('*')} sources in this Briefing sit under ${s.name}`).join(' and ')}, which is where the sourced facts concentrate.`,
+    '',
+    `${reg.fact(leadsOf(dense[0])[0], leadsOf(dense[0])[0].text[0], 'take')}${dense[1] ? ` ${reg.fact(leadsOf(dense[1])[0], leadsOf(dense[1])[0].text[0], 'take')}` : ''}`,
     '',
     `Our view is that these are the facts to weigh first; the Take introduces no claim that the body does not already source.`,
     '',
@@ -426,7 +494,7 @@ export function composeStandard(brief, pack, budget, now) {
       ['Tier', `Standard (${brief.page_target ?? '8–10'} pp target)`],
       ['Coverage', isJur ? `Jurisdiction: ${md(subjectName)}` : brief.briefing_type === 'sector' ? `Sector: ${md(subjectName)} › Threads: ${sections.map((s) => s.name).join(' · ')}` : `Thread: ${md(subjectName)}`],
       ['Byline', BYLINES.standard],
-      ['Evidence window', `${fmtDate(pack.window.from)} – ${fmtDate(pack.window.to)}, ${reg.size()} sources`],
+      ['Evidence window', `${fmtDate(pack.window.from)} – ${fmtDate(pack.window.to)}, ${COUNT('*')} sources`],
       ['Status', 'DRAFT (not signed off)'],
       ['Record', `${brief.airtable_record_id ?? brief.id} · v${Number(brief.version ?? 1) + 1} · prepared ${fmtDate(now.toISOString().slice(0, 10))}`],
     ]),
@@ -503,7 +571,7 @@ export function composeProfile(brief, pack, budget, now) {
 // ---------------------------------------------------------------------------------------------
 
 function finish(brief, pack, reg, blocks, meta) {
-  const manuscript = blocks.join('\n\n').replace(/\n{3,}/g, '\n\n') + '\n';
+  const manuscript = String(reg.resolveCounts(blocks.join('\n\n').replace(/\n{3,}/g, '\n\n') + '\n'));
   const contents = splitSections(manuscript);
   const source_refs = reg.refs().map(({ n, ...r }) => r);
   const draft = {
@@ -517,7 +585,7 @@ function finish(brief, pack, reg, blocks, meta) {
     manuscript_md: manuscript,
     evidence_from: new Date(`${pack.window.from}T00:00:00Z`).toISOString(),
     evidence_to: new Date(`${pack.window.to}T23:59:59Z`).toISOString(),
-    meta: { source_count: source_refs.length, items_in_scope: pack.items.length, thin: Boolean(meta.thin), signal_count: meta.signal_count ?? pack.items.length, sections: meta.sections ?? [] },
+    meta: { source_count: source_refs.length, items_in_scope: pack.items.length, thin: Boolean(meta.thin), signal_count: meta.signal_count ?? pack.items.length, sections: meta.sections ?? [], housekeeping: reg.housekeepingLines(), hygiene: pack.hygiene ?? null },
   };
   const v = validate(draft);
   if (!v.ok) throw new Error(`composer produced an invalid draft: ${v.problems.join('; ')}`);
