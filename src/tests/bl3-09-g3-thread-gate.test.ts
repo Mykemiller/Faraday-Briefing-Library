@@ -192,18 +192,32 @@ describe("lane runner with the Thread gates", () => {
     }
   });
 
-  it("buildGenerator runs preDraftGate on the real pack: 111 sourced items drafts; the same pack cut to 11 is skipped, to 12 is drafted", async () => {
+  it("buildGenerator runs preDraftGate on the real pack: a full pack drafts; the same pack cut to 11 sourced items is skipped, to 12 is drafted", async () => {
     const real = JSON.parse(readFileSync(join(EVIDENCE_FIXTURES_DIR, `${thread.id}.json`), "utf8"));
-    const evidence = createFixtureEvidence(EVIDENCE_FIXTURES_DIR);
-    const raw = await evidence.fetchRaw(thread);
-    expect(sourcedItemCount(buildPack(raw, thread, evidenceWindow(thread, new Date(raw.captured_at))))).toBe(111);
-    const withSignals = (n: number) => {
+    const dirWith = (n: number) => {
       const dir = mkdtempSync(join(tmpdir(), "bl3-09-ev-"));
-      mkdirSync(dir, { recursive: true });
       writeFileSync(join(dir, `${thread.id}.json`), JSON.stringify({ ...real, signals: real.signals.slice(0, n) }));
       return dir;
     };
-    for (const [dir, drafted] of [[EVIDENCE_FIXTURES_DIR, 1], [withSignals(12), 1], [withSignals(11), 0]] as const) {
+    // The sourced count depends on the source-hygiene rules in force (FDY-330 drops non-citable items), so the
+    // cut points are found by measuring, not hard-coded: the first n signals giving exactly 11 and 12 sourced items.
+    const sourcedWith = async (dir: string) => {
+      const raw = await createFixtureEvidence(dir).fetchRaw(thread);
+      return sourcedItemCount(buildPack(raw, thread, evidenceWindow(thread, new Date(raw.captured_at))));
+    };
+    const full = await sourcedWith(EVIDENCE_FIXTURES_DIR);
+    expect(full).toBeGreaterThanOrEqual(THREAD_MIN_SOURCED_ITEMS + 1);
+    const cut = async (target: number) => {
+      for (let n = 1; n <= real.signals.length; n++) {
+        const dir = dirWith(n);
+        if ((await sourcedWith(dir)) === target) return dir;
+      }
+      throw new Error(`no signal prefix yields ${target} sourced items`);
+    };
+    const withSignals = async (target: number) => cut(target);
+    const dir12 = await withSignals(12);
+    const dir11 = await withSignals(11);
+    for (const [dir, drafted] of [[EVIDENCE_FIXTURES_DIR, 1], [dir12, 1], [dir11, 0]] as const) {
       const g = await buildGenerator({ evidenceDir: dir as any, render: false, llm: false, out: () => {} });
       try {
         const { db, run } = harness();
