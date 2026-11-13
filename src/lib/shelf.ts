@@ -27,3 +27,41 @@ export async function loadShelf(now = new Date()): Promise<CatalogBriefing[]> {
     .map((b) => briefingToCatalog(b, lookups, extras.get(cacheIdFor(b)), now))
     .filter((c): c is CatalogBriefing => c !== null);
 }
+
+/**
+ * The single-brief reader columns (BL3-11, FDY-338): the shelf read above deliberately does not
+ * pull `manuscript_md` / `source_refs` (436 rows × a full manuscript), so the reader fetches them
+ * for ONE row by `briefings.id`, and only while that row is still `published`. byline and
+ * hypothesis ride along so the reader shows what the row says now.
+ */
+export const READER_SELECT = "id,status,manuscript_md,source_refs,byline,last_refreshed,hypothesis";
+
+export interface ReaderRow {
+  id: string;
+  status: string;
+  manuscript_md: string | null;
+  source_refs: unknown;
+  byline: string | null;
+  last_refreshed: string | null;
+  hypothesis: string | null;
+}
+
+/**
+ * Read the reader columns for one published briefing, or null when the row is gone, no longer
+ * published, or the read fails. A failure never fails the page: the reader falls back to the
+ * preview slides (BL3-11 decision 4).
+ */
+export async function loadReaderRow(sourceId: string): Promise<ReaderRow | null> {
+  try {
+    const { data, error } = await supabaseAdmin()
+      .from("briefings")
+      .select(READER_SELECT)
+      .eq("id", sourceId)
+      .eq("status", "published")
+      .maybeSingle();
+    if (error || !data) return null;
+    return data as unknown as ReaderRow;
+  } catch {
+    return null;
+  }
+}

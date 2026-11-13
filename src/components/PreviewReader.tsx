@@ -30,7 +30,7 @@ function TextSlide({ kicker, num, title, body }: { kicker: string; num: string; 
   );
 }
 
-function LockedCard() {
+export function LockedCard() {
   return (
     <div className="aspect-[16/10] bg-warm-white/[0.06] border border-dashed border-warm-gray-2/40 flex flex-col items-center justify-center gap-3 p-6">
       <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
