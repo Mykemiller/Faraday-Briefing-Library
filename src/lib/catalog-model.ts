@@ -11,6 +11,7 @@ export interface ModelQuery {
   q?: string;
   theme?: string;
   domain?: string;
+  subdomain?: string;
   company?: string;
   status?: "Available" | "Coming Soon";
   /** Mirrors library_search p_type (FBL 1.0). */
@@ -38,11 +39,11 @@ function lessThan(a: [string, string], b: [string, string]): boolean {
   return a[1] < b[1];
 }
 
-export function computeFacets(rows: CatalogBriefing[], axis: "theme" | "domain" | "company"): FacetCount[] {
+export function computeFacets(rows: CatalogBriefing[], axis: "theme" | "domain" | "subdomain" | "company"): FacetCount[] {
   const counts = new Map<string, number>();
   for (const b of rows) {
     if (b.status !== "Available") continue; // facets count Available only (library_facets)
-    const vals = axis === "theme" ? b.themes : axis === "domain" ? b.domains : b.companies;
+    const vals = axis === "theme" ? b.themes : axis === "domain" ? b.domains : axis === "subdomain" ? b.subdomains : b.companies;
     for (const v of vals) counts.set(v, (counts.get(v) ?? 0) + 1);
   }
   return [...counts.entries()]
@@ -58,6 +59,7 @@ export function search(rows: CatalogBriefing[], query: ModelQuery): { items: Cat
       matchesText(b, query.q) &&
       (!query.theme || b.themes.includes(query.theme)) &&
       (!query.domain || b.domains.includes(query.domain)) &&
+      (!query.subdomain || b.subdomains.includes(query.subdomain)) &&
       (!query.company || b.companies.includes(query.company))
   );
 

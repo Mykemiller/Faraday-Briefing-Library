@@ -1,4 +1,4 @@
-import { getShelfPage } from "@/lib/catalog";
+import { getShelfPage, getTheaters } from "@/lib/catalog";
 import { LibraryShell } from "@/components/LibraryShell";
 import { Masthead } from "@/components/Masthead";
 import { LibraryFooter } from "@/components/LibraryFooter";
@@ -13,11 +13,8 @@ export const dynamic = "force-dynamic";
  * no token amounts, no wallet chip, no checkout in nav.
  */
 export default async function LibraryPage() {
-  const page = await getShelfPage({ sort: "newest" });
-
-  // Sidebar theaters: one item per live theme, from library_facets('theme').
-  // The counts still drive ORDERING — they are never printed (count-free brand rule).
-  const theaters = page.facets.theme.map((f) => f.value);
+  const [page, theaters] = await Promise.all([getShelfPage({ sort: "newest" }), getTheaters()]);
+  // Sidebar theaters (BL3-01): distinct themes of briefing_type='theater' rows in public.briefings.
 
   return (
     <>
