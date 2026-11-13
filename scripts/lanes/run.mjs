@@ -33,6 +33,7 @@ import { createStatusLog } from '../statuslog.mjs';
 import { generate as sourcedGenerate, PAGE_RANGE } from './generate.mjs';
 import { createFixtureEvidence, createSupabaseEvidence } from './evidence.mjs';
 import { createPolisher } from './llm.mjs';
+import { createThesisWriter } from './thesis.mjs';
 
 export const LANES = Object.freeze(['theaters', 'domains', 'subdomains', 'companies', 'states', 'countries', 'institutions']);
 
@@ -330,9 +331,13 @@ export async function buildGenerator({ client = null, evidenceDir = null, render
   }
   const polisher = llm ? createPolisher() : null;
   if (llm && !polisher) out('[lane-runner] model polish off (no ANTHROPIC_API_KEY); deterministic composition only');
+  // BL3-08: Deep/Standard drafts need a verified thesis + Take. Fails closed (no key ⇒ no_thesis, nothing staged);
+  // BL3_REQUIRE_THESIS=0 restores deterministic composition (the committed samples use it).
+  const thesisWriter = llm ? createThesisWriter() : null;
+  const requireThesis = process.env.BL3_REQUIRE_THESIS !== '0';
   if (emit) mkdirSync(emit, { recursive: true });
   const generate = async (brief, { now: at = now(), lane } = {}) => {
-    const gen = await sourcedGenerate(brief, { evidence, now: at, counter, polisher });
+    const gen = await sourcedGenerate(brief, { evidence, now: at, counter, polisher, thesisWriter, requireThesis });
     if (emit) {
       const file = join(emit, `${lane ?? brief.briefing_type}-${slugify(gen.title ?? brief.title)}.md`);
       const header = [
@@ -385,6 +390,7 @@ export async function runLane({ lane, quota = undefined, dryRun = false, db, sta
     drafted: 0,
     duplicates: 0,
     failed: 0,
+    no_thesis: 0,
     in_range: 0,
     out_of_range: 0,
     unmeasured: 0,
@@ -497,7 +503,11 @@ export async function runLane({ lane, quota = undefined, dryRun = false, db, sta
       }
       summary.drafts.push({ briefing_id: brief.id, title: brief.title, tier: brief.tier, version: row.version, pages: gen.pages, in_range: gen.in_range, sources: gen.source_count, thin: gen.thin, polished: gen.polished, emitted: gen.emitted ?? null });
     } catch (e) {
-      if (isUniqueViolation(e)) {
+      if (e?.code === 'no_thesis') {
+        // BL3-08: not staged, and not a failure — a draft with no supportable thesis is not padded.
+        summary.no_thesis += 1;
+        statuslog.log({ ...base, gate: 'G1-AUTO', result: 'FAIL', sentence: `no_thesis: "${brief.title}" not staged (${e.reason}).` });
+      } else if (isUniqueViolation(e)) {
         summary.duplicates += 1;
         statuslog.log({ ...base, result: 'FAIL', sentence: `Draft v${version} already staged for "${brief.title}"; nothing written.` });
       } else {
