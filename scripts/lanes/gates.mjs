@@ -67,6 +67,7 @@ export function isSourcedSignal(item) {
   if (!String(item.url ?? '').trim() || !String(item.publisher ?? '').trim()) return false;
   // Pack items carry the outlet as both `publisher` and `source_name` (evidence.mjs); FDY-330's
   // isCitableSource reads `source_name`, so name it from `publisher` when only that is present.
+  if (PLACEHOLDER_URL.test(String(item.url).trim())) return false; // identity-record placeholder, never a Signal source
   return Boolean(isCitableSource(item.source_name ? item : { ...item, source_name: item.publisher }));
 }
 
