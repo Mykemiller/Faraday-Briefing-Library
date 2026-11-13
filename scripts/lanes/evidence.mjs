@@ -50,7 +50,7 @@ export function evidenceWindow(brief, now = new Date()) {
 // Text helpers (pure)
 // ---------------------------------------------------------------------------------------------
 
-const GOOGLE_NEWS = /^Google News search/i;
+const GOOGLE_NEWS = /^Google News\b/i;
 const TERMINAL = /[.!?…]["')\]]?$/;
 
 export function decodeEntities(s) {
@@ -117,19 +117,267 @@ export function absUrl(url) {
   return u.startsWith('//') ? `https:${u}` : u;
 }
 
+/** The publisher host of a URL; a news.google.com redirect has no publisher host (never "Google News"). */
 export function hostOf(url) {
   try {
-    const h = new URL(url).hostname.replace(/^www\./, '');
-    return h === 'news.google.com' ? 'Google News' : h;
+    const h = new URL(absUrl(url)).hostname.replace(/^www\./, '');
+    return isRedirectUrl(url) ? null : h;
   } catch {
     return null;
   }
 }
 
+// ---------------------------------------------------------------------------------------------
+// Source hygiene (BL3-06, FDY-330): a cited ref is a real article at its publisher's URL.
+// ---------------------------------------------------------------------------------------------
+
+/** A Google News RSS/article redirect, not a publisher URL. */
+export function isRedirectUrl(url) {
+  try {
+    return /(^|\.)news\.google\.com$/i.test(new URL(absUrl(url)).hostname);
+  } catch {
+    return false;
+  }
+}
+
+/** Index, digest, tag, topic, archive and search pages are listings, never articles (decision 4). */
+export const INDEX_URL = /(\?|&)(term|s|q|tag|category)=|\/(tag|category|topics?|archive|search)\//i;
+/** An article path: a hyphenated slug of three or more words, an .html page, or a numeric id of 5+ digits. */
+const ARTICLE_PATH = /(?:^|\/)[^/]*[a-z0-9]+(?:-[a-z0-9]+){2,}[^/]*\/?$|\.s?html?$|\/\d{5,}\/?$/i;
+export function isIndexUrl(url) {
+  const u = absUrl(url);
+  if (!u) return false;
+  let path = '';
+  try {
+    path = new URL(u).pathname;
+  } catch {
+    return false;
+  }
+  if (/\/news\/?$/i.test(path)) return true;
+  if (!INDEX_URL.test(u)) return false;
+  // ?s= / ?q= / ?term= also ride on real article URLs (feed tracking, share links): on an article path
+  // they are not a search page. Tag/category parameters and listing path segments always are.
+  if (/\/(tag|category|topics?|archive|search)\//i.test(path) || /[?&](tag|category)=/i.test(u)) return true;
+  return !ARTICLE_PATH.test(path);
+}
+
+/**
+ * The URL a news item is cited at: the first of its recorded URLs (signal source_url, then the
+ * artifact's source_url) that is not a news.google.com redirect. When every recorded URL is a redirect
+ * the first one is returned unchanged, and isCitableSource() rejects the item.
+ */
+export function resolveSourceUrl(...urls) {
+  const all = urls.map(absUrl).filter(Boolean);
+  return all.find((u) => !isRedirectUrl(u)) ?? all[0] ?? null;
+}
+
+/**
+ * publisher = the artifact's source_name; when that is missing or a Google News feed label, the outlet a
+ * "Headline - Outlet" title names, then the host of the resolved URL. Never "Google News"; null when none.
+ */
+export function publisherOf(sourceName, title, url) {
+  const name = decodeEntities(sourceName);
+  if (name && !GOOGLE_NEWS.test(name)) return { publisher: name, headline: title ? decodeEntities(title) : null };
+  const sp = splitOutlet(title ?? '');
+  return { publisher: sp.outlet || hostOf(url) || null, headline: sp.headline || (title ? decodeEntities(title) : null) };
+}
+
+/** Kinds that are cited as news articles (index-page rules apply); primary records (dockets, JW rows) are not. */
+export const NEWS_KINDS = Object.freeze(new Set(['signal', 'artifact', 'facility']));
+
+/**
+ * Why an evidence item cannot be cited, or null when it can:
+ *   'redirect'       its URL is still a news.google.com redirect (no publisher source_url was recorded);
+ *   'index_page'     a news item at an index / tag / topic / archive / search URL (INDEX_URL, /news/);
+ *   'shared_url'     a news item whose URL two or more artifacts with different titles share (a listing);
+ *   'no_source_name' no publisher could be named (source_name, title outlet or URL host).
+ */
+export function citabilityReason(item) {
+  if (!item?.url || isRedirectUrl(item.url)) return 'redirect';
+  if (NEWS_KINDS.has(item.ref_kind)) {
+    if (isIndexUrl(item.url)) return 'index_page';
+    if (item.shared_url) return 'shared_url';
+  }
+  if (!item.source_name) return 'no_source_name';
+  return null;
+}
+
+/** True when an evidence item may be cited (BL3-06 amendment 1; FDY-329 imports this). */
+export function isCitableSource(item) {
+  return citabilityReason(item) === null;
+}
+
+/** Significant words of a title, for telling two different articles from one article re-crawled. */
+function titleWords(t) {
+  return new Set(
+    decodeEntities(t)
+      .toLowerCase()
+      .replace(/['’]s\b/g, '')
+      .split(/[^a-z0-9]+/)
+      .filter((w) => w && !STOP_WORDS.has(w))
+      .map((w) => (w.length > 3 ? w.replace(/s$/, '') : w)),
+  );
+}
+const STOP_WORDS = new Set(['the', 'a', 'an', 'and', 'or', 'of', 'to', 'in', 'on', 'for', 'with', 'by', 'at', 'is', 'are', 'as', 'its', 'from']);
+
+/** Two titles name different articles when fewer than half the smaller title's words are shared. */
+export function differentTitles(a, b) {
+  const x = titleWords(a);
+  const y = titleWords(b);
+  if (!x.size || !y.size) return false;
+  let shared = 0;
+  for (const w of x) if (y.has(w)) shared += 1;
+  return shared / Math.min(x.size, y.size) < 0.5;
+}
+
+/**
+ * Sponsored / vendor sources (BL3-06 amendment 6): marked sponsored, a press-wire release, a press-room
+ * path, or the subject's own website. Flagged on the ref and labelled in the Sources table; never dropped.
+ */
+const SPONSORED = /\b(sponsored|paid (?:post|content)|partner content|advertorial|brandvoice|promoted content)\b/i;
+const PRESS_WIRES = /(^|\.)(prnewswire|businesswire|globenewswire|accesswire|einpresswire|newswire|prweb)\.com$/i;
+const PRESS_PATH = /\/(press|press-releases?|pressroom|newsroom|news-releases?|media-(?:center|centre|room)|sponsored|partner-content|advertorial)(\/|$)/i;
+/**
+ * @param {any} item
+ * @param {string|null} [subjectHost]
+ */
+export function isVendorOrSponsored(item, subjectHost = null) {
+  const url = absUrl(item?.url);
+  let host = null;
+  let path = '';
+  try {
+    const u = new URL(url);
+    host = u.hostname.replace(/^www\./, '');
+    path = u.pathname;
+  } catch {
+    return false;
+  }
+  if (SPONSORED.test(`${item.title ?? ''} ${item.source_name ?? ''}`)) return true;
+  if (PRESS_WIRES.test(host) || PRESS_PATH.test(path)) return true;
+  return Boolean(subjectHost && (host === subjectHost || host.endsWith(`.${subjectHost}`)));
+}
+
+/** The share of a pack dropped above which a warning line is printed (amendment 4). */
+export const DROP_WARN_SHARE = 0.3;
+
 export function isoDate(v) {
   if (!v) return null;
   const d = v instanceof Date ? v : new Date(v);
   return Number.isNaN(d.getTime()) ? null : d.toISOString().slice(0, 10);
+}
+
+/**
+ * The real-world date of a Jurisdiction Watch event (BL3-07, FDY-331). `period_end` is the end of the
+ * period the event is ABOUT and is routinely in the future (2026-11-30 in a brief prepared 2026-11-11),
+ * so it is never an event date or an ordering key. Live evidence (Texas, 2026-11-13): payload.observed_at
+ * holds the day the source was observed (2026-11-09), triggered_at the day the event row was emitted
+ * (2026-11-10), so observed_at wins and triggered_at is the fallback. period_start is the last resort for
+ * rows captured before those columns were selected (the committed fixtures); `basis` says which was used.
+ */
+export function jwEventDate(e) {
+  const observed = isoDate(e?.payload?.observed_at ?? e?.observed_at);
+  if (observed) return { date: observed, basis: 'observed_at' };
+  const triggered = isoDate(e?.triggered_at);
+  if (triggered) return { date: triggered, basis: 'triggered_at' };
+  const start = isoDate(e?.period_start);
+  if (start) return { date: start, basis: 'period_start' };
+  return { date: null, basis: null };
+}
+
+// ---------------------------------------------------------------------------------------------
+// Hedges, date qualifiers and figures, verbatim (BL3-07, FDY-331)
+// ---------------------------------------------------------------------------------------------
+
+/** Words that qualify the figure or year that follows them. Copied verbatim, never dropped or swapped. */
+const QUALIFIER_WORDS = 'up to|more than|less than|at least|at most|no more than|no less than|over|under|about|around|approximately|roughly|nearly|almost|casi|by|after|before|from|through|until|beyond|since|early|mid|late';
+const FIG_UNIT = 'billion|million|trillion|thousand|bn|gw|mw|kw|twh|gwh|mwh|%|percent|b|m|k|t';
+const RANGE_FIG = `[$€£]?\\s?\\d[\\d,.]*\\s?[–—-]\\s?[$€£]?\\d[\\d,.]*(?:\\s?(?:${FIG_UNIT})\\b)?`;
+const SINGLE_FIG = `[$€£]?\\s?\\d[\\d,.]*(?:\\s?(?:${FIG_UNIT})\\b)?`;
+const FIG_RE = new RegExp(`(?:(${QUALIFIER_WORDS})\\s+)?(${RANGE_FIG}|${SINGLE_FIG})`, 'gi');
+
+const normFig = (f) => String(f).toLowerCase().replace(/\s+/g, '').replace(/[–—]/g, '-').replace(/[,.]+$/, '');
+const normQual = (q) => (q ? String(q).toLowerCase().replace(/\s+/g, ' ') : null);
+
+/** Every figure/year in a sentence with the qualifier word directly before it (or null). */
+export function qualifiedFigures(sentence) {
+  // ISO dates and ids like "Executive Order 2026-05" are not ranges; blank them out, keep offsets.
+  const text = decodeEntities(sentence).replace(/\[S?\d+(?:\s*,\s*S?\d+)*\]/g, (m) => ' '.repeat(m.length)).replace(/\b\d{4}-\d{2}(?:-\d{2})?\b/g, (m) => ' '.repeat(m.length)).replace(/\b(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.?\s+\d{1,2},?\s+\d{4}\b|\b\d{1,2}\/\d{1,2}\/\d{4}\b/gi, (m) => ' '.repeat(m.length));
+  const out = [];
+  for (const m of text.matchAll(FIG_RE)) {
+    const fig = normFig(m[2]);
+    if (!/\d/.test(fig)) continue;
+    const hasUnit = /[$€£%]|[a-z]/.test(fig) || fig.includes('-');
+    const isYear = /^(?:19|20)\d\d$/.test(fig);
+    const thousands = /\d,\d{3}/.test(fig);
+    if (!(hasUnit || isYear || thousands || m[1])) continue; // a bare "5500" or "282" is a name or a count, not a claim to protect
+    out.push({ qualifier: normQual(m[1]), figure: fig, raw: m[0].trim(), index: m.index });
+  }
+  return out;
+}
+
+const sentencesOfText = (t) => String(t ?? '').split(/\n+|(?<=[.!?])\s+(?=[A-Z"“(\[])/).map((x) => x.trim()).filter(Boolean);
+
+/**
+ * Compare the figures an output text states with the SAME figures in the source items' sentences.
+ * Returns a list of problems:
+ *   qualifier_changed  the figure is in the source but with a different (or no) hedge/date qualifier
+ *                      ("up to $600M" → "$600M"; "after 2032" → "by 2032"; "20–30 MW" → "20 MW").
+ *                      Within one output unit a figure is judged by its best occurrence, so a table row
+ *                      that repeats the bare figure in a label cell beside the full sentence passes.
+ *   year_attached      the output puts a year directly after a figure ("$5B in 2027") whose source
+ *                      sentence carries no such year
+ * A figure that appears nowhere in the sources is not this check's concern (the number check owns it).
+ * `items` are evidence items ({text: string[]}) or anything with a `text` string/array.
+ */
+export function verifyQualifiers(outputText, items) {
+  const srcSentences = [];
+  for (const it of items ?? []) {
+    const t = Array.isArray(it?.text) ? it.text : [it?.text ?? it];
+    for (const x of t) srcSentences.push(...sentencesOfText(x));
+  }
+  const srcFigs = srcSentences.map((s) => ({ s, figs: qualifiedFigures(s) }));
+  const problems = [];
+  for (const unit of sentencesOfText(outputText)) {
+    const outFigs = qualifiedFigures(unit);
+    const byFigure = new Map();
+    for (const o of outFigs) byFigure.set(o.figure, [...(byFigure.get(o.figure) ?? []), o]);
+    for (const [figure, occ] of byFigure) {
+      const exact = srcFigs.flatMap((sf) => sf.figs.filter((f) => f.figure === figure).map((f) => ({ ...f, s: sf.s })));
+      if (exact.length) {
+        if (occ.some((o) => exact.some((f) => f.qualifier === o.qualifier))) continue;
+        const worst = occ.find((o) => o.qualifier) ?? occ[0];
+        problems.push({ code: 'qualifier_changed', sentence: unit, figure: worst.raw, output_qualifier: worst.qualifier, source_qualifier: exact[0].qualifier, source_sentence: exact[0].s });
+        continue;
+      }
+      // a number cut out of a source range ("20 MW" out of "20–30 MW")
+      const bare = figure.replace(/[^\d.]/g, '');
+      const inRange = bare ? srcFigs.flatMap((sf) => sf.figs.filter((f) => f.figure.includes('-') && f.figure.split('-').some((part) => part.replace(/[^\d.]/g, '') === bare)).map((f) => ({ ...f, s: sf.s }))) : [];
+      if (inRange.length && !outFigs.some((o) => o.figure === inRange[0].figure) && !occ.some((o) => o.figure.includes('-'))) problems.push({ code: 'qualifier_changed', sentence: unit, figure: occ[0].raw, output_qualifier: occ[0].qualifier, source_qualifier: `range ${inRange[0].raw}`, source_sentence: inRange[0].s });
+    }
+    // a year attached directly after a figure the source leaves undated: "$5B in 2027", "$5B (2027)", "$5B by 2027"
+    for (const m of unit.matchAll(new RegExp(`(${RANGE_FIG}|${SINGLE_FIG})\\s*(?:\\(|,|in|by|for|during|of|through|until)?\\s*\\(?\\b((?:19|20)\\d\\d)\\b(?!-\\d)`, 'gi'))) {
+      const fig = normFig(m[1]);
+      if (/^(?:19|20)\d\d$/.test(fig) || !/\d/.test(fig)) continue;
+      if (/\b(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.?\s+\d{1,2},?\s*$/i.test(unit.slice(0, m.index + m[1].length))) continue; // "Nov 7, 2026"
+      const src = srcFigs.find((sf) => sf.figs.some((g) => g.figure === fig));
+      if (src && !src.s.includes(m[2])) problems.push({ code: 'year_attached', sentence: unit, figure: m[1].trim(), year: m[2], source_sentence: src.s });
+    }
+  }
+  return problems;
+}
+
+/**
+ * Shorten a sentence WITHOUT cutting inside the clause that carries a figure. Cuts at a sentence end,
+ * else at a clause break (; — , ) that keeps every figure and its qualifier; if no such cut fits, the
+ * sentence is returned whole. Never ends in a bare "…" mid-clause the way clip() does.
+ */
+export function clipSentence(s, n = 140) {
+  const t = decodeEntities(s).trim();
+  if (t.length <= n) return t;
+  const lastFig = qualifiedFigures(t).reduce((m, f) => Math.max(m, f.index + f.raw.length), 0);
+  const breaks = [...t.matchAll(/[.;:—]\s|,\s/g)].map((m) => m.index).filter((i) => i >= lastFig && i + 1 <= n);
+  if (breaks.length) return t.slice(0, breaks[breaks.length - 1]).replace(/[,;:—\s]+$/, '') + '.';
+  return t;
 }
 
 export function clip(s, n = 110) {
@@ -162,18 +410,15 @@ function signalItem(g, companies) {
   const a = g.artifact ?? null;
   const license = a?.license_status ?? null;
   if (license && BLOCKED_LICENSES.includes(String(license).toLowerCase())) return null;
-  const url = absUrl(g.source_url || a?.source_url);
+  // A news.google.com redirect resolves to the artifact's publisher URL; with none, buildPack drops the item.
+  const url = resolveSourceUrl(g.source_url, a?.source_url);
   if (!url) return null;
   const text = completeSentences(fullText(g));
   if (!text.length) return null;
-  let publisher = a?.source_name ?? null;
-  let headline = a?.title ? decodeEntities(a.title) : null;
-  if (!publisher || GOOGLE_NEWS.test(publisher)) {
-    const sp = splitOutlet(headline ?? '');
-    headline = sp.headline || headline;
-    publisher = sp.outlet || hostOf(url) || 'Source';
-  }
+  let { publisher, headline } = publisherOf(a?.source_name, a?.title, url);
   if (!headline) headline = clip(text[0]);
+  const source_name = publisher;
+  publisher = publisher ?? 'Source';
   const date = isoDate(g.event_date) ?? isoDate(a?.published_at) ?? isoDate(g.fired_at);
   return {
     ref_kind: 'signal',
@@ -184,6 +429,7 @@ function signalItem(g, companies) {
     text,
     url,
     title: headline,
+    source_name,
     artifact_id: g.artifact_id ?? null,
     published_at: isoDate(a?.published_at) ?? date,
     license,
@@ -198,18 +444,15 @@ function signalItem(g, companies) {
 
 function artifactItem(a) {
   if (!a?.source_url) return null;
-  a = { ...a, source_url: absUrl(a.source_url) };
+  a = { ...a, source_url: resolveSourceUrl(a.source_url) };
   const license = a.license_status ?? null;
   if (license && BLOCKED_LICENSES.includes(String(license).toLowerCase())) return null;
   const text = completeSentences(a.summary);
   if (!text.length) return null;
-  let publisher = a.source_name ?? null;
-  let headline = decodeEntities(a.title);
-  if (!publisher || GOOGLE_NEWS.test(publisher)) {
-    const sp = splitOutlet(headline);
-    headline = sp.headline || headline;
-    publisher = sp.outlet || hostOf(a.source_url) || 'Source';
-  }
+  const pub = publisherOf(a.source_name, a.title, a.source_url);
+  const source_name = pub.publisher;
+  const publisher = pub.publisher ?? 'Source';
+  const headline = pub.headline ?? '';
   // Aggregator summaries that merely repeat the title carry no clause worth printing.
   if (text.length === 1 && decodeEntities(text[0]).replace(/[.…]$/, '').toLowerCase() === headline.toLowerCase()) return null;
   return {
@@ -221,6 +464,7 @@ function artifactItem(a) {
     text,
     url: a.source_url,
     title: headline,
+    source_name,
     artifact_id: a.artifact_id,
     published_at: isoDate(a.published_at),
     license,
@@ -295,18 +539,22 @@ function jwItems(raw, jurisdiction) {
     const text = [`${decodeEntities(e.headline).replace(/[.]$/, '')}.`];
     if (e.prior_count != null && e.current_count != null) text.push(`Recorded count ${e.prior_count} → ${e.current_count} for ${e.period_key}${e.pct_change != null ? ` (${Number(e.pct_change).toFixed(0)}%)` : ''}.`);
     const isQueue = /queue|interconnection/i.test(e.signal_type ?? '');
+    const ev = jwEventDate(e);
     items.push({
       ref_kind: 'jw_event',
       id: e.id,
-      date: e.period_end ?? e.period_start ?? null,
-      date_floor: e.period_start ?? null,
+      signal_type: e.signal_type ?? null,
+      date: ev.date,
+      date_basis: ev.basis,
+      forward_date: isoDate(e.period_end), // the period the event is about; never an event date
+
       publisher: 'Jurisdiction Watch signal',
       headline: clip(e.headline, 100),
       text,
       url: `${e.jurisdiction_slug ? `${JW_BASE}/${e.jurisdiction_slug}` : jwUrl}#signal-${e.id}`,
       title: `Jurisdiction Watch ${String(e.signal_type ?? 'signal').replace(/_/g, ' ')} — ${e.period_key ?? ''}`.trim(),
       artifact_id: null,
-      published_at: e.period_end ?? null,
+      published_at: ev.date,
       license: 'faraday-record',
       domain_tags: ['D3'],
       subdomain_tags: [isQueue ? 'D3.1' : 'D13.3'],
@@ -324,10 +572,11 @@ function jwItems(raw, jurisdiction) {
       ref_kind: 'facility',
       id: f.id,
       date: f.announced_date ?? isoDate(f.updated_at),
-      publisher: f.source_name ?? hostOf(f.source_url) ?? 'Source',
+      publisher: publisherOf(f.source_name, null, f.source_url).publisher ?? 'Source',
+      source_name: publisherOf(f.source_name, null, f.source_url).publisher,
       headline: `${decodeEntities(f.facility_name)} — ${decodeEntities(f.status ?? 'facility record')}`,
       text: bits,
-      url: f.source_url,
+      url: resolveSourceUrl(f.source_url),
       title: decodeEntities(f.facility_name),
       artifact_id: null,
       published_at: f.announced_date ?? null,
@@ -399,6 +648,7 @@ export function jurisdictionRecord(j) {
     company_tags: [],
     company_names: [],
     section: 'Power & utility regulation',
+    tier: j.current_tier ?? null,
     history: hist.map((h) => ({ date: isoDate(h.scored_at), score: h.score, tier: h.tier, reason: h.change_reason, scale: h.scale_version })),
     figures: [],
   };
@@ -462,27 +712,67 @@ const inWindow = (date, window) => {
 /**
  * Normalise a RawPack into the EvidencePack the composer reads.
  * Items are de-duplicated by URL and by headline, filtered to the evidence window, newest first.
+ * Non-citable items (isCitableSource: unresolved news.google.com redirects, index/tag/search pages, URLs
+ * shared by differently titled artifacts, no nameable publisher) are dropped after the window filter and
+ * before de-duplication and composition; `pack.hygiene` counts them by reason, and one log line per brief
+ * reports items in / dropped (plus a WARNING line above 30 %).
  */
-export function buildPack(raw, brief, window) {
+/**
+ * @param {any} raw
+ * @param {any} brief
+ * @param {{ from: Date, to: Date, months: number }} window
+ * @param {{ log?: ((line: string) => void) | null }} [opts] per-brief hygiene log (default console.log; null = silent)
+ */
+export function buildPack(raw, brief, window, { log = console.log } = {}) {
   const taxonomy = indexTaxonomy(raw?.taxonomy ?? {});
   const companies = new Map((raw?.companies ?? []).map((c) => [c.company_uid, c]));
   const jurisdiction = raw?.jurisdiction ?? null;
   const entity = entityRecord(raw);
   const jrec = jurisdictionRecord(jurisdiction);
+  const subjectHost = entity?.url && !/^https:\/\/faraday\.ai\/records\//.test(entity.url) ? hostOf(entity.url) : null;
 
   const candidates = [
     ...(raw?.signals ?? []).map((g) => signalItem(g, companies)),
     ...(raw?.artifacts ?? []).map(artifactItem),
     ...jwItems(raw, jurisdiction),
   ].filter(Boolean);
+  for (const it of candidates) {
+    if (!NEWS_KINDS.has(it.ref_kind) && it.source_name === undefined) it.source_name = it.publisher; // primary records name their keeper
+    it.vendor_or_sponsored = NEWS_KINDS.has(it.ref_kind) && isVendorOrSponsored(it, subjectHost);
+  }
 
+  // A URL that two or more artifacts with different titles share is a listing, not an article (amendment 3).
+  const titlesByUrl = new Map();
+  for (const it of candidates) {
+    if (!NEWS_KINDS.has(it.ref_kind) || !it.url) continue;
+    const u = normUrl(it.url);
+    if (!titlesByUrl.has(u)) titlesByUrl.set(u, []);
+    titlesByUrl.get(u).push(it.title ?? it.headline ?? '');
+  }
+  for (const it of candidates) {
+    const ts = NEWS_KINDS.has(it.ref_kind) && it.url ? titlesByUrl.get(normUrl(it.url)) : null;
+    if (ts && ts.some((t, i) => ts.slice(i + 1).some((t2) => differentTitles(t, t2)))) it.shared_url = true;
+  }
+
+  // Window first, then citability (BEFORE composition: a sentence is never composed from an item that is
+  // later removed), then de-duplication by URL and headline.
+  const hygiene = { items_in: 0, dropped: 0, by_reason: { redirect: 0, index_page: 0, shared_url: 0, no_source_name: 0 }, dropped_share: 0, warning: false, future_dated_dropped: 0 };
+  let futureDropped = 0;
   const seenUrl = new Set();
   const seenHead = new Set();
   const items = [];
   for (const it of candidates.sort((a, b) => String(b.date ?? '').localeCompare(String(a.date ?? '')))) {
     if (!inWindow(it.date, window)) {
-      if (it.date_floor && inWindow(it.date_floor, window) && it.date > isoDate(window.to)) it.date = isoDate(window.to);
-      else continue;
+      // An item dated after the preparation date is dropped and counted, never clamped to it (BL3-07).
+      if (it.date && it.date > isoDate(window.to)) futureDropped += 1;
+      continue;
+    }
+    hygiene.items_in += 1;
+    const why = citabilityReason(it);
+    if (why) {
+      hygiene.dropped += 1;
+      hygiene.by_reason[why] += 1;
+      continue;
     }
     const u = normUrl(it.url);
     const h = it.headline.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
@@ -490,6 +780,16 @@ export function buildPack(raw, brief, window) {
     seenUrl.add(u);
     if (h) seenHead.add(h);
     items.push(it);
+  }
+  hygiene.future_dated_dropped = futureDropped;
+  hygiene.dropped_share = hygiene.items_in ? hygiene.dropped / hygiene.items_in : 0;
+  hygiene.warning = hygiene.dropped_share > DROP_WARN_SHARE;
+  if (log) {
+    const id8 = String(brief?.id ?? '').slice(0, 8);
+    const r = hygiene.by_reason;
+    log(`[evidence] ${id8} "${brief?.title ?? ''}": items in ${hygiene.items_in}, dropped ${hygiene.dropped} (${Math.round(hygiene.dropped_share * 100)}%) — redirect ${r.redirect} · index_page ${r.index_page} · shared_url ${r.shared_url} · no_source_name ${r.no_source_name}`);
+    if (futureDropped) log(`[evidence] ${id8}: ${futureDropped} item(s) dated after the preparation date ${isoDate(window.to)} were dropped (future_dated).`);
+    if (hygiene.warning) log(`[evidence] WARNING ${id8}: ${Math.round(hygiene.dropped_share * 100)}% of the in-window evidence was dropped as non-citable (threshold ${Math.round(DROP_WARN_SHARE * 100)}%).`);
   }
 
   return {
@@ -502,6 +802,7 @@ export function buildPack(raw, brief, window) {
     jurisdiction,
     jurisdiction_record: jrec && jrec.text.length ? jrec : null,
     items,
+    hygiene,
   };
 }
 
@@ -689,7 +990,7 @@ export function createSupabaseEvidence(client, limits = LIMITS) {
               .filter(Boolean)
               .slice(0, 40);
           }
-          jw.permit_events = await client.from('jw_signal_events').select('id, signal_type, period_key, period_start, period_end, direction, prior_count, current_count, pct_change, headline, jurisdiction_id').eq('state', st).gte('triggered_at', window.from.toISOString()).is('quarantine_reason', null).order('period_end', { ascending: false }).limit(24).then(must);
+          jw.permit_events = await client.from('jw_signal_events').select('id, signal_type, period_key, period_start, period_end, direction, prior_count, current_count, pct_change, headline, jurisdiction_id, triggered_at, payload').eq('state', st).gte('triggered_at', window.from.toISOString()).is('quarantine_reason', null).order('triggered_at', { ascending: false }).limit(24).then(must);
           jw.facilities = await client.from('jw_facilities').select('id, facility_name, operator, status, capacity_mw, city, source_name, source_url, announced_date, jds_layer, updated_at').eq('state_abbr', st).not('source_url', 'is', null).gte('updated_at', window.from.toISOString()).order('updated_at', { ascending: false }).limit(30).then(must);
           jw.incentives = await client.from('state_incentive_disclosures').select('id, recipient_name, project_name, place_name, county_name, incentive_type, program_name, statute_citation, award_value_usd, term_start, source_url').eq('state_abbr', st).order('term_start', { ascending: false, nullsFirst: false }).limit(30).then(must);
         } else {

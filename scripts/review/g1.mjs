@@ -20,6 +20,9 @@
 //
 // Markers: `[S3]`, `[3]`, `[3, 7]`, `[S3][S4]`. Refs: `{ref:'S3'}` or `{n:3}`.
 
+import { differentTitles, isIndexUrl, isRedirectUrl, verifyQualifiers } from '../lanes/evidence.mjs';
+import { readThesisMeta } from '../lanes/thesis.mjs';
+
 export const PAGE_RANGES = Object.freeze({ deep: [10, 15], standard: [8, 10], profile: [2, 2] });
 export const CTA_PATTERN = /\b(subscribe|sign up|contact us|get in touch|book a (?:call|demo|meeting)|request a demo|buy now|learn more at|visit us|call us|email us|schedule a|reach out)\b/i;
 export const NOT_LEGAL_ADVICE = 'Informational, not legal advice.';
@@ -145,12 +148,20 @@ export function unitsOf(sectionBody) {
     const p = para.join(' ').trim();
     para = [];
     if (!p) return;
-    const sentences = p.split(/(?<=[.!?])(?:\s+|$)(?=[A-Z"“(\[*]|$)/).map((s) => s.trim()).filter(Boolean);
-    // A trailing citation separated from its sentence ("... years. [S2]") is re-attached.
+    // Never split after a single-letter initial ("H.I.G. Capital", "U.S. Senate").
+    const sentences = p.split(/(?<=[.!?])(?<!(?:^|[\s.(])[A-Z]\.)(?:\s+|$)(?=[A-Z"“(\[*]|$)/).map((s) => s.trim()).filter(Boolean);
+    // The composer's convention is "Sentence. [S2]": a citation run that follows a sentence end belongs to
+    // that sentence, never to the one after it (BL3-06, FDY-330). Re-attach it, whether it stands alone
+    // ("... years. [S2]") or opens the next fragment ("... requirement. [S3] Polar secured ...").
+    const LEAD_MARKERS = /^((?:\[(?:S?\d+)(?:\s*,\s*S?\d+)*\]\s*)+)\.?/;
     const merged = [];
     for (const s of sentences) {
-      if (/^(\[(?:S?\d+)(?:\s*,\s*S?\d+)*\]\s*)+\.?$/.test(s) && merged.length) merged[merged.length - 1] += ' ' + s;
-      else merged.push(s);
+      const lead = s.match(LEAD_MARKERS);
+      if (lead && merged.length && markersIn(lead[1]).length) {
+        merged[merged.length - 1] += ' ' + lead[1].trim();
+        const rest = s.slice(lead[0].length).trim();
+        if (rest) merged.push(rest);
+      } else merged.push(s);
     }
     // A sentence without a marker inherits the citations of the next cited sentence in the same paragraph
     // (an end-of-paragraph marker covers the paragraph), else the paragraph's own set.
@@ -305,6 +316,52 @@ export function urlsOf(ref) {
 }
 
 // ---------------------------------------------------------------------------------------------
+// BL3-06 (FDY-330) checks — separate named functions, called from runG1's check list
+// ---------------------------------------------------------------------------------------------
+
+const NEWS_REF_KINDS = new Set(['signal', 'artifact', 'facility']);
+/** Same article URL: protocol-relative made absolute, fragment, utm_* and trailing slash dropped; the rest of the query kept (newscontent.aspx?refnum=1 ≠ ?refnum=2). */
+const sameArticleUrl = (u) => {
+  const s = String(u ?? '').trim().replace(/^\/\//, 'https://').replace(/#.*$/, '');
+  const [base, q] = s.split('?');
+  const kept = (q ?? '').split('&').filter((kv) => kv && !/^utm_/i.test(kv)).join('&');
+  return `${base.replace(/\/$/, '')}${kept ? `?${kept}` : ''}`;
+};
+
+/**
+ * Source hygiene: no ref at a news.google.com redirect (`source_redirect`), no news ref at an index /
+ * tag / search page or at a URL two differently titled refs share (`source_index_page`), and no
+ * "Google News" publisher (`publisher_google_news`).
+ */
+export function checkSourceHygiene(refs, push) {
+  const byUrl = new Map();
+  for (const r of refs) {
+    const u = sameArticleUrl(r?.url);
+    if (!byUrl.has(u)) byUrl.set(u, []);
+    byUrl.get(u).push(r);
+  }
+  for (const r of refs) {
+    const n = refNumber(r);
+    if (r?.url && isRedirectUrl(r.url)) push('source_redirect', `S${n} is a news.google.com redirect, not the publisher's article URL.`, { marker: n, url: r.url });
+    const news = !r?.kind || NEWS_REF_KINDS.has(r.kind);
+    const shared = (byUrl.get(sameArticleUrl(r?.url)) ?? []).some((o) => o !== r && differentTitles(o.title ?? '', r.title ?? ''));
+    if (news && r?.url && (isIndexUrl(r.url) || shared)) push('source_index_page', `S${n} cites an index or listing page as an article: ${r.url}`, { marker: n, url: r.url });
+    if (/google news/i.test(String(r?.publisher ?? ''))) push('publisher_google_news', `S${n} names "Google News" as its publisher.`, { marker: n });
+  }
+}
+
+/** Housekeeping lines (the record's own counts: "The record holds N dated Signals …") carry no marker. */
+export const HOUSEKEEPING_LINE = /^(?:The record holds \d+ dated Signals?\b|The record in this Briefing is \d+ sourced items?\b)/;
+export function checkHousekeepingMarkers(parsed, push) {
+  for (const s of bodySections(parsed)) {
+    for (const line of s.body.split('\n')) {
+      const t = line.trim();
+      if (HOUSEKEEPING_LINE.test(t) && markersIn(t).length) push('housekeeping_cited', `A housekeeping line about the record carries a citation marker: "${t.slice(0, 140)}"`, { section: s.heading, markers: markersIn(t) });
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------------------------
 // The gate
 // ---------------------------------------------------------------------------------------------
 
@@ -316,7 +373,96 @@ export function urlsOf(ref) {
  * @param {(url: string, ctx: {ref: object, briefing: object}) => ({resolved: boolean, kind?: string, id?: string, text?: string|null})} o.resolve
  * @param {string} [o.manuscript] override for contents[0]
  */
-export function runG1({ draft, briefing, pages, resolve, manuscript, renderNote }) {
+// ---------------------------------------------------------------------------------------------
+// BL3-07 (FDY-331): qualifiers kept verbatim; nothing dated after the preparation date
+// ---------------------------------------------------------------------------------------------
+
+const MONTH_NUM = { jan: 1, feb: 2, mar: 3, apr: 4, may: 5, jun: 6, jul: 7, aug: 8, sep: 9, oct: 10, nov: 11, dec: 12 };
+
+/** "Nov 11, 2026" (the composer's dateline) → "2026-11-11"; null when it is not a date. */
+export function datelineToIso(text) {
+  const m = String(text ?? '').match(/\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.?\s+(\d{1,2}),\s+(\d{4})\b/i);
+  if (!m) return null;
+  return `${m[3]}-${String(MONTH_NUM[m[1].slice(0, 3).toLowerCase()]).padStart(2, '0')}-${String(Number(m[2])).padStart(2, '0')}`;
+}
+
+/** The brief's preparation date: an explicit `now`, else "prepared <date>" on the cover/Sources record line, else today (UTC). */
+export function preparationDate(md, now) {
+  if (now) return new Date(now).toISOString().slice(0, 10);
+  const m = String(md ?? '').match(/prepared\s+([A-Z][a-z]{2,8}\.?\s+\d{1,2},\s+\d{4})/);
+  return (m && datelineToIso(m[1])) || new Date().toISOString().slice(0, 10);
+}
+
+/**
+ * future_dated: a dateline (`*Nov 30, 2026 · Publisher*`) or a cited source's published_at later than the
+ * preparation date. The "Signals to watch" section is exempt: it exists to name forward dates.
+ */
+export function checkFutureDated(parsed, refs, prepared, push) {
+  const WATCH = /^signals to watch\b/i;
+  const citedOutsideWatch = new Set();
+  for (const s of bodySections(parsed)) {
+    const watch = WATCH.test(s.heading);
+    if (!watch) for (const n of markersIn(s.body)) citedOutsideWatch.add(n);
+    if (watch) continue;
+    for (const line of s.body.split('\n')) {
+      const dl = line.match(/^\*([^*·]+?)\s·\s/);
+      const iso = dl ? datelineToIso(dl[1]) : null;
+      if (iso && iso > prepared) push('future_dated', `Dateline "${dl[1].trim()}" in "${s.heading}" is after the preparation date ${prepared}.`, { date: iso, prepared, section: s.heading });
+    }
+  }
+  for (const r of refs) {
+    const n = refNumber(r);
+    const d = String(r.published_at ?? '').slice(0, 10);
+    if (n != null && citedOutsideWatch.has(n) && /^\d{4}-\d{2}-\d{2}$/.test(d) && d > prepared) push('future_dated', `S${n} is dated ${d}, after the preparation date ${prepared}.`, { marker: n, date: d, prepared });
+  }
+}
+
+/** qualifier_changed / year_attached: each cited unit's figures against the source text it cites. */
+export function checkQualifierChanged(parsed, resolved, push) {
+  for (const s of bodySections(parsed)) {
+    if (s.isCoverish) continue;
+    for (const u of unitsOf(s.body)) {
+      if (!u.cites.length) continue;
+      const items = u.cites.flatMap((n) => (resolved.get(n) ?? []).filter((h) => h.resolved && typeof h.text === 'string' && h.text).map((h) => ({ text: [h.text, h.title].filter(Boolean) })));
+      if (!items.length) continue;
+      const out = u.text.replace(MARKER_RE, ' ');
+      for (const p of verifyQualifiers(out, items)) {
+        const msg = p.code === 'year_attached'
+          ? `Year ${p.year} is attached to "${p.figure}", which the cited source states without it: "${u.text.slice(0, 160)}"`
+          : `"${p.figure}" changes its qualifier (${p.output_qualifier ?? 'none'} vs source ${p.source_qualifier ?? 'none'}): "${u.text.slice(0, 160)}"`;
+        push(p.code, msg, { sentence: u.text, figure: p.figure, section: s.heading, source_sentence: p.source_sentence });
+      }
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------------------------
+// BL3-08 (FDY-333a): an empty watch list is reported, never padded
+// ---------------------------------------------------------------------------------------------
+
+export const NO_TRIGGERS_LINE = /^No dated triggers in the record\.?$/m;
+
+/** watch_empty (warning): the "Signals to watch" section prints "No dated triggers in the record". */
+export function checkWatchEmpty(parsed, push) {
+  const s = parsed.sections.find((x) => /^signals to watch\b/i.test(x.heading));
+  if (s && NO_TRIGGERS_LINE.test(s.body)) push('watch_empty', 'Signals to watch carries no dated trigger: the record names no forward-dated event after the preparation date.', { section: s.heading, severity: 'warn' });
+}
+
+/**
+ * thesis_missing (blocker): a Deep or Standard draft staged without the verified thesis + Take record that
+ * the BL3-08 generator writes (thesis text, Take, model id). Profiles are exempt. Opt-in per call
+ * (`requireThesis`) so drafts staged before BL3-08 can still be re-read; the review runner turns it on.
+ */
+export function checkThesisMissing(md, tier, push) {
+  if (tier === 'profile') return;
+  const m = readThesisMeta(md);
+  if (!m) push('thesis_missing', `${tier || 'draft'} has no verified thesis record (the BL3-08 generator stages none without one).`);
+  else if (!m.model) push('thesis_missing', 'thesis record carries no model id.');
+  else if (!String(md).replace(/<!--[\s\S]*?-->/g, '').includes(m.thesis)) push('thesis_missing', 'the recorded thesis is not the thesis printed in the manuscript.');
+}
+
+/** @param {{ draft: any, briefing: any, pages: any, resolve: any, manuscript?: any, renderNote?: any, now?: Date | string, requireThesis?: boolean }} args */
+export function runG1({ draft, briefing, pages, resolve, manuscript, renderNote, now, requireThesis }) {
   const blockers = [];
   const push = (code, message, extra = {}) => blockers.push({ code, message, ...extra });
   const md = manuscript ?? draft?.manuscript_md ?? (Array.isArray(draft?.contents) ? draft.contents[0] : '') ?? '';
@@ -358,6 +504,7 @@ export function runG1({ draft, briefing, pages, resolve, manuscript, renderNote 
     resolved.set(n, hits);
     for (const h of hits) if (!h.resolved) push('source_unresolved', `S${n} url does not resolve to a Faraday record or a primary URL on the brief: ${h.url}`, { marker: n, url: h.url });
   }
+  checkSourceHygiene(refs, push); // 2b. BL3-06
 
   // 3. pages
   const range = PAGE_RANGES[tier];
@@ -382,6 +529,11 @@ export function runG1({ draft, briefing, pages, resolve, manuscript, renderNote 
 
   // 6. jurisdiction line
   if (type === 'jurisdiction' && !md.includes(NOT_LEGAL_ADVICE)) push('missing_not_legal_advice', `Jurisdiction brief lacks the line "${NOT_LEGAL_ADVICE}".`);
+
+  checkHousekeepingMarkers(parsed, push); // 6b. BL3-06
+  checkFutureDated(parsed, refs, preparationDate(md, now), push); // 6c. BL3-07
+  checkWatchEmpty(parsed, push); // 6d. BL3-08
+  if (requireThesis) checkThesisMissing(String(draft?.manuscript_md ?? (Array.isArray(draft?.contents) ? draft.contents.join('\n') : '')), tier, push); // 6e. BL3-08
 
   // 7. numbers vs cited source text
   const sourceNorm = new Map(); // n -> normalised text or null
@@ -422,6 +574,8 @@ export function runG1({ draft, briefing, pages, resolve, manuscript, renderNote 
       }
     }
   }
+
+  checkQualifierChanged(parsed, resolved, push); // 7b. BL3-07
 
   const hard = blockers.filter((b) => b.severity !== 'warn');
   return {
