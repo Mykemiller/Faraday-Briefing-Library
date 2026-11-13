@@ -16,7 +16,7 @@
 // The composer takes a `budget` (entries per section) so the generator can fit the rendered PDF to
 // the tier's page range by re-composing, never by shrinking type.
 
-import { JURISDICTION_SECTIONS, MORATORIUM_NATION_ATTRIBUTION, clip, decodeEntities, extractFigures } from './evidence.mjs';
+import { JURISDICTION_SECTIONS, MORATORIUM_NATION_ATTRIBUTION, clip, clipSentence, decodeEntities, extractFigures } from './evidence.mjs';
 
 export const TIERS = Object.freeze(['deep', 'standard', 'profile']);
 export const BYLINES = Object.freeze({ deep: 'Faraday Editorial', standard: 'Gilbert Faraday', profile: null });
@@ -224,7 +224,7 @@ function figureTable(items, reg, section, max = 6) {
   const rows = glanceRows(items, max);
   if (rows.length < 3) return '';
   const lines = ['| Figure | Stated in the record | Date | Source |', '|---|---|---|---|'];
-  for (const r of rows) lines.push(`| ${md(r.figure)} | ${md(clip(r.sentence, 140))} | ${fmtDate(r.item.date)} | ${reg.cite(r.item, section)} |`);
+  for (const r of rows) lines.push(`| ${md(r.figure)} | ${md(clipSentence(r.sentence, 140))} | ${fmtDate(r.item.date)} | ${reg.cite(r.item, section)} |`);
   return lines.join('\n');
 }
 
@@ -309,7 +309,7 @@ export function composeDeep(brief, pack, budget, now) {
   const signals = ['## Signals to watch', '', 'Each row is an event a source names with a date or window.', ''];
   if (fwd.length) {
     signals.push('| When | Signal | Source |', '|---|---|---|');
-    for (const f of fwd) signals.push(`| ${md(f.when)} | ${md(clip(f.sentence, 160))} | ${reg.cite(f.item, 'signals')} |`);
+    for (const f of fwd) signals.push(`| ${md(f.when)} | ${md(clipSentence(f.sentence, 160))} | ${reg.cite(f.item, 'signals')} |`);
   } else {
     signals.push('No Signal in the record names a dated forward event inside this window.');
   }
