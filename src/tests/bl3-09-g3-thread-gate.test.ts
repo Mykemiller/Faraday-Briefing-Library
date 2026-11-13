@@ -217,6 +217,11 @@ describe("lane runner with the Thread gates", () => {
     const withSignals = async (target: number) => cut(target);
     const dir12 = await withSignals(12);
     const dir11 = await withSignals(11);
+    // FDY-333b requires a verified thesis for Standard/Deep drafts and this run has no model; the gate under test
+    // is the evidence gate, so deterministic composition is requested explicitly (the committed samples do the same).
+    const prevThesis = process.env.BL3_REQUIRE_THESIS;
+    process.env.BL3_REQUIRE_THESIS = "0";
+    try {
     for (const [dir, drafted] of [[EVIDENCE_FIXTURES_DIR, 1], [dir12, 1], [dir11, 0]] as const) {
       const g = await buildGenerator({ evidenceDir: dir as any, render: false, llm: false, out: () => {} });
       try {
@@ -228,6 +233,10 @@ describe("lane runner with the Thread gates", () => {
       } finally {
         await g.close();
       }
+    }
+    } finally {
+      if (prevThesis === undefined) delete process.env.BL3_REQUIRE_THESIS;
+      else process.env.BL3_REQUIRE_THESIS = prevThesis;
     }
   });
 });
