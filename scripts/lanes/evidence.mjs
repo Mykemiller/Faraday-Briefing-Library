@@ -543,6 +543,7 @@ function jwItems(raw, jurisdiction) {
     items.push({
       ref_kind: 'jw_event',
       id: e.id,
+      signal_type: e.signal_type ?? null,
       date: ev.date,
       date_basis: ev.basis,
       forward_date: isoDate(e.period_end), // the period the event is about; never an event date
@@ -647,6 +648,7 @@ export function jurisdictionRecord(j) {
     company_tags: [],
     company_names: [],
     section: 'Power & utility regulation',
+    tier: j.current_tier ?? null,
     history: hist.map((h) => ({ date: isoDate(h.scored_at), score: h.score, tier: h.tier, reason: h.change_reason, scale: h.scale_version })),
     figures: [],
   };

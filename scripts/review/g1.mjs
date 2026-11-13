@@ -435,6 +435,18 @@ export function checkQualifierChanged(parsed, resolved, push) {
   }
 }
 
+// ---------------------------------------------------------------------------------------------
+// BL3-08 (FDY-333a): an empty watch list is reported, never padded
+// ---------------------------------------------------------------------------------------------
+
+export const NO_TRIGGERS_LINE = /^No dated triggers in the record\.?$/m;
+
+/** watch_empty (warning): the "Signals to watch" section prints "No dated triggers in the record". */
+export function checkWatchEmpty(parsed, push) {
+  const s = parsed.sections.find((x) => /^signals to watch\b/i.test(x.heading));
+  if (s && NO_TRIGGERS_LINE.test(s.body)) push('watch_empty', 'Signals to watch carries no dated trigger: the record names no forward-dated event after the preparation date.', { section: s.heading, severity: 'warn' });
+}
+
 /** @param {{ draft: any, briefing: any, pages: any, resolve: any, manuscript?: any, renderNote?: any, now?: Date | string }} args */
 export function runG1({ draft, briefing, pages, resolve, manuscript, renderNote, now }) {
   const blockers = [];
@@ -506,6 +518,7 @@ export function runG1({ draft, briefing, pages, resolve, manuscript, renderNote,
 
   checkHousekeepingMarkers(parsed, push); // 6b. BL3-06
   checkFutureDated(parsed, refs, preparationDate(md, now), push); // 6c. BL3-07
+  checkWatchEmpty(parsed, push); // 6d. BL3-08
 
   // 7. numbers vs cited source text
   const sourceNorm = new Map(); // n -> normalised text or null

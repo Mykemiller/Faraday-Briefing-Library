@@ -143,7 +143,14 @@ describe("composer — every tier, every rule", () => {
     const { b, now, pack: pk } = await pack("fx000800");
     const d = compose(b, pk, { now });
     const heads = d.manuscript_md.match(/^## .*$/gm)!;
-    expect(heads.slice(1, 7)).toEqual(["## Legislation & rules", "## Permitting & siting", "## Power & utility regulation", "## Incentives & tax", "## Water/environment", "## Signals to watch"]);
+    // BL3-08: only headings that have entries are printed (an empty heading is omitted, never stated or padded);
+    // topical headings keep the fixed order, "Signals to watch" is the forward watch list and comes last of them.
+    const ORDER = ["## Legislation & rules", "## Permitting & siting", "## Power & utility regulation", "## Incentives & tax", "## Water/environment", "## Other recorded activity", "## Federal context", "## Signals to watch"];
+    const mid = heads.slice(1, heads.indexOf("## Signal register"));
+    expect(mid.length).toBeGreaterThanOrEqual(2);
+    expect(mid.every((h: string) => ORDER.includes(h))).toBe(true);
+    expect(mid.map((h: string) => ORDER.indexOf(h))).toEqual([...mid.map((h: string) => ORDER.indexOf(h))].sort((x, y) => x - y));
+    expect(mid.at(-1)).toBe("## Signals to watch");
     expect(d.hypothesis).toMatch(/^Jurisdiction Watch records Texas's current posture/);
     expect(d.manuscript_md).toMatch(/\nInformational, not legal advice\.\n/);
     // The CC-BY attribution rides with the data: present exactly when a Moratorium Nation record is cited.
@@ -154,8 +161,7 @@ describe("composer — every tier, every rule", () => {
     expect(d.byline).toBe("Gilbert Faraday");
     const { b: de, now: n2, pack: dePack } = await pack("fx000900");
     const g = compose(de, dePack, { now: n2 });
-    expect(g.manuscript_md.match(/^## .*$/gm)!.slice(1, 7)).toHaveLength(6);
-    expect(g.manuscript_md).toMatch(/The record holds no dated Signal for this heading in the window\./); // an empty heading is stated, never padded
+    expect(g.manuscript_md).not.toMatch(/The record holds no dated Signal for this heading in the window\./); // an empty heading is omitted
   });
   it("Profile: no byline, no Take, no CTA, no rating, ≤ 8 Signals, identity card cited to the entity record", async () => {
     for (const p of ["fx000600", "fx000700"]) {
