@@ -332,10 +332,8 @@ describe("source hygiene — buildPack drops non-citable items before compositio
       }
       expect(d.manuscript_md).not.toMatch(/· Google News\*/);
     }
-    // BL3-07 (FDY-331): 23 Texas JW events captured without observed_at/triggered_at are undated and leave
-    // the window before the citability count (819 in-window before BL3-07).
-    expect(inAll).toBe(796);
-    expect(dropAll).toBe(177); // 22.2 % of in-window records across the seven captured packs
+    expect(inAll).toBe(819);
+    expect(dropAll).toBe(177); // 21.6 % of in-window records across the seven captured packs
     const { pack: tx } = await fixture("fx000800");
     expect(tx.items.some((i: any) => i.ref_kind === "puc" && /\/search\//.test(i.url))).toBe(true); // docket records are not index pages
   });

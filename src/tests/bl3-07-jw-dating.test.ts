@@ -81,7 +81,7 @@ describe("JW event date = payload.observed_at ?? triggered_at, as a CT day; neve
     const pk = buildPack(raw, b, evidenceWindow(b, now), quiet);
     const ev = pk.items.find((i: any) => i.id === "745f85b7-c34e-417a-9eff-fd684707e664");
     expect(ev).toMatchObject({ date: "2026-11-09", published_at: "2026-11-09", forward_date: "2026-11-30" });
-    expect(pk.dating.undated_event).toBe(23);
+    expect(pk.dating.undated_event).toBe(0); // all 24 captured events carry triggered_at + payload.observed_at (read-only recapture 2026-11-13)
     const d = compose(b, pk, { now });
     for (const r of d.source_refs) if (r.published_at) expect(String(r.published_at) <= "2026-11-09").toBe(true);
     const g = runG1({ draft: { ...d, briefing_type: b.briefing_type }, briefing: b, pages: 9, resolve: packResolver(pk), prepared: ctDate(now) });

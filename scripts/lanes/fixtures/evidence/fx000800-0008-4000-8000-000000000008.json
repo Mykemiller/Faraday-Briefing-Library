@@ -8142,7 +8142,11 @@
     "pct_change": null,
     "headline": "ERCOT queue: Grasshopper BESS — 250.94 MW generation (OTH); status Active, 2-System Impact",
     "jurisdiction_name": null,
-    "jurisdiction_slug": null
+    "jurisdiction_slug": null,
+    "triggered_at": "2026-11-09T07:00:00+00:00",
+    "payload": {
+     "observed_at": "2026-11-09T06:40:10Z"
+    }
    },
    {
     "id": "a759fada-a99d-4b50-9110-b421ed87a808",
@@ -8156,7 +8160,11 @@
     "pct_change": null,
     "headline": "ERCOT queue: Great Rock Energy Center III — 990.60 MW generation (GAS); status Active, 2-System Impact",
     "jurisdiction_name": null,
-    "jurisdiction_slug": null
+    "jurisdiction_slug": null,
+    "triggered_at": "2026-11-09T07:00:00+00:00",
+    "payload": {
+     "observed_at": "2026-11-09T06:40:10Z"
+    }
    },
    {
     "id": "3b39e309-7d50-442c-8453-517f33c5fa66",
@@ -8170,7 +8178,11 @@
     "pct_change": null,
     "headline": "ERCOT queue: Rattler Combined Cycle Energy Center I — 990.60 MW generation (GAS); status Active, 2-System Impact",
     "jurisdiction_name": null,
-    "jurisdiction_slug": null
+    "jurisdiction_slug": null,
+    "triggered_at": "2026-11-09T07:00:00+00:00",
+    "payload": {
+     "observed_at": "2026-11-09T06:40:10Z"
+    }
    },
    {
     "id": "c6cd1243-4ade-4780-abe9-38be00844a31",
@@ -8184,7 +8196,11 @@
     "pct_change": null,
     "headline": "ERCOT queue: Bryant Storage — 200.81 MW generation (OTH); status Active, 2-System Impact",
     "jurisdiction_name": null,
-    "jurisdiction_slug": null
+    "jurisdiction_slug": null,
+    "triggered_at": "2026-11-09T07:00:00+00:00",
+    "payload": {
+     "observed_at": "2026-11-09T06:40:10Z"
+    }
    },
    {
     "id": "38792a4f-6e3d-4171-bba6-72e7fa9e843e",
@@ -8198,7 +8214,11 @@
     "pct_change": null,
     "headline": "ERCOT queue: Blue Energy Center - Phase 2b – Steam — 475.00 MW generation (GAS); status Active, 2-System Impact",
     "jurisdiction_name": null,
-    "jurisdiction_slug": null
+    "jurisdiction_slug": null,
+    "triggered_at": "2026-11-09T07:00:00+00:00",
+    "payload": {
+     "observed_at": "2026-11-09T06:40:10Z"
+    }
    },
    {
     "id": "245d8eee-bbe2-4938-b766-d783390ab8db",
@@ -8212,7 +8232,11 @@
     "pct_change": null,
     "headline": "ERCOT queue: Great Rock Energy Center II — 990.60 MW generation (GAS); status Active, 2-System Impact",
     "jurisdiction_name": null,
-    "jurisdiction_slug": null
+    "jurisdiction_slug": null,
+    "triggered_at": "2026-11-09T07:00:00+00:00",
+    "payload": {
+     "observed_at": "2026-11-09T06:40:10Z"
+    }
    },
    {
     "id": "337b873a-e00f-451c-a9c4-c762576b62d6",
@@ -8226,7 +8250,11 @@
     "pct_change": null,
     "headline": "ERCOT queue: Copperas Creek Solar — 200.87 MW generation (SOL); status Active, 2-System Impact",
     "jurisdiction_name": null,
-    "jurisdiction_slug": null
+    "jurisdiction_slug": null,
+    "triggered_at": "2026-11-09T07:00:00+00:00",
+    "payload": {
+     "observed_at": "2026-11-09T06:40:10Z"
+    }
    },
    {
     "id": "e589908e-791b-43b6-89ab-5b70e152553b",
@@ -8240,7 +8268,11 @@
     "pct_change": null,
     "headline": "ERCOT queue: Rattler Combined Cycle Energy Center III — 990.60 MW generation (GAS); status Active, 2-System Impact",
     "jurisdiction_name": null,
-    "jurisdiction_slug": null
+    "jurisdiction_slug": null,
+    "triggered_at": "2026-11-09T07:00:00+00:00",
+    "payload": {
+     "observed_at": "2026-11-09T06:40:10Z"
+    }
    },
    {
     "id": "ab577777-b612-452b-abf9-0daacb62cfd8",
@@ -8254,7 +8286,11 @@
     "pct_change": null,
     "headline": "ERCOT queue: Whitehorse BESS — 201.18 MW generation (OTH); status Active, 2-System Impact",
     "jurisdiction_name": null,
-    "jurisdiction_slug": null
+    "jurisdiction_slug": null,
+    "triggered_at": "2026-11-09T07:00:00+00:00",
+    "payload": {
+     "observed_at": "2026-11-09T06:40:10Z"
+    }
    },
    {
     "id": "08f7ffab-cd57-4949-8d3d-df1632a43abc",
@@ -8268,7 +8304,11 @@
     "pct_change": null,
     "headline": "ERCOT queue: Project Charlie PV SLF — 313.80 MW generation (SOL); status Active, 2-System Impact",
     "jurisdiction_name": null,
-    "jurisdiction_slug": null
+    "jurisdiction_slug": null,
+    "triggered_at": "2026-11-09T07:00:00+00:00",
+    "payload": {
+     "observed_at": "2026-11-09T06:40:10Z"
+    }
    },
    {
     "id": "221f7f38-fca5-4e84-a1d0-512cff8e05f4",
@@ -8282,7 +8322,11 @@
     "pct_change": null,
     "headline": "ERCOT queue: Trail Boss Solar — 254.00 MW generation (SOL); status Active, 2-System Impact",
     "jurisdiction_name": null,
-    "jurisdiction_slug": null
+    "jurisdiction_slug": null,
+    "triggered_at": "2026-11-09T07:00:00+00:00",
+    "payload": {
+     "observed_at": "2026-11-09T06:40:10Z"
+    }
    },
    {
     "id": "2b38c9f2-b09c-436a-aadd-e87d1f58eb19",
@@ -8296,7 +8340,11 @@
     "pct_change": null,
     "headline": "ERCOT queue: Project Charlie BESS SLF — 64.90 MW generation (OTH); status Active, 2-System Impact",
     "jurisdiction_name": null,
-    "jurisdiction_slug": null
+    "jurisdiction_slug": null,
+    "triggered_at": "2026-11-09T07:00:00+00:00",
+    "payload": {
+     "observed_at": "2026-11-09T06:40:10Z"
+    }
    },
    {
     "id": "b5a769ee-cc79-46a9-9088-f29511e810e8",
@@ -8310,7 +8358,11 @@
     "pct_change": null,
     "headline": "ERCOT queue: Trail Boss BESS — 206.92 MW generation (OTH); status Active, 2-System Impact",
     "jurisdiction_name": null,
-    "jurisdiction_slug": null
+    "jurisdiction_slug": null,
+    "triggered_at": "2026-11-09T07:00:00+00:00",
+    "payload": {
+     "observed_at": "2026-11-09T06:40:10Z"
+    }
    },
    {
     "id": "db4cd92f-4cae-4dc8-bbb5-774edc425efb",
@@ -8324,7 +8376,11 @@
     "pct_change": null,
     "headline": "ERCOT queue: Project FluxNet Solar SLF — 273.80 MW generation (SOL); status Active, 2-System Impact",
     "jurisdiction_name": null,
-    "jurisdiction_slug": null
+    "jurisdiction_slug": null,
+    "triggered_at": "2026-11-09T07:00:00+00:00",
+    "payload": {
+     "observed_at": "2026-11-09T06:40:10Z"
+    }
    },
    {
     "id": "308d886d-2ff9-4aac-b122-8600c0be301e",
@@ -8338,7 +8394,11 @@
     "pct_change": null,
     "headline": "ERCOT queue: Ironwood Energy Center — 1485.00 MW generation (GAS); status Active, 2-System Impact",
     "jurisdiction_name": null,
-    "jurisdiction_slug": null
+    "jurisdiction_slug": null,
+    "triggered_at": "2026-11-09T07:00:00+00:00",
+    "payload": {
+     "observed_at": "2026-11-09T06:40:10Z"
+    }
    },
    {
     "id": "a1239bd9-6a86-437f-80c8-19dad7a33dca",
@@ -8352,7 +8412,11 @@
     "pct_change": null,
     "headline": "ERCOT queue: Ironwood Energy Center II — 742.50 MW generation (GAS); status Active, 2-System Impact",
     "jurisdiction_name": null,
-    "jurisdiction_slug": null
+    "jurisdiction_slug": null,
+    "triggered_at": "2026-11-09T07:00:00+00:00",
+    "payload": {
+     "observed_at": "2026-11-09T06:40:10Z"
+    }
    },
    {
     "id": "c60d74b4-459c-42c0-9ad3-e2ffb22b7af3",
@@ -8366,7 +8430,11 @@
     "pct_change": null,
     "headline": "ERCOT queue: Soluce Cotton2 Solar — 201.43 MW generation (SOL); status Active, 2-System Impact",
     "jurisdiction_name": null,
-    "jurisdiction_slug": null
+    "jurisdiction_slug": null,
+    "triggered_at": "2026-11-09T07:00:00+00:00",
+    "payload": {
+     "observed_at": "2026-11-09T06:40:10Z"
+    }
    },
    {
     "id": "639fbe3e-8c0e-4b8e-aa9c-616543c28288",
@@ -8380,7 +8448,11 @@
     "pct_change": null,
     "headline": "ERCOT queue: Project FluxNet Battery SLF — 60.90 MW generation (OTH); status Active, 2-System Impact",
     "jurisdiction_name": null,
-    "jurisdiction_slug": null
+    "jurisdiction_slug": null,
+    "triggered_at": "2026-11-09T07:00:00+00:00",
+    "payload": {
+     "observed_at": "2026-11-09T06:40:10Z"
+    }
    },
    {
     "id": "676c3349-3dd6-4ee0-9599-f9df7d705ff5",
@@ -8394,7 +8466,11 @@
     "pct_change": null,
     "headline": "ERCOT queue: Slaton BESS — 9.99 MW generation (OTH); status Active",
     "jurisdiction_name": null,
-    "jurisdiction_slug": null
+    "jurisdiction_slug": null,
+    "triggered_at": "2026-11-09T07:00:00+00:00",
+    "payload": {
+     "observed_at": "2026-11-09T06:40:10Z"
+    }
    },
    {
     "id": "1d124a26-7217-4648-9a9b-f562ff110433",
@@ -8408,7 +8484,11 @@
     "pct_change": null,
     "headline": "ERCOT queue: Trail Ranch Storage — 240.00 MW generation (OTH); status Active, 2-System Impact",
     "jurisdiction_name": null,
-    "jurisdiction_slug": null
+    "jurisdiction_slug": null,
+    "triggered_at": "2026-11-09T07:00:00+00:00",
+    "payload": {
+     "observed_at": "2026-11-09T06:40:10Z"
+    }
    },
    {
     "id": "f326b9d1-8e90-46ef-a799-ea81a347bcc9",
@@ -8422,7 +8502,11 @@
     "pct_change": null,
     "headline": "ERCOT queue: Lonestar Sun Solar — 200.90 MW generation (SOL); status Active, 2-System Impact",
     "jurisdiction_name": null,
-    "jurisdiction_slug": null
+    "jurisdiction_slug": null,
+    "triggered_at": "2026-11-09T07:00:00+00:00",
+    "payload": {
+     "observed_at": "2026-11-09T06:40:10Z"
+    }
    },
    {
     "id": "0f4a2482-3881-4b42-9343-932edbd671d6",
@@ -8436,7 +8520,11 @@
     "pct_change": null,
     "headline": "ERCOT queue: BM Freestone Energy Center III — 990.60 MW generation (GAS); status Active, 2-System Impact",
     "jurisdiction_name": null,
-    "jurisdiction_slug": null
+    "jurisdiction_slug": null,
+    "triggered_at": "2026-11-09T07:00:00+00:00",
+    "payload": {
+     "observed_at": "2026-11-09T06:40:10Z"
+    }
    },
    {
     "id": "745f85b7-c34e-417a-9eff-fd684707e664",
@@ -8468,7 +8556,11 @@
     "pct_change": null,
     "headline": "ERCOT queue: Reid Storage — 250.99 MW generation (OTH); status Active, 2-System Impact",
     "jurisdiction_name": null,
-    "jurisdiction_slug": null
+    "jurisdiction_slug": null,
+    "triggered_at": "2026-11-09T07:00:00+00:00",
+    "payload": {
+     "observed_at": "2026-11-09T06:40:10Z"
+    }
    }
   ],
   "facilities": [],
