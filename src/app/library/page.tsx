@@ -14,7 +14,7 @@ export const dynamic = "force-dynamic";
  */
 export default async function LibraryPage() {
   const [page, theaters] = await Promise.all([getShelfPage({ sort: "newest" }), getTheaters()]);
-  // Sidebar theaters (BL3-01): distinct themes of briefing_type='theater' rows in public.briefings.
+  // Sidebar theaters (BL3-02): all faraday_themes themes in briefings theater row order, any status.
 
   return (
     <>
