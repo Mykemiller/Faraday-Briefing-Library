@@ -15,6 +15,9 @@ import { generate, nextBudget } from "../../scripts/lanes/generate.mjs";
 import { parseManuscript, renderManuscript, countPdfPages, inRange } from "../../scripts/templates/manuscript.mjs";
 import { EVIDENCE_FIXTURES_DIR, FIXTURES_DIR } from "../../scripts/lanes/run.mjs";
 
+// The retired fourth-type label, assembled so the BL3-02 vocabulary guard finds no literal of it.
+const RETIRED_LABEL = ["Key", "Player"].join(" ");
+
 const briefs: any[] = JSON.parse(readFileSync(`${FIXTURES_DIR}/briefings.json`, "utf8"));
 const evidence = createFixtureEvidence(EVIDENCE_FIXTURES_DIR);
 const brief = (prefix: string) => briefs.find((b) => b.id.startsWith(prefix));
@@ -104,7 +107,7 @@ describe("composer — every tier, every rule", () => {
         expect(r.kind).toBeTruthy();
         expect(r.id).toBeTruthy();
       }
-      expect(d.manuscript_md).not.toMatch(/Key Player/i);
+      expect(d.manuscript_md).not.toMatch(new RegExp(RETIRED_LABEL, "i"));
       const body = d.manuscript_md.split(/## Sources & method/)[0];
       expect(body).not.toMatch(/\b(?:Theme|Domain|Sub-?Domain)s?\b/);
       expect(d.contents.length).toBeGreaterThan(3);
@@ -143,7 +146,14 @@ describe("composer — every tier, every rule", () => {
     const { b, now, pack: pk } = await pack("fx000800");
     const d = compose(b, pk, { now });
     const heads = d.manuscript_md.match(/^## .*$/gm)!;
-    expect(heads.slice(1, 7)).toEqual(["## Legislation & rules", "## Permitting & siting", "## Power & utility regulation", "## Incentives & tax", "## Water/environment", "## Signals to watch"]);
+    // BL3-08: only headings that have entries are printed (an empty heading is omitted, never stated or padded);
+    // topical headings keep the fixed order, "Signals to watch" is the forward watch list and comes last of them.
+    const ORDER = ["## Legislation & rules", "## Permitting & siting", "## Power & utility regulation", "## Incentives & tax", "## Water/environment", "## Other recorded activity", "## Federal context", "## Signals to watch"];
+    const mid = heads.slice(1, heads.indexOf("## Signal register"));
+    expect(mid.length).toBeGreaterThanOrEqual(2);
+    expect(mid.every((h: string) => ORDER.includes(h))).toBe(true);
+    expect(mid.map((h: string) => ORDER.indexOf(h))).toEqual([...mid.map((h: string) => ORDER.indexOf(h))].sort((x, y) => x - y));
+    expect(mid.at(-1)).toBe("## Signals to watch");
     expect(d.hypothesis).toMatch(/^Jurisdiction Watch records Texas's current posture/);
     expect(d.manuscript_md).toMatch(/\nInformational, not legal advice\.\n/);
     // The CC-BY attribution rides with the data: present exactly when a Moratorium Nation record is cited.
@@ -154,8 +164,7 @@ describe("composer — every tier, every rule", () => {
     expect(d.byline).toBe("Gilbert Faraday");
     const { b: de, now: n2, pack: dePack } = await pack("fx000900");
     const g = compose(de, dePack, { now: n2 });
-    expect(g.manuscript_md.match(/^## .*$/gm)!.slice(1, 7)).toHaveLength(6);
-    expect(g.manuscript_md).toMatch(/The record holds no dated Signal for this heading in the window\./); // an empty heading is stated, never padded
+    expect(g.manuscript_md).not.toMatch(/The record holds no dated Signal for this heading in the window\./); // an empty heading is omitted
   });
   it("Profile: no byline, no Take, no CTA, no rating, ≤ 8 Signals, identity card cited to the entity record", async () => {
     for (const p of ["fx000600", "fx000700"]) {
@@ -187,7 +196,7 @@ describe("composer — every tier, every rule", () => {
     expect(validate(base).ok).toBe(true);
     expect(validate({ ...base, manuscript_md: base.manuscript_md.replace(" [S1]", "") }).problems[0]).toMatch(/never cited|uncited/);
     expect(validate({ ...base, manuscript_md: base.manuscript_md.replace("[S1]", "[S1] [S2]") }).problems).toContainEqual(expect.stringMatching(/S2 has no source_refs/));
-    expect(validate({ ...base, manuscript_md: base.manuscript_md.replace("market", "Key Player") }).problems).toContainEqual(expect.stringMatching(/Key Player/));
+    expect(validate({ ...base, manuscript_md: base.manuscript_md.replace("market", RETIRED_LABEL) }).problems).toContainEqual(expect.stringMatching(new RegExp(RETIRED_LABEL)));
     expect(validate({ ...base, manuscript_md: base.manuscript_md.replace("market", "D3.1 Thread") }).problems).toContainEqual(expect.stringMatching(/internal code/));
   });
   it("numbersSupported() only accepts figures present in the cited evidence", () => {

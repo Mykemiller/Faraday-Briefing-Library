@@ -1,4 +1,5 @@
 import { loadShelf, loadReaderRow } from "@/lib/shelf";
+import { loadTheaters } from "@/lib/theaters";
 import { toReaderFields } from "@/lib/reader";
 import { search, computeFacets } from "@/lib/catalog-model";
 import { supabaseAdmin } from "@/lib/supabase/admin";
@@ -30,12 +31,20 @@ export async function getFacets(): Promise<Facets> {
   return facetsOf(await loadShelf());
 }
 
-/** Sidebar theaters (BL3-01): distinct theme names of briefing_type='theater' rows, NOT facet counts. */
+/**
+ * Sidebar theaters (BL3-02, FDY-334): every faraday_themes theme, ordered by briefings theater row
+ * order, status-independent (src/lib/theaters.ts). NOT facet counts. If that read fails, degrade
+ * to the distinct themes of the theater cards on the shelf rather than fail the page.
+ */
 export async function getTheaters(): Promise<string[]> {
-  const rows = await loadShelf();
-  return [...new Set(rows.filter((r) => r.briefingType === "theater").flatMap((r) => r.themes))].sort((a, b) =>
-    a.localeCompare(b),
-  );
+  try {
+    return await loadTheaters();
+  } catch {
+    const rows = await loadShelf();
+    return [...new Set(rows.filter((r) => r.briefingType === "theater").flatMap((r) => r.themes))].sort((a, b) =>
+      a.localeCompare(b),
+    );
+  }
 }
 
 /** One page of the shelf, built from public.briefings (no cache, no RPC). */

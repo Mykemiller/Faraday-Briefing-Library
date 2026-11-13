@@ -23,6 +23,22 @@
 //   - Evidence source: Supabase (service role) in live runs; scripts/lanes/fixtures/evidence/*.json
 //     (packs captured read-only from production) in fixture/dry runs.
 //
+// BL3-05 (FDY-329) — Profile lanes (companies, institutions); gates and ranking in gates.mjs
+//   - Ranked, never id order: companies by company_signal_rollup (mentions_30d desc, artifact_count
+//     desc, title; companies missing from the rollup after the ranked ones), institutions by ONE
+//     grouped sourced-Signal count over every eligible institution Profile.
+//   - Pre-draft gate: each candidate's evidence pack is fetched (and reused by generate()) and passed
+//     to preDraftGate(lane, pack); a Profile with < 6 sourced Signals is SKIPPED — no draft, no
+//     briefings_versions row, no briefing_reviews row — summarised "skipped: thin (n<6)".
+//   - Quota counts STAGED drafts only; ranked candidates are drawn until `quota` drafts are staged or
+//     10 × quota evidence packs have been fetched. Briefs whose next draft is already staged are not
+//     drawn again.
+//   - Cursor: cursor.skipped = [{ id, n, checked_at }] (re-checked after 7 days), MERGED into the
+//     existing briefing_lanes.cursor object — cursor.requeue (BL2-06 review chain) always survives. A
+//     requeue entry for a thin Profile is reported "skipped: thin (n<6)" and left in place.
+//   - --census: measure every eligible Profile in the lane, list who clears the floor, write nothing.
+//   - Every lane: updateLaneCursor() merges into the stored cursor instead of replacing it.
+//
 // Safety (unchanged): service role only; --dry-run writes nothing anywhere and prints every line;
 // per-brief try/catch; cursor checkpointed after every brief (monotonic across the `--width` window).
 
@@ -31,8 +47,10 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { createStatusLog } from '../statuslog.mjs';
 import { generate as sourcedGenerate, PAGE_RANGE } from './generate.mjs';
-import { createFixtureEvidence, createSupabaseEvidence } from './evidence.mjs';
+import { buildPack, createFixtureEvidence, createSupabaseEvidence, evidenceWindow } from './evidence.mjs';
+import { FETCH_FACTOR, PROFILE_FLOOR, THIN_SKIP, dropSkipped, freshSkipped, groupedInstitutionCounts, isGatedLane, isProfileLane, preDraftGate, rankCompanies, rankInstitutions, readSkipped, upsertSkipped } from './gates.mjs';
 import { createPolisher } from './llm.mjs';
+import { createThesisWriter } from './thesis.mjs';
 
 export const LANES = Object.freeze(['theaters', 'domains', 'subdomains', 'companies', 'states', 'countries', 'institutions']);
 
@@ -64,13 +82,16 @@ export const EVIDENCE_FIXTURES_DIR = join(HERE, 'fixtures', 'evidence');
 // ---------------------------------------------------------------------------------------------
 
 export function parseArgs(argv) {
-  const out = { lane: undefined, quota: undefined, dryRun: false, fixtures: undefined, evidence: undefined, emit: null, width: DEFAULT_WIDTH, render: true, llm: true, flushEvery: DEFAULT_FLUSH_EVERY };
+  const out = { lane: undefined, quota: undefined, dryRun: false, census: false, fixtures: undefined, evidence: undefined, emit: null, width: DEFAULT_WIDTH, render: true, llm: true, flushEvery: DEFAULT_FLUSH_EVERY };
   for (let i = 0; i < argv.length; i += 1) {
     const a = argv[i];
     if (a === '--lane') out.lane = argv[++i];
     else if (a === '--quota') out.quota = Number(argv[++i]);
     else if (a === '--dry-run') out.dryRun = true;
-    else if (a === '--fixtures') out.fixtures = argv[i + 1] && !argv[i + 1].startsWith('--') ? argv[++i] : FIXTURES_DIR;
+    else if (a === '--census') {
+      out.census = true;
+      out.dryRun = true; // a census never writes
+    } else if (a === '--fixtures') out.fixtures = argv[i + 1] && !argv[i + 1].startsWith('--') ? argv[++i] : FIXTURES_DIR;
     else if (a === '--evidence') out.evidence = argv[++i];
     else if (a === '--emit') out.emit = argv[++i];
     else if (a === '--width') out.width = Number(argv[++i]);
@@ -83,6 +104,7 @@ export function parseArgs(argv) {
   if (!LANES.includes(out.lane)) throw new Error(`--lane must be one of ${LANES.join('|')}, got "${out.lane}"`);
   if (out.quota !== undefined && !(Number.isInteger(out.quota) && out.quota > 0)) throw new Error('--quota must be a positive integer');
   if (!(Number.isInteger(out.width) && out.width > 0)) throw new Error('--width must be a positive integer');
+  if (out.census && !isProfileLane(out.lane)) throw new Error('--census applies to the companies and institutions lanes only');
   return out;
 }
 
@@ -196,9 +218,17 @@ export function draftedSentence(brief, gen, version) {
 // Data access — two implementations of one interface
 // ---------------------------------------------------------------------------------------------
 
-/** In-memory db from fixtures (or any plain objects). Writes are recorded, never sent anywhere. */
-export function createFixtureDb({ lanes = [], briefings = [], manuscriptColumn = true } = {}) {
+/**
+ * In-memory db from fixtures (or any plain objects). Writes are recorded, never sent anywhere.
+ * BL3-05 extras: `rollup` (company_signal_rollup rows), `institutions` ({ institution_uid, company_uid }),
+ * `institutionSignals` (raw signals with `.artifact`, for the grouped institution count), `versions`
+ * (already-staged briefings_versions rows).
+ * @param {{lanes?: any[], briefings?: any[], rollup?: any[], institutions?: any[], institutionSignals?: any[], versions?: any[], manuscriptColumn?: boolean}} [opts]
+ */
+export function createFixtureDb({ lanes = [], briefings = [], rollup = [], institutions = [], institutionSignals = [], versions = [], manuscriptColumn = true } = {}) {
   const laneRows = new Map(lanes.map((l) => [l.lane, { ...l }]));
+  const rollupByUid = new Map(rollup.map((r) => [r.company_uid, r]));
+  const uidByInstitution = new Map(institutions.map((i) => [i.institution_uid, i.company_uid]));
   /** @type {{versions: any[], cursors: any[], health: any[], reviews: any[]}} */
   const writes = { versions: [], cursors: [], health: [], reviews: [] };
   return {
@@ -209,6 +239,18 @@ export function createFixtureDb({ lanes = [], briefings = [], manuscriptColumn =
     },
     async listCandidates({ lane, afterId, limit }) {
       return selectCandidates(briefings, { lane, afterId, limit });
+    },
+    /** BL3-05: every eligible Profile of the lane, ranked (see gates.mjs). */
+    async listProfileCandidates({ lane, now = new Date() }) {
+      const rows = briefings.filter((b) => isEligible(b) && matchesLane(b, lane));
+      if (lane === 'companies') return { ranked: rankCompanies(rows, rollupByUid), counts: null };
+      const counts = groupedInstitutionCounts(rows, uidByInstitution, institutionSignals, now);
+      return { ranked: rankInstitutions(rows, counts), counts };
+    },
+    /** Ids of briefs whose next draft (version + 1) is already staged. */
+    async stagedDraftIds(briefs) {
+      const all = [...versions, ...writes.versions];
+      return new Set(briefs.filter((b) => all.some((v) => v.briefing_id === b.id && v.kind === 'draft' && v.version === Number(b.version ?? 1) + 1)).map((b) => b.id));
     },
     async hasManuscriptColumn() {
       return manuscriptColumn;
@@ -225,10 +267,12 @@ export function createFixtureDb({ lanes = [], briefings = [], manuscriptColumn =
     async insertReview(row) {
       writes.reviews.push(row);
     },
+    /** Merges into the stored cursor (keys this runner does not own, e.g. `requeue`, survive). */
     async updateLaneCursor(lane, cursor) {
       const l = laneRows.get(lane);
-      if (l) l.cursor = cursor;
-      writes.cursors.push({ lane, cursor });
+      const merged = { ...(l?.cursor && typeof l.cursor === 'object' ? l.cursor : {}), ...cursor };
+      if (l) l.cursor = merged;
+      writes.cursors.push({ lane, cursor: merged });
     },
     async insertHealth(row) {
       writes.health.push(row);
@@ -241,8 +285,21 @@ export function loadFixtures(dir = FIXTURES_DIR) {
     const p = join(dir, name);
     return existsSync(p) ? JSON.parse(readFileSync(p, 'utf8')) : [];
   };
-  return { lanes: read('briefing_lanes.json'), briefings: read('briefings.json') };
+  return { lanes: read('briefing_lanes.json'), briefings: read('briefings.json'), rollup: read('company_signal_rollup.json'), institutions: read('institutions.json'), institutionSignals: read('institution_signals.json') };
 }
+
+/** Upper bound on one Profile-lane read (PostgREST's default max-rows is 1000; the shelf is far below it). */
+export const PROFILE_FETCH_MAX = 1000;
+/** Columns the grouped institution count needs (a subset of evidence.mjs's signal columns). */
+const COUNT_SIGNAL_COLS = 'id, fired_at, event_date, framing, faradays_take, company_tags, source_url, artifact_id';
+const envelopeOf = (a) => ({
+  title: a?.signal_envelope?.title ?? null,
+  source_name: a?.signal_envelope?.source_name ?? null,
+  summary: a?.signal_envelope?.summary ? String(a.signal_envelope.summary).slice(0, 1500) : null,
+  published_at: a?.published_at ?? null,
+  license_status: a?.signal_envelope?.license_status ?? null,
+  source_url: a?.source_url ?? null,
+});
 
 const MISSING_TABLE = (error) => error?.code === 'PGRST205' || error?.code === '42P01';
 const MISSING_COLUMN = (error) => error?.code === '42703' || error?.code === 'PGRST204' || /column .*manuscript_md.* does not exist/i.test(error?.message ?? '');
@@ -282,6 +339,78 @@ export function createSupabaseDb(client) {
       if (error) throw error;
       return selectCandidates(data ?? [], { lane, afterId: null, limit });
     },
+    /**
+     * BL3-05: every eligible Profile of the lane, ranked. Companies: company_signal_rollup.
+     * Institutions: one grouped count — the institutions' company_uids, every Signal tagged with one
+     * of them in the Profile window (12 months) with its artifact envelope, normalised per brief by
+     * buildPack() and counted with the gate's sourced-Signal rule.
+     */
+    async listProfileCandidates({ lane, now = new Date() }) {
+      const must = ({ data, error }) => {
+        if (error) throw Object.assign(new Error(error.message), { code: error.code });
+        return data ?? [];
+      };
+      let q = client
+        .from('briefings')
+        .select('*')
+        .in('status', ELIGIBLE_STATUSES)
+        .not('tier', 'is', null)
+        .not('briefing_type', 'is', null)
+        .in('briefing_type', LANE_TYPES[lane])
+        .order('id', { ascending: true })
+        .limit(PROFILE_FETCH_MAX);
+      q = lane === 'companies' ? q.not('company_id', 'is', null) : q.is('company_id', null).not('institution_id', 'is', null);
+      const rows = must(await q).filter((b) => isEligible(b) && matchesLane(b, lane));
+      if (lane === 'companies') {
+        const rollup = new Map();
+        const uids = [...new Set(rows.map((b) => b.company_id).filter(Boolean))];
+        for (let i = 0; i < uids.length; i += 200) {
+          const r = await client.from('company_signal_rollup').select('company_uid, mentions_30d, artifact_count').in('company_uid', uids.slice(i, i + 200));
+          if (r.error) {
+            if (MISSING_TABLE(r.error)) break; // no rollup ⇒ every company is "missing" and title decides
+            throw r.error;
+          }
+          for (const x of r.data ?? []) rollup.set(x.company_uid, x);
+        }
+        return { ranked: rankCompanies(rows, rollup), counts: null };
+      }
+      const instIds = [...new Set(rows.map((b) => b.institution_id).filter(Boolean))];
+      const uidByInstitution = new Map();
+      for (let i = 0; i < instIds.length; i += 200) {
+        for (const x of must(await client.from('institutions').select('institution_uid, company_uid').in('institution_uid', instIds.slice(i, i + 200)))) uidByInstitution.set(x.institution_uid, x.company_uid);
+      }
+      const uids = [...new Set([...uidByInstitution.values()].filter(Boolean))];
+      const window = evidenceWindow({ tier: 'profile' }, now);
+      const signals = new Map();
+      for (let i = 0; i < uids.length; i += 12) {
+        const or = uids.slice(i, i + 12).map((u) => `company_tags.cs.["${u}"]`).join(',');
+        for (let from = 0; ; from += PROFILE_FETCH_MAX) {
+          const page = must(await client.from('signals').select(COUNT_SIGNAL_COLS).gte('fired_at', window.from.toISOString()).lte('fired_at', window.to.toISOString()).or(or).order('id', { ascending: true }).range(from, from + PROFILE_FETCH_MAX - 1));
+          for (const g of page) signals.set(g.id, g);
+          if (page.length < PROFILE_FETCH_MAX) break;
+        }
+      }
+      const artIds = [...new Set([...signals.values()].map((g) => g.artifact_id).filter(Boolean))];
+      const envelopes = new Map();
+      for (let i = 0; i < artIds.length; i += 100) {
+        for (const a of must(await client.from('artifacts').select('artifact_id, source_url, published_at, signal_envelope').in('artifact_id', artIds.slice(i, i + 100)))) envelopes.set(a.artifact_id, envelopeOf(a));
+      }
+      const withArt = [...signals.values()].map((g) => ({ ...g, artifact: envelopes.get(g.artifact_id) ?? null }));
+      const counts = groupedInstitutionCounts(rows, uidByInstitution, withArt, now);
+      return { ranked: rankInstitutions(rows, counts), counts };
+    },
+    /** Ids of briefs whose next draft (version + 1) is already staged in briefings_versions. */
+    async stagedDraftIds(briefs) {
+      const next = new Map(briefs.map((b) => [b.id, Number(b.version ?? 1) + 1]));
+      const ids = [...next.keys()];
+      const out = new Set();
+      for (let i = 0; i < ids.length; i += 100) {
+        const { data, error } = await client.from('briefings_versions').select('briefing_id, version').eq('kind', 'draft').in('briefing_id', ids.slice(i, i + 100));
+        if (error) throw error;
+        for (const v of data ?? []) if (next.get(v.briefing_id) === Number(v.version)) out.add(v.briefing_id);
+      }
+      return out;
+    },
     /** Probe for the BL2-05 column once per run; a missing column is not an error. */
     async hasManuscriptColumn() {
       const { error } = await client.from('briefings_versions').select('manuscript_md').limit(1);
@@ -298,8 +427,15 @@ export function createSupabaseDb(client) {
       const { error } = await client.from('briefing_reviews').insert(row);
       if (error) throw Object.assign(new Error(error.message), { code: error.code });
     },
+    /** Read-modify-write merge: keys this runner does not own (the review chain's `requeue`) survive. */
     async updateLaneCursor(lane, cursor) {
-      const { error } = await client.from('briefing_lanes').update({ cursor, updated_at: new Date().toISOString() }).eq('lane', lane);
+      const cur = await client.from('briefing_lanes').select('cursor').eq('lane', lane).maybeSingle();
+      if (cur.error) {
+        if (MISSING_TABLE(cur.error)) return;
+        throw cur.error;
+      }
+      const stored = cur.data?.cursor && typeof cur.data.cursor === 'object' ? cur.data.cursor : {};
+      const { error } = await client.from('briefing_lanes').update({ cursor: { ...stored, ...cursor }, updated_at: new Date().toISOString() }).eq('lane', lane);
       if (error && !MISSING_TABLE(error)) throw error;
     },
     async insertHealth(row) {
@@ -313,12 +449,50 @@ export function createSupabaseDb(client) {
 // Generator wiring (shared across lanes by run-all)
 // ---------------------------------------------------------------------------------------------
 
+/** Raw packs held between fetchPack() and generate() (bounded; the oldest is dropped first). */
+export const PACK_MEMO_MAX = 256;
+
+/**
+ * BL3-05: wrap an evidence source so the pre-draft gate can see a brief's pack and the following
+ * generate() reuses the same raw pack instead of fetching it again.
+ * fetchPack(brief, { now }) → the EvidencePack buildPack() makes for the brief's tier window (as of
+ * the capture time for fixture packs, exactly as generate() does).
+ */
+export function createEvidenceProbe(source, { max = PACK_MEMO_MAX } = {}) {
+  const packs = new Map();
+  const evidence = {
+    kind: source.kind,
+    async fetchRaw(brief, window) {
+      if (packs.has(brief.id)) {
+        const raw = packs.get(brief.id);
+        packs.delete(brief.id);
+        return raw;
+      }
+      return source.fetchRaw(brief, window);
+    },
+  };
+  const fetchPack = async (brief, { now = new Date() } = {}) => {
+    let window = evidenceWindow(brief, now);
+    const raw = await source.fetchRaw(brief, window);
+    const asOf = source.kind === 'fixture' && raw?.captured_at ? new Date(raw.captured_at) : now;
+    if (asOf.getTime() !== now.getTime()) window = evidenceWindow(brief, asOf);
+    if (packs.size >= max) packs.delete(packs.keys().next().value);
+    packs.set(brief.id, raw);
+    return buildPack(raw, brief, window);
+  };
+  return { evidence, fetchPack, held: () => packs.size };
+}
+
 /**
  * Build the generate() closure the runner calls: evidence source + shared page counter + polisher
- * + optional --emit writer. Close with closeGenerator() to release Chromium.
+ * + optional --emit writer. Close with closeGenerator() to release Chromium. `generate.fetchPack`
+ * (BL3-05) is the pre-draft pack probe sharing the evidence cache, so callers that pass only
+ * generator.generate (run-all) get the Profile floor too.
+ * @param {{client?: any, evidenceDir?: string|null, render?: boolean, llm?: boolean, emit?: string|null, dryRun?: boolean, now?: () => Date, out?: (s: string) => void}} [opts]
  */
 export async function buildGenerator({ client = null, evidenceDir = null, render = true, llm = true, emit = null, dryRun = false, now = () => new Date(), out = (s) => console.log(s) } = {}) {
-  const evidence = client ? createSupabaseEvidence(client) : createFixtureEvidence(evidenceDir ?? EVIDENCE_FIXTURES_DIR);
+  const probe = createEvidenceProbe(client ? createSupabaseEvidence(client) : createFixtureEvidence(evidenceDir ?? EVIDENCE_FIXTURES_DIR));
+  const evidence = probe.evidence;
   let counter = null;
   if (render) {
     try {
@@ -330,9 +504,13 @@ export async function buildGenerator({ client = null, evidenceDir = null, render
   }
   const polisher = llm ? createPolisher() : null;
   if (llm && !polisher) out('[lane-runner] model polish off (no ANTHROPIC_API_KEY); deterministic composition only');
+  // BL3-08: Deep/Standard drafts need a verified thesis + Take. Fails closed (no key ⇒ no_thesis, nothing staged);
+  // BL3_REQUIRE_THESIS=0 restores deterministic composition (the committed samples use it).
+  const thesisWriter = llm ? createThesisWriter() : null;
+  const requireThesis = process.env.BL3_REQUIRE_THESIS !== '0';
   if (emit) mkdirSync(emit, { recursive: true });
   const generate = async (brief, { now: at = now(), lane } = {}) => {
-    const gen = await sourcedGenerate(brief, { evidence, now: at, counter, polisher });
+    const gen = await sourcedGenerate(brief, { evidence, now: at, counter, polisher, thesisWriter, requireThesis });
     if (emit) {
       const file = join(emit, `${lane ?? brief.briefing_type}-${slugify(gen.title ?? brief.title)}.md`);
       const header = [
@@ -345,7 +523,8 @@ export async function buildGenerator({ client = null, evidenceDir = null, render
     }
     return gen;
   };
-  return { generate, evidence, counter, polisher, close: async () => counter?.close?.() };
+  generate.fetchPack = probe.fetchPack;
+  return { generate, fetchPack: probe.fetchPack, evidence, counter, polisher, close: async () => counter?.close?.() };
 }
 
 export async function closeGenerator(g) {
@@ -358,18 +537,29 @@ export async function closeGenerator(g) {
 
 /**
  * Run one lane. Returns a summary; throws only for configuration errors (per-brief errors are caught).
- * @param {{lane: string, quota?: number, dryRun?: boolean, db: any, statuslog: any, generate?: any, now?: () => Date, flushEvery?: number, width?: number, out?: (s: string) => void}} opts
+ *
+ * BL3-05: on the companies and institutions lanes, candidates come ranked from
+ * db.listProfileCandidates() and each one's evidence pack is fetched with `fetchPack` (default:
+ * generate.fetchPack, set by buildGenerator) and passed to preDraftGate(lane, pack) before generate().
+ * A failed gate skips the brief (nothing generated or written, cursor.skipped updated). Without a
+ * pack probe (unit-test stand-ins) the ranked candidates are drafted ungated and the run says so.
+ * `census`: measure every eligible Profile of the lane and draft/write nothing.
+ * @param {{lane: string, quota?: number, dryRun?: boolean, census?: boolean, db: any, statuslog: any, generate?: any, fetchPack?: any, now?: () => Date, flushEvery?: number, width?: number, out?: (s: string) => void}} opts
  */
-export async function runLane({ lane, quota = undefined, dryRun = false, db, statuslog, generate, now = () => new Date(), flushEvery = DEFAULT_FLUSH_EVERY, width = DEFAULT_WIDTH, out = (s) => console.log(s) }) {
+export async function runLane({ lane, quota = undefined, dryRun = false, census = false, db, statuslog, generate, fetchPack = undefined, now = () => new Date(), flushEvery = DEFAULT_FLUSH_EVERY, width = DEFAULT_WIDTH, out = (s) => console.log(s) }) {
   if (!LANES.includes(lane)) throw new Error(`unknown lane "${lane}"`);
   if (typeof generate !== 'function') throw new Error('runLane needs a generate() function (see buildGenerator)');
+  const profileMode = isProfileLane(lane);
+  if (census && !profileMode) throw new Error('census applies to the companies and institutions lanes only');
+  if (census) dryRun = true;
+  const probe = typeof fetchPack === 'function' ? fetchPack : typeof generate.fetchPack === 'function' ? generate.fetchPack : null;
   const startedAt = now();
   const laneRow = await db.getLane(lane);
 
-  if (laneRow === undefined && quota === undefined) {
+  if (laneRow === undefined && quota === undefined && !census) {
     throw new Error('briefing_lanes does not exist yet (BL2-01 / FDY-277 not applied); pass --quota N to run without it');
   }
-  if (laneRow === null && quota === undefined) {
+  if (laneRow === null && quota === undefined && !census) {
     throw new Error(`briefing_lanes has no row for lane "${lane}"; pass --quota N to run without it`);
   }
 
@@ -385,6 +575,7 @@ export async function runLane({ lane, quota = undefined, dryRun = false, db, sta
     drafted: 0,
     duplicates: 0,
     failed: 0,
+    no_thesis: 0,
     in_range: 0,
     out_of_range: 0,
     unmeasured: 0,
@@ -396,6 +587,7 @@ export async function runLane({ lane, quota = undefined, dryRun = false, db, sta
     errors: [],
     drafts: [],
   };
+  if (profileMode) Object.assign(summary, { floor: PROFILE_FLOOR, skipped_briefs: 0, skips: [], measured: [], clears_floor: 0, fetched: 0, fetch_budget: null, already_staged: 0, recently_skipped: 0, requeue_pending: [], gated: Boolean(probe) });
 
   const finish = async () => {
     const completedAt = now();
@@ -409,7 +601,7 @@ export async function runLane({ lane, quota = undefined, dryRun = false, db, sta
       artifacts_duped: summary.duplicates,
       errors: summary.errors,
       success: summary.errors.length === 0,
-      notes: `${summary.job} quota=${summary.quota} dry_run=${dryRun} in_range=${summary.in_range} out_of_range=${summary.out_of_range} thin=${summary.thin}${summary.blocked ? ` blocked: ${summary.blocked}` : ''}`,
+      notes: `${summary.job} quota=${summary.quota} dry_run=${dryRun} in_range=${summary.in_range} out_of_range=${summary.out_of_range} thin=${summary.thin}${summary.skipped_briefs ? ` skipped_thin=${summary.skipped_briefs}` : ''}${profileMode ? ` packs=${summary.fetched}` : ''}${summary.blocked ? ` blocked: ${summary.blocked}` : ''}`,
     };
     const r = await statuslog.flush();
     summary.lines.push(...r.lines);
@@ -423,38 +615,9 @@ export async function runLane({ lane, quota = undefined, dryRun = false, db, sta
     out(`[lane-runner] lane "${lane}" is blocked: ${laneRow.blocked_reason}; nothing selected`);
     return finish();
   }
-  if (!(Number.isInteger(summary.quota) && summary.quota > 0)) {
+  if (!census && !(Number.isInteger(summary.quota) && summary.quota > 0)) {
     throw new Error(`quota for lane "${lane}" is ${summary.quota}; set briefing_lanes.daily_quota or pass --quota`);
   }
-
-  const afterId = laneRow?.cursor?.last_id ?? null;
-  const candidates = await db.listCandidates({ lane, afterId, limit: summary.quota });
-  summary.found = candidates.length;
-
-  if (!candidates.length && afterId) {
-    // Exhausted this pass through the lane: wrap so the next run starts from the top.
-    summary.cursor_out = { last_id: null, last_run_at: now().toISOString(), note: 'exhausted; wrapped to start' };
-    if (!dryRun) await db.updateLaneCursor(lane, summary.cursor_out);
-    out(`[lane-runner] lane "${lane}" exhausted after ${afterId}; cursor reset`);
-    return finish();
-  }
-
-  summary.manuscript_column = typeof db.hasManuscriptColumn === 'function' ? await db.hasManuscriptColumn() : true;
-  if (!summary.manuscript_column) out('[lane-runner] briefings_versions.manuscript_md not present (BL2-05 migration unapplied); storing the manuscript as contents[0]');
-
-  // Cursor: checkpoint after every brief, but only ever advance to the last id for which every
-  // earlier candidate in this run has also finished (the --width window completes out of order).
-  const done = new Set();
-  const checkpoint = async () => {
-    let last = null;
-    for (const b of candidates) {
-      if (!done.has(b.id)) break;
-      last = b.id;
-    }
-    if (!last || summary.cursor_out?.last_id === last) return;
-    summary.cursor_out = { last_id: last, last_run_at: now().toISOString() };
-    if (!dryRun) await db.updateLaneCursor(lane, summary.cursor_out);
-  };
 
   let sinceFlush = 0;
   const flushIfDue = async (force = false) => {
@@ -465,10 +628,163 @@ export async function runLane({ lane, quota = undefined, dryRun = false, db, sta
     }
   };
 
-  const processOne = async (brief) => {
+  let candidates;
+  /** @type {(brief: any, outcome: 'staged'|'duplicate'|'failed'|'skipped', gate?: any) => Promise<void>} */
+  let onDone;
+  /** Pre-draft gate (Profile lanes with a pack probe): async (brief) => null | { ok:false, reason, n }. */
+  let gate = null;
+  const recordSkip = (brief, v, extra = {}) => {
+    summary.skipped_briefs += 1;
+    const line = `${String(brief.id).slice(0, 8)} · ${lane} · "${brief.title}" · ${v.reason} · ${v.n} sourced Signals${extra.requeue ? ' · requeue entry kept' : ''}${extra.cached ? ` · checked ${String(extra.cached).slice(0, 10)}` : ''}`;
+    summary.skips.push({ briefing_id: brief.id, title: brief.title, reason: v.reason, n: v.n, line, ...extra });
+    out(`[lane-runner] ${line}`);
+  };
+
+  if (!profileMode) {
+    const afterId = laneRow?.cursor?.last_id ?? null;
+    candidates = await db.listCandidates({ lane, afterId, limit: summary.quota });
+    summary.found = candidates.length;
+
+    if (!candidates.length && afterId) {
+      // Exhausted this pass through the lane: wrap so the next run starts from the top.
+      summary.cursor_out = { last_id: null, last_run_at: now().toISOString(), note: 'exhausted; wrapped to start' };
+      if (!dryRun) await db.updateLaneCursor(lane, summary.cursor_out);
+      out(`[lane-runner] lane "${lane}" exhausted after ${afterId}; cursor reset`);
+      return finish();
+    }
+
+    // Cursor: checkpoint after every brief, but only ever advance to the last id for which every
+    // earlier candidate in this run has also finished (the --width window completes out of order).
+    const done = new Set();
+    onDone = async (brief) => {
+      done.add(brief.id);
+      let last = null;
+      for (const b of candidates) {
+        if (!done.has(b.id)) break;
+        last = b.id;
+      }
+      if (!last || summary.cursor_out?.last_id === last) return;
+      summary.cursor_out = { last_id: last, last_run_at: now().toISOString() };
+      if (!dryRun) await db.updateLaneCursor(lane, summary.cursor_out);
+    };
+  } else {
+    const cursorIn = laneRow?.cursor && typeof laneRow.cursor === 'object' ? laneRow.cursor : {};
+    let skipped = readSkipped(cursorIn);
+    const fresh = new Map(freshSkipped(skipped, now()).map((e) => [e.id, e]));
+    const { ranked } = await db.listProfileCandidates({ lane, now: now() });
+    const staged = census ? new Set() : await db.stagedDraftIds(ranked);
+    candidates = census ? ranked : ranked.filter((b) => !staged.has(b.id) && !fresh.has(String(b.id)));
+    summary.found = candidates.length;
+    summary.already_staged = staged.size;
+    summary.recently_skipped = ranked.filter((b) => fresh.has(String(b.id))).length;
+    summary.fetch_budget = census ? null : FETCH_FACTOR * summary.quota;
+    if (!probe) out(`[lane-runner] lane "${lane}": no evidence-pack probe; drafting ranked candidates WITHOUT the ${PROFILE_FLOOR}-Signal pre-draft gate`);
+
+    // Merge-only cursor writes: { skipped, last_run_at } over whatever is stored (requeue survives).
+    const checkpoint = async () => {
+      const patch = { skipped, last_run_at: now().toISOString() };
+      summary.cursor_out = { ...cursorIn, ...(summary.cursor_out && typeof summary.cursor_out === 'object' ? summary.cursor_out : {}), ...patch };
+      if (!dryRun) await db.updateLaneCursor(lane, patch);
+    };
+
+    const measure = async (brief) => {
+      summary.fetched += 1;
+      const pack = await probe(brief, { now: now(), lane });
+      const v = preDraftGate(lane, pack);
+      summary.measured.push({ briefing_id: brief.id, title: brief.title, n: v.n, ok: v.ok });
+      if (v.ok) summary.clears_floor += 1;
+      return v;
+    };
+
+    if (census) {
+      for (let i = 0; i < candidates.length; i += width) {
+        await Promise.all(
+          candidates.slice(i, i + width).map(async (brief) => {
+            if (!probe) return;
+            try {
+              await measure(brief);
+            } catch (e) {
+              summary.failed += 1;
+              summary.errors.push({ briefing_id: brief.id, message: `evidence: ${String(e?.message ?? e)}` });
+            }
+          }),
+        );
+      }
+      const order = new Map(candidates.map((b, i) => [b.id, i]));
+      summary.measured.sort((a, b) => order.get(a.briefing_id) - order.get(b.briefing_id));
+      out(`[lane-runner census] lane "${lane}": ${summary.clears_floor} of ${summary.measured.length} measured Profiles clear the ${PROFILE_FLOOR}-Signal floor (${candidates.length} eligible)`);
+      for (const m of summary.measured) out(`[lane-runner census]   ${m.ok ? 'CLEARS' : 'thin  '} ${String(m.n).padStart(3)}  ${String(m.briefing_id).slice(0, 8)}  ${m.title}`);
+      return finish();
+    }
+
+    // Requeue entries (BL2-06 review chain) on this lane: a thin Profile resolves to the thin skip in
+    // the summary; the entry itself is never deleted (the cursor write merges around it).
+    const requeue = Array.isArray(cursorIn.requeue) ? cursorIn.requeue : [];
+    let touched = false;
+    for (const entry of requeue) {
+      const brief = ranked.find((b) => String(b.id) === String(entry?.briefing_id));
+      if (!brief || summary.skips.some((k) => k.briefing_id === brief.id)) continue;
+      const cached = fresh.get(String(brief.id));
+      if (cached) {
+        recordSkip(brief, { reason: THIN_SKIP, n: cached.n }, { requeue: true, cached: cached.checked_at });
+        continue;
+      }
+      if (!probe || summary.fetched >= summary.fetch_budget) continue;
+      try {
+        const v = await measure(brief);
+        if (v.ok) {
+          summary.requeue_pending.push(brief.id);
+          if (skipped.some((e) => e.id === String(brief.id))) {
+            skipped = dropSkipped(skipped, brief.id);
+            touched = true;
+          }
+        } else {
+          recordSkip(brief, v, { requeue: true });
+          skipped = upsertSkipped(skipped, { id: brief.id, n: v.n, checked_at: now().toISOString() });
+          touched = true;
+        }
+      } catch (e) {
+        summary.failed += 1;
+        summary.errors.push({ briefing_id: brief.id, message: `evidence: ${String(e?.message ?? e)}` });
+      }
+    }
+    if (touched) await checkpoint();
+    const requeued = new Set(requeue.map((e) => String(e?.briefing_id)));
+    candidates = candidates.filter((b) => !requeued.has(String(b.id)));
+
+    // The pre-draft gate, run inside draftOne() before generate().
+    if (probe && isGatedLane(lane)) {
+      gate = async (brief) => {
+        const v = await measure(brief);
+        if (v.ok) {
+          if (skipped.some((e) => e.id === String(brief.id))) skipped = dropSkipped(skipped, brief.id); // stale entry re-checked: clears now
+          return null;
+        }
+        return v;
+      };
+    }
+    onDone = async (brief, outcome, v) => {
+      if (outcome === 'skipped') skipped = upsertSkipped(skipped, { id: brief.id, n: v.n, checked_at: now().toISOString() });
+      if (outcome === 'failed') return;
+      await checkpoint();
+    };
+  }
+
+  summary.manuscript_column = typeof db.hasManuscriptColumn === 'function' ? await db.hasManuscriptColumn() : true;
+  if (!summary.manuscript_column) out('[lane-runner] briefings_versions.manuscript_md not present (BL2-05 migration unapplied); storing the manuscript as contents[0]');
+
+  /** @returns {Promise<{outcome: 'staged'|'duplicate'|'failed'|'skipped', verdict?: any}>} */
+  const draftOne = async (brief) => {
     const base = { briefing_id: brief.id, lane, tier: brief.tier, gate: 'DRAFTED' };
     const version = Number(brief.version ?? 1) + 1;
     try {
+      if (gate) {
+        const v = await gate(brief);
+        if (v) {
+          recordSkip(brief, v);
+          return { outcome: 'skipped', verdict: v };
+        }
+      }
       const gen = await generate(brief, { now: now(), lane });
       const row = buildDraftRow(brief, gen, lane, { manuscriptColumn: summary.manuscript_column });
       if (!dryRun) await db.insertDraftVersion(row);
@@ -496,24 +812,47 @@ export async function runLane({ lane, quota = undefined, dryRun = false, db, sta
         else out(`[lane-runner dry-run] would write briefing_reviews ${JSON.stringify(review)}`);
       }
       summary.drafts.push({ briefing_id: brief.id, title: brief.title, tier: brief.tier, version: row.version, pages: gen.pages, in_range: gen.in_range, sources: gen.source_count, thin: gen.thin, polished: gen.polished, emitted: gen.emitted ?? null });
+      return { outcome: 'staged' };
     } catch (e) {
-      if (isUniqueViolation(e)) {
+      if (e?.code === 'no_thesis') {
+        // BL3-08: not staged, and not a failure — a draft with no supportable thesis is not padded.
+        summary.no_thesis += 1;
+        statuslog.log({ ...base, gate: 'G1-AUTO', result: 'FAIL', sentence: `no_thesis: "${brief.title}" not staged (${e.reason}).` });
+      } else if (isUniqueViolation(e)) {
         summary.duplicates += 1;
         statuslog.log({ ...base, result: 'FAIL', sentence: `Draft v${version} already staged for "${brief.title}"; nothing written.` });
-      } else {
-        summary.failed += 1;
-        summary.errors.push({ briefing_id: brief.id, message: String(e?.message ?? e) });
-        statuslog.log({ ...base, result: 'FAIL', sentence: `Drafting failed: ${String(e?.message ?? e)}` });
+        return { outcome: 'duplicate' };
       }
+      summary.failed += 1;
+      summary.errors.push({ briefing_id: brief.id, message: String(e?.message ?? e) });
+      statuslog.log({ ...base, result: 'FAIL', sentence: `Drafting failed: ${String(e?.message ?? e)}` });
+      return { outcome: 'failed' };
     }
-    done.add(brief.id);
-    await checkpoint();
+  };
+
+  const processOne = async (brief) => {
+    const { outcome, verdict } = await draftOne(brief);
+    await onDone(brief, outcome, verdict);
     sinceFlush += 1;
     await flushIfDue();
   };
 
-  for (let i = 0; i < candidates.length; i += width) {
-    await Promise.all(candidates.slice(i, i + width).map(processOne));
+  if (!profileMode) {
+    for (let i = 0; i < candidates.length; i += width) {
+      await Promise.all(candidates.slice(i, i + width).map(processOne));
+    }
+  } else {
+    // Ranked order; quota counts STAGED drafts only; at most FETCH_FACTOR × quota packs per run.
+    // Each window is capped at the drafts still owed and the packs still allowed.
+    const budgetLeft = () => (gate ? summary.fetch_budget - summary.fetched : Infinity);
+    let i = 0;
+    while (i < candidates.length && summary.drafted < summary.quota && budgetLeft() > 0) {
+      const take = Math.max(1, Math.min(width, summary.quota - summary.drafted, budgetLeft()));
+      const batch = candidates.slice(i, i + take);
+      i += batch.length;
+      await Promise.all(batch.map(processOne));
+    }
+    if (gate && budgetLeft() <= 0 && summary.drafted < summary.quota) out(`[lane-runner] lane "${lane}": evidence-pack budget (${summary.fetch_budget}) spent with ${summary.drafted}/${summary.quota} staged`);
   }
   return finish();
 }
@@ -544,7 +883,7 @@ async function main(argv) {
   const generator = await buildGenerator({ client, evidenceDir: args.evidence ?? (db.kind === 'fixture' ? EVIDENCE_FIXTURES_DIR : null), render: args.render, llm: args.llm, emit: args.emit, dryRun: args.dryRun });
   try {
     const statuslog = createStatusLog({ dryRun: args.dryRun });
-    const summary = await runLane({ lane: args.lane, quota: args.quota, dryRun: args.dryRun, db, statuslog, generate: generator.generate, flushEvery: args.flushEvery, width: args.width });
+    const summary = await runLane({ lane: args.lane, quota: args.quota, dryRun: args.dryRun, census: args.census, db, statuslog, generate: generator.generate, flushEvery: args.flushEvery, width: args.width });
     if (db.kind === 'fixture' && !args.dryRun) {
       console.log(`[lane-runner] fixture writes: ${db.writes.versions.length} version rows, ${db.writes.reviews.length} review rows, ${db.writes.cursors.length} cursor updates, ${db.writes.health.length} health rows (in memory only)`);
     }

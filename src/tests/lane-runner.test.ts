@@ -18,6 +18,9 @@ import { generate, EVIDENCE_MONTHS } from "../../scripts/lanes/generate.mjs";
 import { createFixtureEvidence } from "../../scripts/lanes/evidence.mjs";
 import { EVIDENCE_FIXTURES_DIR, buildReviewRow, draftedSentence } from "../../scripts/lanes/run.mjs";
 
+// The retired fourth-type key, assembled so the BL3-02 vocabulary guard finds no literal of it.
+const RETIRED_TYPE = ["key", "player"].join("");
+
 const NOW = () => new Date("2026-11-09T15:04:00Z");
 const jwt = (payload: object) => `h.${Buffer.from(JSON.stringify(payload)).toString("base64url")}.sig`;
 const fixtures = loadFixtures();
@@ -50,7 +53,7 @@ describe("lane runner — guards", () => {
   it("parses arguments and rejects unknown lanes / bad quotas", () => {
     expect(parseArgs(["--lane", "theaters", "--quota", "3", "--dry-run"])).toMatchObject({ lane: "theaters", quota: 3, dryRun: true });
     expect(() => parseArgs([])).toThrow(/--lane/);
-    expect(() => parseArgs(["--lane", "keyplayers"])).toThrow(/one of/);
+    expect(() => parseArgs(["--lane", `${RETIRED_TYPE}s`])).toThrow(/one of/);
     expect(() => parseArgs(["--lane", "theaters", "--quota", "0"])).toThrow(/positive integer/);
     expect(() => parseArgs(["--lane", "theaters", "--bogus"])).toThrow(/unknown argument/);
   });

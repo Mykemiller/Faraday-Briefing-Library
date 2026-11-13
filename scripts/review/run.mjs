@@ -21,7 +21,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { tmpdir } from 'node:os';
 import { createStatusLog } from '../statuslog.mjs';
 import { assertServiceRole, LANES } from '../lanes/run.mjs';
-import { jurisdictionRecord, entityRecord, decodeEntities, completeSentences, JW_BASE } from '../lanes/evidence.mjs';
+import { jurisdictionRecord, entityRecord, decodeEntities, completeSentences, jwEventDate, JW_BASE } from '../lanes/evidence.mjs';
 import { runG1, summariseG1, normaliseUrl } from './g1.mjs';
 import { measurePages, closeRenderer } from './render.mjs';
 import { buildPrompts, pickPreset, panelVerdict, xcheckVerdict, runPanelApi, runXcheckApi, importPanel, importXcheck, importName, DEFAULT_CAST_DIR } from './panel.mjs';
@@ -277,7 +277,7 @@ export function createSupabaseDb(client, { briefingResolve = true } = {}) {
         e.prior_count != null && e.current_count != null ? `Recorded count ${e.prior_count} → ${e.current_count} for ${e.period_key}${e.pct_change != null ? ` (${Number(e.pct_change).toFixed(0)}%)` : ''}.` : null,
         ...flattenScalars(e.payload),
       ].filter(Boolean).join('\n');
-      return { resolved: true, kind: 'jw_event', id: e.id, text, title: e.headline ?? null, published_at: e.period_end ?? null, dates: [e.period_start, e.period_end, e.triggered_at].filter(Boolean) };
+      return { resolved: true, kind: 'jw_event', id: e.id, text, title: e.headline ?? null, published_at: jwEventDate(e).date, dates: [e.period_start, e.period_end, e.triggered_at, e.payload?.observed_at].filter(Boolean) };
     }
     const j = await maybe(client.from('jurisdictions').select(JURISDICTION_COLS).eq('slug', slug).maybeSingle());
     if (!j) return { resolved: false };
@@ -422,7 +422,7 @@ export async function gateG1({ draft, briefing, resolve, outDir, db, dryRun }) {
   if (!dryRun && measured.pdf_path && db.kind === 'supabase') {
     try { previewPath = await db.uploadPreview(measured.pdf_path, `review/${draft.briefing_id}/v${draft.version}.pdf`); } catch (e) { measured.upload_error = String(e?.message ?? e); }
   }
-  const r = runG1({ draft, briefing, pages: measured.pages, resolve, renderNote: measured.error });
+  const r = runG1({ draft, briefing, pages: measured.pages, resolve, renderNote: measured.error, requireThesis: true });
   const detail = { summary: summariseG1(r), stats: r.stats, warnings: r.warnings.slice(0, 40), preview_path: previewPath, html_path: measured.html_path, fonts_loaded: measured.fonts_loaded, render_error: measured.error ?? null, upload_error: measured.upload_error ?? null };
   return { result: r.result, blockers: r.blockers, score: measured.pages, detail, sentence: detail.summary, requiredEdits: [] };
 }

@@ -24,12 +24,23 @@ export const SHELF_GROUPS: { type: BriefingType; label: string; note: string }[]
   { type: "jurisdiction", label: "Jurisdiction Briefings", note: "The rules of the ground, read closely" },
 ];
 
-/** Type chips: All / Theater / Sector / Thread → library_search p_type. */
+/** Chip label per type (singular; the shelf group header carries the plural). */
+export const TYPE_CHIP_LABEL: Record<BriefingType, string> = {
+  theater: "Theater",
+  sector: "Sector",
+  thread: "Thread",
+  company: "Company",
+  jurisdiction: "Jurisdiction",
+};
+
+/**
+ * Type chips (BL3-02, FDY-334): All + the five public types, in SHELF_GROUPS order
+ * (All / Theater / Sector / Thread / Company / Jurisdiction). Each key filters via `?type=`.
+ * Count-free by brand rule.
+ */
 export const TYPE_CHIPS: { key: BriefingType | "all"; label: string }[] = [
   { key: "all", label: "All" },
-  { key: "theater", label: "Theater" },
-  { key: "sector", label: "Sector" },
-  { key: "thread", label: "Thread" },
+  ...SHELF_GROUPS.map(({ type }) => ({ key: type, label: TYPE_CHIP_LABEL[type] })),
 ];
 
 /** Byline brand rule: Gilbert — empirical; Mach — forward thesis. */
