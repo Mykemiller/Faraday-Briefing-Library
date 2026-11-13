@@ -69,6 +69,7 @@ export function isSourcedSignal(item) {
   // isCitableSource reads `source_name`, so name it from `publisher` when only that is present.
   const url = String(item.url).trim();
   if (!/^https?:\/\/[^/\s]+\.[^/\s]+/i.test(url) || PLACEHOLDER_URL.test(url)) return false; // absolute http(s) only; never the identity-record placeholder
+  if (NOT_A_PUBLISHER.test(String(item.publisher).trim())) return false; // the generic "Source" fallback / a Google News feed label names no outlet
   return Boolean(isCitableSource(item.source_name ? item : { ...item, source_name: item.publisher }));
 }
 
