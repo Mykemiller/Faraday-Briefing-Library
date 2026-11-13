@@ -8450,7 +8450,11 @@
     "pct_change": null,
     "headline": "ERCOT queue: BM Freestone Energy Center II — 990.60 MW generation (GAS); status Active, 2-System Impact",
     "jurisdiction_name": null,
-    "jurisdiction_slug": null
+    "jurisdiction_slug": null,
+    "triggered_at": "2026-11-09T07:00:00+00:00",
+    "payload": {
+     "observed_at": "2026-11-09T06:40:10Z"
+    }
    },
    {
     "id": "92da4868-e629-4e45-8d71-5e01f3c8603b",

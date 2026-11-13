@@ -260,6 +260,31 @@ export function isVendorOrSponsored(item, subjectHost = null) {
 /** The share of a pack dropped above which a warning line is printed (amendment 4). */
 export const DROP_WARN_SHARE = 0.3;
 
+/** Calendar day of a timestamp in US Central time (Faraday's clock), YYYY-MM-DD; null when unparseable. */
+export function ctDate(v) {
+  if (!v) return null;
+  const d = v instanceof Date ? v : new Date(v);
+  if (Number.isNaN(d.getTime())) return null;
+  return new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Chicago', year: 'numeric', month: '2-digit', day: '2-digit' }).format(d);
+}
+
+/**
+ * The date a Jurisdiction Watch event happened (BL3-07, FDY-331): when it was observed
+ * (payload.observed_at), else when it fired (triggered_at), as a US Central day. period_end is the end
+ * of the reporting period (often in the future) and is NEVER an event date; null when neither is recorded.
+ */
+export function jwEventDate(e) {
+  let payload = e?.payload ?? null;
+  if (typeof payload === 'string') {
+    try {
+      payload = JSON.parse(payload);
+    } catch {
+      payload = null;
+    }
+  }
+  return ctDate(payload?.observed_at) ?? ctDate(e?.observed_at) ?? ctDate(e?.triggered_at);
+}
+
 export function isoDate(v) {
   if (!v) return null;
   const d = v instanceof Date ? v : new Date(v);
@@ -425,18 +450,20 @@ function jwItems(raw, jurisdiction) {
     const text = [`${decodeEntities(e.headline).replace(/[.]$/, '')}.`];
     if (e.prior_count != null && e.current_count != null) text.push(`Recorded count ${e.prior_count} → ${e.current_count} for ${e.period_key}${e.pct_change != null ? ` (${Number(e.pct_change).toFixed(0)}%)` : ''}.`);
     const isQueue = /queue|interconnection/i.test(e.signal_type ?? '');
+    const eventDate = jwEventDate(e);
     items.push({
       ref_kind: 'jw_event',
       id: e.id,
-      date: e.period_end ?? e.period_start ?? null,
-      date_floor: e.period_start ?? null,
+      date: eventDate, // observed_at ?? triggered_at — never period_end (BL3-07)
+      forward_date: e.period_end ?? null, // the reporting period's end: a labelled period, never the item date
+      period_key: e.period_key ?? null,
       publisher: 'Jurisdiction Watch signal',
       headline: clip(e.headline, 100),
       text,
       url: `${e.jurisdiction_slug ? `${JW_BASE}/${e.jurisdiction_slug}` : jwUrl}#signal-${e.id}`,
       title: `Jurisdiction Watch ${String(e.signal_type ?? 'signal').replace(/_/g, ' ')} — ${e.period_key ?? ''}`.trim(),
       artifact_id: null,
-      published_at: e.period_end ?? null,
+      published_at: eventDate,
       license: 'faraday-record',
       domain_tags: ['D3'],
       subdomain_tags: [isQueue ? 'D3.1' : 'D13.3'],
@@ -638,14 +665,26 @@ export function buildPack(raw, brief, window, { log = console.log } = {}) {
   // Window first, then citability (BEFORE composition: a sentence is never composed from an item that is
   // later removed), then de-duplication by URL and headline.
   const hygiene = { items_in: 0, dropped: 0, by_reason: { redirect: 0, index_page: 0, shared_url: 0, no_source_name: 0 }, dropped_share: 0, warning: false };
+  // Future guard (BL3-07): an item whose EVENT date is after the preparation day is dropped and logged;
+  // a forward_date (a JW reporting period's end) never drops anything. A JW event with no observed_at /
+  // triggered_at has no event date and is dropped too (it cannot be dated honestly).
+  const prepared = ctDate(window.to);
+  const dating = { prepared, future_dated: 0, undated_event: 0, dropped_ids: [] };
   const seenUrl = new Set();
   const seenHead = new Set();
   const items = [];
   for (const it of candidates.sort((a, b) => String(b.date ?? '').localeCompare(String(a.date ?? '')))) {
-    if (!inWindow(it.date, window)) {
-      if (it.date_floor && inWindow(it.date_floor, window) && it.date > isoDate(window.to)) it.date = isoDate(window.to);
-      else continue;
+    if (it.ref_kind === 'jw_event' && !it.date) {
+      dating.undated_event += 1;
+      dating.dropped_ids.push(it.id);
+      continue;
     }
+    if (it.date && prepared && it.date > prepared) {
+      dating.future_dated += 1;
+      dating.dropped_ids.push(it.id);
+      continue;
+    }
+    if (!inWindow(it.date, window)) continue;
     hygiene.items_in += 1;
     const why = citabilityReason(it);
     if (why) {
@@ -666,6 +705,7 @@ export function buildPack(raw, brief, window, { log = console.log } = {}) {
     const id8 = String(brief?.id ?? '').slice(0, 8);
     const r = hygiene.by_reason;
     log(`[evidence] ${id8} "${brief?.title ?? ''}": items in ${hygiene.items_in}, dropped ${hygiene.dropped} (${Math.round(hygiene.dropped_share * 100)}%) — redirect ${r.redirect} · index_page ${r.index_page} · shared_url ${r.shared_url} · no_source_name ${r.no_source_name}`);
+    if (dating.future_dated || dating.undated_event) log(`[evidence] ${id8}: dropped ${dating.future_dated} item(s) dated after the preparation day ${prepared} and ${dating.undated_event} Jurisdiction Watch event(s) with no observed_at/triggered_at.`);
     if (hygiene.warning) log(`[evidence] WARNING ${id8}: ${Math.round(hygiene.dropped_share * 100)}% of the in-window evidence was dropped as non-citable (threshold ${Math.round(DROP_WARN_SHARE * 100)}%).`);
   }
 
@@ -680,6 +720,7 @@ export function buildPack(raw, brief, window, { log = console.log } = {}) {
     jurisdiction_record: jrec && jrec.text.length ? jrec : null,
     items,
     hygiene,
+    dating,
   };
 }
 
@@ -867,7 +908,9 @@ export function createSupabaseEvidence(client, limits = LIMITS) {
               .filter(Boolean)
               .slice(0, 40);
           }
-          jw.permit_events = await client.from('jw_signal_events').select('id, signal_type, period_key, period_start, period_end, direction, prior_count, current_count, pct_change, headline, jurisdiction_id').eq('state', st).gte('triggered_at', window.from.toISOString()).is('quarantine_reason', null).order('period_end', { ascending: false }).limit(24).then(must);
+          jw.permit_events = await client.from('jw_signal_events').select('id, signal_type, period_key, period_start, period_end, direction, prior_count, current_count, pct_change, headline, jurisdiction_id, triggered_at, payload').eq('state', st).gte('triggered_at', window.from.toISOString()).is('quarantine_reason', null).order('triggered_at', { ascending: false }).limit(24).then(must);
+          // Newest by event date (payload.observed_at ?? triggered_at), never by period_end (BL3-07).
+          jw.permit_events.sort((a, b) => String(jwEventDate(b) ?? '').localeCompare(String(jwEventDate(a) ?? '')));
           jw.facilities = await client.from('jw_facilities').select('id, facility_name, operator, status, capacity_mw, city, source_name, source_url, announced_date, jds_layer, updated_at').eq('state_abbr', st).not('source_url', 'is', null).gte('updated_at', window.from.toISOString()).order('updated_at', { ascending: false }).limit(30).then(must);
           jw.incentives = await client.from('state_incentive_disclosures').select('id, recipient_name, project_name, place_name, county_name, incentive_type, program_name, statute_citation, award_value_usd, term_start, source_url').eq('state_abbr', st).order('term_start', { ascending: false, nullsFirst: false }).limit(30).then(must);
         } else {

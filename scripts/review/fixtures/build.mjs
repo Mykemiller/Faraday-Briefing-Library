@@ -23,6 +23,7 @@ import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { normaliseUrl } from '../g1.mjs';
+import { jwEventDate } from '../../lanes/evidence.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(HERE, '..', '..', '..');
@@ -79,7 +80,7 @@ function recordFor(ref, pack) {
     if (!parts.length) for (const rec of [pack.jurisdiction, pack.company, pack.institution]) if (rec) parts.push(flat(rec));
   }
   if (ref.kind === 'jw_event') {
-    for (const ev of [...(pack.jw?.permit_events ?? []), ...(pack.jw?.puc ?? [])]) if (ev.id === ref.id) { parts.push(flat(ev)); if (ev.period_end) dates.push(ev.period_end); if (ev.filed_date) dates.push(ev.filed_date); }
+    for (const ev of [...(pack.jw?.permit_events ?? []), ...(pack.jw?.puc ?? [])]) if (ev.id === ref.id) { parts.push(flat(ev)); const d = jwEventDate(ev); if (d) dates.push(d); if (ev.filed_date) dates.push(ev.filed_date); } // BL3-07: event date, never period_end
   }
   if (ref.kind === 'moratorium') {
     for (const m of pack.jw?.moratoria ?? []) if (m.moratorium_id === ref.id) { parts.push(flat(m)); if (m.date_enacted_iso) dates.push(m.date_enacted_iso); }

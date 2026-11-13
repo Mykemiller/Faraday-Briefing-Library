@@ -21,7 +21,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { tmpdir } from 'node:os';
 import { createStatusLog } from '../statuslog.mjs';
 import { assertServiceRole, LANES } from '../lanes/run.mjs';
-import { jurisdictionRecord, entityRecord, decodeEntities, completeSentences, JW_BASE } from '../lanes/evidence.mjs';
+import { jurisdictionRecord, entityRecord, decodeEntities, completeSentences, JW_BASE, jwEventDate } from '../lanes/evidence.mjs';
 import { runG1, summariseG1, normaliseUrl } from './g1.mjs';
 import { measurePages, closeRenderer } from './render.mjs';
 import { buildPrompts, pickPreset, panelVerdict, xcheckVerdict, runPanelApi, runXcheckApi, importPanel, importXcheck, importName, DEFAULT_CAST_DIR } from './panel.mjs';
@@ -277,7 +277,8 @@ export function createSupabaseDb(client, { briefingResolve = true } = {}) {
         e.prior_count != null && e.current_count != null ? `Recorded count ${e.prior_count} → ${e.current_count} for ${e.period_key}${e.pct_change != null ? ` (${Number(e.pct_change).toFixed(0)}%)` : ''}.` : null,
         ...flattenScalars(e.payload),
       ].filter(Boolean).join('\n');
-      return { resolved: true, kind: 'jw_event', id: e.id, text, title: e.headline ?? null, published_at: e.period_end ?? null, dates: [e.period_start, e.period_end, e.triggered_at].filter(Boolean) };
+      // BL3-07: the event date the generator prints (payload.observed_at ?? triggered_at), never period_end.
+      return { resolved: true, kind: 'jw_event', id: e.id, text, title: e.headline ?? null, published_at: jwEventDate(e), dates: [jwEventDate(e), e.triggered_at].filter(Boolean) };
     }
     const j = await maybe(client.from('jurisdictions').select(JURISDICTION_COLS).eq('slug', slug).maybeSingle());
     if (!j) return { resolved: false };
