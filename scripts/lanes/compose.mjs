@@ -211,11 +211,30 @@ export const BOILERPLATE = /Primary Image|Image Caption|^\w+ \w+ (?:Mon|Tue|Wed|
 export const ENTRY_MAX_SENTENCES = 3;
 export const ENTRY_MAX_SENTENCE_CHARS = 380;
 
+/**
+ * A record's summary as printed (BL3-07, FDY-331): whole sentences only, never a truncated one. When the
+ * summary exceeds ENTRY_MAX_SENTENCE_CHARS it is cut at the last full sentence that fits (in order, at
+ * most `maxSentences`); when not even the first sentence fits, the first sentence is used whole. A
+ * sentence — and so the clause that holds a figure with its hedge or date qualifier — is never cut.
+ */
+export function wholeSentences(sentences, maxSentences = ENTRY_MAX_SENTENCES, maxChars = ENTRY_MAX_SENTENCE_CHARS) {
+  const ss = (sentences ?? []).map((x) => String(x).trim()).filter(Boolean);
+  const out = [];
+  let len = 0;
+  for (const x of ss) {
+    if (out.length >= Math.max(1, maxSentences)) break;
+    const next = len + (out.length ? 1 : 0) + x.length;
+    if (next > maxChars) break;
+    out.push(x);
+    len = next;
+  }
+  return out.length ? out : ss.slice(0, 1);
+}
+
 function entry(it, reg, section, maxSentences = ENTRY_MAX_SENTENCES, headClip = 110) {
   const c = reg.cite(it, section);
   const usable = it.text.filter((s) => !BOILERPLATE.test(s));
-  const short = usable.filter((s) => s.length <= ENTRY_MAX_SENTENCE_CHARS);
-  const body = (short.length ? short : usable).slice(0, Math.max(1, maxSentences)).map((s) => s.trim()).join(' ') || it.text[0];
+  const body = wholeSentences(usable.length ? usable : it.text, maxSentences).join(' ') || it.text[0];
   const attrib = it.attribution ? ` _${it.attribution}._` : '';
   return `### ${md(clip(it.headline, headClip))}\n*${fmtDate(it.date)} · ${md(clip(it.publisher, 40))}*\n\n${body} ${c}${attrib}`;
 }
@@ -224,7 +243,7 @@ function figureTable(items, reg, section, max = 6) {
   const rows = glanceRows(items, max);
   if (rows.length < 3) return '';
   const lines = ['| Figure | Stated in the record | Date | Source |', '|---|---|---|---|'];
-  for (const r of rows) lines.push(`| ${md(r.figure)} | ${md(clip(r.sentence, 140))} | ${fmtDate(r.item.date)} | ${reg.cite(r.item, section)} |`);
+  for (const r of rows) lines.push(`| ${md(r.figure)} | ${md(r.sentence)} | ${fmtDate(r.item.date)} | ${reg.cite(r.item, section)} |`);
   return lines.join('\n');
 }
 
@@ -309,7 +328,7 @@ export function composeDeep(brief, pack, budget, now) {
   const signals = ['## Signals to watch', '', 'Each row is an event a source names with a date or window.', ''];
   if (fwd.length) {
     signals.push('| When | Signal | Source |', '|---|---|---|');
-    for (const f of fwd) signals.push(`| ${md(f.when)} | ${md(clip(f.sentence, 160))} | ${reg.cite(f.item, 'signals')} |`);
+    for (const f of fwd) signals.push(`| ${md(f.when)} | ${md(f.sentence)} | ${reg.cite(f.item, 'signals')} |`);
   } else {
     signals.push('No Signal in the record names a dated forward event inside this window.');
   }
@@ -440,7 +459,7 @@ export function composeStandard(brief, pack, budget, now) {
   const p2 = dense.slice(0, 2).map((s) => reg.fact(leadsOf(s)[0], leadsOf(s)[0].text[0], 'argument')).join(' ');
   const p3 = dense.slice(0, 2).map((s) => (leadsOf(s)[1] ? reg.fact(leadsOf(s)[1], leadsOf(s)[1].text[0], 'argument') : '')).filter(Boolean).join(' ');
   const glance = glanceRows(used, budget.glance ?? 8);
-  const glanceTbl = glance.length >= 3 ? ['| Figure | What the record shows | Date |', '|---|---|---|', ...glance.map((g) => `| ${md(g.figure)} | ${md(clip(g.sentence, 110))} ${reg.cite(g.item, 'argument')} | ${fmtDate(g.item.date)} |`)].join('\n') : '';
+  const glanceTbl = glance.length >= 3 ? ['| Figure | What the record shows | Date |', '|---|---|---|', ...glance.map((g) => `| ${md(g.figure)} | ${md(g.sentence)} ${reg.cite(g.item, 'argument')} | ${fmtDate(g.item.date)} |`)].join('\n') : '';
 
   const argument = ['## The argument', '', ...openers, p1, '', p2, ...(p3 ? ['', p3] : []), ...(glanceTbl ? ['', '**At a glance**', '', glanceTbl] : [])].join('\n');
 
