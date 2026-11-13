@@ -65,7 +65,9 @@ export const isCitableSource = typeof evidence.isCitableSource === 'function' ? 
 export function isSourcedSignal(item) {
   if (!item || item.ref_kind !== 'signal') return false;
   if (!String(item.url ?? '').trim() || !String(item.publisher ?? '').trim()) return false;
-  return Boolean(isCitableSource(item));
+  // Pack items carry the outlet as both `publisher` and `source_name` (evidence.mjs); FDY-330's
+  // isCitableSource reads `source_name`, so name it from `publisher` when only that is present.
+  return Boolean(isCitableSource(item.source_name ? item : { ...item, source_name: item.publisher }));
 }
 
 export function countSourcedSignals(pack) {
