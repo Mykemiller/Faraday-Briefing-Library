@@ -20,7 +20,8 @@
 //
 // Markers: `[S3]`, `[3]`, `[3, 7]`, `[S3][S4]`. Refs: `{ref:'S3'}` or `{n:3}`.
 
-import { differentTitles, isIndexUrl, isRedirectUrl } from '../lanes/evidence.mjs';
+import { differentTitles, isIndexUrl, isRedirectUrl, ctDate } from '../lanes/evidence.mjs';
+import { verifyQualifiers } from '../lanes/qualifiers.mjs';
 
 export const PAGE_RANGES = Object.freeze({ deep: [10, 15], standard: [8, 10], profile: [2, 2] });
 export const CTA_PATTERN = /\b(subscribe|sign up|contact us|get in touch|book a (?:call|demo|meeting)|request a demo|buy now|learn more at|visit us|call us|email us|schedule a|reach out)\b/i;
@@ -361,6 +362,81 @@ export function checkHousekeepingMarkers(parsed, push) {
 }
 
 // ---------------------------------------------------------------------------------------------
+// BL3-07 (FDY-331) checks — separate named functions, called from runG1's check list
+// ---------------------------------------------------------------------------------------------
+
+const MONTHS3 = { jan: 1, feb: 2, mar: 3, apr: 4, may: 5, jun: 6, jul: 7, aug: 8, sep: 9, oct: 10, nov: 11, dec: 12 };
+const DISPLAY_DATE = /\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]* (\d{1,2}), (\d{4})\b/g;
+const isoOf = (mon, d, y) => `${y}-${String(MONTHS3[mon.toLowerCase().slice(0, 3)]).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+
+/**
+ * future_dated: an item dated after the brief's preparation day. Checked where the generator prints an
+ * ITEM's date — entry datelines ("*Nov 30, 2026 · …*"), "(Nov 30, 2026)" in the What-to-watch line, the
+ * Date cells of body tables — and the Sources table / source_refs published_at. The "Signals to watch"
+ * section is exempt (its dates are forward windows a source names, not item dates).
+ */
+export function checkFutureDated(parsed, refs, prepared, push) {
+  if (!prepared) return;
+  const seen = new Set();
+  const flag = (iso, where, extra = {}) => {
+    const k = `${iso}|${where}`;
+    if (iso > prepared && !seen.has(k)) {
+      seen.add(k);
+      push('future_dated', `${where} is dated ${iso}, after the preparation day ${prepared}.`, { date: iso, prepared, ...extra });
+    }
+  };
+  for (const s of bodySections(parsed)) {
+    if (/^signals to watch$/i.test(s.heading)) continue;
+    for (const line of s.body.split('\n')) {
+      const t = line.trim();
+      const dateline = t.match(/^\*([A-Z][a-z]{2}) (\d{1,2}), (\d{4}) · /);
+      if (dateline) flag(isoOf(dateline[1], dateline[2], dateline[3]), `An entry in "${s.heading}"`, { section: s.heading, line: t.slice(0, 120) });
+      if (/^\*\*What to watch/.test(t)) for (const m of t.matchAll(/\(([A-Z][a-z]{2}) (\d{1,2}), (\d{4})\)/g)) flag(isoOf(m[1], m[2], m[3]), 'A What-to-watch item', { section: s.heading });
+      if (t.startsWith('|')) for (const cell of t.split('|').map((c) => c.trim())) {
+        const m = cell.match(/^([A-Z][a-z]{2}) (\d{1,2}), (\d{4})$/);
+        if (m) flag(isoOf(m[1], m[2], m[3]), `A table row in "${s.heading}"`, { section: s.heading, line: t.slice(0, 120) });
+      }
+    }
+  }
+  for (const r of refs) {
+    const d = String(r?.published_at ?? '').slice(0, 10);
+    if (/^\d{4}-\d{2}-\d{2}$/.test(d)) flag(d, `Source ${r.ref ?? `S${r.n}`}`, { marker: refNumber(r) });
+  }
+  // The Sources table printed in the manuscript (Date column) as well as the json block.
+  const src = parsed.sections.find((x) => x.isSources);
+  if (src) for (const line of src.body.split('\n')) {
+    const m = line.match(/^\| (S\d+) \|.*\| (\d{4}-\d{2}-\d{2}) \| [^|]* \|$/);
+    if (m) flag(m[2], `Source ${m[1]}`, { marker: Number(m[1].slice(1)) });
+  }
+}
+
+/**
+ * qualifier_changed: a cited sentence whose figure lost or changed its hedge ("up to", "casi", "20–"),
+ * whose year qualifier differs ("by 2032" for "after 2032"), or which gives a figure a year its source
+ * sentence does not state (scripts/lanes/qualifiers.mjs). Table rows and the What-to-watch line are
+ * skipped (headlines and Date cells are metadata, not claims).
+ */
+export function checkQualifiers(parsed, rawTextFor, push) {
+  for (const s of bodySections(parsed)) {
+    if (s.isCoverish) continue;
+    for (const u of unitsOf(s.body)) {
+      if (u.kind === 'row' || !u.cites.length || /^\*\*What to watch/.test(u.text)) continue; // headlines + datelines are metadata
+      const texts = u.cites.map((n) => rawTextFor(n)).filter(Boolean);
+      if (!texts.length) continue;
+      // Statements about the record (counts, the evidence window) are corpus facts, not claims: stripped first.
+      for (const p of verifyQualifiers(stripRecordStatements(u.text), texts.map((t) => ({ text: t })))) {
+        const what = p.kind === 'year_added' ? `gives ${p.figure} the year ${p.year}, which its source does not state` : p.kind === 'date_qualifier' ? `has "${p.output_qualifier ?? '—'} ${p.year}" where the source says "${p.source_qualifier ?? '—'} ${p.year}"` : `has "${p.output_qualifier ?? '—'} ${p.figure}" where the source says "${p.source_qualifier ?? '—'} ${p.figure}"`;
+        // A hedge ADDED where the source states the figure exactly ("about $1.45 billion" for "$1.45B") understates
+        // rather than overstates: a warning. A dropped or changed hedge or range, a changed date qualifier and an
+        // added year are blockers (the G3 date/hedge mismatch classes in FDY-306).
+        const added = p.kind === 'hedge' && !p.source_qualifier && p.output_qualifier && !String(p.output_qualifier).startsWith('range:');
+        push('qualifier_changed', `A sentence in "${s.heading}" ${what}: "${u.text.slice(0, 140)}"`, { section: s.heading, cites: u.cites, ...p, ...(added ? { severity: 'warn' } : {}) });
+      }
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------------------------
 // The gate
 // ---------------------------------------------------------------------------------------------
 
@@ -371,8 +447,10 @@ export function checkHousekeepingMarkers(parsed, push) {
  * @param {number|null} o.pages measured PDF page count (null = could not measure)
  * @param {(url: string, ctx: {ref: object, briefing: object}) => ({resolved: boolean, kind?: string, id?: string, text?: string|null})} o.resolve
  * @param {string} [o.manuscript] override for contents[0]
+ * @param {string} [o.renderNote] why pages could not be measured
+ * @param {string|null} [o.prepared] preparation day (YYYY-MM-DD, CT) for future_dated; default: the draft's prepared_at / evidence_to / created_at
  */
-export function runG1({ draft, briefing, pages, resolve, manuscript, renderNote }) {
+export function runG1({ draft, briefing, pages, resolve, manuscript, renderNote, prepared }) {
   const blockers = [];
   const push = (code, message, extra = {}) => blockers.push({ code, message, ...extra });
   const md = manuscript ?? draft?.manuscript_md ?? (Array.isArray(draft?.contents) ? draft.contents[0] : '') ?? '';
@@ -441,6 +519,13 @@ export function runG1({ draft, briefing, pages, resolve, manuscript, renderNote 
   if (type === 'jurisdiction' && !md.includes(NOT_LEGAL_ADVICE)) push('missing_not_legal_advice', `Jurisdiction brief lacks the line "${NOT_LEGAL_ADVICE}".`);
 
   checkHousekeepingMarkers(parsed, push); // 6b. BL3-06
+  // 6c. BL3-07: no item dated after the preparation day (body datelines + Sources), Signals to watch exempt
+  checkFutureDated(parsed, refs, prepared ?? ctDate(draft?.prepared_at ?? draft?.evidence_to ?? draft?.created_at), push);
+  // 6d. BL3-07: hedges and date qualifiers verbatim
+  checkQualifiers(parsed, (n) => {
+    const t = (resolved.get(n) ?? []).filter((h) => h.resolved && typeof h.text === 'string' && h.text).map((h) => h.text).join('\n');
+    return t || null;
+  }, push);
 
   // 7. numbers vs cited source text
   const sourceNorm = new Map(); // n -> normalised text or null
