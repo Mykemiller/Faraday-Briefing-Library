@@ -23,6 +23,15 @@ found while running the chain are worth knowing: the generator sometimes compose
 `faradays_take` (the Malaysia sentence in the theaters brief), so `recordFor` includes it; and a
 mis-citation in the sample (Germany, the Polar €1B sentence cited to the waste-heat article S3 instead
 of the Polar item S2) is a *genuine* G1 FAIL, not a resolver gap — the fixture keeps it on purpose.
+**Update (BL3-06, FDY-330, 2026-11-13):** it was neither. The generator cited the Polar sentence to S2;
+G1 split the paragraph after "H.I.G." and handed the `[S3]` that closes the previous sentence to the Polar
+fragment. G1 now re-attaches a marker that follows a sentence end to that sentence, so the committed
+fixtures report 0 `number_mismatch`. The samples (and so these fixtures) predate BL3-06's source hygiene:
+they still carry news.google.com refs, "Google News" publishers and housekeeping lines with markers, so
+G1's new BL3-06 checks report `source_redirect` ×45, `publisher_google_news` ×9 and `housekeeping_cited` ×31
+on them. That is correct for this stale output. Regenerate both (`npm run lanes:samples && npm run
+review:fixtures`) where Chromium is available so page counts are measured;
+`src/tests/bl3-06-citation-picker.test.ts` runs G1 on freshly composed drafts from the same evidence packs.
 
 ## Live mode
 
