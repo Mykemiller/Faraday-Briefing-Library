@@ -33,7 +33,7 @@ export const TYPE_META: Record<BriefingType, { label: string; shelf: string }> =
   jurisdiction: { label: "Jurisdiction Briefing", shelf: "Jurisdiction Briefings" },
 };
 
-/** Rows typed with a retired or unknown key (e.g. `keyplayer`, `institution`) carry no type. */
+/** Rows typed with a retired or unknown key (e.g. the retired fourth type, `institution`) carry no type. */
 export function parseType(v: unknown): BriefingType | null {
   const key = str(v)?.toLowerCase();
   return key && (BRIEFING_TYPES as readonly string[]).includes(key) ? (key as BriefingType) : null;

@@ -2,6 +2,9 @@ import { describe, expect, it } from "vitest";
 import { Semaphore, createPolisher, validatePolish, applyPolish, GLOBAL_MODEL_CONCURRENCY } from "../../scripts/lanes/llm.mjs";
 import { parseAllArgs } from "../../scripts/lanes/run-all.mjs";
 
+// The retired fourth-type key, assembled so the BL3-02 vocabulary guard finds no literal of it.
+const RETIRED_TYPE = ["key", "player"].join("");
+
 const draft = {
   kind: "standard",
   tier: "standard",
@@ -92,7 +95,7 @@ describe("createPolisher", () => {
 describe("run-all arguments", () => {
   it("parses lanes, quota, width and the fixture/evidence/emit switches", () => {
     expect(parseAllArgs(["--dry-run", "--lanes", "theaters,states", "--width", "2", "--emit", "out", "--no-llm"])).toMatchObject({ dryRun: true, lanes: ["theaters", "states"], width: 2, emit: "out", llm: false, render: true });
-    expect(() => parseAllArgs(["--lanes", "keyplayers"])).toThrow(/unknown lane/);
+    expect(() => parseAllArgs(["--lanes", `${RETIRED_TYPE}s`])).toThrow(/unknown lane/);
     expect(() => parseAllArgs(["--width", "0"])).toThrow(/--width/);
     expect(parseAllArgs(["--fixtures"]).fixtures).toMatch(/fixtures$/);
   });

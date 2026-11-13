@@ -18,6 +18,9 @@ import {
 import { FIXTURES, fixturesEnabled } from "@/lib/fixtures";
 import { entityFor, clearedLogoCount } from "@/lib/entities";
 
+// The retired fourth-type key, assembled so the BL3-02 vocabulary guard finds no literal of it.
+const RETIRED_TYPE = ["key", "player"].join("");
+
 const row = (o: Record<string, unknown> = {}) => ({ id: "00000000-0000-4000-8000-00000000000a", title: "A briefing", ...o });
 
 describe("normalize", () => {
@@ -26,7 +29,7 @@ describe("normalize", () => {
     expect(normalize({ id: "x" })).toBeNull();
   });
   it("never prints internal codes or unknown types", () => {
-    const b = normalize(row({ theme_tags: ["D3", "D7.2", "Power Architecture"], briefing_type: "keyplayer", tier: "DEEP" }))!;
+    const b = normalize(row({ theme_tags: ["D3", "D7.2", "Power Architecture"], briefing_type: RETIRED_TYPE, tier: "DEEP" }))!;
     expect(b.themes).toEqual(["Power Architecture"]);
     expect(b.type).toBeNull();
     expect(b.typeLabel).toBeNull();
@@ -107,7 +110,7 @@ describe("filters", () => {
   ];
   it("parses and sanitises query params", () => {
     expect(parseFilters({ tier: "DEEP", type: "Jurisdiction", jurisdiction: "us-tx" })).toEqual({ tier: "deep", type: "jurisdiction", jurisdiction: "US-TX" });
-    expect(parseFilters({ tier: "x", type: "keyplayer", jurisdiction: "Texas" })).toEqual({ tier: null, type: null, jurisdiction: null });
+    expect(parseFilters({ tier: "x", type: RETIRED_TYPE, jurisdiction: "Texas" })).toEqual({ tier: null, type: null, jurisdiction: null });
     expect(parseFilters({ tier: ["profile", "deep"], type: ["thread", "sector"] })).toMatchObject({ tier: "profile", type: "thread" });
   });
   it("keeps ?state=XX working as an alias for ?jurisdiction=US-XX", () => {

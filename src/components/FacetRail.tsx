@@ -2,8 +2,8 @@
 
 /**
  * The Shelf's left sidebar (Academy-style), 248px fixed: "The Full Shelf", THEATERS
- * (one item per live theme, names only — the COUNT-FREE brand rule supersedes the old
- * facet count badges), YOUR SHELF ("Reserved Briefings" filters to selected).
+ * (one item per faraday_themes theme, in briefings theater row order, whatever the status of
+ * its briefs (BL3-02); names only — the COUNT-FREE brand rule supersedes the old facet count badges), YOUR SHELF ("Reserved Briefings" filters to selected).
  * Active item: forest text, weight 600, 3px gold left rule.
  */
 export type NavKey = "all" | "reserved" | `t:${string}`;

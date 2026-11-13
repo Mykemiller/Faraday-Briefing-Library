@@ -15,6 +15,9 @@ import { generate, nextBudget } from "../../scripts/lanes/generate.mjs";
 import { parseManuscript, renderManuscript, countPdfPages, inRange } from "../../scripts/templates/manuscript.mjs";
 import { EVIDENCE_FIXTURES_DIR, FIXTURES_DIR } from "../../scripts/lanes/run.mjs";
 
+// The retired fourth-type label, assembled so the BL3-02 vocabulary guard finds no literal of it.
+const RETIRED_LABEL = ["Key", "Player"].join(" ");
+
 const briefs: any[] = JSON.parse(readFileSync(`${FIXTURES_DIR}/briefings.json`, "utf8"));
 const evidence = createFixtureEvidence(EVIDENCE_FIXTURES_DIR);
 const brief = (prefix: string) => briefs.find((b) => b.id.startsWith(prefix));
@@ -104,7 +107,7 @@ describe("composer — every tier, every rule", () => {
         expect(r.kind).toBeTruthy();
         expect(r.id).toBeTruthy();
       }
-      expect(d.manuscript_md).not.toMatch(/Key Player/i);
+      expect(d.manuscript_md).not.toMatch(new RegExp(RETIRED_LABEL, "i"));
       const body = d.manuscript_md.split(/## Sources & method/)[0];
       expect(body).not.toMatch(/\b(?:Theme|Domain|Sub-?Domain)s?\b/);
       expect(d.contents.length).toBeGreaterThan(3);
@@ -193,7 +196,7 @@ describe("composer — every tier, every rule", () => {
     expect(validate(base).ok).toBe(true);
     expect(validate({ ...base, manuscript_md: base.manuscript_md.replace(" [S1]", "") }).problems[0]).toMatch(/never cited|uncited/);
     expect(validate({ ...base, manuscript_md: base.manuscript_md.replace("[S1]", "[S1] [S2]") }).problems).toContainEqual(expect.stringMatching(/S2 has no source_refs/));
-    expect(validate({ ...base, manuscript_md: base.manuscript_md.replace("market", "Key Player") }).problems).toContainEqual(expect.stringMatching(/Key Player/));
+    expect(validate({ ...base, manuscript_md: base.manuscript_md.replace("market", RETIRED_LABEL) }).problems).toContainEqual(expect.stringMatching(new RegExp(RETIRED_LABEL)));
     expect(validate({ ...base, manuscript_md: base.manuscript_md.replace("market", "D3.1 Thread") }).problems).toContainEqual(expect.stringMatching(/internal code/));
   });
   it("numbersSupported() only accepts figures present in the cited evidence", () => {

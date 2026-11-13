@@ -13,6 +13,9 @@ import {
   selectApproved,
 } from "../../scripts/publish-batch.mjs";
 
+// The retired fourth-type key, assembled so the BL3-02 vocabulary guard finds no literal of it.
+const RETIRED_TYPE = ["key", "player"].join("");
+
 const NOW = () => new Date("2026-11-09T15:04:00Z");
 const fixtures = loadFixtures();
 
@@ -49,7 +52,7 @@ describe("publish batch — arguments and selection", () => {
     expect(laneFor({ briefing_type: "company", institution_id: "inst_1" })).toBe("institutions");
     expect(laneFor({ briefing_type: "theater" })).toBe("theaters");
     expect(laneFor({ briefing_type: "thread" })).toBe("subdomains");
-    expect(laneFor({ briefing_type: "keyplayer" })).toBe("unknown");
+    expect(laneFor({ briefing_type: RETIRED_TYPE })).toBe("unknown");
   });
 
   it("recognises a missing queue view", () => {

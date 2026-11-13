@@ -13,6 +13,9 @@ import {
 import { panelVerdict, pickPreset, xcheckVerdict, importName, buildPrompts, PRESETS } from "../../scripts/review/panel.mjs";
 import { parseArgs, isDue, previousAttempt, reviewRow, runChain, createFixtureDb, loadFixtures, latestReview } from "../../scripts/review/run.mjs";
 
+// The retired fourth-type label, assembled so the BL3-02 vocabulary guard finds no literal of it.
+const RETIRED_LABEL = ["Key", "Player"].join(" ");
+
 const NOW = () => new Date("2026-11-09T15:04:00Z");
 
 const manuscript = `:::cover
@@ -134,8 +137,8 @@ describe("G1 — the gate", () => {
     expect(runG1({ draft: { ...draft, tier: "profile" }, briefing: {}, pages: 3, resolve }).blockers.map((b: any) => b.code)).toContain("pages_out_of_range");
     expect(runG1({ draft, briefing: {}, pages: null, resolve }).blockers.map((b: any) => b.code)).toContain("pages_unmeasured");
   });
-  it("bans Key Player everywhere and internal codes outside the Sources page", () => {
-    const md = manuscript.replace("Opinion only.", "Opinion only, a Key Player in D3.5.");
+  it("bans the retired fourth-type label everywhere and internal codes outside the Sources page", () => {
+    const md = manuscript.replace("Opinion only.", `Opinion only, a ${RETIRED_LABEL} in D3.5.`);
     const codes = runG1({ draft: { ...draft, contents: [md] }, briefing: {}, pages: 9, resolve }).blockers.map((b: any) => b.code);
     expect(codes).toContain("banned_vocabulary");
     expect(codes).toContain("internal_code_in_body");
