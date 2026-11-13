@@ -22,6 +22,7 @@
 import { buildPack, evidenceWindow as evidenceWindowFor, EVIDENCE_MONTHS } from './evidence.mjs';
 import { compose, DEFAULT_BUDGET, BYLINES, TIERS, PAGE_RANGE, PROFILE_THIN_BELOW, splitSections, validate } from './compose.mjs';
 import { renderManuscript, inRange } from '../templates/manuscript.mjs';
+import { NoThesisError, applyThesis } from './thesis.mjs';
 
 export { EVIDENCE_MONTHS, BYLINES, TIERS, PAGE_RANGE };
 export const MAX_FIT_ITERATIONS = 6;
@@ -89,8 +90,10 @@ export function nextBudget(budget, pages, tier, draft) {
  * @param {Date}   [opts.now]
  * @param {object} [opts.counter] createPageCounter() instance (shared across briefs); null ⇒ no render check
  * @param {object} [opts.polisher] createPolisher() instance; null ⇒ deterministic text only
+ * @param {object} [opts.thesisWriter] createThesisWriter() instance (BL3-08)
+ * @param {boolean} [opts.requireThesis] BL3-08 gate: a Deep/Standard draft needs a verified thesis + Take, else NoThesisError (not staged). Profiles are exempt.
  */
-export async function generate(brief, { evidence, now = new Date(), counter = null, polisher = null, maxIterations = MAX_FIT_ITERATIONS, budget: budgetOverride = null } = {}) {
+export async function generate(brief, { evidence, now = new Date(), counter = null, polisher = null, thesisWriter = null, requireThesis = false, maxIterations = MAX_FIT_ITERATIONS, budget: budgetOverride = null } = {}) {
   const tier = brief?.tier;
   if (!TIERS.includes(tier)) throw new Error(`unknown tier "${tier}" (expected ${TIERS.join('|')})`);
   if (!evidence) throw new Error('generate() needs an evidence source (createSupabaseEvidence or createFixtureEvidence)');
@@ -123,9 +126,30 @@ export async function generate(brief, { evidence, now = new Date(), counter = nu
     budget = next;
   }
 
+  // BL3-08: thesis + Take, written by the model and verified in code. Fails closed: no key, a failed call
+  // or a failed verification throws NoThesisError and nothing is staged (no deterministic padding).
+  let thesis = null;
+  if (requireThesis && tier !== 'profile') {
+    if (!thesisWriter) throw new NoThesisError('no model client (set ANTHROPIC_API_KEY)');
+    const w = await thesisWriter.write(draft, pack);
+    if (!w.ok) throw new NoThesisError(w.reason);
+    const cand = applyThesis(draft, w);
+    const withSections = { ...cand, contents: splitSections(cand.manuscript_md) };
+    const v = validate(withSections);
+    if (!v.ok) throw new NoThesisError(`thesis draft failed composer validation: ${v.problems[0]}`);
+    draft = withSections;
+    thesis = cand.thesis;
+    if (counter) {
+      html = renderManuscript(draft.manuscript_md, tier);
+      const rr = await counter.count(html);
+      pages = rr.pages;
+      fit.push({ perSection: budget.perSection, sentences: budget.sentences, pages, after: 'thesis' });
+    }
+  }
+
   let polished = false;
-  let polishReason = polisher ? null : 'polish disabled';
-  if (polisher && draft.kind !== 'profile') {
+  let polishReason = thesis ? 'thesis writer used; polish skipped' : polisher ? null : 'polish disabled';
+  if (!thesis && polisher && draft.kind !== 'profile') {
     const r = await polisher.polish(draft, pack);
     if (r.polished) {
       const cand = { ...r.draft, contents: splitSections(r.draft.manuscript_md) };
@@ -146,7 +170,7 @@ export async function generate(brief, { evidence, now = new Date(), counter = nu
         polished = true;
       } else polishReason = v.ok ? `polished draft left the page range (${candPages} pp)` : v.problems[0];
     } else polishReason = r.reason;
-  } else if (polisher) polishReason = 'profiles are never polished';
+  } else if (polisher && !thesis) polishReason = 'profiles are never polished';
 
   return {
     title: draft.title,
@@ -172,6 +196,8 @@ export async function generate(brief, { evidence, now = new Date(), counter = nu
     fit,
     polished,
     polish_reason: polishReason,
+    thesis,
+    watch: draft.meta?.watch ?? null,
     kind: draft.kind,
     stub: false,
   };
