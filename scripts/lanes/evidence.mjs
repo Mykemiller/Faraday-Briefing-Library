@@ -266,6 +266,120 @@ export function isoDate(v) {
   return Number.isNaN(d.getTime()) ? null : d.toISOString().slice(0, 10);
 }
 
+/**
+ * The real-world date of a Jurisdiction Watch event (BL3-07, FDY-331). `period_end` is the end of the
+ * period the event is ABOUT and is routinely in the future (2026-11-30 in a brief prepared 2026-11-11),
+ * so it is never an event date or an ordering key. Live evidence (Texas, 2026-11-13): payload.observed_at
+ * holds the day the source was observed (2026-11-09), triggered_at the day the event row was emitted
+ * (2026-11-10), so observed_at wins and triggered_at is the fallback. period_start is the last resort for
+ * rows captured before those columns were selected (the committed fixtures); `basis` says which was used.
+ */
+export function jwEventDate(e) {
+  const observed = isoDate(e?.payload?.observed_at ?? e?.observed_at);
+  if (observed) return { date: observed, basis: 'observed_at' };
+  const triggered = isoDate(e?.triggered_at);
+  if (triggered) return { date: triggered, basis: 'triggered_at' };
+  const start = isoDate(e?.period_start);
+  if (start) return { date: start, basis: 'period_start' };
+  return { date: null, basis: null };
+}
+
+// ---------------------------------------------------------------------------------------------
+// Hedges, date qualifiers and figures, verbatim (BL3-07, FDY-331)
+// ---------------------------------------------------------------------------------------------
+
+/** Words that qualify the figure or year that follows them. Copied verbatim, never dropped or swapped. */
+const QUALIFIER_WORDS = 'up to|more than|less than|at least|at most|no more than|no less than|over|under|about|around|approximately|roughly|nearly|almost|casi|by|after|before|from|through|until|beyond|since|early|mid|late';
+const FIG_UNIT = 'billion|million|trillion|thousand|bn|gw|mw|kw|twh|gwh|mwh|%|percent|b|m|k|t';
+const RANGE_FIG = `[$€£]?\\s?\\d[\\d,.]*\\s?[–—-]\\s?[$€£]?\\d[\\d,.]*(?:\\s?(?:${FIG_UNIT})\\b)?`;
+const SINGLE_FIG = `[$€£]?\\s?\\d[\\d,.]*(?:\\s?(?:${FIG_UNIT})\\b)?`;
+const FIG_RE = new RegExp(`(?:(${QUALIFIER_WORDS})\\s+)?(${RANGE_FIG}|${SINGLE_FIG})`, 'gi');
+
+const normFig = (f) => String(f).toLowerCase().replace(/\s+/g, '').replace(/[–—]/g, '-').replace(/[,.]+$/, '');
+const normQual = (q) => (q ? String(q).toLowerCase().replace(/\s+/g, ' ') : null);
+
+/** Every figure/year in a sentence with the qualifier word directly before it (or null). */
+export function qualifiedFigures(sentence) {
+  // ISO dates and ids like "Executive Order 2026-05" are not ranges; blank them out, keep offsets.
+  const text = decodeEntities(sentence).replace(/\[S?\d+(?:\s*,\s*S?\d+)*\]/g, (m) => ' '.repeat(m.length)).replace(/\b\d{4}-\d{2}(?:-\d{2})?\b/g, (m) => ' '.repeat(m.length)).replace(/\b(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.?\s+\d{1,2},?\s+\d{4}\b|\b\d{1,2}\/\d{1,2}\/\d{4}\b/gi, (m) => ' '.repeat(m.length));
+  const out = [];
+  for (const m of text.matchAll(FIG_RE)) {
+    const fig = normFig(m[2]);
+    if (!/\d/.test(fig)) continue;
+    const hasUnit = /[$€£%]|[a-z]/.test(fig) || fig.includes('-');
+    const isYear = /^(?:19|20)\d\d$/.test(fig);
+    const thousands = /\d,\d{3}/.test(fig);
+    if (!(hasUnit || isYear || thousands || m[1])) continue; // a bare "5500" or "282" is a name or a count, not a claim to protect
+    out.push({ qualifier: normQual(m[1]), figure: fig, raw: m[0].trim(), index: m.index });
+  }
+  return out;
+}
+
+const sentencesOfText = (t) => String(t ?? '').split(/\n+|(?<=[.!?])\s+(?=[A-Z"“(\[])/).map((x) => x.trim()).filter(Boolean);
+
+/**
+ * Compare the figures an output text states with the SAME figures in the source items' sentences.
+ * Returns a list of problems:
+ *   qualifier_changed  the figure is in the source but with a different (or no) hedge/date qualifier
+ *                      ("up to $600M" → "$600M"; "after 2032" → "by 2032"; "20–30 MW" → "20 MW").
+ *                      Within one output unit a figure is judged by its best occurrence, so a table row
+ *                      that repeats the bare figure in a label cell beside the full sentence passes.
+ *   year_attached      the output puts a year directly after a figure ("$5B in 2027") whose source
+ *                      sentence carries no such year
+ * A figure that appears nowhere in the sources is not this check's concern (the number check owns it).
+ * `items` are evidence items ({text: string[]}) or anything with a `text` string/array.
+ */
+export function verifyQualifiers(outputText, items) {
+  const srcSentences = [];
+  for (const it of items ?? []) {
+    const t = Array.isArray(it?.text) ? it.text : [it?.text ?? it];
+    for (const x of t) srcSentences.push(...sentencesOfText(x));
+  }
+  const srcFigs = srcSentences.map((s) => ({ s, figs: qualifiedFigures(s) }));
+  const problems = [];
+  for (const unit of sentencesOfText(outputText)) {
+    const outFigs = qualifiedFigures(unit);
+    const byFigure = new Map();
+    for (const o of outFigs) byFigure.set(o.figure, [...(byFigure.get(o.figure) ?? []), o]);
+    for (const [figure, occ] of byFigure) {
+      const exact = srcFigs.flatMap((sf) => sf.figs.filter((f) => f.figure === figure).map((f) => ({ ...f, s: sf.s })));
+      if (exact.length) {
+        if (occ.some((o) => exact.some((f) => f.qualifier === o.qualifier))) continue;
+        const worst = occ.find((o) => o.qualifier) ?? occ[0];
+        problems.push({ code: 'qualifier_changed', sentence: unit, figure: worst.raw, output_qualifier: worst.qualifier, source_qualifier: exact[0].qualifier, source_sentence: exact[0].s });
+        continue;
+      }
+      // a number cut out of a source range ("20 MW" out of "20–30 MW")
+      const bare = figure.replace(/[^\d.]/g, '');
+      const inRange = bare ? srcFigs.flatMap((sf) => sf.figs.filter((f) => f.figure.includes('-') && f.figure.split('-').some((part) => part.replace(/[^\d.]/g, '') === bare)).map((f) => ({ ...f, s: sf.s }))) : [];
+      if (inRange.length && !outFigs.some((o) => o.figure === inRange[0].figure) && !occ.some((o) => o.figure.includes('-'))) problems.push({ code: 'qualifier_changed', sentence: unit, figure: occ[0].raw, output_qualifier: occ[0].qualifier, source_qualifier: `range ${inRange[0].raw}`, source_sentence: inRange[0].s });
+    }
+    // a year attached directly after a figure the source leaves undated: "$5B in 2027", "$5B (2027)", "$5B by 2027"
+    for (const m of unit.matchAll(new RegExp(`(${RANGE_FIG}|${SINGLE_FIG})\\s*(?:\\(|,|in|by|for|during|of|through|until)?\\s*\\(?\\b((?:19|20)\\d\\d)\\b(?!-\\d)`, 'gi'))) {
+      const fig = normFig(m[1]);
+      if (/^(?:19|20)\d\d$/.test(fig) || !/\d/.test(fig)) continue;
+      if (/\b(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.?\s+\d{1,2},?\s*$/i.test(unit.slice(0, m.index + m[1].length))) continue; // "Nov 7, 2026"
+      const src = srcFigs.find((sf) => sf.figs.some((g) => g.figure === fig));
+      if (src && !src.s.includes(m[2])) problems.push({ code: 'year_attached', sentence: unit, figure: m[1].trim(), year: m[2], source_sentence: src.s });
+    }
+  }
+  return problems;
+}
+
+/**
+ * Shorten a sentence WITHOUT cutting inside the clause that carries a figure. Cuts at a sentence end,
+ * else at a clause break (; — , ) that keeps every figure and its qualifier; if no such cut fits, the
+ * sentence is returned whole. Never ends in a bare "…" mid-clause the way clip() does.
+ */
+export function clipSentence(s, n = 140) {
+  const t = decodeEntities(s).trim();
+  if (t.length <= n) return t;
+  const lastFig = qualifiedFigures(t).reduce((m, f) => Math.max(m, f.index + f.raw.length), 0);
+  const breaks = [...t.matchAll(/[.;:—]\s|,\s/g)].map((m) => m.index).filter((i) => i >= lastFig && i + 1 <= n);
+  if (breaks.length) return t.slice(0, breaks[breaks.length - 1]).replace(/[,;:—\s]+$/, '') + '.';
+  return t;
+}
+
 export function clip(s, n = 110) {
   const t = decodeEntities(s);
   if (t.length <= n) return t;
@@ -425,18 +539,22 @@ function jwItems(raw, jurisdiction) {
     const text = [`${decodeEntities(e.headline).replace(/[.]$/, '')}.`];
     if (e.prior_count != null && e.current_count != null) text.push(`Recorded count ${e.prior_count} → ${e.current_count} for ${e.period_key}${e.pct_change != null ? ` (${Number(e.pct_change).toFixed(0)}%)` : ''}.`);
     const isQueue = /queue|interconnection/i.test(e.signal_type ?? '');
+    const ev = jwEventDate(e);
     items.push({
       ref_kind: 'jw_event',
       id: e.id,
-      date: e.period_end ?? e.period_start ?? null,
-      date_floor: e.period_start ?? null,
+      signal_type: e.signal_type ?? null,
+      date: ev.date,
+      date_basis: ev.basis,
+      forward_date: isoDate(e.period_end), // the period the event is about; never an event date
+
       publisher: 'Jurisdiction Watch signal',
       headline: clip(e.headline, 100),
       text,
       url: `${e.jurisdiction_slug ? `${JW_BASE}/${e.jurisdiction_slug}` : jwUrl}#signal-${e.id}`,
       title: `Jurisdiction Watch ${String(e.signal_type ?? 'signal').replace(/_/g, ' ')} — ${e.period_key ?? ''}`.trim(),
       artifact_id: null,
-      published_at: e.period_end ?? null,
+      published_at: ev.date,
       license: 'faraday-record',
       domain_tags: ['D3'],
       subdomain_tags: [isQueue ? 'D3.1' : 'D13.3'],
@@ -530,6 +648,7 @@ export function jurisdictionRecord(j) {
     company_tags: [],
     company_names: [],
     section: 'Power & utility regulation',
+    tier: j.current_tier ?? null,
     history: hist.map((h) => ({ date: isoDate(h.scored_at), score: h.score, tier: h.tier, reason: h.change_reason, scale: h.scale_version })),
     figures: [],
   };
@@ -637,14 +756,16 @@ export function buildPack(raw, brief, window, { log = console.log } = {}) {
 
   // Window first, then citability (BEFORE composition: a sentence is never composed from an item that is
   // later removed), then de-duplication by URL and headline.
-  const hygiene = { items_in: 0, dropped: 0, by_reason: { redirect: 0, index_page: 0, shared_url: 0, no_source_name: 0 }, dropped_share: 0, warning: false };
+  const hygiene = { items_in: 0, dropped: 0, by_reason: { redirect: 0, index_page: 0, shared_url: 0, no_source_name: 0 }, dropped_share: 0, warning: false, future_dated_dropped: 0 };
+  let futureDropped = 0;
   const seenUrl = new Set();
   const seenHead = new Set();
   const items = [];
   for (const it of candidates.sort((a, b) => String(b.date ?? '').localeCompare(String(a.date ?? '')))) {
     if (!inWindow(it.date, window)) {
-      if (it.date_floor && inWindow(it.date_floor, window) && it.date > isoDate(window.to)) it.date = isoDate(window.to);
-      else continue;
+      // An item dated after the preparation date is dropped and counted, never clamped to it (BL3-07).
+      if (it.date && it.date > isoDate(window.to)) futureDropped += 1;
+      continue;
     }
     hygiene.items_in += 1;
     const why = citabilityReason(it);
@@ -660,12 +781,14 @@ export function buildPack(raw, brief, window, { log = console.log } = {}) {
     if (h) seenHead.add(h);
     items.push(it);
   }
+  hygiene.future_dated_dropped = futureDropped;
   hygiene.dropped_share = hygiene.items_in ? hygiene.dropped / hygiene.items_in : 0;
   hygiene.warning = hygiene.dropped_share > DROP_WARN_SHARE;
   if (log) {
     const id8 = String(brief?.id ?? '').slice(0, 8);
     const r = hygiene.by_reason;
     log(`[evidence] ${id8} "${brief?.title ?? ''}": items in ${hygiene.items_in}, dropped ${hygiene.dropped} (${Math.round(hygiene.dropped_share * 100)}%) — redirect ${r.redirect} · index_page ${r.index_page} · shared_url ${r.shared_url} · no_source_name ${r.no_source_name}`);
+    if (futureDropped) log(`[evidence] ${id8}: ${futureDropped} item(s) dated after the preparation date ${isoDate(window.to)} were dropped (future_dated).`);
     if (hygiene.warning) log(`[evidence] WARNING ${id8}: ${Math.round(hygiene.dropped_share * 100)}% of the in-window evidence was dropped as non-citable (threshold ${Math.round(DROP_WARN_SHARE * 100)}%).`);
   }
 
@@ -867,7 +990,7 @@ export function createSupabaseEvidence(client, limits = LIMITS) {
               .filter(Boolean)
               .slice(0, 40);
           }
-          jw.permit_events = await client.from('jw_signal_events').select('id, signal_type, period_key, period_start, period_end, direction, prior_count, current_count, pct_change, headline, jurisdiction_id').eq('state', st).gte('triggered_at', window.from.toISOString()).is('quarantine_reason', null).order('period_end', { ascending: false }).limit(24).then(must);
+          jw.permit_events = await client.from('jw_signal_events').select('id, signal_type, period_key, period_start, period_end, direction, prior_count, current_count, pct_change, headline, jurisdiction_id, triggered_at, payload').eq('state', st).gte('triggered_at', window.from.toISOString()).is('quarantine_reason', null).order('triggered_at', { ascending: false }).limit(24).then(must);
           jw.facilities = await client.from('jw_facilities').select('id, facility_name, operator, status, capacity_mw, city, source_name, source_url, announced_date, jds_layer, updated_at').eq('state_abbr', st).not('source_url', 'is', null).gte('updated_at', window.from.toISOString()).order('updated_at', { ascending: false }).limit(30).then(must);
           jw.incentives = await client.from('state_incentive_disclosures').select('id, recipient_name, project_name, place_name, county_name, incentive_type, program_name, statute_citation, award_value_usd, term_start, source_url').eq('state_abbr', st).order('term_start', { ascending: false, nullsFirst: false }).limit(30).then(must);
         } else {

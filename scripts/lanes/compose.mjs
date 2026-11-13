@@ -16,14 +16,15 @@
 // The composer takes a `budget` (entries per section) so the generator can fit the rendered PDF to
 // the tier's page range by re-composing, never by shrinking type.
 
-import { JURISDICTION_SECTIONS, MORATORIUM_NATION_ATTRIBUTION, clip, decodeEntities, extractFigures } from './evidence.mjs';
+import { filterJurisdictionItems, postureStale, subjectOf, RECONCILIATION_SENTENCE } from './jurisdiction.mjs';
+import { JURISDICTION_SECTIONS, MORATORIUM_NATION_ATTRIBUTION, clip, clipSentence, decodeEntities, extractFigures } from './evidence.mjs';
 
 export const TIERS = Object.freeze(['deep', 'standard', 'profile']);
 export const BYLINES = Object.freeze({ deep: 'Faraday Editorial', standard: 'Gilbert Faraday', profile: null });
 export const PAGE_RANGE = Object.freeze({ deep: [10, 15], standard: [8, 10], profile: [2, 2] });
 export const PROFILE_MAX_SIGNALS = 8;
 export const PROFILE_THIN_BELOW = 6;
-export const DEFAULT_BUDGET = Object.freeze({ deep: { perSection: 7, maxSections: 7, minSections: 4, sentences: 3, glance: 6, headline: 110 }, standard: { perSection: 6, maxSections: 5, minSections: 3, sentences: 3, glance: 6, headline: 100 }, profile: { perSection: 8, sentences: 2, lead: 2, headline: 56 } });
+export const DEFAULT_BUDGET = Object.freeze({ deep: { maxEntries: 40, perSection: 7, maxSections: 7, minSections: 4, sentences: 3, glance: 6, headline: 110 }, standard: { maxEntries: 24, perSection: 6, maxSections: 5, minSections: 3, sentences: 3, glance: 6, headline: 100 }, profile: { perSection: 8, sentences: 2, lead: 2, headline: 56 } });
 
 export const KICKER = Object.freeze({ theater: 'Theater Briefing', sector: 'Sector Briefing', thread: 'Thread Briefing', company: 'Company Briefing', institution: 'Institution Briefing', jurisdiction: 'Jurisdiction Briefing' });
 
@@ -49,6 +50,9 @@ export const UNCITED_OK = [
   ...HOUSEKEEPING,
   /^The record holds no /,
   /^No Signal in the record /,
+  /^No dated triggers in the record/,
+  /^\*\*(?:Source-reported|Verified|Faraday view)\.\*\* (?:Faraday's reading|Our view)/,
+  /^The posture score above was last recorded before /,
   /^Each row is an event a source names/,
   /^Statements about the record itself/,
   /^Faraday's reading/,
@@ -161,18 +165,78 @@ export function groupBy(items, keyFn) {
   return [...m.entries()].sort((a, b) => b[1].length - a[1].length || String(a[0]).localeCompare(String(b[0])));
 }
 
-/** Sentences that name a forward date or window (for "Signals to watch"). */
+export const NO_TRIGGERS = 'No dated triggers in the record.';
+export const MIN_WATCH_ROWS = 2;
+const MONTH_INDEX = { jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5, jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11 };
+const monthIdx = (w) => MONTH_INDEX[String(w).slice(0, 3).toLowerCase()];
+const iso = (y, m, d) => `${y}-${String(m + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+const endOfMonth = (y, m) => iso(y, m, new Date(Date.UTC(y, m + 1, 0)).getUTCDate());
+
+/** The LAST day a forward phrase can mean ("Q1 2027" → 2027-03-31, "by 2028" → 2028-12-31, "Dec 15" → this year's Dec 15). */
+export function forwardEnd(phrase, now) {
+  const year = now.getUTCFullYear();
+  let m = phrase.match(/^Q([1-4])\s?(\d{4})$/);
+  if (m) return endOfMonth(Number(m[2]), Number(m[1]) * 3 - 1);
+  m = phrase.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (m) return phrase;
+  m = phrase.match(new RegExp(`^(${MONTH_WORDS})\\.?\\s(\\d{1,2})(?:st|nd|rd|th)?(?:,?\\s(\\d{4}))?$`, 'i'));
+  if (m) return iso(Number(m[3] ?? year), monthIdx(m[1]), Number(m[2]));
+  m = phrase.match(new RegExp(`^(${MONTH_WORDS})\\.?\\s(\\d{4})$`, 'i'));
+  if (m) return endOfMonth(Number(m[2]), monthIdx(m[1]));
+  m = phrase.match(/(\d{4})$/);
+  if (m) return iso(Number(m[1]), 11, 31);
+  return null;
+}
+
+/**
+ * Sentences that name a forward date or window (for "Signals to watch"). Every row resolves to an end date
+ * and is kept only if that date is AFTER the preparation date: a phrase that has already passed is history.
+ */
 export function forwardMentions(items, now) {
   const year = now.getUTCFullYear();
-  const re = new RegExp(`\\b(?:Q[1-4]\\s?(?:${year}|${year + 1}|${year + 2})|(?:${MONTH_WORDS})\\.?\\s(?:${year + 1}|${year + 2})|(?:early|mid|late|first half of|second half of|by|before|through|until|in)\\s(?:${year + 1}|${year + 2})|(?:${year + 1}|${year + 2}|${year + 3}))\\b`);
+  const today = now.toISOString().slice(0, 10);
+  const re = new RegExp(`\\b(?:Q[1-4]\\s?(?:${year}|${year + 1}|${year + 2})|(?:${MONTH_WORDS})\\.?\\s\\d{1,2}(?:st|nd|rd|th)?(?:,?\\s(?:${year}|${year + 1}|${year + 2}))?|\\d{4}-\\d{2}-\\d{2}|(?:${MONTH_WORDS})\\.?\\s(?:${year}|${year + 1}|${year + 2})|(?:early|mid|late|first half of|second half of|by|before|through|until|in)\\s(?:${year + 1}|${year + 2})|(?:${year + 1}|${year + 2}|${year + 3}))\\b`, 'g');
   const out = [];
   for (const it of items) {
     for (const s of it.text) {
-      const m = s.match(re);
-      if (m) out.push({ when: m[0], sentence: s, item: it });
+      for (const m of s.matchAll(re)) {
+        const phrase = m[0].replace(/^(?:early|mid|late|first half of|second half of|by|before|through|until|in)\s/, '');
+        const end = forwardEnd(phrase, now);
+        if (!end || end <= today) continue;
+        out.push({ when: m[0], sentence: s, item: it, date: end });
+        break; // one row per sentence
+      }
     }
   }
   return out;
+}
+
+/** Derived JW rows are reporting-period buckets (month/week deltas), not triggers: their period_end never feeds the watch list. */
+export const BUCKETED_JW_TYPES = /(?:_delta|^permit_velocity_)/;
+
+/** Forward-dated triggers: forwardMentions() plus JW events whose forward_date is after the preparation date (bucketed types excluded). Dated rows first, earliest first. */
+export function watchList(items, now, max = 10) {
+  const today = now.toISOString().slice(0, 10);
+  const rows = forwardMentions(items, now);
+  for (const it of items) {
+    if (it.ref_kind !== 'jw_event' || !it.forward_date || it.forward_date <= today) continue;
+    if (BUCKETED_JW_TYPES.test(it.signal_type ?? '')) continue;
+    rows.push({ when: `Period ends ${fmtDate(it.forward_date)}`, sentence: it.text[0], item: it, date: it.forward_date });
+  }
+  const seen = new Set();
+  return rows
+    .filter((r) => (seen.has(r.sentence) ? false : (seen.add(r.sentence), true)))
+    .sort((a, b) => a.date.localeCompare(b.date))
+    .slice(0, max);
+}
+
+function watchBlock(reg, rows, key = 'signals') {
+  const lines = ['## Signals to watch', ''];
+  if (rows.length >= MIN_WATCH_ROWS) {
+    lines.push('Each row is an event a source names with a date or window.', '', '| When | Signal | Source |', '|---|---|---|');
+    for (const f of rows) lines.push(`| ${md(f.when)} | ${md(clipSentence(f.sentence, 160))} | ${reg.cite(f.item, key)} |`);
+  } else lines.push(NO_TRIGGERS);
+  return lines.join('\n');
 }
 
 /** Named parties in the cited Signals (companies map → canonical name + recorded type). */
@@ -224,7 +288,7 @@ function figureTable(items, reg, section, max = 6) {
   const rows = glanceRows(items, max);
   if (rows.length < 3) return '';
   const lines = ['| Figure | Stated in the record | Date | Source |', '|---|---|---|---|'];
-  for (const r of rows) lines.push(`| ${md(r.figure)} | ${md(clip(r.sentence, 140))} | ${fmtDate(r.item.date)} | ${reg.cite(r.item, section)} |`);
+  for (const r of rows) lines.push(`| ${md(r.figure)} | ${md(clipSentence(r.sentence, 140))} | ${fmtDate(r.item.date)} | ${reg.cite(r.item, section)} |`);
   return lines.join('\n');
 }
 
@@ -305,14 +369,8 @@ export function composeDeep(brief, pack, budget, now) {
     return parts.join('\n\n').replace(/\n\n\n+/g, '\n\n');
   });
 
-  const fwd = forwardMentions(used, now).slice(0, 10);
-  const signals = ['## Signals to watch', '', 'Each row is an event a source names with a date or window.', ''];
-  if (fwd.length) {
-    signals.push('| When | Signal | Source |', '|---|---|---|');
-    for (const f of fwd) signals.push(`| ${md(f.when)} | ${md(clip(f.sentence, 160))} | ${reg.cite(f.item, 'signals')} |`);
-  } else {
-    signals.push('No Signal in the record names a dated forward event inside this window.');
-  }
+  const watchRows = watchList(used, now);
+  const signals = watchBlock(reg, watchRows).split('\n');
 
   const takeFacts = top.map((s) => reg.fact(lead(s), lead(s).text[0], 'take'));
   const take = [
@@ -350,7 +408,7 @@ export function composeDeep(brief, pack, budget, now) {
   const summary = ['## Summary', '', thesis, '', '**Findings**', '', ...findings, '', watchLine].join('\n');
   const sources = sourcesPage(reg, pack, brief, methodNote(pack, brief));
   const blocks = [cover, summary, ...body, signals.join('\n'), take, sources];
-  return finish(brief, pack, reg, blocks, { hypothesis: thesis.replace(/^\*\*Faraday's thesis\.\*\*\s*/, ''), byline: BYLINES.deep, kind: 'deep', sections: sections.map((s) => ({ code: s.code, name: s.name, items: s.items.length, total: s.total })) });
+  return finish(brief, pack, reg, blocks, { hypothesis: thesis.replace(/^\*\*Faraday's thesis\.\*\*\s*/, ''), byline: BYLINES.deep, kind: 'deep', watch: { rows: watchRows.length, empty: watchRows.length < MIN_WATCH_ROWS }, sections: sections.map((s) => ({ code: s.code, name: s.name, items: s.items.length, total: s.total })) });
 }
 
 // ---------------------------------------------------------------------------------------------
@@ -380,6 +438,27 @@ const JURISDICTION_HINT = (it) => {
   return 'Signals to watch';
 };
 
+/**
+ * Template entry budget (BL3-08): at most `max` entries across all sections. Trims the OLDEST entry of the
+ * fullest section (ties: the later section) until the total fits; a section never drops below one entry.
+ * Items are already newest first, so what is dropped is the least current evidence.
+ */
+export function applyEntryBudget(sections, max) {
+  if (!Number.isFinite(max)) return sections;
+  const total = () => sections.reduce((n, s) => n + s.items.length, 0);
+  while (total() > max) {
+    let pick = -1;
+    sections.forEach((s, i) => {
+      if (s.items.length > 1 && (pick < 0 || s.items.length >= sections[pick].items.length)) pick = i;
+    });
+    if (pick < 0) break;
+    sections[pick] = { ...sections[pick], items: sections[pick].items.slice(0, -1) };
+  }
+  return sections;
+}
+
+export const OTHER_ACTIVITY = 'Other recorded activity';
+
 export function composeStandard(brief, pack, budget, now) {
   const reg = createRegistry();
   const tax = pack.taxonomy;
@@ -387,9 +466,18 @@ export function composeStandard(brief, pack, budget, now) {
   const kicker = KICKER[brief.briefing_type] ?? 'Sector Briefing';
 
   let sections;
+  let jurFilter = null;
   if (isJur) {
-    const grouped = new Map(JURISDICTION_SECTIONS.map((h) => [h, []]));
-    for (const it of pack.items) grouped.get(JURISDICTION_HINT(it)).push(it);
+    // BL3-08: only items that name this jurisdiction (plus up to two explicitly federal / EU items under a
+    // labelled heading). Off-jurisdiction items are dropped and counted; empty headings are omitted.
+    const filt = filterJurisdictionItems(pack.items, subjectOf(pack.jurisdiction));
+    jurFilter = { by_class: filt.by_class, dropped: filt.dropped, context_heading: filt.context_heading };
+    const topical = JURISDICTION_SECTIONS.filter((h) => h !== 'Signals to watch');
+    const grouped = new Map([...topical, OTHER_ACTIVITY].map((h) => [h, []]));
+    for (const it of filt.local) {
+      const h = JURISDICTION_HINT(it);
+      grouped.get(h === 'Signals to watch' ? OTHER_ACTIVITY : h).push(it);
+    }
     // Derived Jurisdiction Watch rows (queue deltas, permit velocity) are period-stamped and would
     // otherwise crowd out the dated prose; at most two per heading, the rest is prose, newest first.
     const PROSE_KINDS = new Set(['signal', 'artifact', 'moratorium', 'puc']);
@@ -398,7 +486,8 @@ export function composeStandard(brief, pack, budget, now) {
       const prose = its.filter((it) => PROSE_KINDS.has(it.ref_kind)).slice(0, Math.max(0, budget.perSection - derived.length));
       return [...prose, ...derived].sort((a, b) => String(b.date).localeCompare(String(a.date))).slice(0, budget.perSection);
     };
-    sections = JURISDICTION_SECTIONS.map((h) => ({ code: h, name: h, items: pick(grouped.get(h)), total: grouped.get(h).length }));
+    sections = [...grouped.entries()].map(([h, its]) => ({ code: h, name: h, items: pick(its), total: its.length })).filter((x) => x.items.length);
+    if (filt.context.length) sections.push({ code: filt.context_heading, name: filt.context_heading, items: filt.context, total: filt.context.length });
   } else if (brief.briefing_type === 'sector') {
     const groups = groupBy(pack.items, (it) => (it.subdomain_tags ?? []).find((s) => s.startsWith(`${brief.sector_id}.`)) ?? (it.domain_tags?.includes(brief.sector_id) ? `${brief.sector_id} (Sector-level)` : null)).filter(([, its]) => its.length >= 2);
     const n = Math.max(Math.min(groups.length, budget.maxSections), Math.min(groups.length, budget.minSections));
@@ -418,6 +507,7 @@ export function composeStandard(brief, pack, budget, now) {
       fresh.slice(0, budget.perSection).forEach((it) => ownIds.add(it.id));
     }
   }
+  applyEntryBudget(sections, budget.maxEntries);
   sections.forEach((s, i) => {
     s.key = `t${i + 1}`;
   });
@@ -430,7 +520,9 @@ export function composeStandard(brief, pack, budget, now) {
   // The argument — hypothesis-led, every factual sentence cited.
   const jrec = isJur ? pack.jurisdiction_record : null;
   const openers = [];
+  const stale = isJur ? postureStale(jrec, used) : { stale: false };
   if (jrec) openers.push(reg.fact(jrec, jrec.text.slice(0, 3).join(' '), 'argument'), '');
+  if (stale.stale) openers.push(RECONCILIATION_SENTENCE, '');
   const dense = sections.filter((s) => s.items.length).sort((a, b) => b.total - a.total);
   const subjectName = isJur ? pack.jurisdiction?.name ?? brief.title : brief.briefing_type === 'sector' ? tax.domainName(brief.sector_id) : tax.subdomainName(brief.thread_id);
   const thesisLead = jrec ? `${reg.fact(jrec, jrec.text[0], 'cover')} ${reg.fact(newest[0], newest[0].text[0], 'cover')}` : reg.fact(newest[0], newest[0].text[0], 'cover');
@@ -501,8 +593,11 @@ export function composeStandard(brief, pack, budget, now) {
     ':::',
   ].join('\n');
 
-  const blocks = [cover, argument, ...body, regLines.join('\n'), take, sources];
-  return finish(brief, pack, reg, blocks, { hypothesis: thesisLead, byline: BYLINES.standard, kind: isJur ? 'jurisdiction' : 'standard', sections: sections.map((s) => ({ code: s.code, name: s.name, items: s.items.length, total: s.total })) });
+  // Jurisdiction Briefings carry the forward watch list (decision 2): forward-dated triggers only.
+  const watchRows = isJur ? watchList(used, now) : [];
+  const watch = isJur ? watchBlock(reg, watchRows) : null;
+  const blocks = [cover, argument, ...body, ...(watch ? [watch] : []), regLines.join('\n'), take, sources];
+  return finish(brief, pack, reg, blocks, { hypothesis: thesisLead, byline: BYLINES.standard, kind: isJur ? 'jurisdiction' : 'standard', jurisdiction_filter: jurFilter, posture_stale: isJur ? stale : null, watch: isJur ? { rows: watchRows.length, empty: watchRows.length < MIN_WATCH_ROWS } : null, sections: sections.map((s) => ({ code: s.code, name: s.name, items: s.items.length, total: s.total })) });
 }
 
 // ---------------------------------------------------------------------------------------------
@@ -585,7 +680,7 @@ function finish(brief, pack, reg, blocks, meta) {
     manuscript_md: manuscript,
     evidence_from: new Date(`${pack.window.from}T00:00:00Z`).toISOString(),
     evidence_to: new Date(`${pack.window.to}T23:59:59Z`).toISOString(),
-    meta: { source_count: source_refs.length, items_in_scope: pack.items.length, thin: Boolean(meta.thin), signal_count: meta.signal_count ?? pack.items.length, sections: meta.sections ?? [], housekeeping: reg.housekeepingLines(), hygiene: pack.hygiene ?? null },
+    meta: { source_count: source_refs.length, items_in_scope: pack.items.length, thin: Boolean(meta.thin), jurisdiction_filter: meta.jurisdiction_filter ?? null, posture_stale: meta.posture_stale ?? null, watch: meta.watch ?? null, signal_count: meta.signal_count ?? pack.items.length, sections: meta.sections ?? [], housekeeping: reg.housekeepingLines(), hygiene: pack.hygiene ?? null },
   };
   const v = validate(draft);
   if (!v.ok) throw new Error(`composer produced an invalid draft: ${v.problems.join('; ')}`);
