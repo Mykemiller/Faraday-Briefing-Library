@@ -7,8 +7,8 @@
 // Reads briefings_versions drafts (kind='draft') that have no briefing_reviews row for the current
 // version at the gate in question (and, for G2/G3, whose previous gate PASSed). Writes briefing_reviews
 // ONLY — never the live briefings row. A FAIL returns the draft to its lane (briefing_lanes.cursor.requeue
-// carries the blockers); two consecutive FAILs at the same gate park it (status-log PARKED + a
-// Questions-for-Myke line); a G3 PASS logs QUEUED and the draft appears in v_briefing_signoff_queue
+// carries the blockers); two consecutive FAILs at G1 or G2 park it, and at G3 the same dimension failing
+// again on the same sentence parks it (BL3-09 decision (a)) (status-log PARKED + a Questions-for-Myke line); a G3 PASS logs QUEUED and the draft appears in v_briefing_signoff_queue
 // (docs/ops/signoff-queue.sql). One status-log line per gate per brief (US CT, fixed format).
 //
 // Safety: service-role key required for live runs (deny-all RLS on every table touched); --dry-run
@@ -445,7 +445,7 @@ export async function gateG2({ draft, resolve, mode, importDir, castDir, model }
   return { result: v.verdict, reviewer: preset.reviewer, blockers: v.blockers, score: v.min_score, detail, sentence, requiredEdits: v.required_edits };
 }
 
-export async function gateG3({ draft, resolve, mode, importDir, castDir, model }) {
+export async function gateG3({ draft, resolve, mode, importDir, castDir, model, prior = null }) {
   let run;
   if (mode === 'import') run = importXcheck(draft, importDir);
   else run = await runXcheckApi(draft, { resolve, castDir, model });
@@ -453,13 +453,16 @@ export async function gateG3({ draft, resolve, mode, importDir, castDir, model }
     const missing = run.missing ?? [];
     return { result: 'FAIL', reviewer: G3_REVIEWER, blockers: [{ code: 'xcheck_incomplete', message: `cross-check output missing for ${missing.join(', ')}` }], score: null, detail: { missing }, sentence: `Cross-check incomplete: missing ${missing.join(', ')}.`, requiredEdits: [], incomplete: true };
   }
-  const v = xcheckVerdict(run.facts, run.voice);
-  const detail = { a: v.a, b: v.b, mismatches: v.mismatches, violations: v.violations, unverifiable: v.unverifiable, numbers_checked: v.numbers_checked, disagreements: v.disagreements, summaries: v.summaries, mode };
+  // BL3-09 decision (a): the previous G3 attempt's blockers decide parking (same dimension, same sentence).
+  const priorBlockers = prior ? (typeof prior.blockers === 'string' ? JSON.parse(prior.blockers) : prior.blockers ?? []) : null;
+  const v = xcheckVerdict(run.facts, run.voice, { priorBlockers });
+  const detail = { a: v.a, b: v.b, mismatches: v.mismatches, violations: v.violations, unverifiable: v.unverifiable, numbers_checked: v.numbers_checked, repeats: v.repeats, cross_dimension: v.cross_dimension, attempt: v.attempt, prior_version: prior?.version ?? null, summaries: v.summaries, mode };
+  const cross = v.cross_dimension.length ? ` ${v.cross_dimension.length} sentence${v.cross_dimension.length === 1 ? '' : 's'} flagged by one dimension and cleared by the other (reported, not parked).` : '';
   const sentence = v.verdict === 'PASS'
     ? `Both cross-checkers passed: facts ${v.numbers_checked ?? '?'} figures re-derived, 0 mismatches${v.unverifiable ? ` (${v.unverifiable} unverifiable)` : ''}; voice 0 violations.`
     : v.verdict === 'PARKED'
-      ? `Reviewers disagree on ${v.disagreements.length} sentence${v.disagreements.length === 1 ? '' : 's'}: ${v.disagreements.map((d) => `"${String(d.sentence).slice(0, 80)}"`).join('; ')}.`
-      : `Cross-check failed: facts ${v.a} (${v.mismatches} mismatch${v.mismatches === 1 ? '' : 'es'}), voice ${v.b} (${v.violations} violation${v.violations === 1 ? '' : 's'}).`;
+      ? `Same dimension failed again on ${v.repeats.length} sentence${v.repeats.length === 1 ? '' : 's'} (v${prior?.version ?? '?'} then v${draft.version}): ${v.repeats.map((r) => `${r.dimension} "${String(r.sentence).slice(0, 80)}"`).join('; ')}.`
+      : `Cross-check failed: facts ${v.a} (${v.mismatches} mismatch${v.mismatches === 1 ? '' : 'es'}), voice ${v.b} (${v.violations} violation${v.violations === 1 ? '' : 's'}).${cross}`;
   const edits = [
     ...(run.facts.findings ?? []).filter((f) => f.verdict === 'mismatch').map((f) => ({ kind: 'factual', location: f.sentence, edit: f.claim, reason: f.source_excerpt })),
     ...(run.voice.violations ?? []).map((x) => ({ kind: 'structural', location: x.sentence_or_section, edit: x.rule, reason: x.note })),
@@ -522,7 +525,7 @@ export async function runChain({ gate, lane, quota, dryRun = false, allGates = f
       try {
         if (g === 'G1-AUTO') res = { reviewer: G1_REVIEWER, ...(await gateG1({ draft, briefing, resolve, outDir: previews, db, dryRun })) };
         else if (g === 'G2-PANEL') res = await gateG2({ draft, resolve, mode: panel, importDir, castDir, model });
-        else res = await gateG3({ draft, resolve, mode: panel, importDir, castDir, model });
+        else res = await gateG3({ draft, resolve, mode: panel, importDir, castDir, model, prior: previousAttempt(rows, draft, g) });
       } catch (e) {
         summary.errors.push({ briefing_id: draft.briefing_id, gate: g, message: String(e?.message ?? e) });
         statuslog.log({ ...base, gate: g, result: 'FAIL', sentence: `Gate could not run: ${String(e?.message ?? e)}` });
@@ -558,7 +561,9 @@ export async function runChain({ gate, lane, quota, dryRun = false, allGates = f
       // FAIL or PARKED
       proceed = false;
       const parkedByGate = res.result === 'PARKED';
-      const consecutive = prior?.result === 'FAIL';
+      // G3 parks only through its own same-dimension repeat rule (BL3-09 decision (a)); any other repeat
+      // G3 FAIL returns to the lane like a first one. G1/G2 keep the two-consecutive-FAILs rule.
+      const consecutive = g !== 'G3-XCHECK' && prior?.result === 'FAIL';
       const parked = parkedByGate || consecutive;
       if (parked) summary.parked += 1; else summary.failed += 1;
       statuslog.log({ ...base, gate: g, result: parked ? 'PARKED' : 'FAIL', sentence: parkedByGate ? res.sentence : consecutive ? `Second consecutive FAIL at ${g} (v${prior.version} then v${draft.version}); parked. ${res.sentence}` : res.sentence });
