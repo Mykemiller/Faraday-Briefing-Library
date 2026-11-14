@@ -1,11 +1,13 @@
-import { loadShelf } from "@/lib/shelf";
+import { loadShelf, loadReaderRow } from "@/lib/shelf";
 import { loadTheaters } from "@/lib/theaters";
+import { toReaderFields } from "@/lib/reader";
 import { search, computeFacets } from "@/lib/catalog-model";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { SHELF_PAGE_SIZE } from "@/config/constants";
 import type {
   CatalogBriefing,
   Facets,
+  ReaderFields,
   ShelfPage,
   ShelfQuery,
 } from "@/lib/types";
@@ -93,4 +95,22 @@ export async function getBriefingBySlug(
     briefing.owned = !!ent;
   }
   return briefing;
+}
+
+/**
+ * The Reading Room read (BL3-11, FDY-338): the briefing by slug with the viewer's owned flag
+ * (library_entitlements, as above), plus — only for an Available row — the reader columns
+ * (manuscript_md, source_refs, last_refreshed, hypothesis, byline) read from public.briefings for
+ * that one row. A Coming Soon row never has its manuscript read.
+ */
+export async function getReaderBriefing(
+  slug: string,
+  subscriberId?: string | null
+): Promise<{ briefing: CatalogBriefing; reader: ReaderFields | null } | null> {
+  const briefing = await getBriefingBySlug(slug, subscriberId ?? undefined);
+  if (!briefing) return null;
+  if (briefing.status !== "Available" || !briefing.sourceId) return { briefing, reader: null };
+  const row = await loadReaderRow(briefing.sourceId);
+  if (row?.byline === "Gilbert" || row?.byline === "Mach") briefing.byline = row.byline;
+  return { briefing, reader: toReaderFields(row) };
 }

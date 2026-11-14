@@ -62,6 +62,7 @@ export function briefingToCatalog(
   const title = stripComingSoon(b.title?.trim() || "") || "Untitled briefing";
   return {
     id,
+    sourceId: b.id,
     slug: briefingSlug(b.title?.trim() || "Untitled briefing", id), // slug keyed to the original title: links/carts stay stable
     title,
     description: extras?.briefing_description ?? "",

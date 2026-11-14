@@ -3,6 +3,8 @@ import type { BriefingType, Byline, ShelfStatus } from "@/config/constants";
 /** A denormalized catalog row as the storefront reads it from library_catalog_cache. */
 export interface CatalogBriefing {
   id: string; // Airtable record id, e.g. recIXg6yYr6MNIJGm
+  /** public.briefings.id (uuid) — the source row, used for the single-brief reader read (BL3-11). */
+  sourceId?: string;
   slug: string;
   title: string;
   description: string;
@@ -28,6 +30,38 @@ export interface CatalogBriefing {
   previewSlides: string[] | null;
   /** True when joined against the viewer's entitlements at render time (§11.3). */
   owned?: boolean;
+}
+
+/**
+ * One `briefings.source_refs` jsonb entry as the lane generator writes it (docs/ops/lanes.md §7.1):
+ * `url` + `title` required; `ref` ("S1"), `publisher`, `published_at` and the rest optional.
+ */
+export interface SourceRef {
+  ref?: string | null;
+  n?: number | null;
+  url?: string | null;
+  title?: string | null;
+  publisher?: string | null;
+  published_at?: string | null;
+  date?: string | null;
+  [key: string]: unknown;
+}
+
+/** A Sources-table row (BL3-11 decision 3): n, title, publisher, date, link (http/https only, else null). */
+export interface SourceRow {
+  n: number;
+  title: string;
+  publisher: string;
+  date: string;
+  href: string | null;
+}
+
+/** The single-brief reader fields (BL3-11), read from public.briefings only for an Available row. */
+export interface ReaderFields {
+  manuscriptMd: string | null;
+  sourceRefs: SourceRef[];
+  lastRefreshed: string | null;
+  hypothesis: string;
 }
 
 export interface FacetCount {
