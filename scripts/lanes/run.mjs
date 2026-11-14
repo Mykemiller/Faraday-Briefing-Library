@@ -39,6 +39,12 @@
 //   - --census: measure every eligible Profile in the lane, list who clears the floor, write nothing.
 //   - Every lane: updateLaneCursor() merges into the stored cursor instead of replacing it.
 //
+// BL3-09 (FDY-332): the subdomains lane uses the same probe, gate and skip path for Standard Threads:
+// preDraftGate → "thread_thin" (< 12 sourced items) before drafting, postDraftGate → "thread_short"
+// (renders < 8 pp) after composition. Either way nothing is staged; the skip is listed in summary.skips,
+// logged `DRAFTED · FAIL · Skipped (<reason>): …`, and a review-chain requeue entry for the brief resolves
+// to "skipped: <reason>" (summary.requeue_resolved; the entry is kept). Id-order cursor unchanged.
+//
 // Safety (unchanged): service role only; --dry-run writes nothing anywhere and prints every line;
 // per-brief try/catch; cursor checkpointed after every brief (monotonic across the `--width` window).
 
@@ -48,7 +54,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { createStatusLog } from '../statuslog.mjs';
 import { generate as sourcedGenerate, PAGE_RANGE } from './generate.mjs';
 import { buildPack, createFixtureEvidence, createSupabaseEvidence, evidenceWindow } from './evidence.mjs';
-import { FETCH_FACTOR, PROFILE_FLOOR, THIN_SKIP, dropSkipped, freshSkipped, groupedInstitutionCounts, isGatedLane, isProfileLane, preDraftGate, rankCompanies, rankInstitutions, readSkipped, upsertSkipped } from './gates.mjs';
+import { FETCH_FACTOR, PROFILE_FLOOR, THIN_SKIP, dropSkipped, freshSkipped, gateSkipSentence, groupedInstitutionCounts, isGatedLane, isProfileLane, postDraftGate, preDraftGate, rankCompanies, rankInstitutions, readSkipped, upsertSkipped } from './gates.mjs';
 import { createPolisher } from './llm.mjs';
 
 export const LANES = Object.freeze(['theaters', 'domains', 'subdomains', 'companies', 'states', 'countries', 'institutions']);
@@ -582,6 +588,7 @@ export async function runLane({ lane, quota = undefined, dryRun = false, census 
     drafts: [],
   };
   if (profileMode) Object.assign(summary, { floor: PROFILE_FLOOR, skipped_briefs: 0, skips: [], measured: [], clears_floor: 0, fetched: 0, fetch_budget: null, already_staged: 0, recently_skipped: 0, requeue_pending: [], gated: Boolean(probe) });
+  else if (isGatedLane(lane)) Object.assign(summary, { skipped_briefs: 0, skips: [], gated: Boolean(probe) }); // BL3-09 Thread lane
 
   const finish = async () => {
     const completedAt = now();
@@ -625,13 +632,24 @@ export async function runLane({ lane, quota = undefined, dryRun = false, census 
   let candidates;
   /** @type {(brief: any, outcome: 'staged'|'duplicate'|'failed'|'skipped', gate?: any) => Promise<void>} */
   let onDone;
-  /** Pre-draft gate (Profile lanes with a pack probe): async (brief) => null | { ok:false, reason, n }. */
+  /** Pre-draft gate (Profile lanes and, BL3-09, the subdomains lane, with a pack probe): async (brief) => null | { ok:false, reason, n }. */
   let gate = null;
   const recordSkip = (brief, v, extra = {}) => {
     summary.skipped_briefs += 1;
-    const line = `${String(brief.id).slice(0, 8)} · ${lane} · "${brief.title}" · ${v.reason} · ${v.n} sourced Signals${extra.requeue ? ' · requeue entry kept' : ''}${extra.cached ? ` · checked ${String(extra.cached).slice(0, 10)}` : ''}`;
-    summary.skips.push({ briefing_id: brief.id, title: brief.title, reason: v.reason, n: v.n, line, ...extra });
+    if (!profileMode) {
+      // BL3-09: a review-chain requeue entry for a gated Thread resolves to the skip (the entry is kept).
+      const rq = (Array.isArray(laneRow?.cursor?.requeue) ? laneRow.cursor.requeue : []).find((e) => String(e?.briefing_id) === String(brief.id));
+      if (rq) {
+        extra = { ...extra, requeue: true };
+        (summary.requeue_resolved ??= []).push({ briefing_id: brief.id, version: rq.version, gate: rq.gate, resolution: `skipped: ${v.reason}` });
+      }
+    }
+    const measured = v.pages != null ? `rendered ${v.pages} pp` : `${v.n} sourced ${profileMode ? 'Signals' : 'items'}`;
+    const line = `${String(brief.id).slice(0, 8)} · ${lane} · "${brief.title}" · ${v.reason} · ${measured}${extra.requeue ? ' · requeue entry kept' : ''}${extra.cached ? ` · checked ${String(extra.cached).slice(0, 10)}` : ''}`;
+    summary.skips.push({ briefing_id: brief.id, title: brief.title, reason: v.reason, n: v.n, ...(v.pages != null ? { pages: v.pages } : {}), line, ...extra });
     out(`[lane-runner] ${line}`);
+    const sentence = gateSkipSentence(v); // BL3-09: Thread skips are also written to the status log
+    if (sentence) statuslog.log({ briefing_id: brief.id, lane, tier: brief.tier, gate: 'DRAFTED', result: 'FAIL', sentence });
   };
 
   if (!profileMode) {
@@ -661,6 +679,13 @@ export async function runLane({ lane, quota = undefined, dryRun = false, census 
       summary.cursor_out = { last_id: last, last_run_at: now().toISOString() };
       if (!dryRun) await db.updateLaneCursor(lane, summary.cursor_out);
     };
+    // BL3-09: the subdomains lane gates each Thread on its pack before drafting (same probe and skip path).
+    if (probe && isGatedLane(lane)) {
+      gate = async (brief) => {
+        const v = preDraftGate(lane, await probe(brief, { now: now(), lane }), { tier: brief.tier });
+        return v.ok ? null : v;
+      };
+    }
   } else {
     const cursorIn = laneRow?.cursor && typeof laneRow.cursor === 'object' ? laneRow.cursor : {};
     let skipped = readSkipped(cursorIn);
@@ -780,6 +805,11 @@ export async function runLane({ lane, quota = undefined, dryRun = false, census 
         }
       }
       const gen = await generate(brief, { now: now(), lane });
+      const post = postDraftGate(lane, gen, { tier: brief.tier }); // BL3-09: a Standard Thread under 8 pp is not staged
+      if (!post.ok) {
+        recordSkip(brief, post);
+        return { outcome: 'skipped', verdict: post };
+      }
       const row = buildDraftRow(brief, gen, lane, { manuscriptColumn: summary.manuscript_column });
       if (!dryRun) await db.insertDraftVersion(row);
       summary.drafted += 1;

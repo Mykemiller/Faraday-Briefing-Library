@@ -168,16 +168,16 @@ describe("G2 / G3 — verdict rules and presets", () => {
     expect(panelVerdict({ ...ok, required_edits: [{ kind: "factual", location: "x", edit: "y", reason: "z" }] }).verdict).toBe("FAIL");
     expect(panelVerdict({ ...ok, thesis_clear: undefined }).verdict).toBe("FAIL");
   });
-  it("requires both cross-checkers to pass and parks a disagreement on the same sentence", () => {
+  it("requires both cross-checkers to pass; a facts/voice overlap on one sentence is a FAIL, not PARKED (BL3-09)", () => {
     const facts = { findings: [], cleared: ["ERCOT is tracking 438,000 MW [S1]."], numbers_checked: 3, summary: "" };
     const voice = { violations: [], cleared: ["section: The argument"], summary: "" };
     expect(xcheckVerdict(facts, voice).verdict).toBe("PASS");
     expect(xcheckVerdict({ ...facts, findings: [{ sentence: "s", claim: "c", cited: ["S1"], source_excerpt: "e", verdict: "mismatch" }] }, voice).verdict).toBe("FAIL");
     expect(xcheckVerdict({ ...facts, findings: [{ sentence: "s", claim: "c", cited: ["S1"], source_excerpt: "e", verdict: "unverifiable" }] }, voice).verdict).toBe("PASS");
     expect(xcheckVerdict(facts, { ...voice, violations: [{ sentence_or_section: "section: Cover", rule: "structure", note: "" }] }).verdict).toBe("FAIL");
-    const parked = xcheckVerdict(facts, { ...voice, violations: [{ sentence_or_section: "ERCOT is tracking 438,000 MW.", rule: "voice", note: "" }] });
-    expect(parked.verdict).toBe("PARKED");
-    expect(parked.disagreements).toHaveLength(1);
+    const overlap = xcheckVerdict(facts, { ...voice, violations: [{ sentence_or_section: "ERCOT is tracking 438,000 MW.", rule: "voice", note: "" }] });
+    expect(overlap.verdict).toBe("FAIL"); // superseded rule parked here; see src/tests/bl3-09-g3-thread-gate.test.ts
+    expect(overlap.cross_dimension).toHaveLength(1);
   });
   it("picks the preset by sector, the jurisdiction preset for jurisdiction briefs, and one expert for Profiles", () => {
     expect(pickPreset({ sector_id: "D3", tier: "deep", briefing_type: "theater" }).key).toBe("power-grid");
