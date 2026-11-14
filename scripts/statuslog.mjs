@@ -98,6 +98,12 @@ export function formatNoteLine(text, now = new Date()) {
   return [formatCt(now), cell(text, 'text')].join(SEP);
 }
 
+/** A free-form line whose columns are given separately, so they keep the " · " separator (BL3-10). */
+export function formatPartsLine(parts, now = new Date()) {
+  if (!Array.isArray(parts) || !parts.length) throw new TypeError('parts must be a non-empty array');
+  return [formatCt(now), ...parts.map((p, i) => cell(p, `part ${i + 1}`))].join(SEP);
+}
+
 /** A Notion paragraph block carrying one line (truncated to the rich-text limit). */
 export function paragraphBlock(line) {
   const content = line.length > MAX_RICH_TEXT_CHARS ? `${line.slice(0, MAX_RICH_TEXT_CHARS - 1)}…` : line;
@@ -249,6 +255,12 @@ export function createStatusLog(opts = {}) {
     return line;
   }
 
+  function noteParts(parts) {
+    const line = formatPartsLine(parts, now());
+    queue.push({ section: 'log', line });
+    return line;
+  }
+
   /** Send everything queued. Returns { appended, calls, lines, skipped }. */
   async function flush() {
     const pending = queue.splice(0, queue.length);
@@ -276,7 +288,7 @@ export function createStatusLog(opts = {}) {
     return { appended, calls, lines: pending.map((p) => p.line), skipped: false };
   }
 
-  return { log, question, note, flush, pending: () => queue.length, pageId, dryRun: dryRun || !token };
+  return { log, question, note, noteParts, flush, pending: () => queue.length, pageId, dryRun: dryRun || !token };
 }
 
 // Lazily-built default instance (reads NOTION_TOKEN when first used).
