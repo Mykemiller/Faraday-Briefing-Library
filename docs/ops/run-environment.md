@@ -57,12 +57,17 @@ One line per check, `PASS|FAIL|SKIP <id> <name> <reason>`, then the overall resu
 | id | check | PASS when |
 |---|---|---|
 | a | env-names | the four secret names above are set (non-empty) |
-| b | service-key | no leading/trailing quote characters (ASCII or typographic) or whitespace, and the JWT payload's `ref` is `ycadmmngkdhvpcsrcuaq` |
+| b | service-key | no leading/trailing quote characters (ASCII or typographic), no leading/trailing whitespace and no whitespace/control/non-ASCII characters inside (stricter than "quotes only": a stray space or newline breaks the header too), and the JWT payload's `ref` is `ycadmmngkdhvpcsrcuaq` |
 | c | supabase-rest | `GET <SUPABASE_URL>/rest/v1/briefings?select=id&limit=1` with the key → 200 (and `SUPABASE_URL` is the Faraday host, so the key is never sent elsewhere) |
 | d | notion-egress | `HEAD https://api.notion.com` gets any HTTP answer (a network/proxy error = not on egress) |
 | e | notion-page | `GET /v1/pages/41389a0c1680803dbb99e929c19d402d` with `NOTION_TOKEN` → 200 (404 = page not shared with the integration) |
 | f | anthropic-egress | `HEAD https://api.anthropic.com` gets any HTTP answer |
 | g | node-proxy | `NODE_USE_ENV_PROXY=1` whenever `HTTPS_PROXY` is set (SKIP when there is no proxy) |
+
+In a cloud session (`HTTPS_PROXY` is always set there) a correct environment prints **7 × PASS**.
+Outside a proxy, (g) is SKIP and the overall result is still PASS. A credential containing a
+control or non-ASCII character is reported FAIL and **never sent**, because the HTTP client's error
+would otherwise quote the header value.
 
 Then prove the status log is written from the environment itself, not relayed:
 
@@ -75,8 +80,8 @@ This appends one line under **## Log** on the status page:
 (the actual result is written, so a failing environment logs FAIL). `--json` prints machine-readable results.
 
 **Secret hygiene, enforced in code and tests:** variables are checked by name; the only content read
-from the service key is its JWT `ref` claim; HTTP error bodies are never echoed; any bearer token or
-JWT-shaped string in an error message is masked.
+from the service key is its JWT `ref` claim; HTTP error bodies and header-validation messages are
+never echoed; every known secret value (and any fragment of it) is redacted from error text.
 
 ## 4. Done-when for FDY-336
 

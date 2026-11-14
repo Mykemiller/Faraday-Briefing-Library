@@ -75,6 +75,15 @@ export function decodeJwtRef(value) {
   }
 }
 
+/**
+ * True when the value (after removing wrapping quotes/whitespace) holds anything other than
+ * printable ASCII: an embedded space, CR/LF, NUL or a non-ASCII character. Such a value is never
+ * sent: undici rejects it with an error that quotes the whole header (FDY-336 review blocker).
+ */
+export function hasUnsafeChars(value) {
+  return /[^\x21-\x7E]/.test(cleanKey(value));
+}
+
 /** The key with wrapping quotes/whitespace removed, for use in a request header only. */
 function cleanKey(value) {
   let s = String(value ?? '').trim();
@@ -92,14 +101,47 @@ function hostOf(url) {
   }
 }
 
-/** A short, value-free description of a network error (fetch "failed" + its cause code/message). */
-export function describeNetworkError(e) {
+/**
+ * Remove every known secret value from a text, plus each fragment of it of 6+ characters (so a
+ * value split by an embedded control character is still removed), plus anything bearer- or
+ * JWT-shaped.
+ */
+export function redact(text, secrets = []) {
+  let out = String(text ?? '');
+  const pieces = new Set();
+  for (const s of secrets) {
+    if (typeof s !== 'string' || !s) continue;
+    pieces.add(s);
+    pieces.add(cleanKey(s));
+    for (const f of s.split(/[^\x21-\x7E]+/)) if (f.length >= 6) pieces.add(f);
+  }
+  for (const p of [...pieces].filter(Boolean).sort((a, b) => b.length - a.length)) out = out.split(p).join('***');
+  return out
+    .replace(/(Bearer\s+)\S+/gi, '$1***')
+    .replace(/eyJ[\w-]+(\.[\w-]+){0,2}/g, '***')
+    .replace(/sb_secret_\S+/g, '***');
+}
+
+/**
+ * A short, value-free description of a network error (fetch "failed" + its cause code/message).
+ * Header-validation errors ("Headers.append: <value> is an invalid header value") quote the
+ * credential itself, so they are reported by kind only, never by message.
+ */
+export function describeNetworkError(e, secrets = []) {
   const cause = e?.cause;
-  const bits = [e?.name === 'TimeoutError' || e?.name === 'AbortError' ? 'timed out' : e?.message || 'network error'];
+  const headerError = (m) => typeof m === 'string' && /^Headers\.|invalid header (value|name)/i.test(m);
+  const bits = [];
+  if (e?.name === 'TimeoutError' || e?.name === 'AbortError') bits.push('timed out');
+  else if (headerError(e?.message)) bits.push('invalid header value (credential not echoed)');
+  else bits.push(e?.message || 'network error');
   if (cause?.code) bits.push(String(cause.code));
-  else if (cause?.message && cause.message !== e?.message) bits.push(String(cause.message));
-  // Never echo anything that looks like a credential, just in case a library put one in a message.
-  return bits.join(': ').replace(/(Bearer\s+)\S+/gi, '$1***').replace(/eyJ[\w-]+\.[\w-]+\.[\w-]+/g, '***').slice(0, 160);
+  else if (cause?.message && cause.message !== e?.message && !headerError(cause.message)) bits.push(String(cause.message));
+  return redact(bits.join(': '), secrets).slice(0, 160);
+}
+
+/** The values that must never appear in output (used only to redact them). */
+export function secretValues(env) {
+  return ['SUPABASE_SERVICE_ROLE_KEY', 'NOTION_TOKEN', 'ANTHROPIC_API_KEY', 'CRON_SECRET'].map((n) => env?.[n]).filter((v) => typeof v === 'string' && v);
 }
 
 const pass = (id, name, reason) => ({ id, name, status: 'PASS', reason });
@@ -111,12 +153,12 @@ async function timedFetch(fetchImpl, url, init, timeoutMs) {
   return fetchImpl(url, { ...init, signal });
 }
 
-async function reachable(fetchImpl, id, name, url, timeoutMs) {
+async function reachable(fetchImpl, id, name, url, timeoutMs, secrets = []) {
   try {
     const res = await timedFetch(fetchImpl, url, { method: 'HEAD' }, timeoutMs);
     return pass(id, name, `${hostOf(url)} answered HTTP ${res.status}`);
   } catch (e) {
-    return fail(id, name, `${hostOf(url)} unreachable (${describeNetworkError(e)}); add it to the environment's allowed hosts`);
+    return fail(id, name, `${hostOf(url)} unreachable (${describeNetworkError(e, secrets)}); add it to the environment's allowed hosts`);
   }
 }
 
@@ -129,6 +171,7 @@ export async function runChecks(opts = {}) {
   const env = opts.env ?? process.env;
   const fetchImpl = opts.fetch ?? globalThis.fetch;
   const timeoutMs = opts.timeoutMs ?? DEFAULT_TIMEOUT_MS;
+  const secrets = secretValues(env);
   const results = [];
 
   // (a) names present
@@ -147,6 +190,7 @@ export async function runChecks(opts = {}) {
     const problems = [];
     if (hasWrappingQuotes(key)) problems.push('value is wrapped in quote characters');
     if (hasWrappingWhitespace(key)) problems.push('value has leading/trailing whitespace');
+    if (hasUnsafeChars(key)) problems.push('value contains whitespace, control or non-ASCII characters inside');
     const { ref, kind, reason } = decodeJwtRef(key);
     if (kind === 'sb_secret') problems.push('opaque sb_secret_ key: use the legacy JWT service_role key so the ref can be verified');
     else if (!ref) problems.push(reason ?? 'no ref claim');
@@ -160,7 +204,9 @@ export async function runChecks(opts = {}) {
   } else {
     const host = hostOf(env.SUPABASE_URL);
     if (host !== `${PROJECT_REF}.supabase.co`) {
-      results.push(fail('c', 'supabase-rest', `SUPABASE_URL host is ${host ?? '(unparseable)'}, expected ${PROJECT_REF}.supabase.co`));
+      results.push(fail('c', 'supabase-rest', `SUPABASE_URL host is ${host || '(unparseable)'}, expected ${PROJECT_REF}.supabase.co`));
+    } else if (hasUnsafeChars(key)) {
+      results.push(fail('c', 'supabase-rest', 'SUPABASE_SERVICE_ROLE_KEY contains control or non-ASCII characters; not sent'));
     } else {
       const k = cleanKey(key);
       const url = `https://${host}/rest/v1/briefings?select=id&limit=1`;
@@ -172,17 +218,19 @@ export async function runChecks(opts = {}) {
             : fail('c', 'supabase-rest', `GET /rest/v1/briefings → ${res.status}${res.status === 401 ? ' (key rejected: wrong project or malformed)' : ''}`),
         );
       } catch (e) {
-        results.push(fail('c', 'supabase-rest', `${host} unreachable (${describeNetworkError(e)})`));
+        results.push(fail('c', 'supabase-rest', `${host} unreachable (${describeNetworkError(e, secrets)})`));
       }
     }
   }
 
   // (d) Notion egress
-  results.push(await reachable(fetchImpl, 'd', 'notion-egress', NOTION_API, timeoutMs));
+  results.push(await reachable(fetchImpl, 'd', 'notion-egress', NOTION_API, timeoutMs, secrets));
 
   // (e) Notion status page readable with the token
   if (!present(env, 'NOTION_TOKEN')) {
     results.push(skip('e', 'notion-page', 'NOTION_TOKEN absent'));
+  } else if (hasUnsafeChars(env.NOTION_TOKEN)) {
+    results.push(fail('e', 'notion-page', 'NOTION_TOKEN contains control or non-ASCII characters; not sent'));
   } else {
     try {
       const res = await timedFetch(
@@ -198,12 +246,12 @@ export async function runChecks(opts = {}) {
           : fail('e', 'notion-page', `GET /v1/pages/${STATUS_PAGE_ID} → ${res.status}${hint}`),
       );
     } catch (e) {
-      results.push(fail('e', 'notion-page', `api.notion.com unreachable (${describeNetworkError(e)})`));
+      results.push(fail('e', 'notion-page', `api.notion.com unreachable (${describeNetworkError(e, secrets)})`));
     }
   }
 
   // (f) Anthropic egress
-  results.push(await reachable(fetchImpl, 'f', 'anthropic-egress', ANTHROPIC_API, timeoutMs));
+  results.push(await reachable(fetchImpl, 'f', 'anthropic-egress', ANTHROPIC_API, timeoutMs, secrets));
 
   // (g) Node proxy switch
   const proxy = env.HTTPS_PROXY || env.https_proxy;
@@ -249,6 +297,9 @@ async function main(argv) {
   if (writeTest) {
     if (!present(process.env, 'NOTION_TOKEN')) {
       console.log('SKIP write-test: NOTION_TOKEN absent, nothing written');
+    } else if (hasUnsafeChars(process.env.NOTION_TOKEN)) {
+      console.log('FAIL write-test: NOTION_TOKEN contains control or non-ASCII characters; not sent');
+      process.exitCode = 1;
     } else {
       const { createStatusLog } = await import('../statuslog.mjs');
       const sl = createStatusLog({ token: cleanKey(process.env.NOTION_TOKEN) });
@@ -257,7 +308,7 @@ async function main(argv) {
         const r = await sl.flush();
         console.log(r.skipped ? 'SKIP write-test: statuslog in dry-run' : `PASS write-test: appended under "## Log": ${line}`);
       } catch (e) {
-        console.log(`FAIL write-test: ${describeNetworkError(e)}`);
+        console.log(`FAIL write-test: ${describeNetworkError(e, secretValues(process.env))}`);
         process.exitCode = 1;
       }
     }
@@ -267,7 +318,7 @@ async function main(argv) {
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   main(process.argv.slice(2)).catch((e) => {
-    console.error(`check-run-env crashed: ${describeNetworkError(e)}`);
+    console.error(`check-run-env crashed: ${describeNetworkError(e, secretValues(process.env))}`);
     process.exit(1);
   });
 }

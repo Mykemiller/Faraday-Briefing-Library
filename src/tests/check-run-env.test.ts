@@ -7,6 +7,8 @@ import {
   overall,
   writeTestParts,
   describeNetworkError,
+  hasUnsafeChars,
+  redact,
   PROJECT_REF,
   STATUS_PAGE_ID,
   REQUIRED_ENV,
@@ -182,6 +184,66 @@ describe("runChecks", () => {
     }
     const leaky = Object.assign(new Error(`boom Bearer ${NOTION} ${GOOD_KEY}`), {});
     assertNoSecrets(describeNetworkError(leaky));
+  });
+});
+
+describe("embedded control characters (review blocker)", () => {
+  /** undici-like: validates header values and quotes the whole value in its error, as undici does. */
+  function undiciLikeFetch() {
+    const calls: string[] = [];
+    const fetch = vi.fn(async (url: string, init: any) => {
+      calls.push(url);
+      for (const v of Object.values(init?.headers ?? {}) as string[]) {
+        if (/[\r\n\0]/.test(v)) throw new TypeError(`Headers.append: "${v}" is an invalid header value.`);
+      }
+      if (url.includes("/rest/v1/")) return { ok: true, status: 200 };
+      if (url.includes("/v1/pages/")) return { ok: true, status: 200 };
+      return { ok: false, status: 404 };
+    });
+    return { fetch, calls };
+  }
+
+  const [h, p, sig] = GOOD_KEY.split(".");
+  const cases: [string, string][] = [
+    ["LF inside the signature", `${h}.${p}.${sig}\nETSECRETSIGNATURE`],
+    ["NUL inside an opaque key", "sb_secret_ABCDEFGH\u0000IJKLMNOP"],
+    ["CR inside the payload", `${h}.${p.slice(0, 10)}\r${p.slice(10)}.${sig}`],
+  ];
+
+  for (const [label, key] of cases) {
+    it(`${label}: (b) and (c) FAIL, the key is never sent and never printed`, async () => {
+      const { fetch, calls } = undiciLikeFetch();
+      const rs = await runChecks({ env: goodEnv({ SUPABASE_SERVICE_ROLE_KEY: key }), fetch: fetch as any });
+      expect(hasUnsafeChars(key)).toBe(true);
+      expect(byName(rs, "service-key").status).toBe("FAIL");
+      expect(byName(rs, "service-key").reason).toMatch(/control or non-ASCII/);
+      expect(byName(rs, "supabase-rest").status).toBe("FAIL");
+      expect(byName(rs, "supabase-rest").reason).toMatch(/not sent/);
+      expect(calls.some((u) => u.includes("/rest/v1/"))).toBe(false);
+      const text = rs.map(formatResult).join("\n") + JSON.stringify(rs);
+      for (const frag of key.split(/[\r\n\0]/)) expect(text).not.toContain(frag);
+    });
+  }
+
+  it("NOTION_TOKEN with an embedded newline: (e) FAILs without sending it", async () => {
+    const tok = "ntn_PARTONE_secret\nPART2SECRET";
+    const { fetch, calls } = undiciLikeFetch();
+    const rs = await runChecks({ env: goodEnv({ NOTION_TOKEN: tok }), fetch: fetch as any });
+    expect(byName(rs, "notion-page").status).toBe("FAIL");
+    expect(calls.some((u) => u.includes("/v1/pages/"))).toBe(false);
+    const text = rs.map(formatResult).join("\n");
+    expect(text).not.toContain("PARTONE_secret");
+    expect(text).not.toContain("PART2SECRET");
+  });
+
+  it("describeNetworkError never echoes a header-validation message; redact() removes split fragments", () => {
+    const leaked = "Bearer ntn_PARTONE_secret\nPART2SECRET";
+    const e = new TypeError(`Headers.append: "${leaked}" is an invalid header value.`);
+    const d = describeNetworkError(e, ["ntn_PARTONE_secret\nPART2SECRET"]);
+    expect(d).toBe("invalid header value (credential not echoed)");
+    const wrapped = Object.assign(new TypeError("fetch failed"), { cause: e });
+    expect(describeNetworkError(wrapped)).not.toContain("PART2SECRET");
+    expect(redact("x ntn_PARTONE_secret y PART2SECRET z", ["ntn_PARTONE_secret\nPART2SECRET"])).toBe("x *** y *** z");
   });
 });
 
