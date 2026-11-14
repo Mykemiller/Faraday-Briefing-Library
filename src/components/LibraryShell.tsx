@@ -63,6 +63,11 @@ export function LibraryShell({ initial, theaters }: { initial: ShelfPage; theate
   // Client-side overlay filters on top of the server round-trip.
   let items: CatalogBriefing[] = page.items;
   if (navKey === "reserved") items = items.filter((b) => reservedIds.has(b.id));
+  // BL3-03 decision 4: an active search or Theater filter opens each section's "N in production"
+  // line when it matches planned rows. The server's per-type counts do not apply to the
+  // client-side Reserved overlay (reserved lines are Available briefs).
+  const filterActive = q.trim() !== "" || navKey.startsWith("t:");
+  const inProduction = navKey === "reserved" ? undefined : page.inProductionByType;
 
   return (
     <div className="flex items-stretch min-h-[calc(100vh-69px)]">
@@ -121,7 +126,7 @@ export function LibraryShell({ initial, theaters }: { initial: ShelfPage; theate
             </div>
           </div>
 
-          <Shelf items={items} reservedIds={reservedIds} />
+          <Shelf items={items} reservedIds={reservedIds} inProductionByType={inProduction} openPlanned={filterActive} />
 
           {page.nextCursor && navKey !== "reserved" ? (
             <div className="mt-12 text-center">

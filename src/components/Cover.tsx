@@ -28,7 +28,7 @@ export function Cover({ b, variant = "card" }: { b: CoverBriefing; variant?: "ca
     );
   }
 
-  const soon = b.status === "Coming Soon";
+  // BL3-03: a Coming Soon card's state is the mono badge under the title (Spine), not a cover pill.
   return (
     <div
       className={`${frame} ${coverBgClass(b)} flex flex-col justify-between ${
@@ -61,11 +61,6 @@ export function Cover({ b, variant = "card" }: { b: CoverBriefing; variant?: "ca
         >
           {room ? `Faraday · ${monthYear(b.goLiveDate)}` : "Faraday"}
         </div>
-        {!room && soon ? (
-          <div className="font-mono text-[9px] tracking-[1.4px] uppercase text-ink bg-gold-light px-2 py-1">
-            Coming Soon
-          </div>
-        ) : null}
       </div>
     </div>
   );

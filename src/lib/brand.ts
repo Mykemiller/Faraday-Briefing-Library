@@ -61,6 +61,21 @@ export function coverBgClass(b: Pick<CatalogBriefing, "briefingType" | "status">
   }
 }
 
+const COMING_SOON_PREFIX = /^\s*coming\s+soon\s*[—–-]\s*/i;
+
+/**
+ * The state is a status field, never part of the title (BL3-01 strips it in the data layer;
+ * BL3-03 renders it as a badge). Pure, so client components can apply it at render time too.
+ */
+export function stripComingSoon(title: string): string {
+  return title.replace(COMING_SOON_PREFIX, "").trim();
+}
+
+/** The collapsed planned-row summary per shelf section (BL3-03 decision 5): "1 in production", "12 in production". */
+export function inProductionLabel(n: number): string {
+  return `${n} in production`;
+}
+
 /** "June 2026" from an ISO go_live_date; null-safe. */
 export function monthYear(iso: string | null): string {
   if (!iso) return "";

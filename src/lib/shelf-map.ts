@@ -1,6 +1,7 @@
 import type { BriefingRow, Lookups } from "@/lib/briefings-source";
 import { cacheIdFor, deriveBriefingType, deriveByline, shelfStatusFor } from "@/lib/sync";
 import { briefingSlug } from "@/lib/slug";
+import { stripComingSoon } from "@/lib/brand";
 import type { CatalogBriefing } from "@/lib/types";
 import type { BriefingType } from "@/config/constants";
 
@@ -20,12 +21,9 @@ export interface ShelfExtras {
   preview_slides?: string[] | null;
 }
 
-const COMING_SOON_PREFIX = /^\s*coming\s+soon\s*[—–-]\s*/i;
-
-/** Defensive: the state is a status field, never part of the title (BL3-03 renders the badge). */
-export function stripComingSoon(title: string): string {
-  return title.replace(COMING_SOON_PREFIX, "").trim();
-}
+// Defensive: the state is a status field, never part of the title (BL3-03 renders the badge).
+// Defined in brand.ts (pure, client-safe) so the shelf card can apply it at render time too.
+export { stripComingSoon };
 
 /**
  * Map one briefings row, or null when it must not be on the shelf: not published/planned

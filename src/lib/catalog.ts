@@ -1,7 +1,7 @@
 import { loadShelf, loadReaderRow } from "@/lib/shelf";
 import { loadTheaters } from "@/lib/theaters";
 import { toReaderFields } from "@/lib/reader";
-import { search, computeFacets } from "@/lib/catalog-model";
+import { search, computeFacets, filterRows, inProductionByType } from "@/lib/catalog-model";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { SHELF_PAGE_SIZE } from "@/config/constants";
 import type {
@@ -51,7 +51,7 @@ export async function getTheaters(): Promise<string[]> {
 export async function getShelfPage(query: ShelfQuery): Promise<ShelfPage> {
   const rows = await loadShelf();
   const status = query.status && query.status !== "Owned" ? query.status : undefined;
-  const { items, nextCursor } = search(rows, {
+  const filter = {
     q: query.q,
     theme: query.theme,
     domain: query.domain,
@@ -59,11 +59,16 @@ export async function getShelfPage(query: ShelfQuery): Promise<ShelfPage> {
     company: query.company,
     status,
     type: query.type,
+  };
+  const { items, nextCursor } = search(rows, {
+    ...filter,
     sort: query.sort ?? "newest",
     cursor: query.cursor ?? null,
     limit: SHELF_PAGE_SIZE,
   });
-  return { items, nextCursor, facets: facetsOf(rows), ...countsOf(rows) };
+  // BL3-03: per-type "N in production" over every matching row, not just this page.
+  const inProduction = inProductionByType(filterRows(rows, filter));
+  return { items, nextCursor, facets: facetsOf(rows), ...countsOf(rows), inProductionByType: inProduction };
 }
 
 function countsOf(rows: CatalogBriefing[]) {

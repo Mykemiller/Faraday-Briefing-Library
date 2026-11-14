@@ -51,8 +51,9 @@ export function computeFacets(rows: CatalogBriefing[], axis: "theme" | "domain" 
     .sort((a, b) => b.count - a.count || a.value.localeCompare(b.value));
 }
 
-export function search(rows: CatalogBriefing[], query: ModelQuery): { items: CatalogBriefing[]; nextCursor: string | null } {
-  let filtered = rows.filter(
+/** The rows a query matches, before sorting and paging (shared by search + the per-type counts). */
+export function filterRows(rows: CatalogBriefing[], query: Omit<ModelQuery, "limit" | "cursor" | "sort">): CatalogBriefing[] {
+  return rows.filter(
     (b) =>
       (!query.status || b.status === query.status) &&
       (!query.type || b.briefingType === query.type) &&
@@ -62,6 +63,21 @@ export function search(rows: CatalogBriefing[], query: ModelQuery): { items: Cat
       (!query.subdomain || b.subdomains.includes(query.subdomain)) &&
       (!query.company || b.companies.includes(query.company))
   );
+}
+
+/**
+ * BL3-03 (FDY-335): non-Available rows per public type across EVERY row the query matches (not
+ * just the loaded page), so a section's "N in production" line is the true count even when the
+ * planned rows run past the first keyset page.
+ */
+export function inProductionByType(rows: CatalogBriefing[]): Partial<Record<string, number>> {
+  const out: Partial<Record<string, number>> = {};
+  for (const b of rows) if (b.status !== "Available") out[b.briefingType] = (out[b.briefingType] ?? 0) + 1;
+  return out;
+}
+
+export function search(rows: CatalogBriefing[], query: ModelQuery): { items: CatalogBriefing[]; nextCursor: string | null } {
+  let filtered = filterRows(rows, query);
 
   if (query.sort === "az") filtered.sort((a, b) => a.title.localeCompare(b.title));
   else if (query.sort === "downloads") filtered.sort((a, b) => b.downloadCount - a.downloadCount);
