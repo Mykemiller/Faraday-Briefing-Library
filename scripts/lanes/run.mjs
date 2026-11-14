@@ -629,7 +629,7 @@ export async function runLane({ lane, quota = undefined, dryRun = false, census 
   };
 
   let candidates;
-  /** @type {(brief: any, outcome: 'staged'|'duplicate'|'failed'|'skipped', gate?: any) => Promise<void>} */
+  /** @type {(brief: any, outcome: 'staged'|'duplicate'|'failed'|'skipped'|'no_thesis', gate?: any) => Promise<void>} */
   let onDone;
   /** Pre-draft gate (Profile lanes with a pack probe): async (brief) => null | { ok:false, reason, n }. */
   let gate = null;
@@ -773,7 +773,7 @@ export async function runLane({ lane, quota = undefined, dryRun = false, census 
   summary.manuscript_column = typeof db.hasManuscriptColumn === 'function' ? await db.hasManuscriptColumn() : true;
   if (!summary.manuscript_column) out('[lane-runner] briefings_versions.manuscript_md not present (BL2-05 migration unapplied); storing the manuscript as contents[0]');
 
-  /** @returns {Promise<{outcome: 'staged'|'duplicate'|'failed'|'skipped', verdict?: any}>} */
+  /** @returns {Promise<{outcome: 'staged'|'duplicate'|'failed'|'skipped'|'no_thesis', verdict?: any}>} */
   const draftOne = async (brief) => {
     const base = { briefing_id: brief.id, lane, tier: brief.tier, gate: 'DRAFTED' };
     const version = Number(brief.version ?? 1) + 1;
@@ -818,6 +818,7 @@ export async function runLane({ lane, quota = undefined, dryRun = false, census 
         // BL3-08: not staged, and not a failure — a draft with no supportable thesis is not padded.
         summary.no_thesis += 1;
         statuslog.log({ ...base, gate: 'G1-AUTO', result: 'FAIL', sentence: `no_thesis: "${brief.title}" not staged (${e.reason}).` });
+        return { outcome: 'no_thesis' };
       } else if (isUniqueViolation(e)) {
         summary.duplicates += 1;
         statuslog.log({ ...base, result: 'FAIL', sentence: `Draft v${version} already staged for "${brief.title}"; nothing written.` });
