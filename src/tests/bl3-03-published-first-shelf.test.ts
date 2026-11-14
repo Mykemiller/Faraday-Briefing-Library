@@ -236,6 +236,22 @@ describe("BL3-03 lazy A–Z planned runs", () => {
     expect(seen).toEqual(expected.map((b) => b.id));
   });
 
+  it('az cursor survives "|" and "%" in titles and duplicate titles (URL round trip)', () => {
+    const odd = ["A|B", "A|B", "a|b", "100% Grid", "Zed%7C", "x|y|z", "Émile", "emile"].map((t, i) => planned(`r${i}`, "company", t));
+    const seen: string[] = [];
+    let cursor: string | null = null;
+    for (let i = 0; i < 10; i += 1) {
+      const r = search(odd, { sort: "az", cursor, limit: 3 });
+      seen.push(...r.items.map((b) => b.id));
+      if (!r.nextCursor) break;
+      cursor = new URLSearchParams(new URLSearchParams({ cursor: r.nextCursor }).toString()).get("cursor");
+    }
+    expect(seen.length).toBe(odd.length);
+    expect(new Set(seen).size).toBe(odd.length);
+    // a malformed cursor restarts from the first page rather than throwing
+    expect(search(odd, { sort: "az", cursor: "az:%E0%A4|zz", limit: 3 }).items.length).toBe(3);
+  });
+
   it("an expanded type shows exactly its A–Z run; other types and Available rows come from the page", () => {
     const page = [avail("a1", "company", "2026-11-01"), planned("pz", "company", "Zulu"), planned("t9", "theater", "Theta")];
     const run = { items: [planned("pa", "company", "Alpha"), planned("pb", "company", "Bravo")] };

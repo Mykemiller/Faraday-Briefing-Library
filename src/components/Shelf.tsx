@@ -26,7 +26,9 @@ export function Shelf({
   inProductionByType,
   openPlanned = false,
   onExpandPlanned,
+  onPlannedToggle,
   plannedLoading,
+  plannedDone,
 }: {
   items: CatalogBriefing[];
   reservedIds: ReadonlySet<string>;
@@ -40,8 +42,12 @@ export function Shelf({
    * fetches that type's planned rows A–Z. Without JS the line still opens on what is loaded.
    */
   onExpandPlanned?: (type: BriefingType) => void;
+  /** Every open/close of a section's line (the shell reloads open lines after a filter change). */
+  onPlannedToggle?: (type: BriefingType, open: boolean) => void;
   /** Types whose planned rows are being fetched. */
   plannedLoading?: ReadonlySet<BriefingType>;
+  /** Types whose A–Z run is complete (no "Show more" even if rows changed between calls). */
+  plannedDone?: ReadonlySet<BriefingType>;
 }) {
   const sections = buildShelfSections(items, inProductionByType);
 
@@ -78,7 +84,9 @@ export function Shelf({
               data-shelf-planned=""
               open={openPlanned ? true : undefined}
               onToggle={(e) => {
-                if (e.currentTarget.open && s.planned.length < s.inProduction) onExpandPlanned?.(s.type);
+                const open = e.currentTarget.open;
+                onPlannedToggle?.(s.type, open);
+                if (open && s.planned.length < s.inProduction && !plannedDone?.has(s.type)) onExpandPlanned?.(s.type);
               }}
             >
               <summary className="cursor-pointer select-none list-none font-mono text-[12px] tracking-[0.5px] text-ink-soft hover:text-ink [&::-webkit-details-marker]:hidden">
@@ -94,7 +102,7 @@ export function Shelf({
                   ))}
                 </div>
               ) : null}
-              {s.planned.length < s.inProduction && onExpandPlanned ? (
+              {s.planned.length < s.inProduction && onExpandPlanned && !plannedDone?.has(s.type) ? (
                 <button
                   type="button"
                   onClick={() => onExpandPlanned(s.type)}

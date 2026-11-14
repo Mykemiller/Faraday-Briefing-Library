@@ -37,6 +37,8 @@ export function LibraryShell({ initial, theaters }: { initial: ShelfPage; theate
   const [planned, setPlanned] = useState<Partial<Record<BriefingType, PlannedRun>>>({});
   const [plannedLoading, setPlannedLoading] = useState<ReadonlySet<BriefingType>>(new Set());
   const generation = useRef(0);
+  // Lines currently open (from <details> toggle events), so a filter change can reload their runs.
+  const openTypes = useRef<Set<BriefingType>>(new Set());
 
   const queryParams = (cursor?: string | null) => {
     const params = new URLSearchParams();
@@ -55,14 +57,19 @@ export function LibraryShell({ initial, theaters }: { initial: ShelfPage; theate
     }
     generation.current += 1;
     const gen = generation.current;
-    setPlanned({});
+    // A line that stays open across the change gets an EMPTY run (never the new page's arbitrary
+    // planned rows) until its fresh A–Z run arrives below.
+    const stillOpen = [...openTypes.current];
+    setPlanned(Object.fromEntries(stillOpen.map((t) => [t, { items: [], cursor: null, done: false }])));
     setPlannedLoading(new Set());
     const applied = { q, navKey };
     const t = setTimeout(async () => {
       const res = await fetch(`/api/library/catalog?${queryParams().toString()}`);
       if (res.ok && gen === generation.current) {
-        setPage(await res.json());
+        const next: ShelfPage = await res.json();
+        setPage(next);
         setPageFilter(applied);
+        for (const type of stillOpen) if ((next.inProductionByType?.[type] ?? 0) > 0) void loadPlanned(type, true);
       }
     }, 180);
     return () => clearTimeout(t);
@@ -71,10 +78,11 @@ export function LibraryShell({ initial, theaters }: { initial: ShelfPage; theate
 
   const loadMore = async () => {
     if (!page.nextCursor || loadingMore) return;
+    const gen = generation.current;
     setLoadingMore(true);
     try {
       const res = await fetch(`/api/library/catalog?${queryParams(page.nextCursor).toString()}`);
-      if (res.ok) {
+      if (res.ok && gen === generation.current) {
         const next: ShelfPage = await res.json();
         setPage({ ...next, items: [...page.items, ...next.items] });
       }
@@ -83,10 +91,13 @@ export function LibraryShell({ initial, theaters }: { initial: ShelfPage; theate
     }
   };
 
-  /** Load the next A–Z run of one type's planned rows (BL3-03). */
-  const loadPlanned = async (type: BriefingType) => {
-    const run = planned[type];
-    if (plannedLoading.has(type) || run?.done) return;
+  /**
+   * Load the next A–Z run of one type's planned rows (BL3-03). `restart` (after a filter change)
+   * ignores this render's run/loading state, which the change has already reset.
+   */
+  const loadPlanned = async (type: BriefingType, restart = false) => {
+    const run = restart ? undefined : planned[type];
+    if (!restart && (plannedLoading.has(type) || run?.done)) return;
     const gen = generation.current;
     setPlannedLoading((s) => new Set(s).add(type));
     try {
@@ -191,7 +202,12 @@ export function LibraryShell({ initial, theaters }: { initial: ShelfPage; theate
             inProductionByType={inProduction}
             openPlanned={filterActive}
             onExpandPlanned={reserved ? undefined : (type) => void loadPlanned(type)}
+            onPlannedToggle={(type, open) => {
+              if (open) openTypes.current.add(type);
+              else openTypes.current.delete(type);
+            }}
             plannedLoading={plannedLoading}
+            plannedDone={new Set((Object.keys(planned) as BriefingType[]).filter((t) => planned[t]?.done))}
           />
 
           {moreAvailable && !reserved ? (

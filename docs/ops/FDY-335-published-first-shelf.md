@@ -19,7 +19,7 @@ Branch `claude/fdy-335-published-first-shelf` · 2026-11-14 CT · ORCH-B Saturda
 ## Evidence
 
 ### Tests
-`npm test` → 303/303 (18 in `src/tests/bl3-03-published-first-shelf.test.ts`). `npx tsc --noEmit` is clean. `next build` is clean.
+`npm test` → 304/304 (19 in `src/tests/bl3-03-published-first-shelf.test.ts`). `npx tsc --noEmit` is clean. `next build` is clean.
 
 ### Preview (real data), deployment `dpl_7jgu3izq…` (c110e3e) and `dpl_4HvH3bEH…` (89d5dac)
 `/library` was fetched through the Vercel MCP: this sandbox's egress blocks `*.vercel.app`, so a direct curl or Playwright run is not possible. It returned 200 with five sections, each showing only its line: **6 / 23 / 59 / 267 / 45 in production** (= the 400 planned rows; 0 published). No `<details>` is open, no title contains "Coming Soon —", and the 48 page-1 planned cards are all badged and inside closed lines.
@@ -36,6 +36,7 @@ Chromium in this sandbox cannot reach the Faraday REST API or loopback, so the a
 | Open Theater | 6 cards, A–Z, 6 badges, no "Show more" |
 | Open Company | 48 cards A–Z, then "Show more in production" → 96 cards, still A–Z, 96 unique |
 | "Coming Soon —" visible anywhere | no |
+| Company open, then the "Company" chip (filter change) | line stays open and reloads: 48 cards = the first 48 A–Z (contiguous run, not page rows) |
 | Search "Wolfspeed" | only Company remains: "18 in production", opened automatically, 18 cards |
 | Reserved Briefings | no lines |
 
