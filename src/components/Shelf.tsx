@@ -16,14 +16,17 @@ const GRID = "grid grid-cols-[repeat(auto-fill,minmax(238px,1fr))] gap-[26px]";
  * the grid of planned cards (alphabetical, each with a "Coming soon" badge). A section with
  * nothing Available shows only that line, never a grid of grey cards. Native <details> keeps it
  * working without JS. An active search or Theater filter opens the line when it matches planned
- * rows (`openPlanned`). Sections with nothing at all are omitted; an all-empty result renders the
- * dashed empty state.
+ * rows (`openPlanned`). Opening a line whose planned rows are not all on the loaded page asks the
+ * shell for that type's planned rows, A–Z (`onExpandPlanned`). Sections with nothing at all are
+ * omitted; an all-empty result renders the dashed empty state.
  */
 export function Shelf({
   items,
   reservedIds,
   inProductionByType,
   openPlanned = false,
+  onExpandPlanned,
+  plannedLoading,
 }: {
   items: CatalogBriefing[];
   reservedIds: ReadonlySet<string>;
@@ -31,6 +34,14 @@ export function Shelf({
   inProductionByType?: Partial<Record<BriefingType, number>>;
   /** True while a search or Theater filter is active: matching planned rows are shown open. */
   openPlanned?: boolean;
+  /**
+   * Called when a section's "N in production" line is opened (by the reader or by `openPlanned`)
+   * and again from its "Show more" button, while fewer than N planned cards are loaded. The shell
+   * fetches that type's planned rows A–Z. Without JS the line still opens on what is loaded.
+   */
+  onExpandPlanned?: (type: BriefingType) => void;
+  /** Types whose planned rows are being fetched. */
+  plannedLoading?: ReadonlySet<BriefingType>;
 }) {
   const sections = buildShelfSections(items, inProductionByType);
 
@@ -65,9 +76,12 @@ export function Shelf({
             <details
               className="group/planned mt-[22px]"
               data-shelf-planned=""
-              open={openPlanned && s.planned.length > 0 ? true : undefined}
+              open={openPlanned ? true : undefined}
+              onToggle={(e) => {
+                if (e.currentTarget.open && s.planned.length < s.inProduction) onExpandPlanned?.(s.type);
+              }}
             >
-              <summary className="cursor-pointer select-none list-none font-mono text-[12px] tracking-[0.5px] text-warm-gray hover:text-ink-soft [&::-webkit-details-marker]:hidden">
+              <summary className="cursor-pointer select-none list-none font-mono text-[12px] tracking-[0.5px] text-ink-soft hover:text-ink [&::-webkit-details-marker]:hidden">
                 <span aria-hidden="true" className="inline-block w-3 transition-transform group-open/planned:rotate-90">
                   ›
                 </span>
@@ -80,10 +94,15 @@ export function Shelf({
                   ))}
                 </div>
               ) : null}
-              {s.planned.length < s.inProduction ? (
-                <p className="font-mono text-[11px] tracking-[0.4px] text-warm-gray mt-3.5">
-                  More of these load with &ldquo;More from the shelf&rdquo; below.
-                </p>
+              {s.planned.length < s.inProduction && onExpandPlanned ? (
+                <button
+                  type="button"
+                  onClick={() => onExpandPlanned(s.type)}
+                  disabled={plannedLoading?.has(s.type)}
+                  className="mt-3.5 font-mono text-[11px] tracking-[0.6px] uppercase text-ink-soft border border-warm-gray-2 px-4 py-2 hover:border-forest disabled:opacity-50"
+                >
+                  {plannedLoading?.has(s.type) ? "Fetching…" : "Show more in production"}
+                </button>
               ) : null}
             </details>
           ) : null}

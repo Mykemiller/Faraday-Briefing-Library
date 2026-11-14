@@ -6,14 +6,23 @@ import type { BriefingType } from "@/config/constants";
 import { TYPE_CHIPS } from "@/lib/brand";
 import { FacetRail, type NavKey } from "./FacetRail";
 import { Shelf } from "./Shelf";
+import { hasMoreAvailable, mergePlannedRuns } from "@/lib/shelf-sections";
 import { useReserved } from "@/store/reserved-client";
 
 /**
  * The Shelf (FBL 1.0): left sidebar (Theaters / Your Shelf), search + type
  * chips, grouped card grid. Sidebar theater × chip type × search combine and round-trip
  * through library_search (/api/library/catalog); "Reserved Briefings" filters the current
- * shelf to cart lines client-side. Count-free, price-free, D-code-free by brand rule.
+ * shelf to cart lines client-side. Price-free and D-code-free by brand rule; count-free except the
+ * one approved exception, each section's "N in production" line (BL3-03, FDY-335).
+ *
+ * BL3-03: the keyset page lists Available rows first (they carry a go_live_date); planned rows sort
+ * last and live inside each section's collapsed line. Opening a line loads that type's planned
+ * rows A–Z from the catalog API (`type` + `status=Coming Soon` + `sort=az`, keyset-paged), so the
+ * expanded list is a contiguous alphabetical run, never an arbitrary slice of the main page.
+ * "More from the shelf" shows only while Available rows remain to load.
  */
+type PlannedRun = { items: CatalogBriefing[]; cursor: string | null; done: boolean };
 export function LibraryShell({ initial, theaters }: { initial: ShelfPage; theaters: string[] }) {
   const [navKey, setNavKey] = useState<NavKey>("all");
   const [chip, setChip] = useState<BriefingType | "all">("all");
@@ -22,6 +31,12 @@ export function LibraryShell({ initial, theaters }: { initial: ShelfPage; theate
   const [loadingMore, setLoadingMore] = useState(false);
   const { reservedIds } = useReserved();
   const firstRun = useRef(true);
+  // Filters the CURRENT page was fetched with (decision 4 opens lines on these, not on live input).
+  const [pageFilter, setPageFilter] = useState<{ q: string; navKey: NavKey }>({ q: "", navKey: "all" });
+  // Per-type planned runs loaded on expand; reset whenever the filters change.
+  const [planned, setPlanned] = useState<Partial<Record<BriefingType, PlannedRun>>>({});
+  const [plannedLoading, setPlannedLoading] = useState<ReadonlySet<BriefingType>>(new Set());
+  const generation = useRef(0);
 
   const queryParams = (cursor?: string | null) => {
     const params = new URLSearchParams();
@@ -38,9 +53,17 @@ export function LibraryShell({ initial, theaters }: { initial: ShelfPage; theate
       firstRun.current = false;
       return;
     }
+    generation.current += 1;
+    const gen = generation.current;
+    setPlanned({});
+    setPlannedLoading(new Set());
+    const applied = { q, navKey };
     const t = setTimeout(async () => {
       const res = await fetch(`/api/library/catalog?${queryParams().toString()}`);
-      if (res.ok) setPage(await res.json());
+      if (res.ok && gen === generation.current) {
+        setPage(await res.json());
+        setPageFilter(applied);
+      }
     }, 180);
     return () => clearTimeout(t);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -60,14 +83,50 @@ export function LibraryShell({ initial, theaters }: { initial: ShelfPage; theate
     }
   };
 
+  /** Load the next A–Z run of one type's planned rows (BL3-03). */
+  const loadPlanned = async (type: BriefingType) => {
+    const run = planned[type];
+    if (plannedLoading.has(type) || run?.done) return;
+    const gen = generation.current;
+    setPlannedLoading((s) => new Set(s).add(type));
+    try {
+      const params = queryParams(run?.cursor ?? null);
+      params.set("type", type);
+      params.set("status", "Coming Soon");
+      params.set("sort", "az");
+      const res = await fetch(`/api/library/catalog?${params.toString()}`);
+      if (res.ok && gen === generation.current) {
+        const next: ShelfPage = await res.json();
+        setPlanned((p) => ({
+          ...p,
+          [type]: { items: [...(p[type]?.items ?? []), ...next.items], cursor: next.nextCursor, done: !next.nextCursor },
+        }));
+      }
+    } catch {
+      /* the line keeps what it has; "Show more" stays available */
+    } finally {
+      if (gen === generation.current) {
+        setPlannedLoading((s) => {
+          const n = new Set(s);
+          n.delete(type);
+          return n;
+        });
+      }
+    }
+  };
+
   // Client-side overlay filters on top of the server round-trip.
-  let items: CatalogBriefing[] = page.items;
-  if (navKey === "reserved") items = items.filter((b) => reservedIds.has(b.id));
-  // BL3-03 decision 4: an active search or Theater filter opens each section's "N in production"
-  // line when it matches planned rows. The server's per-type counts do not apply to the
-  // client-side Reserved overlay (reserved lines are Available briefs).
-  const filterActive = q.trim() !== "" || navKey.startsWith("t:");
-  const inProduction = navKey === "reserved" ? undefined : page.inProductionByType;
+  const reserved = navKey === "reserved";
+  // A type with a loaded A–Z run shows exactly that run as its planned list (contiguous A–Z).
+  const items: CatalogBriefing[] = reserved
+    ? page.items.filter((b) => reservedIds.has(b.id))
+    : mergePlannedRuns(page.items, planned);
+  // BL3-03 decision 4: an active search or Theater filter (the one this page was fetched with)
+  // opens each section's "N in production" line; opening it loads the matching planned rows.
+  // The per-type counts and the lines do not apply to the client-side Reserved overlay.
+  const filterActive = !reserved && (pageFilter.q.trim() !== "" || pageFilter.navKey.startsWith("t:"));
+  const inProduction = reserved ? undefined : page.inProductionByType;
+  const moreAvailable = hasMoreAvailable(page);
 
   return (
     <div className="flex items-stretch min-h-[calc(100vh-69px)]">
@@ -126,9 +185,16 @@ export function LibraryShell({ initial, theaters }: { initial: ShelfPage; theate
             </div>
           </div>
 
-          <Shelf items={items} reservedIds={reservedIds} inProductionByType={inProduction} openPlanned={filterActive} />
+          <Shelf
+            items={items}
+            reservedIds={reservedIds}
+            inProductionByType={inProduction}
+            openPlanned={filterActive}
+            onExpandPlanned={reserved ? undefined : (type) => void loadPlanned(type)}
+            plannedLoading={plannedLoading}
+          />
 
-          {page.nextCursor && navKey !== "reserved" ? (
+          {moreAvailable && !reserved ? (
             <div className="mt-12 text-center">
               <button
                 type="button"

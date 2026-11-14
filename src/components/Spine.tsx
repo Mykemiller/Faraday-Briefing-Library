@@ -12,7 +12,7 @@ import { Cover } from "./Cover";
  */
 export function Spine({ b, reserved }: { b: CatalogBriefing; reserved?: boolean }) {
   const soon = b.status === "Coming Soon";
-  const title = stripComingSoon(b.title) || b.title;
+  const title = stripComingSoon(b.title) || "Untitled briefing"; // same fallback as the data layer
   const card = title === b.title ? b : { ...b, title };
 
   const body = (
@@ -24,7 +24,7 @@ export function Spine({ b, reserved }: { b: CatalogBriefing; reserved?: boolean 
         <div className="mt-2">
           <span
             data-badge="coming-soon"
-            className="inline-block font-mono text-[10px] tracking-[0.8px] uppercase text-warm-gray border border-warm-gray-2 px-1.5 py-[3px] leading-none"
+            className="inline-block font-mono text-[10px] tracking-[0.8px] uppercase text-ink-soft border border-warm-gray-2 px-1.5 py-[3px] leading-none"
           >
             Coming soon
           </span>

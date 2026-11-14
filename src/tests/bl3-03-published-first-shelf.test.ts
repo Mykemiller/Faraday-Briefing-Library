@@ -1,7 +1,8 @@
 import { describe, it, expect } from "vitest";
+import { readFileSync } from "node:fs";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-import { buildShelfSections } from "@/lib/shelf-sections";
+import { buildShelfSections, hasMoreAvailable, mergePlannedRuns } from "@/lib/shelf-sections";
 import { inProductionLabel, stripComingSoon } from "@/lib/brand";
 import { filterRows, inProductionByType, search } from "@/lib/catalog-model";
 import { briefingToCatalog } from "@/lib/shelf-map";
@@ -172,10 +173,12 @@ describe("BL3-03 rendered shelf", () => {
   it("active search / Theater filter opens the details when it matches planned rows", () => {
     const html = render({ items: [planned("p1", "company", "Alpha")], reservedIds: NONE, openPlanned: true });
     expect(html).toMatch(/<details[^>]*\sopen=""/);
-    // nothing loaded to show (count from server only): stays closed even when filtering
+    // matches only beyond the loaded page: still opens (opening loads the run, see LibraryShell)
     const none = render({ items: [], reservedIds: NONE, openPlanned: true, inProductionByType: { company: 4 } });
-    expect(none).not.toMatch(/<details[^>]*\sopen/);
+    expect(none).toMatch(/<details[^>]*\sopen=""/);
     expect(none).toContain("4 in production");
+    // no filter: closed
+    expect(render({ items: [planned("p1", "company", "Alpha")], reservedIds: NONE })).not.toMatch(/<details[^>]*\sopen/);
   });
 
   it("retired rows never appear (BL3-01 mapping) and an empty shelf shows the existing empty state", () => {
@@ -203,7 +206,62 @@ describe("BL3-03 rendered shelf", () => {
     const html = renderToStaticMarkup(createElement(LibraryShell, { initial, theaters: [] }));
     expect(html).toContain("120 in production");
     expect(html).toContain("45 in production");
-    expect(html).toContain("More of these load with");
+    // fewer than N loaded: the line offers its own A–Z load; the page-level button is hidden
+    // because the last loaded row is planned (no Available rows left to page through)
+    expect(html).toContain("Show more in production");
+    expect(html).not.toContain("More from the shelf");
+    expect(html).not.toContain("More of these load with");
     expect(html).not.toMatch(/<details[^>]*\sopen/);
+  });
+});
+
+describe("BL3-03 lazy A–Z planned runs", () => {
+  const many = Array.from({ length: 130 }, (_, i) =>
+    planned(`id${String(1000 - i)}`, i % 2 ? "company" : "theater", `Title ${String.fromCharCode(65 + (i % 26))}${i}`),
+  );
+
+  it("sort=az pages by keyset: contiguous, no duplicates, complete, in compareAz order", () => {
+    const seen: string[] = [];
+    let cursor: string | null = null;
+    let pages = 0;
+    do {
+      const r = search(many, { type: "company", status: "Coming Soon", sort: "az", cursor, limit: 48 });
+      seen.push(...r.items.map((b) => b.id));
+      cursor = r.nextCursor;
+      pages += 1;
+    } while (cursor && pages < 10);
+    const expected = many.filter((b) => b.briefingType === "company").sort((a, b) => a.title.localeCompare(b.title, "en", { sensitivity: "base" }) || (a.id < b.id ? -1 : 1));
+    expect(pages).toBe(2);
+    expect(new Set(seen).size).toBe(seen.length);
+    expect(seen).toEqual(expected.map((b) => b.id));
+  });
+
+  it("an expanded type shows exactly its A–Z run; other types and Available rows come from the page", () => {
+    const page = [avail("a1", "company", "2026-11-01"), planned("pz", "company", "Zulu"), planned("t9", "theater", "Theta")];
+    const run = { items: [planned("pa", "company", "Alpha"), planned("pb", "company", "Bravo")] };
+    const merged = mergePlannedRuns(page, { company: run });
+    expect(merged.map((b) => b.id)).toEqual(["a1", "t9", "pa", "pb"]);
+    const company = buildShelfSections(merged, { company: 3, theater: 1 }).find((s) => s.type === "company")!;
+    expect(company.planned.map((b) => b.title)).toEqual(["Alpha", "Bravo"]);
+    expect(company.inProduction).toBe(3);
+    // a run that repeats a page row is de-duplicated
+    expect(mergePlannedRuns([planned("pa", "company", "Alpha")], { company: run }).map((b) => b.id)).toEqual(["pa", "pb"]);
+  });
+
+  it('"More from the shelf" only while Available rows remain', () => {
+    expect(hasMoreAvailable({ items: [avail("a1", "company", "2026-11-01")], nextCursor: "2026-11-01|a1" })).toBe(true);
+    expect(hasMoreAvailable({ items: [avail("a1", "company", "2026-11-01"), planned("p", "company", "P")], nextCursor: "null|p" })).toBe(false);
+    expect(hasMoreAvailable({ items: [planned("p", "company", "P")], nextCursor: "null|p" })).toBe(false);
+    expect(hasMoreAvailable({ items: [avail("a1", "company", "2026-11-01")], nextCursor: null })).toBe(false);
+  });
+
+  it("the shell asks the catalog API for type + status=Coming Soon + sort=az", () => {
+    const src = readFileSync("src/components/LibraryShell.tsx", "utf8");
+    expect(src).toMatch(/params\.set\("status", "Coming Soon"\)/);
+    expect(src).toMatch(/params\.set\("sort", "az"\)/);
+    expect(src).toMatch(/params\.set\("type", type\)/);
+    const route = readFileSync("src/app/api/library/catalog/route.ts", "utf8");
+    expect(route).toMatch(/searchParams\.get\("status"\)/);
+    expect(route).toMatch(/searchParams\.get\("sort"\)/);
   });
 });

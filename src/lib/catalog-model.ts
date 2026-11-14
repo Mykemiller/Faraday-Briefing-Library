@@ -76,14 +76,45 @@ export function inProductionByType(rows: CatalogBriefing[]): Partial<Record<stri
   return out;
 }
 
+/**
+ * A–Z order (BL3-03): title (case/accent-insensitive), then id — a total order, so it can be paged
+ * by keyset. The "In production" lazy load pages planned rows of one type in this order.
+ */
+export function compareAz(a: Pick<CatalogBriefing, "title" | "id">, b: Pick<CatalogBriefing, "title" | "id">): number {
+  return a.title.localeCompare(b.title, "en", { sensitivity: "base" }) || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0);
+}
+const AZ_CURSOR = "az:";
+function encodeAzCursor(b: CatalogBriefing): string {
+  return `${AZ_CURSOR}${encodeURIComponent(b.title)}|${encodeURIComponent(b.id)}`;
+}
+function decodeAzCursor(c: string): { title: string; id: string } | null {
+  if (!c.startsWith(AZ_CURSOR)) return null;
+  const [t, i] = c.slice(AZ_CURSOR.length).split("|");
+  if (t === undefined || i === undefined) return null;
+  try {
+    return { title: decodeURIComponent(t), id: decodeURIComponent(i) };
+  } catch {
+    return null;
+  }
+}
+
 export function search(rows: CatalogBriefing[], query: ModelQuery): { items: CatalogBriefing[]; nextCursor: string | null } {
   let filtered = filterRows(rows, query);
 
-  if (query.sort === "az") filtered.sort((a, b) => a.title.localeCompare(b.title));
+  if (query.sort === "az") filtered.sort(compareAz);
   else if (query.sort === "downloads") filtered.sort((a, b) => b.downloadCount - a.downloadCount);
   else filtered.sort((a, b) => (lessThan(keyOf(a), keyOf(b)) ? 1 : -1)); // newest: desc by key
 
-  if (query.sort !== "az" && query.sort !== "downloads" && query.cursor) {
+  if (query.sort === "az") {
+    const c = query.cursor ? decodeAzCursor(query.cursor) : null;
+    if (c) filtered = filtered.filter((b) => compareAz(b, c) > 0);
+    const hasMore = filtered.length > query.limit;
+    const items = hasMore ? filtered.slice(0, query.limit) : filtered;
+    const last = items[items.length - 1];
+    return { items, nextCursor: hasMore && last ? encodeAzCursor(last) : null };
+  }
+
+  if (query.sort !== "downloads" && query.cursor) {
     const [cd, ci] = query.cursor.split("|");
     const cKey: [string, string] = [cd === "null" ? "0001-01-01" : cd, ci];
     filtered = filtered.filter((b) => lessThan(keyOf(b), cKey));
