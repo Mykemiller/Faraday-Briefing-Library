@@ -111,8 +111,9 @@ export function redact(text, secrets = []) {
   const pieces = new Set();
   for (const s of secrets) {
     if (typeof s !== 'string' || !s) continue;
-    pieces.add(s);
-    pieces.add(cleanKey(s));
+    // Whole values of 6+ characters only, like the fragments: a 1-character "secret" would garble text.
+    if (s.length >= 6) pieces.add(s);
+    if (cleanKey(s).length >= 6) pieces.add(cleanKey(s));
     for (const f of s.split(/[^\x21-\x7E]+/)) if (f.length >= 6) pieces.add(f);
   }
   for (const p of [...pieces].filter(Boolean).sort((a, b) => b.length - a.length)) out = out.split(p).join('***');
