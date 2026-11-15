@@ -51,8 +51,9 @@ export function computeFacets(rows: CatalogBriefing[], axis: "theme" | "domain" 
     .sort((a, b) => b.count - a.count || a.value.localeCompare(b.value));
 }
 
-export function search(rows: CatalogBriefing[], query: ModelQuery): { items: CatalogBriefing[]; nextCursor: string | null } {
-  let filtered = rows.filter(
+/** The rows a query matches, before sorting and paging (shared by search + the per-type counts). */
+export function filterRows(rows: CatalogBriefing[], query: Omit<ModelQuery, "limit" | "cursor" | "sort">): CatalogBriefing[] {
+  return rows.filter(
     (b) =>
       (!query.status || b.status === query.status) &&
       (!query.type || b.briefingType === query.type) &&
@@ -62,12 +63,58 @@ export function search(rows: CatalogBriefing[], query: ModelQuery): { items: Cat
       (!query.subdomain || b.subdomains.includes(query.subdomain)) &&
       (!query.company || b.companies.includes(query.company))
   );
+}
 
-  if (query.sort === "az") filtered.sort((a, b) => a.title.localeCompare(b.title));
+/**
+ * BL3-03 (FDY-335): non-Available rows per public type across EVERY row the query matches (not
+ * just the loaded page), so a section's "N in production" line is the true count even when the
+ * planned rows run past the first keyset page.
+ */
+export function inProductionByType(rows: CatalogBriefing[]): Partial<Record<string, number>> {
+  const out: Partial<Record<string, number>> = {};
+  for (const b of rows) if (b.status !== "Available") out[b.briefingType] = (out[b.briefingType] ?? 0) + 1;
+  return out;
+}
+
+/**
+ * A–Z order (BL3-03): title (case/accent-insensitive), then id — a total order, so it can be paged
+ * by keyset. The "In production" lazy load pages planned rows of one type in this order.
+ */
+export function compareAz(a: Pick<CatalogBriefing, "title" | "id">, b: Pick<CatalogBriefing, "title" | "id">): number {
+  return a.title.localeCompare(b.title, "en", { sensitivity: "base" }) || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0);
+}
+const AZ_CURSOR = "az:";
+function encodeAzCursor(b: CatalogBriefing): string {
+  return `${AZ_CURSOR}${encodeURIComponent(b.title)}|${encodeURIComponent(b.id)}`;
+}
+function decodeAzCursor(c: string): { title: string; id: string } | null {
+  if (!c.startsWith(AZ_CURSOR)) return null;
+  const [t, i] = c.slice(AZ_CURSOR.length).split("|");
+  if (t === undefined || i === undefined) return null;
+  try {
+    return { title: decodeURIComponent(t), id: decodeURIComponent(i) };
+  } catch {
+    return null;
+  }
+}
+
+export function search(rows: CatalogBriefing[], query: ModelQuery): { items: CatalogBriefing[]; nextCursor: string | null } {
+  let filtered = filterRows(rows, query);
+
+  if (query.sort === "az") filtered.sort(compareAz);
   else if (query.sort === "downloads") filtered.sort((a, b) => b.downloadCount - a.downloadCount);
   else filtered.sort((a, b) => (lessThan(keyOf(a), keyOf(b)) ? 1 : -1)); // newest: desc by key
 
-  if (query.sort !== "az" && query.sort !== "downloads" && query.cursor) {
+  if (query.sort === "az") {
+    const c = query.cursor ? decodeAzCursor(query.cursor) : null;
+    if (c) filtered = filtered.filter((b) => compareAz(b, c) > 0);
+    const hasMore = filtered.length > query.limit;
+    const items = hasMore ? filtered.slice(0, query.limit) : filtered;
+    const last = items[items.length - 1];
+    return { items, nextCursor: hasMore && last ? encodeAzCursor(last) : null };
+  }
+
+  if (query.sort !== "downloads" && query.cursor) {
     const [cd, ci] = query.cursor.split("|");
     const cKey: [string, string] = [cd === "null" ? "0001-01-01" : cd, ci];
     filtered = filtered.filter((b) => lessThan(keyOf(b), cKey));

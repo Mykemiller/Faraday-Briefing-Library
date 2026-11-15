@@ -98,6 +98,11 @@ export interface ShelfPage {
   facets: Facets;
   availableCount: number;
   comingSoonCount: number;
+  /**
+   * BL3-03 (FDY-335): non-Available rows per public type across every row the query matches (not
+   * just this page). Drives each section's "N in production" line. Optional for older callers.
+   */
+  inProductionByType?: Partial<Record<BriefingType, number>>;
 }
 
 export interface CartLine {
