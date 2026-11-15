@@ -154,8 +154,10 @@ export function LibraryShell({ initial, theaters }: { initial: ShelfPage; theate
       </aside>
 
       {/* Main column */}
+      {/* BL3-04 (FDY-337): the content column grows to 1680 px, left-aligned next to the sidebar (no
+          mx-auto) so nav and grid read as one frame; text blocks keep their own max widths. */}
       <main className="flex-1 min-w-0 px-6 md:px-11 pt-10 pb-20">
-        <div className="max-w-[1180px]">
+        <div className="max-w-[1680px]">
           <h1 className="font-serif font-bold text-[38px] text-ink m-0">The Briefing Library</h1>
           <div className="w-[72px] h-[3px] bg-forest mt-3.5" />
           <div className="w-[72px] h-0.5 bg-gold mt-[3px]" />
