@@ -152,6 +152,11 @@ Feature flags (`src/config/flags.ts`, all default OFF / preview-only):
 
 ## Supabase objects (project `ycadmmngkdhvpcsrcuaq`)
 
+**Server-side Supabase clients never use Next's Data Cache (FDY-396).** Create them only through
+`supabaseAdmin()` / `supabaseServer()`, which pass `global.fetch = noStoreFetch` (`cache: "no-store"`).
+`dynamic = "force-dynamic"` alone does NOT stop Next 14.2 caching fetches. Don't call `createClient` in
+`src/` without it. Evidence: `docs/ops/FDY-396-fetch-cache.md`.
+
 Applied: `library_catalog_cache`, `library_cart_items`, `library_entitlements`,
 `processed_checkouts` (all RLS-on); functions `library_search`, `library_facets` (search_path-pinned,
 SECURITY INVOKER, anon-executable for reads), `library_checkout` (SECURITY DEFINER, **service-role
