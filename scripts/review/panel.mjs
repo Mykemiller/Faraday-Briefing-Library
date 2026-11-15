@@ -16,8 +16,9 @@
 //                   the fixtures was executed; see docs/ops/review-chain.md.
 //
 // Verdict rules live HERE, not in the model: G2 FAIL if any score < 3 or any required edit is factual;
-// G3 FAIL if A finds a mismatch or B finds a template/voice violation; A and B disagreeing on the same
-// sentence ⇒ PARKED. Reviewer labels: "tf-panel:<preset>", "xcheck-facts", "xcheck-voice".
+// G3 FAIL if A finds a mismatch or B finds a template/voice violation; PARKED only when, on a later
+// attempt, the same dimension fails again on the same sentence (BL3-09 decision (a)) — A vs B never parks.
+// Reviewer labels: "tf-panel:<preset>", "xcheck-facts", "xcheck-voice".
 
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, dirname } from 'node:path';
@@ -380,25 +381,47 @@ export function panelVerdict(review) {
 
 const normSentence = (s) => String(s ?? '').replace(/\[(?:S?\d+)(?:\s*,\s*S?\d+)*\]/gi, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
 
-export function xcheckVerdict(facts, voice) {
+/** Blocker codes of the two G3 dimensions (one reviewer each: A = facts, B = voice). */
+export const G3_DIMENSION_CODES = Object.freeze({ facts: 'fact_mismatch', voice: 'voice_violation' });
+
+/**
+ * G3 verdict — BL3-09 decision (a), FDY-332. Reviewer A judges facts only, Reviewer B voice only, so
+ * the two can never conflict within a dimension; parking is therefore decided across attempts:
+ *   - attempt 1 never parks: facts FAIL or voice FAIL ⇒ FAIL (back to the lane); both PASS ⇒ PASS.
+ *   - attempt 2+ (`priorBlockers` = the previous G3 row's blockers): the SAME dimension failing on the
+ *     SAME sentence again ⇒ PARKED. Anything else is judged as on attempt 1.
+ *   - a sentence one dimension flags and the other cleared is reported in `cross_dimension` and never parks.
+ * @param {any} facts  Reviewer A's JSON (XCHECK_FACTS_SCHEMA)
+ * @param {any} voice  Reviewer B's JSON (XCHECK_VOICE_SCHEMA)
+ * @param {{priorBlockers?: any[] | null}} [opts]  the previous G3 attempt's blockers; omitted on attempt 1
+ */
+export function xcheckVerdict(facts, voice, { priorBlockers = null } = {}) {
   const mismatches = (facts?.findings ?? []).filter((f) => f?.verdict === 'mismatch');
   const unverifiable = (facts?.findings ?? []).filter((f) => f?.verdict === 'unverifiable');
   const violations = voice?.violations ?? [];
   const aClear = new Set((facts?.cleared ?? []).map(normSentence).filter(Boolean));
   const bClear = new Set((voice?.cleared ?? []).map(normSentence).filter(Boolean));
-  const disagreements = [];
-  for (const m of mismatches) { const k = normSentence(m.sentence); if (k && bClear.has(k)) disagreements.push({ sentence: m.sentence, a: 'mismatch', b: 'cleared' }); }
-  for (const v of violations) { const k = normSentence(v.sentence_or_section); if (k && aClear.has(k)) disagreements.push({ sentence: v.sentence_or_section, a: 'cleared', b: 'violation' }); }
+  const crossDimension = [];
+  for (const m of mismatches) { const k = normSentence(m.sentence); if (k && bClear.has(k)) crossDimension.push({ sentence: m.sentence, facts: 'mismatch', voice: 'cleared' }); }
+  for (const v of violations) { const k = normSentence(v.sentence_or_section); if (k && aClear.has(k)) crossDimension.push({ sentence: v.sentence_or_section, facts: 'cleared', voice: 'violation' }); }
+  // Same dimension, same sentence, on the previous attempt ⇒ a repeat.
+  const priorKeys = (code) => new Set((Array.isArray(priorBlockers) ? priorBlockers : []).filter((b) => b?.code === code).map((b) => normSentence(b.sentence)).filter(Boolean));
+  const priorFacts = priorKeys(G3_DIMENSION_CODES.facts);
+  const priorVoice = priorKeys(G3_DIMENSION_CODES.voice);
+  const repeats = [
+    ...mismatches.filter((m) => priorFacts.has(normSentence(m.sentence))).map((m) => ({ dimension: 'facts', sentence: m.sentence })),
+    ...violations.filter((v) => priorVoice.has(normSentence(v.sentence_or_section))).map((v) => ({ dimension: 'voice', sentence: v.sentence_or_section })),
+  ];
   const blockers = [
     ...mismatches.map((m) => ({ code: 'fact_mismatch', reviewer: 'xcheck-facts', message: `${m.claim}: "${m.sentence}"`, sentence: m.sentence, cited: m.cited, source_excerpt: m.source_excerpt })),
     ...violations.map((v) => ({ code: 'voice_violation', reviewer: 'xcheck-voice', message: `${v.rule}: ${v.sentence_or_section}`, sentence: v.sentence_or_section, rule: v.rule, note: v.note })),
-    ...disagreements.map((d) => ({ code: 'disagreement', message: `A says ${d.a}, B says ${d.b}: "${d.sentence}"`, ...d })),
+    ...repeats.map((r) => ({ code: 'repeat_same_dimension', message: `${r.dimension} failed again on the same sentence: "${r.sentence}"`, ...r })),
   ];
   const a = mismatches.length ? 'FAIL' : facts ? 'PASS' : 'MISSING';
   const b = violations.length ? 'FAIL' : voice ? 'PASS' : 'MISSING';
   let verdict = a === 'PASS' && b === 'PASS' ? 'PASS' : 'FAIL';
-  if (disagreements.length) verdict = 'PARKED';
-  return { verdict, a, b, blockers, disagreements, unverifiable: unverifiable.length, mismatches: mismatches.length, violations: violations.length, numbers_checked: facts?.numbers_checked ?? null, summaries: { facts: facts?.summary ?? null, voice: voice?.summary ?? null } };
+  if (repeats.length) verdict = 'PARKED';
+  return { verdict, a, b, blockers, repeats, cross_dimension: crossDimension, attempt: Array.isArray(priorBlockers) ? 2 : 1, unverifiable: unverifiable.length, mismatches: mismatches.length, violations: violations.length, numbers_checked: facts?.numbers_checked ?? null, summaries: { facts: facts?.summary ?? null, voice: voice?.summary ?? null } };
 }
 
 // ---------------------------------------------------------------------------------------------

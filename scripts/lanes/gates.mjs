@@ -5,6 +5,13 @@
 // function, preDraftGate(lane, pack) → { ok, reason, n? }; it is a small dispatcher by lane so other
 // gates (FDY-332's threadGate for the subdomains lane) slot in beside profileGate.
 //
+// Thread gates (BL3-09, FDY-332; subdomains lane, Standard tier only — Deep Threads unaffected):
+//   - threadGate(pack): fewer than THREAD_MIN_SOURCED_ITEMS (12) sourced items ⇒ skip, reason
+//     "thread_thin" (BL2-08 pilot: 6 sources ⇒ 6 pp, 16 ⇒ 9 pp; the fit loop cannot grow a brief that
+//     has no evidence; no shorter tier, no padding).
+//   - postDraftGate(lane, gen) / threadShortGate(gen): a composed Thread that renders under
+//     THREAD_MIN_PAGES (8) pp is not staged, reason "thread_short". Unmeasured drafts pass (G1 measures).
+//
 // Profile floor (Myke's decision (b)): a company/institution Profile whose pack holds fewer than
 // PROFILE_THIN_BELOW (6) sourced Signals is SKIPPED — no draft, no briefings_versions row, no
 // briefing_reviews row. Exactly 6 stages.
@@ -20,7 +27,7 @@ import { PROFILE_THIN_BELOW } from './compose.mjs';
 
 export const PROFILE_FLOOR = PROFILE_THIN_BELOW;
 /** Lanes whose briefs pass through preDraftGate() (and so need their pack before drafting). */
-export const GATED_LANES = Object.freeze(['companies', 'institutions']);
+export const GATED_LANES = Object.freeze(['companies', 'institutions', 'subdomains']);
 /** Lanes that rank by density and keep cursor.skipped (BL3-05). */
 export const PROFILE_LANES = Object.freeze(['companies', 'institutions']);
 export const isProfileLane = (lane) => PROFILE_LANES.includes(lane);
@@ -87,15 +94,71 @@ export function profileGate(pack) {
   return n >= PROFILE_FLOOR ? { ok: true, reason: null, n } : { ok: false, reason: THIN_SKIP, n };
 }
 
-/** The one pre-draft gate run.mjs calls. Lanes without a gate always pass. */
-export function preDraftGate(lane, pack) {
+// --- Threads (BL3-09) ---
+
+export const THREAD_MIN_SOURCED_ITEMS = 12;
+export const THREAD_MIN_PAGES = 8;
+export const THREAD_GATED_TIERS = Object.freeze(['standard']);
+/** Skip reasons whose skip is also written to the status log (gateSkipSentence). */
+export const THREAD_SKIP_REASONS = Object.freeze(['thread_thin', 'thread_short']);
+
+/** Sourced items in a pack: items carrying a source URL (buildPack has already de-duplicated by URL). */
+export const sourcedItemCount = (pack) => (pack?.items ?? []).filter((it) => Boolean(it?.url)).length;
+
+/** Thread minimum-evidence gate: { ok, reason, n }. 11 sourced items ⇒ thread_thin; 12 ⇒ ok. */
+export function threadGate(pack) {
+  const n = sourcedItemCount(pack);
+  return n >= THREAD_MIN_SOURCED_ITEMS ? { ok: true, reason: null, n } : { ok: false, reason: 'thread_thin', n };
+}
+
+/** A Thread whose measured page count is under the floor is not staged. */
+export function threadShortGate(gen) {
+  if (!gen?.render_checked || !Number.isFinite(gen.pages)) return { ok: true, reason: null };
+  return gen.pages >= THREAD_MIN_PAGES ? { ok: true, reason: null, pages: gen.pages } : { ok: false, reason: 'thread_short', pages: gen.pages };
+}
+
+const threadTier = (tier) => !tier || THREAD_GATED_TIERS.includes(tier);
+
+/**
+ * The one pre-draft gate run.mjs calls. Lanes without a gate always pass.
+ * @param {string} lane
+ * @param {any} pack the EvidencePack buildPack() returns
+ * @param {{tier?: string}} [opts] the brief's tier when known; the Thread gate applies to Standard only
+ * @returns {{ok: boolean, reason: string|null, n?: number}}
+ */
+export function preDraftGate(lane, pack, { tier } = {}) {
   switch (lane) {
     case 'companies':
     case 'institutions':
       return profileGate(pack);
+    case 'subdomains':
+      return threadTier(tier) ? threadGate(pack) : { ok: true, reason: null };
     default:
       return { ok: true, reason: null };
   }
+}
+
+/**
+ * After composition (BL3-09): Standard Threads rendering under 8 pp are not staged. Other lanes pass.
+ * @param {string} lane
+ * @param {any} gen the generate() result
+ * @param {{tier?: string}} [opts]
+ * @returns {{ok: boolean, reason: string|null, pages?: number}}
+ */
+export function postDraftGate(lane, gen, { tier } = {}) {
+  switch (lane) {
+    case 'subdomains':
+      return threadTier(tier) ? threadShortGate(gen) : { ok: true, reason: null };
+    default:
+      return { ok: true, reason: null };
+  }
+}
+
+/** Status-log sentence (gate DRAFTED, result FAIL; the log has no SKIPPED result) for a Thread skip, else null. */
+export function gateSkipSentence(g) {
+  if (g?.reason === 'thread_thin') return `Skipped (thread_thin): ${g.n} sourced evidence item${g.n === 1 ? '' : 's'} (< ${THREAD_MIN_SOURCED_ITEMS}); no draft staged.`;
+  if (g?.reason === 'thread_short') return `Skipped (thread_short): rendered ${g.pages} pp (< ${THREAD_MIN_PAGES}); no draft staged.`;
+  return null;
 }
 
 // ---------------------------------------------------------------------------------------------

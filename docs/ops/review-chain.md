@@ -91,11 +91,13 @@ The generator (BL2-05) reads this on its next pass and must address `required_ed
 
 ### 3.3 Two consecutive FAILs → PARKED
 
-If the most recent earlier attempt at the same gate (an older version, or an earlier run of this
+At **G1 and G2**: if the most recent earlier attempt at the same gate (an older version, or an earlier run of this
 version) was FAIL, the status line reads `PARKED` ("Second consecutive FAIL at <gate> (v1 then v2);
 parked. …"), a **Questions for Myke** line is written with the first blockers and the default
 *"skip this brief this release"*, and the requeue entry carries `parked: true` so the generator does
-not re-draft blindly. A G3 disagreement (§6) also parks. The `briefing_reviews.result` CHECK is
+not re-draft blindly. **G3 does not use this rule**: it parks only when the same dimension fails again on
+the same sentence (§6, decision (a), §9); any other repeat G3 FAIL returns to the lane like a first one.
+The `briefing_reviews.result` CHECK is
 `PASS|FAIL`, so a parked verdict is stored as `FAIL` with `notes.parked = true`.
 
 ### 3.4 G3 PASS → QUEUED
@@ -201,9 +203,18 @@ full panel carries the Fact-Checker; the Press Lead sits on every non-jurisdicti
 - **Reviewer B `xcheck-voice`** receives the manuscript + Brand Bible §06 + the tier template (the
   jurisdiction variant's Thread list and method-note line appended for jurisdiction briefs). It checks
   structure, section budget, hypothesis-led opening, Take rules and voice; it never judges a fact.
-- Both must PASS. **A sentence A marks `mismatch` that B lists as cleared, or a sentence B marks a
-  violation that A cleared, is a disagreement ⇒ PARKED** (status-log PARKED + Questions line; stored
-  as FAIL with `blockers[].code = 'disagreement'` and `notes.parked = true`).
+- Each reviewer judges one dimension: A facts, B voice. Attempt 1 never parks: facts FAIL (any
+  `mismatch`) or voice FAIL (any violation) ⇒ G3 FAIL, the draft returns to its lane with both
+  reviewers' findings as `required_edits`; both PASS ⇒ PASS.
+- **PARKED only on a same-dimension repeat** (decision (a), BL3-09 / FDY-332). On a later attempt (the
+  previous G3 row for the brief, any earlier version), if the SAME dimension fails on the SAME sentence
+  again — a facts `mismatch` on a sentence the previous row also had as `fact_mismatch`, or a voice
+  violation on a sentence it had as `voice_violation` — the draft parks (status-log PARKED + Questions
+  line; stored as FAIL with `blockers[].code = 'repeat_same_dimension'` and `notes.parked = true`).
+  Anything else on a later attempt is judged as on attempt 1.
+- **Cross-dimension overlap never parks.** A sentence the facts reviewer cleared and the voice reviewer
+  flagged (or the reverse) is a voice (or facts) FAIL: both verdicts are reported, the sentences are
+  listed in `notes.cross_dimension`, and the FAIL status line says how many.
 - One `briefing_reviews` row per G3 (reviewer `xcheck-facts+xcheck-voice`), so a draft that completes
   the chain has exactly three rows; `notes` carries both verdicts, counts, disagreements and summaries.
 
@@ -213,7 +224,7 @@ full panel carries the Fact-Checker; the Press Lead sits on every non-jurisdicti
 |---|---|---|---|---|
 | G1-AUTO | `g1-auto` | measured pages | `{code, message, …}` per blocker (§4 codes) | `summary, stats, warnings, preview_path, html_path, fonts_loaded, render_error, upload_error, chain` |
 | G2-PANEL | `tf-panel:<preset>` | min of the 3 scores | `score_below_3` / `factual_edit` | `preset, preset_label, members[], chair, scores, could_a_buyer_act, required_edits, note, mode` |
-| G3-XCHECK | `xcheck-facts+xcheck-voice` | null | `fact_mismatch` / `voice_violation` / `disagreement` | `a, b, mismatches, violations, unverifiable, numbers_checked, disagreements, summaries, mode, parked?` |
+| G3-XCHECK | `xcheck-facts+xcheck-voice` | null | `fact_mismatch` / `voice_violation` / `repeat_same_dimension` (rows before BL3-09 may carry `disagreement`) | `a, b, mismatches, violations, unverifiable, numbers_checked, repeats, cross_dimension, attempt, prior_version, summaries, mode, parked?` |
 
 Status-log lines use `scripts/statuslog.mjs` (BL2-04) unchanged: gates `G1-AUTO · G2-PANEL ·
 G3-XCHECK · QUEUED`, results `PASS · FAIL · PARKED`, America/Chicago, one line per gate per brief.
@@ -288,14 +299,31 @@ same gates working on different material.
   so as specified G2 fails the whole corpus. The chain implements the ticket as written; the fix sits in
   the BL2-05 generator (a real thesis sentence, a dated forward watch list, the Take as an opinion).
   Until then every lane will requeue at G2 and park on the second attempt.
-- **PARKED fires on cross-dimension disagreement.** The ticket's rule "disagreement on the same
-  sentence → PARKED" is implemented literally: a draft parks when Reviewer A lists a sentence as
-  cleared and Reviewer B flags the same sentence. Because A checks facts and B checks voice, that
-  happens whenever a voice violation lands on a factually-clean sentence — two of seven here
-  (theaters: "reportedly" on the Oracle/Tencent sentence; institutions: two identity-card/record
-  sentences), both on the FIRST attempt, which pre-empts the two-consecutive-FAILs rule. If PARKED is
-  meant for genuine fact disputes, narrow `xcheckVerdict` to same-dimension conflicts (A cleared vs B
-  `factual`-kind, or B cleared vs A mismatch) — a four-line change in `panel.mjs`. Decision for Myke.
+- **Decision (a) is in force** (Myke default, 2026-11-11, the BL2-08 pilot question; implemented in
+  BL3-09 / FDY-332). The rule, in plain words: *Reviewer A checks only facts and Reviewer B only voice, so
+  they can never disagree about the same thing. On a brief's first G3 attempt nothing parks — if either
+  reviewer fails it, it goes back to its lane with their edits; if both pass, it passes. On a later
+  attempt, if the same reviewer flags the same sentence it flagged last time, the brief parks for Myke.
+  Any other failure on a later attempt goes back to the lane again. A sentence one reviewer flags and the
+  other cleared is just that reviewer's failure, reported, never a park.* Implemented in `xcheckVerdict`
+  (`scripts/review/panel.mjs`, `priorBlockers` = the previous G3 row's blockers) and in `runChain`
+  (`scripts/review/run.mjs`: G3 is exempt from the two-consecutive-FAILs rule of §3.3). Which case
+  applied: each reviewer scores ONE dimension (A facts, B voice), so a same-dimension conflict between
+  reviewers cannot occur; parking is therefore decided across attempts, not between reviewers.
+  The superseded literal rule parked whenever a voice violation landed on a sentence A had cleared — two
+  of seven BL2-05 samples and 9 of 18 BL2-08 pilot drafts, all on the FIRST attempt. Evidence in
+  `src/tests/bl3-09-g3-thread-gate.test.ts`: the two stored BL2-05 sample rows (`reviews.sample.json`)
+  now FAIL on voice (2 PARKED ⇒ 0); a SYNTHETIC fixture of the nine would-park cases, built from the
+  BL2-08 status-log lines because that dry run kept no reviewer JSON or rows, gives 9 ⇒ 0. That
+  synthetic fixture is not a pilot replay.
+- **Thread gates (lane side, BL3-09).** `scripts/lanes/gates.mjs`: a Standard Thread with fewer than 12
+  sourced evidence items is not drafted (`thread_thin`; pilot: 6 sources ⇒ 6 pp, 16 ⇒ 9 pp), and one that
+  renders under 8 pp after composition is not staged (`thread_short`). Either way nothing is staged or
+  reviewed, the lane logs `DRAFTED · FAIL · Skipped (<reason>): …`, and the brief is listed in the run
+  summary's `skips[]` (the same skip path as the BL3-05 Profile floor: same evidence probe, same
+  pre-draft call site in `runLane`); a review-chain requeue entry for that brief resolves to
+  `"skipped: thread_thin"` (or `thread_short`) in `requeue_resolved[]` and is kept. `docs/ops/lanes.md`
+  is not updated here (out of this ticket's file list).
 - **Panel execution.** Subagents, not the ThoughtForge API (§5). `--panel api` is implemented against
   the SDK (`claude-opus-5-5`, `output_config.format` JSON schema, streaming) but could not be run here
   (no key); first live run should be a single draft with `--dry-run`. Server-side refusal fallbacks are
