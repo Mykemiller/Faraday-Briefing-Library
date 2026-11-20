@@ -1,22 +1,34 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, IBM_Plex_Mono, IBM_Plex_Serif } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const serif = IBM_Plex_Serif({
-  subsets: ["latin"],
-  weight: ["400", "600", "700"],
-  style: ["normal", "italic"],
+// Self-hosted (OFL) rather than next/font/google: Vercel's build region started receiving
+// extension-less Google font URLs (/l/font?kit=...), which crash Next 14.2's Google loader
+// ("Cannot read properties of null (reading '1')"). Latin subset, same families/weights. FDY-398.
+const serif = localFont({
+  src: [
+    { path: "./fonts/ibm-plex-serif-400-normal.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/ibm-plex-serif-400-italic.woff2", weight: "400", style: "italic" },
+    { path: "./fonts/ibm-plex-serif-600-normal.woff2", weight: "600", style: "normal" },
+    { path: "./fonts/ibm-plex-serif-600-italic.woff2", weight: "600", style: "italic" },
+    { path: "./fonts/ibm-plex-serif-700-normal.woff2", weight: "700", style: "normal" },
+    { path: "./fonts/ibm-plex-serif-700-italic.woff2", weight: "700", style: "italic" },
+  ],
   variable: "--font-serif",
+  display: "swap",
 });
-const sans = Bricolage_Grotesque({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
+const sans = localFont({
+  src: [{ path: "./fonts/bricolage-grotesque-400-600-normal.woff2", weight: "400 600", style: "normal" }],
   variable: "--font-sans",
+  display: "swap",
 });
-const mono = IBM_Plex_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500"],
+const mono = localFont({
+  src: [
+    { path: "./fonts/ibm-plex-mono-400-normal.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/ibm-plex-mono-500-normal.woff2", weight: "500", style: "normal" },
+  ],
   variable: "--font-mono",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
