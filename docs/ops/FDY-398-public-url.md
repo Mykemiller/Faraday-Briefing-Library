@@ -41,6 +41,11 @@ surface. Its SSO protection is set to `all`, so it cannot serve a public custom 
   `robots: { index: false, follow: false }` metadata, both with a `TODO(FDY-340)`. Remove them
   once BL3-12 has published at least 10 briefs.
 * `src/tests/bl3-14-public-url.test.ts` has 4 tests covering the rewrites and noindex.
+* **Fonts self-hosted** (`src/app/fonts/`, `next/font/local`, OFL). Both Vercel builds of the
+  first commit failed inside `next/font/google` (`loader.js:112`, "Cannot read properties of null
+  (reading '1')"). The build region now receives extension-less Google font URLs, which Next 14.2
+  cannot parse. The failure is outside this diff and would hit any fresh build of `main`. The
+  families, weights, styles and CSS variables are unchanged (latin subset).
 * No new env vars. Clerk's production key works on a subdomain of its primary domain, and no
   code reads a site-URL variable.
 
@@ -50,6 +55,15 @@ surface. Its SSO protection is set to `all`, so it cannot serve a public custom 
 MCP on 2026-11-20 at 01:08 CT, and Vercel reports it `verified: true`. The apex is on Vercel
 DNS, so no external DNS edit is needed. It serves the current production deployment now, and it
 will pick up the rewrites when this PR is merged.
+
+## 4b. Preview verification (dpl_EW1rBw2s8jAZFLqs7JQjbexWF6Hd, commit e7cd9ef)
+
+| Request | Result |
+|---|---|
+| `/` | 200, the BL3 shelf (Theater/Sector/Thread/Company/Jurisdiction sections, "N in production"), 0 "Key Player", `x-robots-tag: noindex, nofollow` |
+| `/b/hvdc-th-hvdc` | `x-matched-path: /library/b/[slug]` (rewrite reaches the reader). It returns 404 from the reader's own `notFound()` because the brief is unpublished, which matches current production at `/library/b/hvdc-th-hvdc`. |
+| Live subdomain before merge, `library.faraday-intelligence.ai/library` | 200, BL3 shelf, 0 "Key Player" (fetched from Postgres `http`, since container egress is blocked) |
+| `www.faraday-intelligence.ai/briefing-library` | still the July shelf: 3 "Key Player", "Loading the shelf". This clears with §5. |
 
 ## 5. Engine-side change (Mykemiller/v0-faraday-daily-challenge)
 
