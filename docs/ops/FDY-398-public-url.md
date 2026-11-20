@@ -104,3 +104,13 @@ curl -sI https://library.faraday-intelligence.ai/ | grep -i x-robots-tag        
 
 Reader links (BL3-11): every card links to `/library/b/<slug>`, which resolves on the
 subdomain. `/b/<slug>` also resolves through the rewrite.
+
+## 7. Production check after PR #48 merged (2026-11-20 01:24 CT)
+
+Production deploy `dpl_Gf11HuyZBtxcTQq6zTM2AFYEdyZm` (main `d909149`), fetched from Postgres `http`:
+
+| Request | Result |
+|---|---|
+| `library.faraday-intelligence.ai/` | **PASS**: 200, `x-matched-path: /library`, five types, 0 "Key Player", `x-robots-tag: noindex, nofollow` |
+| `library.faraday-intelligence.ai/b/hvdc-th-hvdc` | **PASS** (routing): `x-matched-path: /library/b/[slug]`. It returns 404 only because the brief is unpublished (FDY-340). |
+| `www.faraday-intelligence.ai/briefing-library` | **pending §5**: still the July shelf (3 "Key Player", "Loading the shelf"), with no 308 yet |
