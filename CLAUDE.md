@@ -135,6 +135,12 @@ Build Plan v2.0*. Next.js (App Router) · Clerk · Supabase · Stripe · Gamma.
   shelves) · `?tier=` · `?jurisdiction=US-XX|CC` read from `briefings.jurisdiction_id`; no title
   inference. Fixtures render only locally or on a Vercel *preview* that opts in; never production.
 
+- **Public URL (BL3-14, FDY-398).** The root app (Vercel `faraday-briefing-library`) is canonical and
+  is served at `library.faraday-intelligence.ai`. The engine (`v0-faraday-daily-challenge`) 308s
+  `/briefing-library/*` there. `next.config.mjs` rewrites `/`, `/b/:slug`, `/cart`, `/owned` and
+  `/blueprint` into `/library/*`, so **never add a page at `src/app/page.tsx`** (it would beat the
+  rewrite). Noindex stays on until FDY-340. Evidence: `docs/ops/FDY-398-public-url.md`.
+
 ## Config constants (bound, never literal)
 
 `src/config/constants.ts`:

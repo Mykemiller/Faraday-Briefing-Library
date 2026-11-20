@@ -22,6 +22,8 @@ const mono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   title: "The Briefing Library — Faraday Intelligence",
   description: "A reading room for Faraday's cultivated intelligence. Your unfair advantage.",
+  // TODO(FDY-340): noindex until BL3-12 publishes >= 10 briefs (see next.config.mjs).
+  robots: { index: false, follow: false },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
