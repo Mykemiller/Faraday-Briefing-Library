@@ -16,3 +16,19 @@ export async function viewerSubscriberId(): Promise<string | null> {
     return null;
   }
 }
+
+/**
+ * The signed-in viewer's email for the masthead's context slot (FDY-449). Reads the same Clerk
+ * session as viewerSubscriberId, nothing else. Anonymous, unconfigured Clerk or any failure ⇒ null
+ * (the masthead then shows "Sign in").
+ */
+export async function viewerEmail(): Promise<string | null> {
+  try {
+    const { userId } = await auth();
+    if (!userId) return null;
+    const user = await currentUser();
+    return user?.primaryEmailAddress?.emailAddress ?? null;
+  } catch {
+    return null;
+  }
+}

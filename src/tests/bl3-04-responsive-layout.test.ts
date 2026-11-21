@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-import { Masthead } from "@/components/Masthead";
+import { LibraryMasthead } from "@/components/LibraryMasthead";
 import { LibraryShell } from "@/components/LibraryShell";
 import type { ShelfPage } from "@/lib/types";
 import { evaluate, parseArgs, DEFAULT_WIDTHS, SIDEBAR_PX, CONTENT_MAX_PX } from "../../scripts/ops/layout-check.mjs";
@@ -31,19 +31,15 @@ describe("BL3-04 layout classes", () => {
     expect(html).toContain("max-w-[380px]");
   });
 
-  it("masthead: full-width <header>, inner row uses the content gutters, nothing clips or shrinks the edges", () => {
-    const html = renderToStaticMarkup(createElement(Masthead, { context: "The Briefing Library", edition: "November 2026 · Shelf Edition" }));
-    expect(html.startsWith("<header")).toBe(true);
-    expect(html).toContain("data-masthead");
+  it("masthead (FDY-449 shared Faraday masthead): full-width <header>, nothing clips; the edition never wraps", () => {
+    const html = renderToStaticMarkup(createElement(LibraryMasthead, { email: null, edition: "November 2026 · Shelf Edition" }));
+    const header = html.slice(html.indexOf("<header"), html.indexOf("</header>"));
+    expect(header).toMatch(/^<header class="fm" role="banner"/);
     expect(html).not.toMatch(/overflow-hidden/);
-    expect(html).toMatch(/class="[^"]*\bpx-6\b[^"]*\bmd:px-11\b/);
-    const classesOf = (re: RegExp) => new Set((html.match(re)?.[1] ?? "").split(/\s+/));
-    const brand = classesOf(/<a [^>]*class="([^"]*)"[^>]*aria-label="Faraday home"/);
-    const edition = classesOf(/class="([^"]*)">November 2026/);
-    const context = classesOf(/class="([^"]*)">The Briefing Library/);
-    expect(brand.has("shrink-0")).toBe(true);
+    // the bar is full width (core.ts: .fm{width:100%}); the old FDY-337 gutters now belong to the shared grid
+    expect(html).toMatch(/\.fm\{position:relative;width:100%/);
+    const edition = new Set((html.match(/class="([^"]*)" data-edition="">November 2026/)?.[1] ?? "").split(/\s+/));
     for (const c of ["whitespace-nowrap", "shrink-0", "max-md:hidden"]) expect(edition.has(c), c).toBe(true);
-    for (const c of ["min-w-0", "truncate"]) expect(context.has(c), c).toBe(true);
   });
 });
 

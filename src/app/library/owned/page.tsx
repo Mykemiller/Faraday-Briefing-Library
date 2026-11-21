@@ -14,7 +14,7 @@ export default async function OwnedPage() {
   const owned: { slug: string; title: string; gammaUrl: string | null }[] = [];
 
   return (
-    <div className="max-w-5xl mx-auto px-4 py-8">
+    <main id="main" className="block max-w-5xl mx-auto px-4 py-8">
       <a href="/library" className="font-mono text-xs text-gold underline">← back to the shelf</a>
       <h1 className="font-serif font-bold text-3xl text-forest mt-3">My Briefings</h1>
       <div className="double-rule mt-2 mb-4" />
@@ -35,6 +35,6 @@ export default async function OwnedPage() {
           ))}
         </ul>
       )}
-    </div>
+    </main>
   );
 }

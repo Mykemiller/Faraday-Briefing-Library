@@ -65,3 +65,30 @@ body {
   min-height: 44px;
   min-width: 44px;
 }
+
+/* FDY-449: the shared Faraday masthead (src/lib/faraday-masthead) names its fonts by family —
+   'IBM Plex Serif', 'Bricolage Grotesque', 'IBM Plex Mono'. next/font/local registers our
+   self-hosted files under generated names, so alias the masthead's family names to the same
+   OFL files (no Google Fonts request; weights the masthead uses: serif 600, sans 400-600,
+   mono 400). font-display: swap, latin subset, as in layout.tsx. */
+@font-face {
+  font-family: "IBM Plex Serif";
+  src: url("./fonts/ibm-plex-serif-600-normal.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("./fonts/bricolage-grotesque-400-600-normal.woff2") format("woff2");
+  font-weight: 400 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("./fonts/ibm-plex-mono-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}

@@ -140,7 +140,7 @@ export function LibraryShell({ initial, theaters }: { initial: ShelfPage; theate
   const moreAvailable = hasMoreAvailable(page);
 
   return (
-    <div className="flex items-stretch min-h-[calc(100vh-69px)]">
+    <div className="flex items-stretch min-h-[calc(100vh-117px)]">
       {/* Sidebar */}
       <aside className="w-[248px] shrink-0 bg-sidebar border-r border-hairline pt-7 pb-12 max-md:hidden">
         <FacetRail
@@ -156,7 +156,7 @@ export function LibraryShell({ initial, theaters }: { initial: ShelfPage; theate
       {/* Main column */}
       {/* BL3-04 (FDY-337): the content column grows to 1680 px, left-aligned next to the sidebar (no
           mx-auto) so nav and grid read as one frame; text blocks keep their own max widths. */}
-      <main className="flex-1 min-w-0 px-6 md:px-11 pt-10 pb-20">
+      <main id="main" className="flex-1 min-w-0 px-6 md:px-11 pt-10 pb-20">
         <div className="max-w-[1680px]">
           <h1 className="font-serif font-bold text-[38px] text-ink m-0">The Briefing Library</h1>
           <div className="w-[72px] h-[3px] bg-forest mt-3.5" />

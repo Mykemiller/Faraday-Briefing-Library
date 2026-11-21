@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import { getReaderBriefing } from "@/lib/catalog";
 import { viewerSubscriberId } from "@/lib/viewer";
 import { readerView, refreshedOn } from "@/lib/reader";
-import { Masthead } from "@/components/Masthead";
 import { LibraryFooter } from "@/components/LibraryFooter";
 import { Cover } from "@/components/Cover";
 import { PreviewReader, LockedCard } from "@/components/PreviewReader";
@@ -11,7 +10,7 @@ import { ReserveButton } from "@/components/ReserveButton";
 import { FaradaysTake } from "@/components/FaradaysTake";
 import { Manuscript } from "@/components/Manuscript";
 import { SourcesTable } from "@/components/SourcesTable";
-import { TYPE_EYEBROW, bylineLine, monthYear, shelfEdition } from "@/lib/brand";
+import { TYPE_EYEBROW, bylineLine, monthYear } from "@/lib/brand";
 import { flags } from "@/config/flags";
 import { ANON_TEASER_SLIDES } from "@/config/constants";
 
@@ -70,8 +69,7 @@ export default async function BriefingReadingRoom({ params }: { params: { slug: 
 
   return (
     <>
-      <Masthead context="Briefing Reading Room" edition={shelfEdition()} />
-      <div className="bg-forest-deep min-h-[calc(100vh-69px)] relative overflow-hidden">
+      <main id="main" className="block bg-forest-deep min-h-[calc(100vh-117px)] relative overflow-hidden">
         {/* Lamplight — two radial gradients, pointer-events none */}
         <div className="absolute inset-0 pointer-events-none bg-lamplight" aria-hidden="true" />
 
@@ -192,7 +190,7 @@ export default async function BriefingReadingRoom({ params }: { params: { slug: 
             </article>
           ) : null}
         </div>
-      </div>
+      </main>
       <LibraryFooter />
     </>
   );
