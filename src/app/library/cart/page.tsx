@@ -65,7 +65,7 @@ export default function CartPage() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-8">
+    <main id="main" className="block max-w-3xl mx-auto px-4 py-8">
       <header className="flex items-center justify-between gap-3">
         <h1 className="font-serif font-bold text-2xl text-forest">The Reading Table</h1>
         <WalletChip balance={balance} cartCost={cost} />
@@ -112,6 +112,6 @@ export default function CartPage() {
           {status ? <p className="mt-3 font-mono text-sm text-forest/80" aria-live="polite">{status}</p> : null}
         </>
       )}
-    </div>
+    </main>
   );
 }

@@ -29,7 +29,7 @@ export default async function BlueprintPage() {
   const sections = [...byDomain.entries()].sort((a, b) => b[1] - a[1]);
 
   return (
-    <div className="max-w-5xl mx-auto px-4 py-8">
+    <main id="main" className="block max-w-5xl mx-auto px-4 py-8">
       <a href="/library" className="font-mono text-xs text-gold underline">← back to the shelf</a>
       <h1 className="font-serif font-bold text-3xl text-forest mt-3">The Intelligence Blueprint</h1>
       <div className="double-rule mt-2 mb-4" />
@@ -48,6 +48,6 @@ export default async function BlueprintPage() {
           </section>
         ))}
       </div>
-    </div>
+    </main>
   );
 }
