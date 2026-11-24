@@ -141,6 +141,13 @@ Build Plan v2.0*. Next.js (App Router) · Clerk · Supabase · Stripe · Gamma.
   `/blueprint` into `/library/*`, so **never add a page at `src/app/page.tsx`** (it would beat the
   rewrite). Noindex stays on until FDY-340. Evidence: `docs/ops/FDY-398-public-url.md`.
 
+- **Beta access gate (FDY-417, ADM-1.7a).** `src/app/library/layout.tsx` runs `guardLibrary()`
+  (`src/lib/faradayGate.ts`, access_key `briefinglibrary`) before the masthead on every /library page.
+  `src/lib/faraday-gate/` and `src/lib/faraday-masthead/` are vendored byte-identical from
+  faraday-workbench: never edit them here; re-vendor and update `MANIFEST.sha256`. A probe error passes
+  through unless `FARADAY_GATE_ENFORCE=1`. The gate mode lives in `app_registry.gate_mode` (Myke's).
+  No prices on the gate. Evidence: `docs/security/FDY-417-access-gate.md`.
+
 ## Config constants (bound, never literal)
 
 `src/config/constants.ts`:
