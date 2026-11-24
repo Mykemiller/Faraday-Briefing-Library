@@ -57,6 +57,12 @@ and commit the file under the version the database records.
 | `NEXT_PUBLIC_LIBRARY_COMMERCE_ON` | **`false`** | **FAR-16** (wallet) lands — FAR-46 (meter) ✅ done |
 | `NEXT_PUBLIC_LIBRARY_ANON_TEASER` | `true` | per §18 flag #6 (Myke) |
 
+**FDY-297 — flags as data.** `COMMERCE_ON` and `ANON_TEASER` are now read at request time from the Faraday
+config store (Workbench console → app **BL**, keys `library_commerce_on` and `library_anon_teaser`). A value set
+there takes effect within 60 s with no redeploy. The env value above stays the fail-closed fallback: it is used
+whenever the read fails or nobody has set a value. `PREVIEW_ROUTE` and `SUBSCRIBER_LIVE` have no reader in the
+code yet, so their console rows are `recorded_only`. See `docs/ops/FDY-297-flags-as-data.md`.
+
 ## 4. Deploy-gate checklist
 
 | Gate | State | Unblocks |

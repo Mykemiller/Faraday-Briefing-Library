@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { auth, currentUser } from "@clerk/nextjs/server";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { subscriberIdForEmail } from "@/lib/identity";
-import { flags } from "@/config/flags";
+import { getLibraryFlags } from "@/config/live-flags";
 
 export const runtime = "nodejs";
 
@@ -13,7 +13,8 @@ export const runtime = "nodejs";
  */
 export async function POST(req: Request) {
   // Commerce stays OFF until FAR-16 (wallet generalization) + FAR-46 (meter) clear.
-  if (!flags.commerceOn) {
+  // FDY-297: read as data (console, ≤60 s); falls back to NEXT_PUBLIC_LIBRARY_COMMERCE_ON on any failure.
+  if (!(await getLibraryFlags()).commerceOn) {
     return NextResponse.json({ error: "commerce_off", message: "Checkout is not yet enabled." }, { status: 403 });
   }
 
