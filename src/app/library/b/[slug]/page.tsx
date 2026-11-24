@@ -11,7 +11,7 @@ import { FaradaysTake } from "@/components/FaradaysTake";
 import { Manuscript } from "@/components/Manuscript";
 import { SourcesTable } from "@/components/SourcesTable";
 import { TYPE_EYEBROW, bylineLine, monthYear } from "@/lib/brand";
-import { flags } from "@/config/flags";
+import { getLibraryFlags } from "@/config/live-flags";
 import { ANON_TEASER_SLIDES } from "@/config/constants";
 
 export const dynamic = "force-dynamic";
@@ -65,7 +65,8 @@ export default async function BriefingReadingRoom({ params }: { params: { slug: 
 
   // Fallback preview: ≤2 rendered slides (+ the locked card); anon deep links keep the teaser depth.
   const allSlides = briefing.previewSlides ?? [];
-  const visibleSlides = (!viewer && flags.anonTeaser ? allSlides.slice(0, ANON_TEASER_SLIDES) : allSlides).slice(0, 2);
+  const { anonTeaser } = await getLibraryFlags(); // FDY-297: data first, NEXT_PUBLIC_LIBRARY_ANON_TEASER on failure
+  const visibleSlides = (!viewer && anonTeaser ? allSlides.slice(0, ANON_TEASER_SLIDES) : allSlides).slice(0, 2);
 
   return (
     <>

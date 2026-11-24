@@ -18,6 +18,17 @@ export default function CartPage() {
   const [balance, setBalance] = useState<number | null>(null);
   const [idem, setIdem] = useState<string>(() => crypto.randomUUID());
   const [status, setStatus] = useState<string | null>(null);
+  // FDY-297: start from the build-time env flag, then take the live value (console, ≤60 s) from the server.
+  // If that request fails the env value stays; the checkout route enforces the flag on its own.
+  const [commerceOn, setCommerceOn] = useState<boolean>(flags.commerceOn);
+  useEffect(() => {
+    let live = true;
+    fetch("/api/library/flags", { cache: "no-store" })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((b) => { if (live && b && typeof b.commerceOn === "boolean") setCommerceOn(b.commerceOn); })
+      .catch(() => {});
+    return () => { live = false; };
+  }, []);
 
   useEffect(() => {
     void (async () => {
@@ -102,7 +113,7 @@ export default function CartPage() {
             <button
               type="button"
               onClick={checkout}
-              disabled={!flags.commerceOn || short || meter == null}
+              disabled={!commerceOn || short || meter == null}
               className="touch-target bg-gold text-forest font-bold rounded-sm px-5 py-2 disabled:opacity-50"
             >
               Check out
